@@ -27,10 +27,6 @@ export default {
   plugins: [
   ],
 
-  router: {
-    middleware: ["auth"]
-  },
-
   i18n: {
     locales: [
       { code: "fr", iso: "fr-FR", name: "Francais", file: "fr.json" },
@@ -70,6 +66,7 @@ export default {
   },
 
   css: [
+    "~/assets/css/common.scss"
   ],
 
   styleResources: {

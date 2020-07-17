@@ -6,12 +6,6 @@
  */
 module.exports = {
   theme: {
-    screens: {
-      "m-xl": {"max": "1279px"},
-      "m-lg": {"max": "1023px"},
-      "m-md": {"max": "767px"},
-      "m-sm": {"max": "639px"},
-    },
     borderColor: theme => ({
       ...theme("colors"),
     })

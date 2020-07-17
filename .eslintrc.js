@@ -17,7 +17,7 @@ module.exports = {
   plugins: ["vue"],
   rules: {
     semi: [2, "never"],
-    "max-len": ["error", { code: 120 }],
+    "max-len": ["error", { code: 200 }],
     "no-console": "off",
     "vue/max-attributes-per-line": "off",
     quotes: [2, "double", { avoidEscape: true }],
