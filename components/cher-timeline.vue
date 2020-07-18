@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center flex-wrap bg-gray-900 sm:flex-no-wrap items-center rounded-md">
+  <div class="flex justify-center flex-wrap bg-black  bg-opacity-50 sm:flex-no-wrap items-center rounded-md">
     <div class="p-4 h-24 flex justify-start items-center
       timeline-parent overflow-x-scroll relative sm:order-2 sm:w-2/4"
          @mousedown="enabled"
@@ -99,7 +99,7 @@ export default {
       this.moveIdx(Math.max(this.currentShow - 1, 0))
     },
     nextIdx () {
-      this.moveIdx(Math.min(this.currentShow + 1, this.elements.length))
+      this.moveIdx(Math.min(this.currentShow + 1, this.elements.length - 1))
     },
   }
 }

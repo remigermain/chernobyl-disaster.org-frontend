@@ -1,11 +1,15 @@
 <template>
-  <div class="body w-screen h-screen">
+  <div class="body">
     <Nuxt />
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .body {
-  background: linear-gradient(rgba(var(--primary), 1), rgba(var(--primary-rev), 1))
+  background: linear-gradient(rgba(var(--primary), .9), rgba(var(--primary-rev), .9))
+}
+
+body {
+  background-color: rgba(var(--primary-rev), .9)
 }
 </style>

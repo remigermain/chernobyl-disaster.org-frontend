@@ -55,15 +55,13 @@ export default {
   content: {},
 
   buildModules: [
+    "@nuxt/components",
     "@nuxtjs/eslint-module",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/style-resources",
-    "@aceforth/nuxt-optimized-images"
+    "@aceforth/nuxt-optimized-images",
+    "nuxt-purgecss",
   ],
-
-  optimizedImages: {
-    optimizeImages: true
-  },
 
   css: [
     "~/assets/css/common.scss"
