@@ -40,6 +40,24 @@
     src: url('~assets/fonts/DS-DIGI.ttf') format("TrueType");
 }
 
+@font-face {
+  font-family: 'soviet';
+  src: url('~assets/fonts/SovietProgram.ttf') format("TrueType");
+}
+
+
+@font-face {
+  font-family: 'molot';
+  src: url('~assets/fonts/Molot.otf') format("OpenType");
+}
+.font-molot {
+  font-family: 'molot';
+}
+
+.font-soviet {
+  font-family: 'soviet';
+}
+
 .font-mulshock {
     font-family: 'mulshock';
 }
@@ -65,5 +83,17 @@
     -webkit-text-fill-color: transparent;
 }
 
-
 button:focus {outline:0;}
+
+
+.left-50 {
+  left: 50%;
+}
+.top-50 {
+  top: 50%;
+}
+
+
+* {
+  box-sizing: border-box;
+}

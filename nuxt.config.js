@@ -1,11 +1,11 @@
 const isDev = process.env.Node_ENV !== "production"
 
 export default {
-  
+
   mode: "universal",
-  
+
   target: "server",
-  
+
   head: {
     title: process.env.npm_package_name || "",
     meta: [
@@ -39,7 +39,7 @@ export default {
     seo: true,
     vueI18nLoader: true
   },
-  
+
   components: true,
 
   modules: [
@@ -62,6 +62,10 @@ export default {
     "@aceforth/nuxt-optimized-images",
     "nuxt-purgecss",
   ],
+
+  optimizedImages: {
+    optimizeImages: true
+  },
 
   css: [
     "~/assets/css/common.scss"

@@ -1,7 +1,10 @@
 <template>
   <div class="flex justify-center flex-wrap bg-black  bg-opacity-50 sm:flex-no-wrap items-center rounded-md">
+    <button class="px-2 py-2 h-full timeline-button w-auto" @click="prevIdx">
+      <img class="w-4 sm:w-12 mx-auto" src="~assets/img/previous.svg">
+    </button>
     <div class="p-4 h-24 flex justify-start items-center
-      timeline-parent overflow-x-scroll relative sm:order-2 sm:w-2/4"
+      timeline-parent overflow-x-scroll relative"
          @mousedown="enabled"
          @mouseup="disabled"
          @mouseleave="disabled"
@@ -21,10 +24,7 @@
         </ol>
       </section>
     </div>
-    <button class="px-2 py-2 h-full timeline-button  sm:order-1 w-2/4 sm:w-auto" @click="prevIdx">
-      <img class="w-4 sm:w-12 mx-auto" src="~assets/img/previous.svg">
-    </button>
-    <button class="px-2 py-2 h-full  timeline-button sm:order-3 w-2/4 sm:w-auto" @click="nextIdx">
+    <button class="px-2 py-2 h-full  timeline-button w-auto" @click="nextIdx">
       <img class="w-4 sm:w-12 mx-auto" src="~assets/img/next.svg">
     </button>
   </div>
@@ -44,7 +44,7 @@ export default {
       click: false,
       clickPos: -1,
       elPos: -1,
-      currentShow: -1,
+      currentShow: 0,
       timeline: null
     }
   },
