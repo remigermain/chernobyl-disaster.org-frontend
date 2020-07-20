@@ -34,7 +34,6 @@ button:focus {
   outline:0;
 }
 
-
 .scrollbar {
   &::-webkit-scrollbar {
     height: 5px;
@@ -48,5 +47,27 @@ button:focus {
   }
   &::-webkit-scrollbar-thumb:hover {
     background: rgba(50, 50, 50, .5);
+  }
+}
+
+.wrapper {
+  display: contents;
+}
+
+.btn-icon-show {
+  svg {
+    visibility: hidden;
+    transition: transform .4s, opacity .4s, margin-left .4s;
+    opacity: 0;
+    transform: translateX(-100%);
+    margin-left: 0;
+    width: 0 !important;
+  }
+  &:hover svg {
+    width: auto !important;
+    margin-left: 1em;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0) scale(1.4);
   }
 }

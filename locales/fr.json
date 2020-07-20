@@ -17,5 +17,11 @@
         "gallery": "gallery",
         "home": "home",
         "timeline": "timeline"
+    },
+    "pages": {
+        "about": {
+            "creator-description": "creator-description",
+            "help-reator": "help-reator"
+        }
     }
 }

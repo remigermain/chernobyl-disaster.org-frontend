@@ -1,5 +1,5 @@
 <template>
-  <picture>
+  <picture class="wrapper">
     <template v-if="notExclude('mobile')">
       <template v-if="canWebp">
         <source media="(max-width:500px)" :srcset="typePath('mobile', '?webp')" type="image/webp">

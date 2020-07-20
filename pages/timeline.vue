@@ -1,19 +1,21 @@
 <template>
-  <div class="grid-chernobyl">
-    <div class="grid-date text-center md:extra-auto">
-      <cher-date :element="current" />
-    </div>
-    <div class="grid-logo text-center md:extra-auto">
-      <cher-logo :element="current" />
-    </div>
-    <div class="grid-text p-4 overflow-y-scroll scrollbar">
-      <cher-text :element="current" />
-    </div>
-    <div class="grid-extra h-inherit">
-      <cher-extra :element="current" />
-    </div>
-    <div class="grid-timeline col-span-2 extra-auto">
-      <cher-timeline :elements="elements" @change="updateElement"/>
+  <div class="wrapper">
+    <div class="col-span-2 grid-chernobyl">
+      <div class="grid-date text-center md:extra-auto">
+        <cher-date :element="current" />
+      </div>
+      <div class="grid-logo text-center md:extra-auto">
+        <cher-logo :element="current" />
+      </div>
+      <div class="grid-text p-4 overflow-y-scroll scrollbar">
+        <cher-text :element="current" />
+      </div>
+      <div class="grid-extra h-inherit">
+        <cher-extra :element="current" />
+      </div>
+      <div class="grid-timeline col-span-2 extra-auto">
+        <cher-timeline :elements="elements" @change="updateElement" />
+      </div>
     </div>
   </div>
 </template>

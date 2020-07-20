@@ -13,9 +13,15 @@
     "global": {
         "about": "about",
         "chernobyl": "chernobyl",
-        "description": "La catastrophe nucléaire de Tchernobyl [ t͡ʃɛʁnɔbil]1 est un accident nucléaire majeur survenu le 26 avril 1986 dans la centrale nucléaire V.I. Lénine, située à l'époque en république socialiste soviétique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucléaire du XXe siècle, classée au niveau 7 (le plus élevé) de l'échelle internationale des événements nucléaires (INES), surpassant, d'après l'Institut de radioprotection et de sûreté nucléaire (IRSN), par ses impacts environnementaux immédiats l’accident nucléaire de Fukushima de 2011, classé au même niveau. L’IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d’importantes conséquences économiques et sociales.",
+        "description": "La catastrophe nucl\u00e9aire de Tchernobyl [\u2006t\u0361\u0283\u025b\u0281n\u0254bil]1 est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l\u2019accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L\u2019IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d\u2019importantes cons\u00e9quences \u00e9conomiques et sociales.",
         "gallery": "gallery",
         "home": "home",
         "timeline": "timeline"
+    },
+    "pages": {
+        "about": {
+            "creator-description": "Germain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vien",
+            "help-reator": "Aidez mois !"
+        }
     }
 }

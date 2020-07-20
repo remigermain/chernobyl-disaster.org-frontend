@@ -1,6 +1,15 @@
 <template>
   <div class="site">
-    <Nuxt />
+    <div class="grid-home h-screen w-screen p-4 text-gray-900">
+      <div class="flex">
+        <extra-img src="logo.jpg" :default="true" class-native="inline-block w-20"/>
+        <h1 class="text-3xl md:text-5xl uppercase extra-auto font-russia">
+          {{ $t('global.chernobyl') }}
+        </h1>
+      </div>
+      <cher-navbar />
+      <nuxt />
+    </div>
   </div>
 </template>
 
@@ -11,6 +20,19 @@
   background-size: cover;
   min-height: inherit;
   height: inherit;
+}
+
+.grid-home {
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  grid-template-rows: auto 1fr;
+}
+
+@media screen and (max-width:900px){
+  .grid-home {
+    position: relative;
+    grid-template-columns: 1fr auto;
+  }
 }
 
 </style>

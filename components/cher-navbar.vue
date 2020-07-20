@@ -1,26 +1,26 @@
 <template>
   <div class="flex justify-between text-xl capitalize items-center pr-10 grid-navbar">
-    <input id="navbar" v-model="checkbox" type="checkbox" class="opacity-0 absolute w-10 h-10 z-40 cursor-pointer input-navbar" @click="setFixNavbar">
+    <input id="navbar" v-model="checkbox" type="checkbox" class="opacity-0 absolute w-10 h-10 z-50 cursor-pointer input-navbar" @click="setFixNavbar">
     <label for="navbar" class="opacity-0 absolute">
       navbar
     </label>
-    <label class="burger cursor-pointer z-30">
+    <label class="burger cursor-pointer z-40">
       <span class="bg-gray-700 rounded-md" />
       <span class="bg-gray-700 rounded-md" />
       <span class="bg-gray-700 rounded-md" />
     </label>
-    <div class="background-navbar" />
-    <nav class="navbar-items z-20 flex justify-between items-center w-full" :class="{'fix-navbar': fixNavbar}">
-      <extra-nuxt-link :to="{name: 'index'}" class="home-link">
+    <div class="background-navbar z-20" />
+    <nav class="navbar-items z-30 flex justify-between items-center w-full" :class="{'fix-navbar': fixNavbar}">
+      <extra-nuxt-link :to="{name: 'index'}" class="home-link" @click="checkbox = false">
         {{ $t('global.home') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'timeline'}" class="home-link">
+      <extra-nuxt-link :to="{name: 'timeline'}" class="home-link" @click="checkbox = false">
         {{ $t('global.timeline') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery'}" class="home-link">
+      <extra-nuxt-link :to="{name: 'gallery'}" class="home-link" @click="checkbox = false">
         {{ $t('global.gallery') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'about'}" class="home-link">
+      <extra-nuxt-link :to="{name: 'about'}" class="home-link" @click="checkbox = false">
         {{ $t('global.about') }}
       </extra-nuxt-link>
     </nav>
@@ -68,6 +68,10 @@ export default {
   transition: background-color .4s;
 }
 
+.input-navbar {
+  display: none;
+}
+
 .input-navbar:checked ~ .background-navbar {
   position: absolute;
   top: 0;
@@ -78,6 +82,9 @@ export default {
 }
 
 @media screen and (max-width:900px){
+  .input-navbar {
+    display: inline-block;
+  }
   .grid-navbar {
     padding-right: .5em;
     .burger {
@@ -136,11 +143,13 @@ export default {
   }
   &:not(.nuxt-link-exact-active)
   {
-    opacity: .9;
-    font-style: italic;
-    &:hover::after {
-      width: 100%;
+    opacity: .5;
+    &:hover {
       opacity: 1;
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
     }
   }
 }
