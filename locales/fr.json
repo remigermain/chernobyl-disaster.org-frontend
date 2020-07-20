@@ -20,8 +20,9 @@
     },
     "pages": {
         "about": {
-            "creator-description": "creator-description",
-            "help-reator": "help-reator"
+            "buy-me-coffe": "buy-me-coffe",
+            "contribute": "contribute",
+            "creator-description": "creator-description"
         }
     }
 }

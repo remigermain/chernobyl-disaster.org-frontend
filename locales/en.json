@@ -20,8 +20,9 @@
     },
     "pages": {
         "about": {
-            "creator-description": "Germain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vien",
-            "help-reator": "Aidez mois !"
+            "buy-me-coffe": "buy-me-coffe",
+            "contribute": "contribute",
+            "creator-description": "Germain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vien"
         }
     }
 }

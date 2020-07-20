@@ -1,9 +1,9 @@
 <template>
   <div class="site">
     <div class="grid-home h-screen w-screen p-4 text-gray-900">
-      <div class="flex">
+      <div class="flex z-20">
         <extra-img src="logo.jpg" :default="true" class-native="inline-block w-20"/>
-        <h1 class="text-3xl md:text-5xl uppercase extra-auto font-russia">
+        <h1 class="text-5xl uppercase extra-auto font-russia -md:opacity-0 transition-opacity  duration-400">
           {{ $t('global.chernobyl') }}
         </h1>
       </div>

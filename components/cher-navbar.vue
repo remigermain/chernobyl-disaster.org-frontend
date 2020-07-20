@@ -79,6 +79,13 @@ export default {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
+@media screen and (min-width:900px) {
+  .background-navbar {
+    opacity: 0 !important;
+  }
 }
 
 @media screen and (max-width:900px){
@@ -94,6 +101,7 @@ export default {
       transition: transform var(--navbar--annimation-duration);
       position: fixed;
       width: 50%;
+      min-width: 250px;
       height: 100%;
       top: 0;
       right: 0;

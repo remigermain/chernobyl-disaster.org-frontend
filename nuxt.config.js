@@ -92,7 +92,11 @@ export default {
   fontawesome: {
     component: "fa",
     icons: {
-      solid: true
+      solid: true,
+      regular: true,
+      //light: true,
+      //duotone: true,
+      brands: true
     }
   },
 

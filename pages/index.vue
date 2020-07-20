@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="extra-auto grid-home-intro w-full z-10">
       <div class="w-full md:w-3/4 mx-auto flex justify-center items-center flex-col h-full">
-        <h2 class="text-6xl uppercase mb-8 grid-home-intro-title -sm:hidden font-russia">
+        <h2 class="text-6xl uppercase mb-8 grid-home-intro-title font-russia">
           {{ $t('global.chernobyl' ) }}
         </h2>
         <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
@@ -35,7 +35,6 @@
     }
   }
   .grid-home-image {
-    width: 50%;
     margin-right: 0;
     img {
       border-bottom-left-radius: 50%;

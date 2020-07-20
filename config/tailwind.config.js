@@ -22,6 +22,9 @@ module.exports = {
         "50": "50%",
         "75": "75%",
       },
+      transitionDuration: {
+        "400": ".4s"
+      },
       colors: {
         "cher-primary": "rgba(var(--primary), var(--bg-opacity))",
         "cher-primary-rev": "rgba(var(--primary-rev), var(--bg-opacity))",
