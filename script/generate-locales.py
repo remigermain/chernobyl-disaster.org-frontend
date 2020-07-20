@@ -230,10 +230,10 @@ def main():
             f.write(result)
 
     print("Make messages OK")
-    locales = ", ".join(locales)
+    locales = ", ".join(set(locales))
     print(f"Messages generate for: {locales}")
     if newkeys:
-        print("key add: ", newkeys)
+        print("key add: ", set(newkeys))
 
 
 if __name__ == '__main__':

@@ -6,32 +6,22 @@
  */
 module.exports = {
   theme: {
-    screens: {
-      "sm": "640px",
-      // => @media (min-width: 640px) { ... }
-
-      "md": "768px",
-      // => @media (min-width: 768px) { ... }
-
-      "lg": "1024px",
-      // => @media (min-width: 1024px) { ... }
-
-      "xl": "1280px",
-      // => @media (min-width: 1280px) { ... }
-
-      "-xl": {max: "1279px"},
-      // => @media (max-width: 1279px) { ... }
-
-      "-lg": {max: "1023px"},
-      // => @media (max-width: 1023px) { ... }
-
-      "-md": {max: "767px"},
-      // => @media (max-width: 767px) { ... }
-
-      "-sm": {max: "639px"},
-      // => @media (max-width: 639px) { ... }
-    },
     extend: {
+      height: {
+        "inherit": "inherit"
+      },
+      screens: {
+        "xl": "1280px",
+        "-xl": {max: "1279px"},
+        "-lg": {max: "1023px"},
+        "-md": {max: "767px"},
+        "-sm": {max: "639px"},
+      },
+      inset: {
+        "25": "25%",
+        "50": "50%",
+        "75": "75%",
+      },
       colors: {
         "cher-primary": "rgba(var(--primary), var(--bg-opacity))",
         "cher-primary-rev": "rgba(var(--primary-rev), var(--bg-opacity))",

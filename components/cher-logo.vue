@@ -1,10 +1,10 @@
 <template>
-  <div class="font-russia text-white" v-bind="$attrs">
-    <cher-nuxt-link :to="{name: 'index'}">
-      <h1 class="font-linear text-chernobyl">
+  <div class=" text-white" v-bind="$attrs">
+    <extra-nuxt-link :to="{name: 'index'}">
+      <h1 class="font-linear text-chernobyl text-gray-800 uppercase">
         {{ name }}
       </h1>
-    </cher-nuxt-link>
+    </extra-nuxt-link>
   </div>
 </template>
 
@@ -29,6 +29,12 @@ export default {
 </script>
 
 <style lang="scss">
+
+// .font-linear {
+//     background: linear-gradient(white, rgba(var(--primary-rev), .1));
+//     -webkit-background-clip: text;
+//     -webkit-text-fill-color: transparent;
+// }
 
 .text-chernobyl {
   font-size: 5em !important;

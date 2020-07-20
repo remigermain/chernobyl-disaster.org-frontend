@@ -2,7 +2,6 @@
     "components": {
         "cher-extra": {
             "documents": "documents",
-            "empty": "empty",
             "lien": "lien",
             "pictures": "pictures",
             "videos": "videos"
@@ -11,10 +10,12 @@
             "chernobyl": "chernobyl"
         }
     },
-    "pages": {
-        "index": {
-            "description": "description",
-            "see-more": "see-more"
-        }
+    "global": {
+        "about": "about",
+        "chernobyl": "chernobyl",
+        "description": "description",
+        "gallery": "gallery",
+        "home": "home",
+        "timeline": "timeline"
     }
 }

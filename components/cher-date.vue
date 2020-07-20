@@ -1,5 +1,5 @@
 <template>
-  <div class="text-gray-100 font-bold flex flex-col">
+  <div class="text-gray-800 font-bold flex flex-col">
     <div class="font-digital tracking-tighter">
       <span class="text-6xl -sm:text-2xl">
         {{ date.getHours() }}
@@ -18,9 +18,6 @@
       {{ date.toLocaleString('default', { month: 'long' }) }}
       {{ date.getFullYear() }}
     </div>
-    <h1 class="text-3xl -sm:text-lg md:mb-6 text-gray-800 font-molot">
-      {{ element.title }}
-    </h1>
   </div>
 </template>
 

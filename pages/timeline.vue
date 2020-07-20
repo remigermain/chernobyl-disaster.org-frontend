@@ -1,18 +1,18 @@
 <template>
-  <div class="grid h-screen w-screen">
-    <div class="grid-date text-center p-4">
+  <div class="grid-chernobyl">
+    <div class="grid-date text-center md:extra-auto">
       <cher-date :element="current" />
     </div>
-    <div class="grid-logo text-center my-auto">
+    <div class="grid-logo text-center md:extra-auto">
       <cher-logo :element="current" />
     </div>
-    <div class="grid-text -sm:col-span-2 overflow-y-scroll rounded mx-2">
+    <div class="grid-text p-4 overflow-y-scroll scrollbar">
       <cher-text :element="current" />
     </div>
-    <div class="grid-extra -md:hidden">
+    <div class="grid-extra h-inherit">
       <cher-extra :element="current" />
     </div>
-    <div class="grid-timeline col-span-2 mx-auto my-auto">
+    <div class="grid-timeline col-span-2 extra-auto">
       <cher-timeline :elements="elements" @change="updateElement"/>
     </div>
   </div>
@@ -21,7 +21,6 @@
 <script>
 
 export default {
-    layout: "test",
     async asyncData({ $content }) {
       return {elements: await $content("timeline").fetch()}
     },
@@ -44,62 +43,42 @@ export default {
 
 <style lang="scss">
 
-body {
-    margin: 0;
-    padding: 0
-}
-
-.grid {
+.grid-chernobyl {
     display: grid;
-    grid-template-columns: 7fr 4fr;
-    grid-template-rows: 2fr 8fr 2fr;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: auto 70% 1fr;
+    min-height: inherit;
+    height: inherit;
+    padding: 5px;
+    gap: 5px;
 }
-@screen -xl {
-  .grid {
-    grid-template-columns: 7fr 5fr;
-  }
-}
-
 
 @screen -md {
-  .grid {
+  .grid-chernobyl {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center
   }
   .grid-logo {
     order: -1;
   }
-  .grid-date {
-    padding: 0;
+  .grid-text {
+    height: 55%;
+  }
+  .grid-extra {
+    display: none
   }
   .grid-timeline {
-    padding-top: .5em;
   }
+
 }
 
 .grid-text {
-  //background-color: rgba(0, 0, 0, .5);
-  background-color: rgba(255, 255, 255, .3);
+  background-color: rgba(141, 124, 124, 0.3);
   line-height: 2em;
   word-spacing: .1em;
-  //color: rgb(211, 211, 211);
   color: black;
   font-weight: 600;
 }
-
-.grid-text::-webkit-scrollbar {
-  height: 5px;
-  width: 5px;
-}
-.grid-text::-webkit-scrollbar-track {
-}
-
-.grid-text::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background: rgba(0, 0, 0, .9);
-}
-.grid-text::-webkit-scrollbar-thumb:hover {
-  background: rgba(50, 50, 50, .5);
-}
-
 </style>

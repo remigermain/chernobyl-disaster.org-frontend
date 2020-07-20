@@ -37,18 +37,26 @@ export default {
       type: Boolean,
       default: false
     },
+    // exclure les type , desactiver si "default" props est a true
+    // "mobile", "tablet", "desktop"
     exclude: {
       type: Array[String],
-      default: ["mobile", "tablet", "desktop"]
+      default: () => { return [] }
     },
+    // class pour l'image et non le picture
     classNative: {
-      type: String,
+      type: [String, Object],
       default: ""
     },
+    // dossier ou ce trouve l'image
     folder: {
       type: String,
       default: "img"
-    }
+    },
+    default: {
+      type: Boolean,
+      default: false
+    },
   },
   data () {
     return {
@@ -67,7 +75,8 @@ export default {
       return "#000000"
     },
     canWebp () {
-      return ["jpg", "png"].includes(this.srcSplit[1])
+      return false
+      //return ["jpg", "png"].includes(this.srcSplit[1])
     },
   },
   methods: {
@@ -76,9 +85,12 @@ export default {
         the srcSplit equal to ['exemple', 'png']
         so we create the path with suffix ( default / mobile / tablet)
       */
-      return require(`../assets/${this.folder}/${this.srcSplit[0]}${this.getSuffix(type)}.${this.srcSplit[1]}${query}`)
+      return require(`../../assets/${this.folder}/${this.srcSplit[0]}${this.getSuffix(type)}.${this.srcSplit[1]}${query}`)
     },
     notExclude (type) {
+      if (this.default) {
+        return false
+      }
       return this.exclude.includes(type) == false
     },
     getSuffix (type) {

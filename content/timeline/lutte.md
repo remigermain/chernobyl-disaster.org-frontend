@@ -1,10 +1,7 @@
 ---
 title: Lutte contre l'incendie (26 avril 1986)
 date: "1986-03-27T11:55:32"
-pictures: ["timeline_1.jpeg","timeline_2.jpeg","timeline_3.jpeg", "timeline_4.jpeg","timeline_5.jpeg" ,"timeline_6.jpeg","timeline_7.jpeg","timeline_8.jpeg"]
-videos: []
-documents: []
-links: []
+pictures: ["timeline_1.jpeg","timeline_2.jpeg","timeline_3.jpeg", "timeline_4.jpeg","timeline_5.jpeg" ,"timeline_6.jpeg","timeline_7.jpeg","timeline_8.jpeg","timeline_1.jpeg","timeline_2.jpeg","timeline_3.jpeg", "timeline_4.jpeg","timeline_5.jpeg" ,"timeline_6.jpeg","timeline_7.jpeg","timeline_8.jpeg","timeline_1.jpeg","timeline_2.jpeg","timeline_3.jpeg", "timeline_4.jpeg","timeline_5.jpeg" ,"timeline_6.jpeg","timeline_7.jpeg","timeline_8.jpeg"]
 ---
 Dans les mois qui ont suivi, plusieurs centaines de milliers d'ouvriers (600 000 environ51), les « liquidateurs » venus d'Ukraine, de Biélorussie, de Lettonie, de Lituanie et de Russie arrivent sur le site pour procéder à des nettoyages du terrain environnant52. Leur protection individuelle contre les rayonnements était très faible, voire nulle. La décontamination était illusoire dans la mesure où personne ne savait où transférer les gravats déblayés. Beaucoup de villages en Ukraine mais surtout en Biélorussie ont été évacués, détruits et enterrés en raison d'une radioactivité trop élevée.
 

@@ -1,99 +1,52 @@
 :root {
     // #becabe;
     --primary: 190, 202, 190;
-
     // #181d23;
     --primary-rev: 24, 29, 35;
-
     // #99b1a3;
     --primary-nu: 153, 177, 163;
-
     // #4f6e71;
     --primary-nu-rev: 79, 110, 113;
 
     --bg-opacity: 1
 }
 
-
-@font-face {
-    font-family: 'mulshock';
-    src: url('~assets/fonts/nulshock_bd.ttf') format('TrueType');
-}
-
-@font-face {
-    font-family: 'mission';
-    src: url('~assets/fonts/mission/Mission GT-R.ttf') format("TrueType");
-}
-
-@font-face {
-    font-family: 'down';
-    src: url('~assets/fonts/down/DOWNCOME.ttf') format("TrueType");
-}
-
-@font-face {
-    font-family: 'russia';
-    src: url('~assets/fonts/Russian.ttf') format("TrueType");
-}
-
-@font-face {
-    font-family: 'digital';
-    src: url('~assets/fonts/DS-DIGI.ttf') format("TrueType");
-}
-
-@font-face {
-  font-family: 'soviet';
-  src: url('~assets/fonts/SovietProgram.ttf') format("TrueType");
-}
-
-
-@font-face {
-  font-family: 'molot';
-  src: url('~assets/fonts/Molot.otf') format("OpenType");
-}
-.font-molot {
-  font-family: 'molot';
-}
-
-.font-soviet {
-  font-family: 'soviet';
-}
-
-.font-mulshock {
-    font-family: 'mulshock';
-}
-
-.font-mission {
-    font-family: 'mission';
-}
-
-.font-down {
-    font-family: 'down';
-}
-
-.font-russia {
-    font-family: 'russia';
-}
-.font-digital {
-    font-family: 'digital';
-}
-
-.font-linear {
-    background: linear-gradient(white, rgba(var(--primary-rev), .1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-button:focus {outline:0;}
-
-
-.left-50 {
-  left: 50%;
-}
-.top-50 {
-  top: 50%;
-}
-
-
 * {
   box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body, #__nuxt, #__layout {
+  min-height: inherit;
+  height: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button:focus {
+  outline:0;
+}
+
+
+.scrollbar {
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, .9);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(50, 50, 50, .5);
+  }
 }

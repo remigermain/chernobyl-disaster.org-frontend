@@ -40,8 +40,6 @@ export default {
     vueI18nLoader: true
   },
 
-  components: true,
-
   modules: [
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
@@ -55,6 +53,7 @@ export default {
   content: {},
 
   buildModules: [
+    "@nuxtjs/fontawesome",
     "@nuxt/components",
     "@nuxtjs/eslint-module",
     "@nuxtjs/tailwindcss",
@@ -63,12 +62,18 @@ export default {
     "nuxt-purgecss",
   ],
 
+  components: [
+    "~/components",
+    { path: "~/components/extra/", prefix: "extra" }
+  ],
+
   optimizedImages: {
     optimizeImages: true
   },
 
   css: [
-    "~/assets/css/common.scss"
+    "~/assets/css/common.scss",
+    "~/assets/css/fonts.scss"
   ],
 
   styleResources: {
@@ -82,6 +87,13 @@ export default {
     configPath: "~/config/tailwind.config.js",
     cssPatg: "~/assets/css/tailwind.css",
     exposeConfig: false
+  },
+
+  fontawesome: {
+    component: "fa",
+    icons: {
+      solid: true
+    }
   },
 
   purgecss: {
