@@ -21,8 +21,15 @@
     "pages": {
         "about": {
             "buy-me-coffe": "buy-me-coffe",
-            "contribute": "contribute",
-            "creator-description": "creator-description"
+            "contact": "contact",
+            "contributing": "contributing",
+            "contributors": "contributors",
+            "creator-description": "creator-description",
+            "help-me": "help-me",
+            "help-me-description": "help-me-description",
+            "no-contributors": "no-contributors",
+            "thanks-contributors": "thanks-contributors",
+            "traduction": "traduction"
         }
     }
 }

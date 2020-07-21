@@ -21,8 +21,15 @@
     "pages": {
         "about": {
             "buy-me-coffe": "buy-me-coffe",
-            "contribute": "contribute",
-            "creator-description": "Germain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vien"
+            "contact": "contact",
+            "contributing": "contributing",
+            "contributors": "contributors",
+            "creator-description": "Germain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vienGermain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vienGermain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vien",
+            "help-me": "Aidez mois!",
+            "help-me-description": "Ce site est gratuit, sans pub et sans toute ces merde de pistage, le serveur + le nom de domaine coutera chaque anne 90euro, pour m'aider sur ces charge vous pouvez me payer un caffe :D",
+            "no-contributors": "aucun contributeurs actuellement",
+            "thanks-contributors": "c'est a grace a tout les contributor que ce site ne pourais fonctionner, u n grand merci a tous",
+            "traduction": "traduction"
         }
     }
 }
