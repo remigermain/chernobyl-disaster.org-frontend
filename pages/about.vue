@@ -6,38 +6,38 @@
       </h2>
       <div>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <fa :icon="['fab', 'gitlab']" size="md" />
+          <fa :icon="['fab', 'gitlab']" size="lg" />
           Gitlab
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <fa icon="language" size="md" />
+          <fa icon="language" size="lg" />
           {{ $t('pages.about.traduction') }}
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <fa icon="envelope" size="md" />
+          <fa icon="envelope" size="lg" />
           {{ $t('pages.about.contact') }}
         </a>
       </div>
       <h3 class="text-3xl text-md capitalize">
         {{ $t('pages.about.contributors') }}
         <div class="wrapper text-red-800">
-          <fa icon="heart" size="md" />
+          <fa icon="heart" size="lg" />
         </div>
       </h3>
       <p class="text-gray-800">
         {{ $t('pages.about.thanks-contributors') }}
-        <fa icon="heart" size="md" class="text-red-800" />
-        <fa icon="heart" size="md" class="text-red-800" />
+        <fa icon="heart" size="lg" class="text-red-800" />
+        <fa icon="heart" size="lg" class="text-red-800" />
       </p>
       <div class="floa-left contributors">
         <template v-for="user in contributors">
           <template v-if="user.link">
-            <a :key="user" :href="user.link" class="text-sm text-purple-800">
+            <a :key="user.name" :href="user.link" class="text-sm text-purple-800">
               @{{ user.name }}
             </a>
           </template>
           <template v-else>
-            <span :key="user" class="text-sm">
+            <span :key="user.name" class="text-sm">
               {{ user.name }}
             </span>
           </template>

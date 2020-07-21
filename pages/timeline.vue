@@ -23,8 +23,8 @@
 <script>
 
 export default {
-    async asyncData({ $content }) {
-      return {elements: await $content("timeline").fetch()}
+    async asyncData({ $content, app }) {
+      return {elements: await $content(`timeline/${app.i18n.locale}`).fetch()}
     },
     data () {
       return {

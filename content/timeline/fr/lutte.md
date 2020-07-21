@@ -1,5 +1,5 @@
 ---
-title: Lutte contre l'incendie (26 avril 1986)
+title: Lutte contre l'incendie (26 avril 1986) fr
 date: "1986-03-27T11:55:32"
 pictures: ["timeline_1.jpeg","timeline_2.jpeg","timeline_3.jpeg", "timeline_4.jpeg","timeline_5.jpeg" ,"timeline_6.jpeg","timeline_7.jpeg","timeline_8.jpeg","timeline_1.jpeg","timeline_2.jpeg","timeline_3.jpeg", "timeline_4.jpeg","timeline_5.jpeg" ,"timeline_6.jpeg","timeline_7.jpeg","timeline_8.jpeg","timeline_1.jpeg","timeline_2.jpeg","timeline_3.jpeg", "timeline_4.jpeg","timeline_5.jpeg" ,"timeline_6.jpeg","timeline_7.jpeg","timeline_8.jpeg"]
 ---

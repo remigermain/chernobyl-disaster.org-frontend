@@ -23,6 +23,17 @@
       <extra-nuxt-link :to="{name: 'about'}" class="home-link" @click="checkbox = false">
         {{ $t('global.about') }}
       </extra-nuxt-link>
+      <div class="relative lang-set rounded-lg">
+        <span class="p-2 opacity-50 italic text-sm">{{ languageName }}</span>
+        <fa icon="sort-down" class="opacity-50" />
+        <ul class="lang-list absolute bg-white rounded-lg p-2">
+          <li v-for="lang in locales" :key="lang.iso">
+            <nuxt-link class="home-link text-sm" :to="switchLocalePath(lang.code)">
+              {{ lang.name }}
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
     </nav>
   </div>
 </template>
@@ -34,6 +45,14 @@ export default {
       checkbox: false,
       fixNavbar: false,
       timeout: 0
+    }
+  },
+  computed: {
+    languageName () {
+      return this.$i18n.locales.filter(el => el.code === this.$i18n.locale)[0].name
+    },
+    locales () {
+      return this.$i18n.locales.filter(el => el.code !== this.$i18n.locale)
     }
   },
   beforeDestroy () {
@@ -50,7 +69,7 @@ export default {
         }, 400)
       }
     }
-  }
+  },
 }
 </script>
 
@@ -190,6 +209,24 @@ export default {
 .input-navbar:checked ~ .burger span:last-child {
   transform-origin: center;
   transform:  translateY(calc(-1 * (var(--margin-span-burger) + var(--height-span-burger)) )) rotate(-45deg);
+}
+
+.lang-set {
+  svg {
+    transition: opacity .2s;
+  }
+  &:hover {
+    svg {
+      opacity: .8;
+    }
+    .lang-list {
+      visibility: visible;
+    }
+  }
+}
+
+.lang-list {
+  visibility: hidden;
 }
 
 </style>
