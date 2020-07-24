@@ -1,22 +1,11 @@
 <template>
   <div class="wrapper">
-    <div class="col-span-2 grid-chernobyl">
-      <div class="grid-date text-center md:extra-auto">
-        <cher-date :element="current" />
-      </div>
-      <div class="grid-logo text-center md:extra-auto">
-        <cher-logo :element="current" />
-      </div>
-      <div class="grid-text p-4 overflow-y-scroll scrollbar">
-        <cher-text :element="current" />
-      </div>
-      <div class="grid-extra h-inherit">
-        <cher-extra :element="current" />
-      </div>
-      <div class="grid-timeline col-span-2 extra-auto">
-        <cher-timeline :elements="elements" @change="updateElement" />
-      </div>
+    <div class="bg-green-500 overflow-y-scroll timeline-content">
+      <nuxt-content :document="current" />
+      <nuxt-content :document="current" />
     </div>
+    <div class="bg-red-500">extra</div>
+    <div class="bg-blue-500 col-span-2">timeline</div>
   </div>
 </template>
 
@@ -44,43 +33,19 @@ export default {
 </script>
 
 <style lang="scss">
-
-.grid-chernobyl {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    grid-template-rows: auto 70% 1fr;
-    min-height: inherit;
-    height: inherit;
-    padding: 5px;
-    gap: 5px;
+.grid-timeline {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr 150px;
 }
 
-@screen -md {
-  .grid-chernobyl {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center
-  }
-  .grid-logo {
-    order: -1;
-  }
-  .grid-text {
-    height: 55%;
-  }
-  .grid-extra {
-    display: none
-  }
-  .grid-timeline {
-  }
-
+.grid-home {
+  grid-template-columns: 6fr 5fr;
+  grid-template-rows: auto 1fr  120px;
 }
 
-.grid-text {
-  background-color: rgba(141, 124, 124, 0.3);
-  line-height: 2em;
-  word-spacing: .1em;
-  color: black;
-  font-weight: 600;
+
+.timeline-content {
+  //height: calc(100% - 150px);
 }
 </style>

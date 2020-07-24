@@ -53,7 +53,7 @@
         </a>
       </h1>
       <p class="text-gray-800">
-        <extra-img src="profil/profil.jpg" :exclude="['desktop']" class-native="rounded-full -sm:w-1/4 w-1/6 float-left p-2" />
+        <extra-img src="profil/profil.jpg" :exclude="['desktop']" class-native="rounded-full -sm:w-1/4 w-1/6 float-left p-2 img-profil" />
         {{ $t('pages.about.creator-description') }}
       </p>
       <h4 class="text-xl text-md capitalize">
@@ -110,5 +110,8 @@ export default {
     content: '/';
     color: black;
   }
+}
+.img-profil {
+  shape-outside: circle();
 }
 </style>
