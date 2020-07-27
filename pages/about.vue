@@ -44,7 +44,7 @@
         </template>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
-          <fa :icon="['far', 'sad-tear']" size="lg"/>
+          <fa :icon="['far', 'sad-tear']" size="lg" />
         </span>
       </div>
       <h1 class="text-2xl italic text-gray-800 pr-4">
@@ -75,11 +75,8 @@
 
 <script>
 export default {
-  async asyncData({ $content }) {
-    return {contributors: await $content("contributors")
-      .sortBy("name")
-      .fetch()
-      }
+  async asyncData() {
+    return {contributors: [] }
   }
 }
 </script>

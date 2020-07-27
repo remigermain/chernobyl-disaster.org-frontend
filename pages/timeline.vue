@@ -12,8 +12,8 @@
 <script>
 
 export default {
-    async asyncData({ $content, app }) {
-      return {elements: await $content(`timeline/${app.i18n.locale}`).fetch()}
+    async asyncData() {
+      return {elements: []}
     },
     data () {
       return {

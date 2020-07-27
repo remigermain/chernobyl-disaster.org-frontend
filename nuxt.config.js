@@ -1,4 +1,5 @@
 const isDev = process.env.Node_ENV !== "production"
+const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org"
 
 export default {
 
@@ -25,6 +26,7 @@ export default {
   },
 
   plugins: [
+    "~/plugins/axios.js",
   ],
 
   i18n: {
@@ -33,7 +35,7 @@ export default {
       { code: "en", iso: "en-UK", name: "english", file: "en.json" }
     ],
     strategy: "prefix_and_default",
-    defualtLocale: "en",
+    defualtLocale: "fr",
     lazy: true,
     langDir: "locales/",
     seo: true,
@@ -43,14 +45,46 @@ export default {
   modules: [
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
-    "@nuxt/content",
+    "@nuxtjs/auth",
     "@nuxtjs/sitemap",
     "nuxt-i18n",
   ],
 
-  axios: {},
+  auth: {
+    resetOnError: true, // une erreur 403/401 supprimer toutes les info, et redirige vers login
+    plugins: ["@/plugins/auth"],
+    redirect: {
+      login: "/auth/login",
+      logout: "/auth/login",
+      callback: "/auth/login",
+      home: "/"
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: apiUrl + "auth/login/",
+            method: "post",
+            propertyName: "key"
+          },
+          logout: {
+            url: apiUrl + "auth/logout/",
+            method: "post"
+          },
+          user: {
+            url: apiUrl + "auth/user/",
+            method: "get",
+            propertyName: false
+          }
+        },
+        tokenType: "Token"
+      },
+    }
+  },
 
-  content: {},
+  axios: {
+    baseURL: apiUrl
+  },
 
   buildModules: [
     "@nuxtjs/fontawesome",
@@ -64,7 +98,10 @@ export default {
 
   components: [
     "~/components",
-    { path: "~/components/extra/", prefix: "extra" }
+    {
+      path: "~/components/extra/",
+      prefix: "extra"
+    }
   ],
 
   optimizedImages: {

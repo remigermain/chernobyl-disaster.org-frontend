@@ -89,7 +89,6 @@ export default {
       const delta = el.offsetLeft - this.middleTimeline()
       this.timeline.scrollTo(delta, 0)
       this.currentShow = idx
-      console.log(this.elements[idx])
       this.$emit("change", this.elements[idx])
     },
     moveIdx(idx) {
