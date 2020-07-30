@@ -20,12 +20,15 @@
       <extra-nuxt-link :to="{name: 'gallery'}" class="home-link" @click="checkbox = false">
         {{ $t('global.gallery') }}
       </extra-nuxt-link>
+      <extra-nuxt-link :to="{name: 'contribute'}" class="home-link" @click="checkbox = false">
+        {{ $t('global.contribute') }}
+      </extra-nuxt-link>
       <extra-nuxt-link :to="{name: 'about'}" class="home-link" @click="checkbox = false">
         {{ $t('global.about') }}
       </extra-nuxt-link>
       <div class="relative lang-set rounded-lg">
         <span class="p-2 opacity-50 italic text-sm">{{ languageName }}</span>
-        <fa icon="sort-down" class="opacity-50" />
+        <icon-selector class="opacity-50" />
         <ul class="lang-list absolute bg-white rounded-lg p-2">
           <li v-for="lang in locales" :key="lang.iso">
             <nuxt-link class="home-link text-sm" :to="switchLocalePath(lang.code)">
@@ -39,7 +42,11 @@
 </template>
 
 <script>
+import iconSelector from "@/assets/svg/selector.svg"
 export default {
+  components: {
+    iconSelector
+  },
   data () {
     return {
       checkbox: false,

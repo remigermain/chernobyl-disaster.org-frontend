@@ -3,16 +3,16 @@
     <div class="flex flex-col justify-center items-center grid-about-intro z-10">
       <div class="text-center mb-4">
         <p class="font-bold text-gray-900 text-2xl">
-          {{ $t('pages.auth.login.connection-ccount') }}
+          {{ $t('pages.auth.register.register-account') }}
         </p>
         <p class="text-sm text-gray-600">
           {{ $t('global.or') }}
-          <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
-            {{ $t('pages.auth.login.create-account') }}
+          <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
+            {{ $t('global.login') }}
           </extra-nuxt-link>
         </p>
       </div>
-      <login-form :loading="loading" :errors="errors" @submit="login" />
+      <login-form :loading="loading" :errors="errors" :register="true" />
     </div>
     <div class="overflow-hidden m-10 ml-0 flex justify-center items-center grid-home-image">
       <extra-img src="background-about.jpeg" :default="true" class-native="object-cover" />
@@ -43,15 +43,15 @@ export default {
         password1: [],
       }
 
-      this.$auth
-        .loginWith("local", {
-          data: {
-            email: credential.email,
-            password: credential.password1,
+      this.$axios
+        .post("auth/registration/", {data: credential})
+        .then(response => {
+          if (response.status === 201) {
+            this.$toast
+              .success(response.data)
+              .goAway(4000)
+            this.redirect({ name: "contribute" })
           }
-        })
-        .then(() => {
-          this.redirect({ name: "contribute" })
         })
         .catch((error) => {
           if (error.message === "Network Error") {

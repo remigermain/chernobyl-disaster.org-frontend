@@ -7,6 +7,17 @@
 module.exports = {
   theme: {
     extend: {
+      width: {
+        "10px": "10px",
+        "14px": "14px",
+        "16px": "16px",
+        "18px": "18px",
+        "20px": "20px",
+        "24px": "24px",
+        "32px": "32px",
+        "40px": "40px",
+        "inherit": "inherit"
+      },
       height: {
         "inherit": "inherit"
       },

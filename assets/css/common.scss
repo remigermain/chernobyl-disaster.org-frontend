@@ -71,3 +71,9 @@ button:focus {
     transform: translateX(0) scale(1.4);
   }
 }
+
+
+svg {
+  height: auto;
+  display: inline-block;
+}

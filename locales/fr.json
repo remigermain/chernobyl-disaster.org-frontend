@@ -1,21 +1,24 @@
 {
     "components": {
-        "cher-extra": {
-            "documents": "documents",
-            "lien": "lien",
-            "pictures": "pictures",
-            "videos": "videos"
-        },
-        "cher-logo": {
-            "chernobyl": "chernobyl"
+        "cher-login": {
+            "ForgetPassword": "ForgetPassword",
+            "RememberMe": "RememberMe",
+            "login": "login",
+            "register": "register"
         }
     },
     "global": {
         "about": "about",
         "chernobyl": "chernobyl",
+        "contribute": "contribute",
         "description": "description",
+        "email": "email",
         "gallery": "gallery",
         "home": "home",
+        "login": "login",
+        "or": "or",
+        "password": "password",
+        "password-confirm": "password-confirm",
         "timeline": "timeline"
     },
     "pages": {
@@ -30,6 +33,15 @@
             "no-contributors": "no-contributors",
             "thanks-contributors": "thanks-contributors",
             "traduction": "traduction"
+        },
+        "auth": {
+            "login": {
+                "connection-ccount": "connection-ccount",
+                "create-account": "create-account"
+            },
+            "register": {
+                "register-account": "register-account"
+            }
         }
     }
 }

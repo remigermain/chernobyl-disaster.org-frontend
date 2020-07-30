@@ -1,0 +1,52 @@
+<template>
+  <label class="label">
+    <span class="block text-gray-700 text-sm font-bold mb-2 capitalize">
+      <slot name="label" />
+    </span>
+    <div class="bg-gray-400 bg-opacity-75 px-2 py-3 focus:bg-gray-300 rounded-lg shadow appearance-none leading-none w-full">
+      <slot name="icon" />
+      <input v-model="localValue" :required="required" :type="inputType" class="bg-transparent italic text-gray-800 ml-1" @input="$emit('input', localValue)">
+    </div>
+    <p v-for="error in errors" :key="error" class="text-red-800 italic">
+      {{ error }}
+    </p>
+  </label>
+</template>
+
+<script>
+export default {
+  props: {
+    inputType: {
+      type: [String],
+      default: "text",
+      required: false
+    },
+    value: {
+      type: [String, Number, Boolean],
+      default: "",
+      required: false
+    },
+    errors: {
+      type: Array,
+      default: () => [],
+      required: false
+    },
+    required: {
+      type: Boolean,
+      default: false,
+      required: false
+    }
+  },
+
+  data () {
+    return {
+      localValue: this.value
+    }
+  },
+
+}
+</script>
+
+<style>
+
+</style>

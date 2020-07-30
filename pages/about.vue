@@ -6,28 +6,29 @@
       </h2>
       <div>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <fa :icon="['fab', 'gitlab']" size="lg" />
+          <icon-brand-gitlab />
           Gitlab
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
           <fa icon="language" size="lg" />
+          <icon-tipography />
           {{ $t('pages.about.traduction') }}
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <fa icon="envelope" size="lg" />
+          <icon-mail />
           {{ $t('pages.about.contact') }}
         </a>
       </div>
       <h3 class="text-3xl text-md capitalize">
         {{ $t('pages.about.contributors') }}
         <div class="wrapper text-red-800">
-          <fa icon="heart" size="lg" />
+          <icon-heart class="text-red-800" />
         </div>
       </h3>
       <p class="text-gray-800">
         {{ $t('pages.about.thanks-contributors') }}
-        <fa icon="heart" size="lg" class="text-red-800" />
-        <fa icon="heart" size="lg" class="text-red-800" />
+        <icon-heart class="text-red-800" />
+        <icon-heart class="text-red-800" />
       </p>
       <div class="floa-left contributors">
         <template v-for="user in contributors">
@@ -44,7 +45,7 @@
         </template>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
-          <fa :icon="['far', 'sad-tear']" size="lg" />
+          <icon-mood-sad />
         </span>
       </div>
       <h1 class="text-2xl italic text-gray-800 pr-4">
@@ -64,7 +65,7 @@
       </p>
       <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show">
         {{ $t('pages.about.buy-me-coffe') }}
-        <fa icon="smile-beam" size="xs" />
+        <icon-mood-smile />
       </a>
     </div>
     <div class="overflow-hidden m-10 ml-0 flex justify-center items-center grid-home-image">
@@ -74,7 +75,21 @@
 </template>
 
 <script>
+import iconBrandGitlab from "@/assets/svg/brand-gitlab.svg"
+import iconHeart from "@/assets/svg/heart.svg"
+import iconMoodSad from "@/assets/svg/mood-sad.svg"
+import iconMoodSmile from "@/assets/svg/mood-smile.svg"
+import iconMail from "@/assets/svg/mail.svg"
+import iconTipography from "@/assets/svg/typography.svg"
 export default {
+  components: {
+    iconBrandGitlab,
+    iconHeart,
+    iconMoodSmile,
+    iconMoodSad,
+    iconMail,
+    iconTipography
+  },
   async asyncData() {
     return {contributors: [] }
   }

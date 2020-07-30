@@ -2,7 +2,7 @@
   <div class="site">
     <div class="grid-home h-screen w-screen p-4 text-gray-900">
       <div class="flex z-20 text-gray-700">
-        <extra-img src="logo.svg" :default="true" class-native="inline-block w-20"/>
+        <logo class="inline-block w-20" />
         <h1 class="text-5xl uppercase extra-auto font-russia -md:opacity-0 transition-opacity  duration-400">
           {{ $t('global.chernobyl') }}
         </h1>
@@ -12,6 +12,13 @@
     </div>
   </div>
 </template>
+
+<script>
+import Logo from "@/assets/svg/logo.svg"
+export default {
+  components: { Logo }
+}
+</script>
 
 <style lang="scss">
 .site {

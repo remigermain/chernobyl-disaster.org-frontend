@@ -48,11 +48,12 @@ export default {
     "@nuxtjs/auth",
     "@nuxtjs/sitemap",
     "nuxt-i18n",
+    "@nuxtjs/toast"
   ],
 
   auth: {
     resetOnError: true, // une erreur 403/401 supprimer toutes les info, et redirige vers login
-    plugins: ["@/plugins/auth"],
+    plugins: ["~/plugins/auth.js"],
     redirect: {
       login: "/auth/login",
       logout: "/auth/login",
@@ -87,13 +88,13 @@ export default {
   },
 
   buildModules: [
-    "@nuxtjs/fontawesome",
     "@nuxt/components",
     "@nuxtjs/eslint-module",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/style-resources",
     "@aceforth/nuxt-optimized-images",
     "nuxt-purgecss",
+    "nuxt-svg-loader"
   ],
 
   components: [
@@ -113,6 +114,16 @@ export default {
     "~/assets/css/fonts.scss"
   ],
 
+  toast: {
+    position: "top-center",
+    action: {
+      text: "Fermer",
+      onClick: (e, toastObject) => {
+        toastObject.goAway(0)
+      }
+    },
+  },
+
   styleResources: {
     scss: [
       "~/assets/css/var/*.scss",
@@ -126,21 +137,21 @@ export default {
     exposeConfig: false
   },
 
-  fontawesome: {
-    component: "fa",
-    icons: {
-      solid: true,
-      regular: true,
-      //light: true,
-      //duotone: true,
-      brands: true
-    }
-  },
-
   purgecss: {
     whiteListPatterns: [/svg.*/, /fa.*/]
   },
 
   build: {
+    extend(config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: "pre",
+          test: /\.(js|vue)$/,
+          loader: "eslint-loader",
+          exclude: /(node_modules)|(\.svg$)/ /* <--- here */
+        })
+      }
+    }
   }
 }

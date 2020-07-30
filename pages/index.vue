@@ -10,7 +10,7 @@
         </p>
         <extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show">
           {{ $t('global.timeline') }}
-          <fa icon="arrow-right" size="xs" />
+          <icon-arrow-right />
         </extra-nuxt-link>
       </div>
     </div>
@@ -20,6 +20,12 @@
   </div>
 </template>
 
+<script>
+import iconArrowRight from "@/assets/svg/arrow-right.svg"
+export default {
+  components: { iconArrowRight }
+}
+</script>
 
 <style lang="scss">
 
