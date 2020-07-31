@@ -1,7 +1,7 @@
 <template>
   <div class="site">
-    <div class="grid-home h-screen w-screen p-4 text-gray-900">
-      <div class="flex z-20 text-gray-700">
+    <div class="grid-index h-screen w-screen p-4 text-gray-900">
+      <div class="grid-logo flex z-1 text-gray-700">
         <logo class="inline-block w-20" />
         <h1 class="text-5xl uppercase extra-auto font-russia -md:opacity-0 transition-opacity  duration-400">
           {{ $t('global.chernobyl') }}
@@ -27,19 +27,28 @@ export default {
   background-size: cover;
   min-height: inherit;
   height: inherit;
+  position: relative;
+  z-index: 77;
 }
 
-.grid-home {
+.grid-index {
   display: grid;
-  grid-template-columns: 6fr 5fr;
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: auto 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
-@media screen and (max-width:900px){
-  .grid-home {
-    position: relative;
-    grid-template-columns: 1fr auto;
-  }
+.grid-logo {
+  grid-area: 1 / 1 / 2 / 3;
 }
+
+.grid-index:nth-child(3) {
+  grid-area: 2 / 1 / 6 / 2;
+}
+.grid-index:nth-child(4) {
+  grid-area: 2 / 2 / 6 / 6;
+}
+
 
 </style>

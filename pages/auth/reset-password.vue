@@ -6,55 +6,75 @@
       </p>
       <p class="text-sm text-gray-600">
         {{ $t('global.or') }}
+        <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
+          {{ $t('global.login') }}
+        </extra-nuxt-link>
+      </p>
+      <p class="text-sm text-gray-600">
+        {{ $t('global.or') }}
         <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
           {{ $t('global.create-account') }}
         </extra-nuxt-link>
       </p>
     </div>
-    <login-form :credential="credential" :loading="loading" :errors="errors" @submit="login" />
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 from-login" @submit.prevent="submit">
+      <utils-field v-model="credential.email" input-type="email" :errors="errors.email" required autocomplete>
+        <template v-slot:label>
+          {{ $t('global.email') }}
+        </template>
+        <template v-slot:icon>
+          <icon-email class="inline text-gray-600" />
+        </template>
+      </utils-field>
+      <button type="submit" class="px-2 py-2 bg-blue-600 rounded-lg text-gray-200 hover:scale-110 w-full mt-4">
+        <template v-if="loading">
+          <utils-loading />
+        </template>
+        <template v-else>
+          {{ $t("global.reset") }}
+        </template>
+      </button>
+    </form>
   </div>
 </template>
 
 <script>
-const LoginForm = () => import("@/components/cher-login")
+import iconEmail from "@/assets/svg/mail.svg"
 export default {
-  watch: {
+  components: {
+    iconEmail
   },
-  components: { LoginForm },
   data () {
     return {
       credential: {
         email: "",
-        password1: ""
       },
       loading: false,
       errors: {
         email: [],
-        password1: [],
       },
     }
   },
   methods: {
-    login () {
+    submit () {
       this.loading = true
       this.errors = {
         email: [],
         password1: [],
       }
 
-      this.$auth
-        .loginWith("local", {
+      this.$axios
+        .post("auth/password-reset/", {
           data: {
             email: this.credential.email,
-            password: this.credential.password1,
           }
         })
         .then(() => {
-          this.redirect({ name: "contribute" })
+          this.redirect({ name: "login" })
         })
         .catch((error) => {
           if (error.message === "Network Error") {
-            this.$toast.error(this.$t("pages.auth.login.serverError")).goAway(4000)
+            this.$toast.error(this.$t("global.serverError")).goAway(4000)
           } else if (
             Object.prototype.hasOwnProperty.call(error.response.data, "non_field_errors")
           ) {

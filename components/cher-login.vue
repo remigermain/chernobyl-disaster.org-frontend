@@ -1,23 +1,23 @@
 <template>
   <div class="wrapper">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-2/4 -md:w-3/4 from-login" @submit.prevent="$emit('submit', credential)">
-      <extra-field v-if="register" v-model="credential.username" :errors="errors.username" required>
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 from-login" @submit.prevent="$emit('submit', credential)">
+      <utils-field v-if="register" v-model="credential.username" :errors="errors.username" required autocomplete>
         <template v-slot:label>
           {{ $t('global.username') }}
         </template>
         <template v-slot:icon>
-          <icon-user class="inline text-gray-600 cursor-pointer" />
+          <icon-user class="inline text-gray-600" />
         </template>
-      </extra-field>
-      <extra-field v-model="credential.email" input-type="email" :errors="errors.email" required>
+      </utils-field>
+      <utils-field v-model="credential.email" input-type="email" :errors="errors.email" required autocomplete>
         <template v-slot:label>
           {{ $t('global.email') }}
         </template>
         <template v-slot:icon>
-          <icon-email class="inline text-gray-600 cursor-pointer" />
+          <icon-email class="inline text-gray-600" />
         </template>
-      </extra-field>
-      <extra-field v-model="credential.password1" :input-type="showPassword1 ? 'text' : 'password'" :errors="errors.password1" required>
+      </utils-field>
+      <utils-field v-model="credential.password1" :input-type="typePassword1" :errors="errors.password1" required>
         <template v-slot:label>
           {{ $t('global.password') }}
         </template>
@@ -25,8 +25,8 @@
           <icon-lock-open v-if="showPassword1" class="inline text-gray-900 cursor-pointer" @click="tooglePassword1" />
           <icon-lock v-else class="inline text-gray-600 cursor-pointer" @click="tooglePassword1" />
         </template>
-      </extra-field>
-      <extra-field v-if="register" v-model="credential.password2" :input-type="showPassword2 ? 'text' : 'password'" :errors="errors.password2" required>
+      </utils-field>
+      <utils-field v-if="register" v-model="credential.password2" :input-type="typePassword2" :errors="errors.password2" required>
         <template v-slot:label>
           {{ $t('global.password-confirm') }}
         </template>
@@ -34,7 +34,7 @@
           <icon-lock-open v-if="showPassword2" class="inline text-gray-900 cursor-pointer" @click="tooglePassword2" />
           <icon-lock v-else class="inline text-gray-600 cursor-pointer" @click="tooglePassword2" />
         </template>
-      </extra-field>
+      </utils-field>
       <template v-else>
         <div class="flex justify-end mb-4 mx-auto text-center mt-4">
           <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto">
@@ -44,13 +44,13 @@
       </template>
       <button type="submit" class="px-2 py-2 bg-blue-600 rounded-lg text-gray-200 hover:scale-110 w-full mt-4">
         <template v-if="loading">
-          loading ...
+          <utils-loading />
         </template>
         <template v-else-if="register">
-          {{ $t("components.cher-login.login") }}
+          {{ $t("components.cher-login.register") }}
         </template>
         <template v-else>
-          {{ $t("components.cher-login.register") }}
+          {{ $t("components.cher-login.login") }}
         </template>
       </button>
     </form>
@@ -84,24 +84,28 @@ export default {
       type: Object,
       default: () => {},
       required: false
+    },
+    credential: {
+      type: Object,
+      required: true
     }
   },
   data () {
     return {
-      credential: {
-        username: "",
-        email: "",
-        password1: "",
-        password2: "",
-      },
+      value: {...this.credential},
       showPassword1: false,
       showPassword2: false,
     }
   },
-  methods: {
-    submit () {
-      return null
+  computed: {
+    typePassword1 () {
+      return (this.showPassword1 ? "text": "password")
     },
+    typePassword2 () {
+      return (this.showPassword2 ? "text": "password")
+    },
+  },
+  methods: {
     tooglePassword1 () {
       this.showPassword1 = !this.showPassword1
     },
@@ -120,4 +124,5 @@ export default {
 .from-login > * + * {
     margin-top: 1em;
 }
+
 </style>

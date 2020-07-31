@@ -1,14 +1,11 @@
 <template>
-  <div>
-    contribute
+  <div class="wrapper">
+
   </div>
 </template>
 
 <script>
 export default {
-  middleware: "auth",
-  methods: {
-  },
 
 }
 </script>

@@ -2,7 +2,6 @@
     "components": {
         "cher-login": {
             "ForgetPassword": "ForgetPassword",
-            "RememberMe": "RememberMe",
             "login": "login",
             "register": "register"
         }
@@ -10,16 +9,24 @@
     "global": {
         "about": "about",
         "chernobyl": "chernobyl",
+        "connection-account": "connection-account",
         "contribute": "contribute",
+        "create-account": "create-account",
         "description": "description",
         "email": "email",
         "gallery": "gallery",
         "home": "home",
         "login": "login",
+        "menu": "menu",
         "or": "or",
         "password": "password",
         "password-confirm": "password-confirm",
-        "timeline": "timeline"
+        "register-account": "register-account",
+        "reset": "reset",
+        "server-error": "server-error",
+        "serverError": "serverError",
+        "timeline": "timeline",
+        "username": "username"
     },
     "pages": {
         "about": {
@@ -36,12 +43,18 @@
         },
         "auth": {
             "login": {
-                "connection-ccount": "connection-ccount",
-                "create-account": "create-account"
-            },
-            "register": {
-                "register-account": "register-account"
+                "serverError": "serverError"
             }
+        },
+        "contribute": {
+            "account": "account",
+            "article": "article",
+            "contact": "contact",
+            "document": "document",
+            "event": "event",
+            "people": "people",
+            "picture": "picture",
+            "video": "video"
         }
     }
 }

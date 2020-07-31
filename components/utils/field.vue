@@ -5,7 +5,8 @@
     </span>
     <div class="bg-gray-400 bg-opacity-75 px-2 py-3 focus:bg-gray-300 rounded-lg shadow appearance-none leading-none w-full">
       <slot name="icon" />
-      <input v-model="localValue" :required="required" :type="inputType" class="bg-transparent italic text-gray-800 ml-1" @input="$emit('input', localValue)">
+      <input v-model="localValue" :autocomplete="autocomplete" :required="required" :type="inputType" class="bg-transparent italic text-gray-800 ml-1"
+             :placeholder="placeholder" @input="$emit('input', localValue)">
     </div>
     <p v-for="error in errors" :key="error" class="text-red-800 italic">
       {{ error }}
@@ -35,7 +36,17 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    }
+    },
+    autocomplete: {
+      type: Boolean,
+      default: true,
+      required: false
+    },
+    placeholder: {
+      type: String,
+      default: "",
+      required: false
+    },
   },
 
   data () {

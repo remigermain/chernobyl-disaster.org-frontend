@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="flex flex-col justify-center items-center grid-about-intro z-10">
+    <div class="flex flex-col justify-center items-center grid-about-intro z-2">
       <h2 class="text-3xl text-md capitalize">
         {{ $t('pages.about.contributing') }}
       </h2>
@@ -10,7 +10,6 @@
           Gitlab
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <fa icon="language" size="lg" />
           <icon-tipography />
           {{ $t('pages.about.traduction') }}
         </a>
@@ -98,9 +97,17 @@ export default {
 
 <style lang="scss">
 
+.grid-home-image {
+  grid-area: 2 / 4 / 6 / 6;
+}
+
+.grid-about-intro {
+  grid-area: 2 / 1 / 6 / 4;
+}
+
 @media screen and (max-width:900px){
   .grid-about-intro {
-    grid-column: span 2;
+    grid-area: 2 / 1 / 6 / 6;
   }
 }
 .grid-about-intro > * {

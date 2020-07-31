@@ -1,22 +1,17 @@
 <template>
   <div class="wrapper">
-    <div class="flex flex-col justify-center items-center grid-about-intro z-10">
-      <div class="text-center mb-4">
-        <p class="font-bold text-gray-900 text-2xl">
-          {{ $t('pages.auth.register.register-account') }}
-        </p>
-        <p class="text-sm text-gray-600">
-          {{ $t('global.or') }}
-          <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
-            {{ $t('global.login') }}
-          </extra-nuxt-link>
-        </p>
-      </div>
-      <login-form :loading="loading" :errors="errors" :register="true" />
+    <div class="text-center mb-4">
+      <p class="font-bold text-gray-900 text-2xl">
+        {{ $t('global.register-account') }}
+      </p>
+      <p class="text-sm text-gray-600">
+        {{ $t('global.or') }}
+        <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
+          {{ $t('global.login') }}
+        </extra-nuxt-link>
+      </p>
     </div>
-    <div class="overflow-hidden m-10 ml-0 flex justify-center items-center grid-home-image">
-      <extra-img src="background-about.jpeg" :default="true" class-native="object-cover" />
-    </div>
+    <login-form :credential="credential" :loading="loading" :errors="errors" :register="true" @submit="register" />
   </div>
 </template>
 
@@ -26,6 +21,12 @@ export default {
   components: { LoginForm },
   data () {
     return {
+      credential: {
+        username: "",
+        email: "",
+        password1: "",
+        password2: ""
+      },
       loading: false,
       errors: {
         username: [],
@@ -36,26 +37,34 @@ export default {
     }
   },
   methods: {
-    login (credential) {
+    register () {
       this.loading = true
       this.errors = {
+        username: [],
         email: [],
         password1: [],
+        password2: [],
       }
 
       this.$axios
-        .post("auth/registration/", {data: credential})
+        .post("auth/registration/", this.credential)
         .then(response => {
           if (response.status === 201) {
             this.$toast
               .success(response.data)
               .goAway(4000)
-            this.redirect({ name: "contribute" })
+            this.credential = {
+              username: "",
+              email: "",
+              password1: "",
+              password2: "",
+            }
+            this.redirect({ name: "auth-login" })
           }
         })
         .catch((error) => {
           if (error.message === "Network Error") {
-            this.$toast.error(this.$t("pages.auth.login.serverError")).goAway(4000)
+            this.$toast.error(this.$t("global.server-error")).goAway(4000)
           } else if (
             Object.prototype.hasOwnProperty.call(error.response.data, "non_field_errors")
           ) {

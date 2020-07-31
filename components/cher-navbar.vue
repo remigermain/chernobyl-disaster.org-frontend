@@ -1,29 +1,29 @@
 <template>
-  <div class="flex justify-between text-xl capitalize items-center pr-10 grid-navbar">
-    <input id="navbar" v-model="checkbox" type="checkbox" class="opacity-0 absolute w-10 h-10 z-50 cursor-pointer input-navbar" @click="setFixNavbar">
+  <div class="grid-navbar flex justify-between text-xl capitalize items-center pr-10">
+    <input id="navbar" v-model="checkbox" type="checkbox" class="opacity-0 absolute w-10 h-10 z-5 cursor-pointer input-navbar" @click="setFixNavbar">
     <label for="navbar" class="opacity-0 absolute">
       navbar
     </label>
-    <label class="burger cursor-pointer z-40">
+    <label class="burger cursor-pointer z-4">
       <span class="bg-gray-700 rounded-md" />
       <span class="bg-gray-700 rounded-md" />
       <span class="bg-gray-700 rounded-md" />
     </label>
-    <div class="background-navbar z-20" />
-    <nav class="navbar-items z-30 flex justify-between items-center w-full" :class="{'fix-navbar': fixNavbar}">
-      <extra-nuxt-link :to="{name: 'index'}" class="home-link" @click="checkbox = false">
+    <div class="background-navbar z-2" />
+    <nav class="navbar-items z-3 flex justify-between items-center w-full" :class="{'fix-navbar': fixNavbar}">
+      <extra-nuxt-link :to="{name: 'index'}" class="link" @click="checkbox = false">
         {{ $t('global.home') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'timeline'}" class="home-link" @click="checkbox = false">
+      <extra-nuxt-link :to="{name: 'timeline'}" class="link" @click="checkbox = false">
         {{ $t('global.timeline') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery'}" class="home-link" @click="checkbox = false">
+      <extra-nuxt-link :to="{name: 'gallery'}" class="link" @click="checkbox = false">
         {{ $t('global.gallery') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'contribute'}" class="home-link" @click="checkbox = false">
+      <extra-nuxt-link :to="{name: 'contribute'}" class="link" @click="checkbox = false">
         {{ $t('global.contribute') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'about'}" class="home-link" @click="checkbox = false">
+      <extra-nuxt-link :to="{name: 'about'}" class="link" @click="checkbox = false">
         {{ $t('global.about') }}
       </extra-nuxt-link>
       <div class="relative lang-set rounded-lg">
@@ -31,7 +31,7 @@
         <icon-selector class="opacity-50" />
         <ul class="lang-list absolute bg-white rounded-lg p-2">
           <li v-for="lang in locales" :key="lang.iso">
-            <nuxt-link class="home-link text-sm" :to="switchLocalePath(lang.code)">
+            <nuxt-link class="link text-sm" :to="switchLocalePath(lang.code)">
               {{ lang.name }}
             </nuxt-link>
           </li>
@@ -81,13 +81,13 @@ export default {
 </script>
 
 <style lang="scss">
-
 .fix-navbar {
   visibility: visible !important;
 }
 
 .grid-navbar {
   --navbar--annimation-duration: .4s;
+  grid-area: 1 / 3 / 2 / 6;
 }
 
 .background-navbar {
@@ -119,6 +119,8 @@ export default {
     display: inline-block;
   }
   .grid-navbar {
+    grid-area: 1 / 5 / 2 / 6;
+    justify-self: center;
     padding-right: .5em;
     .burger {
       display: block;
@@ -157,34 +159,6 @@ export default {
 @keyframes menu-out {
   to {
     visibility: hidden;
-  }
-}
-
-.home-link {
-  &::after {
-    transition: width .4s, opacity .5s;
-    content: '';
-    width: 0;
-    height: 3px;
-    background-color: black;
-    display: block;
-    border-radius: 3px;
-    opacity: 0;
-  }
-  &.nuxt-link-exact-active::after {
-    width: 100%;
-    opacity: 1;
-  }
-  &:not(.nuxt-link-exact-active)
-  {
-    opacity: .5;
-    &:hover {
-      opacity: 1;
-      &::after {
-        width: 100%;
-        opacity: 1;
-      }
-    }
   }
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="extra-auto grid-home-intro w-full z-10">
+    <div class="extra-auto grid-home-intro w-full z-2">
       <div class="w-full md:w-3/4 mx-auto flex justify-center items-center flex-col h-full">
         <h2 class="text-6xl uppercase mb-8 grid-home-intro-title font-russia">
           {{ $t('global.chernobyl' ) }}
@@ -14,7 +14,7 @@
         </extra-nuxt-link>
       </div>
     </div>
-    <div class="overflow-hidden m-10 ml-0 flex justify-center items-center grid-home-image">
+    <div class="grid-home-image overflow-hidden m-10 ml-0 flex justify-center items-center">
       <extra-img src="background-home.jpeg" :default="true" class-native="object-cover" />
     </div>
   </div>
@@ -30,12 +30,18 @@ export default {
 <style lang="scss">
 
 .grid-home-image {
+  grid-area: 2 / 4 / 6 / 6;
   transition: opacity .5s;
 }
 
+.grid-home-intro {
+  grid-area: 2 / 1 / 6 / 4;
+}
+
+
 @media screen and (max-width:900px){
   .grid-home-intro {
-    grid-column: span 2;
+    grid-area: 2 / 1 / 6 / 6;
     .grid-home-intro-title {
       text-align: center;
     }

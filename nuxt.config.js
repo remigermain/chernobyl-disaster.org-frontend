@@ -1,5 +1,5 @@
 const isDev = process.env.Node_ENV !== "production"
-const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org"
+const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
 
 export default {
 
@@ -27,6 +27,8 @@ export default {
 
   plugins: [
     "~/plugins/axios.js",
+    "~/plugins/mixins.js",
+    "~/plugins/prototype.js"
   ],
 
   i18n: {
@@ -102,6 +104,10 @@ export default {
     {
       path: "~/components/extra/",
       prefix: "extra"
+    },
+    {
+      path: "~/components/utils/",
+      prefix: "utils"
     }
   ],
 
