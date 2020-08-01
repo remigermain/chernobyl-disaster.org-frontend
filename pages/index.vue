@@ -14,8 +14,8 @@
         </extra-nuxt-link>
       </div>
     </div>
-    <div class="grid-home-image overflow-hidden m-10 ml-0 flex justify-center items-center">
-      <extra-img src="background-home.jpeg" :default="true" class-native="object-cover" />
+    <div class="grid-home-image overflow-hidden m-10 flex justify-center items-center">
+      <extra-img src="background-home.jpeg" :default="true" class-native="object-cover img-home" />
     </div>
   </div>
 </template>
@@ -40,12 +40,6 @@ export default {
 
 
 @media screen and (max-width:900px){
-  .grid-home-intro {
-    grid-area: 2 / 1 / 6 / 6;
-    .grid-home-intro-title {
-      text-align: center;
-    }
-  }
   .grid-home-image {
     margin-right: 0;
     img {
@@ -59,5 +53,4 @@ export default {
     opacity: .3;
   }
 }
-
 </style>

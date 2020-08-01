@@ -1,7 +1,7 @@
 <template>
   <div class="site">
-    <div class="grid-index h-screen w-screen p-4 text-gray-900">
-      <div class="grid-logo flex z-1 text-gray-700">
+    <div class="grid-index p-4 text-gray-900 w-screen h-screen">
+      <div class="grid-logo flex text-gray-700">
         <logo class="inline-block w-20" />
         <h1 class="text-5xl uppercase extra-auto font-russia -md:opacity-0 transition-opacity  duration-400">
           {{ $t('global.chernobyl') }}

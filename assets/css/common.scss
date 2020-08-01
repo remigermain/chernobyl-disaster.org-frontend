@@ -59,12 +59,11 @@ button:focus {
     visibility: hidden;
     transition: transform .4s, opacity .4s, margin-left .4s;
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(-100%) scale(0);
     margin-left: 0;
-    width: 0 !important;
+    height: auto;
   }
   &:hover svg {
-    width: auto !important;
     margin-left: 1em;
     visibility: visible;
     opacity: 1;

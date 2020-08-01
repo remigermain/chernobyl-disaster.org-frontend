@@ -14,6 +14,22 @@ export default {
     },
     StaticApiLink(link) {
       return this.$apiUrl + link
+    },
+    getValLang(obj, key) {
+      // locale lang
+      let el = obj.langs.filter(el => el.language === this.$i18n.locale)[0]
+      if (el) {
+        return el[key]
+      }
+      // default lang
+      el = obj.langs.filter(el => el.language === this.$i18n.defaultLocale)[0]
+      if (el) {
+        return el[key]
+      }
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        return obj[key]
+      }
+      return this.$t("global.error-key")
     }
   }
 }

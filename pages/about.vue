@@ -62,12 +62,12 @@
       <p class="text-center text-gray-800 text-sm">
         {{ $t('pages.about.help-me-description') }}
       </p>
-      <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show">
+      <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden">
         {{ $t('pages.about.buy-me-coffe') }}
         <icon-mood-smile />
       </a>
     </div>
-    <div class="overflow-hidden m-10 ml-0 flex justify-center items-center grid-home-image">
+    <div class="overflow-hidden m-10 flex justify-center items-center grid-home-image">
       <extra-img src="background-about.jpeg" :default="true" class-native="object-cover" />
     </div>
   </div>

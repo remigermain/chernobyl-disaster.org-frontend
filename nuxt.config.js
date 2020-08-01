@@ -37,7 +37,7 @@ export default {
       { code: "en", iso: "en-UK", name: "english", file: "en.json" }
     ],
     strategy: "prefix_and_default",
-    defualtLocale: "fr",
+    defaultLocale: "fr",
     lazy: true,
     langDir: "locales/",
     seo: true,
