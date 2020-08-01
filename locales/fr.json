@@ -8,19 +8,22 @@
     },
     "global": {
         "about": "about",
+        "action": "action",
         "chernobyl": "chernobyl",
         "connection-account": "connection-account",
         "contribute": "contribute",
+        "create": "create",
         "create-account": "create-account",
         "created": "created",
         "date": "date",
         "description": "description",
         "email": "email",
+        "empty": "empty",
         "gallery": "gallery",
         "home": "home",
         "login": "login",
         "menu": "menu",
-        "not-sort": "not-sort",
+        "no-result": "no-result",
         "or": "or",
         "password": "password",
         "password-confirm": "password-confirm",
@@ -53,13 +56,10 @@
         },
         "contribute": {
             "account": "account",
-            "article": "article",
             "contact": "contact",
-            "document": "document",
-            "event": "event",
-            "people": "people",
-            "picture": "picture",
-            "video": "video"
+            "people": {
+                "people-models": "people-models"
+            }
         }
     }
 }

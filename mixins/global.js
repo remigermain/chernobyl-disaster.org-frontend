@@ -30,6 +30,9 @@ export default {
         return obj[key]
       }
       return this.$t("global.error-key")
+    },
+    hasAttr (obj, key) {
+      return Object.prototype.hasOwnProperty.call(obj, key)
     }
   }
 }

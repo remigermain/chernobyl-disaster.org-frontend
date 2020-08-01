@@ -3,7 +3,7 @@
     <span class="block text-gray-700 text-sm font-bold mb-2 capitalize">
       <slot name="label" />
     </span>
-    <div class="bg-gray-400 bg-opacity-25 px-2 py-3 focus:bg-gray-300 rounded-lg shadow appearance-none leading-none w-full">
+    <div class="bg-gray-400 bg-opacity-50 px-2 py-3 focus:bg-gray-300 rounded-sm shadow appearance-none leading-none w-full">
       <slot name="icon" />
       <input v-model="localValue" :autocomplete="autocomplete" :required="required" :type="inputType" class="bg-transparent italic text-gray-800 ml-1"
              :placeholder="placeholder" @input="$emit('input', localValue)">

@@ -1,8 +1,7 @@
 <template>
   <div class="site">
     <div class="grid-index p-4 text-gray-900 w-screen h-screen">
-      <div class="grid-logo flex text-gray-700">
-        <logo class="inline-block w-20" />
+      <div class="grid-logo flex text-gray-800">
         <h1 class="text-5xl uppercase extra-auto font-russia -md:opacity-0 transition-opacity  duration-400">
           {{ $t('global.chernobyl') }}
         </h1>
@@ -14,9 +13,7 @@
 </template>
 
 <script>
-import Logo from "@/assets/svg/logo.svg"
 export default {
-  components: { Logo }
 }
 </script>
 

@@ -18,8 +18,6 @@
 <script>
 const LoginForm = () => import("@/components/cher-login")
 export default {
-  watch: {
-  },
   components: { LoginForm },
   data () {
     return {

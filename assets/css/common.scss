@@ -97,7 +97,7 @@ input {
     border-radius: 3px;
     opacity: 0;
   }
-  &.nuxt-link-exact-active::after {
+  &.nuxt-link-exact-active::after, &.nuxt-link-active::after {
     width: 100%;
     opacity: 1;
   }

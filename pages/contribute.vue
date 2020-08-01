@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="shadow-lg">
+    <div class="grid-contribute-menu shadow-lg">
       <h2 class="text-center text-3xl capitalize font-normal italic">
         {{ $t('global.menu') }}
       </h2>
@@ -27,7 +27,7 @@
         </li>
       </ul>
     </div>
-    <div class="p-4">
+    <div class="grid-contribute-content p-4 overflow-y-scroll">
       <nuxt-child />
     </div>
   </div>
@@ -47,27 +47,27 @@ export default {
     return {
       menus: [
         {
-          name: this.$t("pages.contribute.event"),
+          name: "event",
           to: {name: "contribute-event"}
         },
         {
-          name: this.$t("pages.contribute.picture"),
+          name: "picture",
           to: {name: "contribute-picture"}
         },
         {
-          name: this.$t("pages.contribute.article"),
+          name: "article",
           to: {name: "contribute-article"}
         },
         {
-          name: this.$t("pages.contribute.video"),
+          name: "video",
           to: {name: "contribute-video"}
         },
         {
-          name: this.$t("pages.contribute.document"),
+          name: "document",
           to: {name: "contribute-document"}
         },
         {
-          name: this.$t("pages.contribute.people"),
+          name: "people",
           to: {name: "contribute-people"}
         },
       ],
@@ -89,5 +89,11 @@ export default {
     transform: translateX(15%);
     color: rgba(66, 18, 155, 0.925)
   }
+}
+.grid-contribute-menu {
+  grid-area: 2/ 1 / 2 / 2;
+}
+.grid-contribute-content {
+  grid-area: 2/ 2 / 2 / 6;
 }
 </style>

@@ -11,7 +11,7 @@
     </label>
     <div class="background-navbar z-2" />
     <nav class="navbar-items z-3 flex justify-between items-center w-full" :class="{'fix-navbar': fixNavbar}">
-      <extra-nuxt-link :to="{name: 'index'}" class="link" @click="checkbox = false">
+      <extra-nuxt-link :to="{name: 'home'}" class="link" @click="checkbox = false">
         {{ $t('global.home') }}
       </extra-nuxt-link>
       <extra-nuxt-link :to="{name: 'timeline'}" class="link" @click="checkbox = false">
