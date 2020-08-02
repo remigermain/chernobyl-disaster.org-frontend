@@ -31,7 +31,6 @@ export default {
     assignResponse (data) {
       this.objectList = data.results
       this.length = data.length
-      console.log("icicic")
     },
     assignResponseLang(data) {
       this.objectListLang = data.results

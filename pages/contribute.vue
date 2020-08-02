@@ -4,6 +4,7 @@
       <h2 class="text-center text-3xl capitalize font-normal italic">
         {{ $t('global.menu') }}
       </h2>
+      <!--
       <ul class="ml-2">
         <li class="px-2 py-3">
           <icon-user />
@@ -18,6 +19,7 @@
           </extra-nuxt-link>
         </li>
       </ul>
+      -->
       <ul class="ml-2">
         <li v-for="el in menus" :key="el.name" class="px-2 py-3">
           <icon-arrow-bar-left v-show="exactLink(el.to)" />
@@ -35,42 +37,42 @@
 
 <script>
 import iconArrowBarLeft from "@/assets/svg/arrow-bar-left.svg"
-import iconUser from "@/assets/svg/user.svg"
-import iconInbox from "@/assets/svg/inbox.svg"
+//import iconUser from "@/assets/svg/user.svg"
+//import iconInbox from "@/assets/svg/inbox.svg"
 export default {
   components: {
     iconArrowBarLeft,
-    iconUser,
-    iconInbox
+    // iconUser,
+    // iconInbox
   },
   middleware: "auth",
   data () {
     return {
       menus: [
-        {
-          name: "event",
-          to: {name: "contribute-event"}
-        },
+        // {
+        //   name: "event",
+        //   to: {name: "contribute-event"}
+        // },
         {
           name: "picture",
           to: {name: "contribute-picture"}
         },
-        {
-          name: "article",
-          to: {name: "contribute-article"}
-        },
-        {
-          name: "video",
-          to: {name: "contribute-video"}
-        },
-        {
-          name: "document",
-          to: {name: "contribute-document"}
-        },
-        {
-          name: "people",
-          to: {name: "contribute-people"}
-        },
+        // {
+        //   name: "article",
+        //   to: {name: "contribute-article"}
+        // },
+        // {
+        //   name: "video",
+        //   to: {name: "contribute-video"}
+        // },
+        // {
+        //   name: "document",
+        //   to: {name: "contribute-document"}
+        // },
+        // {
+        //   name: "people",
+        //   to: {name: "contribute-people"}
+        // },
       ],
     }
   }

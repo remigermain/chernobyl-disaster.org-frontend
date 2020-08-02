@@ -36,7 +36,9 @@ module.exports = {
         "24px": "24px",
         "32px": "32px",
         "40px": "40px",
-        "inherit": "inherit"
+        "inherit": "inherit",
+        "min-content": "min-content",
+        "max-content": "max-content"
       },
       height: {
         "inherit": "inherit"

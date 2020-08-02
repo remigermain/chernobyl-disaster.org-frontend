@@ -29,6 +29,9 @@
         "password-confirm": "password-confirm",
         "register-account": "register-account",
         "reset": "reset",
+        "save": "save",
+        "save-add-other": "save-add-other",
+        "save-continue-editing": "save-continue-editing",
         "search": "search",
         "server-error": "server-error",
         "serverError": "serverError",
@@ -57,10 +60,7 @@
         },
         "contribute": {
             "account": "account",
-            "contact": "contact",
-            "people": {
-                "people-models": "people-models"
-            }
+            "contact": "contact"
         }
     }
 }

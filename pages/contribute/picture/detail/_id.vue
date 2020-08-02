@@ -1,14 +1,14 @@
 <template>
-  <models-detail model="picture">
-    <template v-slot:label>
-      {{ model }}
-    </template>
-    <tempalte v-slot:form>
-      <extra-field>
-        lalalalala
-      </extra-field>
-    </tempalte>
-  </models-detail>
+  <div>
+    <models-detail model="picture" :object="object" :paths="paths">
+      <template v-slot:label>
+        {{ model }}
+      </template>
+      <template v-slot:form>
+        <models-field v-for="field in fields" :key="field.label" :field="field" />
+      </template>
+    </models-detail>
+  </div>
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
   mixins: [modelsDetail],
   data () {
     return {
-      model: "picture"
+      model: "picture",
     }
   }
 }
