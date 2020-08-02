@@ -37,7 +37,6 @@ export default {
     const response = await app.$axios.get("picture/?no_page=true")
     if (response.status === 200) {
       const list = response.data
-      console.log(typeof list)
       list.forEach(element => {
         element.created = new Date(element.created)
         element.updated = new Date(element.updated)
@@ -72,7 +71,6 @@ export default {
         }
         // tags
         if (el.tags.filter(tag => {
-            console.log(tag.name)
             if (tag.name.includes(value)) {
               return true
             }

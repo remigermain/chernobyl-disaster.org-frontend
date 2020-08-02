@@ -3,7 +3,7 @@
     <table class="w-full">
       <thead>
         <tr>
-          <th v-for="field in fields" :key="field.field" class="border-b-2 border-gray-700  text-gray-800 text-xl capitalize">
+          <th v-for="field in fieldList" :key="field.field" class="border-b-2 border-gray-700  text-gray-800 text-xl capitalize">
             {{ field.label }}
             <template v-if="currentField.field == field.field">
               <icon-sort-descending v-if="reverse" class="cursor-pointer" @click="sort(field, false)" />
@@ -18,24 +18,28 @@
       </thead>
       <tbody>
         <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light">
-          <template v-for="field in fields">
+          <template v-for="field in fieldList">
             <th :key="field.field" class="p-2">
               <template v-if="obj[field.label]">
                 {{ obj[field.label] }}
               </template>
-              <span v-else class="text-md text-gray-600 italic text-opacity-75">
-                {{ $t('global.empty') }}
+              <span v-else class="text-xs text-gray-600 italic text-opacity-75">
+                -- {{ $t('global.empty') }} --
               </span>
             </th>
           </template>
           <th class="p-2 text-gray-800">
-            <icon-eye class="cursor-pointer text-blue-700 action-btn" />
-            <icon-edit class="cursor-pointer text-purple-700 action-btn" />
+            <extra-nuxt-link :to="{name: `contribute-${model}-detail-id`, params:{ id: obj.id} }">
+              <icon-eye class="cursor-pointer text-blue-700 action-btn" />
+            </extra-nuxt-link>
+            <extra-nuxt-link :to="{name: `contribute-${model}-update-id`, params:{ id: obj.id} }">
+              <icon-edit class="cursor-pointer text-purple-700 action-btn" />
+            </extra-nuxt-link>
           </th>
         </tr>
       </tbody>
     </table>
-    <pagination :length="length" @change="change" />
+    <pagination :length="length" @change="$emit('change', $event)" />
   </div>
 </template>
 
@@ -55,59 +59,46 @@ export default {
     iconEdit,
   },
   props: {
-    fields: {
+    fieldList: {
       type: Array[Object],
       required: true
     },
-    url: {
-      type: String,
+    objectList: {
+      type: Array[Object],
       required: true,
     },
-    query: {
+    length: {
+      type: Number,
+      required: true,
+    },
+    model: {
       type: String,
-      required: false,
-      default: ""
+      required: true,
     }
   },
   data () {
     return {
       currentField: {field: null},
       reverse: false,
-      datas: [],
-      list: [],
-      length: 0
+      list: this.objectList,
     }
   },
   watch: {
-    datas (value) {
+    objectList (value) {
       this.list = value
     }
-  },
-  beforeMount () {
-    this.change(1)
   },
   methods: {
     sort (field, reverse) {
       this.reverse = reverse
       this.currentField = field
-      this.list = this.datas.sort((el1, el2) => {
+      this.list = this.objectList.sort((el1, el2) => {
         const type = field.type
         const fel1 = type(el1[field.field])
         const fel2 = type(el2[field.field])
         return (reverse ? fel1 > fel2 : fel2 > fel1)
       })
     },
-    change (val) {
-      const query = (this.query ? `&${this.query}` : "")
-      this.$axios.get(`${this.url}/?page=${val}${query}`)
-        .then(response => {
-          this.datas = response.data.results
-          this.length = response.data.count
-        })
-        .catch(error => {
-          this.$toast.error(error)
-        })
-    }
   }
 
 }

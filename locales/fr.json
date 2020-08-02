@@ -34,6 +34,7 @@
         "serverError": "serverError",
         "sort-by": "sort-by",
         "timeline": "timeline",
+        "total": "total",
         "username": "username"
     },
     "pages": {

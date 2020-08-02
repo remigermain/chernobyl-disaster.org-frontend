@@ -36,7 +36,7 @@ export default {
       { code: "fr", iso: "fr-FR", name: "Francais", file: "fr.json" },
       { code: "en", iso: "en-UK", name: "english", file: "en.json" }
     ],
-    strategy: "prefix_and_default",
+    strategy: "prefix",
     defaultLocale: "fr",
     lazy: true,
     langDir: "locales/",
@@ -108,6 +108,10 @@ export default {
     {
       path: "~/components/utils/",
       prefix: "utils"
+    },
+    {
+      path: "~/components/models/",
+      prefix: "models"
     }
   ],
 

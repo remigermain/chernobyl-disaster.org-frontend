@@ -43,6 +43,7 @@ export default {
     iconUser,
     iconInbox
   },
+  middleware: "auth",
   data () {
     return {
       menus: [
