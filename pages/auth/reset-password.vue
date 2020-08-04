@@ -41,9 +41,11 @@
 <script>
 import iconEmail from "@/assets/svg/mail.svg"
 export default {
+
   components: {
     iconEmail
   },
+
   data () {
     return {
       credential: {
@@ -55,6 +57,7 @@ export default {
       },
     }
   },
+
   methods: {
     submit () {
       this.loading = true

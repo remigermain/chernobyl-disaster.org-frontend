@@ -5,6 +5,7 @@
 <script>
 import iconRotateClockwise2 from "@/assets/svg/rotate-clockwise-2.svg"
 export default {
+
   components: { iconRotateClockwise2 }
 
 }

@@ -23,7 +23,9 @@
 <script>
 import iconArrowRight from "@/assets/svg/arrow-right.svg"
 export default {
+
   components: { iconArrowRight }
+
 }
 </script>
 
@@ -37,7 +39,6 @@ export default {
 .grid-home-intro {
   grid-area: 2 / 1 / 6 / 4;
 }
-
 
 @media screen and (max-width:900px){
   .grid-home-image {
@@ -53,4 +54,5 @@ export default {
     opacity: .3;
   }
 }
+
 </style>

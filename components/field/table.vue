@@ -1,9 +1,9 @@
 <template>
   <div class="shadow-md p-4">
-    <table class="w-full">
+    <table class="w-full table-list">
       <thead>
         <tr>
-          <th v-for="field in fieldList" :key="field.field" class="border-b-2 border-gray-700  text-gray-800 text-xl capitalize">
+          <th v-for="field in fields" :key="field.field" class="border-b-2 border-gray-700  text-gray-800 text-xl capitalize">
             {{ field.label }}
             <template v-if="currentField.field == field.field">
               <icon-sort-descending v-if="reverse" class="cursor-pointer" @click="sort(field, false)" />
@@ -18,28 +18,28 @@
       </thead>
       <tbody>
         <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light">
-          <template v-for="field in fieldList">
-            <th :key="field.field" class="p-2">
+          <template v-for="field in fields">
+            <td :key="field.field" class="p-2">
               <template v-if="obj[field.label]">
                 {{ obj[field.label] }}
               </template>
               <span v-else class="text-xs text-gray-600 italic text-opacity-75">
                 -- {{ $t('global.empty') }} --
               </span>
-            </th>
+            </td>
           </template>
-          <th class="p-2 text-gray-800">
-            <extra-nuxt-link :to="{name: `contribute-${model}-detail-id`, params:{ id: obj.id} }">
+          <td class="p-2 text-gray-800">
+            <extra-nuxt-link :to="{name: `contribute-${model}-id`, params:{ id: obj.id} }">
               <icon-eye class="cursor-pointer text-blue-700 action-btn" />
             </extra-nuxt-link>
             <extra-nuxt-link :to="{name: `contribute-${model}-update-id`, params:{ id: obj.id} }">
               <icon-edit class="cursor-pointer text-purple-700 action-btn" />
             </extra-nuxt-link>
-          </th>
+          </td>
         </tr>
       </tbody>
     </table>
-    <pagination :length="length" @change="$emit('change', $event)" />
+    <field-pagination :length="length" @change="$emit('pagination', $event)" />
   </div>
 </template>
 
@@ -51,6 +51,7 @@ import iconEye from "@/assets/svg/eye.svg"
 import iconEdit from "@/assets/svg/edit.svg"
 
 export default {
+
   components: {
     iconSortDescending,
     iconSortAscending,
@@ -58,24 +59,26 @@ export default {
     iconEye,
     iconEdit,
   },
+
   props: {
-    fieldList: {
-      type: Array[Object],
-      required: true
-    },
     objectList: {
       type: Array[Object],
       required: true,
     },
+    fields: {
+      type: Array[Object],
+      required: true
+    },
     length: {
       type: Number,
-      required: true,
+      required: true
     },
     model: {
       type: String,
       required: true,
     }
   },
+
   data () {
     return {
       currentField: {field: null},
@@ -83,11 +86,13 @@ export default {
       list: this.objectList,
     }
   },
+
   watch: {
     objectList (value) {
       this.list = value
     }
   },
+
   methods: {
     sort (field, reverse) {
       this.reverse = reverse
@@ -112,6 +117,10 @@ export default {
   &:hover {
     transform: scale(1.2);
   }
+}
+
+.table-list tr:nth-of-type(even) {
+  background-color:  rgba(116, 116, 116, 0.1);
 }
 
 </style>

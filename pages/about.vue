@@ -81,6 +81,7 @@ import iconMoodSmile from "@/assets/svg/mood-smile.svg"
 import iconMail from "@/assets/svg/mail.svg"
 import iconTipography from "@/assets/svg/typography.svg"
 export default {
+
   components: {
     iconBrandGitlab,
     iconHeart,
@@ -89,9 +90,11 @@ export default {
     iconMail,
     iconTipography
   },
+
   async asyncData() {
     return {contributors: [] }
   }
+
 }
 </script>
 
@@ -130,7 +133,9 @@ export default {
     color: black;
   }
 }
+
 .img-profil {
   shape-outside: circle();
 }
+
 </style>

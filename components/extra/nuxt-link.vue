@@ -6,12 +6,15 @@
 
 <script>
 export default {
+
   inheritAttrs: false,
+
   props: {
     to: {
       type: [Object, String],
       required: true
     }
   },
+
 }
 </script>

@@ -1,4 +1,7 @@
+import _ from "lodash"
+
 export default {
+
   methods: {
     // shortcut for router change
     redirect(obj) {
@@ -15,24 +18,19 @@ export default {
     StaticApiLink(link) {
       return this.$apiUrl + link
     },
-    getValLang(obj, key) {
+    i18nAttr(obj, key) {
       // locale lang
-      let el = obj.langs.filter(el => el.language === this.$i18n.locale)[0]
-      if (el) {
-        return el[key]
-      }
+      let el = _.find(obj.langs,{"language": this.$i18n.locale})
+      if (el) return el[key]
+
       // default lang
-      el = obj.langs.filter(el => el.language === this.$i18n.defaultLocale)[0]
-      if (el) {
-        return el[key]
-      }
-      if (Object.prototype.hasOwnProperty.call(obj, key)) {
-        return obj[key]
-      }
+      el = _.find(obj.langs,{"language": this.$i18n.defaultLocale})
+      if (el) return el[key]
+
+      if (_.has(obj, key)) return obj[key]
+
       return this.$t("global.error-key")
     },
-    hasAttr (obj, key) {
-      return Object.prototype.hasOwnProperty.call(obj, key)
-    }
   }
+
 }

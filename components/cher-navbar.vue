@@ -44,9 +44,11 @@
 <script>
 import iconSelector from "@/assets/svg/selector.svg"
 export default {
+
   components: {
     iconSelector
   },
+
   data () {
     return {
       checkbox: false,
@@ -54,6 +56,7 @@ export default {
       timeout: 0
     }
   },
+
   computed: {
     languageName () {
       return this.$i18n.locales.filter(el => el.code === this.$i18n.locale)[0].name
@@ -62,9 +65,11 @@ export default {
       return this.$i18n.locales.filter(el => el.code !== this.$i18n.locale)
     }
   },
+
   beforeDestroy () {
     clearTimeout(this.timeout)
   },
+
   methods: {
     setFixNavbar () {
       if (!this.checkbox) {
@@ -76,6 +81,7 @@ export default {
         }, 400)
       }
     }
+
   },
 }
 </script>

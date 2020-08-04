@@ -63,12 +63,14 @@ import iconLockOpen from "@/assets/svg/lock-open.svg"
 import iconEmail from "@/assets/svg/mail.svg"
 import iconUser from "@/assets/svg/user.svg"
 export default {
+
   components: {
     iconLock,
     iconLockOpen,
     iconEmail,
     iconUser
   },
+
   props: {
     register: {
       type: [Boolean],
@@ -90,6 +92,7 @@ export default {
       required: true
     }
   },
+
   data () {
     return {
       value: {...this.credential},
@@ -97,6 +100,7 @@ export default {
       showPassword2: false,
     }
   },
+
   computed: {
     typePassword1 () {
       return (this.showPassword1 ? "text": "password")
@@ -105,6 +109,7 @@ export default {
       return (this.showPassword2 ? "text": "password")
     },
   },
+
   methods: {
     tooglePassword1 () {
       this.showPassword1 = !this.showPassword1

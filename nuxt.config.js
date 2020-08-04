@@ -1,9 +1,11 @@
 const isDev = process.env.Node_ENV !== "production"
 const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
 
+
 export default {
 
   mode: "universal",
+  ssr: true,
 
   target: "server",
 
@@ -48,10 +50,18 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/pwa",
     "@nuxtjs/auth",
-    "@nuxtjs/sitemap",
     "nuxt-i18n",
-    "@nuxtjs/toast"
+    "@nuxtjs/toast",
+    "@nuxtjs/sitemap",
   ],
+
+  sitemap: {
+    hostname: apiUrl,
+    gzip: true,
+    exclude: [
+      "/contribute/**",
+    ],
+  },
 
   auth: {
     resetOnError: true, // une erreur 403/401 supprimer toutes les info, et redirige vers login
@@ -90,13 +100,13 @@ export default {
   },
 
   buildModules: [
-    "@nuxt/components",
     "@nuxtjs/eslint-module",
+    "@nuxt/components",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/style-resources",
     "@aceforth/nuxt-optimized-images",
     "nuxt-purgecss",
-    "nuxt-svg-loader"
+    "nuxt-svg-loader",
   ],
 
   components: [
@@ -110,8 +120,12 @@ export default {
       prefix: "utils"
     },
     {
-      path: "~/components/models/",
-      prefix: "models"
+      path: "~/components/model/",
+      prefix: "model"
+    },
+    {
+      path: "~/components/field/",
+      prefix: "field"
     }
   ],
 

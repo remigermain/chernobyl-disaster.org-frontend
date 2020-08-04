@@ -15,7 +15,7 @@
     <div v-if="current" class="photo-preview" @click="hidePicture()">
       <icon-circle-x class="photo-preview-close" @click="hidePicture()" />
       <h2 class="photo-preview-title">
-        {{ getValLang(current, 'title') }}
+        {{ i18nAttr(current, 'title') }}
       </h2>
       <img :src="StaticApiLink(current.picture)"
            class="photo-preview-img"
@@ -30,9 +30,11 @@
 import iconCircleX from "@/assets/svg/circle-x.svg"
 
 export default {
+
   components: {
     iconCircleX,
   },
+
   async asyncData({ app, }) {
     const response = await app.$axios.get("picture/?no_page=true")
     if (response.status === 200) {
@@ -54,11 +56,13 @@ export default {
       pictures: [],
     }
   },
+
   data () {
     return {
       current: null,
     }
   },
+
   methods: {
     sortBy(sortFnc) {
       this.listPictures.sort(sortFnc)

@@ -16,9 +16,8 @@
 </template>
 
 <script>
-const LoginForm = () => import("@/components/cher-login")
 export default {
-  components: { LoginForm },
+
   data () {
     return {
       credential: {
@@ -36,6 +35,7 @@ export default {
       },
     }
   },
+
   methods: {
     register () {
       this.loading = true

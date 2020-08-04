@@ -33,12 +33,14 @@
 <script>
 
 export default {
+
   props: {
     elements: {
       type: Array,
       default: () => []
     }
   },
+
   data () {
     return {
       click: false,
@@ -48,10 +50,12 @@ export default {
       timeline: null
     }
   },
+
   mounted () {
     // timeline vaut le premier enfant
     this.timeline = this.$el.childNodes[0]
   },
+
   methods: {
     generateId (idx) {
       return `timeline-${idx}`
@@ -101,6 +105,7 @@ export default {
       this.moveIdx(Math.min(this.currentShow + 1, this.elements.length - 1))
     },
   }
+
 }
 </script>
 

@@ -9,16 +9,22 @@
     "global": {
         "about": "about",
         "action": "action",
+        "add": "add",
         "chernobyl": "chernobyl",
         "connection-account": "connection-account",
         "contribute": "contribute",
         "create": "create",
         "create-account": "create-account",
+        "create-ko": "create-ko",
+        "create-ok": "create-ok",
         "created": "created",
+        "currently": "currently",
         "date": "date",
         "description": "description",
         "email": "email",
         "empty": "empty",
+        "error": "error",
+        "error-key": "error-key",
         "gallery": "gallery",
         "home": "home",
         "login": "login",
@@ -27,6 +33,7 @@
         "or": "or",
         "password": "password",
         "password-confirm": "password-confirm",
+        "picture-take-by": "picture-take-by",
         "register-account": "register-account",
         "reset": "reset",
         "save": "save",
@@ -38,6 +45,9 @@
         "sort-by": "sort-by",
         "timeline": "timeline",
         "total": "total",
+        "update": "update",
+        "update-ko": "ko",
+        "update-ok": "ok",
         "username": "username"
     },
     "pages": {
@@ -57,10 +67,6 @@
             "login": {
                 "serverError": "serverError"
             }
-        },
-        "contribute": {
-            "account": "account",
-            "contact": "contact"
         }
     }
 }

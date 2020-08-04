@@ -27,7 +27,9 @@
 
 <script>
 export default {
+
   inheritAttrs: false,
+
   props: {
     src: {
       type: String,
@@ -58,11 +60,13 @@ export default {
       default: false
     },
   },
+
   data () {
     return {
       srcSplit: this.src.split(".")
     }
   },
+
   computed: {
     type () {
       const extra = this.srcSplit[1] == "svg" ? "+xml" : ""
@@ -79,6 +83,7 @@ export default {
       //return ["jpg", "png"].includes(this.srcSplit[1])
     },
   },
+
   methods: {
     typePath (type, query = "") {
       /* for src equal to 'exemple.png'
@@ -97,5 +102,6 @@ export default {
       return type != "default" || this.suffixDefault ? `_${type}` : ""
     },
   }
+
 }
 </script>

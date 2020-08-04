@@ -33,12 +33,14 @@ import iconChevronsLeft from "@/assets/svg/chevrons-left.svg"
 import iconChevronRight from "@/assets/svg/chevron-right.svg"
 import iconChevronLeft from "@/assets/svg/chevron-left.svg"
 export default {
+
   components: {
     iconChevronsRight,
     iconChevronsLeft,
     iconChevronRight,
     iconChevronLeft
   },
+
   props: {
     length: {
       type: Number,
@@ -83,6 +85,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-</style>

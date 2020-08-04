@@ -12,12 +12,8 @@
   </div>
 </template>
 
-<script>
-export default {
-}
-</script>
-
 <style lang="scss">
+
 .site {
   background-color: white;
   //linear-gradient(rgba(var(--primary), .9), rgba(var(--primary-rev), .9)), url('~assets/img/background.jpeg');
@@ -43,9 +39,8 @@ export default {
 .grid-index:nth-child(3) {
   grid-area: 2 / 1 / 6 / 2;
 }
+
 .grid-index:nth-child(4) {
   grid-area: 2 / 2 / 6 / 6;
 }
-
-
 </style>

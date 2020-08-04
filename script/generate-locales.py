@@ -10,6 +10,11 @@ import argparse
 PATH = [
     './pages',
     './components',
+    './mixins',
+]
+
+EXTENTION = [
+  'js', 'vue'
 ]
 
 # clef ignorer pour le split des clef, pour pouvoir avoir des global.login de partout
@@ -27,11 +32,22 @@ reg = re.compile(REGEX)
 # flags que prend le programme
 flag = {}
 
+
+
+
 # function de debug
 def debug(string):
     global flag
     if flag.debug:
       print(string)
+
+def remove_extention(name):
+  for ext in EXTENTION:
+    _len = len(ext)
+    if name[-_len:] == ext:
+      return name[:-_len - 1]
+  raise Exception("no extention")
+
 
 # verifie le nom du fichier clef
 # TYPE == componenet ou page
@@ -43,7 +59,8 @@ def  check(ret, name, read):
   error_type = 'Warning' if flag.ignore_error else 'Error'
 
   # on suprime les 2 premier char "./" et on enleve le .vue
-  original_name = name[2:].replace('/', '.').replace('.vue', '')
+  original_name = name[2:].replace('/', '.')
+  original_name = remove_extention(original_name)
 
   for message in ret:
     local_name_split = message.split('.')
@@ -59,6 +76,13 @@ def  check(ret, name, read):
       print(f'{error_type}: Wrong prefix name in file {name}:{len(pos)}:{len(pos[-1])}')
       print(f'change "{local_name}.{key_trans}"\nto     "{original_name}.{key_trans}"\n')
 
+def in_extention(name):
+  for ext in EXTENTION:
+    _len = len(ext)
+    if name[-_len:] == ext:
+      return True
+  return False
+
 # function qui lie le dossier, si c'est un fichier
 # on apelle le parse_file
 def read_dir(path):
@@ -67,7 +91,7 @@ def read_dir(path):
 
     for f in os.listdir(path):
         name = join(path, f)
-        if isfile(name) and '.vue' in f:
+        if isfile(name) and in_extention(name):
           # lis le fichier, supprimer les quotes
           # et recupaire par une regex le $t(KEY)
           with open(name, 'r') as file:

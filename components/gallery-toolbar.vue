@@ -29,10 +29,12 @@
 import iconSearch from "@/assets/svg/search.svg"
 import iconSelector from "@/assets/svg/selector.svg"
 export default {
+
   components: {
     iconSearch,
     iconSelector
   },
+
   data () {
     return {
       current: null,
@@ -49,12 +51,14 @@ export default {
       ]
     }
   },
+
   methods: {
     sortBy(current) {
       this.current = current.name
       this.$emit("sort", current.fnc)
     },
   }
+
 }
 </script>
 

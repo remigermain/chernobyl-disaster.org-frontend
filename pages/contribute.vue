@@ -30,7 +30,7 @@
       </ul>
     </div>
     <div class="grid-contribute-content p-4 overflow-y-scroll">
-      <nuxt-child />
+      <nuxt-child :key="$route.fullPath" />
     </div>
   </div>
 </template>
@@ -40,12 +40,15 @@ import iconArrowBarLeft from "@/assets/svg/arrow-bar-left.svg"
 //import iconUser from "@/assets/svg/user.svg"
 //import iconInbox from "@/assets/svg/inbox.svg"
 export default {
+
   components: {
     iconArrowBarLeft,
     // iconUser,
     // iconInbox
   },
+
   middleware: "auth",
+
   data () {
     return {
       menus: [
@@ -76,16 +79,19 @@ export default {
       ],
     }
   }
+
 }
 </script>
 
 <style lang="scss">
+
 .contribute-menu > * {
   padding: 10px;
   &:not(:last-child) {
     margin-bottom: 10px;
   }
 }
+
 .contribut-link {
   transition: transform .4s;
   &.nuxt-link-exact-active {
@@ -93,10 +99,13 @@ export default {
     color: rgba(66, 18, 155, 0.925)
   }
 }
+
 .grid-contribute-menu {
   grid-area: 2/ 1 / 2 / 2;
 }
+
 .grid-contribute-content {
   grid-area: 2/ 2 / 2 / 6;
 }
+
 </style>
