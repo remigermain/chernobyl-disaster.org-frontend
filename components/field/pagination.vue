@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 text-center">
+  <div class="wrapper">
     <button v-if="havePrevMore" class="p-2 rounded-sm hover:bg-gray-500" @click="value = 1">
       <icon-chevrons-left />
     </button>
@@ -21,9 +21,6 @@
     <button v-if="haveNextMore" class="p-2 rounded-sm hover:bg-gray-500" @click="value = end">
       <icon-chevrons-right />
     </button>
-    <span class="text-md italic float-right opacity-75">
-      {{ $t('global.total') }} : {{ length }}
-    </span>
   </div>
 </template>
 

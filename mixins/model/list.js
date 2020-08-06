@@ -1,21 +1,33 @@
 // import _ from "lodash"
 import base from "./base"
 
+const TIME_REFRESH = 20000 // every 20 secondes
+
 export default {
   mixins: [base],
 
   data () {
     return {
       interval: 0,
-      objectList: [],
+      interval2: 0,
+      lastRefresh: TIME_REFRESH / 1000,
+      lastRefreshLang: TIME_REFRESH / 1000,
       page: 1,
+      pageLang: 1,
+      searchValue: "",
+      searchValueLang: ""
     }
   },
 
   computed: {
     url () {
-      return `${this.model}?page=${this.page}`
-    }
+      const search = (this.searchValue ? `&search=${this.searchValue}` : "")
+      return `${this.model}/?page=${this.page}${search}`
+    },
+    urlLang () {
+      const search = (this.searchValueLang ? `&search=${this.searchValueLang}` : "")
+      return `${this.model}/?page=${this.pageLang}&completed=false${search}`
+    },
   },
 
   methods: {
@@ -23,30 +35,51 @@ export default {
       this.page = val
       this.refresh()
     },
+    pagninationLang (val) {
+      this.pageLang = val
+      this.refreshLang()
+    },
+    search (val) {
+      this.searchValue = val
+      this.refresh()
+    },
+    searchLang (val) {
+      this.searchValueLang = val
+      this.refreshLang()
+    },
     refresh () {
-      this.loading = true
-
       this.$axios.get(this.url)
         .then(response => {
-          if (response.status == 200) {
-            this.objectList =  response.data.results
-          } else {
+          if (response.status != 200) {
             throw Error(this.$t("global.error"))
           }
+          this.objectList = response.data.results
+          this.objectlength = response.data.count
         })
         .catch(() => {
-          this.$toast.error(this.$t("global.error"))
+          this.$i18nToast().error(this.$t("global.error"))
         })
-        .finally(() => {
-          this.loading = false
+    },
+    refreshLang () {
+      this.$axios.get(this.urlLang)
+        .then(response => {
+          if (response.status != 200) {
+            throw Error(this.$t("global.error"))
+          }
+          this.objectListLang = response.data.results
+          this.objectlengthLang = response.data.count
+        })
+        .catch(() => {
+          this.$i18nToast().error(this.$t("global.error"))
         })
     }
   },
 
   mounted () {
     this.interval = setInterval(() => {
+      this.refreshLang()
       this.refresh()
-    }, 20000)
+    }, TIME_REFRESH)
   },
 
   beforeDestroy () {

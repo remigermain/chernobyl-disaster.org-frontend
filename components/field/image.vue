@@ -13,7 +13,8 @@
             link
           </a>
         </span>
-        <input type="file"
+        <input :id="`field-${field.label.toLowerCase()}`"
+               type="file"
                :name="field.label.toLowerCase()"
                accept="image/*"
                :required="valueModel ? false : field.required"
@@ -28,7 +29,7 @@
 import FieldMixins from "@/mixins/field"
 export default {
 
-  mixins: [FieldMixins]
+  mixins: [FieldMixins],
 
 }
 </script>

@@ -12,11 +12,11 @@
           link
         </a>
       </span>
-      <input type="file"
+      <input :id="`field-${field.label.toLowerCase()}`"
+             type="file"
              :name="field.label.toLowerCase()"
              :required="field.required"
-             @change="$emit('change', valueModel)"
-             @input="$emit('input', valueModel)"
+             @change="$emit('change', $event.target.files[0])"
       >
     </template>
   </field-base>

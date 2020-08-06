@@ -1,6 +1,6 @@
 {
     "components": {
-        "cher-login": {
+        "login-form": {
             "ForgetPassword": "ForgetPassword",
             "login": "login",
             "register": "register"
@@ -9,7 +9,9 @@
     "global": {
         "about": "about",
         "action": "action",
+        "actions": "actions",
         "add": "add",
+        "cancel": "cancel",
         "chernobyl": "chernobyl",
         "connection-account": "connection-account",
         "contribute": "contribute",
@@ -21,14 +23,17 @@
         "currently": "currently",
         "date": "date",
         "description": "La catastrophe nucl\u00e9aire de Tchernobyl [\u2006t\u0361\u0283\u025b\u0281n\u0254bil]1 est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l\u2019accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L\u2019IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d\u2019importantes cons\u00e9quences \u00e9conomiques et sociales.",
+        "detail": "detail",
         "email": "email",
         "empty": "empty",
         "error": "error",
         "error-key": "error-key",
         "gallery": "gallery",
         "home": "home",
+        "loading": "loading",
         "login": "login",
         "menu": "menu",
+        "need-traduction": "need-traduction",
         "no-result": "no-result",
         "or": "or",
         "password": "password",

@@ -1,39 +1,45 @@
 import _ from "lodash"
 import base from "./base"
 
+
 export default {
 
   mixins: [base],
 
   methods: {
-    submit () {
-      const form = new FormData()
-      const assigned = this.mergeData()
-      this.assignFormData(form, assigned)
-      this.assignFormExtraData(form)
+    submit (event) {
+      const form = new FormData(event.srcElement)
+      this.assignFormData(form)
 
       this.loading = true
       this.errors = []
+
       this.$axios.patch(`${this.model}/${this.$route.params.id}/`, form)
         .then(response => {
-          if (response.status == 200) {
-            // assigne data
-            this.data = _.clone(assigned)
-            this.$toast.success(this.$t("global.update-ok"))
-            // redirect after
-            if (this.redirectTo == this.STATE_REDIRECT.REDIRECT_CREATE) {
-              this.redirect({...this.pathCreate.path})
-            } else if (this.redirectTo == this.STATE_REDIRECT.REDIRECT_DETAIL) {
-              this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
-            }
-          } else {
+          if (response.status != 200) {
             throw Error(this.$t("global.update-ko"))
           }
+
+          this.$i18nToast().success(this.$t("global.update-ok"))
+          // redirect after
+          if (event.submitter.dataset.type === "new") {
+            this.redirect({...this.pathCreate.path})
+          } else if (event.submitter.dataset.type === "detail") {
+            this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
+          } else if (_.has(this, "callbackSuccess")) {
+            this.callbackSuccess(response)
+          }
+          this.object = response.data
+          this.langs = []
+
         })
         .catch(error => {
-          this.$toast.error(this.$t("global.update-ko"))
+          this.$i18nToast().error(this.$t("global.update-ko"))
           if (!_.isNil(error.response)) {
             this.errors = error.response.data
+          }
+          if (_.has(this, "callbackError")) {
+            this.callbackError(error)
           }
         })
         .finally(() => {

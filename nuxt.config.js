@@ -30,7 +30,8 @@ export default {
   plugins: [
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
-    "~/plugins/prototype.js"
+    "~/plugins/prototype.js",
+    "~/plugins/toast.js"
   ],
 
   i18n: {
@@ -139,13 +140,9 @@ export default {
   ],
 
   toast: {
+    singleton: true,
+    iconPack: "callback",
     position: "top-center",
-    action: {
-      text: "Fermer",
-      onClick: (e, toastObject) => {
-        toastObject.goAway(0)
-      }
-    },
   },
 
   styleResources: {

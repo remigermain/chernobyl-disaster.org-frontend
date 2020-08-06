@@ -1,5 +1,14 @@
 <template>
   <div class="shadow-md p-4">
+    <div class="p-2 rounded-md bg-gray-200 shadow mb-2 w-max-content">
+      <input v-model="searchValue" type="text" class="bg-gray-200" :placeholder="$t('global.search')">
+      <span class="p-1 cursor-pointer">
+        <icon-search class="table-search-icon hover:text-purple-700"
+                     @click="$emit('search', searchValue)"
+        />
+      </span>
+      <slot name="table-header" />
+    </div>
     <table class="w-full table-list">
       <thead>
         <tr>
@@ -20,15 +29,20 @@
         <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light">
           <template v-for="field in fields">
             <td :key="field.field" class="p-2">
-              <template v-if="obj[field.label]">
-                {{ obj[field.label] }}
+              <template v-if="obj[field.field]">
+                <template v-if="field.type === Array">
+                  {{ obj[field.field].join() }}
+                </template>
+                <template v-else>
+                  {{ obj[field.field] }}
+                </template>
               </template>
               <span v-else class="text-xs text-gray-600 italic text-opacity-75">
                 -- {{ $t('global.empty') }} --
               </span>
             </td>
           </template>
-          <td class="p-2 text-gray-800">
+          <td class="p-2 text-gray-800 text-center">
             <extra-nuxt-link :to="{name: `contribute-${model}-id`, params:{ id: obj.id} }">
               <icon-eye class="cursor-pointer text-blue-700 action-btn" />
             </extra-nuxt-link>
@@ -39,7 +53,15 @@
         </tr>
       </tbody>
     </table>
-    <field-pagination :length="length" @change="$emit('pagination', $event)" />
+    <div class="mt-2 text-center">
+      <span class="text-md italic float-left opacity-75">
+        <slot name="table-footer" />
+      </span>
+      <field-pagination :length="length" @change="$emit('pagination', $event)" />
+      <span class="text-md italic float-right opacity-75">
+        {{ $t('global.total') }} : {{ length }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -49,6 +71,7 @@ import iconSortAscending from "@/assets/svg/sort-ascending.svg"
 import iconArrowSort from "@/assets/svg/arrows-sort.svg"
 import iconEye from "@/assets/svg/eye.svg"
 import iconEdit from "@/assets/svg/edit.svg"
+import iconSearch from "@/assets/svg/search.svg"
 
 export default {
 
@@ -58,6 +81,7 @@ export default {
     iconArrowSort,
     iconEye,
     iconEdit,
+    iconSearch
   },
 
   props: {
@@ -84,6 +108,7 @@ export default {
       currentField: {field: null},
       reverse: false,
       list: this.objectList,
+      searchValue: ""
     }
   },
 
@@ -116,6 +141,13 @@ export default {
   transition: transform .4s;
   &:hover {
     transform: scale(1.2);
+  }
+}
+
+.table-search-icon {
+  transition: transform .4s;
+  &:hover {
+    transform: scale(1.1);
   }
 }
 

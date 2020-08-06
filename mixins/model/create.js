@@ -6,35 +6,39 @@ export default {
   mixins: [base],
 
   methods: {
-    submit () {
-      const form = new FormData()
-      const assigned = this.mergeData()
-      this.assignFormData(form, assigned)
-      this.assignFormExtraData(form)
+    submit (event) {
+      const form = new FormData(event.srcElement)
+      this.assignFormData(form)
 
       this.loading = true
       this.errors = []
+
       this.$axios.post(`${this.model}/`, form)
         .then(response => {
-          if (response.status == 201) {
-            // assigne data
-            this.$toast.success(this.$t("global.create-ok"))
-            // redirect after
-            if (this.redirectTo == this.STATE_REDIRECT.REDIRECT_CREATE) {
-              this.redirect({...this.pathCreate.path}) // reload
-            } else if (this.redirectTo == this.STATE_REDIRECT.REDIRECT_UPDATE) {
-              this.redirect({...this.pathUpdate.path, params: {id: response.data.id}})
-            } else {
-              this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
-            }
-          } else {
+          if (response.status != 201) {
             throw Error(this.$t("global.create-ko"))
+          }
+          // assigne data
+          this.$i18nToast().success(this.$t("global.create-ok"))
+          // redirect after
+          if (event.submitter.dataset.type === "continue") {
+            this.redirect({...this.pathUpdate.path, params: {id: response.data.id}})
+          } else if (event.submitter.dataset.type === "detail") {
+            this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
+          } else {
+            event.srcElement.reset() // reset all input in form
+            if (_.has(this, "callbackSuccess")) {
+              this.callbackSuccess(response)
+            }
           }
         })
         .catch(error => {
-          this.$toast.error(this.$t("global.create-ko"))
+          this.$i18nToast().error(this.$t("global.create-ko"))
           if (!_.isNil(error.response)) {
             this.errors = error.response.data
+          }
+          if (_.has(this, "callbackError")) {
+            this.callbackError(error)
           }
         })
         .finally(() => {

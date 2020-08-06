@@ -1,9 +1,5 @@
 <template>
-  <model-form @submit="submit"
-              @add-extra="addExtra"
-              @redirect-list="redirectToDetail"
-              @redirect-create="redirectToCreate"
-  >
+  <model-form @submit="submit" @add-extra="addLang">
     <template v-slot:label>
       {{ model }}
     </template>
@@ -17,11 +13,13 @@
       </bread-crumb>
     </template>
     <template v-slot:form>
-      <field-text v-model="data.title" :field="fields.title" :errors="errors.title" />
-      <field-multi-select v-model="data.tags" :field="fields.tags" :errors="errors.tags" />
-      <field-select v-model="data.event" :field="fields.event" :errors="errors.event" />
-      <field-image :value="object.picture" :field="fields.picture" :errors="errors.picture" @change="changePicture" />
-      <field-select v-model="data.photographer" :field="fields.photographer" :errors="errors.photographer" />
+      <!-- all field -->
+      <field-text :value="object.title" :field="fields.title" :errors="errors.title" />
+      <field-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
+      <field-select :value="object.event" :field="fields.event" :errors="errors.event" />
+      <field-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
+      <field-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
+      <!-- end field -->
     </template>
     <template v-slot:table-header>
       <th> title </th>
@@ -29,23 +27,62 @@
         language
         <field-error :errors="errors.langs" />
       </th>
+      <th>
+        {{ $t('global.actions') }}
+      </th>
     </template>
     <template v-slot:table-body>
-      <tr v-for="lang in object.langs" :key="lang.id"  class="text-center">
+      <!-- actual langs -->
+      <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center">
         <td class="text-center">
-          <field-text v-model="lang.title" class="border-none" :label="false" :field="fields.langs.child.children.title" :action="false" />
+          <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
+          <field-text :value="lang.title"
+                      class="border-none"
+                      :prefix="prefixLang(idx)"
+                      :label="false"
+                      :field="fields.langs.child.children.title"
+                      :action="false"
+          />
         </td>
         <td>
-          <field-select v-model="lang.language" class="border-none" :label="false" :field="fields.langs.child.children.language" :action="false" />
+          <field-select :value="lang.language"
+                        class="border-none"
+                        :prefix="prefixLang(idx)"
+                        :label="false"
+                        :field="fields.langs.child.children.language"
+                        :action="false"
+          />
         </td>
+        <td />
       </tr>
-      <tr v-for="(obj, idx) in dataExtra.langs" :key="idx">
+      <!-- end actual langs -->
+      <!-- extra langs -->
+      <tr v-for="(val, idx) in langs" :key="val">
         <td>
-          <field-text v-model="obj.title" class="border-none" :label="false" :field="fields.langs.child.children.title" :action="false" />
+          <field-text class="border-none"
+                      :prefix="prefixLang(idx + object.langs.length)"
+                      :label="false"
+                      :field="fields.langs.child.children.title"
+                      :action="false"
+          />
         </td>
         <td>
-          <field-select v-model="obj.language" class="border-none" :label="false" :field="fields.langs.child.children.language" :action="false" />
+          <field-select class="border-none"
+                        :prefix="prefixLang(idx + object.langs.length)"
+                        :label="false"
+                        :field="fields.langs.child.children.language"
+                        :action="false"
+          />
         </td>
+        <td>
+          <field-action :add="false"
+                        :edit="false"
+                        :deleted="true"
+                        :field="fields.langs.child.children.language"
+                        @delete="deleteLang(idx)"
+          />
+        </td>
+        <!-- end extra langs -->
       </tr>
     </template>
   </model-form>
@@ -53,6 +90,8 @@
 
 <script>
 import modelsDetail from "@/mixins/model/update"
+//import _ from "lodash"
+
 export default {
 
   mixins: [modelsDetail],
@@ -65,46 +104,29 @@ export default {
 
     // check if all request is ok
     if (options.status != 200 || response.status != 200) {
-      this.$toat.error(this.$t("global.error"))
+      this.$i18nToast().error(this.$t("global.error"))
       // redirect to parent objects
       return redirect(app.$i18n.localePath({name: "contribute-picture"}))
     }
     return {
       fields: options.data.actions.PUT,
       object: response.data,
-      data: {
-        title: response.data.title,
-        tags: response.data.tags,
-        event: response.data.event,
-        photographer: response.data.photographer,
-        langs: response.data.langs
-      },
     }
   },
 
   data () {
     return {
-      objectLang: {
-        title: "",
-        language: ""
-      },
       model: "picture",
-      dataExtra: {
-        langs: [],
-      },
-      file: {
-        picture: null
-      }
     }
   },
 
   methods: {
-    changePicture (value) {
-      this.file.picture = value
+    assignFormData (form) {
+      // remove picture key if is empty
+      if (form.get("picture") === "") {
+        form.delete("picture")
+      }
     },
-        assignFormExtraData (form) {
-      form.append("picture", this.file.picture)
-    }
   }
 
 }

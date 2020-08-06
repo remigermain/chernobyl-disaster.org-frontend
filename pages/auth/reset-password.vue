@@ -77,11 +77,11 @@ export default {
         })
         .catch((error) => {
           if (error.message === "Network Error") {
-            this.$toast.error(this.$t("global.serverError")).goAway(4000)
+            this.$i18nToast().error(this.$t("global.serverError")).goAway(4000)
           } else if (
             Object.prototype.hasOwnProperty.call(error.response.data, "non_field_errors")
           ) {
-            this.$toast.error(error.response.data.non_field_errors)
+            this.$i18nToast().error(error.response.data.non_field_errors)
           } else {
             error.response.data.forEach((element, key) => {
               if (Object.prototype.hasOwnProperty.call(this.errors, key)) {

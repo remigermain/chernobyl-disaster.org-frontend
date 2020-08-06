@@ -11,8 +11,8 @@
     </div>
     <form class="flex flex-col justify-end pt-16" enctype="multipart/form-data" @submit.prevent="$emit('submit', $event)">
       <slot name="form" />
-      <div class="overflow-x-scroll w-full">
-        <table v-if="lang" class="w-full table-lang">
+      <div class="w-full">
+        <table v-if="lang" class="overflow-x-scroll w-full table-lang">
           <thead>
             <tr>
               <th colspan="100%">
@@ -35,13 +35,13 @@
         </button>
       </div>
       <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-lg">
-        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click="$emit('redirect-create')">
+        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="new">
           {{ $t('global.save-add-other') }}
         </button>
-        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click="$emit('no-redirect')">
+        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="continue">
           {{ $t('global.save-continue-editing') }}
         </button>
-        <button type="submit" class="px-2 py-2 bg-blue-700 hover:bg-blue-800 rounded-md" @click="$emit('redirect-list')">
+        <button type="submit" class="px-2 py-2 bg-blue-700 hover:bg-blue-800 rounded-md" data-type="detail">
           {{ $t('global.save') }}
         </button>
       </div>

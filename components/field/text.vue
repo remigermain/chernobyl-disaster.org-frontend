@@ -8,7 +8,7 @@
     <template v-slot:input>
       <input v-model="valueModel"
              type="text"
-             :name="field.label.toLowerCase()"
+             :name="name"
              class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700"
              :placeholder="field.label"
              :maxlength="field.max_length"

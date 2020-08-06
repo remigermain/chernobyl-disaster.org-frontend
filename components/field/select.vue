@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <select v-model="valueModel"
-              :name="field.label.toLowerCase()"
+              :name="name"
               :required="field.required"
               class="select"
               @input="$emit('input', valueModel)"

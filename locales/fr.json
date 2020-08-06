@@ -1,6 +1,6 @@
 {
     "components": {
-        "cher-login": {
+        "login-form": {
             "ForgetPassword": "ForgetPassword",
             "login": "login",
             "register": "register"
@@ -9,7 +9,9 @@
     "global": {
         "about": "about",
         "action": "action",
+        "actions": "actions",
         "add": "add",
+        "cancel": "cancel",
         "chernobyl": "chernobyl",
         "connection-account": "connection-account",
         "contribute": "contribute",
@@ -21,14 +23,17 @@
         "currently": "currently",
         "date": "date",
         "description": "description",
+        "detail": "detail",
         "email": "email",
         "empty": "empty",
         "error": "error",
         "error-key": "error-key",
         "gallery": "gallery",
         "home": "home",
+        "loading": "loading",
         "login": "login",
         "menu": "menu",
+        "need-traduction": "need-traduction",
         "no-result": "no-result",
         "or": "or",
         "password": "password",

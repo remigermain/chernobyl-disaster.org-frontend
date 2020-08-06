@@ -38,7 +38,7 @@
       <template v-else>
         <div class="flex justify-end mb-4 mx-auto text-center mt-4">
           <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto">
-            {{ $t('components.cher-login.ForgetPassword') }}
+            {{ $t('components.login-form.ForgetPassword') }}
           </extra-nuxt-link>
         </div>
       </template>
@@ -47,10 +47,10 @@
           <utils-loading />
         </template>
         <template v-else-if="register">
-          {{ $t("components.cher-login.register") }}
+          {{ $t("components.login-form.register") }}
         </template>
         <template v-else>
-          {{ $t("components.cher-login.login") }}
+          {{ $t("components.login-form.login") }}
         </template>
       </button>
     </form>

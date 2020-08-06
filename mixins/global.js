@@ -2,6 +2,24 @@ import _ from "lodash"
 
 export default {
 
+  data () {
+    return {
+      loading: false,
+      toastLoading: null
+    }
+  },
+
+  watch: {
+    loading (value) {
+      if (value) {
+        this.toastLoading = this.$i18nToast().show(this.$t("global.loading"))
+      } else if (this.toastLoading) {
+        this.toastLoading.remove()
+      }
+      return value
+    }
+  },
+
   methods: {
     // shortcut for router change
     redirect(obj) {

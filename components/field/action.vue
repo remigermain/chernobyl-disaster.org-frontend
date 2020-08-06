@@ -6,17 +6,20 @@
     <extra-nuxt-link v-if="edit" :to="{name: `contribute-${field.model}-update`}">
       <icon-edit class=" text-yellow-700" />
     </extra-nuxt-link>
+    <icon-trash v-if="deleted" class="text-red-700 cursor-pointer" @click="$emit('delete')" />
   </div>
 </template>
 
 <script>
 import iconPlus from "@/assets/svg/plus.svg"
 import iconEdit from "@/assets/svg/edit.svg"
+import iconTrash from "@/assets/svg/trash.svg"
 export default {
 
   components: {
     iconPlus,
     iconEdit,
+    iconTrash
   },
 
   props: {
@@ -31,7 +34,11 @@ export default {
     add: {
       type: Boolean,
       default: true
-    }
+    },
+    deleted: {
+      type: Boolean,
+      default: false
+    },
   }
 
 }

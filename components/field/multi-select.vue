@@ -20,9 +20,6 @@
         >
           {{ choice.display_name }}
         </option>
-        <option value="" selected="">
-          ---------
-        </option>
       </select>
       <field-action v-if="action" :field="field" />
     </template>
@@ -34,6 +31,12 @@ import FieldMixins from "@/mixins/field"
 export default {
 
   mixins: [FieldMixins],
+
+  data () {
+    return {
+      valueModel: this.value || []
+    }
+  }
 
 }
 </script>

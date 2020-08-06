@@ -50,7 +50,7 @@ export default {
         .post("auth/registration/", this.credential)
         .then(response => {
           if (response.status === 201) {
-            this.$toast
+            this.$i18nToast()
               .success(response.data)
               .goAway(4000)
             this.credential = {
@@ -64,11 +64,11 @@ export default {
         })
         .catch((error) => {
           if (error.message === "Network Error") {
-            this.$toast.error(this.$t("global.server-error")).goAway(4000)
+            this.$i18nToast().error(this.$t("global.server-error")).goAway(4000)
           } else if (
             Object.prototype.hasOwnProperty.call(error.response.data, "non_field_errors")
           ) {
-            this.$toast.error(error.response.data.non_field_errors)
+            this.$i18nToast().error(error.response.data.non_field_errors)
           } else {
             error.response.data.forEach((element, key) => {
               if (Object.prototype.hasOwnProperty.call(this.errors, key)) {

@@ -1,10 +1,5 @@
 <template>
-  <model-form @submit="submit"
-              @add-extra="addLang"
-              @no-redirect="redirectToUpdate"
-              @redirect-list="redirectToDetail"
-              @redirect-create="redirectToCreate"
-  >
+  <model-form @submit="submit" @add-extra="addLang">
     <template v-slot:label>
       {{ model }}
     </template>
@@ -17,11 +12,11 @@
       </bread-crumb>
     </template>
     <template v-slot:form>
-      <field-text v-model="data.title" :field="fields.title" :errors="errors.title" />
-      <field-multi-select v-model="data.tags" :field="fields.tags" :errors="errors.tags" />
-      <field-select v-model="data.event" :field="fields.event" :errors="errors.event" />
-      <field-image :field="fields.picture" :errors="errors.picture" @change="changePicture" />
-      <field-select v-model="data.photographer" :field="fields.photographer" :errors="errors.photographer" />
+      <field-text :field="fields.title" :errors="errors.title" />
+      <field-multi-select :field="fields.tags" :errors="errors.tags" />
+      <field-select :field="fields.event" :errors="errors.event" />
+      <field-image :field="fields.picture" :errors="errors.picture" />
+      <field-select :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
       <th> title </th>
@@ -29,14 +24,35 @@
         language
         <field-error :errors="errors.langs" />
       </th>
+      <th>
+        {{ $t('global.actions') }}
+      </th>
     </template>
     <template v-slot:table-body>
-      <tr v-for="(obj, idx) in data.langs" :key="idx">
+      <tr v-for="(val, idx) in langs" :key="val">
         <td>
-          <field-text v-model="obj.title" class="border-none" :label="false" :field="fields.langs.child.children.title" :action="false" />
+          <field-text class="border-none"
+                      :prefix="prefixLang(idx)"
+                      :label="false"
+                      :field="fields.langs.child.children.title"
+                      :action="false"
+          />
         </td>
         <td>
-          <field-select v-model="obj.language" class="border-none" :label="false" :field="fields.langs.child.children.language" :action="false" />
+          <field-select class="border-none"
+                        :prefix="prefixLang(idx)"
+                        :label="false"
+                        :field="fields.langs.child.children.language"
+                        :action="false"
+          />
+        </td>
+        <td>
+          <field-action :add="false"
+                        :edit="false"
+                        :deleted="true"
+                        :field="fields.langs.child.children.language"
+                        @delete="deleteLang(idx)"
+          />
         </td>
       </tr>
     </template>
@@ -45,6 +61,8 @@
 
 <script>
 import modelCreate from "@/mixins/model/create"
+//import _ from "lodash"
+
 export default {
 
   mixins: [modelCreate],
@@ -55,7 +73,7 @@ export default {
 
     // check if all request is ok
     if (response.status != 200) {
-      this.$toat.error(this.$t("global.error"))
+      this.$i18nToast().error(this.$t("global.error"))
       // redirect to parent objects
       return redirect(app.$i18n.localePath({name: "contribute-picture"}))
     }
@@ -66,35 +84,9 @@ export default {
 
   data () {
     return {
-      objectLang: {
-        title: "",
-        language: ""
-      },
       model: "picture",
-      data: {
-        title: "",
-        tags: [],
-        event: "",
-        photographer: "",
-        langs: []
-      },
-      file: {
-        picture: null
-      }
     }
   },
-
-  methods: {
-    changePicture (value) {
-      this.file.picture = value
-    },
-    assignFormExtraData (form) {
-      form.append("picture", this.file.picture)
-    },
-    addLang () {
-      this.data.langs.push({...this.objectLang})
-    }
-  }
 
 }
 </script>
