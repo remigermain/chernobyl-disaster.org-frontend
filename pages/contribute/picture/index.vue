@@ -9,7 +9,7 @@
       {{ model }}
     </template>
     <template v-slot:table>
-      <field-table :fields="objectField"
+      <field-table :fields="tableField"
                    :length="objectlength"
                    :model="model"
                    :object-list="objectList"
@@ -19,7 +19,7 @@
       <h2 class="text-xl mt-5">
         {{ $t('global.need-traduction') }}
       </h2>
-      <field-table :fields="objectFieldLang"
+      <field-table :fields="tableFieldLang"
                    :length="objectlengthLang"
                    :model="model"
                    :object-list="objectListLang"
@@ -32,44 +32,48 @@
 
 <script>
 
-import ModelsList from "@/mixins/model/list"
+import list from "@/mixins/model-view/list"
+import picture from "@/mixins/model/picture"
+
 export default {
 
-  mixins:  [ModelsList],
+  mixins:  [
+    list,
+    picture
+  ],
 
   async asyncData ({redirect, $axios, app}) {
     // get objects
-    const response = await $axios.get("picture/?page=1")
-    const responseLang = await $axios.get("picture/?page=1&completed=false")
-
-    // check if all request is ok
-    if (response.status != 200 || responseLang.status != 200) {
-      this.$i18nToast().error(this.$t("global.error"))
-      // redirect to parent objects
-      return redirect(app.$i18n.localePath({name: "contribute-picture"}))
+    try {
+      const response = await $axios.get("picture/?page=1")
+      const responseLang = await $axios.get("picture/?page=1&completed=false")
+      if (response.status != 200 || responseLang.status != 200) {
+        throw Error(app.i18n.t("global.error"))
+      }
+      return {
+        objectList: response.data.results,
+        objectlength: response.data.count, // return count for pagination
+        objectListLang: responseLang.data.results,
+        objectlengthLang: responseLang.data.count, // return count for pagination
+      }
     }
-    return {
-      objectList: response.data.results,
-      objectlength: response.data.count, // return count for pagination
-      objectListLang: responseLang.data.results,
-      objectlengthLang: responseLang.data.count, // return count for pagination
-
+    catch {
+      return redirect(app.$i18n.localePath({name: "contribute-picture"}))
     }
   },
 
   data () {
     return {
-      objectField: [
+      tableField: [
         {field: "id", label: "id", type: Number},
         {field: "title", label: "title", type: String},
         {field: "event", label: "event", type: Date},
       ],
-      objectFieldLang: [
+      tableFieldLang: [
         {field: "id", label: "id", type: Number},
         {field: "title", label: "title", type: String},
         {field: "not_available_languages", label: "no translate", type: Array},
       ],
-      model: "picture",
     }
   },
 

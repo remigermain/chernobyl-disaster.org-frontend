@@ -34,7 +34,7 @@
           <field-text class="border-none"
                       :prefix="prefixLang(idx)"
                       :label="false"
-                      :field="fields.langs.child.children.title"
+                      :field="fields.langs.title"
                       :action="false"
           />
         </td>
@@ -42,7 +42,7 @@
           <field-select class="border-none"
                         :prefix="prefixLang(idx)"
                         :label="false"
-                        :field="fields.langs.child.children.language"
+                        :field="fields.langs.language"
                         :action="false"
           />
         </td>
@@ -50,7 +50,7 @@
           <field-action :add="false"
                         :edit="false"
                         :deleted="true"
-                        :field="fields.langs.child.children.language"
+                        :field="fields.langs.language"
                         @delete="deleteLang(idx)"
           />
         </td>
@@ -60,33 +60,15 @@
 </template>
 
 <script>
-import modelCreate from "@/mixins/model/create"
-//import _ from "lodash"
+import picture from "@/mixins/model/picture"
+import create from "@/mixins/model-view/create"
 
 export default {
 
-  mixins: [modelCreate],
-
-  async asyncData ({redirect, $axios, app}) {
-    // get options information form
-    const response = await $axios.options("picture/")
-
-    // check if all request is ok
-    if (response.status != 200) {
-      this.$i18nToast().error(this.$t("global.error"))
-      // redirect to parent objects
-      return redirect(app.$i18n.localePath({name: "contribute-picture"}))
-    }
-    return {
-      fields: response.data.actions.POST,
-    }
-  },
-
-  data () {
-    return {
-      model: "picture",
-    }
-  },
+  mixins: [
+    create,
+    picture
+  ],
 
 }
 </script>

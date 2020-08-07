@@ -11,7 +11,7 @@
     </div>
     <table class="w-full table-list">
       <thead>
-        <tr>
+        <tr class="">
           <th v-for="field in fields" :key="field.field" class="border-b-2 border-gray-700  text-gray-800 text-xl capitalize">
             {{ field.label }}
             <template v-if="currentField.field == field.field">
@@ -49,6 +49,11 @@
             <extra-nuxt-link :to="{name: `contribute-${model}-update-id`, params:{ id: obj.id} }">
               <icon-edit class="cursor-pointer text-purple-700 action-btn" />
             </extra-nuxt-link>
+          </td>
+        </tr>
+        <tr v-if="list.length === 0" class="text-center">
+          <td :colspan="fields.length + 1" class="p-2 bg-gray-300 text-xs text-gray-600 italic text-opacity-75">
+            -- {{ $t('global.empty') }} --
           </td>
         </tr>
       </tbody>

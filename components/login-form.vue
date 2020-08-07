@@ -77,11 +77,6 @@ export default {
       defaultValue: false,
       required: false
     },
-    loading: {
-      type: Boolean,
-      default: false,
-      required: false
-    },
     errors: {
       type: Object,
       default: () => {},

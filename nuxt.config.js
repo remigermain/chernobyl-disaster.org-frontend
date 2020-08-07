@@ -31,7 +31,8 @@ export default {
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
-    "~/plugins/toast.js"
+    "~/plugins/toast.js",
+    "~/plugins/context.js",
   ],
 
   i18n: {

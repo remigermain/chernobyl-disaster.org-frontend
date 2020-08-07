@@ -11,59 +11,36 @@
         </extra-nuxt-link>
       </p>
     </div>
-    <login-form :credential="credential" :loading="loading" :errors="errors" @submit="login" />
+    <login-form :credential="credential" :errors="errors" @submit="submit" />
   </div>
 </template>
 
 <script>
+import auth from "~/mixins/auth"
+
 export default {
 
-  data () {
-    return {
-      credential: {
-        email: "",
-        password1: ""
-      },
-      loading: false,
-      errors: {
-        email: [],
-        password1: [],
-      },
-    }
-  },
+  mixins: [
+    auth
+  ],
 
   methods: {
-    login () {
-      this.loading = true
-      this.errors = {
-        email: [],
-        password1: [],
+    formData () {
+      return {
+        email: this.credential.email,
+        password: this.credential.password1,
       }
+    },
+    submit () {
+      this.loading = true
+      this.resetError()
 
-      this.$auth
-        .loginWith("local", {
-          data: {
-            email: this.credential.email,
-            password: this.credential.password1,
-          }
-        })
+      this.$auth.loginWith("local", {data: this.formData()})
         .then(() => {
           this.redirect({ name: "contribute" })
         })
-        .catch((error) => {
-          if (error.message === "Network Error") {
-            this.$i18nToast().error(this.$t("pages.auth.login.serverError")).goAway(4000)
-          } else if (
-            Object.prototype.hasOwnProperty.call(error.response.data, "non_field_errors")
-          ) {
-            this.$i18nToast().error(error.response.data.non_field_errors)
-          } else {
-            error.response.data.forEach((element, key) => {
-              if (Object.prototype.hasOwnProperty.call(this.errors, key)) {
-                this.messages[key] = element
-              }
-            })
-          }
+        .catch(() => {
+          this.$i18nToast().error(this.$t("pages.auth.login.serverError")).goAway(4000)
         })
         .finally(() => {
           this.loading = false

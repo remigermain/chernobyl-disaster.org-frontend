@@ -26,7 +26,6 @@ export default {
         password1: "",
         password2: ""
       },
-      loading: false,
       errors: {
         username: [],
         email: [],
@@ -39,43 +38,19 @@ export default {
   methods: {
     register () {
       this.loading = true
-      this.errors = {
-        username: [],
-        email: [],
-        password1: [],
-        password2: [],
-      }
+      this.resetError()
 
-      this.$axios
-        .post("auth/registration/", this.credential)
+      this.$axios.post("auth/registration/", this.credential)
         .then(response => {
-          if (response.status === 201) {
-            this.$i18nToast()
-              .success(response.data)
-              .goAway(4000)
-            this.credential = {
-              username: "",
-              email: "",
-              password1: "",
-              password2: "",
-            }
-            this.redirect({ name: "auth-login" })
+          if (response.status != 201) {
+            throw Error("") // TODO
           }
+          this.$i18nToast().success(response.data).goAway(4000)
+          this.resetData()
+          this.redirect({ name: "auth-login" })
         })
-        .catch((error) => {
-          if (error.message === "Network Error") {
-            this.$i18nToast().error(this.$t("global.server-error")).goAway(4000)
-          } else if (
-            Object.prototype.hasOwnProperty.call(error.response.data, "non_field_errors")
-          ) {
-            this.$i18nToast().error(error.response.data.non_field_errors)
-          } else {
-            error.response.data.forEach((element, key) => {
-              if (Object.prototype.hasOwnProperty.call(this.errors, key)) {
-                this.messages[key] = element
-              }
-            })
-          }
+        .catch(() => {
+          this.$i18nToast().error(this.$t("global.server-error")).goAway(4000)
         })
         .finally(() => {
           this.loading = false

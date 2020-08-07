@@ -47,7 +47,10 @@ export default {
     // iconInbox
   },
 
-  middleware: "auth",
+  middleware: [
+    "model",
+    "auth",
+  ],
 
   data () {
     return {

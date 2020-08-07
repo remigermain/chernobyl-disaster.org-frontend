@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <input v-model="valueModel"
-             type="text"
+             :type="type"
              :name="name"
              class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700"
              :placeholder="field.label"
@@ -24,7 +24,14 @@
 import FieldMixins from "@/mixins/field"
 export default {
 
-  mixins: [FieldMixins]
+  mixins: [FieldMixins],
+
+  props: {
+    type: {
+      type: String,
+      default: "text"
+    }
+  }
 
 }
 </script>

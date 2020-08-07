@@ -33,14 +33,14 @@
     </template>
     <template v-slot:table-body>
       <!-- actual langs -->
-      <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center">
+      <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center rounded-b-lg">
         <td class="text-center">
           <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
           <field-text :value="lang.title"
                       class="border-none"
                       :prefix="prefixLang(idx)"
                       :label="false"
-                      :field="fields.langs.child.children.title"
+                      :field="fields.langs.title"
                       :action="false"
           />
         </td>
@@ -49,7 +49,7 @@
                         class="border-none"
                         :prefix="prefixLang(idx)"
                         :label="false"
-                        :field="fields.langs.child.children.language"
+                        :field="fields.langs.language"
                         :action="false"
           />
         </td>
@@ -62,7 +62,7 @@
           <field-text class="border-none"
                       :prefix="prefixLang(idx + object.langs.length)"
                       :label="false"
-                      :field="fields.langs.child.children.title"
+                      :field="fields.langs.title"
                       :action="false"
           />
         </td>
@@ -70,7 +70,7 @@
           <field-select class="border-none"
                         :prefix="prefixLang(idx + object.langs.length)"
                         :label="false"
-                        :field="fields.langs.child.children.language"
+                        :field="fields.langs.language"
                         :action="false"
           />
         </td>
@@ -78,7 +78,7 @@
           <field-action :add="false"
                         :edit="false"
                         :deleted="true"
-                        :field="fields.langs.child.children.language"
+                        :field="fields.langs.language"
                         @delete="deleteLang(idx)"
           />
         </td>
@@ -89,35 +89,25 @@
 </template>
 
 <script>
-import modelsDetail from "@/mixins/model/update"
+import Update from "@/mixins/model-view/update"
+import Picture from "@/mixins/model/picture"
 //import _ from "lodash"
 
 export default {
 
-  mixins: [modelsDetail],
+  mixins: [Update, Picture],
 
-  async asyncData ({params, redirect, $axios, app}) {
-    // get options information form
-    const options = await $axios.options(`picture/${params.id}/`)
-    // get objects
-    const response = await $axios.get(`picture/${params.id}/`)
-
-    // check if all request is ok
-    if (options.status != 200 || response.status != 200) {
-      this.$i18nToast().error(this.$t("global.error"))
-      // redirect to parent objects
-      return redirect(app.$i18n.localePath({name: "contribute-picture"}))
-    }
-    return {
-      fields: options.data.actions.PUT,
-      object: response.data,
-    }
-  },
-
-  data () {
-    return {
-      model: "picture",
-    }
+  asyncData ({params, redirect, $axios, app}) {
+    return $axios.get(`picture/${params.id}/`)
+      .then(response => {
+        if (response.status != 200) {
+          throw Error(app.i18n.t("global.server-error"))
+        }
+        return { object: response.data }
+      })
+      .catch(() => {
+        return redirect(app.localePath({name: "contribute-picture"}))
+      })
   },
 
   methods: {

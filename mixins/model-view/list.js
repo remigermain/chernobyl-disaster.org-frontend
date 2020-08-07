@@ -4,7 +4,10 @@ import base from "./base"
 const TIME_REFRESH = 20000 // every 20 secondes
 
 export default {
-  mixins: [base],
+
+  mixins: [
+    base
+  ],
 
   data () {
     return {

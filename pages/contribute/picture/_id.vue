@@ -27,30 +27,29 @@
 </template>
 
 <script>
-import modelsDetail from "@/mixins/model/base"
+import detail from "@/mixins/model-view/detail"
+import picture from "@/mixins/model/picture"
+
 export default {
 
-  mixins: [modelsDetail],
+  mixins: [
+    detail,
+    picture
+  ],
 
-  async asyncData ({params, redirect, $axios, app}) {
-    // get objects
-    const response = await $axios.get(`picture/${params.id}/`)
-
-    // check if all request is ok
-    if (response.status != 200) {
-      this.$i18nToast().error(this.$t("global.error"))
-      // redirect to parent objects
-      return redirect(app.$i18n.localePath({name: "contribute-picture"}))
-    }
-    return {
-      object: response.data,
-    }
-  },
-
-  data () {
-    return {
-      model: "picture",
-    }
+  asyncData ({ params, $axios, app, redirect }) {
+    return $axios.get(`picture/${params.id}/`)
+      .then(response => {
+        if (response.status != 200) {
+          throw Error(app.i18n.t("global.error"))
+        }
+        return {
+          object: response.data,
+        }
+      })
+      .catch(() => {
+        return redirect(app.localePath({name: "contribute-picture"}))
+      })
   },
 
 }

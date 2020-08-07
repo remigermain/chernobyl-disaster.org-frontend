@@ -3,7 +3,9 @@ import base from "./base"
 
 export default {
 
-  mixins: [base],
+  mixins: [
+    base
+  ],
 
   methods: {
     submit (event) {

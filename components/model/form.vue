@@ -16,12 +16,12 @@
           <thead>
             <tr>
               <th colspan="100%">
-                <div class="bg-blue-700 text-white p-2 mt-4 capitalize  w-full">
+                <div class="bg-blue-700 text-white p-2 mt-4 capitalize  w-full  rounded-t-lg">
                   <slot name="label" /> languages
                 </div>
               </th>
             </tr>
-            <tr class="text-center bg-head">
+            <tr class="text-center bg-head rounded-b-lg">
               <slot name="table-header" />
             </tr>
           </thead>
@@ -34,7 +34,7 @@
           {{ $t('global.add') }}
         </button>
       </div>
-      <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-lg">
+      <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-b-lg">
         <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="new">
           {{ $t('global.save-add-other') }}
         </button>
