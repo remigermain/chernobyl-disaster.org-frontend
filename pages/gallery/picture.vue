@@ -68,8 +68,8 @@ export default {
 
 @screen -md {
   .picture-item {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 }
 

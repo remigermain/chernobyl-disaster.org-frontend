@@ -11,6 +11,8 @@ PATH = [
     './pages',
     './components',
     './mixins',
+    './plugins',
+    './layouts'
 ]
 
 EXTENTION = [
@@ -166,6 +168,7 @@ def get_keys(origi):
   return nn
 
 def change_update(dtc, fnc):
+  return dtc
   nfnc = {}
   exist = []
   for f in fnc:

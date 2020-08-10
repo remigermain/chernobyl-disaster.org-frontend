@@ -21,6 +21,7 @@
     "lodash": "^4.17.19",
     "nuxt": "^2.14.0",
     "nuxt-i18n": "^6.13.1",
+    "vue-ctk-date-time-picker": "^2.5.0",
     "vue-infinite-loading": "^2.4.5"
   },
   "devDependencies": {

@@ -34,6 +34,7 @@ export default {
     "~/plugins/prototype.js",
     "~/plugins/toast.js",
     "~/plugins/context.js",
+    "~/plugins/date-time-picker.js"
   ],
 
   i18n: {

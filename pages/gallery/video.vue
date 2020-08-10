@@ -59,8 +59,8 @@ export default {
 
 @screen -md {
   .video-item {
-    width: 150px;
-    height: 150px;
+    width: 380px;
+    height: 220px;
   }
 }
 

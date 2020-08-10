@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :errors="errors" :label="label">
+  <component :is="component" v-bind="$attrs" :field="fieldCopy">
     <template v-slot:label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}

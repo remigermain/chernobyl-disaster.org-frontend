@@ -20,7 +20,7 @@
       <extra-nuxt-link :to="{name: 'gallery'}" class="link" @click="checkbox = false">
         {{ $t('global.gallery') }}
       </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'contribute'}" class="link" @click="checkbox = false">
+      <extra-nuxt-link :to="{name: 'contribute'}" class="link -md:hidden" @click="checkbox = false">
         {{ $t('global.contribute') }}
       </extra-nuxt-link>
       <extra-nuxt-link :to="{name: 'about'}" class="link" @click="checkbox = false">

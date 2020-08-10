@@ -1,5 +1,5 @@
 <template>
-  <model-detail :path="pathUpdate.path">
+  <model-detail :path="pathUpdate.path" :model="model">
     <template v-slot:label>
       {{ model }}
     </template>
@@ -12,7 +12,7 @@
       </bread-crumb>
     </template>
     <template v-slot:detail>
-      <div class="flex flex-col justify-center items-center">
+      <div class="flex flex-col justify-center items-center p-4">
         <h1 class="text-3xl">
           {{ object.title }}
         </h1>

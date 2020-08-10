@@ -2,7 +2,7 @@
   <div class="site">
     <div class="grid-index p-4 text-gray-900 w-screen h-screen">
       <div class="grid-logo flex text-gray-800">
-        <h1 class="text-5xl uppercase extra-auto font-russia -md:opacity-0 transition-opacity  duration-400">
+        <h1 class="text-5xl uppercase extra-auto font-russia transition-opacity duration-400 z-1">
           {{ $t('global.chernobyl') }}
         </h1>
       </div>
@@ -16,7 +16,6 @@
 
 .site {
   background-color: white;
-  //linear-gradient(rgba(var(--primary), .9), rgba(var(--primary-rev), .9)), url('~assets/img/background.jpeg');
   background-size: cover;
   min-height: inherit;
   height: inherit;
@@ -27,7 +26,7 @@
 .grid-index {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto minmax(80%, auto) auto;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }

@@ -30,9 +30,6 @@ export default {
       this.$auth.logout()
       this.redirect({ name: "aut-login" })
     },
-    exactLink(to) {
-      return this.localePath(to) == this.$route.path
-    },
     StaticApiLink(link) {
       return this.$apiUrl + link
     },

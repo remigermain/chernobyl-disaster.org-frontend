@@ -13,13 +13,12 @@
       </bread-crumb>
     </template>
     <template v-slot:form>
-      <!-- all field -->
       <admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
       <admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
       <admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
       <admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
+      <admin-date :value="object.date" :field="fields.date" :errors="errors.date" />
       <admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
-      <!-- end field -->
     </template>
     <template v-slot:table-header>
       <th> title </th>

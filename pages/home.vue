@@ -2,9 +2,6 @@
   <div class="wrapper">
     <div class="extra-auto grid-home-intro w-full z-2">
       <div class="w-full md:w-3/4 mx-auto flex justify-center items-center flex-col h-full">
-        <h2 class="text-6xl uppercase mb-8 grid-home-intro-title font-russia">
-          {{ $t('global.chernobyl' ) }}
-        </h2>
         <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
           {{ $t('global.description') }}
         </p>
@@ -15,9 +12,7 @@
       </div>
     </div>
     <div class="grid-home-image overflow-hidden m-10 flex justify-center items-center">
-      <picture>
-        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="background-about" class="object-cover img-home">
-      </picture>
+      <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="background-about" class="object-cover">
     </div>
   </div>
 </template>
@@ -42,9 +37,17 @@ export default {
   grid-area: 2 / 1 / 6 / 5;
 }
 
+@screen -xl {
+  .grid-home-intro {
+    grid-area: 2 / 1 / 6 / 6;
+  }
+}
+
 @media screen and (max-width:900px){
   .grid-home-image {
-    margin-right: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
     img {
       border-bottom-left-radius: 50%;
       border-top-left-radius: 50%;
@@ -53,7 +56,11 @@ export default {
     top: 50%;
     right: 0;
     position: absolute;
+    z-index: 0;
     opacity: .3;
+  }
+  .grid-home-intro {
+    grid-area: 2 / 1 / 6 / -1;
   }
 }
 

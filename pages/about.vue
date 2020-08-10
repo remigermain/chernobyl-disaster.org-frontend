@@ -10,7 +10,7 @@
           Gitlab
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <icon-tipography />
+          <icon-language />
           {{ $t('pages.about.traduction') }}
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
@@ -69,7 +69,7 @@
         <icon-mood-smile />
       </a>
     </div>
-    <div class="overflow-hidden m-10 flex justify-center items-center grid-about-image ">
+    <div class="grid-about-image overflow-hidden m-10 flex justify-center items-center">
       <picture>
         <img loading="lazy" src="~/assets/img/background-about.jpeg" class="object-cover">
       </picture>
@@ -83,7 +83,7 @@ import iconHeart from "@/assets/svg/heart.svg"
 import iconMoodSad from "@/assets/svg/mood-sad.svg"
 import iconMoodSmile from "@/assets/svg/mood-smile.svg"
 import iconMail from "@/assets/svg/mail.svg"
-import iconTipography from "@/assets/svg/typography.svg"
+import iconLanguage from "@/assets/svg/language.svg"
 export default {
 
   components: {
@@ -92,7 +92,7 @@ export default {
     iconMoodSmile,
     iconMoodSad,
     iconMail,
-    iconTipography
+    iconLanguage
   },
 
   async asyncData() {
@@ -104,19 +104,46 @@ export default {
 
 <style lang="scss">
 
-.grid-about-image  {
+
+.grid-about-image {
   grid-area: 2 / 6 / 6 / 11;
+  transition: opacity .5s;
 }
 
 .grid-about-intro {
   grid-area: 2 / 1 / 6 / 5;
 }
 
-@media screen and (max-width:900px){
+@screen -xl {
   .grid-about-intro {
     grid-area: 2 / 1 / 6 / 6;
   }
 }
+
+@media screen and (max-width:900px){
+  .grid-about-image {
+    grid-area: 2 / 0 / 6 / 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    img {
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+    }
+    transform: translate(0, -50%);
+    top: 50%;
+    right: 0;
+    position: absolute;
+    z-index: 0;
+    opacity: .3;
+  }
+  .grid-about-intro {
+    grid-area: 2 / 1 / 6 / -1;
+  }
+}
+
+
+
 .grid-about-intro > * {
   margin-top: 1em
 }

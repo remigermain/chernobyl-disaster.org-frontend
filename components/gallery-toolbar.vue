@@ -1,9 +1,9 @@
 <template>
   <div class="gallery-toolbar">
-    <div v-if="toolbarActive" class="bg-black bg-opacity-75 w-full h-full z-10 top-0 left-0 absolute" />
-    <div class="flex flex-col h-inherit p-4 toolbar" :class="{'active z-20': toolbarActive}">
-      <div class="w-full text-center bg-transparent cursor-pointer md:hidden" @click="toogleToolbar">
-        <icon-arrow-down v-if="toolbarActive" />
+    <div v-if="toolbarActive" class="bg-black bg-opacity-75 w-full h-full z-10 top-0 left-0 absolute md:hidden" />
+    <div class="flex flex-col h-inherit md:p-4 -md:p-1 toolbar" :class="{'active -md:z-20': toolbarActive}">
+      <div class="text-center bg-transparent cursor-pointer md:hidden arrow-toolbar" @click="toogleToolbar">
+        <icon-arrow-down v-if="toolbarActive" class="pt-2" />
         <icon-arrow-up v-else />
       </div>
       <div class="flex bg-gray-700 rounded text-white flex-wrap">
@@ -34,7 +34,7 @@
           <span>
             {{ $t('global.sortby') }}
           </span>
-          <select class="w-full h-16">
+          <select class="w-full h-10">
             <template v-for="order in orderChoices">
               <option v-if="order != orderCurrent" :key="order.value" @click="setOrder(order)">
                 <span class="link text-sm cursor-pointer">
@@ -149,7 +149,7 @@ export default {
     grid-area: 3 / 1 / 3 / -1;
   }
   .toolbar {
-    background-color: rgba(235, 235, 235, 1);
+    //background-color: rgba(235, 235, 235, 1);
     width: 100%;
     &:not(.active) > .toolbar-item {
       display: none;
@@ -166,6 +166,13 @@ export default {
       & button {
         margin: 5%;
         width: 90%;
+      }
+      .arrow-toolbar {
+        background: linear-gradient(rgba(255, 255, 255, 0), rgb(209, 209, 209) 100%);
+        clip-path: ellipse(50% 90% at 50% 0%);
+        transform: translate(-50%, 0%);
+        position: relative;
+        height: 40px;
       }
     }
   }
@@ -224,6 +231,17 @@ export default {
     background-color: rgb(233, 233, 233);
     color: rgba(74, 85, 104, 1);
   }
+}
+
+.arrow-toolbar {
+  background: linear-gradient(rgb(209, 209, 209), rgba(255, 255, 255, 0) 100%);
+  transform: translate(-50%, -50%);
+  clip-path: ellipse(47% 91% at 51% 91%);
+  width: 100px;
+  height: 30px;
+  z-index: 0;
+  position: absolute;
+  left: 50%;
 }
 
 </style>

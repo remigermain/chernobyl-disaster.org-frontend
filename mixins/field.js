@@ -34,7 +34,7 @@ export default {
     inline: {
       type: Boolean,
       default: true,
-    }
+    },
   },
 
   computed: {
@@ -45,7 +45,7 @@ export default {
       return this.field.label.toLowerCase()
     },
     component () {
-      return (this.iniline ? "field-inline" : "field-base")
+      return (this.inline ? "field-inline" : "field-base")
     }
   },
 
@@ -58,7 +58,9 @@ export default {
 
   data () {
     return {
-      valueModel: this.value || ""
+      valueModel: this.value || "",
+      fieldCopy: {...this.field}
+
     }
   }
 

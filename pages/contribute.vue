@@ -22,8 +22,8 @@
       -->
       <ul class="ml-2">
         <li v-for="el in menus" :key="el.name" class="px-2 py-3">
-          <icon-arrow-bar-left v-show="exactLink(el.to)" />
           <extra-nuxt-link :to="el.to" class="contribut-link italic capitalize rounded-lg">
+            <icon-arrow-bar-left />
             {{ el.name }}
           </extra-nuxt-link>
         </li>
@@ -97,18 +97,24 @@ export default {
 
 .contribut-link {
   transition: transform .4s;
-  &.nuxt-link-exact-active {
+  svg {
+    display: none;
+  }
+  &.nuxt-link-active {
+    svg {
+      display:  inline-block;
+    }
     transform: translateX(15%);
     color: rgba(66, 18, 155, 0.925)
   }
 }
 
 .grid-contribute-menu {
-  grid-area: 2/ 1 / 2 / 2;
+  grid-area: 2/ 1 / 2 / 3;
 }
 
 .grid-contribute-content {
-  grid-area: 2/ 2 / 2 / 11;
+  grid-area: 2/ 3 / 2 / 11;
 }
 
 </style>

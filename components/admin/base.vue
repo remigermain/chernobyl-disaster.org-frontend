@@ -9,6 +9,7 @@
       </slot>
       <slot name="input" />
     </div>
+    <admin-help v-if="label && active" :field="field" />
     <admin-error :errors="errors" />
   </div>
 </template>
@@ -21,9 +22,25 @@ export default {
       type: Boolean,
       default: true
     },
+    field: {
+      type: Object,
+      required: true
+    },
     errors: {
       type: Array,
       default: () => []
+    }
+  },
+
+  data () {
+    return {
+      active: false
+    }
+  },
+
+  methods: {
+    toogleHelp () {
+      this.active = !this.active
     }
   }
 

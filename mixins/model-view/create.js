@@ -12,6 +12,8 @@ export default {
       const form = new FormData(event.srcElement)
       this.assignFormData(form)
 
+      console.log(form.get("date"))
+
       this.loading = true
       this.errors = []
 

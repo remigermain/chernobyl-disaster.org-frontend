@@ -35,7 +35,14 @@ module.exports = {
         "max-content": "max-content"
       },
       height: {
-        "inherit": "inherit"
+        "inherit": "inherit",
+        "1/4": "25%",
+        "2/4": "50%",
+        "3/4": "75%",
+        "1/5": "20%",
+        "2/5": "40%",
+        "3/5": "60%",
+        "4/5": "80%",
       },
       screens: {
         "xl": "1280px",

@@ -16,6 +16,7 @@
       <admin-multi-select :field="fields.tags" :errors="errors.tags" />
       <admin-select :field="fields.event" :errors="errors.event" />
       <admin-image :field="fields.picture" :errors="errors.picture" />
+      <admin-date :field="fields.date" :errors="errors.date" />
       <admin-select :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
