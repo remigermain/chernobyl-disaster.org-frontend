@@ -53,7 +53,9 @@
         </a>
       </h1>
       <p class="text-gray-800">
-        <extra-img src="profil/profil.jpg" :exclude="['desktop']" class-native="rounded-full -sm:w-1/4 w-1/6 float-left p-2 img-profil" />
+        <picture>
+          <img loading="lazy" src="~/assets/img/profil/profil.jpg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 img-profil">
+        </picture>
         {{ $t('pages.about.creator-description') }}
       </p>
       <h4 class="text-xl text-md capitalize">
@@ -68,7 +70,9 @@
       </a>
     </div>
     <div class="overflow-hidden m-10 flex justify-center items-center grid-home-image">
-      <extra-img src="background-about.jpeg" :default="true" class-native="object-cover" />
+      <picture>
+        <img loading="lazy" src="~/assets/img/background-about.jpeg" class="object-cover">
+      </picture>
     </div>
   </div>
 </template>

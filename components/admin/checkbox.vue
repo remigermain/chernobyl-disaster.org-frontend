@@ -1,5 +1,5 @@
 <template>
-  <field-base v-bind="$attrs">
+  <component :is="component" :errors="errors" :label="label">
     <template v-slot:label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}
@@ -15,7 +15,7 @@
              @input="$emit('input', valueModel)"
       >
     </template>
-  </field-base>
+  </component>
 </template>
 
 <script>

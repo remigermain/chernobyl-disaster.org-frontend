@@ -1,5 +1,5 @@
 <template>
-  <field-base v-bind="$attrs">
+  <component :is="component" :errors="errors" :label="label">
     <template v-slot:label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}
@@ -7,9 +7,10 @@
     </template>
     <template v-slot:input>
       <select v-model="valueModel"
-              :name="name"
+              :name="field.label.toLowerCase()"
+              multiple="true"
+              class="field-select-multiple"
               :required="field.required"
-              class="select"
               @input="$emit('input', valueModel)"
               @change="$emit('input', valueModel)"
       >
@@ -19,13 +20,10 @@
         >
           {{ choice.display_name }}
         </option>
-        <option value="" selected="">
-          ---------
-        </option>
       </select>
-      <field-action v-if="action" :field="field" />
+      <admin-action v-if="action" :field="field" />
     </template>
-  </field-base>
+  </component>
 </template>
 
 <script>
@@ -34,13 +32,20 @@ export default {
 
   mixins: [FieldMixins],
 
+  data () {
+    return {
+      valueModel: this.value || []
+    }
+  }
+
 }
 </script>
 
 <style scoped>
-.select {
+.field-select-multiple {
+  height: auto;
+  min-height: 200px;
   min-width: 180px;
-  width: auto;
   width: auto;
   border: 1px solid #ccc;
   border-radius: 4px;

@@ -3,9 +3,15 @@
 */
 import _ from "lodash"
 
+import fieldInline  from "@/components/admin/inline"
+import fieldBase  from "@/components/admin/base"
+
 export default {
 
-  inheritAttrs: false,
+  components: {
+    fieldInline,
+    fieldBase,
+  },
 
   props: {
     field: {
@@ -25,6 +31,10 @@ export default {
       type: String,
       default: null
     },
+    inline: {
+      type: Boolean,
+      default: true,
+    }
   },
 
   computed: {
@@ -33,6 +43,9 @@ export default {
         return `${this.prefix}[${this.field.label.toLowerCase()}]`
       }
       return this.field.label.toLowerCase()
+    },
+    component () {
+      return (this.iniline ? "field-inline" : "field-base")
     }
   },
 

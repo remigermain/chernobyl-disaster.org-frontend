@@ -12,17 +12,17 @@
       </bread-crumb>
     </template>
     <template v-slot:form>
-      <field-text :field="fields.title" :errors="errors.title" />
-      <field-multi-select :field="fields.tags" :errors="errors.tags" />
-      <field-select :field="fields.event" :errors="errors.event" />
-      <field-image :field="fields.picture" :errors="errors.picture" />
-      <field-select :field="fields.photographer" :errors="errors.photographer" />
+      <admin-text :field="fields.title" :errors="errors.title" />
+      <admin-multi-select :field="fields.tags" :errors="errors.tags" />
+      <admin-select :field="fields.event" :errors="errors.event" />
+      <admin-image :field="fields.picture" :errors="errors.picture" />
+      <admin-select :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
       <th> title </th>
       <th>
         language
-        <field-error :errors="errors.langs" />
+        <admin-error :errors="errors.langs" />
       </th>
       <th>
         {{ $t('global.actions') }}
@@ -31,7 +31,7 @@
     <template v-slot:table-body>
       <tr v-for="(val, idx) in langs" :key="val">
         <td>
-          <field-text class="border-none"
+          <admin-text class="border-none"
                       :prefix="prefixLang(idx)"
                       :label="false"
                       :field="fields.langs.title"
@@ -39,7 +39,7 @@
           />
         </td>
         <td>
-          <field-select class="border-none"
+          <admin-select class="border-none"
                         :prefix="prefixLang(idx)"
                         :label="false"
                         :field="fields.langs.language"
@@ -47,7 +47,7 @@
           />
         </td>
         <td>
-          <field-action :add="false"
+          <admin-action :add="false"
                         :edit="false"
                         :deleted="true"
                         :field="fields.langs.language"

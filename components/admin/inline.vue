@@ -9,7 +9,7 @@
       </slot>
       <slot name="input" />
     </div>
-    <field-error :errors="errors" />
+    <admin-error :errors="errors" />
   </div>
 </template>
 

@@ -14,18 +14,18 @@
     </template>
     <template v-slot:form>
       <!-- all field -->
-      <field-text :value="object.title" :field="fields.title" :errors="errors.title" />
-      <field-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
-      <field-select :value="object.event" :field="fields.event" :errors="errors.event" />
-      <field-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
-      <field-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
+      <admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
+      <admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
+      <admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
+      <admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
+      <admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
       <!-- end field -->
     </template>
     <template v-slot:table-header>
       <th> title </th>
       <th>
         language
-        <field-error :errors="errors.langs" />
+        <admin-error :errors="errors.langs" />
       </th>
       <th>
         {{ $t('global.actions') }}
@@ -36,7 +36,7 @@
       <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center rounded-b-lg">
         <td class="text-center">
           <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
-          <field-text :value="lang.title"
+          <admin-text :value="lang.title"
                       class="border-none"
                       :prefix="prefixLang(idx)"
                       :label="false"
@@ -45,7 +45,7 @@
           />
         </td>
         <td>
-          <field-select :value="lang.language"
+          <admin-select :value="lang.language"
                         class="border-none"
                         :prefix="prefixLang(idx)"
                         :label="false"
@@ -59,7 +59,7 @@
       <!-- extra langs -->
       <tr v-for="(val, idx) in langs" :key="val">
         <td>
-          <field-text class="border-none"
+          <admin-text class="border-none"
                       :prefix="prefixLang(idx + object.langs.length)"
                       :label="false"
                       :field="fields.langs.title"
@@ -67,7 +67,7 @@
           />
         </td>
         <td>
-          <field-select class="border-none"
+          <admin-select class="border-none"
                         :prefix="prefixLang(idx + object.langs.length)"
                         :label="false"
                         :field="fields.langs.language"
@@ -75,7 +75,7 @@
           />
         </td>
         <td>
-          <field-action :add="false"
+          <admin-action :add="false"
                         :edit="false"
                         :deleted="true"
                         :field="fields.langs.language"

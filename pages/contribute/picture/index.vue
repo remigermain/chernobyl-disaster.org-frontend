@@ -9,7 +9,7 @@
       {{ model }}
     </template>
     <template v-slot:table>
-      <field-table :fields="tableField"
+      <admin-table :fields="tableField"
                    :length="objectlength"
                    :model="model"
                    :object-list="objectList"
@@ -19,7 +19,7 @@
       <h2 class="text-xl mt-5">
         {{ $t('global.need-traduction') }}
       </h2>
-      <field-table :fields="tableFieldLang"
+      <admin-table :fields="tableFieldLang"
                    :length="objectlengthLang"
                    :model="model"
                    :object-list="objectListLang"

@@ -15,7 +15,9 @@
       </div>
     </div>
     <div class="grid-home-image overflow-hidden m-10 flex justify-center items-center">
-      <extra-img src="background-home.jpeg" :default="true" class-native="object-cover img-home" />
+      <picture>
+        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="background-about" class="object-cover img-home">
+      </picture>
     </div>
   </div>
 </template>

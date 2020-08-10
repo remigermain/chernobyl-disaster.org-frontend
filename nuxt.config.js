@@ -6,6 +6,7 @@ export default {
 
   mode: "universal",
   ssr: true,
+  telemetry: false,
 
   target: "server",
 
@@ -126,8 +127,12 @@ export default {
       prefix: "model"
     },
     {
-      path: "~/components/field/",
-      prefix: "field"
+      path: "~/components/admin/",
+      prefix: "admin"
+    },
+    {
+      path: "~/components/gallery/",
+      prefix: "gallery"
     }
   ],
 

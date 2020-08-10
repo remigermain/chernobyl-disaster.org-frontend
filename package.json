@@ -20,7 +20,8 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "lodash": "^4.17.19",
     "nuxt": "^2.14.0",
-    "nuxt-i18n": "^6.13.1"
+    "nuxt-i18n": "^6.13.1",
+    "vue-infinite-loading": "^2.4.5"
   },
   "devDependencies": {
     "@aceforth/nuxt-optimized-images": "^1.1.0",

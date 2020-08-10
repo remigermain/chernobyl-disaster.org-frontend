@@ -53,15 +53,9 @@ module.exports = {
         "400": ".4s"
       },
       colors: {
-        "cher-primary": "rgba(var(--primary), var(--bg-opacity))",
-        "cher-primary-rev": "rgba(var(--primary-rev), var(--bg-opacity))",
-        "cher-primary-nu": "rgba(var(--primary-nu), var(--bg-opacity))",
-        "cher-primary-nu-rev": "rgba(var(--primary-nu-rev), var(--bg-opacity))",
+        inherit: "inherit",
       }
     },
-    borderColor: theme => ({
-      ...theme("colors"),
-    })
   },
   variants: {
     float: ["responsive", "direction"],

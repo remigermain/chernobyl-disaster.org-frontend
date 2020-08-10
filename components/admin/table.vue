@@ -62,7 +62,7 @@
       <span class="text-md italic float-left opacity-75">
         <slot name="table-footer" />
       </span>
-      <field-pagination :length="length" @change="$emit('pagination', $event)" />
+      <admin-pagination :length="length" @change="$emit('pagination', $event)" />
       <span class="text-md italic float-right opacity-75">
         {{ $t('global.total') }} : {{ length }}
       </span>

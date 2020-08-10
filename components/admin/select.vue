@@ -1,16 +1,16 @@
 <template>
-  <field-base v-bind="$attrs">
+  <component :is="component" v-bind="$attrs">
     <template v-slot:label>
       <span :class="{'text-gray-500': !field.required}">
+        {{ component }}
         {{ field.label }}
       </span>
     </template>
     <template v-slot:input>
       <select v-model="valueModel"
-              :name="field.label.toLowerCase()"
-              multiple="true"
-              class="field-select-multiple"
+              :name="name"
               :required="field.required"
+              class="select"
               @input="$emit('input', valueModel)"
               @change="$emit('input', valueModel)"
       >
@@ -20,10 +20,13 @@
         >
           {{ choice.display_name }}
         </option>
+        <option value="" selected="">
+          ---------
+        </option>
       </select>
-      <field-action v-if="action" :field="field" />
+      <admin-action v-if="action" :field="field" />
     </template>
-  </field-base>
+  </component>
 </template>
 
 <script>
@@ -32,20 +35,13 @@ export default {
 
   mixins: [FieldMixins],
 
-  data () {
-    return {
-      valueModel: this.value || []
-    }
-  }
-
 }
 </script>
 
 <style scoped>
-.field-select-multiple {
-  height: auto;
-  min-height: 200px;
+.select {
   min-width: 180px;
+  width: auto;
   width: auto;
   border: 1px solid #ccc;
   border-radius: 4px;
