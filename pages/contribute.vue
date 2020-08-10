@@ -108,7 +108,7 @@ export default {
 }
 
 .grid-contribute-content {
-  grid-area: 2/ 2 / 2 / 6;
+  grid-area: 2/ 2 / 2 / 11;
 }
 
 </style>

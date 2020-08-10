@@ -13,7 +13,7 @@ export default {
   },
 
   watch: {
-    options () {
+    "$route.query" () {
       this.object = []
       this.page = 1
       this.uniqueId++

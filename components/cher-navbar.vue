@@ -93,7 +93,7 @@ export default {
 
 .grid-navbar {
   --navbar--annimation-duration: .4s;
-  grid-area: 1 / 3 / 2 / 6;
+  grid-area: 1 / 6 / 2 / 11;
 }
 
 .background-navbar {
@@ -125,7 +125,7 @@ export default {
     display: inline-block;
   }
   .grid-navbar {
-    grid-area: 1 / 5 / 2 / 6;
+    grid-area: 1 / 9 / 2 / 11;
     justify-self: center;
     padding-right: .5em;
     .burger {

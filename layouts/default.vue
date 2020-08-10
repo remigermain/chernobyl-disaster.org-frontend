@@ -26,8 +26,8 @@
 
 .grid-index {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: auto 1fr;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: auto 1fr auto;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }

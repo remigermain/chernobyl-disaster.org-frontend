@@ -69,7 +69,7 @@
         <icon-mood-smile />
       </a>
     </div>
-    <div class="overflow-hidden m-10 flex justify-center items-center grid-home-image">
+    <div class="overflow-hidden m-10 flex justify-center items-center grid-about-image ">
       <picture>
         <img loading="lazy" src="~/assets/img/background-about.jpeg" class="object-cover">
       </picture>
@@ -104,12 +104,12 @@ export default {
 
 <style lang="scss">
 
-.grid-home-image {
-  grid-area: 2 / 4 / 6 / 6;
+.grid-about-image  {
+  grid-area: 2 / 6 / 6 / 11;
 }
 
 .grid-about-intro {
-  grid-area: 2 / 1 / 6 / 4;
+  grid-area: 2 / 1 / 6 / 5;
 }
 
 @media screen and (max-width:900px){

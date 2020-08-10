@@ -1,47 +1,54 @@
 <template>
-  <div class="flex flex-col h-inherit w-max-content p-4 toolbar">
-    <div class="flex bg-gray-700 rounded text-white">
-      <extra-nuxt-link :to="{name: 'gallery-picture'}" class="w-1/4 text-center py-2 rounded-l-sm cursor-pointer toolbar-link">
-        <icon-photo stroke-width="1.5" />
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery-video'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
-        <icon-movie stroke-width="1.5" />
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery-document'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
-        <icon-file stroke-width="1.5" />
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery-article'}" class="w-1/4 text-center py-2 rounded-r-sm cursor-pointer toolbar-link">
-        <icon-article stroke-width="1.5" />
-      </extra-nuxt-link>
-    </div>
-    <label>
-      {{ $t('global.search') }}
-      <div class="flex bg-gray-400 bg-opacity-50 px-2 py-3 focus:bg-gray-300 rounded-sm shadow appearance-none leading-none">
-        <icon-search class="w-20px" />
-        <input v-model="searchValue" type="text" class="bg-transparent italic text-gray-800 ml-1 input-search">
+  <div class="gallery-toolbar">
+    <div v-if="toolbarActive" class="bg-black bg-opacity-75 w-full h-full z-10 top-0 left-0 absolute" />
+    <div class="flex flex-col h-inherit p-4 toolbar" :class="{'active z-20': toolbarActive}">
+      <div class="w-full text-center bg-transparent cursor-pointer md:hidden" @click="toogleToolbar">
+        <icon-arrow-down v-if="toolbarActive" />
+        <icon-arrow-up v-else />
       </div>
-    </label>
-    <div>
-      <span>
-        {{ $t('global.sortby') }}
-      </span>
-      <div class="relative sort-set rounded-lg w-max-content">
-        <span class="p-2 opacity-50 italic text-sm">{{ orderCurrent.label }}</span>
-        <icon-selector class="opacity-50" />
-        <ul class="sort-list absolute bg-gray-300 rounded-lg p-2 w-full text-center">
-          <template v-for="order in orderChoices">
-            <li v-if="order != orderCurrent" :key="order.value" @click="setOrder(order)">
-              <span class="link text-sm cursor-pointer">
-                {{ order.label }}
-              </span>
-            </li>
-          </template>
-        </ul>
+      <div class="flex bg-gray-700 rounded text-white flex-wrap">
+        <extra-nuxt-link :to="{name: 'gallery-picture'}" class="w-1/4 text-center py-2 rounded-l-sm cursor-pointer toolbar-link">
+          <icon-photo stroke-width="1.5" />
+        </extra-nuxt-link>
+        <extra-nuxt-link :to="{name: 'gallery-video'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
+          <icon-movie stroke-width="1.5" />
+        </extra-nuxt-link>
+        <extra-nuxt-link :to="{name: 'gallery-document'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
+          <icon-file stroke-width="1.5" />
+        </extra-nuxt-link>
+        <extra-nuxt-link :to="{name: 'gallery-article'}" class="w-1/4 text-center py-2 rounded-r-sm cursor-pointer toolbar-link">
+          <icon-article stroke-width="1.5" />
+        </extra-nuxt-link>
+      </div>
+      <div class="wrapper toolbar-item">
+        <div>
+          <label>
+            {{ $t('global.search') }}
+            <div class="flex bg-gray-400 bg-opacity-50 px-2 py-3 focus:bg-gray-300 rounded-sm shadow appearance-none leading-none">
+              <icon-search class="w-20px" />
+              <input v-model="searchValue" type="text" class="bg-transparent italic text-gray-800 ml-1 input-search">
+            </div>
+          </label>
+        </div>
+        <div>
+          <span>
+            {{ $t('global.sortby') }}
+          </span>
+          <select class="w-full h-16">
+            <template v-for="order in orderChoices">
+              <option v-if="order != orderCurrent" :key="order.value" @click="setOrder(order)">
+                <span class="link text-sm cursor-pointer">
+                  {{ order.label }}
+                </span>
+              </option>
+            </template>
+          </select>
+        </div>
+        <button class="p-2 rounded bg-blue-700 text-gray-300 hover:bg-blue-600" @click="submit">
+          {{ $t('global.refresh') }}
+        </button>
       </div>
     </div>
-    <button class="p-2 rounded bg-blue-700 text-gray-300 hover:bg-blue-600" @click="submit">
-      {{ $t('global.actualiser') }}
-    </button>
   </div>
 </template>
 
@@ -52,7 +59,8 @@ import iconMovie from "@/assets/svg/movie.svg"
 import iconPhoto from "@/assets/svg/photo.svg"
 import iconFile from "@/assets/svg/file-text.svg"
 import iconArticle from "@/assets/svg/news.svg"
-import iconSelector from "@/assets/svg/selector.svg"
+import iconArrowUp from "@/assets/svg/arrow-up.svg"
+import iconArrowDown from "@/assets/svg/arrow-down.svg"
 
 
 export default {
@@ -63,7 +71,8 @@ export default {
     iconPhoto,
     iconFile,
     iconArticle,
-    iconSelector
+    iconArrowUp,
+    iconArrowDown
   },
 
   data () {
@@ -71,6 +80,7 @@ export default {
       currentTab: null,
       orderCurrent: {},
       searchValue: "",
+      toolbarActive: false,
       orderChoices: [
         {label: `${this.$t("global.create")} - ${this.$t("global.ascending")}`, value: "id"},
         {label: `${this.$t("global.create")} - ${this.$t("global.descending")}`, value: "-id"},
@@ -97,6 +107,9 @@ export default {
   },
 
   methods: {
+    toogleToolbar () {
+      this.toolbarActive = !this.toolbarActive
+    },
     setCurrent (value) {
       this.currentTab = value
       this.$emit("change", value)
@@ -105,6 +118,7 @@ export default {
       this.orderCurrent = order
     },
     submit () {
+      this.toogleToolbar()
       const query = {
         ...this.$route.query,
         search: this.searchValue,
@@ -118,6 +132,46 @@ export default {
 </script>
 
 <style lang="scss">
+
+
+.gallery-toolbar {
+  grid-area: 2/ 1 / 2 / 3;
+  display: flex;
+  justify-content: center;
+}
+
+.toolbar-item > * {
+  margin-top: 2em
+}
+
+@screen -md {
+  .gallery-toolbar {
+    grid-area: 3 / 1 / 3 / -1;
+  }
+  .toolbar {
+    background-color: rgba(235, 235, 235, 1);
+    width: 100%;
+    &:not(.active) > .toolbar-item {
+      display: none;
+    }
+    &.active {
+      position: absolute;
+      background-color: white;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      margin-top: 0;
+      display: block;
+      & button {
+        margin: 5%;
+        width: 90%;
+      }
+    }
+  }
+}
+
+
 
 .sort-set {
   svg {
@@ -166,7 +220,7 @@ export default {
 
 .toolbar-link {
   transition: transform .2s;
-  &.nuxt-link-active {
+  &.nuxt-link-active, &:hover {
     background-color: rgb(233, 233, 233);
     color: rgba(74, 85, 104, 1);
   }

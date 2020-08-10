@@ -34,12 +34,12 @@ export default {
 <style lang="scss">
 
 .grid-home-image {
-  grid-area: 2 / 4 / 6 / 6;
+  grid-area: 2 / 6 / 6 / 11;
   transition: opacity .5s;
 }
 
 .grid-home-intro {
-  grid-area: 2 / 1 / 6 / 4;
+  grid-area: 2 / 1 / 6 / 5;
 }
 
 @media screen and (max-width:900px){
