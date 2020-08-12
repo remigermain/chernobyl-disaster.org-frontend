@@ -1,7 +1,7 @@
 <template>
   <div class="grid-gallery">
     <div class="grid-gallery-toolbar">
-      <lazy-gallery-toolbar />
+      <gallery-toolbar />
     </div>
     <div class="grid-gallery-items overflow-x-hidden">
       <nuxt-child />

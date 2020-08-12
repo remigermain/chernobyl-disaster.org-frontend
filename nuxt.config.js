@@ -146,6 +146,7 @@ export default {
   },
 
   css: [
+    "destyle.css/destyle.css",
     "~/assets/css/main.scss",
     "~/assets/css/fonts.scss",
     "~/assets/css/reset.scss",

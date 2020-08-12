@@ -1,9 +1,73 @@
 <template>
-  <div />
+  <div class="grid-document">
+    <article v-for="el in object" :key="el.id" class="document-item shadow flex flex-col">
+      <span class="w-full h-full text-center pt-4">
+        {{ i18nAttr(el, 'title') }}
+      </span>
+      <a :href="el.doc" class="w-full h-12 text-center bg-gray-300" target="_blank" rel="noopener">
+        <span class="document-link block">
+          {{ $t('global.link') }}
+          <icon-file-download />
+        </span>
+      </a>
+    </article>
+    <extra-infinite-loading class="document-infinite" :identifier="uniqueId" @infinite="refresh" />
+  </div>
 </template>
 
 <script>
+import galleryMixin from "@/mixins/page/gallery"
+import iconFileDownload from "@/assets/svg/file-download.svg"
+import _ from "lodash"
+
 export default {
 
+  components: {
+    iconFileDownload
+  },
+
+  mixins: [
+    galleryMixin
+  ],
+
+  asyncData({app, route}) {
+    const query = (_.isEmpty(route.query) ? "" : `&search=${route.query.search}&order=${route.query.order}`)
+    return app.$axios.get(`document/?page=1${query}`)
+      .then(response => {
+        if (response.status != 200) {
+          throw Error("") // TODO
+        }
+        return {
+          object: response.data.results,
+          completed: _.isNil(response.data.next)
+        }
+      })
+  },
+
+  data () {
+    return {
+      model: "document"
+    }
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+
+.grid-document {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+}
+
+.document-infinite {
+  grid-column: span 4;
+  grid-row: span 2;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

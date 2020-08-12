@@ -7,19 +7,19 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="navbar-items" :class="{'active': active }">
-      <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link" @click="checkbox = false">
+      <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link" @click="active = false">
         {{ $t('global.home') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link" @click="checkbox = false">
+      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link" @click="active = false">
         {{ $t('global.timeline') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="checkbox = false">
+      <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="active = false">
         {{ $t('global.gallery') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link -md:hidden" @click="checkbox = false">
+      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link -md:hidden" @click="active = false">
         {{ $t('global.contribute') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="checkbox = false">
+      <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="active = false">
         {{ $t('global.about') }}
       </lazy-extra-nuxt-link>
       <select>
@@ -44,11 +44,6 @@ export default {
   methods: {
     toogleNavbar () {
       this.active = !this.active
-      if (this.active) {
-        this.$emit("show")
-      } else {
-        this.$emit("hide")
-      }
     }
   }
 

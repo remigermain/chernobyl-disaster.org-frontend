@@ -49,7 +49,6 @@ export default {
     requestError (error) {
       if (_.has(error, "response") && _.has(error.response, "data")) {
         // assign response to error
-        console.log(error.response.data)
         this.errors = error.response.data
         // if non_field_errors as set, create toast
         if (_.has(error.response.data, "non_field_errors")) {

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="localePath(to)" v-bind="$attrs">
+  <nuxt-link :to="localePath(to)" v-bind="$attrs" @click.native="$emit('click')">
     <slot />
   </nuxt-link>
 </template>

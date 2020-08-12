@@ -35,7 +35,9 @@
       </div>
     </div>
     <div class="grid-contribute-content overflow-y-scroll p-4">
-      <nuxt-child :key="$route.fullPath" />
+      <nuxt-child :key="$route.fullPath">
+        iciciciici
+      </nuxt-child>
     </div>
   </div>
 </template>

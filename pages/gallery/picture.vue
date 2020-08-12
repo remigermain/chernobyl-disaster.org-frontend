@@ -1,8 +1,9 @@
 <template>
   <div class="grid-picture">
     <div v-for="el in object" :key="el.id" class="picture-item">
-      <img :alt="el.title" :src="el.picture" loading="lazy">
+      <img :alt="el.title" :src="el.picture" loading="lazy" @click="current = el">
     </div>
+    <lazy-gallery-detail-picture v-if="current" :object="current" @close="current = null" />
     <lazy-extra-infinite-loading class="picture-infinite" :identifier="uniqueId" @infinite="refresh" />
   </div>
 </template>
@@ -33,7 +34,8 @@ export default {
 
   data () {
     return {
-      model: "picture"
+      model: "picture",
+      current: null
     }
   },
 }
@@ -51,7 +53,7 @@ export default {
 }
 
 .picture-item {
-  height: auto;
+  height: 100%;
   width: 100%;
   cursor: pointer;
   overflow: hidden;
@@ -99,5 +101,20 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 500px){
+  .picture-item:nth-of-type(4n + 1),
+  .picture-item:nth-of-type(4n + 4) {
+    grid-column: span 6;
+    grid-row: span 5;
+  }
+  .picture-item:nth-of-type(4n + 2),
+  .picture-item:nth-of-type(4n + 3) {
+    grid-column: span 4;
+    grid-row: span 5;
+  }
+
+}
+
 
 </style>

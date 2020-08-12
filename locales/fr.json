@@ -1,7 +1,14 @@
 {
+    "account": {
+        "change-password": "change-password",
+        "submit": "submit"
+    },
     "authentification": {
         "comfirm-password": "comfirm-password",
         "email": "email",
+        "new-comfirm-password": "new-comfirm-password",
+        "new-password": "new-password",
+        "old-password": "old-password",
         "password": "password",
         "register": "register",
         "reset-password": "reset-password",
@@ -40,6 +47,7 @@
         "gallery": "gallery",
         "home": "home",
         "language": "language",
+        "link": "link",
         "loading": "loading",
         "login": "login",
         "menu": "menu",
@@ -50,7 +58,6 @@
         "or": "or",
         "picture-take-by": "picture-take-by",
         "presentation": "presentation",
-        "refresh": "refresh",
         "register-account": "register-account",
         "report": "report",
         "report-ok": "report-ok",
@@ -59,10 +66,11 @@
         "save-add-other": "save-add-other",
         "save-continue-editing": "save-continue-editing",
         "search": "search",
+        "searched": "searched",
         "secondes": "secondes",
         "send": "send",
         "settings": "settings",
-        "sortby": "sortby",
+        "sort-by": "sort-by",
         "timeline": "timeline",
         "title": "title",
         "total": "total",
