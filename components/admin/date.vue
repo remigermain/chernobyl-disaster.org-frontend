@@ -7,10 +7,10 @@
     </template>
     <template v-slot:input>
       <div class="flex flex-col">
-        <vue-ctk-date-time-picker v-model="valueModel" :locale="$i18n.locale" format="YYYY-MM-DDThh:mm">
+        <date-time v-model="valueModel" :locale="$i18n.locale" format="YYYY-MM-DDThh:mm">
           <input type="text" class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700">
-        </vue-ctk-date-time-picker>
-        <input v-model="allValue" type="text" name="date" class="hidden">
+        </date-time>
+        <input v-model="allValue" type="text" :name="field.name" class="hidden">
         <label class="flex justify-between items-center mt-2">
           <span class="">
             {{ $t('global.secondes') }}
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/field"
+import FieldMixins from "@/mixins/admin/field"
 export default {
 
   mixins: [FieldMixins],

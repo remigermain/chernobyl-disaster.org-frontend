@@ -1,41 +1,46 @@
 <template>
   <div class="shadow-md p-4">
-    <div class="p-2 rounded-md bg-gray-200 shadow mb-2 w-max-content">
-      <input v-model="searchValue" type="text" class="bg-gray-200" :placeholder="$t('global.search')">
-      <span class="p-1 cursor-pointer">
-        <icon-search class="table-search-icon hover:text-purple-700"
-                     @click="$emit('search', searchValue)"
-        />
-      </span>
-      <slot name="table-header" />
+    <div class="flex justify-between items-center">
+      <div class="w-2/4 capitalize text-2xl">
+        <slot name="table-title" />
+      </div>
+      <div class="p-2 mb-2 w-2/4">
+        <field-text :field="{label: $t('global.search') }">
+          <template v-slot:icon>
+            <icon-search class="cursor-pointer hover:text-purple-700" @click="$emit('search', searchValue)" />
+          </template>
+        </field-text>
+      </div>
     </div>
-    <table class="w-full table-list">
+    <table class="w-full table">
       <thead>
-        <tr class="">
-          <th v-for="field in fields" :key="field.field" class="border-b-2 border-gray-700  text-gray-800 text-xl capitalize">
+        <tr class="shadow-xs">
+          <th v-for="field in fields" :key="field.field"
+              class="text-gray-600 hover:text-gray-800 table-head cursor-pointer p-2"
+              :class="{
+                'text-gray-800': currentField.field === field.field
+              }"
+              @click="sort(field, !reverse)"
+          >
             {{ field.label }}
-            <template v-if="currentField.field == field.field">
-              <icon-sort-descending v-if="reverse" class="cursor-pointer" @click="sort(field, false)" />
-              <icon-sort-ascending v-else class="cursor-pointer" @click="sort(field, true)" />
-            </template>
-            <icon-arrow-sort v-else class="cursor-pointer" @click="sort(field, false)" />
+            <icon-arrow-up class="transform w-5"
+                           :class="{
+                             '-rotate-180': reverse,
+                             'invisible': currentField.field != field.field
+                           }"
+            />
           </th>
-          <th class="border-b-2 border-gray-700  text-gray-800 text-xl capitalize">
+          <th class="text-gray-700 table-head align-middle text-center">
             {{ $t('global.action') }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light">
+        <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light shadow-xs">
           <template v-for="field in fields">
             <td :key="field.field" class="p-2">
               <template v-if="obj[field.field]">
-                <template v-if="field.type === Array">
-                  {{ obj[field.field].join() }}
-                </template>
-                <template v-else>
-                  {{ obj[field.field] }}
-                </template>
+                {{ ( field.type === Array ? obj[field.field].join() : obj[field.field] ) }}
               </template>
               <span v-else class="text-xs text-gray-600 italic text-opacity-75">
                 -- {{ $t('global.empty') }} --
@@ -71,9 +76,7 @@
 </template>
 
 <script>
-import iconSortDescending from "@/assets/svg/sort-descending.svg"
-import iconSortAscending from "@/assets/svg/sort-ascending.svg"
-import iconArrowSort from "@/assets/svg/arrows-sort.svg"
+import iconArrowUp from "@/assets/svg/arrow-up.svg"
 import iconEye from "@/assets/svg/eye.svg"
 import iconEdit from "@/assets/svg/edit.svg"
 import iconSearch from "@/assets/svg/search.svg"
@@ -81,12 +84,10 @@ import iconSearch from "@/assets/svg/search.svg"
 export default {
 
   components: {
-    iconSortDescending,
-    iconSortAscending,
-    iconArrowSort,
     iconEye,
     iconEdit,
-    iconSearch
+    iconSearch,
+    iconArrowUp
   },
 
   props: {
@@ -156,8 +157,18 @@ export default {
   }
 }
 
-.table-list tr:nth-of-type(even) {
+.table tr:nth-of-type(even) {
   background-color:  rgba(116, 116, 116, 0.1);
+}
+
+.table-head {
+  & > svg {
+    transition: transform .2s;
+    display: inline-block;
+  }
+  &:hover > svg {
+    visibility: visible;
+  }
 }
 
 </style>

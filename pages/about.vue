@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <div class="flex flex-col justify-center items-center grid-about-intro z-2">
+  <div class="grid-about">
+    <div class="about-description">
       <h2 class="text-3xl text-md capitalize">
         {{ $t('pages.about.contributing') }}
       </h2>
@@ -31,16 +31,9 @@
       </p>
       <div class="floa-left contributors">
         <template v-for="user in contributors">
-          <template v-if="user.link">
-            <a :key="user.name" :href="user.link" class="text-sm text-purple-800">
-              @{{ user.name }}
-            </a>
-          </template>
-          <template v-else>
-            <span :key="user.name" class="text-sm">
-              {{ user.name }}
-            </span>
-          </template>
+          <span :key="user" class="text-sm">
+            {{ user }}
+          </span>
         </template>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
@@ -54,7 +47,7 @@
       </h1>
       <p class="text-gray-800">
         <picture>
-          <img loading="lazy" src="~/assets/img/profil/profil.jpg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 img-profil">
+          <img loading="lazy" alt="germain remi" src="~/assets/img/profil/profil.jpg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
         </picture>
         {{ $t('pages.about.creator-description') }}
       </p>
@@ -66,12 +59,11 @@
       </p>
       <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden">
         {{ $t('pages.about.buy-me-coffe') }}
-        <icon-mood-smile />
       </a>
     </div>
-    <div class="grid-about-image overflow-hidden m-10 flex justify-center items-center">
+    <div class="about-image">
       <picture>
-        <img loading="lazy" src="~/assets/img/background-about.jpeg" class="object-cover">
+        <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="home-img" class="about-image-item">
       </picture>
     </div>
   </div>
@@ -81,7 +73,6 @@
 import iconBrandGitlab from "@/assets/svg/brand-gitlab.svg"
 import iconHeart from "@/assets/svg/heart.svg"
 import iconMoodSad from "@/assets/svg/mood-sad.svg"
-import iconMoodSmile from "@/assets/svg/mood-smile.svg"
 import iconMail from "@/assets/svg/mail.svg"
 import iconLanguage from "@/assets/svg/language.svg"
 export default {
@@ -89,84 +80,92 @@ export default {
   components: {
     iconBrandGitlab,
     iconHeart,
-    iconMoodSmile,
     iconMoodSad,
     iconMail,
     iconLanguage
   },
 
-  async asyncData() {
-    return {contributors: [] }
-  }
+  asyncData({ app }) {
+    return app.$axios.get("populate/contributors")
+      .then(response => {
+        if (response.status != 200) {
+          throw Error("")
+        }
+        return {contributors: response.data.results }
+      })
+      .catch(() => {
+        return {contributors: [] }
+      })
+  },
 
 }
 </script>
 
-<style lang="scss">
 
-
-.grid-about-image {
-  grid-area: 2 / 6 / 6 / 11;
-  transition: opacity .5s;
+<style lang="scss" scoped>
+.grid-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
 }
 
-.grid-about-intro {
-  grid-area: 2 / 1 / 6 / 5;
-}
-
-@screen -xl {
-  .grid-about-intro {
-    grid-area: 2 / 1 / 6 / 6;
+.about-description {
+  grid-area: 1 / 1 / 1 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem;
+  & > * + * {
+    margin-top: 1rem
   }
 }
 
-@media screen and (max-width:900px){
-  .grid-about-image {
-    grid-area: 2 / 0 / 6 / 0;
-    margin: 0;
+.about-image {
+  grid-area: 1 / 2 / 1 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 4rem;
+  margin-left: 4rem;
+  .about-image-item {
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width:1200px){
+  .about-description  {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width:1000px){
+  .about-image {
     width: 100vw;
     height: 100vh;
-    img {
-      border-bottom-left-radius: 50%;
-      border-top-left-radius: 50%;
-    }
+    margin: 0;
+    justify-content: end;
     transform: translate(0, -50%);
     top: 50%;
     right: 0;
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     opacity: .3;
+    .about-image-item {
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+    }
   }
-  .grid-about-intro {
-    grid-area: 2 / 1 / 6 / -1;
-  }
-}
-
-
-
-.grid-about-intro > * {
-  margin-top: 1em
-}
-
-@screen -md {
-  .grid-about-intro > * {
-    margin-top: 1em
+  .about-description  {
+    grid-area: 1 / 1 / 1 / 3;
   }
 }
 
-.contributors > * + * {
-  padding: .4em;
-}
-
-.contributors > :not(:last-child) {
-  &::after {
-    content: '/';
-    color: black;
-  }
-}
-
-.img-profil {
+.about-profil {
   shape-outside: circle();
 }
-
 </style>

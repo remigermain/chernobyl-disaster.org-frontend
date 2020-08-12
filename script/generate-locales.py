@@ -112,6 +112,7 @@ def read_dir(path):
             fnc = fnc + ret
 
         elif isdir(name):
+            print(f"dir: {name}")
             # si c'est un dossier on rapelle la fonction
             fnc = fnc + read_dir(name)
     fnc.sort()
@@ -121,7 +122,7 @@ def read_dir(path):
 # function qui contruct le dictionaire
 def construct(dct, element):
     global flag
-    if element:
+    if element and not isinstance(dct, str):
         key = element[0]
         del element[0]
         if key not in dct:

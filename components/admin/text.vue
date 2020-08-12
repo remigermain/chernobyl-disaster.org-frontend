@@ -8,7 +8,7 @@
     <template v-slot:input>
       <input v-model="valueModel"
              :type="type"
-             :name="name"
+             :name="field.name"
              class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700"
              :placeholder="field.label"
              :maxlength="field.max_length"
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/field"
+import FieldMixins from "@/mixins/admin/field"
 export default {
 
   mixins: [FieldMixins],

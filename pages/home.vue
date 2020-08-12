@@ -1,67 +1,82 @@
 <template>
-  <div class="wrapper">
-    <div class="extra-auto grid-home-intro w-full z-2">
-      <div class="w-full md:w-3/4 mx-auto flex justify-center items-center flex-col h-full">
-        <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
-          {{ $t('global.description') }}
-        </p>
-        <extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show">
-          {{ $t('global.timeline') }}
-          <icon-arrow-right />
-        </extra-nuxt-link>
-      </div>
+  <div class="grid-index">
+    <div class="index-description">
+      <h1 class="text-4xl uppercase extra-auto font-russia transition-opacity duration-400 z-1 italic text-opacity-50">
+        {{ $t('global.presentation') }}
+      </h1>
+      <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
+        {{ $t('global.description') }}
+      </p>
+      <extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800">
+        {{ $t('global.timeline') }}
+        <icon-arrow-right />
+      </extra-nuxt-link>
     </div>
-    <div class="grid-home-image overflow-hidden m-10 flex justify-center items-center">
-      <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="background-about" class="object-cover">
+    <div class="index-image">
+      <picture>
+        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="home-img" class="index-image-item">
+      </picture>
     </div>
   </div>
 </template>
 
-<script>
-import iconArrowRight from "@/assets/svg/arrow-right.svg"
-export default {
-
-  components: { iconArrowRight }
-
-}
-</script>
-
-<style lang="scss">
-
-.grid-home-image {
-  grid-area: 2 / 6 / 6 / 11;
-  transition: opacity .5s;
+<style lang="scss" scoped>
+.grid-index {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
 }
 
-.grid-home-intro {
-  grid-area: 2 / 1 / 6 / 5;
+.index-description {
+  grid-area: 1 / 1 / 1 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem;
 }
 
-@screen -xl {
-  .grid-home-intro {
-    grid-area: 2 / 1 / 6 / 6;
+.index-image {
+  grid-area: 1 / 2 / 1 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 4rem;
+  margin-left: 4rem;
+  .index-image-item {
+    object-fit: cover;
   }
 }
 
-@media screen and (max-width:900px){
-  .grid-home-image {
-    margin: 0;
+@media screen and (max-width:1200px){
+  .index-description  {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width:1000px){
+  .index-image {
     width: 100vw;
     height: 100vh;
-    img {
-      border-bottom-left-radius: 50%;
-      border-top-left-radius: 50%;
-    }
+    justify-content: end;
+    margin: 0;
     transform: translate(0, -50%);
     top: 50%;
     right: 0;
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     opacity: .3;
+    .index-image-item {
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+    }
   }
-  .grid-home-intro {
-    grid-area: 2 / 1 / 6 / -1;
+  .index-description  {
+    grid-area: 1 / 1 / 1 / 3;
   }
 }
-
 </style>

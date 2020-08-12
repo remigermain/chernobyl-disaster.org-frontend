@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <select v-model="valueModel"
-              :name="name"
+              :name="field.name"
               :required="field.required"
               class="select"
               @input="$emit('input', valueModel)"
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/field"
+import FieldMixins from "@/mixins/admin/field"
 export default {
 
   mixins: [FieldMixins],

@@ -1,4 +1,4 @@
-import base from "~/mixins/model-view/base"
+import base from "~/mixins/admin/base"
 
 export default {
 

@@ -15,24 +15,29 @@
                    :object-list="objectList"
                    @pagination="pagnination"
                    @search="search"
-      />
-      <h2 class="text-xl mt-5">
-        {{ $t('global.need-traduction') }}
-      </h2>
+      >
+        <template v-slot:table-title>
+          {{ $t('model.list') }}
+        </template>
+      </admin-table>
       <admin-table :fields="tableFieldLang"
                    :length="objectlengthLang"
                    :model="model"
                    :object-list="objectListLang"
                    @pagination="pagninationLang"
                    @search="searchLang"
-      />
+      >
+        <template v-slot:table-title>
+          {{ $t('model.need-translate') }}
+        </template>
+      </admin-table>
     </template>
   </model-list>
 </template>
 
 <script>
 
-import list from "@/mixins/model-view/list"
+import list from "@/mixins/admin/list"
 import picture from "@/mixins/model/picture"
 
 export default {

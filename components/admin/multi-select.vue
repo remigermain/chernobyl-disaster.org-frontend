@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <select v-model="valueModel"
-              :name="field.label.toLowerCase()"
+              :name="field.name"
               multiple="true"
               class="field-select-multiple"
               :required="field.required"
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/field"
+import FieldMixins from "@/mixins/admin/field"
 export default {
 
   mixins: [FieldMixins],

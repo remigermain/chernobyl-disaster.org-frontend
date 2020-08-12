@@ -1,51 +1,47 @@
 <template>
-  <div class="wrapper">
-    <div class="grid-contribute-menu shadow-lg">
-      <h2 class="text-center text-3xl capitalize font-normal italic">
+  <div class="grid-contribute">
+    <div class="flex flex-col p-4 contribute-menu">
+      <h2 class="text-3xl capitalize font-normal shadow-md w-full text-center p-2">
         {{ $t('global.menu') }}
       </h2>
-      <!--
-      <ul class="ml-2">
-        <li class="px-2 py-3">
-          <icon-user />
-          <extra-nuxt-link :to="{name: 'contribute-account'}" class="contribut-link italic capitalize rounded-lg">
-            {{ $t("pages.contribute.account") }}
-          </extra-nuxt-link>
-        </li>
-        <li class="px-2 py-3">
-          <icon-inbox />
-          <extra-nuxt-link :to="{name: 'contribute-contact'}" class="contribut-link italic capitalize rounded-lg">
-            {{ $t("pages.contribute.contact") }}
-          </extra-nuxt-link>
-        </li>
-      </ul>
-      -->
-      <ul class="ml-2">
-        <li v-for="el in menus" :key="el.name" class="px-2 py-3">
-          <extra-nuxt-link :to="el.to" class="contribut-link italic capitalize rounded-lg">
-            <icon-arrow-bar-left />
-            {{ el.name }}
-          </extra-nuxt-link>
-        </li>
-      </ul>
+      <div class="ml-2 shadow-md p-2">
+        <div class="capitalize shadow-md text-md w-full h-full text-center p-2">
+          {{ $t('global.model') }}
+        </div>
+        <ul class="ml-2 mt-2">
+          <li v-for="el in menus" :key="el.name" class="p-1">
+            <extra-nuxt-link :to="el.to" class="contribute-link italic rounded-lg">
+              {{ el.name }}
+            </extra-nuxt-link>
+          </li>
+        </ul>
+      </div>
+      <div class="ml-2 shadow-md p-2">
+        <div class="capitalize shadow-md text-md w-full h-full text-center p-2">
+          {{ $t('global.settings') }}
+        </div>
+        <ul class="ml-2 mt-2">
+          <li class="p-1">
+            <extra-nuxt-link :to="{name: 'contribute-contact'}" class="contribute-link italic rounded-lg">
+              {{ $t('global.contact') }}
+            </extra-nuxt-link>
+          </li>
+          <li class="p-1">
+            <extra-nuxt-link :to="{name: 'contribute-account'}" class="contribute-link italic rounded-lg">
+              {{ $t('global.account') }}
+            </extra-nuxt-link>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="grid-contribute-content p-4 overflow-y-scroll">
+    <div class="grid-contribute-content overflow-y-scroll p-4">
       <nuxt-child :key="$route.fullPath" />
     </div>
   </div>
 </template>
 
 <script>
-import iconArrowBarLeft from "@/assets/svg/arrow-bar-left.svg"
-//import iconUser from "@/assets/svg/user.svg"
-//import iconInbox from "@/assets/svg/inbox.svg"
 export default {
-
-  components: {
-    iconArrowBarLeft,
-    // iconUser,
-    // iconInbox
-  },
 
   middleware: [
     "model",
@@ -55,66 +51,58 @@ export default {
   data () {
     return {
       menus: [
-        // {
-        //   name: "event",
-        //   to: {name: "contribute-event"}
-        // },
+        {
+          name: "event",
+          to: {name: "contribute-event"}
+        },
+        {
+          name: "people",
+          to: {name: "contribute-people"}
+        },
+        {
+          name: "tag",
+          to: {name: "contribute-tag"}
+        },
         {
           name: "picture",
           to: {name: "contribute-picture"}
         },
-        // {
-        //   name: "article",
-        //   to: {name: "contribute-article"}
-        // },
-        // {
-        //   name: "video",
-        //   to: {name: "contribute-video"}
-        // },
-        // {
-        //   name: "document",
-        //   to: {name: "contribute-document"}
-        // },
-        // {
-        //   name: "people",
-        //   to: {name: "contribute-people"}
-        // },
-      ],
+        {
+          name: "video",
+          to: {name: "contribute-video"}
+        },
+        {
+          name: "document",
+          to: {name: "contribute-document"}
+        },
+        {
+          name: "article",
+          to: {name: "contribute-article"}
+        },
+      ]
     }
   }
-
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.grid-contribute {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+}
 
-.contribute-menu > * {
-  padding: 10px;
-  &:not(:last-child) {
-    margin-bottom: 10px;
+.contribute-menu > * + * {
+  margin-top: 2rem
+}
+
+.contribute-link {
+  display: block;
+  transition: color .4s, transform .2s;
+  &.nuxt-link-exact-active {
+    color: rgb(128, 9, 128);
+    transform: translateX(10%);
   }
 }
-
-.contribut-link {
-  transition: transform .4s;
-  svg {
-    display: none;
-  }
-  &.nuxt-link-active {
-    svg {
-      display:  inline-block;
-    }
-    transform: translateX(15%);
-    color: rgba(66, 18, 155, 0.925)
-  }
-}
-
-.grid-contribute-menu {
-  grid-area: 2/ 1 / 2 / 3;
-}
-
-.grid-contribute-content {
-  grid-area: 2/ 3 / 2 / 11;
-}
-
 </style>

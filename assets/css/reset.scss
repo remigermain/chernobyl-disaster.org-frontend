@@ -1,0 +1,8 @@
+
+input, textarea {
+  &:invalid,
+  &:-moz-submit-invalid,
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+}

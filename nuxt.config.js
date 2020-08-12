@@ -7,7 +7,6 @@ export default {
   mode: "universal",
   ssr: true,
   telemetry: false,
-
   target: "server",
 
   head: {
@@ -29,12 +28,18 @@ export default {
   },
 
   plugins: [
+    {
+      src: "~/plugins/components-client",
+      ssr: false
+    },
+    {
+      src: "~/plugins/components-server",
+      ssr: true
+    },
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
     "~/plugins/toast.js",
-    "~/plugins/context.js",
-    "~/plugins/date-time-picker.js"
   ],
 
   i18n: {
@@ -47,7 +52,6 @@ export default {
     lazy: true,
     langDir: "locales/",
     seo: true,
-    vueI18nLoader: true
   },
 
   modules: [
@@ -80,16 +84,16 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: apiUrl + "auth/login/",
+            url: `${apiUrl}auth/login/`,
             method: "post",
             propertyName: "key"
           },
           logout: {
-            url: apiUrl + "auth/logout/",
+            url: `${apiUrl}auth/logout/`,
             method: "post"
           },
           user: {
-            url: apiUrl + "auth/user/",
+            url: `${apiUrl}auth/user/`,
             method: "get",
             propertyName: false
           }
@@ -104,37 +108,37 @@ export default {
   },
 
   buildModules: [
-    "@nuxtjs/eslint-module",
+    // "@nuxtjs/eslint-module",
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/style-resources",
-    "@aceforth/nuxt-optimized-images",
-    "nuxt-purgecss",
+    // "@aceforth/nuxt-optimized-images",
+    // "nuxt-purgecss",
     "nuxt-svg-loader",
   ],
 
   components: [
     "~/components",
     {
+      path: "~/components/admin/",
+      prefix: "admin"
+    },
+    {
       path: "~/components/extra/",
       prefix: "extra"
     },
     {
-      path: "~/components/utils/",
-      prefix: "utils"
+      path: "~/components/field/",
+      prefix: "field"
     },
     {
       path: "~/components/model/",
       prefix: "model"
     },
     {
-      path: "~/components/admin/",
-      prefix: "admin"
-    },
-    {
       path: "~/components/gallery/",
       prefix: "gallery"
-    }
+    },
   ],
 
   optimizedImages: {
@@ -142,8 +146,11 @@ export default {
   },
 
   css: [
-    "~/assets/css/common.scss",
-    "~/assets/css/fonts.scss"
+    "destyle.css/destyle.css",
+    "~/assets/css/main.scss",
+    "~/assets/css/fonts.scss",
+    "~/assets/css/reset.scss",
+    "~/assets/css/utils.scss",
   ],
 
   toast: {
@@ -177,7 +184,7 @@ export default {
           enforce: "pre",
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
-          exclude: /(node_modules)|(\.svg$)/ /* <--- here */
+          exclude: /(node_modules)|(\.svg$)/
         })
       }
     }

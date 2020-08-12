@@ -9,12 +9,11 @@
       <span v-if="valueModel" class="p-2">
         {{ $t('global.currently') }} :
         <a :href="valueModel" class="text-purple-700 text-md italic">
-          link
+          {{ $t('model.actual-link') }}
         </a>
       </span>
-      <input :id="`field-${field.label.toLowerCase()}`"
-             type="file"
-             :name="field.label.toLowerCase()"
+      <input type="file"
+             :name="field.name"
              :required="field.required"
              @change="$emit('change', $event.target.files[0])"
       >
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/field"
+import FieldMixins from "@/mixins/admin/field"
 export default {
 
   mixins: [FieldMixins]

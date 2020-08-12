@@ -6,7 +6,7 @@
       </span>
     </template>
     <template v-slot:input>
-      <textarea v-model="valueModel" :name="name"
+      <textarea v-model="valueModel" :name="field.name"
                 class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700 w-inherit admin-textarea"
                 :placeholder="field.label"
                 :maxlength="field.max_length"
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/field"
+import FieldMixins from "@/mixins/admin/field"
 export default {
 
   mixins: [FieldMixins],

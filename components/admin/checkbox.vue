@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <input v-model="valueModel"
-             :name="field.label.toLowerCase()"
+             :name="field.name"
              class="bg-gray-200 rounded p-2 block placeholder-opacity-50"
              type="checkbox"
              :required="field.required"
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/field"
+import FieldMixins from "@/mixins/admin/field"
 export default {
 
   mixins: [FieldMixins]

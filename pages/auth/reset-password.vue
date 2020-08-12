@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <div class="text-center mb-4">
+  <div class="grid-password">
+    <div class="password-description">
       <p class="font-bold text-gray-900 text-2xl">
         {{ $t('global.connection-account') }}
       </p>
@@ -16,85 +16,122 @@
           {{ $t('global.create-account') }}
         </extra-nuxt-link>
       </p>
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
+        <field-email :field="field.email" />
+        <field-submit>
+          {{ $t('authentification.reset-password') }}
+        </field-submit>
+      </form>
     </div>
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 from-login" @submit.prevent="submit">
-      <utils-field v-model="credential.email" input-type="email" :errors="errors.email" required autocomplete>
-        <template v-slot:label>
-          {{ $t('global.email') }}
-        </template>
-        <template v-slot:icon>
-          <icon-email class="inline text-gray-600" />
-        </template>
-      </utils-field>
-      <button type="submit" class="px-2 py-2 bg-blue-600 rounded-lg text-gray-200 hover:scale-110 w-full mt-4">
-        <template v-if="loading">
-          <utils-loading />
-        </template>
-        <template v-else>
-          {{ $t("global.reset") }}
-        </template>
-      </button>
-    </form>
+    <div class="password-image">
+      <picture>
+        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="home-img" class="password-image-item">
+      </picture>
+    </div>
   </div>
 </template>
 
 <script>
-import iconEmail from "@/assets/svg/mail.svg"
-export default {
 
-  components: {
-    iconEmail
-  },
+export default {
 
   data () {
     return {
-      credential: {
-        email: "",
-      },
-      loading: false,
       errors: {
         email: [],
       },
+      field: {
+        email: {
+          label: this.$t("authentification.email"),
+          name: "email",
+          required: true,
+          max_length: 50,
+        },
+      }
     }
   },
 
   methods: {
-    submit () {
+    submit (event) {
+      const form = new FormData(event.target)
       this.loading = true
-      this.errors = {
-        email: [],
-        password1: [],
-      }
+      this.errors = {email: []}
 
-      this.$axios
-        .post("auth/password-reset/", {
-          data: {
-            email: this.credential.email,
-          }
+      this.$axios.post("auth/password/reset/", form)
+        .then((response) => {
+          this.redirect({ name: "auth-login" })
+          this.$i18nToast().info(response.data.detail).goAway(4000)
         })
-        .then(() => {
-          this.redirect({ name: "login" })
-        })
-        .catch((error) => {
-          if (error.message === "Network Error") {
-            this.$i18nToast().error(this.$t("global.serverError")).goAway(4000)
-          } else if (
-            Object.prototype.hasOwnProperty.call(error.response.data, "non_field_errors")
-          ) {
-            this.$i18nToast().error(error.response.data.non_field_errors)
-          } else {
-            error.response.data.forEach((element, key) => {
-              if (Object.prototype.hasOwnProperty.call(this.errors, key)) {
-                this.messages[key] = element
-              }
-            })
-          }
-        })
-        .finally(() => {
-          this.loading = false
-        })
-      }
-    },
-
+        .catch((error) => { this.requestError(error) })
+        .finally(() => { this.loading = false })
+    }
+  },
 }
 </script>
+
+
+<style lang="scss" scoped>
+.grid-password {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+}
+
+.password-description {
+  grid-area: 1 / 1 / 1 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem;
+}
+
+.password-image {
+  grid-area: 1 / 2 / 1 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 4rem;
+  margin-left: 4rem;
+  .password-image-item {
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width:1200px){
+  .password-description  {
+    padding: 2rem;
+  }
+}
+
+@media screen and (max-width:1000px){
+  .password-image {
+    width: 100vw;
+    height: 100vh;
+    justify-content: end;
+    margin: 0;
+    transform: translate(0, -50%);
+    top: 50%;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: .3;
+    .password-image-item {
+      border-bottom-left-radius: 50%;
+      border-top-left-radius: 50%;
+    }
+  }
+  .password-description  {
+    grid-area: 1 / 1 / 1 / 3;
+  }
+}
+
+.form > * + * {
+  margin-top: 2rem
+}
+
+</style>

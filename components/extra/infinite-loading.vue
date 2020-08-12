@@ -13,13 +13,8 @@
 </template>
 
 <script>
-import infiniteLoading from "vue-infinite-loading"
 
 export default {
-
-  components: {
-    infiniteLoading
-  },
 
   props: {
     identifier: {

@@ -1,45 +1,41 @@
 <template>
-  <div class="site">
-    <div class="grid-index p-4 text-gray-900 w-screen h-screen">
-      <div class="grid-logo flex text-gray-800">
-        <h1 class="text-5xl uppercase extra-auto font-russia transition-opacity duration-400 z-1">
-          {{ $t('global.chernobyl') }}
-        </h1>
-      </div>
-      <cher-navbar />
+  <div class="grid-layout">
+    <div class="grid-layout-title">
+      <h1 class="grid-layout-title-item font-russia">
+        {{ $t('global.chernobyl') }}
+      </h1>
+    </div>
+    <navbar />
+    <div class="grid-layout-contents hide-scroolbar">
       <nuxt />
     </div>
   </div>
 </template>
 
 <style lang="scss">
-
-.site {
-  background-color: white;
-  background-size: cover;
-  min-height: inherit;
-  height: inherit;
-  position: relative;
-  z-index: 77;
-}
-
-.grid-index {
+.grid-layout {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: auto minmax(80%, auto) auto;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-template-rows: auto 1fr;
+  padding: .8rem;
+  height: 100vh;
+  width: 100vw;
 }
 
-.grid-logo {
+.grid-layout-title {
   grid-area: 1 / 1 / 2 / 3;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  color: #2D3748;
+  .grid-layout-title-item {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+  }
 }
 
-.grid-index:nth-child(3) {
-  grid-area: 2 / 1 / 6 / 2;
-}
-
-.grid-index:nth-child(4) {
-  grid-area: 2 / 2 / 6 / 6;
+.grid-layout-contents {
+  grid-area: 2 / 1 / 2 / 11;
+  overflow-y: scroll;
 }
 </style>

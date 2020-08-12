@@ -12,9 +12,6 @@
         <icon-plus class=" w-24px text-white" />
       </extra-nuxt-link>
     </div>
-    <h2 class="capitalize text-xl italic">
-      <slot name="label" /> list :
-    </h2>
     <slot name="table" />
     <slot name="table-lang" />
   </div>

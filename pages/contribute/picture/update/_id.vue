@@ -21,9 +21,9 @@
       <admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
-      <th> title </th>
+      <th> {{ $t('model.picture.langs.title') }} </th>
       <th>
-        language
+        {{ $t('global.language') }}
         <admin-error :errors="errors.langs" />
       </th>
       <th>
@@ -54,8 +54,6 @@
         </td>
         <td />
       </tr>
-      <!-- end actual langs -->
-      <!-- extra langs -->
       <tr v-for="(val, idx) in langs" :key="val">
         <td>
           <admin-text class="border-none"
@@ -81,16 +79,14 @@
                         @delete="deleteLang(idx)"
           />
         </td>
-        <!-- end extra langs -->
       </tr>
     </template>
   </model-form>
 </template>
 
 <script>
-import Update from "@/mixins/model-view/update"
+import Update from "@/mixins/admin/update"
 import Picture from "@/mixins/model/picture"
-//import _ from "lodash"
 
 export default {
 
@@ -100,7 +96,7 @@ export default {
     return $axios.get(`picture/${params.id}/`)
       .then(response => {
         if (response.status != 200) {
-          throw Error(app.i18n.t("global.server-error"))
+          throw Error("") // TODO
         }
         return { object: response.data }
       })

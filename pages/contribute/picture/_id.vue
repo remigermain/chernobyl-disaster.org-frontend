@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import detail from "@/mixins/model-view/detail"
+import detail from "@/mixins/admin/detail"
 import picture from "@/mixins/model/picture"
 
 export default {

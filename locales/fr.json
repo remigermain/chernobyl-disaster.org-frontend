@@ -1,13 +1,20 @@
 {
+    "authentification": {
+        "comfirm-password": "comfirm-password",
+        "email": "email",
+        "password": "password",
+        "register": "register",
+        "reset-password": "reset-password",
+        "username": "username"
+    },
     "components": {
         "login-form": {
-            "ForgetPassword": "ForgetPassword",
-            "login": "login",
-            "register": "register"
+            "ForgetPassword": "ForgetPassword"
         }
     },
     "global": {
         "about": "about",
+        "account": "account",
         "action": "action",
         "actions": "actions",
         "add": "add",
@@ -15,6 +22,7 @@
         "cancel": "cancel",
         "chernobyl": "chernobyl",
         "connection-account": "connection-account",
+        "contact": "contact",
         "contribute": "contribute",
         "create": "create",
         "create-account": "create-account",
@@ -25,40 +33,35 @@
         "descending": "descending",
         "description": "description",
         "detail": "detail",
-        "email": "email",
         "empty": "empty",
         "error": "error",
         "error-key": "error-key",
         "event": "event",
         "gallery": "gallery",
         "home": "home",
-        "link": "link",
+        "language": "language",
         "loading": "loading",
         "login": "login",
         "menu": "menu",
-        "need-traduction": "need-traduction",
+        "model": "model",
         "no": "no",
         "no-more": "no-more",
         "no-results": "no-results",
         "or": "or",
-        "password": "password",
-        "password-confirm": "password-confirm",
         "picture-take-by": "picture-take-by",
+        "presentation": "presentation",
         "refresh": "refresh",
         "register-account": "register-account",
         "report": "report",
-        "report-ko": "report-ko",
         "report-ok": "report-ok",
         "require": "require",
-        "reset": "reset",
         "save": "save",
         "save-add-other": "save-add-other",
         "save-continue-editing": "save-continue-editing",
         "search": "search",
         "secondes": "secondes",
         "send": "send",
-        "server-error": "server-error",
-        "serverError": "serverError",
+        "settings": "settings",
         "sortby": "sortby",
         "timeline": "timeline",
         "title": "title",
@@ -66,8 +69,27 @@
         "update": "update",
         "update-ko": "ko",
         "update-ok": "ok",
-        "username": "username",
         "yes": "yes"
+    },
+    "model": {
+        "actions": "actions",
+        "actual-link": "actual-link",
+        "list": "list",
+        "need-translate": "need-translate",
+        "picture": {
+            "date": "date",
+            "event": "event",
+            "langs": {
+                "title": "title"
+            },
+            "language": "language",
+            "photographer": "photographer",
+            "picture": "picture",
+            "tags": "tags",
+            "title": "title"
+        },
+        "report": "report",
+        "report-description": "report-description"
     },
     "model-help": {
         "global": {
@@ -97,11 +119,6 @@
             "no-contributors": "no-contributors",
             "thanks-contributors": "thanks-contributors",
             "traduction": "traduction"
-        },
-        "auth": {
-            "login": {
-                "serverError": "serverError"
-            }
         }
     }
 }

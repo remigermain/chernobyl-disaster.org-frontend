@@ -20,13 +20,13 @@
       <admin-select :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
-      <th> title </th>
+      <th> {{ $t('model.picture.langs.title') }} </th>
       <th>
-        language
+        {{ $t('global.language') }}
         <admin-error :errors="errors.langs" />
       </th>
       <th>
-        {{ $t('global.actions') }}
+        {{ $t('model.actions') }}
       </th>
     </template>
     <template v-slot:table-body>
@@ -62,7 +62,7 @@
 
 <script>
 import picture from "@/mixins/model/picture"
-import create from "@/mixins/model-view/create"
+import create from "@/mixins/admin/create"
 
 export default {
 
