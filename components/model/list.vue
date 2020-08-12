@@ -5,12 +5,12 @@
       <h1 class="text-3xl capitalize self-start">
         <slot name="label" />
       </h1>
-      <extra-nuxt-link :to="{name: `contribute-${model}-create`}"
-                       class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
+      <lazy-extra-nuxt-link :to="{name: `contribute-${model}-create`}"
+                            class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
       >
         {{ $t('global.create') }}
         <icon-plus class=" w-24px text-white" />
-      </extra-nuxt-link>
+      </lazy-extra-nuxt-link>
     </div>
     <slot name="table" />
     <slot name="table-lang" />

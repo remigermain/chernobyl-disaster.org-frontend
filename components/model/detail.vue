@@ -10,12 +10,12 @@
           {{ $t('global.report') }}
           <icon-send class=" w-24px text-white" />
         </button>
-        <extra-nuxt-link :to="path"
-                         class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
+        <lazy-extra-nuxt-link :to="path"
+                              class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
         >
           {{ $t('global.update') }}
           <icon-edit class=" w-24px text-white" />
-        </extra-nuxt-link>
+        </lazy-extra-nuxt-link>
       </div>
     </div>
     <model-report :class="{'hidden': !showReport}" :uuid="model" @close="toogleReport" />

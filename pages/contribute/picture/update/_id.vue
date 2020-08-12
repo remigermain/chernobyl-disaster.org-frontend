@@ -1,24 +1,24 @@
 <template>
-  <model-form @submit="submit" @add-extra="addLang">
+  <lazy-model-form @submit="submit" @add-extra="addLang">
     <template v-slot:label>
       {{ model }}
     </template>
     <template v-slot:breadcrumbs>
-      <bread-crumb>
-        <extra-nuxt-link :to="pathList.path">
+      <lazy-bread-crumb>
+        <lazy-extra-nuxt-link :to="pathList.path">
           {{ pathList.label }}
-        </extra-nuxt-link>
+        </lazy-extra-nuxt-link>
         {{ pathUpdate.label }}
         {{ $route.params.id }}
-      </bread-crumb>
+      </lazy-bread-crumb>
     </template>
     <template v-slot:form>
-      <admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
-      <admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
-      <admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
-      <admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
-      <admin-date :value="object.date" :field="fields.date" :errors="errors.date" />
-      <admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
+      <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
+      <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
+      <lazy-admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
+      <lazy-admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
+      <lazy-admin-date :value="object.date" :field="fields.date" :errors="errors.date" />
+      <lazy-admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
       <th> {{ $t('model.picture.langs.title') }} </th>
@@ -35,53 +35,53 @@
       <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center rounded-b-lg">
         <td class="text-center">
           <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
-          <admin-text :value="lang.title"
-                      class="border-none"
-                      :prefix="prefixLang(idx)"
-                      :label="false"
-                      :field="fields.langs.title"
-                      :action="false"
+          <lazy-admin-text :value="lang.title"
+                           class="border-none"
+                           :prefix="prefixLang(idx)"
+                           :label="false"
+                           :field="fields.langs.title"
+                           :action="false"
           />
         </td>
         <td>
-          <admin-select :value="lang.language"
-                        class="border-none"
-                        :prefix="prefixLang(idx)"
-                        :label="false"
-                        :field="fields.langs.language"
-                        :action="false"
+          <lazy-admin-select :value="lang.language"
+                             class="border-none"
+                             :prefix="prefixLang(idx)"
+                             :label="false"
+                             :field="fields.langs.language"
+                             :action="false"
           />
         </td>
         <td />
       </tr>
       <tr v-for="(val, idx) in langs" :key="val">
         <td>
-          <admin-text class="border-none"
-                      :prefix="prefixLang(idx + object.langs.length)"
-                      :label="false"
-                      :field="fields.langs.title"
-                      :action="false"
+          <lazy-admin-text class="border-none"
+                           :prefix="prefixLang(idx + object.langs.length)"
+                           :label="false"
+                           :field="fields.langs.title"
+                           :action="false"
           />
         </td>
         <td>
-          <admin-select class="border-none"
-                        :prefix="prefixLang(idx + object.langs.length)"
-                        :label="false"
-                        :field="fields.langs.language"
-                        :action="false"
+          <lazy-admin-select class="border-none"
+                             :prefix="prefixLang(idx + object.langs.length)"
+                             :label="false"
+                             :field="fields.langs.language"
+                             :action="false"
           />
         </td>
         <td>
-          <admin-action :add="false"
-                        :edit="false"
-                        :deleted="true"
-                        :field="fields.langs.language"
-                        @delete="deleteLang(idx)"
+          <lazy-admin-action :add="false"
+                             :edit="false"
+                             :deleted="true"
+                             :field="fields.langs.language"
+                             @delete="deleteLang(idx)"
           />
         </td>
       </tr>
     </template>
-  </model-form>
+  </lazy-model-form>
 </template>
 
 <script>

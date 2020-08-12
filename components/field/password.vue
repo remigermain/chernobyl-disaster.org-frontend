@@ -1,10 +1,10 @@
 <template>
-  <field-text v-bind="$attrs" :type="passwordType">
+  <lazy-field-text v-bind="$attrs" :type="passwordType">
     <template v-slot:icon>
       <icon-lock-open v-if="showPassword" class="inline text-gray-900 cursor-pointer" @click="showPassword = false" />
       <icon-lock v-else class="inline text-gray-600 cursor-pointer" @click="showPassword = true" />
     </template>
-  </field-text>
+  </lazy-field-text>
 </template>
 
 <script>

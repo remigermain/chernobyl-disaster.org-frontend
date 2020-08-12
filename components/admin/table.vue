@@ -48,12 +48,12 @@
             </td>
           </template>
           <td class="p-2 text-gray-800 text-center">
-            <extra-nuxt-link :to="{name: `contribute-${model}-id`, params:{ id: obj.id} }">
+            <lazy-extra-nuxt-link :to="{name: `contribute-${model}-id`, params:{ id: obj.id} }">
               <icon-eye class="cursor-pointer text-blue-700 action-btn" />
-            </extra-nuxt-link>
-            <extra-nuxt-link :to="{name: `contribute-${model}-update-id`, params:{ id: obj.id} }">
+            </lazy-extra-nuxt-link>
+            <lazy-extra-nuxt-link :to="{name: `contribute-${model}-update-id`, params:{ id: obj.id} }">
               <icon-edit class="cursor-pointer text-purple-700 action-btn" />
-            </extra-nuxt-link>
+            </lazy-extra-nuxt-link>
           </td>
         </tr>
         <tr v-if="list.length === 0" class="text-center">

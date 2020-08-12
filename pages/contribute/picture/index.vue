@@ -1,38 +1,38 @@
 <template>
-  <model-list :model="model">
+  <lazy-model-list :model="model">
     <template v-slot:breadcrumbs>
-      <bread-crumb>
+      <lazy-bread-crumb>
         {{ pathList.label }}
-      </bread-crumb>
+      </lazy-bread-crumb>
     </template>
     <template v-slot:label>
       {{ model }}
     </template>
     <template v-slot:table>
-      <admin-table :fields="tableField"
-                   :length="objectlength"
-                   :model="model"
-                   :object-list="objectList"
-                   @pagination="pagnination"
-                   @search="search"
+      <lazy-admin-table :fields="tableField"
+                        :length="objectlength"
+                        :model="model"
+                        :object-list="objectList"
+                        @pagination="pagnination"
+                        @search="search"
       >
         <template v-slot:table-title>
           {{ $t('model.list') }}
         </template>
-      </admin-table>
-      <admin-table :fields="tableFieldLang"
-                   :length="objectlengthLang"
-                   :model="model"
-                   :object-list="objectListLang"
-                   @pagination="pagninationLang"
-                   @search="searchLang"
+      </lazy-admin-table>
+      <lazy-admin-table :fields="tableFieldLang"
+                        :length="objectlengthLang"
+                        :model="model"
+                        :object-list="objectListLang"
+                        @pagination="pagninationLang"
+                        @search="searchLang"
       >
         <template v-slot:table-title>
           {{ $t('model.need-translate') }}
         </template>
-      </admin-table>
+      </lazy-admin-table>
     </template>
-  </model-list>
+  </lazy-model-list>
 </template>
 
 <script>

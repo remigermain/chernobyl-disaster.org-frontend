@@ -1,9 +1,9 @@
 <template>
-  <field-text v-bind="$attrs">
+  <lazy-field-text v-bind="$attrs">
     <template v-slot:icon>
       <icon-user class="inline text-gray-600 cursor-pointer" />
     </template>
-  </field-text>
+  </lazy-field-text>
 </template>
 
 <script>

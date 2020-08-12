@@ -6,18 +6,18 @@
       </p>
       <p class="text-sm text-gray-600">
         {{ $t('global.or') }}
-        <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
+        <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
           {{ $t('global.login') }}
-        </extra-nuxt-link>
+        </lazy-extra-nuxt-link>
       </p>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
-        <field-email :field="field.email" :errors="errors.email" />
-        <field-username :field="field.username" :errors="errors.username" />
-        <field-password :field="field.password1" :errors="errors.password1" />
-        <field-password :field="field.password2" :errors="errors.password2" />
-        <field-submit>
+        <lazy-field-email :field="field.email" :errors="errors.email" />
+        <lazy-field-username :field="field.username" :errors="errors.username" />
+        <lazy-field-password :field="field.password1" :errors="errors.password1" />
+        <lazy-field-password :field="field.password2" :errors="errors.password2" />
+        <lazy-field-submit>
           {{ $t('authentification.register') }}
-        </field-submit>
+        </lazy-field-submit>
       </form>
     </div>
     <div class="register-image">

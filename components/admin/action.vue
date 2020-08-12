@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper action-list">
-    <extra-nuxt-link v-if="add" :to="{name: `contribute-${field.model}-create`}">
+    <lazy-extra-nuxt-link v-if="add" :to="{name: `contribute-${field.model}-create`}">
       <icon-plus class=" text-green-700" />
-    </extra-nuxt-link>
-    <extra-nuxt-link v-if="edit" :to="{name: `contribute-${field.model}-update`}">
+    </lazy-extra-nuxt-link>
+    <lazy-extra-nuxt-link v-if="edit" :to="{name: `contribute-${field.model}-update`}">
       <icon-edit class=" text-yellow-700" />
-    </extra-nuxt-link>
+    </lazy-extra-nuxt-link>
     <icon-trash v-if="deleted" class="text-red-700 cursor-pointer" @click="$emit('delete')" />
   </div>
 </template>

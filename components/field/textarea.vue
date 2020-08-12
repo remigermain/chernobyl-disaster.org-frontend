@@ -20,7 +20,7 @@
         </span>
       </label>
     </div>
-    <admin-error :errors="errors" />
+    <lazy-admin-error :errors="errors" />
   </div>
 </template>
 

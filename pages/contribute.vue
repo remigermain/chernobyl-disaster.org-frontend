@@ -10,9 +10,9 @@
         </div>
         <ul class="ml-2 mt-2">
           <li v-for="el in menus" :key="el.name" class="p-1">
-            <extra-nuxt-link :to="el.to" class="contribute-link italic rounded-lg">
+            <lazy-extra-nuxt-link :to="el.to" class="contribute-link italic rounded-lg">
               {{ el.name }}
-            </extra-nuxt-link>
+            </lazy-extra-nuxt-link>
           </li>
         </ul>
       </div>
@@ -22,14 +22,14 @@
         </div>
         <ul class="ml-2 mt-2">
           <li class="p-1">
-            <extra-nuxt-link :to="{name: 'contribute-contact'}" class="contribute-link italic rounded-lg">
+            <lazy-extra-nuxt-link :to="{name: 'contribute-contact'}" class="contribute-link italic rounded-lg">
               {{ $t('global.contact') }}
-            </extra-nuxt-link>
+            </lazy-extra-nuxt-link>
           </li>
           <li class="p-1">
-            <extra-nuxt-link :to="{name: 'contribute-account'}" class="contribute-link italic rounded-lg">
+            <lazy-extra-nuxt-link :to="{name: 'contribute-account'}" class="contribute-link italic rounded-lg">
               {{ $t('global.account') }}
-            </extra-nuxt-link>
+            </lazy-extra-nuxt-link>
           </li>
         </ul>
       </div>

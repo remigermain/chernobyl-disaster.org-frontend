@@ -1,8 +1,8 @@
 <template>
   <div class="bread-crumb text-md text-opacity-50 text-gray-700">
-    <extra-nuxt-link :to="{name: 'contribute'}">
+    <lazy-extra-nuxt-link :to="{name: 'contribute'}">
       {{ $t('global.contribute') }}
-    </extra-nuxt-link>
+    </lazy-extra-nuxt-link>
     <slot />
   </div>
 </template>

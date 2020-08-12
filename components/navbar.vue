@@ -7,21 +7,21 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="navbar-items" :class="{'active': active }">
-      <extra-nuxt-link :to="{name: 'home'}" class="navbar-link" @click="checkbox = false">
+      <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link" @click="checkbox = false">
         {{ $t('global.home') }}
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link" @click="checkbox = false">
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link" @click="checkbox = false">
         {{ $t('global.timeline') }}
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="checkbox = false">
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="checkbox = false">
         {{ $t('global.gallery') }}
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link -md:hidden" @click="checkbox = false">
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link -md:hidden" @click="checkbox = false">
         {{ $t('global.contribute') }}
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="checkbox = false">
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="checkbox = false">
         {{ $t('global.about') }}
-      </extra-nuxt-link>
+      </lazy-extra-nuxt-link>
       <select>
         <option v-for="lang in $i18n.locales" :key="lang.code">
           {{ lang.name }}
@@ -84,11 +84,14 @@ export default {
       border-radius: 3px;
       opacity: 0;
     }
-    &.nuxt-link-exact-active::after, &.nuxt-link-active::after {
-      width: 100%;
+    &.nuxt-link-active {
       opacity: 1;
+      &::after, &::after {
+        width: 100%;
+        opacity: 1;
+      }
     }
-    &:not(.nuxt-link-exact-active)
+    &:not(.nuxt-link-active)
     {
       opacity: .5;
       &:hover {

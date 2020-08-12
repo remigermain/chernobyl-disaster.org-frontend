@@ -1,5 +1,8 @@
 <template>
-  <infinite-loading class="w-full" :identifier="identifier" @infinite="$emit('infinite', $event)">
+  <infinite-loading class="text-gray-600 italic capitalize w-full"
+                    :identifier="identifier"
+                    @infinite="$emit('infinite', $event)"
+  >
     <div slot="spinner">
       {{ $t('global.loading') }}
     </div>

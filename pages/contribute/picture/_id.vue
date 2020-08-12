@@ -1,15 +1,15 @@
 <template>
-  <model-detail :path="pathUpdate.path" :model="model">
+  <lazy-model-detail :path="pathUpdate.path" :model="model">
     <template v-slot:label>
       {{ model }}
     </template>
     <template v-slot:breadcrumbs>
-      <bread-crumb>
-        <extra-nuxt-link :to="pathList.path">
+      <lazy-bread-crumb>
+        <lazy-extra-nuxt-link :to="pathList.path">
           {{ pathList.label }}
-        </extra-nuxt-link>
+        </lazy-extra-nuxt-link>
         {{ $route.params.id }}
-      </bread-crumb>
+      </lazy-bread-crumb>
     </template>
     <template v-slot:detail>
       <div class="flex flex-col justify-center items-center p-4">
@@ -23,7 +23,7 @@
         </div>
       </div>
     </template>
-  </model-detail>
+  </lazy-model-detail>
 </template>
 
 <script>

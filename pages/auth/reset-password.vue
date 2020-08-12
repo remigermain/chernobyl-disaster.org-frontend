@@ -6,21 +6,21 @@
       </p>
       <p class="text-sm text-gray-600">
         {{ $t('global.or') }}
-        <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
+        <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
           {{ $t('global.login') }}
-        </extra-nuxt-link>
+        </lazy-extra-nuxt-link>
       </p>
       <p class="text-sm text-gray-600">
         {{ $t('global.or') }}
-        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
+        <lazy-extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
           {{ $t('global.create-account') }}
-        </extra-nuxt-link>
+        </lazy-extra-nuxt-link>
       </p>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
-        <field-email :field="field.email" />
-        <field-submit>
+        <lazy-field-email :field="field.email" />
+        <lazy-field-submit>
           {{ $t('authentification.reset-password') }}
-        </field-submit>
+        </lazy-field-submit>
       </form>
     </div>
     <div class="password-image">

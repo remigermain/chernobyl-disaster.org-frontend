@@ -5,8 +5,8 @@
       <slot name="label" />
       <slot name="input" />
     </label>
-    <admin-help v-if="label && active" :field="field" />
-    <admin-error :errors="errors" />
+    <lazy-admin-help v-if="label && active" :field="field" />
+    <lazy-admin-error :errors="errors" />
   </div>
 </template>
 

@@ -1,9 +1,9 @@
 <template>
   <div class="grid-gallery">
     <div class="grid-gallery-toolbar">
-      <gallery-toolbar />
+      <lazy-gallery-toolbar />
     </div>
-    <div class="grid-gallery-items">
+    <div class="grid-gallery-items overflow-x-hidden">
       <nuxt-child />
     </div>
   </div>
@@ -18,21 +18,21 @@ export default {
 <style lang="scss" scoped>
 .grid-gallery {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 300px 1fr;
   grid-template-rows: 1fr auto;
   height: 100%;
 }
 
 .grid-gallery-items {
   overflow-y: scroll;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  grid-auto-rows: 1fr;
+  padding: 1rem;
 }
 
-@screen -md {
+.grid-gallery-toolbar {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1300px) {
   .grid-gallery {
     grid-template-columns: 1fr;
   }
@@ -41,6 +41,7 @@ export default {
   }
   .grid-gallery-toolbar {
     grid-area: 2 / 1 / 2 / 2;
+    padding: 0;
   }
 }
 

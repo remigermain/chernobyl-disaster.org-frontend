@@ -1,18 +1,47 @@
 <template>
   <div class="gallery-toolbar">
     <div class="flex bg-gray-800 rounded text-white w-full">
-      <extra-nuxt-link :to="{name: 'gallery-picture'}" class="w-1/4 text-center py-2 rounded-l-sm cursor-pointer toolbar-link">
+      <button class="toolbar-option hidden w-1/4 text-center py-2 rounded-l-sm cursor-pointer toolbar-link"
+              :class="{'bg-gray-700': option}"
+              @click="showOption"
+      >
+        <icon-settings stroke-width="1.5" />
+      </button>
+      <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="w-1/4 text-center py-2 rounded-l-sm cursor-pointer toolbar-link">
         <icon-photo stroke-width="1.5" />
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery-video'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
         <icon-movie stroke-width="1.5" />
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery-document'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
         <icon-file stroke-width="1.5" />
-      </extra-nuxt-link>
-      <extra-nuxt-link :to="{name: 'gallery-article'}" class="w-1/4 text-center py-2 rounded-r-sm cursor-pointer toolbar-link">
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="w-1/4 text-center py-2 rounded-r-sm cursor-pointer toolbar-link">
         <icon-article stroke-width="1.5" />
-      </extra-nuxt-link>
+      </lazy-extra-nuxt-link>
+    </div>
+    <div class="toolbar-item" :class="{'hide-option': !option}">
+      <field-text v-model="search" :field="{label: $t('global.search') }" class="toolbar-search">
+        <template v-slot:icon>
+          <icon-search />
+        </template>
+      </field-text>
+      <div class="toolbar-order">
+        <span class="text-md text-gray-600 capitalize">
+          {{ $t('global.sort-by') }}
+        </span>
+        <select v-model="sort" class="p4 rounded-md shadow-xl text-center border border-gray-900 h-min w-full">
+          <option v-for="choices in sortChoices" :key="choices.value" :value="choices.value">
+            {{ choices.label }}
+          </option>
+          <option value="" selected class="text-opacity-50 text-lg">
+            -- {{ $t('global.empty') }} --
+          </option>
+        </select>
+      </div>
+      <button class="px-2 py-4 rounded shaodw bg-blue-800 hover:bg-blue-700 text-white w-full text-center" @click="submit">
+        {{ $t('global.searched') }}
+      </button>
     </div>
   </div>
 </template>
@@ -23,7 +52,9 @@ import iconMovie from "@/assets/svg/movie.svg"
 import iconPhoto from "@/assets/svg/photo.svg"
 import iconFile from "@/assets/svg/file-text.svg"
 import iconArticle from "@/assets/svg/news.svg"
-
+import iconSearch from "@/assets/svg/search.svg"
+import iconSettings from "@/assets/svg/settings.svg"
+import _ from "lodash"
 
 export default {
 
@@ -31,16 +62,17 @@ export default {
     iconMovie,
     iconPhoto,
     iconFile,
+    iconSearch,
     iconArticle,
+    iconSettings
   },
 
   data () {
     return {
-      currentTab: null,
-      orderCurrent: {},
-      searchValue: "",
-      toolbarActive: false,
-      orderChoices: [
+      search: "",
+      sort: "",
+      option: false,
+      sortChoices: [
         {label: `${this.$t("global.create")} - ${this.$t("global.ascending")}`, value: "id"},
         {label: `${this.$t("global.create")} - ${this.$t("global.descending")}`, value: "-id"},
         {label: `${this.$t("global.date")} - ${this.$t("global.ascending")}`, value: "date"},
@@ -53,37 +85,32 @@ export default {
     }
   },
 
-  computed: {
-    PICTURE () { return "picture" },
-    VIDEO () { return "video" },
-    FILE () { return "document" },
-    ARTICLE () { return "article" }
-  },
+  beforeMount () {
+    if (!_.isNil(this.$route.query)) {
+      // set the value of search
+      this.search = this.$route.query.search || ""
 
-  created () {
-    this.orderCurrent = this.orderChoices[0]
-    this.setCurrent(this.PICTURE)
+      // set value of order if exists in choices
+      if (_.has(this.$route.query, "sort")) {
+        if (_.filter(this.orderChoices, (obj) => obj.value === this.$route.query.order).length) {
+          this.sort = this.$route.query.sort
+        }
+      }
+    }
   },
 
   methods: {
-    toogleToolbar () {
-      this.toolbarActive = !this.toolbarActive
-    },
-    setCurrent (value) {
-      this.currentTab = value
-      this.$emit("change", value)
-    },
-    setOrder (order) {
-      this.orderCurrent = order
+    showOption () {
+      this.option = !this.option
     },
     submit () {
-      this.toogleToolbar()
       const query = {
         ...this.$route.query,
-        search: this.searchValue,
-        order: this.orderCurrent.value
+        search: this.search,
+        order: this.sort
       }
       this.$router.push({query})
+      this.option = false
     }
   },
 
@@ -92,8 +119,15 @@ export default {
 
 <style lang="scss">
 
+.toolbar-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
 .toolbar-item > * {
-  margin-top: 2em
+  margin-top: .5em;
+  padding: .5em;
 }
 
 .toolbar-link {
@@ -101,6 +135,29 @@ export default {
   &.nuxt-link-active, &:hover {
     background-color: rgb(233, 233, 233);
     color: rgba(45, 55, 72, 1);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .toolbar-item.hide-option {
+    display: none;
+  }
+  .hide-option {
+    display: block;
+  }
+  .toolbar-option {
+    display: block;
+  }
+  .toolbar-search,
+  .toolbar-order {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .toolbar-search,
+  .toolbar-order {
+    width: 100%;
   }
 }
 

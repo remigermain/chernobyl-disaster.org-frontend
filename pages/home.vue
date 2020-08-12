@@ -7,10 +7,10 @@
       <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
         {{ $t('global.description') }}
       </p>
-      <extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800">
+      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800">
         {{ $t('global.timeline') }}
         <icon-arrow-right />
-      </extra-nuxt-link>
+      </lazy-extra-nuxt-link>
     </div>
     <div class="index-image">
       <picture>

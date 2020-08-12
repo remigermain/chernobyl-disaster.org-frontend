@@ -6,21 +6,21 @@
       </p>
       <p class="text-sm text-gray-600">
         {{ $t('global.or') }}
-        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
+        <lazy-extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
           {{ $t('global.create-account') }}
-        </extra-nuxt-link>
+        </lazy-extra-nuxt-link>
       </p>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
-        <field-email :field="field.email" :errors="errors.email" />
-        <field-password :field="field.password" :errors="errors.password" />
+        <lazy-field-email :field="field.email" :errors="errors.email" />
+        <lazy-field-password :field="field.password" :errors="errors.password" />
         <div class="flex justify-end mx-auto text-center">
-          <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto">
+          <lazy-extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto">
             {{ $t('components.login-form.ForgetPassword') }}
-          </extra-nuxt-link>
+          </lazy-extra-nuxt-link>
         </div>
-        <field-submit>
+        <lazy-field-submit>
           {{ $t('authentification.register') }}
-        </field-submit>
+        </lazy-field-submit>
       </form>
     </div>
     <div class="login-image">
