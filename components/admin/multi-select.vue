@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <select v-model="valueModel"
-              :name="field.name"
+              :name="name"
               multiple="true"
               class="field-select-multiple"
               :required="field.required"
@@ -28,6 +28,7 @@
 
 <script>
 import FieldMixins from "@/mixins/admin/field"
+import isArray from "lodash/isArray"
 export default {
 
   mixins: [FieldMixins],
@@ -36,7 +37,14 @@ export default {
     return {
       valueModel: this.value || []
     }
-  }
+  },
+
+  watch: {
+    value (value) {
+      this.valueModel = (isArray(value) ? value : [])
+      return value
+    }
+  },
 
 }
 </script>

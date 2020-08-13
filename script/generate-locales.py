@@ -15,6 +15,8 @@ PATH = [
     './layouts'
 ]
 
+PATH_LOCALE = "./config/i18n.js"
+
 EXTENTION = [
   'js', 'vue'
 ]
@@ -229,7 +231,7 @@ def main():
 
     #read local nuxt.config
     locales = []
-    with open('nuxt.config.js') as f:
+    with open(PATH_LOCALE) as f:
       # suprime les commentaires,
       res = re.sub(r"/\*(\n|.)*?\*/", "", re.sub(r"//.*?\n", "", f.read()))
       # suprime les espaces

@@ -31,22 +31,22 @@ export default {
       type: String,
       default: null
     },
+    suffix: {
+      type: Number,
+      default: 0
+    },
     inline: {
       type: Boolean,
       default: true,
     },
-    errors: {
-      type: Array,
-      default: () => []
-    }
   },
 
   computed: {
     name () {
       if (!isNil(this.prefix)) {
-        return `${this.prefix}[${this.field.label.toLowerCase()}]`
+        return `${this.prefix}[${this.field.name}]`
       }
-      return this.field.label.toLowerCase()
+      return this.field.name
     },
     component () {
       return (this.inline ? "field-inline" : "field-base")

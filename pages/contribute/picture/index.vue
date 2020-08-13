@@ -24,6 +24,7 @@
                         :length="objectlengthLang"
                         :model="model"
                         :object-list="objectListLang"
+                        class="mt-2"
                         @pagination="pagninationLang"
                         @search="searchLang"
       >
@@ -41,6 +42,7 @@ import list from "@/mixins/admin/list"
 import picture from "@/mixins/model/picture"
 
 export default {
+  name: "ContrubtePictureList",
 
   mixins:  [
     list,

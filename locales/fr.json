@@ -6,6 +6,7 @@
     "authentification": {
         "comfirm-password": "comfirm-password",
         "email": "email",
+        "logout": "logout",
         "new-comfirm-password": "new-comfirm-password",
         "new-password": "new-password",
         "old-password": "old-password",
@@ -19,9 +20,20 @@
             "ForgetPassword": "ForgetPassword"
         }
     },
+    "contribute": {
+        "menu": {
+            "account": "account",
+            "article": "article",
+            "document": "document",
+            "event": "event",
+            "people": "people",
+            "picture": "picture",
+            "tag": "tag",
+            "video": "video"
+        }
+    },
     "global": {
         "about": "about",
-        "account": "account",
         "action": "action",
         "actions": "actions",
         "add": "add",
@@ -29,7 +41,6 @@
         "cancel": "cancel",
         "chernobyl": "chernobyl",
         "connection-account": "connection-account",
-        "contact": "contact",
         "contribute": "contribute",
         "create": "create",
         "create-account": "create-account",
@@ -50,13 +61,10 @@
         "link": "link",
         "loading": "loading",
         "login": "login",
-        "menu": "menu",
-        "model": "model",
         "no": "no",
         "no-more": "no-more",
         "no-results": "no-results",
         "or": "or",
-        "picture-take-by": "picture-take-by",
         "presentation": "presentation",
         "register-account": "register-account",
         "report": "report",
@@ -69,11 +77,11 @@
         "searched": "searched",
         "secondes": "secondes",
         "send": "send",
-        "settings": "settings",
         "sort-by": "sort-by",
         "timeline": "timeline",
         "title": "title",
         "total": "total",
+        "translate": "translate",
         "update": "update",
         "update-ko": "ko",
         "update-ok": "ok",
@@ -82,6 +90,12 @@
     "model": {
         "actions": "actions",
         "actual-link": "actual-link",
+        "common": {
+            "tags": "tags"
+        },
+        "global": {
+            "language": "language"
+        },
         "list": "list",
         "need-translate": "need-translate",
         "picture": {
@@ -93,7 +107,6 @@
             "language": "language",
             "photographer": "photographer",
             "picture": "picture",
-            "tags": "tags",
             "title": "title"
         },
         "report": "report",

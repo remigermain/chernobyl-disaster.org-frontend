@@ -25,7 +25,7 @@ export default {
           help: this.$t("model-help.picture.title")
         },
         tags: {
-          label: this.$t("model.picture.tags"),
+          label: this.$t("model.common.tags"),
           name: "tags",
           required: false,
           choices: this.$store.getters["model/tags"],

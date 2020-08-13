@@ -1,17 +1,19 @@
 <template>
-  <div class="p-3 flex justify-between items-center flex-wrap border-b border-gray-700 border-opacity-50 -md:justify-center">
+  <div class="md:p-3 flex justify-between items-center flex-wrap border-b border-gray-700 border-opacity-50 -md:justify-center">
     <label v-if="label" class="text-xl capitalize italic w2/4 text-gray-800 -md:w-full">
       <icon-help class="cursor-pointer text-gray-500 hover:text-gray-700" @click="toogleHelp" />
       <slot name="label" />
     </label>
-    <div class="w-2/4 flex items-center p-2 -md:w-full">
+    <div class="w-2/4 flex items-center p-2 -md:w-full -md:justify-center">
       <slot name="icon">
         <template v-slot:icon />
       </slot>
       <slot name="input" />
     </div>
     <admin-help v-if="label && active" :field="field" />
-    <admin-error :errors="errors" />
+    <div class="w-full mt-2" v-if="errors && errors.length">
+      <admin-error :errors="errors" />
+    </div>
   </div>
 </template>
 

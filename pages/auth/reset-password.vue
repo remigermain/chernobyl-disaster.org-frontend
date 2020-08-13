@@ -34,6 +34,7 @@
 <script>
 
 export default {
+  name: "AuthResetPassword",
 
   data () {
     return {

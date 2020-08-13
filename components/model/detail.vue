@@ -10,15 +10,15 @@
           {{ $t('global.report') }}
           <icon-send class=" w-24px text-white" />
         </button>
-        <lazy-extra-nuxt-link :to="path"
-                              class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
+        <extra-nuxt-link :to="path"
+                         class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
         >
           {{ $t('global.update') }}
           <icon-edit class=" w-24px text-white" />
-        </lazy-extra-nuxt-link>
+        </extra-nuxt-link>
       </div>
     </div>
-    <model-report :class="{'hidden': !showReport}" :uuid="model" @close="toogleReport" />
+    <lazy-model-report :class="{'hidden': !showReport}" :uuid="model" @close="toogleReport" />
     <slot name="detail" />
   </div>
 </template>
@@ -64,4 +64,23 @@ export default {
 .detail-btn > * + * {
   margin-left: .5em;
 }
+</style>
+
+<style lang="scss">
+.piture-detail {
+  width: 600px;
+}
+.detail-items > * {
+  margin-top: 1rem;
+}
+.detail-item-title {
+  color: rgba(77, 77, 77, 0.5);
+  font-style: italic;
+  text-transform: capitalize;
+}
+
+.detail-item-content {
+  font-style: italic
+}
+
 </style>

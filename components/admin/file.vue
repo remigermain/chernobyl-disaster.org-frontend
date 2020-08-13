@@ -8,12 +8,12 @@
     <template v-slot:input>
       <span v-if="valueModel" class="p-2">
         {{ $t('global.currently') }} :
-        <a :href="valueModel" class="text-purple-700 text-md italic">
+        <a :href="valueModel" class="text-purple-700 text-md italic" rel="noopener">
           {{ $t('model.actual-link') }}
         </a>
       </span>
       <input type="file"
-             :name="field.name"
+             :name="name"
              :required="field.required"
              @change="$emit('change', $event.target.files[0])"
       >

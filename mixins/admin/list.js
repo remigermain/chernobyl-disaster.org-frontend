@@ -43,10 +43,12 @@ export default {
     },
     search (val) {
       this.searchValue = val
+      this.page = 1
       this.refresh()
     },
     searchLang (val) {
       this.searchValueLang = val
+      this.pageLang = 1
       this.refreshLang()
     },
     refresh () {

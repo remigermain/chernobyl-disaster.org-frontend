@@ -8,8 +8,8 @@
     <template v-slot:input>
       <input v-model="valueModel"
              :type="type"
-             :name="field.name"
-             class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700"
+             :name="name"
+             class="input"
              :placeholder="field.label"
              :maxlength="field.max_length"
              :required="field.required"
@@ -35,3 +35,15 @@ export default {
 
 }
 </script>
+
+<style scoped>
+
+.input {
+  padding: 0.5rem !important;
+  display: block !important;
+  border-width: 1px !important;
+  border-radius: 0.25rem !important;
+  border-color: rgb(43, 108, 176) !important;
+  background-color: rgb(237, 242, 247) !important;
+}
+</style>

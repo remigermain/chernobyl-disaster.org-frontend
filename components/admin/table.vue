@@ -1,11 +1,11 @@
 <template>
-  <div class="shadow-md p-4">
+  <div class="shadow-md md:p-4">
     <div class="flex justify-between items-center">
       <div class="w-2/4 capitalize text-2xl">
         <slot name="table-title" />
       </div>
       <div class="p-2 mb-2 w-2/4">
-        <field-text :field="{label: $t('global.search') }">
+        <field-text v-model="search" :field="{label: $t('global.search') }">
           <template v-slot:icon>
             <icon-search class="cursor-pointer hover:text-purple-700" @click="$emit('search', search)" />
           </template>
@@ -43,7 +43,7 @@
                 {{ ( field.type === Array ? obj[field.field].join() : obj[field.field] ) }}
               </template>
               <span v-else class="text-xs text-gray-600 italic text-opacity-75">
-                -- {{ $t('global.empty') }} --
+                {{ empty }}
               </span>
             </td>
           </template>
@@ -58,7 +58,7 @@
         </tr>
         <tr v-if="list.length === 0" class="text-center">
           <td :colspan="fields.length + 1" class="p-2 bg-gray-300 text-xs text-gray-600 italic text-opacity-75">
-            -- {{ $t('global.empty') }} --
+            {{ empty }}
           </td>
         </tr>
       </tbody>
@@ -128,10 +128,11 @@ export default {
     sort (field) {
       this.current = field
       this.reverse = !this.reverse
+      const f = field.field
       if (this.reverse) {
-        this.list = this.list.sort((el1, el2) => el1 > el2)
+        this.list = this.list.sort((el1, el2) => el1[f] > el2[f])
       } else {
-        this.list = this.list.sort((el1, el2) => el1 < el2)
+        this.list = this.list.sort((el1, el2) => el1[f] < el2[f])
       }
     },
   }

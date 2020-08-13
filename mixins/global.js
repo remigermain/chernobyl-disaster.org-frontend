@@ -10,6 +10,12 @@ export default {
     }
   },
 
+  computed: {
+    empty () {
+      return `-- ${this.$t("global.empty")} --`
+    }
+  },
+
   watch: {
     loading (value) {
       if (value) {
@@ -23,16 +29,8 @@ export default {
 
   methods: {
     // shortcut for router change
-    redirect(obj) {
-      this.$router.push(this.localePath(obj))
-    },
-    // methods for logout and redirect to login page
-    logout () {
-      this.$auth.logout()
-      this.redirect({ name: "aut-login" })
-    },
-    StaticApiLink(link) {
-      return this.$apiUrl + link
+    redirect(to) {
+      this.$router.push(this.localePath(to))
     },
     i18nAttr(obj, key) {
       // locale lang
@@ -56,6 +54,8 @@ export default {
           each(error.response.data.non_field_errors, (msg) => {
             this.$i18nToast().error(msg).goAway(4000)
           })
+        } else {
+          this.$i18nToast().error(this.$t("global.error.error-in-form")).goAway(4000)
         }
       } else if (error.message === "Network Error") {
         // ERROR network

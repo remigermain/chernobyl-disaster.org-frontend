@@ -16,7 +16,7 @@
           <thead>
             <tr>
               <th colspan="100%">
-                <div class="bg-blue-700 text-white p-2 mt-4 capitalize  w-full  rounded-t-lg">
+                <div class="bg-blue-700 text-white p-2 mt-4 capitalize  w-full rounded-t-sm">
                   <slot name="label" /> languages
                 </div>
               </th>
@@ -35,6 +35,9 @@
         </button>
       </div>
       <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-b-lg">
+        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click="$router.back()">
+          {{ $t('global.cancel') }}
+        </button>
         <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="new">
           {{ $t('global.save-add-other') }}
         </button>
@@ -70,7 +73,9 @@ export default {
 <style lang="scss">
 .bg-head {
   background-color:  rgba(74, 85, 104, .2);
-  padding: 2em;
+  & > th {
+    padding: .5em;
+  }
 }
 .table-lang {
   tbody > tr {

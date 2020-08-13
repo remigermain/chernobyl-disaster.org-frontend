@@ -4,7 +4,7 @@
       <span class="px-2 flex justify-center items-center text-gray-700">
         <slot name="icon" />
       </span>
-      <label class="w-full text-gray-700 text-sm font-bold my-2 capitalize flex flex-col-reverse border-b-2 border-gray-600">
+      <label class="w-full text-gray-700 text-sm font-bold capitalize flex flex-col-reverse border-b-2 border-gray-600">
         <input v-model="valueModel"
                :type="type"
                :name="field.name"
@@ -34,8 +34,13 @@ export default {
     type: {
       type: String,
       default: "text"
+    },
+    errors: {
+      type: Array,
+      default: () => []
     }
-  }
+  },
+
 
 }
 </script>
@@ -55,7 +60,7 @@ export default {
 
 .input-label {
   transition: transform .3s, opacity .3s;
-  transform: translateY(100%);
+  transform: translateY(70%);
   opacity: .5;
 }
 </style>

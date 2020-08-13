@@ -1,43 +1,69 @@
 <template>
-  <div class="grid-layout-navbar">
-    <div class="background-navbar" :class="{'active': active, 'hidden': !active }" />
+  <div class="grid-layout-contribute-navbar">
+    <div class="background-contribute-navbar" :class="{'active': active, 'hidden': !active }" />
     <label class="burger" :class="{'active': active }" @click="toogleNavbar">
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
     </label>
-    <nav class="navbar-items" :class="{'active': active }">
-      <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link" @click="active = false">
-        {{ $t('global.home') }}
+    <nav class="contribute-navbar-items" :class="{'active': active }">
+      <button class="contribute-navbar-link" @click="$auth.logout()">
+        <icon-logout />
+        {{ $t('authentification.logout') }}
+      </button>
+      <lazy-extra-nuxt-link v-for="menu in menus" :key="menu.to.name" :to="menu.to" class="contribute-navbar-link" @click="active = false">
+        {{ menu.name }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link" @click="active = false">
-        {{ $t('global.timeline') }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="active = false">
-        {{ $t('global.gallery') }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link" @click="active = false">
-        {{ $t('global.contribute') }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="active = false">
-        {{ $t('global.about') }}
-      </lazy-extra-nuxt-link>
-      <select class="form-select block mt-1 bg-gray-100">
-        <option v-for="lang in $i18n.locales" :key="lang.code">
-          {{ lang.name }}
-        </option>
-      </select>
     </nav>
   </div>
 </template>
 
 <script>
+import iconLogout from "@/assets/svg/logout.svg"
 
 export default {
 
+  components: {
+    iconLogout
+  },
+
   data () {
     return {
-      active: false
+      active: false,
+      menus: [
+        {
+          name: this.$t("contribute.menu.account"),
+          to: {name: "contribute-account"}
+        },
+        {
+          name: this.$t("contribute.menu.event"),
+          to: {name: "contribute-event"}
+        },
+        {
+          name: this.$t("contribute.menu.people"),
+          to: {name: "contribute-people"}
+        },
+        {
+          name: this.$t("contribute.menu.tag"),
+          to: {name: "contribute-tag"}
+        },
+        {
+          name: this.$t("contribute.menu.picture"),
+          to: {name: "contribute-picture"}
+        },
+        {
+          name: this.$t("contribute.menu.video"),
+          to: {name: "contribute-video"}
+        },
+        {
+          name: this.$t("contribute.menu.document"),
+          to: {name: "contribute-document"}
+        },
+        {
+          name: this.$t("contribute.menu.article"),
+          to: {name: "contribute-article"}
+        },
+      ]
     }
   },
 
@@ -52,23 +78,30 @@ export default {
 
 <style lang="scss">
 
-.grid-layout-navbar {
-  grid-area: 1 / 6 / 2 / 11;
+.grid-layout-contribute-navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   text-transform: capitalize;
   padding-right: 10px;
   font-size: 1.2rem;
 }
 
-.navbar-items {
+@media screen and (min-width: 900px){
+  .grid-layout-contribute-navbar {
+    display: block;
+    margin-top: 5rem;
+  }
+}
+
+.contribute-navbar-items {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   width: 100%;
-  z-index: 3;
-  .navbar-link {
+  z-index: 13;
+  & > * + * {
+    margin-top: .7em
+  }
+  .contribute-navbar-link {
     &::after {
       transition: width .4s, opacity .5s;
       content: '';
@@ -79,14 +112,14 @@ export default {
       border-radius: 3px;
       opacity: 0;
     }
-    &.nuxt-link-active {
+    &.nuxt-link-exact-active {
       opacity: 1;
       &::after, &::after {
         width: 100%;
         opacity: 1;
       }
     }
-    &:not(.nuxt-link-active)
+    &:not(.nuxt-link-exact-active)
     {
       opacity: .5;
       &:hover {
@@ -100,31 +133,17 @@ export default {
   }
 }
 
-@media screen and (max-width:1200px){
-  .grid-layout-navbar {
-    grid-area: 1 / 5 / 2 / 11;
-  }
-}
-
-@media screen and (max-width:1100px){
-  .grid-layout-navbar {
-    grid-area: 1 / 4 / 2 / 11;
-  }
-}
-
 @media screen and (max-width:900px){
-  .grid-layout-navbar {
-    grid-area: 1 / 10 / 2 / 11;
-    justify-self: center;
+  .grid-layout-contribute-navbar {
     padding-right: .5em;
-    .navbar-items {
-      transition: transform var(--navbar--annimation-duration);
+    .contribute-navbar-items {
+      transition: transform var(--contribute-navbar--annimation-duration);
       position: fixed;
       width: 50%;
       min-width: 250px;
       height: 100%;
       top: 0;
-      right: 0;
+      left: 0;
       background-color: rgb(255, 255, 255);
       justify-content: center;
       flex-direction: column;
@@ -132,7 +151,7 @@ export default {
       font-size: 1.4em;
       transform: translateX(100%);
       & > * + * {
-        margin-top: 2em
+        margin-top: .8em
       }
       &.active {
         visibility: visible;
@@ -154,7 +173,6 @@ export default {
   display: none;
   width: 40px;
   cursor: pointer;
-  z-index: 4;
   span {
     display: block;
     border-radius: 0.25rem;
@@ -166,6 +184,7 @@ export default {
     margin-top: var(--margin-span-burger);
   }
   &.active {
+    z-index: 14;
     span:first-child {
     transform-origin: center;
     transform:  translateY(calc(var(--margin-span-burger) + var(--height-span-burger)))  rotate(45deg);
@@ -186,7 +205,7 @@ export default {
   }
 }
 
-.background-navbar {
+.background-contribute-navbar {
   transition: background-color .2s;
   background-color: transparent;
   position: absolute;
@@ -194,6 +213,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 10;
   &.active {
     background-color: rgba(0, 0, 0, 0.7);
   }

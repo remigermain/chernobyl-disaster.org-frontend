@@ -17,7 +17,7 @@
       <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
       <lazy-admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
       <lazy-admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
-      <lazy-admin-date :value="object.date" :field="fields.date" :errors="errors.date" />
+      <admin-datetime :value="object.date" :field="fields.date" :errors="errors.date" />
       <lazy-admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
@@ -89,6 +89,7 @@ import Update from "@/mixins/admin/update"
 import Picture from "@/mixins/model/picture"
 
 export default {
+  name: "ContrubtePictureUpdate",
 
   mixins: [Update, Picture],
 

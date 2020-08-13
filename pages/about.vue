@@ -76,6 +76,7 @@ import iconMoodSad from "@/assets/svg/mood-sad.svg"
 import iconMail from "@/assets/svg/mail.svg"
 import iconLanguage from "@/assets/svg/language.svg"
 export default {
+    name: "About",
 
   components: {
     iconBrandGitlab,

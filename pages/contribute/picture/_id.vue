@@ -12,15 +12,27 @@
       </lazy-bread-crumb>
     </template>
     <template v-slot:detail>
-      <div class="flex flex-col justify-center items-center p-4">
-        <h1 class="text-3xl">
-          {{ object.title }}
-        </h1>
-        <img loading="lazy" :src="object.picture" :alt="i18nAttr(object, 'title')" :title="i18nAttr(object, 'title')">
-        <div v-if="object.photographer">
-          {{ $t('global.picture-take-by') }}
-          <h2>{{ object.photographer.name }}</h2>
+      <div class="flex -md:flex-col items-center p-4 flex-wrap">
+        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
+          <model-field :label="fields.title.label" :value="object.title" />
+          <model-field :label="fields.event.label" :value="object.event" />
+          <model-field :label="fields.date.label" :value="object.date" />
+          <model-field :label="fields.photographer.label" :value="object.photographer">
+            <div v-if="object.photographer">
+              {{ object.photographer.name }}
+              <img :src="object.photographer.profil" :alt="object.photographer.name" class="rounded-full">
+            </div>
+          </model-field>
+          <model-tags :tags="object.tags" />
         </div>
+        <div class="w-2/4 -md:w-full flex justify-center flex-col text-2xl text-gray-800 detail-items">
+          <img loading="lazy" :src="object.picture" :alt="object.title">
+        </div>
+        <model-langs :object="object.langs">
+          <template slot-scope="{obj}">
+            <model-field :label="fields.langs.title.label" :value="obj.title" />
+          </template>
+        </model-langs>
       </div>
     </template>
   </lazy-model-detail>
@@ -31,6 +43,7 @@ import detail from "@/mixins/admin/detail"
 import picture from "@/mixins/model/picture"
 
 export default {
+  name: "ContrubtePictureDetail",
 
   mixins: [
     detail,
@@ -54,3 +67,10 @@ export default {
 
 }
 </script>
+
+
+<style lang="scss" scoped>
+.piture-detail {
+  width: 600px;
+}
+</style>

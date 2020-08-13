@@ -35,7 +35,7 @@
             {{ choices.label }}
           </option>
           <option value="" selected class="text-opacity-50 text-lg">
-            -- {{ $t('global.empty') }} --
+            {{ empty }}
           </option>
         </select>
       </div>

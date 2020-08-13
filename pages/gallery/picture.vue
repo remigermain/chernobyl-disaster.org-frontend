@@ -12,6 +12,8 @@ import isEmpty from "lodash/isEmpty"
 import isNil from "lodash/isNil"
 
 export default {
+    name: "GalleryPicture",
+
 
   mixins: [
     galleryMixin

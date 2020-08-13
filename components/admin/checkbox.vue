@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <input v-model="valueModel"
-             :name="field.name"
+             :name="name"
              class="bg-gray-200 rounded p-2 block placeholder-opacity-50"
              type="checkbox"
              :required="field.required"

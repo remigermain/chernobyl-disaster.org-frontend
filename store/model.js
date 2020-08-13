@@ -28,6 +28,9 @@ export const getters = {
   tags: (state) => {
     return state.tags
   },
+  tag: (state, idx) => {
+    return state.tags.find(t => t.id === idx)
+  },
   lastPopulate: (state) => {
     return state.lastPopulate
   },

@@ -22,6 +22,7 @@ import isEmpty from "lodash/isEmpty"
 import isNil from "lodash/isNil"
 
 export default {
+    name: "GalleryDocument",
 
   components: {
     iconFileDownload

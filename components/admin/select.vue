@@ -7,9 +7,9 @@
     </template>
     <template v-slot:input>
       <select v-model="valueModel"
-              :name="field.name"
+              :name="name"
               :required="field.required"
-              class="select"
+              class="form-select bg-gray-300"
               @input="$emit('input', valueModel)"
               @change="$emit('input', valueModel)"
       >

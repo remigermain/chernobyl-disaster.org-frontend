@@ -66,19 +66,12 @@ module.exports = {
       }
     },
   },
-  variants: {
-    float: ["responsive", "direction"],
-    margin: ["responsive", "direction"],
-    padding: ["responsive", "direction"],
-    spinner: ["responsive"],
-  },
   plugins: [
-    require("tailwindcss-dir")(),
     require("tailwindcss-spinner")({ className: "spinner", themeKey: "spinner" }),
     require("@tailwindcss/custom-forms"),
   ],
   purge: {
     enabled: process.env.NODE_ENV === "production",
-    content: ["components/**/*.vue", "layouts/**/*.vue", "pages/**/*.vue"]
+    content: ["components/**/*.vue", "layouts/**/*.vue", "pages/**/*.vue"],
   }
 }

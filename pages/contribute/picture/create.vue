@@ -16,7 +16,7 @@
       <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
       <lazy-admin-select :field="fields.event" :errors="errors.event" />
       <lazy-admin-image :field="fields.picture" :errors="errors.picture" />
-      <lazy-admin-date :field="fields.date" :errors="errors.date" />
+      <admin-datetime :field="fields.date" :errors="errors.date" />
       <lazy-admin-select :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
@@ -47,7 +47,7 @@
                              :action="false"
           />
         </td>
-        <td>
+        <td class="flex justify-center items-center">
           <lazy-admin-action :add="false"
                              :edit="false"
                              :deleted="true"
@@ -65,6 +65,7 @@ import picture from "@/mixins/model/picture"
 import create from "@/mixins/admin/create"
 
 export default {
+  name: "ContrubtePictureCreate",
 
   mixins: [
     create,

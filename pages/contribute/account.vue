@@ -4,7 +4,7 @@
       <h2 class="text-3xl">
         {{ $t('account.change-password') }}
       </h2>
-      <form @submit.prevent="submitPassword">
+      <form class="account-form shadow-sm p-4" @submit.prevent="submitPassword">
         <field-password :field="field.oldpassword" :errors="errors.old_password" />
         <field-password :field="field.password1" :errors="errors.new_password1" />
         <field-password :field="field.password2" :errors="errors.new_password2" />
@@ -19,7 +19,7 @@
 <script>
 
 export default {
-
+  name: "ContributeAccount",
 
   data () {
     return {
@@ -75,3 +75,9 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+.account-form > * {
+  margin-top: 1.5rem
+}
+</style>

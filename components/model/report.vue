@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-800 absolute bg-opacity-75 top-0 left-0 h-screen w-screen flex justify-center items-center">
+  <div class="bg-gray-800 absolute bg-opacity-75 top-0 left-0 h-screen w-screen flex justify-center items-center z-5">
     <div class="bg-white shadow rounded-md p-4 w-2/4 relative -md:w-full">
       <div class="flex justify-between flex-wrap">
         <div class="w-2/4 flex items-center">
@@ -59,7 +59,7 @@ export default {
   methods: {
     submit () {
       this.loading = true
-      this.errors = []
+      this.errors.message = []
 
       const data = {
         object_id: this.$route.params.id,

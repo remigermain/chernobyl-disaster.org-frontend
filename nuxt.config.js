@@ -100,12 +100,12 @@ export default {
   },
 
   buildModules: [
-    // "@nuxtjs/eslint-module",
+    "@nuxtjs/eslint-module",
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/style-resources",
-    // "@aceforth/nuxt-optimized-images",
-    // "nuxt-purgecss",
+    "@aceforth/nuxt-optimized-images",
+    "nuxt-purgecss",
     "nuxt-svg-loader",
   ],
 
@@ -165,7 +165,7 @@ export default {
   },
 
   purgecss: {
-    whiteListPatterns: [/svg.*/, /fa.*/]
+    whiteListPatterns: [/svg.*/],
   },
 
   build: {
