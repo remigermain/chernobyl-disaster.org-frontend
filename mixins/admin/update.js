@@ -1,4 +1,3 @@
-import _ from "lodash"
 import base from "./base"
 
 
@@ -28,25 +27,13 @@ export default {
             this.redirect({...this.pathCreate.path})
           } else if (event.submitter.dataset.type === "detail") {
             this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
-          } else if (_.has(this, "callbackSuccess")) {
-            this.callbackSuccess(response)
           }
           this.object = response.data
           this.langs = []
 
         })
-        .catch(error => {
-          this.$i18nToast().error(this.$t("global.update-ko"))
-          if (!_.isNil(error.response)) {
-            this.errors = error.response.data
-          }
-          if (_.has(this, "callbackError")) {
-            this.callbackError(error)
-          }
-        })
-        .finally(() => {
-          this.loading = false
-        })
+        .catch(error => { this.requestError(error) })
+        .finally(() => { this.loading = false })
     },
   }
 

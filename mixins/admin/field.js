@@ -1,7 +1,7 @@
 /*
   mixxins for field/input components
 */
-import _ from "lodash"
+import { isNil } from "lodash"
 
 import fieldInline  from "@/components/admin/inline"
 import fieldBase  from "@/components/admin/base"
@@ -43,7 +43,7 @@ export default {
 
   computed: {
     name () {
-      if (!_.isNil(this.prefix)) {
+      if (!isNil(this.prefix)) {
         return `${this.prefix}[${this.field.label.toLowerCase()}]`
       }
       return this.field.label.toLowerCase()

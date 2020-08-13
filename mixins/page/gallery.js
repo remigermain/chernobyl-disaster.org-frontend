@@ -1,6 +1,10 @@
-import _ from "lodash"
+import { isEmpty } from "lodash"
 
 export default {
+
+  watchQuery (newQuery, oldQuery) {
+    return newQuery.search != oldQuery.search || newQuery.order != oldQuery.order
+  },
 
   data () {
     return {
@@ -12,20 +16,20 @@ export default {
     }
   },
 
-  watch: {
-    "$route.query" () {
-      this.object = []
-      this.page = 1
-      this.uniqueId++
-    }
-  },
+  // watch: {
+  //   "$route.query" () {
+  //     this.object = []
+  //     this.page = 1
+  //     this.uniqueId++
+  //   }
+  // },
 
   computed: {
     baseUrl () {
       return `${this.model}/?page=${this.page}`
     },
     url () {
-      if (_.isEmpty(this.$route.query, true)) {
+      if (isEmpty(this.$route.query, true)) {
         return this.baseUrl
       }
       const q = this.$route.query

@@ -1,8 +1,6 @@
 <template>
   <div class="grid-picture">
-    <div v-for="el in object" :key="el.id" class="picture-item">
-      <img :alt="el.title" :src="el.picture" loading="lazy" @click="current = el">
-    </div>
+    <img v-for="el in object" :key="el.id" class="picture-item" :alt="el.title" :src="el.picture" loading="lazy" @click="current = el">
     <lazy-gallery-detail-picture v-if="current" :object="current" @close="current = null" />
     <lazy-extra-infinite-loading class="picture-infinite" :identifier="uniqueId" @infinite="refresh" />
   </div>
@@ -10,7 +8,8 @@
 
 <script>
 import galleryMixin from "@/mixins/page/gallery"
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
+import isNil from "lodash/isNil"
 
 export default {
 
@@ -19,7 +18,7 @@ export default {
   ],
 
   asyncData({app, route}) {
-    const query = (_.isEmpty(route.query) ? "" : `&search=${route.query.search}&order=${route.query.order}`)
+    const query = (isEmpty(route.query) ? "" : `&search=${route.query.search}&order=${route.query.order}`)
     return app.$axios.get(`picture/?page=1${query}`)
       .then(response => {
         if (response.status != 200) {
@@ -27,7 +26,7 @@ export default {
         }
         return {
           object: response.data.results,
-          completed: _.isNil(response.data.next)
+          completed: isNil(response.data.next)
         }
       })
   },
@@ -47,7 +46,7 @@ export default {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   grid-row-gap: 10px;
   grid-column-gap: 10px;
 }
@@ -57,15 +56,11 @@ export default {
   width: 100%;
   cursor: pointer;
   overflow: hidden;
-  img {
-    transition: transform .4s;
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
-    &:hover {
-      margin:auto;
-      transform: scale(105%);
-    }
+  transition: transform .4s;
+  object-fit: cover;
+  &:hover {
+    margin:auto;
+    transform: scale(105%);
   }
 }
 

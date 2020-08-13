@@ -7,7 +7,7 @@
       <div class="p-2 mb-2 w-2/4">
         <field-text :field="{label: $t('global.search') }">
           <template v-slot:icon>
-            <icon-search class="cursor-pointer hover:text-purple-700" @click="$emit('search', searchValue)" />
+            <icon-search class="cursor-pointer hover:text-purple-700" @click="$emit('search', search)" />
           </template>
         </field-text>
       </div>
@@ -18,15 +18,15 @@
           <th v-for="field in fields" :key="field.field"
               class="text-gray-600 hover:text-gray-800 table-head cursor-pointer p-2"
               :class="{
-                'text-gray-800': currentField.field === field.field
+                'text-gray-800': current.field === field.field
               }"
-              @click="sort(field, !reverse)"
+              @click="sort(field)"
           >
             {{ field.label }}
             <icon-arrow-up class="transform w-5"
                            :class="{
                              '-rotate-180': reverse,
-                             'invisible': currentField.field != field.field
+                             'invisible': current.field != field.field
                            }"
             />
           </th>
@@ -111,10 +111,10 @@ export default {
 
   data () {
     return {
-      currentField: {field: null},
+      current: {field: null},
       reverse: false,
       list: this.objectList,
-      searchValue: ""
+      search: ""
     }
   },
 
@@ -125,15 +125,14 @@ export default {
   },
 
   methods: {
-    sort (field, reverse) {
-      this.reverse = reverse
-      this.currentField = field
-      this.list = this.objectList.sort((el1, el2) => {
-        const type = field.type
-        const fel1 = type(el1[field.field])
-        const fel2 = type(el2[field.field])
-        return (reverse ? fel1 > fel2 : fel2 > fel1)
-      })
+    sort (field) {
+      this.current = field
+      this.reverse = !this.reverse
+      if (this.reverse) {
+        this.list = this.list.sort((el1, el2) => el1 > el2)
+      } else {
+        this.list = this.list.sort((el1, el2) => el1 < el2)
+      }
     },
   }
 

@@ -1,4 +1,3 @@
-// import _ from "lodash"
 import base from "./base"
 
 const TIME_REFRESH = 20000 // every 20 secondes

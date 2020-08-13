@@ -1,6 +1,8 @@
 const isDev = process.env.Node_ENV !== "production"
 const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
 
+import i18n from "./config/i18n"
+
 
 export default {
 
@@ -42,17 +44,7 @@ export default {
     "~/plugins/toast.js",
   ],
 
-  i18n: {
-    locales: [
-      { code: "fr", iso: "fr-FR", name: "Francais", file: "fr.json" },
-      { code: "en", iso: "en-UK", name: "english", file: "en.json" }
-    ],
-    strategy: "prefix",
-    defaultLocale: "fr",
-    lazy: true,
-    langDir: "locales/",
-    seo: true,
-  },
+  i18n,
 
   modules: [
     "@nuxtjs/axios",
@@ -177,6 +169,7 @@ export default {
   },
 
   build: {
+    optimizeCSS: true,
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

@@ -54,7 +54,8 @@ import iconFile from "@/assets/svg/file-text.svg"
 import iconArticle from "@/assets/svg/news.svg"
 import iconSearch from "@/assets/svg/search.svg"
 import iconSettings from "@/assets/svg/settings.svg"
-import _ from "lodash"
+import has from "lodash/has"
+import isNil from "lodash/isNil"
 
 export default {
 
@@ -86,13 +87,13 @@ export default {
   },
 
   beforeMount () {
-    if (!_.isNil(this.$route.query)) {
+    if (!isNil(this.$route.query)) {
       // set the value of search
       this.search = this.$route.query.search || ""
 
       // set value of order if exists in choices
-      if (_.has(this.$route.query, "sort")) {
-        if (_.filter(this.orderChoices, (obj) => obj.value === this.$route.query.order).length) {
+      if (has(this.$route.query, "sort")) {
+        if (this.orderChoices.some(obj => obj.value === this.$route.query.order)) {
           this.sort = this.$route.query.sort
         }
       }

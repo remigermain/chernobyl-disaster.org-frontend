@@ -1,4 +1,3 @@
-import _ from "lodash"
 import iconTrash from "@/assets/svg/trash.svg"
 
 export default {
@@ -11,7 +10,7 @@ export default {
     return {
       langs: [], // object for extra langs add
       counter: 0, // unique id for langs
-      errors: {..._.clone(this.object)}, // error returned by api, clone actual object for access the key
+      errors: {...this.object}, // error returned by api, clone actual object for access the key
     }
   },
 

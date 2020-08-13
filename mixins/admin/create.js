@@ -1,4 +1,3 @@
-import _ from "lodash"
 import base from "./base"
 
 export default {
@@ -29,23 +28,10 @@ export default {
             this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
           } else {
             event.srcElement.reset() // reset all input in form
-            if (_.has(this, "callbackSuccess")) {
-              this.callbackSuccess(response)
-            }
           }
         })
-        .catch(error => {
-          this.$i18nToast().error(this.$t("global.create-ko"))
-          if (!_.isNil(error.response)) {
-            this.errors = error.response.data
-          }
-          if (_.has(this, "callbackError")) {
-            this.callbackError(error)
-          }
-        })
-        .finally(() => {
-          this.loading = false
-        })
+        .catch(error => { this.requestError(error) })
+        .finally(() => { this.loading = false })
     },
   }
 

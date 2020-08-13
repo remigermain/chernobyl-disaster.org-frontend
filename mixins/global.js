@@ -1,4 +1,5 @@
-import _ from "lodash"
+import has from "lodash/has"
+import each from "lodash/each"
 
 export default {
 
@@ -35,24 +36,24 @@ export default {
     },
     i18nAttr(obj, key) {
       // locale lang
-      let el = _.find(obj.langs,{"language": this.$i18n.locale})
+      let el = obj.langs.find(el => el.language == this.$i18n.defaultLocale)
       if (el) return el[key]
 
       // default lang
-      el = _.find(obj.langs,{"language": this.$i18n.defaultLocale})
+      el = obj.langs.find(el => el.language == this.$i18n.defaultLocale)
       if (el) return el[key]
 
-      if (_.has(obj, key)) return obj[key]
+      if (has(obj, key)) return obj[key]
 
       return this.$t("global.error-key")
     },
     requestError (error) {
-      if (_.has(error, "response") && _.has(error.response, "data")) {
+      if (has(error, "response") && has(error.response, "data")) {
         // assign response to error
         this.errors = error.response.data
         // if non_field_errors as set, create toast
-        if (_.has(error.response.data, "non_field_errors")) {
-          _.each(error.response.data.non_field_errors, (msg) => {
+        if (has(error.response.data, "non_field_errors")) {
+          each(error.response.data.non_field_errors, (msg) => {
             this.$i18nToast().error(msg).goAway(4000)
           })
         }

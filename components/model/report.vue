@@ -75,12 +75,8 @@ export default {
           this.message = ""
           this.$i18nToast().success(this.$t("global.report-ok"))
         })
-        .catch((error) => {
-          this.requestError(error)
-        })
-        .finally(() => {
-          this.loading = false
-        })
+        .catch((error) => { this.requestError(error) })
+        .finally(() => { this.loading = false })
     }
   }
 

@@ -11,7 +11,8 @@
 
 <script>
 import galleryMixin from "@/mixins/page/gallery"
-import _ from "lodash"
+import isEmpty from "lodash/isEmpty"
+import isNil from "lodash/isNil"
 
 export default {
 
@@ -20,7 +21,7 @@ export default {
   ],
 
   asyncData({app, route}) {
-    const query = (_.isEmpty(route.query) ? "" : `&search=${route.query.search}&order=${route.query.order}`)
+    const query = (isEmpty(route.query) ? "" : `&search=${route.query.search}&order=${route.query.order}`)
     return app.$axios.get(`video/?page=1${query}`)
       .then(response => {
         if (response.status != 200) {
@@ -28,7 +29,7 @@ export default {
         }
         return {
           object: response.data.results,
-          completed: _.isNil(response.data.next)
+          completed: isNil(response.data.next)
         }
       })
   },
