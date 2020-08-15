@@ -8,19 +8,19 @@
     </label>
     <nav class="navbar-items" :class="{'active': active }">
       <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link" @click="active = false">
-        {{ $t('global.home') }}
+        {{ $t('menu.home') }}
       </lazy-extra-nuxt-link>
       <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link" @click="active = false">
-        {{ $t('global.timeline') }}
+        {{ $t('menu.timeline') }}
       </lazy-extra-nuxt-link>
       <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="active = false">
-        {{ $t('global.gallery') }}
+        {{ $t('menu.gallery') }}
       </lazy-extra-nuxt-link>
       <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link" @click="active = false">
-        {{ $t('global.contribute') }}
+        {{ $t('menu.contribute') }}
       </lazy-extra-nuxt-link>
       <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="active = false">
-        {{ $t('global.about') }}
+        {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
       <select class="form-select block mt-1 bg-gray-100">
         <option v-for="lang in $i18n.locales" :key="lang.code">
@@ -198,4 +198,5 @@ export default {
     background-color: rgba(0, 0, 0, 0.7);
   }
 }
+
 </style>

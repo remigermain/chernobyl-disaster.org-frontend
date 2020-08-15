@@ -5,7 +5,7 @@
         <slot name="table-title" />
       </div>
       <div class="p-2 mb-2 w-2/4">
-        <field-text v-model="search" :field="{label: $t('global.search') }">
+        <field-text v-model="search" :field="{label: $t('tools.search') }">
           <template v-slot:icon>
             <icon-search class="cursor-pointer hover:text-purple-700" @click="$emit('search', search)" />
           </template>
@@ -31,7 +31,7 @@
             />
           </th>
           <th class="text-gray-700 table-head align-middle text-center">
-            {{ $t('global.action') }}
+            {{ $t('tools.action') }}
           </th>
         </tr>
       </thead>
@@ -69,7 +69,7 @@
       </span>
       <admin-pagination :length="length" @change="$emit('pagination', $event)" />
       <span class="text-md italic float-right opacity-75">
-        {{ $t('global.total') }} : {{ length }}
+        {{ $t('utils.total') }} : {{ length }}
       </span>
     </div>
   </div>

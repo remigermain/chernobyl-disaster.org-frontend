@@ -1,4 +1,5 @@
 import iconTrash from "@/assets/svg/trash.svg"
+import has from "lodash/has"
 
 export default {
 
@@ -10,7 +11,6 @@ export default {
     return {
       langs: [], // object for extra langs add
       counter: 0, // unique id for langs
-      errors: {...this.object}, // error returned by api, clone actual object for access the key
     }
   },
 
@@ -25,7 +25,7 @@ export default {
     },
     pathDetail () {
       return {
-        label: this.$t("global.detail"),
+        label: this.$t("admin.tools.detail"),
         path: {
           name: `contribute-${this.model.name}-id`,
           params: this.$route.params
@@ -34,7 +34,7 @@ export default {
     },
     pathUpdate () {
       return {
-        label: this.$t("global.update"),
+        label: this.$t("utils.update"),
         path: {
           name: `contribute-${this.model.name}-update-id`,
           params: this.$route.params
@@ -43,7 +43,7 @@ export default {
     },
     pathCreate () {
       return {
-        label: this.$t("global.create"),
+        label: this.$t("utils.create"),
         path: {
           name: `contribute-${this.model.name}-create`
         }
@@ -63,6 +63,12 @@ export default {
     },
     prefixLang (idx) {
       return `langs[${idx}]`
+    },
+    getErrorsIdx(tab, idx, key) {
+      if (tab.length >= idx && has(tab[idx], key)) {
+        return tab[idx][key]
+      }
+      return []
     }
   }
 

@@ -2,13 +2,13 @@
   <div class="grid-index">
     <div class="index-description">
       <h1 class="text-4xl uppercase extra-auto font-russia transition-opacity duration-400 z-1 italic text-opacity-50">
-        {{ $t('global.presentation') }}
+        {{ $t('pages.home.presentation') }}
       </h1>
       <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
-        {{ $t('global.description') }}
+        {{ $t('pages.home.description') }}
       </p>
       <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800">
-        {{ $t('global.timeline') }}
+        {{ $t('menu.timeline') }}
       </lazy-extra-nuxt-link>
     </div>
     <div class="index-image">

@@ -7,9 +7,9 @@
     </template>
     <template v-slot:input>
       <span v-if="valueModel" class="p-2">
-        {{ $t('global.currently') }} :
+        {{ $t('utils.currently') }} :
         <a :href="valueModel" class="text-purple-700 text-md italic" rel="noopener">
-          {{ $t('model.actual-link') }}
+          {{ $t('utils.actual-link') }}
         </a>
       </span>
       <input type="file"

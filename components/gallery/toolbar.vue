@@ -21,14 +21,14 @@
       </lazy-extra-nuxt-link>
     </div>
     <div class="toolbar-item" :class="{'hide-option': !option}">
-      <field-text v-model="search" :field="{label: $t('global.search') }" class="toolbar-search">
+      <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search">
         <template v-slot:icon>
           <icon-search />
         </template>
       </field-text>
       <div class="toolbar-order">
         <span class="text-md text-gray-600 capitalize">
-          {{ $t('global.sort-by') }}
+          {{ $t('tools.sort-by') }}
         </span>
         <select v-model="sort" class="p4 rounded-md shadow-xl text-center border border-gray-900 h-min w-full">
           <option v-for="choices in sortChoices" :key="choices.value" :value="choices.value">
@@ -40,7 +40,7 @@
         </select>
       </div>
       <button class="px-2 py-4 rounded shaodw bg-blue-800 hover:bg-blue-700 text-white w-full text-center" @click="submit">
-        {{ $t('global.searched') }}
+        {{ $t('tools.searched') }}
       </button>
     </div>
   </div>
@@ -74,14 +74,14 @@ export default {
       sort: "",
       option: false,
       sortChoices: [
-        {label: `${this.$t("global.create")} - ${this.$t("global.ascending")}`, value: "id"},
-        {label: `${this.$t("global.create")} - ${this.$t("global.descending")}`, value: "-id"},
-        {label: `${this.$t("global.date")} - ${this.$t("global.ascending")}`, value: "date"},
-        {label: `${this.$t("global.date")} - ${this.$t("global.descending")}`, value: "-date"},
-        {label: `${this.$t("global.title")} - ${this.$t("global.title")}`, value: "title"},
-        {label: `${this.$t("global.title")} - ${this.$t("global.title")}`, value: "-title"},
-        {label: `${this.$t("global.event")} - ${this.$t("global.ascending")}`, value: "event__date"},
-        {label: `${this.$t("global.event")} - ${this.$t("global.descending")}`, value: "-event__date"},
+        {label: `${this.$t("tools.create")} - ${this.$t("tools.ascending")}`, value: "id"},
+        {label: `${this.$t("tools.create")} - ${this.$t("tools.descending")}`, value: "-id"},
+        {label: `${this.$t("tools.date")} - ${this.$t("tools.ascending")}`, value: "date"},
+        {label: `${this.$t("tools.date")} - ${this.$t("tools.descending")}`, value: "-date"},
+        {label: `${this.$t("tools.name")} - ${this.$t("tools.name")}`, value: "title"},
+        {label: `${this.$t("tools.name")} - ${this.$t("tools.name")}`, value: "-title"},
+        {label: `${this.$t("admin.label.event")} - ${this.$t("tools.ascending")}`, value: "event__date"},
+        {label: `${this.$t("admin.label.event")} - ${this.$t("tools.descending")}`, value: "-event__date"},
       ]
     }
   },

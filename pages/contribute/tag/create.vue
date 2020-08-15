@@ -15,14 +15,9 @@
       <lazy-admin-text :field="fields.name" :errors="errors.name" />
     </template>
     <template v-slot:table-header>
-      <th> {{ $t('model.picture.langs.title') }} </th>
-      <th>
-        {{ $t('global.language') }}
-        <lazy-admin-error :errors="errors.langs" />
-      </th>
-      <th>
-        {{ $t('model.actions') }}
-      </th>
+      <th> {{ fields.langs.title.label }} </th>
+      <th> {{ $t('admin.model.language') }} </th>
+      <th> {{ $t('utils.actions') }} </th>
     </template>
     <template v-slot:table-body>
       <tr v-for="(val, idx) in langs" :key="val">
@@ -33,6 +28,7 @@
                            :field="fields.langs.name"
                            :action="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'name')" />
         </td>
         <td>
           <lazy-admin-select class="border-none"
@@ -41,6 +37,7 @@
                              :field="fields.langs.language"
                              :action="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'language')" />
         </td>
         <td class="flex justify-center items-center">
           <lazy-admin-action :add="false"

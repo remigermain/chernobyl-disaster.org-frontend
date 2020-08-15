@@ -2,24 +2,24 @@
   <div class="grid-password">
     <div class="password-description">
       <p class="font-bold text-gray-900 text-2xl">
-        {{ $t('global.connection-account') }}
+        {{ $t('auth.connection-account') }}
       </p>
       <p class="text-sm text-gray-600">
-        {{ $t('global.or') }}
+        {{ $t('utils.or') }}
         <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
-          {{ $t('global.login') }}
+          {{ $t('auth.login') }}
         </extra-nuxt-link>
       </p>
       <p class="text-sm text-gray-600">
-        {{ $t('global.or') }}
+        {{ $t('utils.or') }}
         <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
-          {{ $t('global.create-account') }}
+          {{ $t('auth.create-account') }}
         </extra-nuxt-link>
       </p>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
         <field-email :field="field.email" />
         <field-submit>
-          {{ $t('authentification.reset-password') }}
+          {{ $t('auth.reset-password') }}
         </field-submit>
       </form>
     </div>
@@ -43,7 +43,7 @@ export default {
       },
       field: {
         email: {
-          label: this.$t("authentification.email"),
+          label: this.$t("auth.field.email"),
           name: "email",
           required: true,
           max_length: 50,

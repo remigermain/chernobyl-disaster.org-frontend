@@ -9,7 +9,7 @@
     <nav class="contribute-navbar-items" :class="{'active': active }">
       <button class="contribute-navbar-link" @click="$auth.logout()">
         <icon-logout />
-        {{ $t('authentification.logout') }}
+        {{ $t('auth.logout') }}
       </button>
       <lazy-extra-nuxt-link v-for="menu in menus" :key="menu.to.name" :to="menu.to" class="contribute-navbar-link" @click="active = false">
         {{ menu.name }}
@@ -32,35 +32,35 @@ export default {
       active: false,
       menus: [
         {
-          name: this.$t("model.name.account"),
+          name: this.$t("admin.label.account"),
           to: {name: "contribute-account"}
         },
         {
-          name: this.$t("model.name.event"),
+          name: this.$t("admin.label.event"),
           to: {name: "contribute-event"}
         },
         {
-          name: this.$t("model.name.people"),
+          name: this.$t("admin.label.people"),
           to: {name: "contribute-people"}
         },
         {
-          name: this.$t("model.name.tag"),
+          name: this.$t("admin.label.tag"),
           to: {name: "contribute-tag"}
         },
         {
-          name: this.$t("model.name.picture"),
+          name: this.$t("admin.label.picture"),
           to: {name: "contribute-picture"}
         },
         {
-          name: this.$t("model.name.video"),
+          name: this.$t("admin.label.video"),
           to: {name: "contribute-video"}
         },
         {
-          name: this.$t("model.name.document"),
+          name: this.$t("admin.label.document"),
           to: {name: "contribute-document"}
         },
         {
-          name: this.$t("model.name.article"),
+          name: this.$t("admin.label.article"),
           to: {name: "contribute-article"}
         },
       ]

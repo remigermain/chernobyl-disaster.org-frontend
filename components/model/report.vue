@@ -4,7 +4,7 @@
       <div class="flex justify-between flex-wrap">
         <div class="w-2/4 flex items-center">
           <h2 class="capitalize">
-            {{ $t('model.report') }}
+            {{ $t('admin.field.report') }}
           </h2>
         </div>
         <div class="w-2/4 text-right">
@@ -12,18 +12,18 @@
         </div>
         <div class="w-2/4">
           <span class="p-2 pl-0 text-gray-600 rounded italic">
-            {{ uuid }} {{ $t('model.report.identifier') }} {{ $route.params.id }}
+            {{ uuid }} {{ $t('utils.identifier') }} {{ $route.params.id }}
           </span>
         </div>
         <div class="w-full mt-4 p-4 rounded bg-gray-600 bg-opacity-25 italic text-sm text-opacity-50">
-          {{ $t('model.report-description') }}
+          {{ $t('admin.help.global.report') }}
         </div>
       </div>
       <form class="mt-4" @submit.prevent="submit">
         <field-textarea v-model="message" :field="{label: 'report', required: true, help: 'erfer'}" :errors="errors.message" class="my-4 shadow-xl p-2" />
         <div class="w-full flex justify-end">
           <button type="submit" class="p-2 bg-blue-700 rounded hover:bg-blue-900 text-white">
-            {{ $t('global.send') }}
+            {{ $t('utils.send') }}
           </button>
         </div>
       </form>
@@ -73,7 +73,7 @@ export default {
           }
           this.$emit("close")
           this.message = ""
-          this.$i18nToast().success(this.$t("global.report-ok"))
+          this.$i18nToast().success(this.$t("success.report"))
         })
         .catch((error) => { this.requestError(error) })
         .finally(() => { this.loading = false })
@@ -82,7 +82,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>

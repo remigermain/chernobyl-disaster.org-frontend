@@ -71,7 +71,7 @@ def  check(ret, name, read):
     if local_name_split[0] in IGNORE_KEY:
       continue
     local_name = (".".join(local_name_split[:-1]))
-    if local_name != original_name:
+    if local_name != original_name and not flag.no_print:
       key_trans = local_name_split[-1]
 
       # on recuper le position de l'error, pour pouvoir clicque sur le lien dans le terminal
@@ -114,7 +114,7 @@ def read_dir(path):
             fnc = fnc + ret
 
         elif isdir(name):
-            print(f"dir: {name}")
+            #print(f"dir: {name}")
             # si c'est un dossier on rapelle la fonction
             fnc = fnc + read_dir(name)
     fnc.sort()
@@ -122,7 +122,7 @@ def read_dir(path):
 
 
 # function qui contruct le dictionaire
-def construct(dct, element):
+def construct(dct, element, original):
     global flag
     if element and not isinstance(dct, str):
         key = element[0]
@@ -131,7 +131,11 @@ def construct(dct, element):
             dct[key] = {}
         _len = len(element)
         if _len:
-            construct(dct[key], element)
+          if not isinstance(dct[key], list) and not isinstance(dct[key], dict):
+            val = dct[key] if dct[key] else "-- empty string --"
+            print(f"ERROR for key {original}\n{key} existe with other value: {val}")
+            exit(-1)
+          construct(dct[key], element, original)
         elif _len == 1:
             dct[key][element[0]] = key if flag.default else ""
         else:
@@ -226,7 +230,8 @@ def main():
     # on construct le dict
     dtc = {}
     for el in fnc:
-        construct(dtc, el.split('.'))
+        construct(dtc, el.split('.'), el)
+
     debug(dtc)
 
     #read local nuxt.config
@@ -272,6 +277,7 @@ if __name__ == '__main__':
     parser.add_argument('-r', '--reset', action="store_true", help="for replace old traductions", default=False)
     parser.add_argument('-v', '--debug', action="store_true", help="debug output", default=False)
     parser.add_argument('-i', '--ignore-error', action="store_true", help="ignore error file name", default=False)
+    parser.add_argument('-p', '--no-print', action="store_true", help="no print error/waring", default=False)
     parser.add_argument('-d', '--default', action="store_true", help="default value is the last key", default=False)
     flag = parser.parse_args()
     main()

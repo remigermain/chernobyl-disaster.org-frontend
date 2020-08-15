@@ -2,12 +2,12 @@
   <div class="grid-register">
     <div class="register-description">
       <p class="font-bold text-gray-900 text-2xl">
-        {{ $t('global.register-account') }}
+        {{ $t('auth.register-account') }}
       </p>
       <p class="text-sm text-gray-600">
-        {{ $t('global.or') }}
+        {{ $t('utils.or') }}
         <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
-          {{ $t('global.login') }}
+          {{ $t('auth.login') }}
         </lazy-extra-nuxt-link>
       </p>
       <form class="bg-white shadow-md rounded px-8 py-6 mb-4 w-full -md:w-full xl:w-3/4 form" @submit.prevent="submit">
@@ -16,7 +16,7 @@
         <field-password :field="field.password1" :errors="errors.password1" />
         <field-password :field="field.password2" :errors="errors.password2" />
         <field-submit>
-          {{ $t('authentification.register') }}
+          {{ $t('auth.register') }}
         </field-submit>
       </form>
     </div>
@@ -43,25 +43,25 @@ export default {
       },
       field: {
         email: {
-          label: this.$t("authentification.email"),
+          label: this.$t("auth.field.email"),
           name: "email",
           required: true,
           max_length: 50,
         },
         username: {
-          label: this.$t("authentification.username"),
+          label: this.$t("auth.field.username"),
           name: "username",
           required: true,
           max_length: 50,
         },
         password1: {
-          label: this.$t("authentification.password"),
+          label: this.$t("auth.field.password"),
           name: "password1",
           required: true,
           max_length: 50,
         },
         password2: {
-          label: this.$t("authentification.comfirm-password"),
+          label: this.$t("auth.field.comfirm-password"),
           name: "password2",
           required: true,
           max_length: 50,

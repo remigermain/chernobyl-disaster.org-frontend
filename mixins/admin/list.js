@@ -55,27 +55,23 @@ export default {
       this.$axios.get(this.url)
         .then(response => {
           if (response.status != 200) {
-            throw Error(this.$t("global.error"))
+            throw Error(this.$t("errors.refresh"))
           }
           this.objectList = response.data.results
           this.objectlength = response.data.count
         })
-        .catch(() => {
-          this.$i18nToast().error(this.$t("global.error"))
-        })
+        .catch((error) => {this.requestError(error) })
     },
     refreshLang () {
       this.$axios.get(this.urlLang)
         .then(response => {
           if (response.status != 200) {
-            throw Error(this.$t("global.error"))
+            throw Error(this.$t("errors.refresh"))
           }
           this.objectListLang = response.data.results
           this.objectlengthLang = response.data.count
         })
-        .catch(() => {
-          this.$i18nToast().error(this.$t("global.error"))
-        })
+        .catch((error) => {this.requestError(error) })
     }
   },
 

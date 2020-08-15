@@ -17,7 +17,7 @@
                         @search="search"
       >
         <template v-slot:table-title>
-          {{ $t('model.list') }}
+          {{ $t('admin.tools.list') }}
         </template>
       </lazy-admin-table>
       <lazy-admin-table :fields="tableFieldLang"
@@ -29,7 +29,7 @@
                         @search="searchLang"
       >
         <template v-slot:table-title>
-          {{ $t('model.need-translate') }}
+          {{ $t('admin.model.need-translate') }}
         </template>
       </lazy-admin-table>
     </template>
@@ -55,7 +55,7 @@ export default {
       const response = await $axios.get("document/?page=1")
       const responseLang = await $axios.get("document/?page=1&completed=false")
       if (response.status != 200 || responseLang.status != 200) {
-        throw Error(app.i18n.t("global.error"))
+        throw Error(app.i18n.t("errors.status"))
       }
       return {
         objectList: response.data.results,
@@ -65,21 +65,21 @@ export default {
       }
     }
     catch {
-      return redirect(app.$i18n.localePath({name: "contribute-document"}))
+      return redirect(app.localePath({name: "contribute"}))
     }
   },
 
   data () {
     return {
       tableField: [
-        {field: "id", label: "id", type: Number},
-        {field: "title", label: "title", type: String},
-        {field: "event", label: "event", type: Date},
+        {field: "id", label: this.$t("admin.model.id"), type: Number},
+        {field: "title", label: this.$t("admin.model.title"), type: String},
+        {field: "event", label: this.$t("admin.model.event"), type: Date},
       ],
       tableFieldLang: [
-        {field: "id", label: "id", type: Number},
-        {field: "title", label: "title", type: String},
-        {field: "not_available_languages", label: "no translate", type: Array},
+        {field: "id", label: this.$t("admin.model.id"), type: Number},
+        {field: "title", label: this.$t("admin.model.title"), type: String},
+        {field: "not_available_languages", label: this.$t("admin.model.need-translate"), type: Array},
       ],
     }
   },

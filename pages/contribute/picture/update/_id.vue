@@ -21,14 +21,9 @@
       <lazy-admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
-      <th> {{ $t('model.picture.langs.title') }} </th>
-      <th>
-        {{ $t('global.language') }}
-        <admin-error :errors="errors.langs" />
-      </th>
-      <th>
-        {{ $t('global.actions') }}
-      </th>
+      <th> {{ fields.langs.title.label }} </th>
+      <th> {{ $t('admin.model.language') }} </th>
+      <th> {{ $t('utils.actions') }} </th>
     </template>
     <template v-slot:table-body>
       <!-- actual langs -->
@@ -42,6 +37,7 @@
                            :field="fields.langs.title"
                            :action="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'title')" />
         </td>
         <td>
           <lazy-admin-select :value="lang.language"
@@ -51,6 +47,7 @@
                              :field="fields.langs.language"
                              :action="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'language')" />
         </td>
         <td />
       </tr>
@@ -62,6 +59,7 @@
                            :field="fields.langs.title"
                            :action="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'title')" />
         </td>
         <td>
           <lazy-admin-select class="border-none"
@@ -70,6 +68,7 @@
                              :field="fields.langs.language"
                              :action="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'language')" />
         </td>
         <td>
           <lazy-admin-action :add="false"

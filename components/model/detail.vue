@@ -7,13 +7,13 @@
       </h1>
       <div class="flex justify-end detail-btn">
         <button class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600" @click="toogleReport">
-          {{ $t('global.report') }}
+          {{ $t('admin.label.report') }}
           <icon-send class=" w-24px text-white" />
         </button>
         <extra-nuxt-link :to="path"
                          class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
         >
-          {{ $t('global.update') }}
+          {{ $t('tools.update') }}
           <icon-edit class=" w-24px text-white" />
         </extra-nuxt-link>
       </div>

@@ -4,29 +4,30 @@ export default {
     return {
       model: {
         name: "tag",
-        label: this.$t("model.name.tag"),
+        label: this.$t("admin.label.tag"),
       },
       fields: {
         name: {
-          label: this.$t("model.tag.name"),
+          label: this.$t("admin.model.name"),
           name: "name",
           required: true,
           max_length: 50,
-          help: this.$t("model-help.global.tag")
+          help: this.$t("admin.help.global.tag")
         },
         langs: {
           name: {
-            label: this.$t("model.tag.name"),
+            label: this.$t("admin.model.name"),
             name: "name",
             max_length: 50,
-            help: this.$t("model-help.tag.langs.name")
+            required: true,
+            help: this.$t("admin.help.model.tag.langs.name")
           },
           language: {
-            label: this.$t("model.tag.language"),
+            label: this.$t("admin.model.language"),
             name: "language",
             requiredd: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("model-help.global.language")
+            help: this.$t("admin.help.global.language")
           }
         }
       }

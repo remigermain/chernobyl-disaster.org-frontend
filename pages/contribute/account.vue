@@ -2,14 +2,14 @@
   <div class="flex justify-around flex-wrap">
     <div class="-sm:w-full -md:w-1/3 w-2/4">
       <h2 class="text-3xl">
-        {{ $t('account.change-password') }}
+        {{ $t('auth.change-password') }}
       </h2>
       <form class="account-form shadow-sm p-4" @submit.prevent="submitPassword">
         <field-password :field="field.oldpassword" :errors="errors.old_password" />
         <field-password :field="field.password1" :errors="errors.new_password1" />
         <field-password :field="field.password2" :errors="errors.new_password2" />
         <field-submit>
-          {{ $t('account.submit') }}
+          {{ $t('utils.submit') }}
         </field-submit>
       </form>
     </div>
@@ -30,19 +30,19 @@ export default {
       },
       field: {
         oldpassword: {
-          label: this.$t("authentification.old-password"),
+          label: this.$t("admin.model.old-password"),
           name: "old_password",
           required: true,
           max_length: 50,
         },
         password1: {
-          label: this.$t("authentification.new-password"),
+          label: this.$t("admin.model.new-password"),
           name: "new_password1",
           required: true,
           max_length: 50,
         },
         password2: {
-          label: this.$t("authentification.new-comfirm-password"),
+          label: this.$t("admin.model.new-comfirm-password"),
           name: "new_password2",
           required: true,
           max_length: 50,

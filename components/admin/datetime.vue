@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <div class="flex flex-col">
-        <vue-datetime v-model="valueModel" type="datetime" class="datetime" />
+        <vue-datetime v-model="valueModel" type="datetime" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
         <input v-model="allValue"
                type="datetime-local"
                :name="name"
@@ -18,7 +18,7 @@
         >
         <label class="flex justify-between items-center mt-2">
           <span class="">
-            {{ $t('global.secondes') }}
+            {{ $t('utils.secondes') }}
           </span>
           <input v-model="secondsValue" type="number" min="0" max="59" class="datetime w-20">
         </label>

@@ -17,7 +17,7 @@
             <tr>
               <th colspan="100%">
                 <div class="bg-blue-700 text-white p-2 mt-4 capitalize  w-full rounded-t-sm">
-                  <slot name="label" /> languages
+                  <slot name="label" /> {{ $t('global.language') }}
                 </div>
               </th>
             </tr>
@@ -31,21 +31,21 @@
         </table>
         <button type="button" class="p-1 text-md w-max-content rounded-md mt-2 hover:text-green-800" @click="$emit('add-extra')">
           <icon-plus class="inline text-green-800" />
-          {{ $t('global.add') }}
+          {{ $t('tools.add') }}
         </button>
       </div>
       <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-b-lg">
         <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click.stop.prevent="$router.back()">
-          {{ $t('global.cancel') }}
+          {{ $t('tools.cancel') }}
         </button>
         <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="new">
-          {{ $t('global.save-add-other') }}
+          {{ $t('tools.save-add-other') }}
         </button>
         <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="continue">
-          {{ $t('global.save-continue-editing') }}
+          {{ $t('tools.save-continue-editing') }}
         </button>
         <button type="submit" class="px-2 py-2 bg-blue-700 hover:bg-blue-800 rounded-md" data-type="detail">
-          {{ $t('global.save') }}
+          {{ $t('tools.save') }}
         </button>
       </div>
     </form>

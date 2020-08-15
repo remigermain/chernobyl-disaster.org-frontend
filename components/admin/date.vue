@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <div class="flex flex-col">
-        <vue-datetime v-model="valueModel" class="datetime" />
+        <vue-datetime v-model="valueModel" type="datetime" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
         <input v-model="allValue" type="text" :name="name" class="hidden">
       </div>
     </template>

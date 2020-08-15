@@ -1,3 +1,15 @@
+const errorsField = {
+  title: [],
+  tags: [],
+  date: [],
+  langs: [{
+    title: [],
+    description: [],
+    language: []
+  }]
+}
+
+
 export default {
 
   middleware({ store, $axios }) {
@@ -17,67 +29,70 @@ export default {
     return {
       model: {
         name: "picture",
-        label: this.$t("model.name.document"),
+        label: this.$t("admin.label.document"),
       },
       fields: {
         title: {
-          label: this.$t("model.picture.title"),
+          label: this.$t("admin.model.title"),
           name: "title",
           required: true,
           max_length: 50,
-          help: this.$t("model-help.picture.title")
+          help: this.$t("admin.help.model.picture.title")
         },
         tags: {
-          label: this.$t("model.common.tags"),
+          label: this.$t("admin.model.tags"),
           name: "tags",
           model: "tag",
           required: false,
           choices: this.$store.getters["model/tags"],
-          help: this.$t("model-help.global.tags")
+          help: this.$t("admin.help.global.tag")
         },
         event: {
-          label: this.$t("model.picture.event"),
+          label: this.$t("admin.model.event"),
           name: "event",
           required: false,
           choices: this.$store.getters["model/events"],
-          help: this.$t("model-help.global.event")
+          help: this.$t("admin.help.global.event")
         },
         picture: {
-          label: this.$t("model.picture.picture"),
+          label: this.$t("admin.model.picture"),
           name: "picture",
           required: true,
-          help: this.$t("model-help.picture.picture")
+          help: this.$t("admin.help.model.picture.picture")
         },
         date: {
-          label: this.$t("model.picture.date"),
+          label: this.$t("admin.model.date"),
           name: "date",
           required: false,
-          help: this.$t("model-help.picture.date")
+          help: this.$t("admin.help.model.picture.date")
         },
         photographer: {
-          label: this.$t("model.picture.photographer"),
+          label: this.$t("admin.model.photographer"),
           name: "photographer",
           model: "people",
           required: false,
           choices: this.$store.getters["model/photographer"],
-          help: this.$t("model-help.picture.photographer")
+          help: this.$t("admin.help.model.picture.photographer")
         },
         langs: {
           title: {
-            label: this.$t("model.picture.title"),
+            label: this.$t("admin.model.title"),
             name: "title",
             max_length: 50,
-            help: this.$t("model-help.picture.langs.title")
+            required: true,
+            help: this.$t("admin.help.model.picture.langs.title")
           },
           language: {
-            label: this.$t("model.picture.language"),
+            label: this.$t("admin.model.language"),
             name: "language",
             requiredd: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("model-help.global.language")
+            help: this.$t("admin.help.global.language")
           }
         }
-      }
+      },
+      errorsField,
+      errors: {...errorsField}
     }
   },
 

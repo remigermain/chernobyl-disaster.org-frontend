@@ -12,7 +12,7 @@
     "lint": "npm run lint:js",
     "clean": "rm -rf .nuxt",
     "analyze": "nuxt build --analyze",
-    "makemessages": "python3 ./script/generate-locales.py --compile --default --ignore-error"
+    "makemessages": "python3 ./script/generate-locales.py --compile --default --ignore-error --no-print"
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.9.1",

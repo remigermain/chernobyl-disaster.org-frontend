@@ -12,15 +12,15 @@ export default {
       this.assignFormData(form)
 
       this.loading = true
-      this.errors = []
+      this.errors = {...this.errorsField}
 
       this.$axios.post(`${this.model.name}/`, form)
         .then(response => {
           if (response.status != 201) {
-            throw Error(this.$t("global.create-ko"))
+            throw Error(this.$t("errors.create"))
           }
           // assigne data
-          this.$i18nToast().success(this.$t("global.create-ok"))
+          this.$i18nToast().success(this.$t("success.create"))
           // redirect after
           if (event.submitter.dataset.type === "continue") {
             this.redirect({...this.pathUpdate.path, params: {id: response.data.id}})

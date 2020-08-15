@@ -4,9 +4,9 @@
       {{ field.help }}
     </p>
     <span>
-      {{ $t('global.require') }} :
+      {{ $t('utils.require') }} :
       <span :class="{'text-green-800': field.required,'text-red-800': !field.required,}">
-        {{ (field.required ? $t('global.yes') : $t('global.no')) }}
+        {{ (field.required ? $t('utils.yes') : $t('utils.no')) }}
       </span>
     </span>
   </div>

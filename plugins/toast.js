@@ -8,7 +8,7 @@ Vue.prototype.$i18nToast = function () {
 
   const cancel = {
     action: {
-      text: this.$t("global.cancel"),
+      text: this.$t("utils.close"),
       onClick: (e, toast) => {
         toast.goAway(0)
       }

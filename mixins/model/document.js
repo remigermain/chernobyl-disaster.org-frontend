@@ -3,56 +3,57 @@ export default {
     return {
       model: {
         name: "document",
-        label: this.$t("model.name.document"),
+        label: this.$t("admin.label.document"),
       },
       fields: {
         title: {
-          label: this.$t("model.document.title"),
+          label: this.$t("admin.model.title"),
           name: "title",
           required: true,
           max_length: 50,
-          help: this.$t("model-help.document.title")
+          help: this.$t("admin.help.model.document.title")
         },
         tags: {
-          label: this.$t("model.common.tags"),
+          label: this.$t("admin.model.tags"),
           name: "tags",
           model: "tag",
           required: false,
           choices: this.$store.getters["model/tags"],
-          help: this.$t("model-help.global.tags")
+          help: this.$t("admin.help.global.tag")
         },
         event: {
-          label: this.$t("model.document.event"),
+          label: this.$t("admin.model.event"),
           name: "event",
           required: false,
           choices: this.$store.getters["model/events"],
-          help: this.$t("model-help.global.event")
+          help: this.$t("admin.help.global.event")
         },
         doc: {
-          label: this.$t("model.document.doc"),
+          label: this.$t("admin.model.doc"),
           name: "doc",
           required: true,
-          help: this.$t("model-help.document.document")
+          help: this.$t("admin.help.model.document.document")
         },
         date: {
-          label: this.$t("model.document.date"),
+          label: this.$t("admin.model.date"),
           name: "date",
           required: false,
-          help: this.$t("model-help.document.date")
+          help: this.$t("admin.help.model.document.date")
         },
         langs: {
           title: {
-            label: this.$t("model.document.title"),
+            label: this.$t("admin.model.title"),
             name: "title",
             max_length: 50,
-            help: this.$t("model-help.document.langs.title")
+            required: true,
+            help: this.$t("admin.help.model.document.langs.title")
           },
           language: {
-            label: this.$t("model.document.language"),
+            label: this.$t("admin.model.language"),
             name: "language",
             requiredd: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("model-help.global.language")
+            help: this.$t("admin.help.global.language")
           }
         }
       }

@@ -1,0 +1,184 @@
+{
+  "account": { "change-password": "", "submit": "" },
+  "authentification": {
+    "comfirm-password": "",
+    "email": "",
+    "login": "",
+    "new-comfirm-password": "",
+    "new-password": "",
+    "old-password": "",
+    "password": "",
+    "register": "",
+    "reset-password": "",
+    "username": "",
+    "logout": ""
+  },
+  "components": { "login-form": { "ForgetPassword": "" } },
+  "global": {
+    "utils.actions": "",
+    "connection-account": "",
+    "create-account": "",
+    "description": "",
+    "language": "",
+    "link": "",
+    "login": "",
+    "or": "",
+    "presentation": "",
+    "preview": "",
+    "register-account": "",
+    "timeline": "",
+    "about": "",
+    "action": "",
+    "add": "",
+    "ascending": "",
+    "cancel": "",
+    "contribute": "",
+    "create": "",
+    "currently": "",
+    "date": "",
+    "descending": "",
+    "event": "",
+    "gallery": "",
+    "home": "",
+    "loading": "",
+    "no": "",
+    "no-more": "",
+    "no-results": "",
+    "report": "",
+    "report-ok": "",
+    "require": "",
+    "save": "",
+    "save-add-other": "",
+    "save-continue-editing": "",
+    "search": "",
+    "searched": "",
+    "secondes": "",
+    "send": "",
+    "sort-by": "",
+    "title": "",
+    "total": "",
+    "translate": "",
+    "update": "",
+    "yes": "",
+    "create-ko": "",
+    "create-ok": "",
+    "detail": "",
+    "empty": "",
+    "error": "",
+    "error-key": "",
+    "update-ko": "",
+    "update-ok": "",
+    "chernobyl": ""
+  },
+  "model": {
+    "utils.actions": "",
+    "global": { "no-translate": "", "language": "" },
+    "list": "",
+    "need-translate": "",
+    "tag": { "id": "", "name": "", "language": "" },
+    "actual-link": "",
+    "common": { "tags": "" },
+    "name": {
+      "account": "",
+      "article": "",
+      "document": "",
+      "event": "",
+      "people": "",
+      "picture": "",
+      "tag": "",
+      "video": ""
+    },
+    "report": "",
+    "article": {
+      "date": "",
+      "event": "",
+      "language": "",
+      "link": "",
+      "title": ""
+    },
+    "document": {
+      "date": "",
+      "doc": "",
+      "event": "",
+      "language": "",
+      "title": ""
+    },
+    "event": { "date": "", "description": "", "language": "", "title": "" },
+    "people": {
+      "biography": "",
+      "born": "",
+      "death": "",
+      "language": "",
+      "name": "",
+      "profil": "",
+      "wikipedia": ""
+    },
+    "picture": {
+      "date": "",
+      "event": "",
+      "language": "",
+      "photographer": "",
+      "picture": "",
+      "title": ""
+    },
+    "video": {
+      "date": "",
+      "event": "",
+      "language": "",
+      "title": "",
+      "video": ""
+    }
+  },
+  "pages": {
+    "about": {
+      "buy-me-coffe": "",
+      "contact": "",
+      "contributing": "",
+      "contributors": "",
+      "creator-description": "",
+      "help-me": "",
+      "help-me-description": "",
+      "no-contributors": "",
+      "thanks-contributors": "",
+      "traduction": ""
+    }
+  },
+  "model-help": {
+    "report": "",
+    "article": {
+      "date": "",
+      "langs": { "title": "" },
+      "link": "",
+      "title": ""
+    },
+    "document": {
+      "date": "",
+      "document": "",
+      "langs": { "title": "" },
+      "title": ""
+    },
+    "event": {
+      "date": "",
+      "langs": { "description": "", "title": "" },
+      "title": ""
+    },
+    "global": { "event": "", "language": "", "tag": "", "tags": "" },
+    "people": {
+      "biography": "",
+      "born": "",
+      "death": "",
+      "name": "",
+      "profil": "",
+      "wikipedia": ""
+    },
+    "picture": {
+      "date": "",
+      "langs": { "title": "" },
+      "photographer": "",
+      "picture": "",
+      "title": ""
+    },
+    "tag": { "langs": { "name": "" } },
+    "video": { "date": "", "langs": { "title": "" }, "title": "", "video": "" }
+  }
+}

@@ -44,7 +44,7 @@ export default {
     return $axios.get(`tag/${params.id}/`)
       .then(response => {
         if (response.status != 200) {
-          throw Error(app.i18n.t("global.error"))
+          throw Error(app.i18n.t("errors.status"))
         }
         return {
           object: response.data,

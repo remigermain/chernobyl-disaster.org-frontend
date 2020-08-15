@@ -4,13 +4,13 @@
                     @infinite="$emit('infinite', $event)"
   >
     <div slot="spinner">
-      {{ $t('global.loading') }}
+      {{ $t('utils.loading') }}
     </div>
     <div slot="no-more">
-      {{ $t('global.no-more') }}
+      {{ $t('utils.no-more') }}
     </div>
     <div slot="no-results">
-      {{ $t('global.no-results') }}
+      {{ $t('utils.no-results') }}
     </div>
   </infinite-loading>
 </template>

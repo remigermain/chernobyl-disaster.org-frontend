@@ -6,7 +6,7 @@
       </span>
       <a :href="el.doc" class="w-full h-12 text-center bg-gray-300" target="_blank" rel="noopener">
         <span class="document-link block">
-          {{ $t('global.link') }}
+          {{ $t('utils.link') }}
           <icon-file-download />
         </span>
       </a>

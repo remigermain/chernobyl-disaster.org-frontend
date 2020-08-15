@@ -8,7 +8,7 @@
     <template v-slot:input>
       <div class="flex flex-col flex-wrap">
         <span v-if="valueModel" class="p-2">
-          {{ $t('global.currently') }} :
+          {{ $t('utils.currently') }} :
           <a :href="valueModel" class="text-purple-700 text-md italic" rel="noopener noreferrer" target="_blank">
             link
           </a>

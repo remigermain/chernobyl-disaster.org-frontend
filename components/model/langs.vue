@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="w-full">
       <span class="text-4xl capitalize">
-        {{ $t('global.translate') }}
+        {{ $t('utils.translate') }}
       </span>
     </div>
     <div class="w-full flex flex-wrap">
@@ -10,7 +10,7 @@
         <slot :obj="obj" />
         <div>
           <span class="detail-item-title">
-            {{ $t("model.global.language") }} :
+            {{ $t("admin.model.language") }} :
           </span>
           <span class="detail-item-content">
             {{ getLang(obj.language) }}

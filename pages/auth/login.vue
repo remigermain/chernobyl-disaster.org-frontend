@@ -2,12 +2,12 @@
   <div class="grid-login">
     <div class="login-description">
       <p class="font-bold text-gray-900 text-2xl">
-        {{ $t('global.connection-account') }}
+        {{ $t('auth.connection-account') }}
       </p>
       <p class="text-sm text-gray-600">
-        {{ $t('global.or') }}
+        {{ $t('utils.or') }}
         <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
-          {{ $t('global.create-account') }}
+          {{ $t('auth.create-account') }}
         </extra-nuxt-link>
       </p>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-3/4 form" @submit.prevent="submit">
@@ -15,11 +15,11 @@
         <field-password :field="field.password" :errors="errors.password" />
         <div class="flex justify-end mx-auto text-center">
           <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto">
-            {{ $t('components.login-form.ForgetPassword') }}
+            {{ $t('auth.ForgetPassword') }}
           </extra-nuxt-link>
         </div>
         <field-submit>
-          {{ $t('authentification.login') }}
+          {{ $t('auth.login') }}
         </field-submit>
       </form>
     </div>
@@ -44,13 +44,13 @@ export default {
       },
       field: {
         email: {
-          label: this.$t("authentification.email"),
+          label: this.$t("auth.field.email"),
           name: "email",
           required: true,
           max_length: 50,
         },
         password: {
-          label: this.$t("authentification.password"),
+          label: this.$t("auth.field.password"),
           name: "password",
           required: true,
           max_length: 50,

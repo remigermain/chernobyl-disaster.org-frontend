@@ -20,14 +20,9 @@
       <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
     </template>
     <template v-slot:table-header>
-      <th> {{ $t('model.people.langs.biography') }} </th>
-      <th>
-        {{ $t('global.language') }}
-        <lazy-admin-error :errors="errors.langs" />
-      </th>
-      <th>
-        {{ $t('model.actions') }}
-      </th>
+      <th> {{ fields.langs.biography.label }} </th>
+      <th> {{ $t('admin.model.language') }} </th>
+      <th> {{ $t('utils.actions') }} </th>
     </template>
     <template v-slot:table-body>
       <tr v-for="(val, idx) in langs" :key="val">
@@ -39,6 +34,7 @@
                                :action="false"
                                :inline="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'biography')" />
         </td>
         <td>
           <lazy-admin-select class="border-none"
@@ -47,6 +43,7 @@
                              :field="fields.langs.language"
                              :action="false"
           />
+          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'language')" />
         </td>
         <td class="flex justify-center items-center">
           <lazy-admin-action :add="false"

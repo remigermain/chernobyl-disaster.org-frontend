@@ -1,185 +1,167 @@
 {
-    "account": {
-        "change-password": "change-password",
-        "submit": "submit"
-    },
-    "authentification": {
-        "comfirm-password": "comfirm-password",
-        "email": "email",
-        "login": "login",
-        "logout": "logout",
-        "new-comfirm-password": "new-comfirm-password",
-        "new-password": "new-password",
-        "old-password": "old-password",
-        "password": "password",
-        "register": "register",
-        "reset-password": "reset-password",
-        "username": "username"
-    },
-    "components": {
-        "login-form": {
-            "ForgetPassword": "ForgetPassword"
-        }
-    },
-    "global": {
-        "about": "about",
-        "action": "action",
-        "actions": "actions",
-        "add": "add",
-        "ascending": "ascending",
-        "cancel": "cancel",
-        "chernobyl": "chernobyl",
-        "connection-account": "connection-account",
-        "contribute": "contribute",
-        "create": "create",
-        "create-account": "create-account",
-        "create-ko": "create-ko",
-        "create-ok": "create-ok",
-        "currently": "currently",
-        "date": "date",
-        "descending": "descending",
-        "description": "La catastrophe nucl\u00e9aire de Tchernobyl [\u2006t\u0361\u0283\u025b\u0281n\u0254bil]1 est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l\u2019accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L\u2019IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d\u2019importantes cons\u00e9quences \u00e9conomiques et sociales.",
-        "detail": "detail",
-        "empty": "empty",
-        "error": "error",
-        "error-key": "error-key",
-        "event": "event",
-        "gallery": "gallery",
-        "home": "home",
-        "language": "language",
-        "link": "link",
-        "loading": "loading",
-        "login": "login",
-        "no": "no",
-        "no-more": "no-more",
-        "no-results": "no-results",
-        "or": "or",
-        "presentation": "presentation",
-        "register-account": "register-account",
-        "report": "report",
-        "report-ok": "report-ok",
-        "require": "require",
-        "save": "save",
-        "save-add-other": "save-add-other",
-        "save-continue-editing": "save-continue-editing",
-        "search": "search",
-        "searched": "searched",
-        "secondes": "secondes",
-        "send": "send",
-        "sort-by": "sort-by",
-        "timeline": "timeline",
-        "title": "title",
-        "total": "total",
-        "translate": "translate",
-        "update": "update",
-        "update-ko": "update-ko",
-        "update-ok": "update-ok",
-        "yes": "yes"
-    },
-    "model": {
-        "actions": "actions",
-        "actual-link": "actual-link",
-        "common": {
+    "admin": {
+        "field": {
+            "report": "report",
             "tags": "tags"
         },
-        "document": {
-            "date": "date",
-            "doc": "doc",
-            "event": "event",
-            "langs": {
-                "title": "title"
+        "help": {
+            "global": {
+                "event": "event",
+                "language": "language",
+                "report": "report",
+                "tag": "tag"
             },
-            "language": "language",
-            "title": "title"
+            "model": {
+                "article": {
+                    "date": "date",
+                    "langs": {
+                        "title": "title"
+                    },
+                    "link": "link",
+                    "title": "title"
+                },
+                "document": {
+                    "date": "date",
+                    "document": "document",
+                    "langs": {
+                        "title": "title"
+                    },
+                    "title": "title"
+                },
+                "event": {
+                    "date": "date",
+                    "langs": {
+                        "description": "description",
+                        "title": "title"
+                    },
+                    "title": "title"
+                },
+                "people": {
+                    "biography": "biography",
+                    "born": "born",
+                    "death": "death",
+                    "name": "name",
+                    "profil": "profil",
+                    "wikipedia": "wikipedia"
+                },
+                "picture": {
+                    "date": "date",
+                    "langs": {
+                        "title": "title"
+                    },
+                    "photographer": "photographer",
+                    "picture": "picture",
+                    "title": "title"
+                },
+                "tag": {
+                    "langs": {
+                        "name": "name"
+                    }
+                },
+                "video": {
+                    "date": "date",
+                    "langs": {
+                        "title": "title"
+                    },
+                    "title": "title",
+                    "video": "video"
+                }
+            }
         },
-        "global": {
-            "language": "language",
-            "no-translate": "no-translate"
-        },
-        "list": "list",
-        "name": {
+        "label": {
             "account": "account",
             "article": "article",
             "document": "document",
             "event": "event",
             "people": "people",
             "picture": "picture",
+            "report": "report",
             "tag": "tag",
             "video": "video"
         },
-        "need-translate": "need-translate",
-        "people": {
+        "model": {
             "biography": "biography",
             "born": "born",
+            "date": "date",
             "death": "death",
-            "langs": {
-                "biography": "biography",
+            "description": "description",
+            "doc": "doc",
+            "event": {
+                "date": "date",
+                "description": "description",
+                "language": "language",
                 "title": "title"
             },
+            "id": "id",
             "language": "language",
+            "link": "link",
             "name": "name",
+            "need-translate": "need-translate",
+            "new-comfirm-password": "new-comfirm-password",
+            "new-password": "new-password",
+            "no-translate": "no-translate",
+            "old-password": "old-password",
+            "photographer": "photographer",
+            "picture": {
+                "date": "date",
+                "event": "event",
+                "language": "language",
+                "photographer": "photographer",
+                "picture": "picture",
+                "title": "title"
+            },
             "profil": "profil",
+            "tags": "tags",
+            "title": "title",
+            "video": {
+                "date": "date",
+                "event": "event",
+                "language": "language",
+                "title": "title",
+                "video": "video"
+            },
             "wikipedia": "wikipedia"
         },
-        "picture": {
-            "date": "date",
-            "event": "event",
-            "langs": {
-                "title": "title"
-            },
-            "language": "language",
-            "photographer": "photographer",
-            "picture": "picture",
-            "title": "title"
-        },
-        "report": "report",
-        "report-description": "report-description",
-        "tag": {
-            "id": "id",
-            "langs": {
-                "name": "name"
-            },
-            "language": "language",
-            "name": "name"
+        "tools": {
+            "detail": "detail",
+            "list": "list"
         }
     },
-    "model-help": {
-        "document": {
-            "date": "date",
-            "document": "document",
-            "langs": {
-                "title": "title"
-            },
-            "title": "title"
+    "auth": {
+        "ForgetPassword": "ForgetPassword",
+        "change-password": "change-password",
+        "connection-account": "connection-account",
+        "create-account": "create-account",
+        "field": {
+            "comfirm-password": "comfirm-password",
+            "email": "email",
+            "password": "password",
+            "username": "username"
         },
-        "global": {
-            "event": "event",
-            "language": "language",
-            "tag": "tag",
-            "tags": "tags"
-        },
-        "people": {
-            "biography": "biography",
-            "born": "born",
-            "death": "death",
-            "name": "name",
-            "profil": "profil",
-            "wikipedia": "wikipedia"
-        },
-        "picture": {
-            "date": "date",
-            "langs": {
-                "title": "title"
-            },
-            "photographer": "photographer",
-            "picture": "picture",
-            "title": "title"
-        },
-        "tag": {
-            "langs": {
-                "name": "name"
-            }
-        }
+        "login": "login",
+        "logout": "logout",
+        "register": "register",
+        "register-account": "register-account",
+        "reset-password": "reset-password"
+    },
+    "errors": {
+        "create": "create",
+        "error-in-form": "error-in-form",
+        "link": "link",
+        "network": "network",
+        "refresh": "refresh",
+        "server": "server",
+        "update": "update"
+    },
+    "global": {
+        "language": "language"
+    },
+    "menu": {
+        "about": "about",
+        "contribute": "contribute",
+        "gallery": "gallery",
+        "home": "home",
+        "timeline": "timeline"
     },
     "pages": {
         "about": {
@@ -187,12 +169,67 @@
             "contact": "contact",
             "contributing": "contributing",
             "contributors": "contributors",
-            "creator-description": "Germain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vienGermain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vienGermain remi 26ans , developpeur web a lyon en france, passionner de l'histoire de chernobyl , j'ai decider de cree ce site comunotaire ou tout le monde partager photo video document , pour que le souvenir de chernobyl reste intacter pour notre generation et celle qui vien",
-            "help-me": "Aidez mois!",
-            "help-me-description": "Ce site est gratuit, sans pub et sans toute ces merde de pistage, le serveur + le nom de domaine coutera chaque anne 90euro, pour m'aider sur ces charge vous pouvez me payer un caffe :D",
-            "no-contributors": "aucun contributeurs actuellement",
-            "thanks-contributors": "c'est a grace a tout les contributor que ce site ne pourais fonctionner, u n grand merci a tous",
+            "creator-description": "creator-description",
+            "help-me": "help-me",
+            "help-me-description": "help-me-description",
+            "no-contributors": "no-contributors",
+            "thanks-contributors": "thanks-contributors",
             "traduction": "traduction"
+        },
+        "home": {
+            "description": "description",
+            "presentation": "presentation"
         }
+    },
+    "site": {
+        "name": "name"
+    },
+    "success": {
+        "create": "create",
+        "report": "report",
+        "update": "update"
+    },
+    "tools": {
+        "action": "action",
+        "add": "add",
+        "ascending": "ascending",
+        "cancel": "cancel",
+        "create": "create",
+        "date": "date",
+        "descending": "descending",
+        "name": "name",
+        "save": "save",
+        "save-add-other": "save-add-other",
+        "save-continue-editing": "save-continue-editing",
+        "search": "search",
+        "searched": "searched",
+        "sort-by": "sort-by",
+        "update": "update"
+    },
+    "utils": {
+        "actions": "actions",
+        "actual-link": "actual-link",
+        "cancel": "cancel",
+        "close": "close",
+        "create": "create",
+        "currently": "currently",
+        "empty": "empty",
+        "identifier": "identifier",
+        "link": "link",
+        "loading": "loading",
+        "need-translate": "need-translate",
+        "no": "no",
+        "no-more": "no-more",
+        "no-results": "no-results",
+        "or": "or",
+        "preview": "preview",
+        "require": "require",
+        "secondes": "secondes",
+        "send": "send",
+        "submit": "submit",
+        "total": "total",
+        "translate": "translate",
+        "update": "update",
+        "yes": "yes"
     }
 }
