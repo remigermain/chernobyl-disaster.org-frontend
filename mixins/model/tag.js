@@ -1,3 +1,11 @@
+const errorsField = {
+  name: [],
+  langs: [{
+    name: [],
+    language: [],
+  }]
+}
+
 export default {
 
   data () {
@@ -30,7 +38,9 @@ export default {
             help: this.$t("admin.help.global.language")
           }
         }
-      }
+      },
+      errorsField,
+      errors: {...errorsField}
     }
   },
 

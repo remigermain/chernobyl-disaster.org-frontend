@@ -30,8 +30,8 @@
         <span class="text-md text-gray-600 capitalize">
           {{ $t('tools.sort-by') }}
         </span>
-        <select v-model="sort" class="p4 rounded-md shadow-xl text-center border border-gray-900 h-min w-full">
-          <option v-for="choices in sortChoices" :key="choices.value" :value="choices.value">
+        <select v-model="ordering" class="p4 rounded-md shadow-xl text-center border border-gray-900 h-min w-full">
+          <option v-for="choices in orderingChoices" :key="choices.value" :value="choices.value">
             {{ choices.label }}
           </option>
           <option value="" selected class="text-opacity-50 text-lg">
@@ -71,15 +71,15 @@ export default {
   data () {
     return {
       search: "",
-      sort: "",
+      ordering: "",
       option: false,
-      sortChoices: [
+      orderingChoices: [
         {label: `${this.$t("tools.create")} - ${this.$t("tools.ascending")}`, value: "id"},
         {label: `${this.$t("tools.create")} - ${this.$t("tools.descending")}`, value: "-id"},
         {label: `${this.$t("tools.date")} - ${this.$t("tools.ascending")}`, value: "date"},
         {label: `${this.$t("tools.date")} - ${this.$t("tools.descending")}`, value: "-date"},
-        {label: `${this.$t("tools.name")} - ${this.$t("tools.name")}`, value: "title"},
-        {label: `${this.$t("tools.name")} - ${this.$t("tools.name")}`, value: "-title"},
+        {label: `${this.$t("tools.name")} - ${this.$t("tools.ascending")}`, value: "title"},
+        {label: `${this.$t("tools.name")} - ${this.$t("tools.descending")}`, value: "-title"},
         {label: `${this.$t("admin.label.event")} - ${this.$t("tools.ascending")}`, value: "event__date"},
         {label: `${this.$t("admin.label.event")} - ${this.$t("tools.descending")}`, value: "-event__date"},
       ]
@@ -92,9 +92,12 @@ export default {
       this.search = this.$route.query.search || ""
 
       // set value of order if exists in choices
-      if (has(this.$route.query, "sort")) {
-        if (this.orderChoices.some(obj => obj.value === this.$route.query.order)) {
-          this.sort = this.$route.query.sort
+      console.log("iciic", this.$route.query )
+      if (has(this.$route.query, "ordering")) {
+        console.log("iciic")
+        console.log(this.orderingChoices.some(obj => obj.value === this.$route.query.ordering))
+        if (this.orderingChoices.some(obj => obj.value === this.$route.query.ordering)) {
+          this.ordering = this.$route.query.ordering
         }
       }
     }
@@ -108,7 +111,7 @@ export default {
       const query = {
         ...this.$route.query,
         search: this.search,
-        order: this.sort
+        ordering: this.ordering
       }
       this.$router.push({query})
       this.option = false

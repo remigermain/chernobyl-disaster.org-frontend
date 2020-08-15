@@ -1,14 +1,14 @@
 const errorsField = {
   title: [],
   tags: [],
+  event: [],
+  picture: [],
   date: [],
   langs: [{
     title: [],
-    description: [],
-    language: []
+    language: [],
   }]
 }
-
 
 export default {
 
@@ -29,7 +29,7 @@ export default {
     return {
       model: {
         name: "picture",
-        label: this.$t("admin.label.document"),
+        label: this.$t("admin.label.picture"),
       },
       fields: {
         title: {

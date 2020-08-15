@@ -22,7 +22,7 @@ export default {
   ],
 
   asyncData({app, route}) {
-    const query = (isEmpty(route.query) ? "" : `&search=${route.query.search}&order=${route.query.order}`)
+    const query = (isEmpty(route.query) ? "" : `&search=${route.query.search}&ordering=${route.query.ordering}`)
     return app.$axios.get(`video/?page=1${query}`)
       .then(response => {
         if (response.status != 200) {

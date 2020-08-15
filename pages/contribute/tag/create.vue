@@ -15,7 +15,7 @@
       <lazy-admin-text :field="fields.name" :errors="errors.name" />
     </template>
     <template v-slot:table-header>
-      <th> {{ fields.langs.title.label }} </th>
+      <th> {{ fields.langs.name.label }} </th>
       <th> {{ $t('admin.model.language') }} </th>
       <th> {{ $t('utils.actions') }} </th>
     </template>

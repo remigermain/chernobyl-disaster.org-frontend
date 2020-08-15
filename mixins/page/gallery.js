@@ -3,7 +3,7 @@ import { isEmpty } from "lodash"
 export default {
 
   watchQuery (newQuery, oldQuery) {
-    return newQuery.search != oldQuery.search || newQuery.order != oldQuery.order
+    return newQuery.search != oldQuery.search || newQuery.ordering != oldQuery.ordering
   },
 
   data () {

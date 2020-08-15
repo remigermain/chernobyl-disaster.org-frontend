@@ -17,7 +17,11 @@
           <model-field :label="fields.name.label" :value="object.name" />
           <model-field :label="fields.born.label" :value="object.born" />
           <model-field :label="fields.death.label" :value="object.death" />
-          <model-field :label="fields.wikipedia.label" :value="object.wikipedia" />
+          <model-field :label="fields.wikipedia.label" :value="object.wikipedia">
+            <a :href="object.wikipedia" rel="noopener noreferrer" target="_blank" class="text-purple-800 text-sm">
+              {{ $t('utils.link') }}
+            </a>
+          </model-field>
           <model-tags :tags="object.tags" />
         </div>
         <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">

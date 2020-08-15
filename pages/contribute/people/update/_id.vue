@@ -21,7 +21,7 @@
       <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
     </template>
     <template v-slot:table-header>
-      <th> {{ fields.langs.title.label }} </th>
+      <th> {{ fields.langs.biography.label }} </th>
       <th> {{ $t('admin.model.language') }} </th>
       <th> {{ $t('utils.actions') }} </th>
     </template>

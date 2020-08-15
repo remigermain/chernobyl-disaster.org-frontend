@@ -124,6 +124,7 @@
         "logout": "logout",
         "register": "register",
         "register-account": "register-account",
+        "registeration-success": "registeration-success",
         "reset-password": "reset-password"
     },
     "errors": {

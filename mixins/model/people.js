@@ -1,3 +1,16 @@
+const errorsField = {
+  name: [],
+  born: [],
+  death: [],
+  profil: [],
+  wikipedia: [],
+  tags: [],
+  langs: [{
+    biography: [],
+    language: [],
+  }]
+}
+
 export default {
 
   data () {
@@ -62,7 +75,9 @@ export default {
             help: this.$t("admin.help.global.language")
           }
         }
-      }
+      },
+      errorsField,
+      errors: {...errorsField}
     }
   },
 

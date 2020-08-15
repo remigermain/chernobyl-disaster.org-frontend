@@ -7,7 +7,7 @@
     </template>
     <template v-slot:input>
       <div class="flex flex-col">
-        <vue-datetime v-model="valueModel" type="datetime" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
+        <vue-datetime v-model="valueModel" min-datetime="1900-W01-1" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
         <input v-model="allValue" type="text" :name="name" class="hidden">
       </div>
     </template>
@@ -31,7 +31,7 @@ export default {
     valueModel (value) {
       if (value) {
         const date = new Date(value)
-        this.allValue = date.toISOString()
+        this.allValue = date.toISOString().slice(0,10)
       } else {
         this.allValue = null
       }

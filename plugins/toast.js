@@ -23,7 +23,7 @@ Vue.prototype.$i18nToast = function () {
       return this.$toast.success(text, options).goAway(3000)
     },
     "info": (text, options) => {
-      return this.$toast.info(text, {...cancel, ...options})
+      return this.$toast.info(text, {...cancel, ...options}).goAway(4000)
     },
     "error": (text, options) => {
       return this.$toast.error(text, {...cancel, ...options})

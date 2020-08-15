@@ -1,3 +1,14 @@
+const errorsField = {
+  title: [],
+  tags: [],
+  date: [],
+  langs: [{
+    title: [],
+    description: [],
+    language: []
+  }]
+}
+
 export default {
   data () {
     return {
@@ -51,26 +62,8 @@ export default {
           }
         }
       },
-      errorsField: {
-        title: [],
-        tags: [],
-        date: [],
-        langs: [{
-          title: [],
-          description: [],
-          language: []
-        }]
-      },
-      errors: {
-        title: [],
-        tags: [],
-        date: [],
-        langs: [{
-          title: [],
-          description: [],
-          language: []
-        }]
-      },
+      errorsField,
+      errors: {...errorsField}
     }
   },
 
