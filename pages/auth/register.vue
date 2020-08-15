@@ -10,7 +10,7 @@
           {{ $t('global.login') }}
         </lazy-extra-nuxt-link>
       </p>
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
+      <form class="bg-white shadow-md rounded px-8 py-6 mb-4 w-full -md:w-full xl:w-3/4 form" @submit.prevent="submit">
         <field-email :field="field.email" :errors="errors.email" />
         <field-username :field="field.username" :errors="errors.username" />
         <field-password :field="field.password1" :errors="errors.password1" />
@@ -82,7 +82,7 @@ export default {
             throw Error("") // TODO
           }
           this.$i18nToast().success(response.data).goAway(4000)
-          this.resetData()
+          event.target.reset()
           this.redirect({ name: "auth-login" })
         })
         .catch((error) => { this.requestError(error) })

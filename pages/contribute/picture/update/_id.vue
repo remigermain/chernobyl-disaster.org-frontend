@@ -112,6 +112,10 @@ export default {
       if (form.get("picture") === "") {
         form.delete("picture")
       }
+      // remove date key if is empty
+      if (form.get("date") === "") {
+        form.delete("date")
+      }
     },
   }
 

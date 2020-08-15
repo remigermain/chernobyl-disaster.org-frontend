@@ -11,7 +11,7 @@
       <slot name="input" />
     </div>
     <admin-help v-if="label && active" :field="field" />
-    <div class="w-full mt-2" v-if="errors && errors.length">
+    <div v-if="errors && errors.length" class="w-full mt-2">
       <admin-error :errors="errors" />
     </div>
   </div>

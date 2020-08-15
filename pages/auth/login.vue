@@ -10,7 +10,7 @@
           {{ $t('global.create-account') }}
         </extra-nuxt-link>
       </p>
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-3/4 form" @submit.prevent="submit">
         <field-email :field="field.email" :errors="errors.email" />
         <field-password :field="field.password" :errors="errors.password" />
         <div class="flex justify-end mx-auto text-center">
@@ -19,7 +19,7 @@
           </extra-nuxt-link>
         </div>
         <field-submit>
-          {{ $t('authentification.register') }}
+          {{ $t('authentification.login') }}
         </field-submit>
       </form>
     </div>
@@ -64,7 +64,6 @@ export default {
       const form = new FormData(event.target)
       this.loading = true
       this.errors = {email: [], password: []}
-
 
       this.$auth.loginWith("local", {data: form})
         .then(() => { this.redirect({ name: "contribute" }) })

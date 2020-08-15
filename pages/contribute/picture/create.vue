@@ -72,5 +72,15 @@ export default {
     picture
   ],
 
+  methods: {
+    assignFormData (form) {
+      // remove date key if is empty
+      if (form.get("date") === "") {
+        form.delete("date")
+      }
+    },
+  }
+
+
 }
 </script>
