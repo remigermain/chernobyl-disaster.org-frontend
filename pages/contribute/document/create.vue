@@ -15,9 +15,8 @@
       <lazy-admin-text :field="fields.title" :errors="errors.title" />
       <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
       <lazy-admin-select :field="fields.event" :errors="errors.event" />
-      <lazy-admin-image :field="fields.picture" :errors="errors.picture" />
+      <lazy-admin-file :field="fields.doc" :errors="errors.doc" />
       <admin-datetime :field="fields.date" :errors="errors.date" />
-      <lazy-admin-select :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
       <th> {{ $t('model.picture.langs.title') }} </th>
@@ -61,15 +60,15 @@
 </template>
 
 <script>
-import picture from "@/mixins/model/picture"
 import create from "@/mixins/admin/create"
+import document from "@/mixins/model/document"
 
 export default {
   name: "ContrubtePictureCreate",
 
   mixins: [
     create,
-    picture
+    document
   ],
 
   methods: {

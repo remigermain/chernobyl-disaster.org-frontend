@@ -15,7 +15,10 @@ export default {
 
   data () {
     return {
-      model: "picture",
+      model: {
+        name: "picture",
+        label: this.$t("model.name.document"),
+      },
       fields: {
         title: {
           label: this.$t("model.picture.title"),
@@ -27,6 +30,7 @@ export default {
         tags: {
           label: this.$t("model.common.tags"),
           name: "tags",
+          model: "tag",
           required: false,
           choices: this.$store.getters["model/tags"],
           help: this.$t("model-help.global.tags")
@@ -53,6 +57,7 @@ export default {
         photographer: {
           label: this.$t("model.picture.photographer"),
           name: "photographer",
+          model: "people",
           required: false,
           choices: this.$store.getters["model/photographer"],
           help: this.$t("model-help.picture.photographer")

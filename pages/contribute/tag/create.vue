@@ -12,12 +12,7 @@
       </lazy-bread-crumb>
     </template>
     <template v-slot:form>
-      <lazy-admin-text :field="fields.title" :errors="errors.title" />
-      <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
-      <lazy-admin-select :field="fields.event" :errors="errors.event" />
-      <lazy-admin-image :field="fields.picture" :errors="errors.picture" />
-      <admin-datetime :field="fields.date" :errors="errors.date" />
-      <lazy-admin-select :field="fields.photographer" :errors="errors.photographer" />
+      <lazy-admin-text :field="fields.name" :errors="errors.name" />
     </template>
     <template v-slot:table-header>
       <th> {{ $t('model.picture.langs.title') }} </th>
@@ -35,7 +30,7 @@
           <lazy-admin-text class="border-none"
                            :prefix="prefixLang(idx)"
                            :label="false"
-                           :field="fields.langs.title"
+                           :field="fields.langs.name"
                            :action="false"
           />
         </td>
@@ -61,25 +56,16 @@
 </template>
 
 <script>
-import picture from "@/mixins/model/picture"
 import create from "@/mixins/admin/create"
+import tag from "@/mixins/model/tag"
 
 export default {
   name: "ContrubtePictureCreate",
 
   mixins: [
     create,
-    picture
+    tag
   ],
-
-  methods: {
-    assignFormData (form) {
-      // remove date key if is empty
-      if (form.get("date") === "") {
-        form.delete("date")
-      }
-    },
-  }
 
 
 }

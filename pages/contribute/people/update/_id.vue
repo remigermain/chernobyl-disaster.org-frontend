@@ -13,15 +13,15 @@
       </lazy-bread-crumb>
     </template>
     <template v-slot:form>
-      <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
+      <lazy-admin-text :value="object.name" :field="fields.name" :errors="errors.name" />
+      <lazy-admin-date :value="object.born" :field="fields.born" :errors="errors.born" />
+      <lazy-admin-date :value="object.death" :field="fields.death" :errors="errors.death" />
+      <lazy-admin-file :value="object.profil" :field="fields.profil" :errors="errors.profil" />
+      <lazy-admin-url :value="object.wikipedia" :field="fields.wikipedia" :errors="errors.wikipedia" />
       <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
-      <lazy-admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
-      <lazy-admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
-      <admin-datetime :value="object.date" :field="fields.date" :errors="errors.date" />
-      <lazy-admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
-      <th> {{ $t('model.picture.langs.title') }} </th>
+      <th> {{ $t('model.people.langs.title') }} </th>
       <th>
         {{ $t('global.language') }}
         <admin-error :errors="errors.langs" />
@@ -35,12 +35,13 @@
       <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center rounded-b-lg">
         <td class="text-center">
           <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
-          <lazy-admin-text :value="lang.title"
-                           class="border-none"
-                           :prefix="prefixLang(idx)"
-                           :label="false"
-                           :field="fields.langs.title"
-                           :action="false"
+          <lazy-admin-textarea :value="lang.biography"
+                               class="border-none"
+                               :prefix="prefixLang(idx)"
+                               :label="false"
+                               :field="fields.langs.biography"
+                               :action="false"
+                               :inline="false"
           />
         </td>
         <td>
@@ -56,11 +57,12 @@
       </tr>
       <tr v-for="(val, idx) in langs" :key="val">
         <td>
-          <lazy-admin-text class="border-none"
-                           :prefix="prefixLang(idx + object.langs.length)"
-                           :label="false"
-                           :field="fields.langs.title"
-                           :action="false"
+          <lazy-admin-textarea class="border-none"
+                               :prefix="prefixLang(idx + object.langs.length)"
+                               :label="false"
+                               :field="fields.langs.biography"
+                               :action="false"
+                               :inline="false"
           />
         </td>
         <td>
@@ -86,15 +88,15 @@
 
 <script>
 import Update from "@/mixins/admin/update"
-import Picture from "@/mixins/model/picture"
+import Document from "@/mixins/model/people"
 
 export default {
-  name: "ContrubtePictureUpdate",
+  name: "ContrubteDocumentUpdate",
 
-  mixins: [Update, Picture],
+  mixins: [Update, Document],
 
   asyncData ({params, redirect, $axios, app}) {
-    return $axios.get(`picture/${params.id}/`)
+    return $axios.get(`people/${params.id}/`)
       .then(response => {
         if (response.status != 200) {
           throw Error("") // TODO
@@ -102,19 +104,20 @@ export default {
         return { object: response.data }
       })
       .catch(() => {
-        return redirect(app.localePath({name: "contribute-picture"}))
+        return redirect(app.localePath({name: "contribute-people"}))
       })
   },
 
   methods: {
     assignFormData (form) {
-      // remove picture key if is empty
-      if (form.get("picture") === "") {
-        form.delete("picture")
+      if (form.get("death") === "") {
+        form.delete("death")
       }
-      // remove date key if is empty
-      if (form.get("date") === "") {
-        form.delete("date")
+      if (form.get("born") === "") {
+        form.delete("born")
+      }
+      if (form.get("profil") === "") {
+        form.delete("profil")
       }
     },
   }

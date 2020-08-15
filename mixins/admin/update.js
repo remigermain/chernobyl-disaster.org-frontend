@@ -15,7 +15,7 @@ export default {
       this.loading = true
       this.errors = []
 
-      this.$axios.patch(`${this.model}/${this.$route.params.id}/`, form)
+      this.$axios.patch(`${this.model.name}/${this.$route.params.id}/`, form)
         .then(response => {
           if (response.status != 200) {
             throw Error(this.$t("global.update-ko"))

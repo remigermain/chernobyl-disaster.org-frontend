@@ -32,35 +32,35 @@ export default {
       active: false,
       menus: [
         {
-          name: this.$t("contribute.menu.account"),
+          name: this.$t("model.name.account"),
           to: {name: "contribute-account"}
         },
         {
-          name: this.$t("contribute.menu.event"),
+          name: this.$t("model.name.event"),
           to: {name: "contribute-event"}
         },
         {
-          name: this.$t("contribute.menu.people"),
+          name: this.$t("model.name.people"),
           to: {name: "contribute-people"}
         },
         {
-          name: this.$t("contribute.menu.tag"),
+          name: this.$t("model.name.tag"),
           to: {name: "contribute-tag"}
         },
         {
-          name: this.$t("contribute.menu.picture"),
+          name: this.$t("model.name.picture"),
           to: {name: "contribute-picture"}
         },
         {
-          name: this.$t("contribute.menu.video"),
+          name: this.$t("model.name.video"),
           to: {name: "contribute-video"}
         },
         {
-          name: this.$t("contribute.menu.document"),
+          name: this.$t("model.name.document"),
           to: {name: "contribute-document"}
         },
         {
-          name: this.$t("contribute.menu.article"),
+          name: this.$t("model.name.article"),
           to: {name: "contribute-article"}
         },
       ]

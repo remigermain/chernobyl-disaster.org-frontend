@@ -39,21 +39,21 @@
 <script>
 
 import list from "@/mixins/admin/list"
-import picture from "@/mixins/model/picture"
+import document from "@/mixins/model/document"
 
 export default {
-  name: "ContrubtePictureList",
+  name: "ContrubteDocumentList",
 
   mixins:  [
     list,
-    picture
+    document
   ],
 
   async asyncData ({redirect, $axios, app}) {
     // get objects
     try {
-      const response = await $axios.get("picture/?page=1")
-      const responseLang = await $axios.get("picture/?page=1&completed=false")
+      const response = await $axios.get("document/?page=1")
+      const responseLang = await $axios.get("document/?page=1&completed=false")
       if (response.status != 200 || responseLang.status != 200) {
         throw Error(app.i18n.t("global.error"))
       }
@@ -65,7 +65,7 @@ export default {
       }
     }
     catch {
-      return redirect(app.$i18n.localePath({name: "contribute-picture"}))
+      return redirect(app.$i18n.localePath({name: "contribute-document"}))
     }
   },
 

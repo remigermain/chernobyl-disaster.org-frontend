@@ -6,6 +6,7 @@
     "authentification": {
         "comfirm-password": "comfirm-password",
         "email": "email",
+        "login": "login",
         "logout": "logout",
         "new-comfirm-password": "new-comfirm-password",
         "new-password": "new-password",
@@ -18,18 +19,6 @@
     "components": {
         "login-form": {
             "ForgetPassword": "ForgetPassword"
-        }
-    },
-    "contribute": {
-        "menu": {
-            "account": "account",
-            "article": "article",
-            "document": "document",
-            "event": "event",
-            "people": "people",
-            "picture": "picture",
-            "tag": "tag",
-            "video": "video"
         }
     },
     "global": {
@@ -93,11 +82,45 @@
         "common": {
             "tags": "tags"
         },
+        "document": {
+            "date": "date",
+            "doc": "doc",
+            "event": "event",
+            "langs": {
+                "title": "title"
+            },
+            "language": "language",
+            "title": "title"
+        },
         "global": {
-            "language": "language"
+            "language": "language",
+            "no-translate": "no-translate"
         },
         "list": "list",
+        "name": {
+            "account": "account",
+            "article": "article",
+            "document": "document",
+            "event": "event",
+            "people": "people",
+            "picture": "picture",
+            "tag": "tag",
+            "video": "video"
+        },
         "need-translate": "need-translate",
+        "people": {
+            "biography": "biography",
+            "born": "born",
+            "death": "death",
+            "langs": {
+                "biography": "biography",
+                "title": "title"
+            },
+            "language": "language",
+            "name": "name",
+            "profil": "profil",
+            "wikipedia": "wikipedia"
+        },
         "picture": {
             "date": "date",
             "event": "event",
@@ -110,13 +133,38 @@
             "title": "title"
         },
         "report": "report",
-        "report-description": "report-description"
+        "report-description": "report-description",
+        "tag": {
+            "id": "id",
+            "langs": {
+                "name": "name"
+            },
+            "language": "language",
+            "name": "name"
+        }
     },
     "model-help": {
+        "document": {
+            "date": "date",
+            "document": "document",
+            "langs": {
+                "title": "title"
+            },
+            "title": "title"
+        },
         "global": {
             "event": "event",
             "language": "language",
+            "tag": "tag",
             "tags": "tags"
+        },
+        "people": {
+            "biography": "biography",
+            "born": "born",
+            "death": "death",
+            "name": "name",
+            "profil": "profil",
+            "wikipedia": "wikipedia"
         },
         "picture": {
             "date": "date",
@@ -126,6 +174,11 @@
             "photographer": "photographer",
             "picture": "picture",
             "title": "title"
+        },
+        "tag": {
+            "langs": {
+                "name": "name"
+            }
         }
     },
     "pages": {

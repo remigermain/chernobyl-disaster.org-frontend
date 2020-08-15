@@ -17,9 +17,9 @@ export default {
   computed: {
     pathList () {
       return {
-          label: this.model,
+          label: this.model.label,
           path: {
-            name: `contribute-${this.model}`
+            name: `contribute-${this.model.name}`
           },
         }
     },
@@ -27,7 +27,7 @@ export default {
       return {
         label: this.$t("global.detail"),
         path: {
-          name: `contribute-${this.model}-id`,
+          name: `contribute-${this.model.name}-id`,
           params: this.$route.params
         }
       }
@@ -36,7 +36,7 @@ export default {
       return {
         label: this.$t("global.update"),
         path: {
-          name: `contribute-${this.model}-update-id`,
+          name: `contribute-${this.model.name}-update-id`,
           params: this.$route.params
         }
       }
@@ -45,7 +45,7 @@ export default {
       return {
         label: this.$t("global.create"),
         path: {
-          name: `contribute-${this.model}-create`
+          name: `contribute-${this.model.name}-create`
         }
       }
     }

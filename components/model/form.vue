@@ -35,7 +35,7 @@
         </button>
       </div>
       <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-b-lg">
-        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click="$router.back()">
+        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click.stop.prevent="$router.back()">
           {{ $t('global.cancel') }}
         </button>
         <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="new">

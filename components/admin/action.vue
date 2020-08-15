@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper action-list">
-    <lazy-extra-nuxt-link v-if="add" :to="{name: `contribute-${field.model}-create`}">
+    <lazy-extra-nuxt-link v-if="add" :to="{name: `contribute-${field.model || field.name}-create`}">
       <icon-plus class=" text-green-700" />
     </lazy-extra-nuxt-link>
-    <lazy-extra-nuxt-link v-if="edit" :to="{name: `contribute-${field.model}-update`}">
+    <lazy-extra-nuxt-link v-if="edit" :to="{name: `contribute-${field.model || field.name}-update-id`, params: {id: objectId}}">
       <icon-edit class=" text-yellow-700" />
     </lazy-extra-nuxt-link>
     <icon-trash v-if="deleted" class="text-red-700 cursor-pointer" @click="$emit('delete')" />
@@ -26,6 +26,10 @@ export default {
     field: {
       type: Object,
       required: true
+    },
+    objectId: {
+      type: Number,
+      default: 0,
     },
     edit: {
       type: Boolean,

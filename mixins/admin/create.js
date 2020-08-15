@@ -14,7 +14,7 @@ export default {
       this.loading = true
       this.errors = []
 
-      this.$axios.post(`${this.model}/`, form)
+      this.$axios.post(`${this.model.name}/`, form)
         .then(response => {
           if (response.status != 201) {
             throw Error(this.$t("global.create-ko"))

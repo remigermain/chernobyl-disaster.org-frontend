@@ -23,7 +23,7 @@
           ---------
         </option>
       </select>
-      <admin-action v-if="action" :field="field" />
+      <admin-action v-if="action" :field="field" :object-id="valueModel" />
     </template>
   </component>
 </template>

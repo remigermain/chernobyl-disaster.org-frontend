@@ -21,7 +21,7 @@
           {{ choice.display_name }}
         </option>
       </select>
-      <admin-action v-if="action" :field="field" />
+      <admin-action v-if="action" :field="field" :edit="false" />
     </template>
   </component>
 </template>

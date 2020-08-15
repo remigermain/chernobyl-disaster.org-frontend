@@ -16,12 +16,11 @@
       <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
       <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
       <lazy-admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
-      <lazy-admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
+      <lazy-admin-file :value="object.doc" :field="fields.doc" :errors="errors.doc" />
       <admin-datetime :value="object.date" :field="fields.date" :errors="errors.date" />
-      <lazy-admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
-      <th> {{ $t('model.picture.langs.title') }} </th>
+      <th> {{ $t('model.document.langs.title') }} </th>
       <th>
         {{ $t('global.language') }}
         <admin-error :errors="errors.langs" />
@@ -86,15 +85,15 @@
 
 <script>
 import Update from "@/mixins/admin/update"
-import Picture from "@/mixins/model/picture"
+import Document from "@/mixins/model/document"
 
 export default {
-  name: "ContrubtePictureUpdate",
+  name: "ContrubteDocumentUpdate",
 
-  mixins: [Update, Picture],
+  mixins: [Update, Document],
 
   asyncData ({params, redirect, $axios, app}) {
-    return $axios.get(`picture/${params.id}/`)
+    return $axios.get(`document/${params.id}/`)
       .then(response => {
         if (response.status != 200) {
           throw Error("") // TODO
@@ -102,15 +101,15 @@ export default {
         return { object: response.data }
       })
       .catch(() => {
-        return redirect(app.localePath({name: "contribute-picture"}))
+        return redirect(app.localePath({name: "contribute-document"}))
       })
   },
 
   methods: {
     assignFormData (form) {
-      // remove picture key if is empty
-      if (form.get("picture") === "") {
-        form.delete("picture")
+      // remove document key if is empty
+      if (form.get("document") === "") {
+        form.delete("document")
       }
       // remove date key if is empty
       if (form.get("date") === "") {

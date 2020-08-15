@@ -13,15 +13,10 @@
       </lazy-bread-crumb>
     </template>
     <template v-slot:form>
-      <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
-      <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
-      <lazy-admin-select :value="object.event" :field="fields.event" :errors="errors.event" />
-      <lazy-admin-image :value="object.picture" :field="fields.picture" :errors="errors.picture" />
-      <admin-datetime :value="object.date" :field="fields.date" :errors="errors.date" />
-      <lazy-admin-select :value="object.photographer" :field="fields.photographer" :errors="errors.photographer" />
+      <lazy-admin-text :value="object.name" :field="fields.name" :errors="errors.name" />
     </template>
     <template v-slot:table-header>
-      <th> {{ $t('model.picture.langs.title') }} </th>
+      <th> {{ $t('model.tag.langs.name') }} </th>
       <th>
         {{ $t('global.language') }}
         <admin-error :errors="errors.langs" />
@@ -35,11 +30,11 @@
       <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center rounded-b-lg">
         <td class="text-center">
           <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
-          <lazy-admin-text :value="lang.title"
+          <lazy-admin-text :value="lang.name"
                            class="border-none"
                            :prefix="prefixLang(idx)"
                            :label="false"
-                           :field="fields.langs.title"
+                           :field="fields.langs.name"
                            :action="false"
           />
         </td>
@@ -59,7 +54,7 @@
           <lazy-admin-text class="border-none"
                            :prefix="prefixLang(idx + object.langs.length)"
                            :label="false"
-                           :field="fields.langs.title"
+                           :field="fields.langs.name"
                            :action="false"
           />
         </td>
@@ -86,15 +81,15 @@
 
 <script>
 import Update from "@/mixins/admin/update"
-import Picture from "@/mixins/model/picture"
+import Tag from "@/mixins/model/tag"
 
 export default {
-  name: "ContrubtePictureUpdate",
+  name: "ContrubteTagUpdate",
 
-  mixins: [Update, Picture],
+  mixins: [Update, Tag],
 
   asyncData ({params, redirect, $axios, app}) {
-    return $axios.get(`picture/${params.id}/`)
+    return $axios.get(`tag/${params.id}/`)
       .then(response => {
         if (response.status != 200) {
           throw Error("") // TODO
@@ -102,22 +97,8 @@ export default {
         return { object: response.data }
       })
       .catch(() => {
-        return redirect(app.localePath({name: "contribute-picture"}))
+        return redirect(app.localePath({name: "contribute-tag"}))
       })
   },
-
-  methods: {
-    assignFormData (form) {
-      // remove picture key if is empty
-      if (form.get("picture") === "") {
-        form.delete("picture")
-      }
-      // remove date key if is empty
-      if (form.get("date") === "") {
-        form.delete("date")
-      }
-    },
-  }
-
 }
 </script>

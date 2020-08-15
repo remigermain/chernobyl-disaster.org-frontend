@@ -24,11 +24,11 @@ export default {
   computed: {
     url () {
       const search = (this.searchValue ? `&search=${this.searchValue}` : "")
-      return `${this.model}/?page=${this.page}${search}`
+      return `${this.model.name}/?page=${this.page}${search}`
     },
     urlLang () {
       const search = (this.searchValueLang ? `&search=${this.searchValueLang}` : "")
-      return `${this.model}/?page=${this.pageLang}&completed=false${search}`
+      return `${this.model.name}/?page=${this.pageLang}&completed=false${search}`
     },
   },
 

@@ -13,7 +13,7 @@
             {{ $t("model.global.language") }} :
           </span>
           <span class="detail-item-content">
-            {{ getLang(obj.language).display_name }}
+            {{ getLang(obj.language) }}
           </span>
         </div>
       </div>
@@ -36,8 +36,9 @@ export default {
 
 
   methods: {
-    getLang (idx) {
-      return this.$store.getters["model/langs"].find(t => t.value === idx)
+    getLang (value) {
+      const v = this.$store.getters["model/langs"].find(t => t.value === value)
+      return (v ? v.display_name : value)
     }
   }
 

@@ -12,15 +12,15 @@
       </lazy-bread-crumb>
     </template>
     <template v-slot:form>
-      <lazy-admin-text :field="fields.title" :errors="errors.title" />
+      <lazy-admin-text :field="fields.name" :errors="errors.name" />
+      <lazy-admin-date :field="fields.born" :errors="errors.born" />
+      <lazy-admin-date :field="fields.death" :errors="errors.death" />
+      <lazy-admin-file :field="fields.profil" :errors="errors.profil" />
+      <lazy-admin-url :field="fields.wikipedia" :errors="errors.wikipedia" />
       <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
-      <lazy-admin-select :field="fields.event" :errors="errors.event" />
-      <lazy-admin-image :field="fields.picture" :errors="errors.picture" />
-      <admin-datetime :field="fields.date" :errors="errors.date" />
-      <lazy-admin-select :field="fields.photographer" :errors="errors.photographer" />
     </template>
     <template v-slot:table-header>
-      <th> {{ $t('model.picture.langs.title') }} </th>
+      <th> {{ $t('model.people.langs.biography') }} </th>
       <th>
         {{ $t('global.language') }}
         <lazy-admin-error :errors="errors.langs" />
@@ -32,11 +32,12 @@
     <template v-slot:table-body>
       <tr v-for="(val, idx) in langs" :key="val">
         <td>
-          <lazy-admin-text class="border-none"
-                           :prefix="prefixLang(idx)"
-                           :label="false"
-                           :field="fields.langs.title"
-                           :action="false"
+          <lazy-admin-textarea class="border-none"
+                               :prefix="prefixLang(idx)"
+                               :label="false"
+                               :field="fields.langs.biography"
+                               :action="false"
+                               :inline="false"
           />
         </td>
         <td>
@@ -61,22 +62,28 @@
 </template>
 
 <script>
-import picture from "@/mixins/model/picture"
 import create from "@/mixins/admin/create"
+import people from "@/mixins/model/people"
 
 export default {
   name: "ContrubtePictureCreate",
 
   mixins: [
     create,
-    picture
+    people
   ],
 
   methods: {
     assignFormData (form) {
       // remove date key if is empty
-      if (form.get("date") === "") {
-        form.delete("date")
+      if (form.get("death") === "") {
+        form.delete("death")
+      }
+      if (form.get("born") === "") {
+        form.delete("born")
+      }
+      if (form.get("profil") === "") {
+        form.delete("profil")
       }
     },
   }

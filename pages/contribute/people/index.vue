@@ -39,21 +39,21 @@
 <script>
 
 import list from "@/mixins/admin/list"
-import picture from "@/mixins/model/picture"
+import people from "@/mixins/model/people"
 
 export default {
-  name: "ContrubtePictureList",
+  name: "ContrubtePeopleList",
 
   mixins:  [
     list,
-    picture
+    people
   ],
 
   async asyncData ({redirect, $axios, app}) {
     // get objects
     try {
-      const response = await $axios.get("picture/?page=1")
-      const responseLang = await $axios.get("picture/?page=1&completed=false")
+      const response = await $axios.get("people/?page=1")
+      const responseLang = await $axios.get("people/?page=1&completed=false")
       if (response.status != 200 || responseLang.status != 200) {
         throw Error(app.i18n.t("global.error"))
       }
@@ -65,7 +65,7 @@ export default {
       }
     }
     catch {
-      return redirect(app.$i18n.localePath({name: "contribute-picture"}))
+      return redirect(app.$i18n.localePath({name: "contribute-people"}))
     }
   },
 
@@ -73,12 +73,11 @@ export default {
     return {
       tableField: [
         {field: "id", label: "id", type: Number},
-        {field: "title", label: "title", type: String},
-        {field: "event", label: "event", type: Date},
+        {field: "name", label: "name", type: String},
       ],
       tableFieldLang: [
         {field: "id", label: "id", type: Number},
-        {field: "title", label: "title", type: String},
+        {field: "name", label: "name", type: String},
         {field: "not_available_languages", label: "no translate", type: Array},
       ],
     }
