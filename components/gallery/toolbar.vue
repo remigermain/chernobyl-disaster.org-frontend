@@ -92,10 +92,7 @@ export default {
       this.search = this.$route.query.search || ""
 
       // set value of order if exists in choices
-      console.log("iciic", this.$route.query )
       if (has(this.$route.query, "ordering")) {
-        console.log("iciic")
-        console.log(this.orderingChoices.some(obj => obj.value === this.$route.query.ordering))
         if (this.orderingChoices.some(obj => obj.value === this.$route.query.ordering)) {
           this.ordering = this.$route.query.ordering
         }

@@ -2,10 +2,6 @@ import { isEmpty } from "lodash"
 
 export default {
 
-  watchQuery (newQuery, oldQuery) {
-    return newQuery.search != oldQuery.search || newQuery.ordering != oldQuery.ordering
-  },
-
   data () {
     return {
       pageValue: this.page,
@@ -16,13 +12,15 @@ export default {
     }
   },
 
-  // watch: {
-  //   "$route.query" () {
-  //     this.object = []
-  //     this.page = 1
-  //     this.uniqueId++
-  //   }
-  // },
+  watch: {
+    "$route.query" (newQuery, oldQuery) {
+        if (newQuery.search != oldQuery.search || newQuery.ordering != oldQuery.ordering) {
+          this.object = []
+          this.page = 1
+          this.uniqueId++
+        }
+    }
+  },
 
   computed: {
     baseUrl () {
@@ -33,7 +31,10 @@ export default {
         return this.baseUrl
       }
       const q = this.$route.query
-      return `${this.baseUrl}&search=${q.search}&ordering=${q.order}`
+      let search = "", ordering = ""
+      if (q.search) { search = `&search=${q.search}` }
+      if (q.ordering) { ordering = `&ordering=${q.ordering}` }
+      return `${this.baseUrl}${search}${ordering}`
     }
   },
 

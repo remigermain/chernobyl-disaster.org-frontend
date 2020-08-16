@@ -72,13 +72,13 @@ export default {
   data () {
     return {
       tableField: [
-        {field: "id", label: this.$t("admin.model.id"), type: Number},
-        {field: "name", label: this.$t("admin.model.name"), type: String},
+        {field: "id", label: this.$t("admin.model.id")},
+        {field: "name", label: this.$t("admin.model.name")}
       ],
       tableFieldLang: [
-        {field: "id", label: this.$t("admin.model.id"), type: Number},
-        {field: "name", label: this.$t("admin.model.name"), type: String},
-        {field: "not_available_languages", label: "no translate", type: Array},
+        {field: "id", label: this.$t("admin.model.id")},
+        {field: "name", label: this.$t("admin.model.name")},
+        {field: "not_available_languages", label: "no translate"},
       ],
     }
   },

@@ -37,7 +37,7 @@ export default {
 
   methods: {
     getLang (value) {
-      const v = this.$store.getters["model/langs"].find(t => t.value === value)
+      const v = this.$store.getters["model/lang"](value)
       return (v ? v.display_name : value)
     }
   }

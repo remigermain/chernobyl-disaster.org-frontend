@@ -86,12 +86,7 @@
             "death": "death",
             "description": "description",
             "doc": "doc",
-            "event": {
-                "date": "date",
-                "description": "description",
-                "language": "language",
-                "title": "title"
-            },
+            "event": "event",
             "id": "id",
             "language": "language",
             "link": "link",
@@ -102,24 +97,11 @@
             "no-translate": "no-translate",
             "old-password": "old-password",
             "photographer": "photographer",
-            "picture": {
-                "date": "date",
-                "event": "event",
-                "language": "language",
-                "photographer": "photographer",
-                "picture": "picture",
-                "title": "title"
-            },
+            "picture": "picture",
             "profil": "profil",
             "tags": "tags",
             "title": "title",
-            "video": {
-                "date": "date",
-                "event": "event",
-                "language": "language",
-                "title": "title",
-                "video": "video"
-            },
+            "video": "video",
             "wikipedia": "wikipedia"
         },
         "tools": {
@@ -181,9 +163,6 @@
             "description": "description",
             "presentation": "presentation"
         }
-    },
-    "site": {
-        "name": "name"
     },
     "success": {
         "create": "create",

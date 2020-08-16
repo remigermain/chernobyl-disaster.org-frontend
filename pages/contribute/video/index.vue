@@ -72,14 +72,19 @@ export default {
   data () {
     return {
       tableField: [
-        {field: "id", label: this.$t("admin.model.id"), type: Number},
-        {field: "title", label: this.$t("admin.model.title"), type: String},
-        {field: "event", label: this.$t("admin.model.event"), type: Date},
+        {field: "id", label: this.$t("admin.model.id")},
+        {field: "title", label: this.$t("admin.model.title")},
+        {field: "event", label: this.$t("admin.model.event"),
+        fnc: (el) => {
+            const a =  this.$store.getters["model/event"](el)
+            return a ? a.display_name : el
+          }
+        },
       ],
       tableFieldLang: [
-        {field: "id", label: this.$t("admin.model.id"), type: Number},
-        {field: "title", label: this.$t("admin.model.title"), type: String},
-        {field: "not_available_languages", label: this.$t("admin.model.need-translate"), type: Array},
+        {field: "id", label: this.$t("admin.model.id")},
+        {field: "title", label: this.$t("admin.model.title")},
+        {field: "not_available_languages", label: this.$t("admin.model.need-translate")},
       ],
     }
   },

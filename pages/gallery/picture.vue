@@ -45,7 +45,8 @@ export default {
 
 <style lang="scss" scoped>
 .grid-picture {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(6, 1fr);
@@ -54,14 +55,14 @@ export default {
 }
 
 .picture-item {
-  height: 100%;
-  width: 100%;
+  height: 200px;
+  width: 300px;
   cursor: pointer;
   overflow: hidden;
-  transition: transform .4s;
+  transition: transform .4s, width 1s, height  1s;
   object-fit: cover;
   &:hover {
-    margin:auto;
+    //margin:auto;
     transform: scale(105%);
   }
 }
@@ -69,11 +70,15 @@ export default {
 .picture-item:nth-of-type(13n + 1),
 .picture-item:nth-of-type(13n + 5),
 .picture-item:nth-of-type(13n + 10) {
+  // width: 400px;
+  // height: 200px;
   grid-column: span 4;
   grid-row: span 2;
 }
 
 .picture-item:nth-of-type(13n + 2) {
+  // width: 600px;
+  // height: 300px;
   grid-column: span 6;
   grid-row: span 3;
 }
@@ -87,6 +92,8 @@ export default {
 .picture-item:nth-of-type(13n + 11),
 .picture-item:nth-of-type(13n + 12),
 .picture-item:nth-of-type(13n + 13){
+  // width: 200px;
+  // height: 100%;
   grid-column: span 2;
 }
 

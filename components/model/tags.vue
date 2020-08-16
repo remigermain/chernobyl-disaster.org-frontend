@@ -26,7 +26,7 @@ export default {
 
   methods: {
     getTag (idx) {
-      return this.$store.getters["model/tags"].find(t => t.value === idx)
+      return this.$store.getters["model/tags"](idx)
     }
   }
 

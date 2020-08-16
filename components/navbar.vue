@@ -22,8 +22,8 @@
       <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="active = false">
         {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
-      <select class="form-select block mt-1 bg-gray-100">
-        <option v-for="lang in $i18n.locales" :key="lang.code">
+      <select v-model="value" class="form-select block mt-1 bg-gray-100">
+        <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
           {{ lang.name }}
         </option>
       </select>
@@ -37,7 +37,14 @@ export default {
 
   data () {
     return {
-      active: false
+      active: false,
+      value: this.$i18n.locale
+    }
+  },
+
+  watch: {
+    value (val) {
+      this.$router.push(this.switchLocalePath(val))
     }
   },
 

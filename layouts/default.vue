@@ -2,7 +2,7 @@
   <div class="grid-layout">
     <div class="grid-layout-title">
       <h1 class="grid-layout-title-item font-russia">
-        {{ $t('site.name') }}
+        chernobyl
       </h1>
     </div>
     <navbar />

@@ -40,7 +40,7 @@
           <template v-for="field in fields">
             <td :key="field.field" class="p-2">
               <template v-if="obj[field.field]">
-                {{ ( field.type === Array ? obj[field.field].join() : obj[field.field] ) }}
+                {{ convertName(field, obj[field.field]) }}
               </template>
               <span v-else class="text-xs text-gray-600 italic text-opacity-75">
                 {{ empty }}
@@ -80,6 +80,9 @@ import iconArrowUp from "@/assets/svg/arrow-up.svg"
 import iconEye from "@/assets/svg/eye.svg"
 import iconEdit from "@/assets/svg/edit.svg"
 import iconSearch from "@/assets/svg/search.svg"
+
+import has from "lodash/has"
+import isArray from "lodash/isArray"
 
 export default {
 
@@ -135,6 +138,12 @@ export default {
         this.list = this.list.sort((el1, el2) => el1[f] < el2[f])
       }
     },
+    convertName(field, value) {
+      if (has(field, "fnc")) {
+        return field.fnc(value)
+      }
+      return isArray(value) ? value.join() : value
+    }
   }
 
 }

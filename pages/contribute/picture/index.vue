@@ -74,7 +74,12 @@ export default {
       tableField: [
         {field: "id", label: this.$t("admin.model.id"), type: Number},
         {field: "title", label: this.$t("admin.model.title"), type: String},
-        {field: "event", label: this.$t("admin.model.event"), type: Date},
+        {field: "event", label: this.$t("admin.model.event"),
+        fnc: (el) => {
+            const a =  this.$store.getters["model/event"](el)
+            return a ? a.display_name : el
+          }
+        },
       ],
       tableFieldLang: [
         {field: "id", label: this.$t("admin.model.id"), type: Number},

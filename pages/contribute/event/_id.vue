@@ -55,7 +55,6 @@ export default {
         }
       })
       .catch(() => {
-        console.log(Object.keys(app))
         return redirect(app.i18n.localePath({name: "contribute-event"}))
       })
   },
