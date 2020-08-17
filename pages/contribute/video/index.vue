@@ -74,8 +74,10 @@ export default {
       tableField: [
         {field: "id", label: this.$t("admin.model.id")},
         {field: "title", label: this.$t("admin.model.title")},
-        {field: "event", label: this.$t("admin.model.event"),
-        fnc: (el) => {
+        {
+          field: "event",
+          label: this.$t("admin.model.event"),
+          fnc: (el) => {
             const a =  this.$store.getters["model/event"](el)
             return a ? a.display_name : el
           }
