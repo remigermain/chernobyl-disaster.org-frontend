@@ -1,42 +1,29 @@
 <template>
-  <div class="picture-active">
-    <div class="toolbar-container">
-      <div class="toolbar-left">
-        {{ idx }} / {{ length }}
+  <div class="picture-detail" :class="{
+    'detail-transition' : transition === true || object === null,
+    'detail-active': object != null
+  }"
+  >
+    <div v-if="object" class="wrapper">
+      <div class="toolbar-container">
+        <div class="toolbar-left">
+          {{ position }}
+        </div>
+        <div class="toolbar-right">
+          <icon-close class="toolbar-item" @click="$emit('close')" />
+        </div>
       </div>
-      <div class="toolbar-right">
-        <icon-close class="toolbar-item" @click="$emit('close')" />
-      </div>
-    </div>
-    <icon-prev v-show="hasPrev" class="absolute top-50 left-0 text-white z-50 toolbar-item" @click="$emit('prev')" />
-    <icon-next v-show="hasNext" class="absolute top-50 right-0 text-white z-50 toolbar-item" @click="$emit('next')" />
-    <div class="picture-item-container select-none">
-      <img :alt="object.title"
-           :src="object.picture"
-           class="picture-item-active mx-auto"
-           :class="{'hidden': translate}"
-           loading="lazy"
-      >
-      <div v-if="translate" class="absolute top-0 left-0 w-full h-full">
+      <icon-prev v-show="hasPrev" class="toolbar-item toolbar-slide-prev" @click="$emit('prev')" />
+      <icon-next v-show="hasNext" class="toolbar-item toolbar-slide-next" @click="$emit('next')" />
+      <div class="picture-item-container">
         <img :alt="object.title"
              :src="object.picture"
-             class="picture-item-active absolute top-0 left-0 w-full h-full"
-             :class="{
-               'translate-left': translateLeft,
-               'translate-right': translateRight
-             }"
+             class="picture-item mx-auto"
              loading="lazy"
         >
-        <img :alt="objectCopy.title"
-             :src="objectCopy.picture"
-             class="picture-item-active absolute top-0 left-0 w-full h-full"
-             :class="{
-               'picture-main': translate,
-               'translate-main-left': translateLeft,
-               'translate-main-right': translateRight
-             }"
-             loading="lazy"
-        >
+      </div>
+      <div class="picture-title">
+        {{ i18nAttr(object, 'title') }}
       </div>
     </div>
   </div>
@@ -46,6 +33,7 @@
 import iconClose from "@/assets/svg/x.svg"
 import iconPrev from "@/assets/svg/arrow-left.svg"
 import iconNext from "@/assets/svg/arrow-right.svg"
+import isNil from "lodash/isNil"
 
 export default {
 
@@ -58,7 +46,7 @@ export default {
   props: {
     object: {
       type: Object,
-      required: true
+      default: null
     },
     idx: {
       type: Number,
@@ -72,11 +60,7 @@ export default {
 
   data () {
     return {
-      objectNew: this.object,
-      objectCopy: null,
-      translateLeft: false,
-      translateRight: false,
-      timeout: 0,
+      transition: false,
     }
   },
 
@@ -89,145 +73,79 @@ export default {
     },
     translate () {
       return this.translateLeft || this.translateRight
+    },
+    position () {
+      return `${this.idx + 1} / ${this.length}`
     }
   },
 
   watch: {
-    idx (oldValue, newValue) {
-      if (oldValue > newValue) {
-        this.translateRight = true
-      } else {
-        this.translateLeft = true
-      }
-    },
     object (newValue, oldValue) {
-      this.objectCopy = oldValue
-      this.objectNew = newValue
-      this.timeout = setTimeout(() => {
-        this.translateRight = false
-        this.translateLeft = false
-      }, 500)
+      if (isNil(oldValue)) {
+        this.transition = true
+      } else {
+        this.transition = false
+      }
+      if (isNil(newValue)) {
+        this.$router.push({query: {}})
+      } else {
+        this.$router.push({query: {detail: newValue.id}})
+      }
     }
   },
-
-  beforeDestroy () {
-    clearTimeout(this.timeout)
-  },
-
-  methods: {
-    maiximize () {
-
-    },
-    zoomIn () {
-
-    },
-    zoomOut () {
-
-    },
-  }
-
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
-.picture-active {
+.picture-detail {
   --timing: .5s;
   position: absolute;
+  user-select: none;
+  opacity: 0;
+  transition: opacity .2s;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 30;
-  background-color: rgba(0, 0, 0, 0.651);
+  background-color: rgba(0, 0, 0, .85);
   display: flex;
   justify-content: center;
   align-content: center;
+  &.detail-transition {
+    opacity: 0;
+    z-index: -30;
+  }
+  &.detail-active {
+    opacity: 1;
+    z-index: 30;
+  }
   .picture-item-container {
     overflow: hidden;
     position: relative;
     height: 90vh;
     width: 90vw;
-    margin: 5vw 5vh;
+    margin: 5vh 5vw;
+  }
+  .picture-item {
+    height: inherit;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .picture-title {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: 5vh;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
   }
 }
-
-.picture-item-active {
-  height: inherit;
-  object-fit: contain;
-}
-
-.close-btn {
-  transition: transform .2s;
-  &:hover {
-    transform: scale(1.2);
-  }
-}
-
-.translate-right,
-.translate-left {
-  z-index: 50;
-}
-
-.translate-right {
-  animation-duration: var(--timing);
-  animation-name: translate-right;
-}
-
-@keyframes translate-right {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
-.translate-left {
-  animation-duration: var(--timing);
-  animation-name: translate-left;
-}
-
-@keyframes translate-left {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0%);
-  }
-}
-
-
-
-
-.translate-main-left {
-  animation-duration: var(--timing);
-  animation-name: translate-main-left;
-}
-
-@keyframes translate-main-left {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(100vw);
-  }
-}
-
-.translate-main-right {
-  animation-duration: var(--timing);
-  animation-name: translate-main-right;
-}
-
-@keyframes translate-main-right {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-100vw);
-  }
-}
-
+/*
+  toolbar icon
+*/
 .toolbar-container {
   position: absolute;
   right: 0;
@@ -264,6 +182,29 @@ export default {
   &:hover {
     color: rgb(185, 185, 185);
   }
+}
+
+.toolbar-slide-prev,
+.toolbar-slide-next {
+  --margin-slider: 10px;
+  position: absolute;
+  top: 50%;
+  color: white;
+  z-index: 50;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.toolbar-slide-prev {
+  margin-left: var(--margin-slider);
+  left: 0;
+}
+.toolbar-slide-next {
+  margin-right: var(--margin-slider);
+  right: 0;
 }
 
 </style>

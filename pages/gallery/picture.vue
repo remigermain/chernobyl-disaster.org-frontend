@@ -1,15 +1,16 @@
 <template>
   <div class="grid-picture">
     <img v-for="(el, idx) in object" :key="el.id" class="picture-item" :alt="el.title" :src="el.picture" loading="lazy" @click="setCurrent(el, idx)">
-    <lazy-gallery-detail-picture v-if="current"
-                                 :object="current"
+    <div class="flex justify-center items-center w-full">
+      <lazy-admin-pagination :length="length" />
+    </div>
+    <lazy-gallery-detail-picture :object="current"
                                  :idx="currentIdx"
                                  :length="object.length"
                                  @close="current = null"
                                  @next="next"
                                  @prev="prev"
     />
-    <lazy-extra-infinite-loading class="picture-infinite" :identifier="uniqueId" @infinite="refresh" />
   </div>
 </template>
 
@@ -34,6 +35,7 @@ export default {
         }
         return {
           object: response.data.results,
+          length: response.data.count,
           completed: isNil(response.data.next)
         }
       })
@@ -70,7 +72,6 @@ export default {
 .grid-picture {
   display: flex;
   justify-content: center;
-  //align-items: center;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -83,9 +84,9 @@ export default {
   overflow: hidden;
   transition: transform .4s, width 1s, height  1s;
   object-fit: cover;
-  // &:hover {
-  //   transform: scale(105%);
-  // }
+  &:hover {
+    transform: scale(105%);
+  }
 }
 
 @media screen and (max-width: 1250px){
@@ -105,8 +106,6 @@ export default {
     width: 100%;
   }
 }
-
-
 
 .picture-infinite {
   grid-column: span 10;

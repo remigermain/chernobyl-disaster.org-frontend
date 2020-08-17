@@ -1,47 +1,40 @@
 <template>
   <div class="gallery-toolbar">
-    <div class="flex bg-gray-800 rounded text-white w-full">
-      <button class="toolbar-option hidden w-1/4 text-center py-2 rounded-l-sm cursor-pointer toolbar-link"
-              :class="{'bg-gray-700': option}"
-              @click="showOption"
-      >
-        <icon-settings stroke-width="1.5" />
-      </button>
-      <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="w-1/4 text-center py-2 rounded-l-sm cursor-pointer toolbar-link">
+    <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search">
+      <template v-slot:icon>
+        <icon-search />
+      </template>
+      <template v-slot:icon-right>
+        <button class="p-2 bg-gray-700 rounded-md text-white hover:bg-gray-800" @click="submit">
+          {{ $t('utils.search') }}
+        </button>
+      </template>
+    </field-text>
+    <div class="toolbar-menu">
+      <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link">
         <icon-photo stroke-width="1.5" />
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
-        <icon-movie stroke-width="1.5" />
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="w-1/4 text-center py-2 cursor-pointer toolbar-link">
-        <icon-file stroke-width="1.5" />
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="w-1/4 text-center py-2 rounded-r-sm cursor-pointer toolbar-link">
-        <icon-article stroke-width="1.5" />
-      </lazy-extra-nuxt-link>
-    </div>
-    <div class="toolbar-item" :class="{'hide-option': !option}">
-      <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search">
-        <template v-slot:icon>
-          <icon-search />
-        </template>
-      </field-text>
-      <div class="toolbar-order">
-        <span class="text-md text-gray-600 capitalize">
-          {{ $t('tools.sort-by') }}
+        <span class="gallery-toolbar-text">
+          {{ $t('menu.picture') }}
         </span>
-        <select v-model="ordering" class="p4 rounded-md shadow-xl text-center border border-gray-900 h-min w-full">
-          <option v-for="choices in orderingChoices" :key="choices.value" :value="choices.value">
-            {{ choices.label }}
-          </option>
-          <option value="" selected class="text-opacity-50 text-lg">
-            {{ empty }}
-          </option>
-        </select>
-      </div>
-      <button class="px-2 py-4 rounded shaodw bg-blue-800 hover:bg-blue-700 text-white w-full text-center" @click="submit">
-        {{ $t('tools.searched') }}
-      </button>
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link">
+        <icon-movie stroke-width="1.5" />
+        <span class="gallery-toolbar-text">
+          {{ $t('menu.video') }}
+        </span>
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="toolbar-link">
+        <icon-file stroke-width="1.5" />
+        <span class="gallery-toolbar-text">
+          {{ $t('menu.document') }}
+        </span>
+      </lazy-extra-nuxt-link>
+      <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="toolbar-link">
+        <icon-article stroke-width="1.5" />
+        <span class="gallery-toolbar-text">
+          {{ $t('menu.article') }}
+        </span>
+      </lazy-extra-nuxt-link>
     </div>
   </div>
 </template>
@@ -53,7 +46,6 @@ import iconPhoto from "@/assets/svg/photo.svg"
 import iconFile from "@/assets/svg/file-text.svg"
 import iconArticle from "@/assets/svg/news.svg"
 import iconSearch from "@/assets/svg/search.svg"
-import iconSettings from "@/assets/svg/settings.svg"
 import has from "lodash/has"
 import isNil from "lodash/isNil"
 
@@ -65,7 +57,6 @@ export default {
     iconFile,
     iconSearch,
     iconArticle,
-    iconSettings
   },
 
   data () {
@@ -119,47 +110,67 @@ export default {
 </script>
 
 <style lang="scss">
-
-.toolbar-item {
+.gallery-toolbar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
+  padding: .5rem;
+}
+.toolbar-search, .toolbar-menu {
+  width: 50%;
+  padding: .5rem;
+}
+
+.toolbar-menu, .toolbar-search {
+  display: flex;
+  justify-content: space-around;
   align-items: center;
 }
-.toolbar-item > * {
-  margin-top: .5em;
-  padding: .5em;
-}
-
-.toolbar-link {
-  transition: transform .2s;
-  &.nuxt-link-active, &:hover {
-    background-color: rgb(233, 233, 233);
-    color: rgba(45, 55, 72, 1);
-  }
-}
-
-@media screen and (max-width: 1300px) {
-  .toolbar-item.hide-option {
-    display: none;
-  }
-  .hide-option {
-    display: block;
-  }
-  .toolbar-option {
-    display: block;
-  }
-  .toolbar-search,
-  .toolbar-order {
-    width: 50%;
-  }
+.toolbar-menu > * + * {
+  margin-left: 1rem
 }
 
 @media screen and (max-width: 800px) {
-  .toolbar-search,
-  .toolbar-order {
-    width: 100%;
+  .gallery-toolbar {
+    flex-direction: column;
+  }
+  .toolbar-menu, .toolbar-search {
+    width: 100%
+  }
+  .gallery-toolbar-text {
+    display: none;
   }
 }
 
+
+
+.toolbar-link {
+  &::after {
+    transition: width .4s, opacity .5s;
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: black;
+    display: block;
+    border-radius: 3px;
+    opacity: 0;
+  }
+  &.nuxt-link-active {
+    opacity: 1;
+    &::after, &::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+  &:not(.nuxt-link-active)
+  {
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+}
 </style>
