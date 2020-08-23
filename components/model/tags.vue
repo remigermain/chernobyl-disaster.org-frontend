@@ -26,7 +26,7 @@ export default {
 
   methods: {
     getTag (idx) {
-      return this.$store.getters["model/tags"](idx)
+      return this.$store.getters["model/tag"](idx)
     }
   }
 

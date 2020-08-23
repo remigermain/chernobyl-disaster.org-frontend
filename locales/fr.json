@@ -141,10 +141,14 @@
     },
     "menu": {
         "about": "about",
+        "article": "article",
         "contribute": "contribute",
+        "document": "document",
         "gallery": "gallery",
         "home": "accueil",
-        "timeline": "timeline"
+        "picture": "picture",
+        "timeline": "timeline",
+        "video": "video"
     },
     "pages": {
         "about": {
@@ -182,8 +186,6 @@
         "save-add-other": "save-add-other",
         "save-continue-editing": "save-continue-editing",
         "search": "search",
-        "searched": "searched",
-        "sort-by": "sort-by",
         "update": "update"
     },
     "utils": {
@@ -204,6 +206,7 @@
         "or": "or",
         "preview": "preview",
         "require": "require",
+        "search": "search",
         "secondes": "secondes",
         "send": "send",
         "submit": "submit",

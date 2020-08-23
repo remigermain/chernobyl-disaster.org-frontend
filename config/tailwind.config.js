@@ -42,6 +42,14 @@ module.exports = {
         "2/5": "40%",
         "3/5": "60%",
         "4/5": "80%",
+        "10px": "10px",
+        "14px": "14px",
+        "16px": "16px",
+        "18px": "18px",
+        "20px": "20px",
+        "24px": "24px",
+        "32px": "32px",
+        "40px": "40px",
         "inherit": "inherit",
         "min-content": "min-content",
         "max-content": "max-content"
@@ -67,7 +75,6 @@ module.exports = {
     },
   },
   plugins: [
-    require("tailwindcss-spinner")({ className: "spinner", themeKey: "spinner" }),
     require("@tailwindcss/custom-forms"),
   ],
   purge: {

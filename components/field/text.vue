@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex mt-2">
     <span class="px-2 flex justify-center items-center text-gray-700">
       <slot name="icon" />
     </span>

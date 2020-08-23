@@ -1,4 +1,5 @@
-import { isEmpty } from "lodash"
+import galleryUrl from "@/lib/gallery"
+import isNil from "lodash/isNil"
 
 export default {
 
@@ -6,36 +7,31 @@ export default {
     return {
       pageValue: this.page,
       object: [],
-      uniqueId: 0,
-      page: 2,
+      pageSet: [parseInt(this.$route.query.page) || 1],
+      page: parseInt(this.$route.query.page) || 1,
       currentObject: null,
+      completed: false,
+      skeleton: 0,
+      inPrev: false,
+      inNext: false
     }
   },
 
   watch: {
-    "$route.query" (newQuery, oldQuery) {
-        if (newQuery.search != oldQuery.search || newQuery.ordering != oldQuery.ordering) {
-          this.object = []
-          this.page = 1
-          this.uniqueId++
-        }
+    "$route.query" (newquery, oldquery) {
+      if (newquery.search != oldquery.search || newquery.ordering != oldquery.ordering) {
+        this.reset()
+      }
     }
   },
 
   computed: {
-    baseUrl () {
-      return `${this.model}/?page=${this.page}`
-    },
     url () {
-      if (isEmpty(this.$route.query, true)) {
-        return this.baseUrl
-      }
-      const q = this.$route.query
-      let search = "", ordering = ""
-      if (q.search) { search = `&search=${q.search}` }
-      if (q.ordering) { ordering = `&ordering=${q.ordering}` }
-      return `${this.baseUrl}${search}${ordering}`
-    }
+      return `${this.model}/?page=${this.page}${galleryUrl(this.$route.query)}`
+    },
+    hasPrev () {
+      return this.pageSet.includes(1)
+    },
   },
 
   methods: {
@@ -44,28 +40,58 @@ export default {
         this.currentObject = value
       }
     },
-    refresh ($state) {
-      if (this.completed) {
-        $state.complete()
-        this.completed = false
+    nextPage() {
+      const max = Math.max(...this.pageSet)
+      if (!this.pageSet.includes(max + 1) && !this.completed) {
+        this.page = max + 1
+        this.next = true
+        this.refresh((response) => {
+          this.object = [...this.object, ...response.data.results,]
+        })
+      }
+    },
+    prevPage() {
+      const min = Math.min(...this.pageSet)
+      if (!this.pageSet.includes(min - 1) && min > 1) {
+        // save the old height
+        let oldHeight = this.$el.scrollHeight
+        let oldTop = this.$el.scrollTop
+
+        this.page = min - 1
+        this.inPrev = true
+
+        this.refresh((response) => {
+          this.object = [...response.data.results, ...this.object]
+          this.$nextTick(() => {
+            this.$el.scrollTop = this.$el.scrollHeight - oldHeight + oldTop
+          })
+        })
+      }
+    },
+    refresh (callback) {
+      if (this.inRequest) {
         return
       }
-      this.$axios.get(this.url)
+
+      this.pageSet.push(this.page)
+      this.inRequest = true
+      return this.$axios.get(this.url)
         .then(response => {
           if (response.status != 200) {
             throw Error("")
           }
-          this.page++
-          this.object.push(...response.data.results)
-          if (response.data.next) {
-            $state.loaded()
-          } else {
-            $state.complete()
+          this.length = response.data.count
+          this.inRequest = false
+          callback(response)
+          if (isNil(response.data.next)) {
+            this.completed = true
           }
         })
         .catch((error) => {
-          $state.error()
           this.$i18nToast().error(error)
+        })
+        .finally(() => {
+           this.inRequest, this.inPrev, this.inNext = false, false, false
         })
     },
   }

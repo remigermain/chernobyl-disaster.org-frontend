@@ -17,7 +17,7 @@
       <icon-next v-show="hasNext" class="toolbar-item toolbar-slide-next" @click="$emit('next')" />
       <div class="picture-item-container">
         <img :alt="object.title"
-             :src="object.picture"
+             :src="object.picture.full"
              class="picture-item mx-auto"
              loading="lazy"
         >
@@ -87,9 +87,11 @@ export default {
         this.transition = false
       }
       if (isNil(newValue)) {
-        this.$router.push({query: {}})
+        const query = {...this.$route.query}
+        delete query.detail
+        this.$router.push({query})
       } else {
-        this.$router.push({query: {detail: newValue.id}})
+        this.$router.push({query: {...this.$route.query, detail: newValue.id}})
       }
     }
   },

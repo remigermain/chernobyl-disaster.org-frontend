@@ -6,7 +6,8 @@ export default {
   data () {
     return {
       loading: false,
-      toastLoading: null
+      toastLoading: null,
+      inRequest: false
     }
   },
 

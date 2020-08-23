@@ -1,23 +1,33 @@
 <template>
   <div class="grid-gallery">
     <gallery-toolbar />
-    <div class="grid-gallery-items overflow-x-hidden">
-      <nuxt-child />
-    </div>
+    <nuxt-child />
   </div>
 </template>
 
 <script>
 export default {
-    name: "Gallery",
+  name: "Gallery",
+
+  asyncData ({ app, store }) {
+    return app.$axios.get("populate/people")
+      .then(response => {
+        if (response.status != 200) {
+          throw Error("")
+        }
+        store.commit("model/POPULATE_PEOPLES", response.data)
+      })
+      .catch(() => {
+        // TODO
+      })
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .grid-gallery {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: auto 1fr;
   height: 100%;
 }
 

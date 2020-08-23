@@ -1,23 +1,26 @@
 <template>
-  <div class="grid-picture">
-    <img v-for="(el, idx) in object" :key="el.id" class="picture-item" :alt="el.title" :src="el.picture" loading="lazy" @click="setCurrent(el, idx)">
-    <div class="flex justify-center items-center w-full">
-      <lazy-admin-pagination :length="length" />
-    </div>
+  <div id="gallery-picture" class="grid-picture" @scroll="scroll">
+    <gallery-infinite-loading ref="prevLoading" parent="gallery-picture" :completed="hasPrev" @visible="prevPage()">
+      <template v-slot:completed>
+        &nbsp;
+      </template>
+    </gallery-infinite-loading>
+    <img v-for="(el, idx) in object" :key="el.id" class="picture-item" :alt="el.title" :src="el.picture.thumbnail" loading="lazy" @click="setCurrent(el, idx)">
     <lazy-gallery-detail-picture :object="current"
                                  :idx="currentIdx"
-                                 :length="object.length"
+                                 :length="length"
                                  @close="current = null"
-                                 @next="next"
-                                 @prev="prev"
+                                 @next="nextDetail"
+                                 @prev="prevDetail"
     />
+    <gallery-infinite-loading ref="nextLoading" parent="gallery-picture" :completed="completed" @visible="nextPage()" />
   </div>
 </template>
 
 <script>
 import galleryMixin from "@/mixins/page/gallery"
-import isEmpty from "lodash/isEmpty"
 import isNil from "lodash/isNil"
+import galleryUrl from "@/lib/gallery"
 
 export default {
   name: "GalleryPicture",
@@ -27,8 +30,7 @@ export default {
   ],
 
   asyncData({app, route}) {
-    const query = (isEmpty(route.query) ? "" : `&search=${route.query.search}&ordering=${route.query.ordering}`)
-    return app.$axios.get(`picture/?page=1${query}`)
+    return app.$axios.get(`picture/?page=${route.query.page || 1}${galleryUrl(route.query)}`)
       .then(response => {
         if (response.status != 200) {
           throw Error("") // TODO
@@ -45,24 +47,51 @@ export default {
     return {
       model: "picture",
       current: null,
-      currentIdx: -1
+      currentIdx: -1,
     }
   },
+
+  created() {
+    if (!isNil(this.$route.query.detail)) {
+      const idx = parseInt(this.$route.query.detail) - 1
+      if (this.object.length >= this.$route.query.detail) {
+        this.setCurrent(this.object[idx], idx)
+      } else {
+        const query = this.$route.query
+        delete query.detail
+        this.$router.push({query})
+      }
+    }
+  },
+  mounted() {
+    if (process.client) {
+      this.scroll()
+    }
+  },
+
   methods: {
+    scroll () {
+      this.$refs.nextLoading.isVisible()
+      this.$refs.prevLoading.isVisible()
+    },
     setCurrent (current, idx) {
       this.current = current
       this.currentIdx = idx
     },
-    next () {
-      if (this.object.length - 1 > this.currentIdx) {
-        this.setCurrent(this.object[this.currentIdx + 1], this.currentIdx + 1)
+    nextDetail () {
+      if (this.length - 1 > this.currentIdx) {
+        if (this.object.length - 1 > this.currentIdx) {
+          this.setCurrent(this.object[this.currentIdx + 1], this.currentIdx + 1)
+        } else {
+          //this.nextPage()
+        }
       }
     },
-    prev () {
+    prevDetail () {
       if (this.currentIdx > 0) {
         this.setCurrent(this.object[this.currentIdx - 1], this.currentIdx - 1)
       }
-    }
+    },
   }
 }
 </script>
@@ -74,6 +103,7 @@ export default {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  overflow: hidden scroll;
 }
 
 .picture-item {

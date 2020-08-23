@@ -63,7 +63,6 @@
     "prettier": "^2.0.5",
     "sass-loader": "^9.0.2",
     "tailwindcss-important": "^1.0.0",
-    "tailwindcss-spinner": "^1.2.0",
     "webp-loader": "^0.6.0"
   }
 }

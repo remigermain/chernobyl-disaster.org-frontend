@@ -4,6 +4,7 @@ export const state = () => ({
   events: null,
   tags: null,
   photographer: null,
+  peoples: []
 })
 
 export const mutations = {
@@ -15,33 +16,38 @@ export const mutations = {
   POPULATE_PICTURE(state, data) {
     state.photographer = data.photographer
   },
+  POPULATE_PEOPLES(state, data) {
+    state.peoples = data.peoples
+  },
 
 }
 
 export const getters = {
-  langs: (state) => {
+  langs: state => {
     return state.langs
   },
   lang: state => value => {
     return state.langs.find(t => t.value == value)
   },
-  events: (state) => {
+  events: state => {
     return state.events
   },
   event: state => value => {
     return state.events.find(t => t.value == value)
   },
-  tags: (state) => {
+  tags: state => {
     return state.tags
   },
   tag: state => value => {
     return state.tags.find(t => t.value == value)
   },
 
-  lastPopulate: (state) => {
+  peoples: state => state.peoples,
+
+  lastPopulate: state => {
     return state.lastPopulate
   },
-  photographer: (state) => {
+  photographer: state => {
     return state.photographer
   },
 }
