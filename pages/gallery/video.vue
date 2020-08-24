@@ -52,6 +52,26 @@ export default {
       return src.replace("watch?v=", "embed/")
     }
   },
+
+  head () {
+    return {
+      title: this.$t("pages.menu.video"),
+      meta: [
+          { hid: "description", name: "description", content: this.$t("pages.meta.video.description") },
+          { property: "og:title", content: this.$t("pages.meta.video.title")},
+          { property: "og:site_name", content: this.$siteName },
+          { property: "og:description", content: this.$t("pages.meta.video.description")},
+          { property: "og:type", content: "website"},
+          { property: "og:url", content: this.$siteName},
+          { name: "twitter:card", content: this.$t("pages.meta.video.description") },
+          { name: "twitter:site", content: this.$siteName},
+          { name: "twitter:title", content: this.$t("pages.meta.video.title") },
+          { name: "twitter:description", content: this.$t("pages.meta.video.description") },
+          { name: "twitter:image", content: "/favicon.ico" },
+          { name: "twitter:image:alt", content: this.$t("pages.meta.video.title") }
+      ]
+    }
+  }
 }
 </script>
 

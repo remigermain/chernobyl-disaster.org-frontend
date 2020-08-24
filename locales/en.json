@@ -166,6 +166,60 @@
         "home": {
             "description": "description",
             "presentation": "presentation"
+        },
+        "menu": {
+            "about": "about",
+            "article": "article",
+            "document": "document",
+            "home": "home",
+            "login": "login",
+            "picture": "picture",
+            "register": "register",
+            "reset-password": "reset-password",
+            "timeline": "timeline",
+            "video": "video"
+        },
+        "meta": {
+            "about": {
+                "description": "description",
+                "title": "title"
+            },
+            "article": {
+                "description": "description",
+                "title": "title"
+            },
+            "document": {
+                "description": "description",
+                "title": "title"
+            },
+            "home": {
+                "description": "description",
+                "title": "title"
+            },
+            "login": {
+                "description": "description",
+                "title": "title"
+            },
+            "picture": {
+                "description": "description",
+                "title": "title"
+            },
+            "register": {
+                "description": "description",
+                "title": "title"
+            },
+            "reset-password": {
+                "description": "description",
+                "title": "title"
+            },
+            "timeline": {
+                "description": "description",
+                "title": "title"
+            },
+            "video": {
+                "description": "description",
+                "title": "title"
+            }
         }
     },
     "success": {

@@ -7,9 +7,10 @@ import i18n from "./config/i18n"
 export default {
 
   mode: "universal",
-  ssr: true,
-  telemetry: false,
   target: "server",
+  ssr: true,
+
+  telemetry: false,
 
   head: {
     title: process.env.npm_package_name || "",

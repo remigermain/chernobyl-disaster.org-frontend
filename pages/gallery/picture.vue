@@ -90,7 +90,27 @@ export default {
         this.setCurrent(this.object[this.currentIdx - 1], this.currentIdx - 1)
       }
     },
-  }
+  },
+
+  head () {
+    return {
+      title: this.$t("pages.menu.picture"),
+      meta: [
+          { hid: "description", name: "description", content: this.$t("pages.meta.picture.description") },
+          { property: "og:title", content: this.$t("pages.meta.picture.title")},
+          { property: "og:site_name", content: this.$siteName },
+          { property: "og:description", content: this.$t("pages.meta.picture.description")},
+          { property: "og:type", content: "website"},
+          { property: "og:url", content: this.$siteName},
+          { name: "twitter:card", content: this.$t("pages.meta.picture.description") },
+          { name: "twitter:site", content: this.$siteName},
+          { name: "twitter:title", content: this.$t("pages.meta.picture.title") },
+          { name: "twitter:description", content: this.$t("pages.meta.picture.description") },
+          { name: "twitter:image", content: "/favicon.ico" },
+          { name: "twitter:image:alt", content: this.$t("pages.meta.picture.title") }
+      ]
+    }
+  },
 }
 </script>
 
