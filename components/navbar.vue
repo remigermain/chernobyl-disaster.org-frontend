@@ -16,7 +16,7 @@
       <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="active = false">
         {{ $t('menu.gallery') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link" @click="active = false">
+      <lazy-extra-nuxt-link :to="{name: 'contribute-event'}" class="navbar-link" @click="active = false">
         {{ $t('menu.contribute') }}
       </lazy-extra-nuxt-link>
       <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="active = false">

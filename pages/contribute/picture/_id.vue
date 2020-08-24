@@ -20,13 +20,13 @@
           <model-field :label="fields.photographer.label" :value="object.photographer">
             <div v-if="object.photographer">
               {{ object.photographer.name }}
-              <img :src="object.photographer.profil" :alt="object.photographer.name" class="rounded-full">
+              <img :src="object.photographer.profil.thumbnail" :alt="object.photographer.name" class="rounded-full">
             </div>
           </model-field>
           <model-tags :tags="object.tags" />
         </div>
         <div class="w-2/4 -md:w-full flex justify-center flex-col text-2xl text-gray-800 detail-items">
-          <img loading="lazy" :src="object.picture" :alt="object.title">
+          <img loading="lazy" :src="object.picture.full" :alt="object.title">
         </div>
         <model-langs :object="object.langs">
           <template slot-scope="{obj}">

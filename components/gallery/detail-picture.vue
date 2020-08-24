@@ -10,6 +10,9 @@
           {{ position }}
         </div>
         <div class="toolbar-right">
+          <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-picture-id', params: {id: object.id}}" class="toolbar-item">
+            <icon-settings />
+          </extra-nuxt-link>
           <icon-close class="toolbar-item" @click="$emit('close')" />
         </div>
       </div>
@@ -33,6 +36,7 @@
 import iconClose from "@/assets/svg/x.svg"
 import iconPrev from "@/assets/svg/arrow-left.svg"
 import iconNext from "@/assets/svg/arrow-right.svg"
+import iconSettings from "@/assets/svg/settings.svg"
 import isNil from "lodash/isNil"
 
 export default {
@@ -41,6 +45,7 @@ export default {
     iconClose,
     iconPrev,
     iconNext,
+    iconSettings
   },
 
   props: {

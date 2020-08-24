@@ -201,6 +201,7 @@ export default {
 .gallery-toolbar-mobile {
   display: none;
   height: 60px;
+  min-height: 60px;
   align-items: center;
   cursor: pointer;
   color: white;
@@ -216,7 +217,7 @@ export default {
     height: 60px;
     transition: height .5s;
     &.active {
-      height: 60vh;
+      height: 70vh;
     }
   }
   .gallery-toolbar-mobile {
@@ -232,13 +233,6 @@ export default {
     }
     & > .toolbar-menu {
       flex-direction: row;
-      & > .toolbar-link {
-        width: 25%;
-        margin-top: 0;
-        & > svg {
-          width: 24px;
-        }
-      }
     }
     & > .toolbar-peoples {
       flex-direction: row;
@@ -250,6 +244,13 @@ export default {
   }
   .toolbar-people-item {
     width: 33%
+  }
+  .toolbar-link {
+    width: 25%;
+    margin-top: 0;
+    & > svg {
+      width: 24px;
+    }
   }
 }
 
@@ -264,6 +265,18 @@ export default {
 @media screen and (max-width: 600px) {
   .toolbar-people-item {
     width: 50%
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .toolbar-menu {
+    flex-wrap: wrap;
+    & > * {
+      width: 50%
+    }
+    .toolbar-link > svg {
+      width: 30px;
+    }
   }
 }
 

@@ -25,7 +25,7 @@
           <model-tags :tags="object.tags" />
         </div>
         <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
-          <img :src="object.profil" :alt="object.name">
+          <img :src="object.profil.full" :alt="object.name">
         </div>
         <model-langs :object="object.langs">
           <template slot-scope="{obj}">

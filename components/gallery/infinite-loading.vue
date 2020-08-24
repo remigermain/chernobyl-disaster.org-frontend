@@ -48,10 +48,15 @@ export default {
     },
     isVisible () {
       if (this.position === "lower") {
-        if (this.lower()) this.$emit("visible")
+        if (this.lower()) {
+          this.$emit("visible")
+          return true
+        }
       } else if (this.upper()) {
         this.$emit("visible")
+        return true
       }
+      return false
     }
   }
 

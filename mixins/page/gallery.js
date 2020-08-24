@@ -10,6 +10,7 @@ export default {
       page: parseInt(this.$route.query.page) || 1,
       currentObject: null,
       completed: false,
+      interval: 0
     }
   },
 
@@ -32,15 +33,24 @@ export default {
 
   mounted() {
     if (process.client) {
-      this.scroll()
+        this.interval = setInterval(() => {
+          if (!this.scroll()) { clearInterval(this.interval) }
+        }, 1)
     }
   },
 
   methods: {
     scroll () {
       // check if prev and next is visible , and refresh page
-      this.$refs.nextLoading.isVisible()
-      this.$refs.prevLoading.isVisible()
+      let ret = false
+      if (this.$refs.prevLoading.isVisible() && !this.pageSet.includes(1)) {
+        console.log("nextLoading")
+        ret = true
+      }
+      if (this.$refs.nextLoading.isVisible() && !this.completed) {
+        ret = true
+      }
+      return ret
     },
     reset () {
       // reset data when query params change
@@ -115,6 +125,10 @@ export default {
         .catch((error) => { this.$i18nToast().error(error) })
         .finally(() => { this.inRequest = false })
     },
+  },
+
+  beforeDestroy() {
+    clearInterval(this.interval)
   }
 
 }

@@ -7,11 +7,11 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="contribute-navbar-items" :class="{'active': active }">
-      <button class="contribute-navbar-link" @click="$auth.logout()">
+      <button class="contribute-navbar-link ml-4" @click="$auth.logout()">
         <icon-logout />
         {{ $t('auth.logout') }}
       </button>
-      <lazy-extra-nuxt-link v-for="menu in menus" :key="menu.to.name" :to="menu.to" class="contribute-navbar-link" @click="active = false">
+      <lazy-extra-nuxt-link v-for="menu in menus" :key="menu.to.name" :to="menu.to" class="contribute-navbar-link ml-4" @click="active = false">
         {{ menu.name }}
       </lazy-extra-nuxt-link>
     </nav>
@@ -114,7 +114,7 @@ export default {
     }
     &.nuxt-link-exact-active {
       opacity: 1;
-      &::after, &::after {
+      &::after {
         width: 100%;
         opacity: 1;
       }

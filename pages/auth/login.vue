@@ -66,7 +66,7 @@ export default {
       this.errors = {email: [], password: []}
 
       this.$auth.loginWith("local", {data: form})
-        .then(() => { this.redirect({ name: "contribute" }) })
+        .then(() => { this.redirect({ name: "contribute-event" }) })
         .catch((error) => { this.requestError(error) })
         .finally(() => { this.loading = false })
     }
