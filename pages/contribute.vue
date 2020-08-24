@@ -1,7 +1,7 @@
 <template>
   <div class="grid-contribute">
     <navbar-contribute />
-    <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4">
+    <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4 min-h-full">
       <nuxt-child :key="$route.fullPath" />
     </div>
   </div>

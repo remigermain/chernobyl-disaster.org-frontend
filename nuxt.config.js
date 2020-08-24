@@ -45,7 +45,7 @@ export default {
     "~/plugins/toast.js",
   ],
 
-  i18n,
+  i18n, // i18n required in top
 
   modules: [
     "@nuxtjs/axios",
@@ -131,6 +131,10 @@ export default {
     {
       path: "~/components/gallery/",
       prefix: "gallery"
+    },
+    {
+      path: "~/components/timeline/",
+      prefix: "timeline"
     },
   ],
 
