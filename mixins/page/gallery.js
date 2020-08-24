@@ -1,19 +1,15 @@
-import galleryUrl from "@/lib/gallery"
+import { galleryUrl} from "@/lib/gallery"
 import isNil from "lodash/isNil"
 
 export default {
 
   data () {
     return {
-      pageValue: this.page,
       object: [],
       pageSet: [parseInt(this.$route.query.page) || 1],
       page: parseInt(this.$route.query.page) || 1,
       currentObject: null,
       completed: false,
-      skeleton: 0,
-      inPrev: false,
-      inNext: false
     }
   },
 
@@ -29,51 +25,78 @@ export default {
     url () {
       return `${this.model}/?page=${this.page}${galleryUrl(this.$route.query)}`
     },
-    hasPrev () {
-      return this.pageSet.includes(1)
+    hasPrevPage () {
+      return this.pageSet.includes(1) // check if page "1" one is in
     },
   },
 
+  mounted() {
+    if (process.client) {
+      this.scroll()
+    }
+  },
+
   methods: {
-    setDetail (value) {
-      if (value != this.currentObject) {
-        this.currentObject = value
-      }
+    scroll () {
+      // check if prev and next is visible , and refresh page
+      this.$refs.nextLoading.isVisible()
+      this.$refs.prevLoading.isVisible()
+    },
+    reset () {
+      // reset data when query params change
+      this.object = []
+      this.page = 1
+      this.pageSet = []
+      this.completed = false
+      this.refresh(response => {
+        this.object = response.data.results
+        this.scroll()
+      })
     },
     nextPage() {
-      const max = Math.max(...this.pageSet)
-      if (!this.pageSet.includes(max + 1) && !this.completed) {
-        this.page = max + 1
-        this.next = true
-        this.refresh((response) => {
-          this.object = [...this.object, ...response.data.results,]
-        })
-      }
+      return new Promise(resolve => {
+        const max = Math.max(...this.pageSet)
+        if (!this.pageSet.includes(max + 1) && !this.completed) {
+          this.page = max + 1
+          this.refresh(response => {
+            // append the new data
+            this.object = [...this.object, ...response.data.results,]
+            resolve()
+          })
+        }
+      })
     },
     prevPage() {
-      const min = Math.min(...this.pageSet)
-      if (!this.pageSet.includes(min - 1) && min > 1) {
-        // save the old height
-        let oldHeight = this.$el.scrollHeight
-        let oldTop = this.$el.scrollTop
+      return new Promise(resolve => {
+        const min = Math.min(...this.pageSet)
+        if (!this.pageSet.includes(min - 1) && min > 1) {
+          this.page = min - 1
 
-        this.page = min - 1
-        this.inPrev = true
+          // save the old height
+          let oldHeight = this.$el.scrollHeight
+          let oldTop = this.$el.scrollTop
+          this.refresh(response => {
+            // prepand the new data
+            this.object = [...response.data.results, ...this.object]
+            resolve()
 
-        this.refresh((response) => {
-          this.object = [...response.data.results, ...this.object]
-          this.$nextTick(() => {
-            this.$el.scrollTop = this.$el.scrollHeight - oldHeight + oldTop
+            // assign the correct height
+            this.$nextTick(() => {
+              this.$el.scrollTop = this.$el.scrollHeight - oldHeight + oldTop
+            })
+
           })
-        })
-      }
+        }
+      })
     },
     refresh (callback) {
       if (this.inRequest) {
         return
       }
 
+      // add page set
       this.pageSet.push(this.page)
+
       this.inRequest = true
       return this.$axios.get(this.url)
         .then(response => {
@@ -82,17 +105,15 @@ export default {
           }
           this.length = response.data.count
           this.inRequest = false
-          callback(response)
           if (isNil(response.data.next)) {
             this.completed = true
           }
+          if (callback) {
+            callback(response)
+          }
         })
-        .catch((error) => {
-          this.$i18nToast().error(error)
-        })
-        .finally(() => {
-           this.inRequest, this.inPrev, this.inNext = false, false, false
-        })
+        .catch((error) => { this.$i18nToast().error(error) })
+        .finally(() => { this.inRequest = false })
     },
   }
 

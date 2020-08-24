@@ -1,29 +1,35 @@
 <template>
-  <div class="grid-video">
-    <div v-for="el in object" :key="el.id" class="video-item">
-      <iframe :src="urlVideo(el.video)" frameborder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-      />
+  <div class="grid-document" @scroll="scroll">
+    <gallery-infinite-loading ref="prevLoading" position="lower" :completed="hasPrevPage" @visible="prevPage">
+      <template v-slot:completed>
+        &nbsp;
+      </template>
+    </gallery-infinite-loading>
+    <div class="grid-video">
+      <div v-for="el in object" :key="el.id" class="video-item">
+        <iframe :src="urlVideo(el.video)" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+        />
+      </div>
     </div>
-    <lazy-extra-infinite-loading class="video-infinite" :identifier="uniqueId" @infinite="refresh" />
+    <gallery-infinite-loading ref="nextLoading" position="upper" :completed="completed" @visible="nextPage" />
   </div>
 </template>
 
 <script>
 import galleryMixin from "@/mixins/page/gallery"
-import isEmpty from "lodash/isEmpty"
 import isNil from "lodash/isNil"
+import { asynDataUrl } from "@/lib/gallery"
 
 export default {
-    name: "GalleryVideo",
+    name: "GalleryDocument",
 
   mixins: [
     galleryMixin
   ],
 
   asyncData({app, route}) {
-    const query = (isEmpty(route.query) ? "" : `&search=${route.query.search}&ordering=${route.query.ordering}`)
-    return app.$axios.get(`video/?page=1${query}`)
+    return app.$axios.get(asynDataUrl("video", route.query))
       .then(response => {
         if (response.status != 200) {
           throw Error("") // TODO
@@ -49,8 +55,13 @@ export default {
 }
 </script>
 
-
 <style lang="scss" scoped>
+
+.grid-document {
+  width: 100%;
+  overflow: hidden scroll;
+}
+
 .grid-video {
   display: grid;
   width: 100%;
@@ -71,21 +82,9 @@ export default {
   }
 }
 
-.video-infinite {
-  grid-column: span 4;
-  grid-row: span 2;
-  height: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @media screen and (max-width: 1000px){
   .grid-video {
     grid-template-columns: repeat(3, 1fr);
-  }
-  .video-infinite {
-    grid-column: span 3;
   }
 }
 
@@ -93,17 +92,11 @@ export default {
   .grid-video {
     grid-template-columns: repeat(2, 1fr);
   }
-  .video-infinite {
-    grid-column: span 2;
-  }
 }
 
 @media screen and (max-width: 750px){
   .grid-video {
     grid-template-columns: 1fr;
-  }
-  .video-infinite {
-    grid-column: span 1;
   }
 }
 </style>

@@ -1,56 +1,66 @@
 <template>
-  <div class="gallery-toolbar">
-    <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search">
-      <template v-slot:icon>
-        <icon-search />
-      </template>
-    </field-text>
-    <select v-model="ordering" class="form-select bg-gray-200">
-      <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
-        {{ choice.label }}
-      </option>
-      <option selected value="">
-        {{ empty }}
-      </option>
-    </select>
-    <button class="p-2 bg-gray-700 rounded-md text-white hover:bg-gray-800 text-center" @click="submit">
-      {{ $t('utils.search') }}
-    </button>
-    <span class="border-b border-gray-500" />
-    <div class="toolbar-menu">
-      <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link">
-        <icon-photo stroke-width="2" />
-        <span class="gallery-toolbar-text">
-          {{ $t('menu.picture') }}
-        </span>
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link">
-        <icon-movie stroke-width="2" />
-        <span class="gallery-toolbar-text">
-          {{ $t('menu.video') }}
-        </span>
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="toolbar-link">
-        <icon-file stroke-width="2" />
-        <span class="gallery-toolbar-text">
-          {{ $t('menu.document') }}
-        </span>
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="toolbar-link">
-        <icon-article stroke-width="2" />
-        <span class="gallery-toolbar-text">
-          {{ $t('menu.article') }}
-        </span>
-      </lazy-extra-nuxt-link>
-    </div>
-    <span class="border-b border-gray-500" />
-    <div class="toolbar-peoples">
-      <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item hover:bg-gray-300 rounded-md" @click="submitPeople(p.name)">
-        <img :src="p.profil" class="w-12 rounded-full object-cover h-12">
-        <span class=" break-words hover:text-indigo-700">
-          {{ p.name }}
-        </span>
+  <div class="gallery-toolbar hide-scroolbar" :class="{'active': active}">
+    <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
+      <span class="ml-6 w-2/4 capitalize">
+        {{ $t('utils.menu') }}
       </span>
+      <span class="mr-6 text-right w-2/4">
+        <icon-arrow-up class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
+      </span>
+    </div>
+    <div class="gallery-toolbar-desktop  wrapper" :class="{'active': active}">
+      <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search">
+        <template v-slot:icon>
+          <icon-search />
+        </template>
+      </field-text>
+      <select v-model="ordering" class="form-select bg-gray-200">
+        <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
+          {{ choice.label }}
+        </option>
+        <option selected value="">
+          {{ empty }}
+        </option>
+      </select>
+      <button class="p-2 bg-gray-700 rounded-md text-white hover:bg-gray-800 text-center" @click="submit">
+        {{ $t('utils.search') }}
+      </button>
+      <span class="border-b border-gray-500" />
+      <div class="toolbar-menu">
+        <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link">
+          <icon-photo stroke-width="2" />
+          <span class="gallery-toolbar-text">
+            {{ $t('menu.picture') }}
+          </span>
+        </lazy-extra-nuxt-link>
+        <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link">
+          <icon-movie stroke-width="2" />
+          <span class="gallery-toolbar-text">
+            {{ $t('menu.video') }}
+          </span>
+        </lazy-extra-nuxt-link>
+        <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="toolbar-link">
+          <icon-file stroke-width="2" />
+          <span class="gallery-toolbar-text">
+            {{ $t('menu.document') }}
+          </span>
+        </lazy-extra-nuxt-link>
+        <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="toolbar-link">
+          <icon-article stroke-width="2" />
+          <span class="gallery-toolbar-text">
+            {{ $t('menu.article') }}
+          </span>
+        </lazy-extra-nuxt-link>
+      </div>
+      <span class="border-b border-gray-500" />
+      <div class="toolbar-peoples">
+        <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item hover:bg-gray-300 rounded-md" @click="submitPeople(p.name)">
+          <img :src="p.profil" class="w-12 rounded-full object-cover h-12">
+          <span class=" break-words hover:text-indigo-700">
+            {{ p.name }}
+          </span>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +72,7 @@ import iconPhoto from "@/assets/svg/photo.svg"
 import iconFile from "@/assets/svg/file-text.svg"
 import iconArticle from "@/assets/svg/news.svg"
 import iconSearch from "@/assets/svg/search.svg"
+import iconArrowUp from "@/assets/svg/arrow-up.svg"
 import has from "lodash/has"
 import isNil from "lodash/isNil"
 
@@ -73,13 +84,14 @@ export default {
     iconFile,
     iconArticle,
     iconSearch,
+    iconArrowUp
   },
 
   data () {
     return {
       search: "",
       ordering: "",
-      option: false,
+      active: false,
       orderingChoices: [
         {label: `${this.$t("tools.create")} - ${this.$t("tools.ascending")}`, value: "id"},
         {label: `${this.$t("tools.create")} - ${this.$t("tools.descending")}`, value: "-id"},
@@ -108,8 +120,8 @@ export default {
   },
 
   methods: {
-    showOption () {
-      this.option = !this.option
+    toogleActive () {
+      this.active = !this.active
     },
     submit () {
       const query = {
@@ -118,7 +130,7 @@ export default {
         ordering: this.ordering,
       }
       this.$router.push({query})
-      this.option = false
+      this.active = false
     },
     submitPeople (name) {
       this.search = name
@@ -134,7 +146,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: .5em;
-  & > * + * {
+  overflow-y: scroll;
+  & > .gallery-toolbar-desktop > * + * {
     margin-top: .5rem;
   }
 }
@@ -168,6 +181,7 @@ export default {
 .toolbar-peoples {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   .toolbar-people-item {
     display: flex;
     justify-content: space-between;
@@ -184,5 +198,78 @@ export default {
     margin-top: .2em;
   }
 }
+.gallery-toolbar-mobile {
+  display: none;
+  height: 60px;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
 
+
+@media screen and (max-width: 840px) {
+  .gallery-toolbar{
+    grid-area: 2 / 1 / 2 / 2;
+    padding: .5rem 0 0 0 ;
+    height: 60px;
+    transition: height .5s;
+    &.active {
+      height: 60vh;
+    }
+  }
+  .gallery-toolbar-mobile {
+    display: flex;
+  }
+  .gallery-toolbar-desktop {
+    & > *:first-child {
+      margin-top: 1rem;
+    }
+    select  {
+      margin-left: .5rem;
+      margin-right: .5rem;
+    }
+    & > .toolbar-menu {
+      flex-direction: row;
+      & > .toolbar-link {
+        width: 25%;
+        margin-top: 0;
+        & > svg {
+          width: 24px;
+        }
+      }
+    }
+    & > .toolbar-peoples {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    &:not(.active) {
+      display: none;
+    }
+  }
+  .toolbar-people-item {
+    width: 33%
+  }
+}
+
+.gallery-toolbar-mobile-icon {
+  transition: transform .5s;
+  &.active {
+    transform: rotate(-180deg);
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .toolbar-people-item {
+    width: 50%
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .toolbar-people-item {
+    width: 100%
+  }
+}
 </style>

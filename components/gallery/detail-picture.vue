@@ -18,7 +18,7 @@
       <div class="picture-item-container">
         <img :alt="object.title"
              :src="object.picture.full"
-             class="picture-item mx-auto"
+             class="picture-item mx-auto shadow-md"
              loading="lazy"
         >
       </div>
@@ -81,18 +81,7 @@ export default {
 
   watch: {
     object (newValue, oldValue) {
-      if (isNil(oldValue)) {
-        this.transition = true
-      } else {
-        this.transition = false
-      }
-      if (isNil(newValue)) {
-        const query = {...this.$route.query}
-        delete query.detail
-        this.$router.push({query})
-      } else {
-        this.$router.push({query: {...this.$route.query, detail: newValue.id}})
-      }
+      this.transition = isNil(oldValue)
     }
   },
 }

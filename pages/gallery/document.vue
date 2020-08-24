@@ -1,25 +1,32 @@
 <template>
-  <div class="grid-document">
-    <article v-for="el in object" :key="el.id" class="document-item shadow flex flex-col">
-      <span class="w-full h-full text-center pt-4">
-        {{ i18nAttr(el, 'title') }}
-      </span>
-      <a :href="el.doc" class="w-full h-12 text-center bg-gray-300" target="_blank" rel="noopener">
-        <span class="document-link block">
-          {{ $t('utils.link') }}
-          <icon-file-download />
+  <div class="grid-document" @scroll="scroll">
+    <gallery-infinite-loading ref="prevLoading" position="lower" :completed="hasPrevPage" @visible="prevPage">
+      <template v-slot:completed>
+        &nbsp;
+      </template>
+    </gallery-infinite-loading>
+    <div class="grid-content">
+      <article v-for="el in object" :key="el.id" class="document-item shadow flex flex-col">
+        <span class="w-full h-full text-center pt-4">
+          {{ i18nAttr(el, 'title') }}
         </span>
-      </a>
-    </article>
-    <extra-infinite-loading class="document-infinite" :identifier="uniqueId" @infinite="refresh" />
+        <a :href="el.doc" class="w-full h-12 text-center bg-gray-300" target="_blank" rel="noopener">
+          <span class="document-link block">
+            {{ $t('utils.link') }}
+            <icon-file-download />
+          </span>
+        </a>
+      </article>
+    </div>
+    <gallery-infinite-loading ref="nextLoading" position="upper" :completed="completed" @visible="nextPage" />
   </div>
 </template>
 
 <script>
 import galleryMixin from "@/mixins/page/gallery"
 import iconFileDownload from "@/assets/svg/file-download.svg"
-import isEmpty from "lodash/isEmpty"
 import isNil from "lodash/isNil"
+import { asynDataUrl } from "@/lib/gallery"
 
 export default {
     name: "GalleryDocument",
@@ -33,8 +40,7 @@ export default {
   ],
 
   asyncData({app, route}) {
-    const query = (isEmpty(route.query) ? "" : `&search=${route.query.search}&ordering=${route.query.ordering}`)
-    return app.$axios.get(`document/?page=1${query}`)
+    return app.$axios.get(asynDataUrl("document", route.query))
       .then(response => {
         if (response.status != 200) {
           throw Error("") // TODO
@@ -57,19 +63,15 @@ export default {
 <style lang="scss" scoped>
 
 .grid-document {
+  width: 100%;
+  overflow: hidden scroll;
+}
+
+.grid-content {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 10px;
   grid-column-gap: 10px;
-}
-
-.document-infinite {
-  grid-column: span 4;
-  grid-row: span 2;
-  height: 90px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

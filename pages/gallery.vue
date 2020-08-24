@@ -31,8 +31,10 @@ export default {
   height: 100%;
 }
 
-.grid-gallery-items {
-  overflow-y: scroll;
+@media screen and (max-width: 840px) {
+  .grid-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
 }
-
 </style>
