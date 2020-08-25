@@ -63,7 +63,7 @@ export default {
           language: {
             label: this.$t("admin.model.language"),
             name: "language",
-            requiredd: true,
+            required: true,
             choices: this.$store.getters["model/langs"],
             help: this.$t("admin.help.global.language")
           }

@@ -42,7 +42,7 @@ export default {
           title: {
             label: this.$t("admin.model.title"),
             name: "title",
-            max_length: 50,
+            max_length: 100,
             required: true,
             help: this.$t("admin.help.model.event.langs.title")
           },
@@ -55,7 +55,7 @@ export default {
           language: {
             label: this.$t("admin.model.language"),
             name: "language",
-            requiredd: true,
+            required: true,
             choices: this.$store.getters["model/langs"],
             help: this.$t("admin.help.global.language")
           }
