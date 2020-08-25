@@ -14,7 +14,7 @@
       {{ i18nAttr(current, 'title') }}
     </h1>
     <timeline-list class="timeline-list" :object="object" @select="setCurrent" />
-    <p class="timeline-text p-4">
+    <p class="timeline-text p-4 leading-6 overflow-y-scroll">
       {{ i18nAttr(current, 'description') }}
     </p>
     <timeline-extra class="timeline-extra" :object="current" />
@@ -40,8 +40,11 @@ export default {
           el.date = new Date(el.date)
           return el
         })
+
+        // simulate many event
+        let results = [...result, ...result, ...result, ...result]
         return {
-          object: result,
+          object: results,
           current: result[0] // TODO
         }
       })

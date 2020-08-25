@@ -1,6 +1,6 @@
 <template>
   <div class="timeline shadow-inner border border-gray-400 bg-gray-100 rounded-md overflow-y-scroll flex flex-col justify-center items-center hide-scroolbar">
-    <div v-for="obj in listCopy" :key="obj.id" class="timeline-content mb-4">
+    <div v-for="obj in listCopy" :key="obj.id" class="timeline-content mb-4 relative">
       <div class="timeline-date flex items-center text-center flex-col px-4">
         <p class="text-3xl">
           {{ obj.date.getFullYear() }}
