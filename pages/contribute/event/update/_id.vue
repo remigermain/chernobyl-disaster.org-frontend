@@ -38,7 +38,8 @@
           <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'title')" />
         </td>
         <td>
-          <lazy-admin-textarea class="border-none"
+          <lazy-admin-textarea :value="lang.description"
+                               class="border-none"
                                :prefix="prefixLang(idx)"
                                :label="false"
                                :field="fields.langs.description"

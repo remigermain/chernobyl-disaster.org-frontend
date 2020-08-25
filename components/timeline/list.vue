@@ -1,22 +1,22 @@
 <template>
-  <div class="timeline border-2 border-gray-900 shadow-sm rounded-md overflow-y-scroll flex flex-col justify-center items-center hide-scroolbar">
+  <div class="timeline shadow-inner border border-gray-400 bg-gray-100 rounded-md overflow-y-scroll flex flex-col justify-center items-center hide-scroolbar">
     <div v-for="obj in listCopy" :key="obj.id" class="timeline-content mb-4">
-      <div class="timeline-date flex justify-center items-center text-center flex-col px-4">
+      <div class="timeline-date flex items-center text-center flex-col px-4">
         <p class="text-3xl">
           {{ obj.date.getFullYear() }}
         </p>
         <p class="text-md italic text-gray-600">
-          {{ date(obj.date) }}
+          {{ getDate(obj.date) }}
         </p>
       </div>
       <section class="timeline-item">
         <div v-for="element in obj.list" :key="`${obj.id}-${element.id}`"
              class="group border-l-4 border-gray-700 bg-gray-300 p-4 border-opacity-50 cursor-pointer hover:bg-gray-400"
-             @click="$emit('emit', element)"
+             @click="$emit('select', element)"
         >
           <span class="timeline-point bg-blue-500 group-hover:bg-red-700" />
           <h3>
-            {{ time(element.date) }}
+            {{ getTime(element.date) }}
           </h3>
           <h4 class="timeline-footer">
             {{ i18nAttr(element, 'title') }}
@@ -28,7 +28,12 @@
 </template>
 
 <script>
+import timelineMixins from "@/mixins/page/timeline"
+
 export default {
+
+  mixins: [timelineMixins],
+
   props: {
     object: {
       type: Array,
@@ -50,38 +55,29 @@ export default {
 
   methods: {
     compareDate (original, newEl) {
-      const d1 = new Date(newEl)
       if (
-        d1.getFullYear() != original.getFullYear() ||
-        d1.getMonth() != original.getMonth() ||
-        d1.getDay() != original.getDay()
+        newEl.getFullYear() != original.getFullYear() ||
+        newEl.getMonth() != original.getMonth() ||
+        newEl.getDay() != original.getDay()
       ) {
         return true
       }
       return false
     },
     listCreate () {
+      /*
+      ** function to construct list of element
+      */
       const list = []
-      const objectList = this.object.sort((x, y) => x > y)
-      objectList.forEach((el, idx) => {
-        if (list.length == 0 || this.compareDate(list[list.length - 1], el.date)) {
-          list.push({ date: new Date(el.date), id: idx, list: [el]})
+      this.object.forEach((el, idx) => {
+        if (list.length == 0 || this.compareDate(list[list.length - 1].date, el.date)) {
+          list.push({ date: el.date, id: idx, list: [el]})
         } else {
           list[list.length - 1].list.push(el)
         }
       })
       return list
     },
-    date (date) {
-      return date.toLocaleDateString(this.$i18n.locale, { month: "long", day: "numeric" })
-    },
-    time (obj) {
-      const date = new Date(obj)
-      if (date.getHours() == 0 && date.getMinutes() == 0 && date.getSeconds() == 0) {
-        return ""
-      }
-      return `${date.getHours()}${this.$t("utils.hours-mini")} : ${date.getMinutes()}${this.$t("utils.minutes-mini")} : ${date.getSeconds()}${this.$t("utils.secondes-mini")}`
-    }
   }
 }
 </script>
@@ -104,5 +100,6 @@ export default {
 .timeline-content {
   display: grid;
   grid-template-columns: auto 1fr;
+  width: 100%;
 }
 </style>

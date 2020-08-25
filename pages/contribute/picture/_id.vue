@@ -15,8 +15,12 @@
       <div class="flex -md:flex-col items-center p-4 flex-wrap">
         <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
           <model-field :label="fields.title.label" :value="object.title" />
-          <model-field :label="fields.event.label" :value="object.event" />
-          <model-field :label="fields.date.label" :value="object.date" />
+          <model-field :label="fields.event.label" :value="object.event">
+            {{ $store.getters["model/event"](object.event).display_name }}
+          </model-field>
+          <model-field :label="fields.date.label" :value="object.date">
+            {{ getDateYear(object.date) }}
+          </model-field>
           <model-field :label="fields.photographer.label" :value="object.photographer">
             <div v-if="object.photographer">
               {{ object.photographer.name }}
@@ -25,8 +29,8 @@
           </model-field>
           <model-tags :tags="object.tags" />
         </div>
-        <div class="w-2/4 -md:w-full flex justify-center flex-col text-2xl text-gray-800 detail-items">
-          <img loading="lazy" :src="object.picture.full" :alt="object.title">
+        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
+          <img loading="lazy" :src="object.picture.full" :alt="object.title" class="w-64">
         </div>
         <model-langs :object="object.langs">
           <template slot-scope="{obj}">

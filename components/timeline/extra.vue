@@ -1,5 +1,5 @@
 <template>
-  <div class=" shadow-md rounded-sm border-2 border-gray-900 grid-extra">
+  <div class="shadow-lg rounded-sm border border-gray-400 grid-extra w-full h-full">
     <div class="flex justify-around items-center flex-col bg-gray-900 text-white text-center">
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': pictureActive}" @click.prevent="pictureShow">
         <icon-photo />
@@ -14,7 +14,7 @@
         <icon-article />
       </button>
     </div>
-    <div class="bg-gray-700 overflow-y-scroll flex flex-wrap">
+    <div class="bg-gray-200 overflow-y-scroll flex flex-wrap">
       <template v-if="pictureActive">
         <img v-for="(img, idx) in object.pictures"
              :key="img.id"

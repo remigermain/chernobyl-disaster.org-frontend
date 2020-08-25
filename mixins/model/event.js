@@ -49,7 +49,6 @@ export default {
           description: {
             label: this.$t("admin.model.description"),
             name: "description",
-            max_length: 50,
             required: true,
             help: this.$t("admin.help.model.event.langs.description")
           },

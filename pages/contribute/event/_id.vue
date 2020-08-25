@@ -13,13 +13,15 @@
     </template>
     <template v-slot:detail>
       <div class="flex -md:flex-col items-center p-4 flex-wrap">
-        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
+        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-item h-64">
           <model-field :label="fields.title.label" :value="object.title" />
-          <model-field :label="fields.date.label" :value="object.date" />
+          <model-field :label="fields.date.label" :value="object.date">
+            {{ getDateYear(object.date) }}
+          </model-field>
           <model-tags :tags="object.tags" />
         </div>
-        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
-          iiiciicici
+        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items h-64">
+          <timeline-extra :object="object" />
         </div>
         <model-langs :object="object.langs">
           <template slot-scope="{obj}">

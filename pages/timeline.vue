@@ -1,17 +1,19 @@
 <template>
   <div class="grid-timeline">
     <p class="timeline-date">
-      <span class="text-6xl">
-        {{ time }}
+      <span class="text-3xl">
+        {{ getDateYear(current.date) }}
       </span>
-      <span class="text-md">
-        {{ date }}
+      <span v-show="!isTimeEmpty(current.date)" class="text-lg italic">
+        {{current.date.getHours()}}:
+        {{current.date.getMinutes()}}:
+        {{current.date.getSeconds()}}
       </span>
     </p>
     <h1 class="timeline-title text-4xl capitalize italic">
       {{ i18nAttr(current, 'title') }}
     </h1>
-    <timeline-list class="timeline-list" :object="object" />
+    <timeline-list class="timeline-list" :object="object" @select="setCurrent" />
     <p class="timeline-text p-4">
       {{ i18nAttr(current, 'description') }}
     </p>
@@ -20,8 +22,12 @@
 </template>
 
 <script>
+import timelineMixins from "@/mixins/page/timeline"
+
 export default {
   name: "Timeline",
+
+  mixins: [timelineMixins],
 
   async asyncData({ app }) {
     return app.$axios.get("event/?no_page=true")
@@ -29,47 +35,40 @@ export default {
         if (response.status != 200) {
           throw Error("") // TODO
         }
+        // change date string to Date object
+        const result = response.data.map(el => {
+          el.date = new Date(el.date)
+          return el
+        })
         return {
-          object: response.data,
-          current: response.data[0]
+          object: result,
+          current: result[0] // TODO
         }
       })
   },
 
-  data () {
-    return {
-      object: {}
-    }
-  },
-
-  computed: {
-    date () {
-      const date = new Date(this.current.date)
-      const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" }
-      return date.toLocaleDateString(this.$i18n.locale, options)
-    },
-    time () {
-      const date = new Date(this.current.date)
-      return `${date.getHours()} : ${date.getMinutes()} . ${date.getSeconds()}`
+  methods: {
+    setCurrent (obj) {
+      this.current = obj
     }
   },
 
   head () {
     return {
-      title: this.$t("pages.menu.timeline"),
+      title: this.i18nAttr(this.current, "title"),
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.meta.timeline.description") },
-          { property: "og:title", content: this.$t("pages.meta.timeline.title")},
+          { hid: "description", name: "description", content: this.i18nAttr(this.current, "description") },
+          { property: "og:title", content: this.i18nAttr(this.current, "title")},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.meta.timeline.description")},
+          { property: "og:description", content: this.i18nAttr(this.current, "description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.meta.timeline.description") },
+          { name: "twitter:card", content: this.i18nAttr(this.current, "description") },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.meta.timeline.title") },
-          { name: "twitter:description", content: this.$t("pages.meta.timeline.description") },
+          { name: "twitter:title", content: this.i18nAttr(this.current, "title") },
+          { name: "twitter:description", content: this.i18nAttr(this.current, "description") },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.meta.timeline.title") }
+          { name: "twitter:image:alt", content: this.i18nAttr(this.current, "title") }
       ]
     }
   }
@@ -79,8 +78,8 @@ export default {
 <style lang="scss" scoped>
 .grid-timeline {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr 200px;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 80px 1fr 200px;
   height: 100%;
   gap: .5em .5em;
 }

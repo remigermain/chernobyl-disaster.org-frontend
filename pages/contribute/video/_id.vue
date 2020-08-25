@@ -15,8 +15,12 @@
       <div class="flex -md:flex-col items-center p-4 flex-wrap">
         <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
           <model-field :label="fields.title.label" :value="object.title" />
-          <model-field :label="fields.event.label" :value="object.event" />
-          <model-field :label="fields.date.label" :value="object.date" />
+          <model-field :label="fields.event.label" :value="object.event">
+            {{ $store.getters["model/event"](object.event).display_name }}
+          </model-field>
+          <model-field :label="fields.date.label" :value="object.date">
+            {{ getDateYear(object.date) }}
+          </model-field>
           <model-tags :tags="object.tags" />
         </div>
         <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">

@@ -176,7 +176,6 @@
             "picture": "picture",
             "register": "register",
             "reset-password": "reset-password",
-            "timeline": "timeline",
             "video": "video"
         },
         "meta": {
@@ -209,10 +208,6 @@
                 "title": "title"
             },
             "reset-password": {
-                "description": "description",
-                "title": "title"
-            },
-            "timeline": {
                 "description": "description",
                 "title": "title"
             },
