@@ -215,7 +215,7 @@ export default {
     grid-area: 2 / 1 / 2 / 2;
     padding: .5rem 0 0 0 ;
     height: 60px;
-    transition: height .5s;
+    transition: height .6s;
     &.active {
       height: 70vh;
     }
@@ -237,9 +237,6 @@ export default {
     & > .toolbar-peoples {
       flex-direction: row;
       flex-wrap: wrap;
-    }
-    &:not(.active) {
-      display: none;
     }
   }
   .toolbar-people-item {

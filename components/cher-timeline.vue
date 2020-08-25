@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center flex-wrap bg-black  bg-opacity-50 sm:flex-no-wrap items-center rounded-md">
     <button class="px-2 py-2 h-full timeline-button w-auto" @click="prevIdx">
-      <img class="w-4 sm:w-12 mx-auto" src="~assets/img/previous.svg">
+      <img class="w-4 sm:w-12 mx-auto">
     </button>
     <div class="p-4 h-24 flex justify-start items-center
       timeline-parent overflow-x-scroll relative"
@@ -25,7 +25,7 @@
       </section>
     </div>
     <button class="px-2 py-2 h-full  timeline-button w-auto" @click="nextIdx">
-      <img class="w-4 sm:w-12 mx-auto" src="~assets/img/next.svg">
+      <img class="w-4 sm:w-12 mx-auto" src="">
     </button>
   </div>
 </template>
