@@ -16,7 +16,7 @@ export default {
       if (this.isTimeEmpty(date)) {
         return ""
       }
-      return `${date.getHours()}${this.$t("utils.hours-mini")} : ${date.getMinutes()}${this.$t("utils.minutes-mini")} : ${date.getSeconds()}${this.$t("utils.secondes-mini")}`
+      return `${date.getHours()}${this.$t("utils.hours-mini")}:${date.getMinutes()}${this.$t("utils.minutes-mini")}:${date.getSeconds()}${this.$t("utils.secondes-mini")}`
     }
   }
 }

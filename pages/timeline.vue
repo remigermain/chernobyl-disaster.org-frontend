@@ -5,9 +5,7 @@
         {{ getDateYear(current.date) }}
       </span>
       <span v-show="!isTimeEmpty(current.date)" class="text-lg italic">
-        {{current.date.getHours()}}:
-        {{current.date.getMinutes()}}:
-        {{current.date.getSeconds()}}
+        {{ getTime(current.date) }}
       </span>
     </p>
     <h1 class="timeline-title text-4xl capitalize italic">
@@ -23,13 +21,14 @@
 
 <script>
 import timelineMixins from "@/mixins/page/timeline"
+import { timelineElement } from "@/lib/timeline"
 
 export default {
   name: "Timeline",
 
   mixins: [timelineMixins],
 
-  async asyncData({ app }) {
+  async asyncData({ app, route }) {
     return app.$axios.get("event/?no_page=true")
       .then(response => {
         if (response.status != 200) {
@@ -45,7 +44,7 @@ export default {
         let results = [...result, ...result, ...result, ...result]
         return {
           object: results,
-          current: result[0] // TODO
+          current: timelineElement(results, route.query)
         }
       })
   },

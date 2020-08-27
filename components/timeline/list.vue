@@ -1,27 +1,28 @@
 <template>
-  <div class="timeline shadow-inner border border-gray-400 bg-gray-100 rounded-md overflow-y-scroll flex flex-col justify-center items-center hide-scroolbar">
-    <div v-for="obj in listCopy" :key="obj.id" class="timeline-content mb-4 relative">
-      <div class="timeline-date flex items-center text-center flex-col px-4">
+  <div class="timeline shadow-inner rounded-md border-l-8 border-yellow-600 overflow-y-scroll flex flex-col justify-center items-center hide-scroolbar bg-gray-800">
+    <div v-for="obj in listCopy" :key="obj.id" class="timeline-content relative">
+      <div class="timeline-date flex items-center text-center flex-col px-4 text-gray-200">
         <p class="text-3xl">
           {{ obj.date.getFullYear() }}
         </p>
-        <p class="text-md italic text-gray-600">
+        <p class="text-md italic text-gray-400">
           {{ getDate(obj.date) }}
         </p>
       </div>
-      <section class="timeline-item">
-        <div v-for="element in obj.list" :key="`${obj.id}-${element.id}`"
-             class="group border-l-4 border-gray-700 bg-gray-300 p-4 border-opacity-50 cursor-pointer hover:bg-gray-400"
-             @click="$emit('select', element)"
+      <section class="">
+        <extra-nuxt-link v-for="element in obj.list" :key="`${obj.id}-${element.id}`"
+                         :to="{name: 'timeline', query: {'detail': element.id}}"
+                         class="group block border-l-8 border-yellow-600 border-opacity-25 bg-gray-700 p-4 cursor-pointer hover:bg-gray-600 relative text-gray-200"
+                         :class="{'bg-gray-600 border-opacity-100': current.id == element.id }"
         >
-          <span class="timeline-point bg-blue-500 group-hover:bg-red-700" />
+          <span class="timeline-point bg-white shadow-sm" :class="{'active': current.id == element.id }" />
           <h3>
             {{ getTime(element.date) }}
           </h3>
           <h4 class="timeline-footer">
             {{ i18nAttr(element, 'title') }}
           </h4>
-        </div>
+        </extra-nuxt-link>
       </section>
     </div>
   </div>
@@ -29,6 +30,7 @@
 
 <script>
 import timelineMixins from "@/mixins/page/timeline"
+import { timelineElement } from "@/lib/timeline"
 
 export default {
 
@@ -43,14 +45,24 @@ export default {
 
   data () {
     return {
-      listCopy: this.listCreate()
+      listCopy: this.listCreate(),
+      current: {}
     }
   },
 
   watch: {
     object () {
       this.listCopy = this.listCreate()
+    },
+    "$route.query": {
+      handler (query) {
+        return this.setCurrent(timelineElement(this.object, query))
+      }
     }
+  },
+
+  created() {
+    return this.setCurrent(timelineElement(this.object, this.$route.query))
   },
 
   methods: {
@@ -78,6 +90,11 @@ export default {
       })
       return list
     },
+    setCurrent (element) {
+      this.$router.push({query: {"detail": element.id}})
+      this.current = element
+      this.$emit("select", element)
+    },
   }
 }
 </script>
@@ -86,20 +103,33 @@ export default {
 .timeline {
   width: 100%;
   height: 100%;
+  & > * {
+    margin-top: 2em;
+  }
+  & > *:last-child {
+    margin-bottom: 2em;
+  }
 }
 
 .timeline-point {
+  --size: 1em;
   position: absolute;
-  transform: translateX(calc(-1.5em - 2px));
-  margin-top: auto;
-  width: 1em;
-  height: 1em;
+  top: var(--size);
+  // 8 px == border size
+  left: calc((var(--size) + 8px) / 2 * -1);
+  transform-origin: center;
+  transition: transform .2s;
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
+  &.active, &:hover {
+    transform: scale(1.5);
+  }
 }
 
 .timeline-content {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 2fr;
   width: 100%;
 }
 </style>

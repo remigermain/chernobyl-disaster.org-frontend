@@ -1,7 +1,7 @@
 <template>
-  <div class="shadow-lg rounded-sm border border-gray-400 grid-extra w-full h-full">
-    <div class="flex justify-around items-center flex-col bg-gray-900 text-white text-center">
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': pictureActive}" @click.prevent="pictureShow">
+  <div class="shadow-lg bg-gray-900 grid-extra w-full h-full rounded-lg">
+    <div class="flex justify-around items-center flex-col bg-gray-900 text-white text-center border-r-8 border-yellow-600 rounded-l-lg">
+      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 rounded-tl-lg': pictureActive}" @click.prevent="pictureShow">
         <icon-photo />
       </button>
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': videoActive}" @click.prevent="videoShow">
@@ -10,11 +10,11 @@
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': documentActive}" @click.prevent="documentShow">
         <icon-file />
       </button>
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': articleActive}" @click.prevent="articleShow">
+      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 rounded-bl-lg': articleActive}" @click.prevent="articleShow">
         <icon-article />
       </button>
     </div>
-    <div class="bg-gray-200 overflow-y-scroll flex flex-wrap">
+    <div class="bg-gray-800 overflow-y-scroll flex flex-wrap">
       <template v-if="pictureActive">
         <img v-for="(img, idx) in object.pictures"
              :key="img.id"

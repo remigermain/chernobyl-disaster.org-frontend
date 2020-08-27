@@ -44,7 +44,6 @@ export default {
       // check if prev and next is visible , and refresh page
       let ret = false
       if (this.$refs.prevLoading.isVisible() && !this.pageSet.includes(1)) {
-        console.log("nextLoading")
         ret = true
       }
       if (this.$refs.nextLoading.isVisible() && !this.completed) {
