@@ -1,22 +1,14 @@
 <template>
   <lazy-field-text v-bind="$attrs" :type="passwordType">
     <template v-slot:icon>
-      <icon-lock-open v-if="showPassword" class="inline text-gray-900 cursor-pointer animate-pulse" @click="showPassword = false" />
-      <icon-lock v-else class="inline text-gray-600 cursor-pointer animate-pulse" @click="showPassword = true" />
+      <svg-icon v-if="showPassword" name="lock-open" class="inline text-gray-900 cursor-pointer animate-pulse" @click="showPassword = false" />
+      <svg-icon v-else name="lock" class="inline text-gray-600 cursor-pointer animate-pulse" @click="showPassword = true" />
     </template>
   </lazy-field-text>
 </template>
 
 <script>
-import iconLock from "@/assets/svg/lock.svg"
-import iconLockOpen from "@/assets/svg/lock-open.svg"
 export default {
-
-
-  components: {
-    iconLock,
-    iconLockOpen,
-  },
 
   inheritAttrs: false,
 

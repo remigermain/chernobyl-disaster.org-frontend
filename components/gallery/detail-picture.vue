@@ -11,13 +11,13 @@
         </div>
         <div class="toolbar-right">
           <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-picture-id', params: {id: object.id}}" class="toolbar-item">
-            <icon-settings />
+            <svg-icon name="settings" />
           </extra-nuxt-link>
-          <icon-close class="toolbar-item" @click="$emit('close')" />
+          <svg-icon name="x" class="toolbar-item" @click="$emit('close')" />
         </div>
       </div>
-      <icon-prev v-show="hasPrev" class="toolbar-item toolbar-slide-prev" @click="$emit('prev')" />
-      <icon-next v-show="hasNext" class="toolbar-item toolbar-slide-next" @click="$emit('next')" />
+      <svg-icon v-show="hasPrev" name="prev" class="toolbar-item toolbar-slide-prev" @click="$emit('prev')" />
+      <svg-icon v-show="hasNext" name="next" class="toolbar-item toolbar-slide-next" @click="$emit('next')" />
       <div class="picture-item-container">
         <img :alt="object.title"
              :src="object.picture.full"
@@ -33,20 +33,9 @@
 </template>
 
 <script>
-import iconClose from "@/assets/svg/x.svg"
-import iconPrev from "@/assets/svg/arrow-left.svg"
-import iconNext from "@/assets/svg/arrow-right.svg"
-import iconSettings from "@/assets/svg/settings.svg"
 import isNil from "lodash/isNil"
 
 export default {
-
-  components: {
-    iconClose,
-    iconPrev,
-    iconNext,
-    iconSettings
-  },
 
   props: {
     object: {

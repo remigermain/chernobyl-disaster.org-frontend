@@ -2,16 +2,16 @@
   <div class="shadow-lg bg-gray-900 grid-extra w-full h-full rounded-lg">
     <div class="flex justify-around items-center flex-col bg-gray-900 text-white text-center border-r-8 border-yellow-600 rounded-l-lg">
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 rounded-tl-lg': pictureActive}" @click.prevent="pictureShow">
-        <icon-photo />
+        <svg-icon name="photo" />
       </button>
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': videoActive}" @click.prevent="videoShow">
-        <icon-movie />
+        <svg-icon name="movie" />
       </button>
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': documentActive}" @click.prevent="documentShow">
-        <icon-file />
+        <svg-icon name="file-text" />
       </button>
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 rounded-bl-lg': articleActive}" @click.prevent="articleShow">
-        <icon-article />
+        <svg-icon name="news" />
       </button>
     </div>
     <div class="bg-gray-800 overflow-y-scroll flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0}">
@@ -41,10 +41,6 @@
 </template>
 
 <script>
-import iconPhoto from "@/assets/svg/photo.svg"
-import iconMovie from "@/assets/svg/movie.svg"
-import iconFile from "@/assets/svg/file-text.svg"
-import iconArticle from "@/assets/svg/news.svg"
 
 const active = Object.freeze({
   "PICTURE": 1,
@@ -54,13 +50,6 @@ const active = Object.freeze({
 })
 
 export default {
-
-  components: {
-    iconMovie,
-    iconPhoto,
-    iconFile,
-    iconArticle,
-  },
 
   props: {
     object: {

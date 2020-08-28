@@ -13,7 +13,7 @@
         <a :href="el.doc" class="w-full h-12 text-center bg-gray-300" target="_blank" rel="noopener">
           <span class="document-link block">
             {{ $t('utils.link') }}
-            <icon-file-download />
+            <svg-icon name="file-download" />
           </span>
         </a>
       </article>
@@ -24,16 +24,11 @@
 
 <script>
 import galleryMixin from "@/mixins/page/gallery"
-import iconFileDownload from "@/assets/svg/file-download.svg"
 import isNil from "lodash/isNil"
 import { asynDataUrl } from "@/lib/gallery"
 
 export default {
-    name: "GalleryDocument",
-
-  components: {
-    iconFileDownload
-  },
+  name: "GalleryDocument",
 
   mixins: [
     galleryMixin

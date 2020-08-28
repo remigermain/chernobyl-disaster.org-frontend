@@ -25,7 +25,7 @@
         </div>
         <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
           <a :href="object.doc" :alt="object.title" class="w-24 hover:text-purple-800 block">
-            <icon-file-download class="w-full" />
+            <svg-icon name="file-download" class="w-full" />
           </a>
         </div>
         <model-langs :object="object.langs">
@@ -41,14 +41,9 @@
 <script>
 import detail from "@/mixins/admin/detail"
 import document from "@/mixins/model/document"
-import iconFileDownload from "@/assets/svg/file-download.svg"
 
 export default {
   name: "ContrubteDocumentDetail",
-
-  components: {
-    iconFileDownload,
-  },
 
   mixins: [
     detail,

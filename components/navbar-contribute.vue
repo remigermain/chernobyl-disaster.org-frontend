@@ -8,7 +8,7 @@
     </label>
     <nav class="contribute-navbar-items" :class="{'active': active }">
       <button class="contribute-navbar-link ml-4" @click="$auth.logout()">
-        <icon-logout />
+        <svg-icon name="logout" />
         {{ $t('auth.logout') }}
       </button>
       <lazy-extra-nuxt-link v-for="menu in menus" :key="menu.to.name" :to="menu.to" class="contribute-navbar-link ml-4" @click="active = false">
@@ -19,13 +19,8 @@
 </template>
 
 <script>
-import iconLogout from "@/assets/svg/logout.svg"
 
 export default {
-
-  components: {
-    iconLogout
-  },
 
   data () {
     return {

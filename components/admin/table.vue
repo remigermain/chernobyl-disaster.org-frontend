@@ -7,7 +7,7 @@
       <div class="p-2 mb-2 w-2/4">
         <field-text v-model="search" :field="{label: $t('tools.search') }">
           <template v-slot:icon>
-            <icon-search class="cursor-pointer hover:text-purple-700" @click="$emit('search', search)" />
+            <svg-icon name="search" class="cursor-pointer hover:text-purple-700" @click="$emit('search', search)" />
           </template>
         </field-text>
       </div>
@@ -23,11 +23,11 @@
               @click="sort(field)"
           >
             {{ field.label }}
-            <icon-arrow-up class="transform w-5"
-                           :class="{
-                             '-rotate-180': reverse,
-                             'invisible': current.field != field.field
-                           }"
+            <svg-icon name="arrow-up" class="transform w-5"
+                      :class="{
+                        '-rotate-180': reverse,
+                        'invisible': current.field != field.field
+                      }"
             />
           </th>
           <th class="text-gray-700 table-head align-middle text-center">
@@ -49,10 +49,10 @@
           </template>
           <td class="p-2 text-gray-800 text-center">
             <lazy-extra-nuxt-link :to="{name: `contribute-${model}-id`, params:{ id: obj.id} }">
-              <icon-eye class="cursor-pointer text-blue-700 action-btn" />
+              <svg-icon name="eye" class="cursor-pointer text-blue-700 action-btn" />
             </lazy-extra-nuxt-link>
             <lazy-extra-nuxt-link :to="{name: `contribute-${model}-update-id`, params:{ id: obj.id} }">
-              <icon-edit class="cursor-pointer text-purple-700 action-btn" />
+              <svg-icon name="edit" class="cursor-pointer text-purple-700 action-btn" />
             </lazy-extra-nuxt-link>
           </td>
         </tr>
@@ -76,22 +76,10 @@
 </template>
 
 <script>
-import iconArrowUp from "@/assets/svg/arrow-up.svg"
-import iconEye from "@/assets/svg/eye.svg"
-import iconEdit from "@/assets/svg/edit.svg"
-import iconSearch from "@/assets/svg/search.svg"
-
 import has from "lodash/has"
 import isArray from "lodash/isArray"
 
 export default {
-
-  components: {
-    iconEye,
-    iconEdit,
-    iconSearch,
-    iconArrowUp
-  },
 
   props: {
     objectList: {

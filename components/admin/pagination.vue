@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <button v-if="havePrevMore" class="p-2 rounded-sm hover:bg-gray-500" @click="value = 1">
-      <icon-chevrons-left />
+      <svg-icon name="chevrons-left" />
     </button>
     <button v-if="havePrev" class="p-2 rounded-sm hover:bg-gray-500" @click="value -= 1">
-      <icon-chevron-left />
+      <svg-icon name="chevron-left" />
     </button>
     <button v-if="havePrev" class="p-2 rounded-sm hover:bg-gray-500" @click="value -= 1">
       {{ value - 1 }}
@@ -16,27 +16,16 @@
       {{ value + 1 }}
     </button>
     <button v-if="haveNext" class="p-2 rounded-sm hover:bg-gray-500" @click="value += 1">
-      <icon-chevron-right />
+      <svg-icon name="chevron-right" />
     </button>
     <button v-if="haveNextMore" class="p-2 rounded-sm hover:bg-gray-500" @click="value = end">
-      <icon-chevrons-right />
+      <svg-icon name="chevrons-right" />
     </button>
   </div>
 </template>
 
 <script>
-import iconChevronsRight from "@/assets/svg/chevrons-right.svg"
-import iconChevronsLeft from "@/assets/svg/chevrons-left.svg"
-import iconChevronRight from "@/assets/svg/chevron-right.svg"
-import iconChevronLeft from "@/assets/svg/chevron-left.svg"
 export default {
-
-  components: {
-    iconChevronsRight,
-    iconChevronsLeft,
-    iconChevronRight,
-    iconChevronLeft
-  },
 
   props: {
     length: {

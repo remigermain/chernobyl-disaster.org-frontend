@@ -6,28 +6,28 @@
       </h2>
       <div>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <icon-brand-gitlab />
+          <svg-icon name="brand-gitlab" />
           Gitlab
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <icon-language />
+          <svg-icon name="language" />
           {{ $t('pages.about.traduction') }}
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <icon-mail />
+          <svg-icon name="mail" />
           {{ $t('pages.about.contact') }}
         </a>
       </div>
       <h3 class="text-3xl text-md capitalize">
         {{ $t('pages.about.contributors') }}
         <div class="wrapper text-red-800">
-          <icon-heart class="text-red-800" />
+          <svg-icon name="heart" class="text-red-800" />
         </div>
       </h3>
       <p class="text-gray-800">
         {{ $t('pages.about.thanks-contributors') }}
-        <icon-heart class="text-red-800" />
-        <icon-heart class="text-red-800" />
+        <svg-icon name="heart" class="text-red-800" />
+        <svg-icon name="heart" class="text-red-800" />
       </p>
       <div class="floa-left contributors">
         <template v-for="user in contributors">
@@ -37,7 +37,7 @@
         </template>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
-          <icon-mood-sad />
+          <svg-icon name="mood-sad" />
         </span>
       </div>
       <h1 class="text-2xl italic text-gray-800 pr-4">
@@ -70,21 +70,8 @@
 </template>
 
 <script>
-import iconBrandGitlab from "@/assets/svg/brand-gitlab.svg"
-import iconHeart from "@/assets/svg/heart.svg"
-import iconMoodSad from "@/assets/svg/mood-sad.svg"
-import iconMail from "@/assets/svg/mail.svg"
-import iconLanguage from "@/assets/svg/language.svg"
 export default {
-    name: "About",
-
-  components: {
-    iconBrandGitlab,
-    iconHeart,
-    iconMoodSad,
-    iconMail,
-    iconLanguage
-  },
+  name: "About",
 
   asyncData({ app }) {
     return app.$axios.get("populate/contributors")

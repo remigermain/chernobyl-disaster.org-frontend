@@ -5,13 +5,13 @@
         {{ $t('utils.menu') }}
       </span>
       <span class="mr-6 text-right w-2/4">
-        <icon-arrow-up class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
+        <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
       </span>
     </div>
     <div class="gallery-toolbar-desktop  wrapper" :class="{'active': active}">
       <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search">
         <template v-slot:icon>
-          <icon-search />
+          <svg-icon name="search" />
         </template>
       </field-text>
       <select v-model="ordering" class="form-select bg-gray-200">
@@ -28,25 +28,25 @@
       <span class="border-b border-gray-500" />
       <div class="toolbar-menu">
         <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link">
-          <icon-photo stroke-width="2" />
+          <svg-icon name="photo" stroke-width="2" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.picture') }}
           </span>
         </lazy-extra-nuxt-link>
         <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link">
-          <icon-movie stroke-width="2" />
+          <svg-icon name="movie" stroke-width="2" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.video') }}
           </span>
         </lazy-extra-nuxt-link>
         <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="toolbar-link">
-          <icon-file stroke-width="2" />
+          <svg-icon name="file-text" stroke-width="2" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.document') }}
           </span>
         </lazy-extra-nuxt-link>
         <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="toolbar-link">
-          <icon-article stroke-width="2" />
+          <svg-icon name="news" stroke-width="2" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.article') }}
           </span>
@@ -66,26 +66,10 @@
 </template>
 
 <script>
-
-import iconMovie from "@/assets/svg/movie.svg"
-import iconPhoto from "@/assets/svg/photo.svg"
-import iconFile from "@/assets/svg/file-text.svg"
-import iconArticle from "@/assets/svg/news.svg"
-import iconSearch from "@/assets/svg/search.svg"
-import iconArrowUp from "@/assets/svg/arrow-up.svg"
 import has from "lodash/has"
 import isNil from "lodash/isNil"
 
 export default {
-
-  components: {
-    iconMovie,
-    iconPhoto,
-    iconFile,
-    iconArticle,
-    iconSearch,
-    iconArrowUp
-  },
 
   data () {
     return {

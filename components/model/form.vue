@@ -30,7 +30,7 @@
           </tbody>
         </table>
         <button type="button" class="p-1 text-md w-max-content rounded-md mt-2 hover:text-green-800" @click="$emit('add-extra')">
-          <icon-plus class="inline text-green-800" />
+          <svg-icon name="plus" class="inline text-green-800" />
           {{ $t('tools.add') }}
         </button>
       </div>
@@ -53,12 +53,7 @@
 </template>
 
 <script>
-import iconPlus from "@/assets/svg/plus.svg"
 export default {
-
-  components: {
-    iconPlus
-  },
 
   props: {
     lang: {

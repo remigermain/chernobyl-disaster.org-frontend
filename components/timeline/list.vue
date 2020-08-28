@@ -31,27 +31,20 @@
     </div>
     <div class="w-full flex justify-center border-t-4 border-yellow-600">
       <extra-nuxt-link :to="{name: 'timeline', query: {'detail': prevId}}" class="w-2/4 inline-block">
-        <iconPrev class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
+        <svg-icon name="arrow-left" class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
       </extra-nuxt-link>
       <extra-nuxt-link :to="{name: 'timeline', query: {'detail': nextId}}" class="w-2/4 inline-block">
-        <iconNext class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
+        <svg-icon name="arrow-right" class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
       </extra-nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import iconPrev from "@/assets/svg/arrow-left.svg"
-import iconNext from "@/assets/svg/arrow-right.svg"
 import timelineMixins from "@/mixins/page/timeline"
 import { timelineElement } from "@/lib/timeline"
 
 export default {
-
-  components: {
-    iconPrev,
-    iconNext,
-  },
 
   mixins: [timelineMixins],
 

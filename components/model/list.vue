@@ -9,7 +9,7 @@
                             class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
       >
         {{ $t('tools.create') }}
-        <icon-plus class=" w-24px text-white" />
+        <svg-icon name="plus" class=" w-24px text-white" />
       </lazy-extra-nuxt-link>
     </div>
     <slot name="table" />
@@ -18,12 +18,7 @@
 </template>
 
 <script>
-import iconPlus from "@/assets/svg/plus.svg"
 export default {
-
-  components: {
-    iconPlus
-  },
 
   props: {
     lang: {

@@ -8,13 +8,13 @@
       <div class="flex justify-end detail-btn">
         <button class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600" @click="toogleReport">
           {{ $t('admin.label.report') }}
-          <icon-send class=" w-24px text-white" />
+          <svg-icon name="send" class=" w-24px text-white" />
         </button>
         <extra-nuxt-link :to="path"
                          class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
         >
           {{ $t('tools.update') }}
-          <icon-edit class=" w-24px text-white" />
+          <svg-icon name="edit" class=" w-24px text-white" />
         </extra-nuxt-link>
       </div>
     </div>
@@ -24,15 +24,7 @@
 </template>
 
 <script>
-import iconEdit from "@/assets/svg/edit.svg"
-import iconSend from "@/assets/svg/send.svg"
-
 export default {
-
-  components: {
-    iconEdit,
-    iconSend,
-  },
 
   props: {
     path: {

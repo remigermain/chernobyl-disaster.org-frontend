@@ -1,7 +1,8 @@
 const isDev = process.env.Node_ENV !== "production"
 const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
 
-import i18n from "./config/i18n"
+import i18nConfig from "./config/i18n"
+import babelConfig from "./config/babel"
 
 
 export default {
@@ -45,15 +46,13 @@ export default {
     "~/plugins/toast.js",
   ],
 
-  i18n, // i18n required in top
+  i18n: i18nConfig, // i18n required in top
 
   modules: [
     "@nuxtjs/axios",
-    "@nuxtjs/pwa",
     "@nuxtjs/auth",
-    "nuxt-i18n",
     "@nuxtjs/toast",
-    "@nuxtjs/sitemap",
+    "nuxt-i18n",
   ],
 
   sitemap: {
@@ -102,12 +101,14 @@ export default {
 
   buildModules: [
     "@nuxtjs/eslint-module",
+    "@nuxtjs/pwa",
+    "@nuxtjs/sitemap",
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/style-resources",
     "@aceforth/nuxt-optimized-images",
     "nuxt-purgecss",
-    "nuxt-svg-loader",
+    "@nuxtjs/svg-sprite"
   ],
 
   components: [
@@ -142,6 +143,11 @@ export default {
     optimizeImages: true
   },
 
+  svgSprite: {
+    input: "~/assets/svg",
+    output: "~/assets/svg-compile",
+  },
+
   css: [
     "destyle.css/destyle.css",
     "~/assets/css/main.scss",
@@ -174,6 +180,13 @@ export default {
   },
 
   build: {
+    indicator: isDev,
+    devtools: isDev,
+
+    babel: {
+      ...babelConfig
+    },
+
     optimizeCSS: true,
     extend(config, ctx) {
       // Run ESLint on save

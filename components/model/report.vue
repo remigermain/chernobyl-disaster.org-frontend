@@ -8,7 +8,7 @@
           </h2>
         </div>
         <div class="w-2/4 text-right">
-          <icon-circle-x class="cursor-pointer w-8 hover:text-purple-900" @click="$emit('close')" />
+          <svg-icon name="circle-x" class="cursor-pointer w-8 hover:text-purple-900" @click="$emit('close')" />
         </div>
         <div class="w-2/4">
           <span class="p-2 pl-0 text-gray-600 rounded italic">
@@ -32,13 +32,7 @@
 </template>
 
 <script>
-import iconCircleX from "@/assets/svg/circle-x.svg"
-
 export default {
-
-  components: {
-    iconCircleX
-  },
 
   props: {
     uuid: {

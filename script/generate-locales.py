@@ -246,11 +246,11 @@ def main():
       # recupere les local
       res = re.findall(r'locales\s*:\s*\[(.+?)\]', res)
       # recupere le code
-      locales = re.findall(r'code:"(.+?)"', "".join(res))
+      locales = re.findall(r'file:"(.+?)"', "".join(res))
 
     # on ecrit le fichier
     for local in locales:
-        name_file = join(LOCALES_PATH, local) + '.json'
+        name_file = join(LOCALES_PATH, local)
         if not flag.reset and exists(name_file):
             with open(name_file, 'r') as f:
               # on merge les 2 json

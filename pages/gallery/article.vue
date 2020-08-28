@@ -13,7 +13,7 @@
         <a :href="el.link" class="w-full h-12 text-center bg-gray-300" target="_blank" rel="noopener">
           <span class="article-link block">
             {{ $t('utils.link') }}
-            <icon-link />
+            <svg-icon name="link" />
           </span>
         </a>
       </article>
