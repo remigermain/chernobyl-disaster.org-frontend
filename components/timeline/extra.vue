@@ -14,7 +14,7 @@
         <icon-article />
       </button>
     </div>
-    <div class="bg-gray-800 overflow-y-scroll flex flex-wrap">
+    <div class="bg-gray-800 overflow-y-scroll flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0}">
       <template v-if="pictureActive">
         <img v-for="(img, idx) in object.pictures"
              :key="img.id"
@@ -24,10 +24,11 @@
              class="extra extra-picture"
              @click="setCurrent(img, idx)"
         >
-        <span v-if="object.pictures.length == 0" class="w-full p-4 self-center italic text-white">
+        <span v-if="object.pictures.length == 0" class="italic text-white text-opacity-50">
           {{ empty }}
         </span>
-        <lazy-gallery-detail-picture :object="current"
+        <lazy-gallery-detail-picture v-else
+                                     :object="current"
                                      :idx="currentIdx"
                                      :length="object.pictures.length"
                                      @close="removeCurrent"
@@ -89,6 +90,17 @@ export default {
     documentActive () {
       return this.active === active.DOCUMENT
     },
+    activeExtra() {
+      if (this.pictureActive) {
+        return this.object.pictures
+      } else if (this.videoActive) {
+        return this.object.videos
+      } else if (this.articleActive) {
+        return this.object.articles
+      } else {
+        return this.object.documents
+      }
+    }
   },
 
   methods: {

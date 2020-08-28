@@ -41,7 +41,11 @@ export default {
         })
 
         // simulate many event
-        let results = [...result, ...result, ...result, ...result]
+        let results = [
+            ...result.map(x => {return {...x, id: x.id *1 }}),
+          ...result.map(x => {return {...x, id: x.id * 10}}),
+          ...result.map(x => {return {...x, id: x.id * 100}}),
+          ...result.map(x => {return {...x, id: x.id * 1000}})]
         return {
           object: results,
           current: timelineElement(results, route.query)

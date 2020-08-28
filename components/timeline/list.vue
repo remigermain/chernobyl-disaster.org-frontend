@@ -1,38 +1,57 @@
 <template>
-  <div class="timeline shadow-inner rounded-md border-l-8 border-yellow-600 overflow-y-scroll flex flex-col justify-center items-center hide-scroolbar bg-gray-800">
-    <div v-for="obj in listCopy" :key="obj.id" class="timeline-content relative">
-      <div class="timeline-date flex items-center text-center flex-col px-4 text-gray-200">
-        <p class="text-3xl">
-          {{ obj.date.getFullYear() }}
-        </p>
-        <p class="text-md italic text-gray-400">
-          {{ getDate(obj.date) }}
-        </p>
+  <div class="timeline-list-grid shadow-inner rounded-md border-l-8 border-yellow-600 bg-gray-800">
+    <div id="timeline" class="timeline overflow-y-scroll flex flex-col items-center hide-scroolbar ">
+      <div v-for="obj in listCopy" :key="obj.id" class="timeline-content relative">
+        <div class="timeline-date flex items-center text-center flex-col px-4 text-gray-200">
+          <p class="text-3xl">
+            {{ obj.date.getFullYear() }}
+          </p>
+          <p class="text-md italic text-gray-400">
+            {{ getDate(obj.date) }}
+          </p>
+        </div>
+        <section class="">
+          <extra-nuxt-link v-for="element in obj.list"
+                           :id="element.id"
+                           :key="`${obj.id}-${element.id}`"
+                           :to="{name: 'timeline', query: {'detail': element.id}}"
+                           class="group block border-l-8 border-yellow-600 border-opacity-25 bg-gray-700 p-4 cursor-pointer hover:bg-gray-600 relative text-gray-200"
+                           :class="{'bg-gray-600 border-opacity-100': current.id == element.id }"
+          >
+            <span class="timeline-point bg-white shadow-sm" :class="{'active': current.id == element.id }" />
+            <h3>
+              {{ getTime(element.date) }}
+            </h3>
+            <h4 class="timeline-footer">
+              {{ i18nAttr(element, 'title') }}
+            </h4>
+          </extra-nuxt-link>
+        </section>
       </div>
-      <section class="">
-        <extra-nuxt-link v-for="element in obj.list" :key="`${obj.id}-${element.id}`"
-                         :to="{name: 'timeline', query: {'detail': element.id}}"
-                         class="group block border-l-8 border-yellow-600 border-opacity-25 bg-gray-700 p-4 cursor-pointer hover:bg-gray-600 relative text-gray-200"
-                         :class="{'bg-gray-600 border-opacity-100': current.id == element.id }"
-        >
-          <span class="timeline-point bg-white shadow-sm" :class="{'active': current.id == element.id }" />
-          <h3>
-            {{ getTime(element.date) }}
-          </h3>
-          <h4 class="timeline-footer">
-            {{ i18nAttr(element, 'title') }}
-          </h4>
-        </extra-nuxt-link>
-      </section>
+    </div>
+    <div class="w-full flex justify-center border-t-4 border-yellow-600">
+      <extra-nuxt-link :to="{name: 'timeline', query: {'detail': prevId}}" class="w-2/4 inline-block">
+        <iconPrev class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
+      </extra-nuxt-link>
+      <extra-nuxt-link :to="{name: 'timeline', query: {'detail': nextId}}" class="w-2/4 inline-block">
+        <iconNext class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
+      </extra-nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
+import iconPrev from "@/assets/svg/arrow-left.svg"
+import iconNext from "@/assets/svg/arrow-right.svg"
 import timelineMixins from "@/mixins/page/timeline"
 import { timelineElement } from "@/lib/timeline"
 
 export default {
+
+  components: {
+    iconPrev,
+    iconNext,
+  },
 
   mixins: [timelineMixins],
 
@@ -50,6 +69,31 @@ export default {
     }
   },
 
+  computed: {
+    hasNext () {
+      return this.object.indexOf(this.current) + 1 < this.object.length
+    },
+    hasPrev () {
+      return this.object.indexOf(this.current) > 0
+    },
+    nextId () {
+      if (this.hasNext) {
+        return this.object[this.object.indexOf(this.current) + 1].id
+      }
+      return this.current.id
+    },
+    prevId () {
+      if (this.hasPrev) {
+        return this.object[this.object.indexOf(this.current) - 1].id
+      }
+      return this.current.id
+    },
+    timelineCenter () {
+      console.log(this.$el)
+      return Math.floor(this.$el.children.timeline.offsetHeight / 2)
+    }
+  },
+
   watch: {
     object () {
       this.listCopy = this.listCreate()
@@ -58,6 +102,11 @@ export default {
       handler (query) {
         return this.setCurrent(timelineElement(this.object, query))
       }
+    },
+    current () {
+      // scroll to current
+      const el = document.getElementById(this.current.id)
+      el.scrollIntoView({behavior: "smooth", block: "center", inline: "center"})
     }
   },
 
@@ -131,5 +180,11 @@ export default {
   display: grid;
   grid-template-columns: 1fr 2fr;
   width: 100%;
+}
+
+.timeline-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 50px;
 }
 </style>
