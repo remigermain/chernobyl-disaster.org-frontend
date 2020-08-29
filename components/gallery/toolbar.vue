@@ -28,25 +28,25 @@
       <span class="border-b border-gray-500" />
       <div class="toolbar-menu">
         <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link">
-          <svg-icon name="photo" stroke-width="2" />
+          <svg-icon name="photo" class="w-6 h-6" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.picture') }}
           </span>
         </lazy-extra-nuxt-link>
         <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link">
-          <svg-icon name="movie" stroke-width="2" />
+          <svg-icon name="movie" class="w-6 h-6" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.video') }}
           </span>
         </lazy-extra-nuxt-link>
         <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="toolbar-link">
-          <svg-icon name="file-text" stroke-width="2" />
+          <svg-icon name="file-text" class="w-6 h-6" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.document') }}
           </span>
         </lazy-extra-nuxt-link>
         <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="toolbar-link">
-          <svg-icon name="news" stroke-width="2" />
+          <svg-icon name="news" class="w-6 h-6" />
           <span class="gallery-toolbar-text">
             {{ $t('menu.article') }}
           </span>

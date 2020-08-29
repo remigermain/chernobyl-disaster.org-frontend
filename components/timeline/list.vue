@@ -10,12 +10,12 @@
             {{ getDate(obj.date) }}
           </p>
         </div>
-        <section class="">
+        <section class="mr-1">
           <extra-nuxt-link v-for="element in obj.list"
                            :id="element.id"
                            :key="`${obj.id}-${element.id}`"
                            :to="{name: 'timeline', query: {'detail': element.id}}"
-                           class="group block border-l-8 border-yellow-600 border-opacity-25 bg-gray-700 p-4 cursor-pointer hover:bg-gray-600 relative text-gray-200"
+                           class="group block border-l-8 border-yellow-600 border-opacity-25 bg-gray-700 p-4 cursor-pointer hover:bg-gray-600 relative text-gray-200 rounded-md mt-1"
                            :class="{'bg-gray-600 border-opacity-100': current.id == element.id }"
           >
             <span class="timeline-point bg-white shadow-sm" :class="{'active': current.id == element.id }" />
@@ -28,6 +28,7 @@
           </extra-nuxt-link>
         </section>
       </div>
+      <div class="timeline-content relative" />
     </div>
     <div class="w-full flex justify-center border-t-4 border-yellow-600">
       <extra-nuxt-link :to="{name: 'timeline', query: {'detail': prevId}}" class="w-2/4 inline-block">
@@ -43,6 +44,8 @@
 <script>
 import timelineMixins from "@/mixins/page/timeline"
 import { timelineElement } from "@/lib/timeline"
+//import { scrollIntoView} from "@/lib/scrool"
+import scrollIntoView from "scroll-into-view-if-needed"
 
 export default {
 
@@ -81,10 +84,6 @@ export default {
       }
       return this.current.id
     },
-    timelineCenter () {
-      console.log(this.$el)
-      return Math.floor(this.$el.children.timeline.offsetHeight / 2)
-    }
   },
 
   watch: {
@@ -97,9 +96,7 @@ export default {
       }
     },
     current () {
-      // scroll to current
-      const el = document.getElementById(this.current.id)
-      el.scrollIntoView({behavior: "smooth", block: "center", inline: "center"})
+     this.scroll()
     }
   },
 
@@ -108,6 +105,14 @@ export default {
   },
 
   methods: {
+    scroll () {
+      if (process.client) {
+        const el = document.getElementById(this.current.id)
+        if (el) {
+          scrollIntoView(el, {behavior: "smooth", scrollMode: "always"})
+        }
+      }
+    },
     compareDate (original, newEl) {
       if (
         newEl.getFullYear() != original.getFullYear() ||
@@ -135,6 +140,7 @@ export default {
     setCurrent (element) {
       this.$router.push({query: {"detail": element.id}})
       this.current = element
+      this.scroll()
       this.$emit("select", element)
     },
   }
@@ -145,8 +151,11 @@ export default {
 .timeline {
   width: 100%;
   height: 100%;
-  & > * {
+  & > *:not(:first-child) {
     margin-top: 2em;
+  }
+  & > *:first-child {
+    margin-top: .5em;
   }
   & > *:last-child {
     margin-bottom: 2em;

@@ -11,13 +11,13 @@
         </div>
         <div class="toolbar-right">
           <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-picture-id', params: {id: object.id}}" class="toolbar-item">
-            <svg-icon name="settings" />
+            <svg-icon name="settings" class="w-inherit h-inherit" />
           </extra-nuxt-link>
           <svg-icon name="x" class="toolbar-item" @click="$emit('close')" />
         </div>
       </div>
-      <svg-icon v-show="hasPrev" name="prev" class="toolbar-item toolbar-slide-prev" @click="$emit('prev')" />
-      <svg-icon v-show="hasNext" name="next" class="toolbar-item toolbar-slide-next" @click="$emit('next')" />
+      <svg-icon v-show="hasPrev" name="arrow-left" class="toolbar-item toolbar-slide-prev" @click="$emit('prev')" />
+      <svg-icon v-show="hasNext" name="arrow-right" class="toolbar-item toolbar-slide-next" @click="$emit('next')" />
       <div class="picture-item-container">
         <img :alt="object.title"
              :src="object.picture.full"

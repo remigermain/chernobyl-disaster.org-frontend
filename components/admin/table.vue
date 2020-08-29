@@ -140,6 +140,8 @@ export default {
 <style lang="scss">
 
 .action-btn {
+  width: 1.5rem;
+  height: 1.5rem;
   display: inline-block;
   transition: transform .4s;
   &:hover {

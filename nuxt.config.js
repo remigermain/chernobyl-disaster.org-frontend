@@ -49,6 +49,8 @@ export default {
   i18n: i18nConfig, // i18n required in top
 
   modules: [
+    "@nuxtjs/sitemap",
+    "@nuxtjs/pwa",
     "@nuxtjs/axios",
     "@nuxtjs/auth",
     "@nuxtjs/toast",
@@ -62,6 +64,7 @@ export default {
       "/contribute/**",
     ],
   },
+  robots: {},
 
   auth: {
     resetOnError: true, // une erreur 403/401 supprimer toutes les info, et redirige vers login
@@ -101,8 +104,6 @@ export default {
 
   buildModules: [
     "@nuxtjs/eslint-module",
-    "@nuxtjs/pwa",
-    "@nuxtjs/sitemap",
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
     "@nuxtjs/style-resources",
