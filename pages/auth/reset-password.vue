@@ -70,7 +70,7 @@ export default {
 
   head () {
     return {
-      title: this.$t("pages.menu.reset-password"),
+      title: this.$t("menu.reset-password"),
       meta: [
           { hid: "description", name: "description", content: this.$t("pages.meta.reset-password.description") },
           { property: "og:title", content: this.$t("pages.meta.reset-password.title")},

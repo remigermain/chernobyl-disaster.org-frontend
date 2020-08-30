@@ -22,43 +22,16 @@
 
 export default {
 
+  props: {
+    menus: {
+      type: Array,
+      required: true
+    }
+  },
+
   data () {
     return {
       active: false,
-      menus: [
-        {
-          name: this.$t("admin.label.account"),
-          to: {name: "contribute-account"}
-        },
-        {
-          name: this.$t("admin.label.event"),
-          to: {name: "contribute-event"}
-        },
-        {
-          name: this.$t("admin.label.people"),
-          to: {name: "contribute-people"}
-        },
-        {
-          name: this.$t("admin.label.tag"),
-          to: {name: "contribute-tag"}
-        },
-        {
-          name: this.$t("admin.label.picture"),
-          to: {name: "contribute-picture"}
-        },
-        {
-          name: this.$t("admin.label.video"),
-          to: {name: "contribute-video"}
-        },
-        {
-          name: this.$t("admin.label.document"),
-          to: {name: "contribute-document"}
-        },
-        {
-          name: this.$t("admin.label.article"),
-          to: {name: "contribute-article"}
-        },
-      ]
     }
   },
 

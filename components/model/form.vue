@@ -17,7 +17,7 @@
             <tr>
               <th colspan="100%">
                 <div class="bg-blue-700 text-white p-2 mt-4 capitalize  w-full rounded-t-sm">
-                  <slot name="label" /> {{ $t('global.language') }}
+                  <slot name="label" /> {{ $t('utils.language') }}
                 </div>
               </th>
             </tr>

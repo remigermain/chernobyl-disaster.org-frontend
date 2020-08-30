@@ -1,8 +1,24 @@
 <template>
   <div class="grid-contribute">
-    <navbar-contribute />
+    <navbar-contribute :menus="menus" />
     <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4 min-h-full">
       <nuxt-child :key="$route.fullPath" />
+      <div v-if="$route.matched.length == 1" class="flex flex-wrap justify-center p-4 gap-4">
+        <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-yellow-700">
+          <div>
+            <h1 class="text-2xl capitalize italic text-opacity-75">
+              {{ el.name }}
+            </h1>
+            {{ el.help }}
+          </div>
+          <extra-nuxt-link :to="el.to" class="text-center bg-gray-800 hover:bg-gray-700 text-white border-r-4 border-gray-900 rounded-bl-lg">
+            {{ $t('utils.list') }}
+          </extra-nuxt-link>
+          <extra-nuxt-link :to="el.toCreate" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-br-lg">
+            {{ $t('utils.create') }}
+          </extra-nuxt-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -15,6 +31,61 @@ export default {
     "model",
     "auth",
   ],
+
+  data () {
+    return {
+      menus: [
+        {
+          name: this.$t("admin.label.account"),
+          help: this.$t("admin.help.global.account"),
+          to: {name: "contribute-account"},
+          toCreate: {name: "contribute-account-create"}
+        },
+        {
+          name: this.$t("admin.label.event"),
+          help: this.$t("admin.help.global.event"),
+          to: {name: "contribute-event"},
+          toCreate: {name: "contribute-event-create"}
+        },
+        {
+          name: this.$t("admin.label.people"),
+          help: this.$t("admin.help.global.people"),
+          to: {name: "contribute-people"},
+          toCreate: {name: "contribute-people-create"}
+        },
+        {
+          name: this.$t("admin.label.tag"),
+          help: this.$t("admin.help.global.tag"),
+          to: {name: "contribute-tag"},
+          toCreate: {name: "contribute-tag-create"}
+        },
+        {
+          name: this.$t("admin.label.picture"),
+          help: this.$t("admin.help.global.picture"),
+          to: {name: "contribute-picture"},
+          toCreate: {name: "contribute-picture-create"}
+        },
+        {
+          name: this.$t("admin.label.video"),
+          help: this.$t("admin.help.global.video"),
+          to: {name: "contribute-video"},
+          toCreate: {name: "contribute-video-create"}
+        },
+        {
+          name: this.$t("admin.label.document"),
+          help: this.$t("admin.help.global.document"),
+          to: {name: "contribute-document"},
+          toCreate: {name: "contribute-document-create"}
+        },
+        {
+          name: this.$t("admin.label.article"),
+          help: this.$t("admin.help.global.article"),
+          to: {name: "contribute-article"},
+          toCreate: {name: "contribute-article-create"}
+        },
+      ]
+    }
+  },
 
 }
 </script>
@@ -48,6 +119,19 @@ export default {
 @media screen and (max-width:900px){
   .grid-contribute {
     display: block;
+  }
+}
+
+.card-model {
+  width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row: 1fr;
+  & > *:first-child {
+    grid-area: 1 / 1 / 1 / 3;
+  }
+  & > * {
+    padding: 1em;
   }
 }
 

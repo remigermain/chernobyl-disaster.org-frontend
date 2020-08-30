@@ -6,10 +6,16 @@
         },
         "help": {
             "global": {
+                "account": "account",
+                "article": "article",
+                "document": "document",
                 "event": "event",
                 "language": "language",
+                "people": "people",
+                "picture": "picture",
                 "report": "report",
-                "tag": "tag"
+                "tag": "tag",
+                "video": "video"
             },
             "model": {
                 "article": {
@@ -114,6 +120,7 @@
         "change-password": "change-password",
         "connection-account": "connection-account",
         "create-account": "create-account",
+        "delete-account": "delete-account",
         "field": {
             "comfirm-password": "comfirm-password",
             "email": "email",
@@ -137,19 +144,19 @@
         "server": "server",
         "update": "update"
     },
-    "global": {
-        "language": "language"
-    },
     "menu": {
-        "about": "about",
+        "about": "A propos de",
         "article": "article",
-        "contribute": "contribute",
+        "contribute": "contribuer",
         "document": "document",
         "gallery": "gallery",
         "home": "accueil",
-        "picture": "picture",
+        "login": "connexion",
+        "picture": "photo",
+        "register": "s'inscrire",
+        "reset-password": "reset-password",
         "timeline": "timeline",
-        "video": "video"
+        "video": "vid\u00e9o"
     },
     "pages": {
         "about": {
@@ -165,19 +172,8 @@
             "traduction": "traduction"
         },
         "home": {
-            "description": "description",
-            "presentation": "presentation"
-        },
-        "menu": {
-            "about": "about",
-            "article": "article",
-            "document": "document",
-            "home": "home",
-            "login": "login",
-            "picture": "picture",
-            "register": "register",
-            "reset-password": "reset-password",
-            "video": "video"
+            "description": "La catastrophe nucl\u00e9aire de Tchernobyl est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l'accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L'IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d'importantes cons\u00e9quences \u00e9conomiques et sociales. Ce site retrace les \u00e9v\u00e8nements de l'accident qui a conduit \u00e0 cette catastrophe et ces cons\u00e9quences, illustr\u00e9 par photo, vid\u00e9o et document d'archive.",
+            "presentation": "pr\u00e9sentation"
         },
         "meta": {
             "about": {
@@ -245,9 +241,12 @@
         "close": "close",
         "create": "create",
         "currently": "currently",
+        "delete": "delete",
         "empty": "empty",
         "identifier": "identifier",
+        "language": "language",
         "link": "link",
+        "list": "list",
         "loading": "loading",
         "menu": "menu",
         "need-translate": "need-translate",
@@ -259,7 +258,6 @@
         "search": "search",
         "secondes": "secondes",
         "send": "send",
-        "submit": "submit",
         "total": "total",
         "translate": "translate",
         "update": "update",

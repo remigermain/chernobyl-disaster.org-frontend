@@ -8,14 +8,14 @@
           </h2>
         </div>
         <div class="w-2/4 text-right">
-          <svg-icon name="circle-x" class="cursor-pointer w-8 hover:text-purple-900" @click="$emit('close')" />
+          <svg-icon name="x" class="cursor-pointer w-8 h-8 hover:scale-110 transform transition-transform duration-300 hover:text-purple-900" @click="$emit('close')" />
         </div>
         <div class="w-2/4">
           <span class="p-2 pl-0 text-gray-600 rounded italic">
             {{ uuid }} {{ $t('utils.identifier') }} {{ $route.params.id }}
           </span>
         </div>
-        <div class="w-full mt-4 p-4 rounded bg-gray-600 bg-opacity-25 italic text-sm text-opacity-50">
+        <div class="w-full mt-4 p-4 rounded bg-green-700 bg-opacity-25 italic text-sm text-opacity-50">
           {{ $t('admin.help.global.report') }}
         </div>
       </div>

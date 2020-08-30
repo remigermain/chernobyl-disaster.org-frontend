@@ -6,10 +6,16 @@
         },
         "help": {
             "global": {
+                "account": "account",
+                "article": "article",
+                "document": "document",
                 "event": "event",
                 "language": "language",
+                "people": "people",
+                "picture": "picture",
                 "report": "report",
-                "tag": "tag"
+                "tag": "tag",
+                "video": "video"
             },
             "model": {
                 "article": {
@@ -114,6 +120,7 @@
         "change-password": "change-password",
         "connection-account": "connection-account",
         "create-account": "create-account",
+        "delete-account": "delete-account",
         "field": {
             "comfirm-password": "comfirm-password",
             "email": "email",
@@ -137,9 +144,6 @@
         "server": "server",
         "update": "update"
     },
-    "global": {
-        "language": "language"
-    },
     "menu": {
         "about": "about",
         "article": "article",
@@ -147,7 +151,10 @@
         "document": "document",
         "gallery": "gallery",
         "home": "home",
+        "login": "login",
         "picture": "picture",
+        "register": "register",
+        "reset-password": "reset-password",
         "timeline": "timeline",
         "video": "video"
     },
@@ -165,19 +172,8 @@
             "traduction": "traduction"
         },
         "home": {
-            "description": "description",
+            "description": "The Chernobyl nuclear disaster is a major nuclear accident that occurred on April 26, 1986 in the V.I. Lenin nuclear power plant, then located in the Ukrainian Soviet Socialist Republic, USSR. It is the most serious nuclear disaster of the 20th century, classified at level 7 (the highest) of the International Nuclear Event Scale (INES), surpassing, according to the Institute for Radiation Protection and Nuclear Safety (IRSN), by its immediate environmental impacts the Fukushima nuclear accident of 2011, classified at the same level. The IRSN mentions for these accidents potential health effects, lasting contamination of territories and important economic and social consequences. This site recounts the events of the accident that led to this disaster and its consequences, illustrated by photo, video and archive document. Translated with www.DeepL.com/Translator (free version)",
             "presentation": "presentation"
-        },
-        "menu": {
-            "about": "about",
-            "article": "article",
-            "document": "document",
-            "home": "home",
-            "login": "login",
-            "picture": "picture",
-            "register": "register",
-            "reset-password": "reset-password",
-            "video": "video"
         },
         "meta": {
             "about": {
@@ -245,9 +241,12 @@
         "close": "close",
         "create": "create",
         "currently": "currently",
+        "delete": "delete",
         "empty": "empty",
         "identifier": "identifier",
+        "language": "language",
         "link": "link",
+        "list": "list",
         "loading": "loading",
         "menu": "menu",
         "need-translate": "need-translate",
@@ -259,7 +258,6 @@
         "search": "search",
         "secondes": "secondes",
         "send": "send",
-        "submit": "submit",
         "total": "total",
         "translate": "translate",
         "update": "update",

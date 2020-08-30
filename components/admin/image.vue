@@ -30,5 +30,12 @@ export default {
 
   mixins: [FieldMixins],
 
+  props: {
+    value: {
+      type: Object,
+      default: null
+    }
+  }
+
 }
 </script>

@@ -88,7 +88,7 @@ export default {
 
   head () {
     return {
-      title: this.$t("pages.menu.about"),
+      title: this.$t("menu.about"),
       meta: [
           { hid: "description", name: "description", content: this.$t("pages.meta.about.description") },
           { property: "og:title", content: this.$t("pages.meta.about.title")},
