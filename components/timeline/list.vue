@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
-    <div class="timeline-list-grid shadow-inner rounded-md border-l-8 border-yellow-600 bg-gray-800" :class="{'active': active}">
+    <div class="timeline-list-grid shadow-inner rounded-md bg-gray-800" :class="{'active': active, 'border-l-8 border-yellow-600': !active}">
       <div id="timeline" class="timeline overflow-y-scroll flex flex-col items-center hide-scroolbar ">
-        <div v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0">
+        <div v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
           <div class="timeline-date flex items-center text-center flex-col px-4 text-gray-200">
             <p class="text-3xl">
               {{ obj.date.getFullYear() }}
@@ -11,7 +11,7 @@
               {{ getDate(obj.date) }}
             </p>
           </div>
-          <section class="mr-1">
+          <section class="timeline-item mr-1">
             <extra-nuxt-link v-for="element in obj.list"
                              :id="element.id"
                              :key="`${obj.id}-${element.id}`"
@@ -39,11 +39,13 @@
           <svg-icon name="arrow-right" class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>
       </div>
+      <div class="icon-timeline w-6 h-12 bg-yellow-600 text-gray-800 shadow-lg"
+           :class="{'active rounded-l-full': active, 'rounded-r-full': !active}" @click="toogleActive"
+      >
+        <svg-icon name="arrow-right" class="w-8" />
+      </div>
     </div>
     <div class="background-navbar" :class="{'active': active, 'hidden': !active }" @click="active = false" />
-    <div class="icon-timeline rounded-r-full w-6 h-12 bg-gray-800 text-white shadow-lg" :class="{'active': active}" @click="toogleActive">
-      <svg-icon name="arrow-right" />
-    </div>
   </div>
 </template>
 
@@ -205,7 +207,7 @@ export default {
   display: none;
   position: absolute;
   top: 50vh;
-  left: 0;
+  right: 0;
   cursor: pointer;
   transition: transform .5s;
 }
@@ -215,7 +217,7 @@ export default {
     position: absolute;
     top: 1vh;
     left: 0;
-    width: 50vw;
+    min-width: 50vw;
     height: 98vh;
     transition: transform .5s;
     transform: translateX(-100%);
@@ -228,17 +230,29 @@ export default {
     display: flex;
     align-items: center;
     z-index: 42;
+    transform: translateX(100%);
     transition: transform .5s;
     & > svg {
       transition: transform .5s;
     }
     &.active {
-      transform: translateX(50vw);
+      transform: translateX(0);
       & > svg {
         transform: rotate(-180deg);
       }
     }
   }
+  .timeline-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    .timeline-item {
+      grid-area: 2 / 1 / 2 / 2;
+    }
+    .timeline-date {
+      grid-area: 1 / 1 / 1 / 2;
+    }
+  }
+
 }
 
 .background-navbar {

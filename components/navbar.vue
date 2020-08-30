@@ -64,7 +64,6 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-transform: capitalize;
   padding-right: 10px;
   font-size: 1.2rem;
 }
@@ -85,6 +84,9 @@ export default {
       display: block;
       border-radius: 3px;
       opacity: 0;
+    }
+    &::first-letter {
+      text-transform: capitalize;
     }
     &.nuxt-link-active {
       opacity: 1;

@@ -1,7 +1,7 @@
 <template>
   <div class="grid-index">
     <div class="index-description">
-      <h1 class="text-4xl uppercase extra-auto font-russia transition-opacity duration-400 z-1 italic text-opacity-50">
+      <h1 class="text-2xl uppercase extra-auto transition-opacity duration-400 z-1 italic text-opacity-50 tracking-tighter font-bold">
         {{ $t('pages.home.presentation') }}
       </h1>
       <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">

@@ -4,7 +4,7 @@
     <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4 min-h-full">
       <nuxt-child :key="$route.fullPath" />
       <div v-if="$route.matched.length == 1" class="flex flex-wrap justify-center p-4 gap-4">
-        <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-yellow-700">
+        <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-gray-500">
           <div>
             <h1 class="text-2xl capitalize italic text-opacity-75">
               {{ el.name }}
