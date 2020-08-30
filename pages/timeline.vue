@@ -1,17 +1,17 @@
 <template>
   <div class="grid-timeline">
     <p class="timeline-date">
-      <span class="text-3xl">
+      <span class="text-4xl">
         {{ getDateYear(current.date) }}
       </span>
-      <span v-show="!isTimeEmpty(current.date)" class="text-lg italic">
+      <span v-show="!isTimeEmpty(current.date)" class="text-xl italic">
         {{ getTime(current.date) }}
       </span>
     </p>
     <h1 class="timeline-title text-4xl capitalize italic">
       {{ i18nAttr(current, 'title') }}
     </h1>
-    <timeline-list class="timeline-list" :object="object" @select="setCurrent" />
+    <timeline-list :class="{'active': active}" :object="object" @select="setCurrent" />
     <p class="timeline-text p-4 leading-6 overflow-y-scroll">
       {{ i18nAttr(current, 'description') }}
     </p>
@@ -53,6 +53,12 @@ export default {
       })
   },
 
+  data () {
+    return {
+      active: false
+    }
+  },
+
   methods: {
     setCurrent (obj) {
       this.current = obj
@@ -85,9 +91,28 @@ export default {
 .grid-timeline {
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 80px 1fr 200px;
+  grid-template-rows: 100px 1fr 200px;
   height: 100%;
   gap: .5em .5em;
+}
+
+.icon-timeline {
+  display: none;
+}
+
+@media screen and (max-width: 850px){
+  .grid-timeline {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 60px 1fr auto;
+  }
+  .timeline-date,
+  .timeline-list,
+  .timeline-text,
+  .timeline-extra,
+  .timeline-title {
+    grid-area: unset !important;
+  }
+
 }
 
 .timeline-date {
@@ -103,9 +128,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.timeline-list {
-  grid-area: 2 / 1 / 4 / 1;
-}
+
 .timeline-text {
   grid-area: 2 / 2 / 2 / 3;
 }

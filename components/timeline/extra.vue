@@ -1,20 +1,28 @@
 <template>
-  <div class="shadow-lg bg-gray-900 grid-extra w-full h-full rounded-lg">
-    <div class="flex justify-around items-center flex-col bg-gray-900 text-white text-center border-r-8 border-yellow-600 rounded-l-lg">
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 rounded-tl-lg': pictureActive}" @click.prevent="pictureShow">
-        <svg-icon name="photo" />
+  <div class="shadow-lg md:bg-gray-900 grid-extra w-full h-full rounded-lg timeline-extra" :class="{'active': activeMenu}">
+    <div class="extra-toolbar-mobile bg-gray-800" @click="toogleActive">
+      <span class="ml-6 w-2/4 capitalize">
+        {{ $t('utils.menu') }}
+      </span>
+      <span class="mr-6 text-right w-2/4">
+        <svg-icon name="arrow-up" class="extra-toolbar-mobile-icon" :class="{'active': activeMenu}" />
+      </span>
+    </div>
+    <div class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-900 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg">
+      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 md:rounded-tl-lg': pictureActive}" @click.prevent="pictureShow">
+        <svg-icon name="photo" class="extra-icon-mobile" />
       </button>
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': videoActive}" @click.prevent="videoShow">
-        <svg-icon name="movie" />
+        <svg-icon name="movie" class="extra-icon-mobile" />
       </button>
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': documentActive}" @click.prevent="documentShow">
-        <svg-icon name="file-text" />
+        <svg-icon name="file-text" class="extra-icon-mobile" />
       </button>
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 rounded-bl-lg': articleActive}" @click.prevent="articleShow">
-        <svg-icon name="news" />
+      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 md:rounded-bl-lg': articleActive}" @click.prevent="articleShow">
+        <svg-icon name="news" class="extra-icon-mobile" />
       </button>
     </div>
-    <div class="bg-gray-800 overflow-y-scroll flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0}">
+    <div class="extra-toolbar-desktop bg-gray-800 overflow-y-scroll flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
       <template v-if="pictureActive">
         <img v-for="(img, idx) in object.pictures"
              :key="img.id"
@@ -54,7 +62,7 @@ export default {
   props: {
     object: {
       type: Object,
-      required: true
+      required: true,
     }
   },
 
@@ -62,7 +70,8 @@ export default {
     return {
       active: active.PICTURE,
       current: null,
-      currentIdx: 0
+      currentIdx: 0,
+      activeMenu: false
     }
   },
 
@@ -93,6 +102,9 @@ export default {
   },
 
   methods: {
+    toogleActive () {
+      this.activeMenu = !this.activeMenu
+    },
     pictureShow () {
       return this.active = active.PICTURE
     },
@@ -145,6 +157,65 @@ export default {
     &:hover {
       transform: scale(105%);
     }
+  }
+}
+
+@media screen and (max-width: 1350px){
+  .extra {
+    width: 14%
+  }
+}
+
+@media screen and (max-width: 950px){
+  .extra {
+    width: 20%
+  }
+}
+.extra-toolbar-mobile {
+  display: none;
+  height: 60px;
+  min-height: 60px;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.extra-toolbar-mobile-icon {
+  transition: transform .5s;
+  &.active {
+    transform: rotate(-180deg);
+  }
+}
+
+@media screen and (max-width: 850px){
+  .extra-toolbar-mobile {
+    display: flex;
+  }
+  .grid-extra {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px auto 1fr;
+    transition: height .6s;
+    height: 60px;
+    &.active {
+      height: 70vh;
+    }
+  }
+
+  .extra-toolbar-desktop {
+    flex-direction: row;
+    overflow: hidden;
+    display: flex;
+    & > button {
+      width: 25%;
+      height: auto;
+    }
+  }
+  .extra-icon-mobile {
+    width: inherit;
+    height: 3em;
   }
 }
 </style>

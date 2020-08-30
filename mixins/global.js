@@ -35,16 +35,20 @@ export default {
     },
     i18nAttr(obj, key) {
       // locale lang
-      let el = obj.langs.find(el => el.language == this.$i18n.defaultLocale)
+      let el = obj.langs.find(el => el.language == this.$i18n.locale)
       if (el) return el[key]
 
       // default lang
       el = obj.langs.find(el => el.language == this.$i18n.defaultLocale)
       if (el) return el[key]
 
+      // if obj has key
       if (has(obj, key)) return obj[key]
 
-      return this.$t("admin.model.language")
+      // return first langs
+      if (obj.langs.length > 0) return obj.langs[0]
+
+      return this.$t("errors.language")
     },
     requestError (error) {
       if (has(error, "response") && has(error.response, "data")) {

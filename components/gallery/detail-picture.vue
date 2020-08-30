@@ -103,7 +103,7 @@ export default {
   }
   &.detail-active {
     opacity: 1;
-    z-index: 30;
+    z-index: 50;
   }
   .picture-item-container {
     overflow: hidden;
