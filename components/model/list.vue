@@ -5,7 +5,7 @@
       <h1 class="text-3xl capitalize self-start">
         <slot name="label" />
       </h1>
-      <lazy-extra-nuxt-link :to="{name: `contribute-${model}-create`}"
+      <lazy-extra-nuxt-link v-if="create" :to="{name: `contribute-${model}-create`}"
                             class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
       >
         {{ $t('tools.create') }}
@@ -28,6 +28,10 @@ export default {
     model: {
       type: String,
       required: true
+    },
+    create: {
+      type: Boolean,
+      default: true
     }
   }
 

@@ -3,14 +3,13 @@
 </template>
 
 <script>
-import elementInView from "element-in-view-rgermain"
 export default {
   props: {
     position: {
       type: String,
-      default: "upper",
+      required: true,
       validator (el) {
-        return ["upper", "lower"].includes(el)
+        return ["top", "bottom"].includes(el)
       }
     }
   },
@@ -20,10 +19,23 @@ export default {
   },
 
   methods: {
+    bottomVisible() {
+      return this.$el.getBoundingClientRect().top < this.$parent.$el.getBoundingClientRect().bottom
+    },
+    topVisible () {
+      return this.$el.getBoundingClientRect().bottom > this.$parent.$el.getBoundingClientRect().top
+    },
+    emit () {
+      this.$emit("visible")
+      return true
+    },
     isVisible () {
-      if (process.client && elementInView(this.$el, {parent: this.$parent.$el, partial: true})) {
-        this.$emit("visible")
-        return true
+      if (this.position === "top") {
+        if (this.topVisible()) {
+          return this.emit()
+        }
+      } else if (this.bottomVisible()) {
+          return this.emit()
       }
       return false
     }

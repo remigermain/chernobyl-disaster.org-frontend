@@ -31,7 +31,7 @@
         </div>
         <div class="timeline-content relative" />
       </div>
-      <div class="w-full flex justify-center bg-gray-800 rounded-b-md text-white">
+      <div class="w-full flex justify-center bg-gray-900 rounded-b-md text-white">
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}" class="w-2/4 inline-block">
           <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>

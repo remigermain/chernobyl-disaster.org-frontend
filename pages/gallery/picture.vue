@@ -2,7 +2,7 @@
   <div class="grid-picture" @scroll="scroll">
     <div class="flex w-full flex-wrap justify-around">
       <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
-      <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="upper" class="picture-item skeleton" @visible="nextPage" />
+      <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
       <img v-for="(el, idx) in object"
            :key="el.id"
            class="picture-item"
@@ -11,7 +11,7 @@
            loading="lazy"
            @click="setCurrent(el, idx)"
       >
-      <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="upper" class="picture-item skeleton" @visible="nextPage" />
+      <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>
     <lazy-gallery-detail-picture :object="current"

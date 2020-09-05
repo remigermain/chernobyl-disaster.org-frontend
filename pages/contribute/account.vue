@@ -1,5 +1,5 @@
 <template>
-  <lazy-model-list :model="$t('admin.label.account')">
+  <lazy-model-list :model="$t('admin.label.account')" :create="false">
     <template v-slot:breadcrumbs>
       <lazy-bread-crumb>
         {{ $t('admin.label.account') }}
