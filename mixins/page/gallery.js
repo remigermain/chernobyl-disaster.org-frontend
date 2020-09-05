@@ -10,7 +10,9 @@ export default {
       page: parseInt(this.$route.query.page) || 1,
       currentObject: null,
       completed: false,
-      interval: 0
+      interval: 0,
+      inRequestPrev: false,
+      inRequestNext: false,
     }
   },
 
@@ -27,7 +29,19 @@ export default {
       return `${this.model}/?page=${this.page}${galleryUrl(this.$route.query)}`
     },
     hasPrevPage () {
-      return this.pageSet.includes(1) // check if page "1" one is in
+      return !this.pageSet.includes(1) // check if page "1" one is in
+    },
+    inPrev () {
+      if (this.hasPrevPage) {
+        return new Array(this.$pagination)
+      }
+      return []
+    },
+    inNext () {
+      if (!this.completed) {
+        return new Array(this.$pagination)
+      }
+      return []
     },
   },
 
@@ -66,6 +80,7 @@ export default {
       return new Promise(resolve => {
         const max = Math.max(...this.pageSet)
         if (!this.pageSet.includes(max + 1) && !this.completed) {
+          this.inRequestPrev = true
           this.page = max + 1
           this.refresh(response => {
             // append the new data
@@ -80,6 +95,7 @@ export default {
         const min = Math.min(...this.pageSet)
         if (!this.pageSet.includes(min - 1) && min > 1) {
           this.page = min - 1
+          this.inRequestNext = true
 
           // save the old height
           let oldHeight = this.$el.scrollHeight
@@ -114,6 +130,8 @@ export default {
           }
           this.length = response.data.count
           this.inRequest = false
+          this.inRequestPrev = false
+          this.inRequestNext = false
           if (isNil(response.data.next)) {
             this.completed = true
           }
@@ -122,7 +140,11 @@ export default {
           }
         })
         .catch((error) => { this.$i18nToast().error(error) })
-        .finally(() => { this.inRequest = false })
+        .finally(() => {
+          this.inRequest = false
+          this.inRequestPrev = false
+          this.inRequestNext = false
+        })
     },
   },
 

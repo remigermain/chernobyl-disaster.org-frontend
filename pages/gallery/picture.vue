@@ -1,16 +1,15 @@
 <template>
   <div class="grid-picture" @scroll="scroll">
-    <gallery-infinite-loading ref="prevLoading" position="lower" :completed="hasPrevPage" @visible="prevPage">
-      <template v-slot:completed>
-        &nbsp;
-      </template>
-    </gallery-infinite-loading>
     <div class="flex w-full flex-wrap justify-around">
+      <lazy-gallery-picture v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" :skeleton="true" :object="{}" />
+      <gallery-infinite-loading ref="prevLoading" position="lower" :completed="!hasPrevPage" @visible="prevPage" />
       <lazy-gallery-picture v-for="(el, idx) in object"
                             :key="el.id"
                             :object="el"
                             @click="setCurrent(el, idx)"
       />
+      <gallery-infinite-loading ref="nextLoading" position="upper" :completed="completed" @visible="nextPage" />
+      <lazy-gallery-picture v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" :skeleton="true" :object="{}" />
     </div>
     <lazy-gallery-detail-picture :object="current"
                                  :idx="currentIdx"
@@ -19,7 +18,6 @@
                                  @next="nextDetail"
                                  @prev="prevDetail"
     />
-    <gallery-infinite-loading ref="nextLoading" position="upper" :completed="completed" @visible="nextPage" />
   </div>
 </template>
 

@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import has from "lodash/has"
 import isArray from "lodash/isArray"
 
 export default {
@@ -127,10 +126,7 @@ export default {
       }
     },
     convertName(field, value) {
-      if (has(field, "fnc")) {
-        return field.fnc(value)
-      }
-      return isArray(value) ? value.join() : value
+      return field?.fnc(value) || (isArray(value) ? value.join() : value)
     }
   }
 

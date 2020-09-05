@@ -1,10 +1,12 @@
 <template>
-  <img class="picture-item"
-       :alt="object.title"
-       :src="object.picture.thumbnail"
-       loading="lazy"
-       @click="$emit('click')"
-  >
+  <component :is="tag"
+             class="picture-item"
+             :class="{'skeleton': skeleton}"
+             :alt="title"
+             :src="picture"
+             loading="lazy"
+             @click="$emit('click')"
+  />
 </template>
 
 <script>
@@ -14,8 +16,23 @@ export default {
       type: Object,
       required: true
     },
+    skeleton: {
+      type: Boolean,
+      default: false
+    }
   },
 
+  computed: {
+    title () {
+      return this.object?.title
+    },
+    picture () {
+      return this.object?.picture?.thumbnail
+    },
+    tag () {
+      return (this.skeleton ? "div" : "img")
+    }
+  }
 }
 </script>
 
@@ -24,14 +41,19 @@ export default {
 .picture-item {
   width: 220px;
   height: 140px;
-  //height: auto;
   padding: 5px;
-  cursor: pointer;
   overflow: hidden;
-  transition: transform .4s, width 1s, height  1s;
-  object-fit: cover;
-  &:hover {
-    transform: scale(105%);
+  &:not(.skeleton) {
+    transition: transform .4s, width 1s, height  1s;
+    cursor: pointer;
+    object-fit: cover;
+    &:hover {
+      transform: scale(105%);
+    }
+  }
+  &.skeleton {
+    background-clip: content-box;
+    @apply animate-pulse bg-gray-400;
   }
 }
 

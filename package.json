@@ -25,7 +25,6 @@
     "luxon": "^1.24.1",
     "nuxt": "^2.14.0",
     "nuxt-i18n": "^6.13.8",
-    "scroll-into-view-if-needed": "^2.2.25",
     "vue-datetime": "^1.0.0-beta.13",
     "weekstart": "^1.0.1"
   },
@@ -45,6 +44,7 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-plugin-transform-remove-debugger": "^6.9.4",
     "cross-env": "^7.0.2",
+    "element-in-view-rgermain": "^1.2.0",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
@@ -64,6 +64,7 @@
     "nuxt-purgecss": "^1.0.0",
     "prettier": "^2.0.5",
     "sass-loader": "^9.0.2",
+    "scroll-into-view-if-needed": "^2.2.25",
     "webp-loader": "^0.6.0"
   }
 }

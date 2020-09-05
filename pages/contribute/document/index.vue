@@ -77,10 +77,7 @@ export default {
         {
           field: "event",
           label: this.$t("admin.model.event"),
-          fnc: (el) => {
-            const a =  this.$store.getters["model/event"](el)
-            return a ? a.display_name : el
-          }
+          fnc: (el) => this.$store.getters["model/event"](el)?.display_name || el
         },
       ],
       tableFieldLang: [

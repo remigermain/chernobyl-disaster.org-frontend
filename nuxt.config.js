@@ -1,9 +1,5 @@
-const isDev = process.env.Node_ENV !== "production"
+const isDev = process.env.NODE_ENV !== "production"
 const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
-
-import i18nConfig from "./config/i18n"
-import babelConfig from "./config/babel"
-
 
 export default {
 
@@ -46,8 +42,6 @@ export default {
     "~/plugins/toast.js",
   ],
 
-  i18n: i18nConfig, // i18n required in top
-
   modules: [
     "@nuxtjs/sitemap",
     "@nuxtjs/pwa",
@@ -57,6 +51,8 @@ export default {
     "nuxt-i18n",
   ],
 
+  i18n: require("./config/i18n").default, // i18n required in top
+
   sitemap: {
     hostname: apiUrl,
     gzip: true,
@@ -64,7 +60,7 @@ export default {
       "/contribute/**",
     ],
   },
-  robots: {},
+  robots: {}, //TODO
 
   auth: {
     resetOnError: true, // une erreur 403/401 supprimer toutes les info, et redirige vers login
@@ -185,7 +181,7 @@ export default {
     devtools: isDev,
 
     babel: {
-      ...babelConfig
+      ...require("./config/babel").default
     },
 
     optimizeCSS: true,
