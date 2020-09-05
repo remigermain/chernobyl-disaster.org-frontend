@@ -126,7 +126,7 @@ export default {
       }
     },
     convertName(field, value) {
-      return field?.fnc(value) || (isArray(value) ? value.join() : value)
+      return field.fnc?.(value) || (isArray(value) ? value.join() : value)
     }
   }
 

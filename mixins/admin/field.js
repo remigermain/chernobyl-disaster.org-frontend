@@ -19,7 +19,7 @@ export default {
       required: true,
     },
     value: {
-      type: [String, Array, Number],
+      type: [String, Array, Number, Object],
       required: false,
       default: null
     },

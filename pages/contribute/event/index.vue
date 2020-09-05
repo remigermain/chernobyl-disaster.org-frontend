@@ -38,6 +38,7 @@
 
 <script>
 
+import detail from "@/mixins/admin/detail"
 import list from "@/mixins/admin/list"
 import event from "@/mixins/model/event"
 
@@ -46,7 +47,8 @@ export default {
 
   mixins:  [
     list,
-    event
+    event,
+    detail,
   ],
 
   async asyncData ({redirect, $axios, app}) {
@@ -74,7 +76,11 @@ export default {
       tableField: [
         {field: "id", label: this.$t("admin.model.id")},
         {field: "title", label: this.$t("admin.model.title")},
-        {field: "date", label: this.$t("admin.model.date")},
+        {
+          field: "date",
+          label: this.$t("admin.model.date"),
+          fnc: (el) => this.getDateYear(el)
+        },
       ],
       tableFieldLang: [
         {field: "id", label: this.$t("admin.model.id")},

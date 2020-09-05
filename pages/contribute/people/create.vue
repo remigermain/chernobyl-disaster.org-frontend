@@ -15,7 +15,7 @@
       <lazy-admin-text :field="fields.name" :errors="errors.name" />
       <lazy-admin-date :field="fields.born" :errors="errors.born" />
       <lazy-admin-date :field="fields.death" :errors="errors.death" />
-      <lazy-admin-file :field="fields.profil" :errors="errors.profil" />
+      <lazy-admin-image :field="fields.profil" :errors="errors.profil" />
       <lazy-admin-url :field="fields.wikipedia" :errors="errors.wikipedia" />
       <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
     </template>

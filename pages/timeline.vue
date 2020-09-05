@@ -1,21 +1,7 @@
 <template>
   <div class="grid-timeline">
-    <p class="timeline-date">
-      <span class="text-4xl">
-        {{ getDateYear(current.date) }}
-      </span>
-      <span v-show="!isTimeEmpty(current.date)" class="text-xl italic">
-        {{ getTime(current.date) }}
-      </span>
-    </p>
-    <h1 class="timeline-title text-4xl capitalize italic">
-      {{ i18nAttr(current, 'title') }}
-    </h1>
     <timeline-list :class="{'active': active}" :object="object" @select="setCurrent" />
-    <p class="timeline-text p-4 leading-6 overflow-y-scroll">
-      {{ i18nAttr(current, 'description') }}
-    </p>
-    <timeline-extra class="timeline-extra" :object="current" />
+    <nuxt-child :current="current" />
   </div>
 </template>
 
@@ -48,7 +34,7 @@ export default {
           ...result.map(x => {return {...x, id: x.id * 1000}})]
         return {
           object: results,
-          current: timelineElement(results, route.query)
+          current: timelineElement(results, route.params.slug)
         }
       })
   },
@@ -62,28 +48,9 @@ export default {
   methods: {
     setCurrent (obj) {
       this.current = obj
+      //this.redirect({name: "timeline-id", params: {id: this.i18nAttr(this.current, "title").replace(" ", "_")}})
     }
   },
-
-  head () {
-    return {
-      title: this.i18nAttr(this.current, "title"),
-      meta: [
-          { hid: "description", name: "description", content: this.i18nAttr(this.current, "description") },
-          { property: "og:title", content: this.i18nAttr(this.current, "title")},
-          { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.i18nAttr(this.current, "description")},
-          { property: "og:type", content: "website"},
-          { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.i18nAttr(this.current, "description") },
-          { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.i18nAttr(this.current, "title") },
-          { name: "twitter:description", content: this.i18nAttr(this.current, "description") },
-          { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.i18nAttr(this.current, "title") }
-      ]
-    }
-  }
 }
 </script>
 
@@ -96,43 +63,11 @@ export default {
   gap: .5em .5em;
 }
 
-.icon-timeline {
-  display: none;
-}
-
 @media screen and (max-width: 850px){
   .grid-timeline {
     grid-template-columns: 1fr;
     grid-template-rows: 60px 60px 1fr auto;
   }
-  .timeline-date,
-  .timeline-list,
-  .timeline-text,
-  .timeline-extra,
-  .timeline-title {
-    grid-area: unset !important;
-  }
 
-}
-
-.timeline-date {
-  grid-area: 1 / 1 / 1 / 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.timeline-title {
-  grid-area: 1 / 2 / 1 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.timeline-text {
-  grid-area: 2 / 2 / 2 / 3;
-}
-.timeline-extra {
-  grid-area: 3 / 2 / 4 / 3;
 }
 </style>

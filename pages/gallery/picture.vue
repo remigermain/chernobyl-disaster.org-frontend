@@ -1,15 +1,18 @@
 <template>
   <div class="grid-picture" @scroll="scroll">
     <div class="flex w-full flex-wrap justify-around">
-      <lazy-gallery-picture v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" :skeleton="true" :object="{}" />
-      <gallery-infinite-loading ref="prevLoading" position="lower" :completed="!hasPrevPage" @visible="prevPage" />
-      <lazy-gallery-picture v-for="(el, idx) in object"
-                            :key="el.id"
-                            :object="el"
-                            @click="setCurrent(el, idx)"
-      />
-      <gallery-infinite-loading ref="nextLoading" position="upper" :completed="completed" @visible="nextPage" />
-      <lazy-gallery-picture v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" :skeleton="true" :object="{}" />
+      <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
+      <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="upper" class="picture-item skeleton" @visible="nextPage" />
+      <img v-for="(el, idx) in object"
+           :key="el.id"
+           class="picture-item"
+           :alt="el.title"
+           :src="el.picture.thumbnail"
+           loading="lazy"
+           @click="setCurrent(el, idx)"
+      >
+      <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="upper" class="picture-item skeleton" @visible="nextPage" />
+      <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>
     <lazy-gallery-detail-picture :object="current"
                                  :idx="currentIdx"
@@ -122,6 +125,43 @@ export default {
 @media screen and (max-width: 840px) {
   .grid-picture{
     grid-area: 1 / 1 / 1 / 2;
+  }
+}
+
+.picture-item {
+  width: 220px;
+  height: 140px;
+  padding: 5px;
+  overflow: hidden;
+  &.skeleton {
+    background-clip: content-box;
+    @apply .animate-pulse .bg-gray-400;
+  }
+  &:not(.skeleton) {
+    transition: transform .4s, width 1s, height  1s;
+    cursor: pointer;
+    object-fit: cover;
+    &:hover {
+      transform: scale(105%);
+    }
+  }
+}
+
+@media screen and (max-width: 1250px){
+  .picture-item {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 650px){
+  .picture-item {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 470px){
+  .picture-item {
+    width: 100%;
   }
 }
 </style>

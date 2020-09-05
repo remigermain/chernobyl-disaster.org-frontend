@@ -1,15 +1,11 @@
 <template>
-  <div class="w-full flex justify-center items-center h-1px" />
+  <div />
 </template>
 
 <script>
 import elementInView from "element-in-view-rgermain"
 export default {
   props: {
-    completed: {
-      type: Boolean,
-      default: false
-    },
     position: {
       type: String,
       default: "upper",
@@ -25,7 +21,7 @@ export default {
 
   methods: {
     isVisible () {
-      if (elementInView(this.$el, this.$parent.$el)) {
+      if (process.client && elementInView(this.$el, {parent: this.$parent.$el, partial: true})) {
         this.$emit("visible")
         return true
       }

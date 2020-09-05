@@ -39,7 +39,8 @@ export default {
     },
     inNext () {
       if (!this.completed) {
-        return new Array(this.$pagination)
+        const max = Math.min(this.length - (Math.max(...this.pageSet) * this.$pagination), this.$pagination)
+        return new Array(Math.max(max, 0))
       }
       return []
     },
@@ -57,10 +58,10 @@ export default {
     scroll () {
       // check if prev and next is visible , and refresh page
       let ret = false
-      if (this.$refs.prevLoading.isVisible() && !this.pageSet.includes(1)) {
+      if (this.$refs.prevLoading?.isVisible() && !this.pageSet.includes(1)) {
         ret = true
       }
-      if (this.$refs.nextLoading.isVisible() && !this.completed) {
+      if (this.$refs.nextLoading?.isVisible() && !this.completed) {
         ret = true
       }
       return ret

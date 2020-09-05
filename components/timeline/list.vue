@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <div class="timeline-list-grid shadow-inner rounded-md bg-gray-800" :class="{'active': active, 'border-l-8 border-yellow-600': !active}">
-      <div id="timeline" class="timeline overflow-y-scroll flex flex-col items-center hide-scroolbar ">
+    <div class="timeline-list-grid shadow-lg rounded-md border-t-8 border-gray-800" :class="{'active': active}">
+      <div id="timeline" class="timeline overflow-y-scroll flex flex-col items-center">
         <div v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
-          <div class="timeline-date flex items-center text-center flex-col px-4 text-gray-200">
+          <div class="timeline-date flex items-center text-center flex-col px-4">
             <p class="text-3xl">
               {{ obj.date.getFullYear() }}
             </p>
-            <p class="text-md italic text-gray-400">
+            <p class="text-md italic text-gray-700">
               {{ getDate(obj.date) }}
             </p>
           </div>
@@ -15,11 +15,11 @@
             <extra-nuxt-link v-for="element in obj.list"
                              :id="element.id"
                              :key="`${obj.id}-${element.id}`"
-                             :to="{name: 'timeline', query: {'detail': element.id}}"
-                             class="group block border-l-8 border-yellow-600 border-opacity-25 bg-gray-700 p-4 cursor-pointer hover:bg-gray-600 relative text-gray-200 rounded-md mt-1"
-                             :class="{'bg-gray-600 border-opacity-100': current.id == element.id }"
+                             :to="{name: 'timeline-slug', params: {'slug': element.slug}}"
+                             class="timeline-element group block p-4 cursor-pointer hover:bg-gray-700 text-white relative rounded-md mt-1"
+                             :class="{'bg-gray-700': current.id == element.id, 'bg-gray-800': current.id != element.id}"
             >
-              <span class="timeline-point bg-white shadow-sm" :class="{'active': current.id == element.id }" />
+              <span class="timeline-point bg-yellow-600 shadow-sm" :class="{'active': current.id == element.id }" />
               <h3 v-show="!isTimeEmpty(element.date)" class="text-xl italic">
                 {{ element.date.toLocaleTimeString($i18n.locale) }}
               </h3>
@@ -31,12 +31,12 @@
         </div>
         <div class="timeline-content relative" />
       </div>
-      <div class="w-full flex justify-center border-t-4 border-yellow-600">
-        <extra-nuxt-link :to="{name: 'timeline', query: {'detail': prevId}}" class="w-2/4 inline-block">
-          <svg-icon name="arrow-left" class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
+      <div class="w-full flex justify-center bg-gray-800 rounded-b-md text-white">
+        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}" class="w-2/4 inline-block">
+          <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>
-        <extra-nuxt-link :to="{name: 'timeline', query: {'detail': nextId}}" class="w-2/4 inline-block">
-          <svg-icon name="arrow-right" class="h-full w-full text-gray-500 hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
+        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': nextId}}" class="w-2/4 inline-block">
+          <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>
       </div>
       <div class="icon-timeline w-6 h-12 bg-yellow-600 text-gray-800 shadow-lg"
@@ -83,15 +83,15 @@ export default {
     },
     nextId () {
       if (this.hasNext) {
-        return this.object[this.object.indexOf(this.current) + 1].id
+        return this.object[this.object.indexOf(this.current) + 1].slug
       }
-      return this.current.id
+      return this.current.slug
     },
     prevId () {
       if (this.hasPrev) {
-        return this.object[this.object.indexOf(this.current) - 1].id
+        return this.object[this.object.indexOf(this.current) - 1].slug
       }
-      return this.current.id
+      return this.current.slug
     },
   },
 
@@ -99,9 +99,9 @@ export default {
     object () {
       this.listCopy = this.listCreate()
     },
-    "$route.query": {
-      handler (query) {
-        return this.setCurrent(timelineElement(this.object, query))
+    "$route.params": {
+      handler (params) {
+        return this.setCurrent(timelineElement(this.object, params.slug))
       }
     },
     current () {
@@ -110,10 +110,13 @@ export default {
   },
 
   created() {
-    return this.setCurrent(timelineElement(this.object, this.$route.query))
+    return this.setCurrent(timelineElement(this.object, this.$route.params.slug))
   },
 
   methods: {
+    toUrlParams (st) {
+      return st.replace(/\s+/g, "-")
+    },
     toogleActive () {
       this.active = !this.active
     },
@@ -150,7 +153,7 @@ export default {
       return list
     },
     setCurrent (element) {
-      this.$router.push({query: {"detail": element.id}})
+      this.redirect({name: "timeline-slug", params: {"slug": element.slug}})
       this.current = element
       this.scroll()
       this.$emit("select", element)
@@ -174,12 +177,32 @@ export default {
   }
 }
 
+@media screen and (min-width: 850px){
+  .timeline > *:nth-child(2n + 2) {
+    & > .timeline-date {
+      order: 1;
+    }
+    .timeline-element {
+      @apply .border-r-8 .border-black .border-l-0;
+    }
+    .timeline-point {
+      right: calc((var(--size) + 8px) / 2 * -1);
+      left: unset;
+    }
+  }
+}
+
+.timeline-element {
+  @apply .border-l-8 .border-black .border-r-0;
+}
+
 .timeline-point {
   --size: 1em;
   position: absolute;
   top: var(--size);
   // 8 px == border size
   left: calc((var(--size) + 8px) / 2 * -1);
+  right: unset;
   transform-origin: center;
   transition: transform .2s;
   width: var(--size);
@@ -201,6 +224,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 50px;
+  background: linear-gradient(white 1%, #0909094d);
 }
 
 .icon-timeline {
@@ -216,11 +240,18 @@ export default {
   .timeline-list-grid {
     position: absolute;
     top: 1vh;
-    left: 0;
-    min-width: 50vw;
+    left: 1vw;
+    width: 50vw;
     height: 98vh;
+    max-width: 400px;
     transition: transform .5s;
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 1.1vw));
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    background-color: white;
     &.active {
       z-index: 41;
       transform: translateX(0);
@@ -232,11 +263,17 @@ export default {
     z-index: 42;
     transform: translateX(100%);
     transition: transform .5s;
+    &:hover {
+      transform: translateX(100%) scale(1.4);
+    }
     & > svg {
       transition: transform .5s;
     }
     &.active {
       transform: translateX(0);
+      &:hover {
+        transform: translateX(-0.3em) scale(1.4);
+      }
       & > svg {
         transform: rotate(-180deg);
       }
@@ -253,19 +290,25 @@ export default {
     }
   }
 
+  .background-navbar {
+    transition: background-color .2s;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 40;
+    &.active {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
 }
 
-.background-navbar {
-  transition: background-color .2s;
-  background-color: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 40;
-  &.active {
-    background-color: rgba(0, 0, 0, 0.7);
+@media screen and (max-width: 450px){
+  .timeline-list-grid {
+    width: 98vw;
+    height: 98vh;
   }
 }
 </style>

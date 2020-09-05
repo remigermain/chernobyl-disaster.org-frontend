@@ -80,14 +80,14 @@ export default {
       border-radius: 3px;
       opacity: 0;
     }
-    &.nuxt-link-exact-active {
+    &.nuxt-link-active {
       opacity: 1;
       &::after {
         width: 100%;
         opacity: 1;
       }
     }
-    &:not(.nuxt-link-exact-active)
+    &:not(.nuxt-link-active)
     {
       opacity: .5;
       &:hover {

@@ -9,7 +9,7 @@
       </span>
     </div>
     <div class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-900 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg">
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 md:rounded-tl-lg': pictureActive}" @click.prevent="pictureShow">
+      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': pictureActive}" @click.prevent="pictureShow">
         <svg-icon name="photo" class="extra-icon-mobile" />
       </button>
       <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': videoActive}" @click.prevent="videoShow">
@@ -32,7 +32,7 @@
              class="extra extra-picture"
              @click="setCurrent(img, idx)"
         >
-        <span v-if="object.pictures.length == 0" class="italic text-white text-opacity-50">
+        <span v-if="object.pictures.length == 0" class="italic text-gray-700 text-opacity-50">
           {{ empty }}
         </span>
         <lazy-gallery-detail-picture v-else
@@ -144,6 +144,7 @@ export default {
 .grid-extra {
   display: grid;
   grid-template-columns: auto 1fr;
+  @apply .border-t-8 .border-gray-800;
 }
 
 .extra {
@@ -199,6 +200,7 @@ export default {
     grid-template-rows: 60px auto 1fr;
     transition: height .6s;
     height: 60px;
+    border-top-width: 0;
     &.active {
       height: 70vh;
     }
