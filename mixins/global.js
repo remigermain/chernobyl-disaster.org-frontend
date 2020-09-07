@@ -43,7 +43,7 @@ export default {
       if (obj.key) return obj[key]
 
       // return first langs
-      if (obj.langs.length > 0) return obj.langs[0]
+      if (obj.langs.length > 0) return obj.langs[0][key]
 
       return this.$t("errors.language")
     },

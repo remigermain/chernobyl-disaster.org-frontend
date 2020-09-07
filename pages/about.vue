@@ -73,7 +73,7 @@
 export default {
   name: "About",
 
-  asyncData({ app }) {
+  asyncData({app}) {
     return app.$axios.get("populate/contributors")
       .then(response => {
         if (response.status != 200) {

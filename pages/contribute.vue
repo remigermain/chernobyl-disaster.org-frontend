@@ -36,12 +36,6 @@ export default {
     return {
       menus: [
         {
-          name: this.$t("admin.label.account"),
-          help: this.$t("admin.help.global.account"),
-          to: {name: "contribute-account"},
-          toCreate: {name: "contribute-account-create"}
-        },
-        {
           name: this.$t("admin.label.event"),
           help: this.$t("admin.help.global.event"),
           to: {name: "contribute-event"},

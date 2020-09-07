@@ -11,6 +11,9 @@
         <svg-icon name="logout" />
         {{ $t('auth.logout') }}
       </button>
+      <lazy-extra-nuxt-link :to="{name: 'contribute-account'}" class="contribute-navbar-link ml-4" @click="active = false">
+        {{ $t("admin.label.account") }}
+      </lazy-extra-nuxt-link>
       <lazy-extra-nuxt-link v-for="menu in menus" :key="menu.to.name" :to="menu.to" class="contribute-navbar-link ml-4" @click="active = false">
         {{ menu.name }}
       </lazy-extra-nuxt-link>

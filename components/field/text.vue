@@ -1,26 +1,28 @@
 <template>
-  <div class="flex mt-2">
-    <span class="px-2 flex justify-center items-center text-gray-700">
-      <slot name="icon" />
-    </span>
-    <label class="w-full text-gray-700 text-sm font-bold capitalize flex flex-col-reverse border-b-2 border-gray-600">
-      <input v-model="valueModel"
-             :type="type"
-             :name="field.name"
-             :maxlength="field.max_length"
-             :required="field.required"
-             :class="{'empty': valueModel === '' }"
-             class="p-2 input"
-             @input="$emit('input', valueModel)"
-             @change="$emit('change', valueModel)"
-      >
-      <span class="input-label">
-        {{ field.label }}
+  <div class="flex flex-col">
+    <div class="flex mt-2">
+      <span class="px-2 flex justify-center items-center text-gray-700">
+        <slot name="icon" />
       </span>
-    </label>
-    <span class="px-2 flex justify-center items-center text-gray-700">
-      <slot name="icon-right" />
-    </span>
+      <label class="w-full text-gray-700 text-sm font-bold capitalize flex flex-col-reverse border-b-2 border-gray-600">
+        <input v-model="valueModel"
+               :type="type"
+               :name="field.name"
+               :maxlength="field.max_length"
+               :required="field.required"
+               :class="{'empty': valueModel === '' }"
+               class="p-2 input"
+               @input="$emit('input', valueModel)"
+               @change="$emit('change', valueModel)"
+        >
+        <span class="input-label">
+          {{ field.label }}
+        </span>
+      </label>
+      <span class="px-2 flex justify-center items-center text-gray-700">
+        <slot name="icon-right" />
+      </span>
+    </div>
     <admin-error :errors="errors" />
   </div>
 </template>

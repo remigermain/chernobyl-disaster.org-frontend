@@ -144,6 +144,6 @@ export default {
   height: 100vh;
   position: absolute;
   z-index: 45;
-  @apply .bg-gray-900 .bg-opacity-25;
+  @apply .bg-gray-900 .bg-opacity-75;
 }
 </style>

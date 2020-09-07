@@ -6,7 +6,6 @@
         },
         "help": {
             "global": {
-                "account": "account",
                 "event": "event",
                 "language": "language",
                 "people": "people",
@@ -116,6 +115,7 @@
         "reset-password": "reset-password"
     },
     "errors": {
+        "auth": "auth",
         "create": "create",
         "error-in-form": "error-in-form",
         "language": "language",
@@ -192,6 +192,7 @@
     "success": {
         "contact": "contact",
         "create": "create",
+        "delete-account": "delete-account",
         "report": "report",
         "update": "update"
     },
