@@ -4,12 +4,12 @@
       {{ model.label }}
     </template>
     <template v-slot:breadcrumbs>
-      <lazy-bread-crumb>
+      <lazy-contribute-breadcrumb>
         <lazy-extra-nuxt-link :to="pathList.path">
           {{ pathList.label }}
         </lazy-extra-nuxt-link>
         {{ $route.params.id }}
-      </lazy-bread-crumb>
+      </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:detail>
       <div class="flex -md:flex-col items-center p-4 flex-wrap">

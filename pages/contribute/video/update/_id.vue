@@ -4,13 +4,13 @@
       {{ model.label }}
     </template>
     <template v-slot:breadcrumbs>
-      <lazy-bread-crumb>
+      <lazy-contribute-breadcrumb>
         <lazy-extra-nuxt-link :to="pathList.path">
           {{ pathList.label }}
         </lazy-extra-nuxt-link>
         {{ pathUpdate.label }}
         {{ $route.params.id }}
-      </lazy-bread-crumb>
+      </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:form>
       <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title" />

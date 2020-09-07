@@ -4,12 +4,12 @@
       {{ model.label }}
     </template>
     <template v-slot:breadcrumbs>
-      <lazy-bread-crumb>
+      <lazy-contribute-breadcrumb>
         <lazy-extra-nuxt-link :to="pathList.path">
           {{ pathList.label }}
         </lazy-extra-nuxt-link>
         {{ pathCreate.label }}
-      </lazy-bread-crumb>
+      </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:form>
       <lazy-admin-text :field="fields.name" :errors="errors.name" />

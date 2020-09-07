@@ -134,6 +134,10 @@ export default {
       path: "~/components/timeline/",
       prefix: "timeline"
     },
+    {
+      path: "~/components/contribute/",
+      prefix: "contribute"
+    },
   ],
 
   optimizedImages: {

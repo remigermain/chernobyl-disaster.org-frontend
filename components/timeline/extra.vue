@@ -8,21 +8,15 @@
         <svg-icon name="arrow-up" class="extra-toolbar-mobile-icon" :class="{'active': activeMenu}" />
       </span>
     </div>
-    <div class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-900 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg">
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': pictureActive}" @click.prevent="pictureShow">
+    <div class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg -md:rounded-b-lg">
+      <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': pictureActive, 'bg-gray-900 -md:rounded-lg': !pictureActive}" @click.prevent="pictureShow">
         <svg-icon name="photo" class="extra-icon-mobile" />
       </button>
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': videoActive}" @click.prevent="videoShow">
+      <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}" @click.prevent="videoShow">
         <svg-icon name="movie" class="extra-icon-mobile" />
       </button>
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800': documentActive}" @click.prevent="documentShow">
-        <svg-icon name="file-text" class="extra-icon-mobile" />
-      </button>
-      <button class="w-full h-1/4 px-4" :class="{'bg-gray-800 md:rounded-bl-lg': articleActive}" @click.prevent="articleShow">
-        <svg-icon name="news" class="extra-icon-mobile" />
-      </button>
     </div>
-    <div class="extra-toolbar-desktop bg-gray-800 overflow-y-scroll flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
+    <div class="extra-toolbar-desktop overflow-y-scroll flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
       <template v-if="pictureActive">
         <img v-for="(img, idx) in object.pictures"
              :key="img.id"
@@ -82,21 +76,11 @@ export default {
     videoActive () {
       return this.active === active.VIDEO
     },
-    articleActive () {
-      return this.active === active.ARTICLE
-    },
-    documentActive () {
-      return this.active === active.DOCUMENT
-    },
     activeExtra() {
       if (this.pictureActive) {
         return this.object.pictures
-      } else if (this.videoActive) {
-        return this.object.videos
-      } else if (this.articleActive) {
-        return this.object.articles
       } else {
-        return this.object.documents
+        return this.object.videos
       }
     }
   },
@@ -110,12 +94,6 @@ export default {
     },
     videoShow () {
       return this.active = active.VIDEO
-    },
-    articleShow () {
-      return this.active = active.ARTICLE
-    },
-    documentShow () {
-      return this.active = active.DOCUMENT
     },
     setCurrent (current, idx) {
       this.current = current
@@ -210,8 +188,8 @@ export default {
     flex-direction: row;
     overflow: hidden;
     display: flex;
-    & > button {
-      width: 25%;
+    & > .extra-btn {
+      width: 50%;
       height: auto;
     }
   }

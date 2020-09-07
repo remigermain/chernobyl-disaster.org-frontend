@@ -1,9 +1,9 @@
 <template>
   <lazy-model-list :model="$t('admin.label.account')" :create="false">
     <template v-slot:breadcrumbs>
-      <lazy-bread-crumb>
+      <lazy-contribute-breadcrumb>
         {{ $t('admin.label.account') }}
-      </lazy-bread-crumb>
+      </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:label>
       {{ $t('admin.label.account') }}
@@ -27,11 +27,26 @@
           <h2 class="text-xl">
             {{ $t('auth.delete-account') }}
           </h2>
-          <form class="account-form shadow-sm p-4" @submit.prevent="submitPassword">
+          <form class="account-form shadow-sm p-4" @submit.prevent="active = true">
             <button type="submit" class="px-2 py-2 bg-red-800 rounded text-gray-200 hover:bg-red-900 w-full mt-4 text-center">
               {{ $t('utils.delete') }}
             </button>
           </form>
+          <div v-if="active" class="modal flex justify-center items-center" @click.prevent="active = false">
+            <div class="flex flex-col shadows bg-white rounded-lg px-4 pt-4 pb-1" @click.stop>
+              <span class="mb-8">
+                {{ $t('auth.delete-account-confirme') }}
+              </span>
+              <div class="flex justify-end">
+                <button class="py-1 px-4 border border-solid border-gray-800 rounded-md mr-1 hover:bg-gray-200" @click.prevent="active = false">
+                  {{ $t('utils.cancel') }}
+                </button>
+                <button class="py-1 px-4 bg-red-800 rounded-md text-white hover:bg-red-700" @click.prevent="submitDelete">
+                  {{ $t('utils.yes') }}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </template>
@@ -45,6 +60,7 @@ export default {
 
   data () {
     return {
+      active: false,
       errors: {
         new_password1: [],
         new_password2: [],
@@ -92,6 +108,24 @@ export default {
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })
+    },
+    submitDelete () {
+      this.loading = true
+
+      this.$axios.post("auth/delete/")
+        .then(response => {
+          if (response.status != 200) {
+            throw Error("")
+          }
+          this.$i18nToast().success(this.$t("success.delete-account"))
+          this.$auth.logout()
+          this.redirect({ name: "home" })
+        })
+        .catch((error) => { this.requestError(error) })
+        .finally(() => {
+          this.loading = false
+          this.active = false
+        })
     }
   }
 
@@ -101,5 +135,15 @@ export default {
 <style lang="scss" scoped>
 .account-form > * {
   margin-top: 1.5rem
+}
+
+.modal {
+  top:0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 45;
+  @apply .bg-gray-900 .bg-opacity-25;
 }
 </style>

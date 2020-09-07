@@ -1,6 +1,6 @@
 <template>
   <div class="grid-layout-contribute-navbar">
-    <div class="background-contribute-navbar" :class="{'active': active, 'hidden': !active }" />
+    <div class="background-contribute-navbar" :class="{'active': active, 'hidden': !active }" @click="active = false" />
     <label class="burger" :class="{'active': active }" @click="toogleNavbar">
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
@@ -107,8 +107,8 @@ export default {
     .contribute-navbar-items {
       transition: transform var(--contribute-navbar--annimation-duration);
       position: fixed;
-      width: 50%;
-      min-width: 250px;
+      width: auto;
+      padding: 0 1.5em;
       height: 100%;
       top: 0;
       left: 0;

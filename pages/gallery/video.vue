@@ -1,6 +1,6 @@
 <template>
   <div class="grid-document" @scroll="scroll">
-    <gallery-infinite-loading ref="prevLoading" position="lower" :completed="!hasPrevPage" @visible="prevPage">
+    <gallery-infinite-loading ref="prevLoading" position="top" :completed="!hasPrevPage" @visible="prevPage">
       <template v-slot:completed>
         &nbsp;
       </template>
@@ -12,7 +12,7 @@
         />
       </div>
     </div>
-    <gallery-infinite-loading ref="nextLoading" position="upper" :completed="completed" @visible="nextPage" />
+    <gallery-infinite-loading ref="nextLoading" position="bottom" :completed="completed" @visible="nextPage" />
   </div>
 </template>
 

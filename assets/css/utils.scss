@@ -7,6 +7,9 @@ svg {
   height: 1em;
   display: inline-block;
 }
+symbol {
+  stroke-width: 1.5;
+}
 
 .scrollbar {
   &::-webkit-scrollbar {

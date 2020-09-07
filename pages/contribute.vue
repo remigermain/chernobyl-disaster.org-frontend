@@ -1,6 +1,6 @@
 <template>
   <div class="grid-contribute">
-    <navbar-contribute :menus="menus" />
+    <contribute-navbar :menus="menus" />
     <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4 min-h-full">
       <nuxt-child :key="$route.fullPath" />
       <div v-if="$route.matched.length == 1" class="flex flex-wrap justify-center p-4 gap-4">
@@ -70,18 +70,6 @@ export default {
           help: this.$t("admin.help.global.video"),
           to: {name: "contribute-video"},
           toCreate: {name: "contribute-video-create"}
-        },
-        {
-          name: this.$t("admin.label.document"),
-          help: this.$t("admin.help.global.document"),
-          to: {name: "contribute-document"},
-          toCreate: {name: "contribute-document-create"}
-        },
-        {
-          name: this.$t("admin.label.article"),
-          help: this.$t("admin.help.global.article"),
-          to: {name: "contribute-article"},
-          toCreate: {name: "contribute-article-create"}
         },
       ]
     }

@@ -1,6 +1,3 @@
-import has from "lodash/has"
-import each from "lodash/each"
-
 export default {
 
   data () {
@@ -43,7 +40,7 @@ export default {
       if (el) return el[key]
 
       // if obj has key
-      if (has(obj, key)) return obj[key]
+      if (obj.key) return obj[key]
 
       // return first langs
       if (obj.langs.length > 0) return obj.langs[0]
@@ -51,12 +48,15 @@ export default {
       return this.$t("errors.language")
     },
     requestError (error) {
-      if (has(error, "response") && has(error.response, "data")) {
+      if (error.response?.data?.detail) {
+        this.$i18nToast().error(this.$t("errors.auth")).goAway(4000)
+      }
+      else if (error.response?.data) {
         // assign response to error
         this.errors = error.response.data
         // if non_field_errors as set, create toast
-        if (has(error.response.data, "non_field_errors")) {
-          each(error.response.data.non_field_errors, (msg) => {
+        if (error.response.data.non_field_errors) {
+          error.response.data.non_field_errors.forEach(msg => {
             this.$i18nToast().error(msg).goAway(4000)
           })
         } else {

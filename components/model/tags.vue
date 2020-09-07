@@ -4,7 +4,7 @@
       {{ $t("admin.field.tags") }} :
     </span>
     <span v-if="tags.length" class="flex flex-wrap mt-2">
-      <span v-for="id in tags" :key="id" class="rounded-l-full rounded-r-full bg-blue-700 text-gray-400 text-sm py-1 px-3 mr-1">
+      <span v-for="id in tags" :key="id" class="rounded-l-full rounded-r-full bg-blue-700 text-gray-400 text-sm py-1 px-3 mr-1 mt-1">
         {{ getTag(id).display_name }}
       </span>
     </span>

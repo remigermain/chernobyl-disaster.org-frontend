@@ -7,8 +7,6 @@
         "help": {
             "global": {
                 "account": "account",
-                "article": "article",
-                "document": "document",
                 "event": "event",
                 "language": "language",
                 "people": "people",
@@ -18,22 +16,6 @@
                 "video": "video"
             },
             "model": {
-                "article": {
-                    "date": "date",
-                    "langs": {
-                        "title": "title"
-                    },
-                    "link": "link",
-                    "title": "title"
-                },
-                "document": {
-                    "date": "date",
-                    "document": "document",
-                    "langs": {
-                        "title": "title"
-                    },
-                    "title": "title"
-                },
                 "event": {
                     "date": "date",
                     "langs": {
@@ -76,8 +58,6 @@
         },
         "label": {
             "account": "account",
-            "article": "article",
-            "document": "document",
             "event": "event",
             "people": "people",
             "picture": "picture",
@@ -91,11 +71,10 @@
             "date": "date",
             "death": "death",
             "description": "description",
-            "doc": "doc",
             "event": "event",
             "id": "id",
             "language": "language",
-            "link": "link",
+            "message": "message",
             "name": "name",
             "need-translate": "need-translate",
             "new-comfirm-password": "new-comfirm-password",
@@ -119,8 +98,10 @@
         "ForgetPassword": "ForgetPassword",
         "change-password": "change-password",
         "connection-account": "connection-account",
+        "contact": "contact",
         "create-account": "create-account",
         "delete-account": "delete-account",
+        "delete-account-confirme": "delete-account-confirme",
         "field": {
             "comfirm-password": "comfirm-password",
             "email": "email",
@@ -138,7 +119,6 @@
         "create": "create",
         "error-in-form": "error-in-form",
         "language": "language",
-        "link": "link",
         "network": "network",
         "refresh": "refresh",
         "server": "server",
@@ -146,9 +126,8 @@
     },
     "menu": {
         "about": "A propos de",
-        "article": "article",
+        "contact": "contact",
         "contribute": "contribuer",
-        "document": "document",
         "gallery": "gallery",
         "home": "accueil",
         "login": "connexion",
@@ -180,11 +159,7 @@
                 "description": "description",
                 "title": "title"
             },
-            "article": {
-                "description": "description",
-                "title": "title"
-            },
-            "document": {
+            "contact": {
                 "description": "description",
                 "title": "title"
             },
@@ -215,6 +190,7 @@
         }
     },
     "success": {
+        "contact": "contact",
         "create": "create",
         "report": "report",
         "update": "update"
@@ -251,7 +227,6 @@
         "menu": "menu",
         "need-translate": "need-translate",
         "no": "no",
-        "no-more": "no-more",
         "or": "or",
         "preview": "preview",
         "require": "require",

@@ -36,10 +36,6 @@ export default {
     }
   },
 
-  beforeCreate () {
-    console.log("iicic")
-  },
-
   head () {
     return {
       title: this.i18nAttr(this.current, "title"),

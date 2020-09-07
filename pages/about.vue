@@ -13,10 +13,10 @@
           <svg-icon name="language" />
           {{ $t('pages.about.traduction') }}
         </a>
-        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
+        <extra-nuxt-link :to="{name: 'contact'}" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
           <svg-icon name="mail" />
           {{ $t('pages.about.contact') }}
-        </a>
+        </extra-nuxt-link>
       </div>
       <h3 class="text-3xl text-md capitalize">
         {{ $t('pages.about.contributors') }}

@@ -39,18 +39,6 @@
             {{ $t('menu.video') }}
           </span>
         </lazy-extra-nuxt-link>
-        <lazy-extra-nuxt-link :to="{name: 'gallery-document'}" class="toolbar-link">
-          <svg-icon name="file-text" class="w-6 h-6" />
-          <span class="gallery-toolbar-text">
-            {{ $t('menu.document') }}
-          </span>
-        </lazy-extra-nuxt-link>
-        <lazy-extra-nuxt-link :to="{name: 'gallery-article'}" class="toolbar-link">
-          <svg-icon name="news" class="w-6 h-6" />
-          <span class="gallery-toolbar-text">
-            {{ $t('menu.article') }}
-          </span>
-        </lazy-extra-nuxt-link>
       </div>
       <span class="border-b border-gray-500" />
       <div class="toolbar-peoples">
@@ -227,7 +215,7 @@ export default {
     width: 33%
   }
   .toolbar-link {
-    width: 25%;
+    width: 50%;
     margin-top: 0;
     & > svg {
       width: 24px;

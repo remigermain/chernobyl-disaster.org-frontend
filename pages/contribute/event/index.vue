@@ -1,9 +1,9 @@
 <template>
   <lazy-model-list :model="model.name">
     <template v-slot:breadcrumbs>
-      <lazy-bread-crumb>
+      <lazy-contribute-breadcrumb>
         {{ pathList.label }}
-      </lazy-bread-crumb>
+      </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:label>
       {{ model.label }}

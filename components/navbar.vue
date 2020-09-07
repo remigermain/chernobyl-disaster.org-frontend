@@ -1,6 +1,6 @@
 <template>
   <div class="grid-layout-navbar">
-    <div class="background-navbar" :class="{'active': active, 'hidden': !active }" />
+    <div class="background-navbar" :class="{'active': active, 'hidden': !active }" @click="ative = false" />
     <label class="burger" :class="{'active': active }" @click="toogleNavbar">
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
@@ -151,12 +151,6 @@ export default {
   }
 }
 
-
-</style>
-
-
-// burger
-<style lang="scss" scoped>
 .burger {
   --height-span-burger: 6px;
   --margin-span-burger: 4px;
@@ -206,6 +200,12 @@ export default {
   z-index: 1;
   &.active {
     background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media screen and (max-width: 900px){
+  .background-navbar {
+    display: hidden;
   }
 }
 
