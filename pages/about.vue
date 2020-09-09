@@ -1,35 +1,37 @@
 <template>
   <div class="grid-about">
-    <div class="about-description">
-      <h2 class="text-3xl text-md capitalize">
-        {{ $t('pages.about.contributing') }}
-      </h2>
-      <div>
+    <section class="about-description">
+      <section>
+        <h2 class="text-3xl text-md capitalize">
+          {{ $t('pages.about.contributing') }}
+        </h2>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <svg-icon name="brand-gitlab" />
+          <svg-icon name="brand-gitlab" role="img" :aria-label="Gitlab" />
           Gitlab
         </a>
         <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <svg-icon name="language" />
+          <svg-icon name="language" role="img" :aria-label="$t('pages.about.traduction')" />
           {{ $t('pages.about.traduction') }}
         </a>
         <extra-nuxt-link :to="{name: 'contact'}" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <svg-icon name="mail" />
+          <svg-icon name="mail" role="img" :aria-label="$t('pages.about.contact')" />
           {{ $t('pages.about.contact') }}
         </extra-nuxt-link>
-      </div>
-      <h3 class="text-3xl text-md capitalize">
-        {{ $t('pages.about.contributors') }}
-        <div class="wrapper text-red-800">
-          <svg-icon name="heart" class="text-red-800" />
-        </div>
-      </h3>
-      <p class="text-gray-800">
-        {{ $t('pages.about.thanks-contributors') }}
-        <svg-icon name="heart" class="text-red-800" />
-        <svg-icon name="heart" class="text-red-800" />
-      </p>
-      <div class="floa-left contributors">
+      </section>
+      <section>
+        <h3 class="text-3xl text-md capitalize">
+          {{ $t('pages.about.contributors') }}
+          <div class="wrapper text-red-800">
+            <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$('aria.love')" />
+          </div>
+        </h3>
+        <p class="text-gray-800">
+          {{ $t('pages.about.thanks-contributors') }}
+          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$('aria.love')" />
+          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$('aria.love')" />
+        </p>
+      </section>
+      <section class="floa-left contributors">
         <template v-for="user in contributors">
           <span :key="user" class="text-sm">
             {{ user }}
@@ -37,30 +39,32 @@
         </template>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
-          <svg-icon name="mood-sad" />
+          <svg-icon name="mood-sad" role="img" :aria-label="$('aria.mood-sad')" />
         </span>
-      </div>
-      <h1 class="text-2xl italic text-gray-800 pr-4">
-        <a href="https://germainremi.fr" class="text-purple-800 hover:text-purple-500">
-          @GERMAIN remi
+      </section>
+      <article>
+        <h1 class="text-2xl italic text-gray-800 pr-4">
+          <a href="https://germainremi.fr" class="text-purple-800 hover:text-purple-500">
+            @GERMAIN remi
+          </a>
+        </h1>
+        <p class="text-gray-800">
+          <picture>
+            <img loading="lazy" alt="germain remi" src="~/assets/img/profil/profil.jpg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
+          </picture>
+          {{ $t('pages.about.creator-description') }}
+        </p>
+        <h4 class="text-xl text-md capitalize">
+          {{ $t('pages.about.help-me') }}
+        </h4>
+        <p class="text-center text-gray-800 text-sm">
+          {{ $t('pages.about.help-me-description') }}
+        </p>
+        <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden">
+          {{ $t('pages.about.buy-me-coffe') }}
         </a>
-      </h1>
-      <p class="text-gray-800">
-        <picture>
-          <img loading="lazy" alt="germain remi" src="~/assets/img/profil/profil.jpg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
-        </picture>
-        {{ $t('pages.about.creator-description') }}
-      </p>
-      <h4 class="text-xl text-md capitalize">
-        {{ $t('pages.about.help-me') }}
-      </h4>
-      <p class="text-center text-gray-800 text-sm">
-        {{ $t('pages.about.help-me-description') }}
-      </p>
-      <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden">
-        {{ $t('pages.about.buy-me-coffe') }}
-      </a>
-    </div>
+      </article>
+    </section>
     <div class="about-image">
       <picture>
         <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="home-img" class="about-image-item">

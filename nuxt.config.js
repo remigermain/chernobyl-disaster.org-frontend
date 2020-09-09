@@ -43,6 +43,7 @@ export default {
   ],
 
   modules: [
+    "@nuxtjs/robots",
     "@nuxtjs/sitemap",
     "@nuxtjs/pwa",
     "@nuxtjs/axios",
@@ -60,10 +61,13 @@ export default {
       "/contribute/**",
     ],
   },
-  robots: {}, //TODO
+  robots: {
+    UserAgent: "*",
+    Disallow: "/contribute/*"
+  },
 
   auth: {
-    resetOnError: true, // une erreur 403/401 supprimer toutes les info, et redirige vers login
+    resetOnError: true,
     plugins: ["~/plugins/auth.js"],
     redirect: {
       login: "/auth/login",

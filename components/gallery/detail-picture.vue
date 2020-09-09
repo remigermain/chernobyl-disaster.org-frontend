@@ -10,14 +10,28 @@
           {{ position }}
         </div>
         <div class="toolbar-right">
-          <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-picture-id', params: {id: object.id}}" class="toolbar-item">
+          <extra-nuxt-link v-if="$auth.loggedIn"
+                           :to="{name: 'contribute-picture-id', params: {id: object.id}}"
+                           class="toolbar-item"
+                           :aria-label="$t('aria.edit')"
+          >
             <svg-icon name="settings" class="w-inherit h-inherit" />
           </extra-nuxt-link>
           <svg-icon name="x" class="toolbar-item" @click="$emit('close')" />
         </div>
       </div>
-      <svg-icon v-show="hasPrev" name="arrow-left" class="toolbar-item toolbar-slide-prev" @click="$emit('prev')" />
-      <svg-icon v-show="hasNext" name="arrow-right" class="toolbar-item toolbar-slide-next" @click="$emit('next')" />
+      <svg-icon v-show="hasPrev"
+                name="arrow-left"
+                class="toolbar-item toolbar-slide-prev"
+                :aria-label="$t('aria.prev')"
+                @click="$emit('prev')"
+      />
+      <svg-icon v-show="hasNext"
+                name="arrow-right"
+                class="toolbar-item toolbar-slide-next"
+                :aria-label="$t('aria.next')"
+                @click="$emit('next')"
+      />
       <div class="picture-item-container">
         <img :alt="object.title"
              :src="object.picture.full"
@@ -25,15 +39,16 @@
              loading="lazy"
         >
       </div>
-      <div class="picture-title">
-        {{ i18nAttr(object, 'title') }}
-      </div>
+      <section class="picture-title">
+        <h2>
+          {{ i18nAttr(object, 'title') }}
+        </h2>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-import isNil from "lodash/isNil"
 
 export default {
 
@@ -75,7 +90,7 @@ export default {
 
   watch: {
     object (newValue, oldValue) {
-      this.transition = isNil(oldValue)
+      this.transition = !oldValue
     }
   },
 }

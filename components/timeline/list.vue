@@ -1,16 +1,16 @@
 <template>
   <div class="wrapper">
     <div class="timeline-list-grid shadow-lg rounded-md border-t-8 border-gray-800" :class="{'active': active}">
-      <div id="timeline" class="timeline overflow-y-scroll flex flex-col items-center">
-        <div v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
-          <div class="timeline-date flex items-center text-center flex-col px-4">
-            <p class="text-3xl">
+      <section id="timeline" class="timeline overflow-y-scroll flex flex-col items-center">
+        <section v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
+          <header class="timeline-date flex items-center text-center flex-col px-4">
+            <time :datetime="obj.date.getFullYear()" class="text-3xl">
               {{ obj.date.getFullYear() }}
-            </p>
-            <p class="text-md italic text-gray-700">
+            </time>
+            <time :datetime="getDate(obj.date)" class="text-md italic text-gray-700">
               {{ getDate(obj.date) }}
-            </p>
-          </div>
+            </time>
+          </header>
           <section class="timeline-item mr-1">
             <extra-nuxt-link v-for="element in obj.list"
                              :id="element.id"
@@ -20,27 +20,35 @@
                              :class="{'bg-gray-700': current.id == element.id, 'bg-gray-800': current.id != element.id}"
             >
               <span class="timeline-point bg-yellow-600 shadow-sm" :class="{'active': current.id == element.id }" />
-              <h3 v-show="!isTimeEmpty(element.date)" class="text-xl italic">
+              <time v-show="!isTimeEmpty(element.date)" :datetime="element.date.toLocaleTimeString($i18n.locale)" class="text-xl italic">
                 {{ element.date.toLocaleTimeString($i18n.locale) }}
-              </h3>
+              </time>
               <h4 class="timeline-footer">
                 {{ i18nAttr(element, 'title') }}
               </h4>
             </extra-nuxt-link>
           </section>
-        </div>
+        </section>
         <div class="timeline-content relative" />
-      </div>
+      </section>
       <div class="w-full flex justify-center bg-gray-900 rounded-b-md text-white">
-        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}" class="w-2/4 inline-block">
+        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}"
+                         class="w-2/4 inline-block"
+                         :aria-label="$('aria.next-event')"
+        >
           <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>
-        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': nextId}}" class="w-2/4 inline-block">
+        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': nextId}}"
+                         class="w-2/4 inline-block"
+                         :aria-label="$('aria.next-event')"
+        >
           <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>
       </div>
       <div class="icon-timeline w-6 h-12 bg-yellow-600 text-gray-800 shadow-lg"
-           :class="{'active rounded-l-full': active, 'rounded-r-full': !active}" @click="toogleActive"
+           :class="{'active rounded-l-full': active, 'rounded-r-full': !active}"
+           :aria-label="$('aria.open-menu')"
+           @click="toogleActive"
       >
         <svg-icon name="arrow-right" class="w-8" />
       </div>
@@ -52,7 +60,6 @@
 <script>
 import timelineMixins from "@/mixins/page/timeline"
 import { timelineElement } from "@/lib/timeline"
-//import { scrollIntoView} from "@/lib/scrool"
 import scrollIntoView from "scroll-into-view-if-needed"
 
 export default {

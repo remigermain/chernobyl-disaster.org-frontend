@@ -26,7 +26,6 @@
 
 <script>
 import galleryMixin from "@/mixins/page/gallery"
-import isNil from "lodash/isNil"
 import { asynDataUrl } from "@/lib/gallery"
 
 export default {
@@ -45,7 +44,7 @@ export default {
         return {
           object: response.data.results,
           length: response.data.count,
-          completed: isNil(response.data.next)
+          completed: !response.data.next
         }
       })
   },

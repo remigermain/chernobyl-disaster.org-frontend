@@ -1,9 +1,9 @@
 
 export const state = () => ({
-  langs: null,
-  events: null,
-  tags: null,
-  photographer: null,
+  langs: [],
+  events: [],
+  tags: [],
+  photographers: [],
   peoples: []
 })
 
@@ -14,7 +14,7 @@ export const mutations = {
     state.tags = data.tags
   },
   POPULATE_PICTURE(state, data) {
-    state.photographer = data.photographer
+    state.photographers = data.photographers
   },
   POPULATE_PEOPLES(state, data) {
     state.peoples = data.peoples
@@ -23,31 +23,18 @@ export const mutations = {
 }
 
 export const getters = {
-  langs: state => {
-    return state.langs
-  },
-  lang: state => value => {
-    return state.langs.find(t => t.value == value)
-  },
-  events: state => {
-    return state.events
-  },
-  event: state => value => {
-    return state.events.find(t => t.value == value)
-  },
-  tags: state => {
-    return state.tags
-  },
-  tag: state => value => {
-    return state.tags.find(t => t.value == value)
-  },
+  langs: state => state.langs,
+  lang: state => value => state.langs.find(t => t.value == value),
+
+  events: state => state.events,
+  event: state => value => state.events.find(t => t.value == value),
+
+  tags: state => state.tags,
+  tag: state => value => state.tags.find(t => t.value == value),
 
   peoples: state => state.peoples,
+  people: state => value => state.peoples.find(t => t.value == value),
 
-  lastPopulate: state => {
-    return state.lastPopulate
-  },
-  photographer: state => {
-    return state.photographer
-  },
+  photographers: state => state.photographers,
+  photographer: state => value => state.photographers.find(t => t.value == value),
 }

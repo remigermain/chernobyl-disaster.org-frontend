@@ -28,7 +28,6 @@
 
 <script>
 import FieldMixins from "@/mixins/admin/field"
-import isArray from "lodash/isArray"
 export default {
 
   mixins: [FieldMixins],
@@ -41,7 +40,7 @@ export default {
 
   watch: {
     value (value) {
-      this.valueModel = (isArray(value) ? value : [])
+      this.valueModel = (Array.isArray(value) ? value : [])
       return value
     }
   },

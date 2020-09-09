@@ -8,13 +8,13 @@
         <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
       </span>
     </div>
-    <div class="gallery-toolbar-desktop  wrapper" :class="{'active': active}">
-      <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search">
+    <navbar class="gallery-toolbar-desktop  wrapper" :class="{'active': active}">
+      <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search" role="search">
         <template v-slot:icon>
           <svg-icon name="search" />
         </template>
       </field-text>
-      <select v-model="ordering" class="form-select bg-gray-200">
+      <select v-model="ordering" class="form-select bg-gray-200" :aria-label="$t('aria.sort-by')">
         <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
           {{ choice.label }}
         </option>
@@ -43,20 +43,17 @@
       <span class="border-b border-gray-500" />
       <div class="toolbar-peoples">
         <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item hover:bg-gray-300 rounded-md" @click="submitPeople(p.name)">
-          <img :src="p.profil" class="w-12 rounded-full object-cover h-12">
+          <img :src="p.profil" class="w-12 rounded-full object-cover h-12" :alt="p.name">
           <span class=" break-words hover:text-indigo-700">
             {{ p.name }}
           </span>
         </span>
       </div>
-    </div>
+    </navbar>
   </div>
 </template>
 
 <script>
-import has from "lodash/has"
-import isNil from "lodash/isNil"
-
 export default {
 
   data () {
@@ -78,15 +75,16 @@ export default {
   },
 
   beforeMount () {
-    if (!isNil(this.$route.query)) {
+    if (this.$route.query) {
       // set the value of search
       this.search = this.$route.query.search || ""
 
       // set value of order if exists in choices
-      if (has(this.$route.query, "ordering")) {
-        if (this.orderingChoices.some(obj => obj.value === this.$route.query.ordering)) {
+      if (
+          this.$route.query.ordering &&
+          this.orderingChoices.some(obj => obj.value === this.$route.query.ordering)
+          ){
           this.ordering = this.$route.query.ordering
-        }
       }
     }
   },

@@ -10,7 +10,7 @@
         <span v-if="valueModel.full" class="p-2">
           {{ $t('utils.currently') }} :
           <a :href="valueModel.full" class="text-purple-700 text-md italic" rel="noopener noreferrer" target="_blank">
-            <img :src="valueModel.thumbnail" loading="lazy">
+            <img :src="valueModel.thumbnail" loading="lazy" alt="">
           </a>
         </span>
         <input type="file"

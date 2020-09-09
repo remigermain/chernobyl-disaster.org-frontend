@@ -1,24 +1,31 @@
 <template>
-  <div class="wrapper">
-    <p class="timeline-date">
-      <span class="text-4xl">
-        {{ getDateYear(current.date) }}
-      </span>
-      <span v-show="!isTimeEmpty(current.date)" class="text-xl italic">
-        {{ getTime(current.date) }}
-      </span>
-    </p>
-    <h1 class="timeline-title text-4xl capitalize italic">
-      <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-event-id', params: {id: current.id}}">
-        <svg-icon name="edit" class="w-8 hover:scale-110 text-purple-800 hover:text-purple-700 block transform" />
-      </extra-nuxt-link>
-      {{ i18nAttr(current, 'title') }}
-    </h1>
-    <p class="timeline-text p-4 leading-6 overflow-y-scroll">
-      {{ i18nAttr(current, 'description') }}
-    </p>
+  <article class="wrapper">
+    <header>
+      <p class="timeline-date">
+        <time :datetime="current.date" class="text-4xl">
+          {{ getDateYear(current.date) }}
+        </time>
+        <time v-show="!isTimeEmpty(current.date)" :datetime="current.date" class="text-xl italic">
+          {{ getTime(current.date) }}
+        </time>
+      </p>
+      <h1 class="timeline-title text-4xl capitalize italic">
+        <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-event-id', params: {id: current.id}}">
+          <svg-icon name="edit"
+                    class="w-8 hover:scale-110 text-purple-800 hover:text-purple-700 block transform"
+                    :aria-label="$('aria-label')"
+          />
+        </extra-nuxt-link>
+        {{ i18nAttr(current, 'title') }}
+      </h1>
+    </header>
+    <section>
+      <p class="timeline-text p-4 leading-6 overflow-y-scroll">
+        {{ i18nAttr(current, 'description') }}
+      </p>
+    </section>
     <timeline-extra class="timeline-extra" :object="current" />
-  </div>
+  </article>
 </template>
 
 <script>

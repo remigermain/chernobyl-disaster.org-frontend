@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-layout">
+  <main class="grid-layout">
     <div class="grid-layout-title">
       <h1 class="grid-layout-title-item font-russia">
         chernobyl
@@ -9,7 +9,7 @@
     <div class="grid-layout-contents hide-scroolbar">
       <nuxt />
     </div>
-  </div>
+  </main>
 </template>
 
 <style lang="scss">

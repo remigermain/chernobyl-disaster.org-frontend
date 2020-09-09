@@ -76,8 +76,6 @@
 </template>
 
 <script>
-import isArray from "lodash/isArray"
-
 export default {
 
   props: {
@@ -126,7 +124,7 @@ export default {
       }
     },
     convertName(field, value) {
-      return field.fnc?.(value) || (isArray(value) ? value.join() : value)
+      return field.fnc?.(value) || (Array.isArray(value) ? value.join() : value)
     }
   }
 

@@ -1,6 +1,6 @@
 <template>
   <div class="grid-contact">
-    <div class="contact-description">
+    <section class="contact-description">
       <p class="font-bold text-gray-900 text-2xl">
         {{ $t('auth.contact') }}
       </p>
@@ -16,7 +16,7 @@
           {{ $t('utils.send') }}
         </field-submit>
       </form>
-    </div>
+    </section>
     <div class="contact-image">
       <picture>
         <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="home-img" class="contact-image-item">

@@ -93,6 +93,12 @@
             "list": "list"
         }
     },
+    "aria": {
+        "edit": "edit",
+        "next": "next",
+        "prev": "prev",
+        "sort-by": "sort-by"
+    },
     "auth": {
         "ForgetPassword": "ForgetPassword",
         "change-password": "change-password",

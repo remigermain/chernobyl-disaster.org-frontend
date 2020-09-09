@@ -1,6 +1,5 @@
 /*
- ** plugins for change header "Accept-language" des requettes ajax
- ** par la language utilisateur
+ ** plugins for change header "Accept-language"
  */
 export default ({ $axios, app }) => {
   $axios.onRequest((config) => {

@@ -22,7 +22,6 @@
     "@nuxtjs/robots": "^2.4.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "destyle.css": "^1.0.14",
-    "lodash": "^4.17.19",
     "luxon": "^1.24.1",
     "nuxt": "^2.14.0",
     "nuxt-i18n": "^6.13.8",

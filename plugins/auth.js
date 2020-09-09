@@ -1,6 +1,6 @@
 /*
- ** plugins pour nuxt-auth modules
- ** qui redirige vers la lang definie
+ ** plugins for nuxt-auth modules
+ ** redirect on i18n routes
  */
 export default ({ app }) => {
   app.$auth.onRedirect((to) => {

@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import isNil from "lodash/isNil"
 export default {
   props: {
     label: {
@@ -18,9 +17,9 @@ export default {
 
   computed: {
     event () {
-      if (isNil(this.value)) return null
+      if (!this.value) return null
       const event = this.$store.getters["model/event"](this.value)
-      if (isNil(event)) return null
+      if (!event) return null
       return event.display_name
     }
   }
