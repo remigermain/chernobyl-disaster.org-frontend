@@ -6,9 +6,9 @@
       </h1>
     </div>
     <navbar />
-    <div id="layout-contents" class="grid-layout-contents hide-scroolbar">
+    <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('utils.content')">
       <nuxt />
-    </div>
+    </section>
   </main>
 </template>
 

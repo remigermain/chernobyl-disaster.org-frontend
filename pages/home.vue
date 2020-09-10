@@ -7,7 +7,9 @@
       <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
         {{ $t('pages.home.description') }}
       </p>
-      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800">
+      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800"
+                            :title="$t('utils.goto-timeline')"
+      >
         {{ $t('menu.timeline') }}
       </lazy-extra-nuxt-link>
     </article>

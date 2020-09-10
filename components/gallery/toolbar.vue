@@ -16,27 +16,33 @@
             <svg-icon name="search" />
           </template>
         </field-text>
-        <select v-model="ordering" class="form-select bg-gray-200" :aria-label="$t('utils.sort-by')">
-          <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
-            {{ choice.label }}
-          </option>
-          <option selected value="">
-            {{ empty }}
-          </option>
-        </select>
+        <label :name="$t('utils.change-order')" class="wrapper">
+          <select v-model="ordering" class="form-select bg-gray-200" :aria-label="$t('utils.sort-by')">
+            <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
+              {{ choice.label }}
+            </option>
+            <option selected value="">
+              {{ empty }}
+            </option>
+          </select>
+        </label>
         <button class="p-2 bg-gray-700 rounded-md text-white hover:bg-gray-800 text-center" @click="submit">
           {{ $t('utils.search') }}
         </button>
         <span class="border-b border-gray-500" />
         <div class="toolbar-menu">
-          <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link">
-            <svg-icon name="photo" class="w-6 h-6" />
+          <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link"
+                                :title="$t('utils.goto-gallery-picture')"
+          >
+            <svg-icon name="photo" class="w-6 h-6" role="img" :aria-label="$t('utils.picture')" />
             <span class="gallery-toolbar-text">
               {{ $t('menu.picture') }}
             </span>
           </lazy-extra-nuxt-link>
-          <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link">
-            <svg-icon name="movie" class="w-6 h-6" />
+          <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link"
+                                :title="$t('utils.goto-gallery-video')"
+          >
+            <svg-icon name="movie" class="w-6 h-6" role="img" :aria-label="$t('utils.video')" />
             <span class="gallery-toolbar-text">
               {{ $t('menu.video') }}
             </span>
@@ -44,8 +50,16 @@
         </div>
         <span class="border-b border-gray-500" />
         <div class="toolbar-peoples">
-          <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item hover:bg-gray-300 rounded-md" @click="submitPeople(p.name)">
-            <img :src="p.profil" class="w-12 rounded-full object-cover h-12" :alt="p.name">
+          <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item hover:bg-gray-300 rounded-md"
+                role="button"
+                tabindex="0"
+                @click="submitPeople(p.name)"
+          >
+            <img :src="p.profil"
+                 class="w-12 rounded-full object-cover h-12"
+                 :alt="p.name"
+                 role="button"
+            >
             <span class=" break-words hover:text-indigo-700">
               {{ p.name }}
             </span>

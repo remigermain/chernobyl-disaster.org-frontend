@@ -6,27 +6,44 @@
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
     </label>
-    <nav class="navbar-items" :class="{'active': active }">
-      <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link" @click="active = false">
+    <nav class="navbar-items" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.navigation-site')">
+      <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link"
+                            :title="$t('utils.goto-home')"
+                            @click="active = false"
+      >
         {{ $t('menu.home') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link" @click="active = false">
+      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link"
+                            :title="$t('utils.goto-timeline')"
+                            @click="active = false"
+      >
         {{ $t('menu.timeline') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link" @click="active = false">
+      <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link"
+                            :title="$t('utils.goto-gallery')"
+                            @click="active = false"
+      >
         {{ $t('menu.gallery') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link" @click="active = false">
+      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link"
+                            :title="$t('utils.goto-contribute')"
+                            @click="active = false"
+      >
         {{ $t('menu.contribute') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link" @click="active = false">
+      <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link"
+                            :title="$t('utils.goto-about')"
+                            @click="active = false"
+      >
         {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
-      <select v-model="value" class="form-select block mt-1 bg-gray-100">
-        <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
-          {{ lang.name }}
-        </option>
-      </select>
+      <label :name="$t('utils.change-language')" class="wrapper">
+        <select v-model="value" class="form-select block mt-1 bg-gray-100">
+          <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
+            {{ lang.name }}
+          </option>
+        </select>
+      </label>
     </nav>
   </div>
 </template>

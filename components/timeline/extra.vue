@@ -13,24 +13,42 @@
       <nav class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg"
            :class="{'active': activeMenu}"
       >
-        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': pictureActive, 'bg-gray-900 -md:rounded-lg': !pictureActive}" @click.prevent="pictureShow">
-          <svg-icon name="photo" class="extra-icon-mobile" />
+        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': pictureActive, 'bg-gray-900 -md:rounded-lg': !pictureActive}"
+                :title="$t('utils.goto-picture')"
+                @click.prevent="pictureShow"
+        >
+          <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('utils.picture')" />
         </button>
-        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}" @click.prevent="videoShow">
-          <svg-icon name="movie" class="extra-icon-mobile" />
+        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}"
+                :title="$t('utils.goto-video')"
+                @click.prevent="videoShow"
+        >
+          <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('utils.video')" />
         </button>
       </nav>
       <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
         <template v-if="pictureActive">
           <img v-for="(img, idx) in object.pictures"
                :key="img.id"
-               :alt="img.title"
+               :alt="i18nAttr(img, 'title')"
                :src="img.picture.thumbnail"
                loading="lazy"
                class="extra extra-picture"
+               tabindex="0"
+               role="button"
                @click="setCurrent(img, idx)"
           >
           <span v-if="object.pictures.length == 0" class="italic text-gray-700 text-opacity-50">
+            {{ empty }}
+          </span>
+        </template>
+        <template v-else>
+          <iframe :src="urlVideo(el.video)" frameborder="0"
+                  class="extra extra-picture"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+          />
+          <span v-if="object.videos.length == 0" class="italic text-gray-700 text-opacity-50">
             {{ empty }}
           </span>
         </template>

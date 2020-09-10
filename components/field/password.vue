@@ -1,8 +1,18 @@
 <template>
   <lazy-field-text v-bind="$attrs" :type="passwordType">
     <template v-slot:icon>
-      <svg-icon v-if="showPassword" name="lock-open" class="inline text-gray-900 cursor-pointer animate-pulse" @click="showPassword = false" />
-      <svg-icon v-else name="lock" class="inline text-gray-600 cursor-pointer animate-pulse" @click="showPassword = true" />
+      <svg-icon v-if="showPassword" name="lock-open" class="inline text-gray-900 cursor-pointer animate-pulse"
+                :aria-label="$t('utils.lock-password')"
+                tabindex="0"
+                role="button"
+                @click="showPassword = false"
+      />
+      <svg-icon v-else name="lock" class="inline text-gray-600 cursor-pointer animate-pulse"
+                :aria-label="$t('utils.un-lock-password')"
+                tabindex="0"
+                role="button"
+                @click="showPassword = true"
+      />
     </template>
   </lazy-field-text>
 </template>

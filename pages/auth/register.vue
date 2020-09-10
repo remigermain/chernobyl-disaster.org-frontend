@@ -1,15 +1,17 @@
 <template>
   <div class="grid-register">
     <div class="register-description">
-      <p class="font-bold text-gray-900 text-2xl">
+      <h1 class="font-bold text-gray-900 text-2xl">
         {{ $t('auth.register-account') }}
-      </p>
-      <p class="text-sm text-gray-600">
+      </h1>
+      <span class="text-sm text-gray-600">
         {{ $t('utils.or') }}
-        <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700">
+        <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+                              :title="$t('auth.goto-login')"
+        >
           {{ $t('auth.login') }}
         </lazy-extra-nuxt-link>
-      </p>
+      </span>
       <form class="bg-white shadow-md rounded px-8 py-6 mb-4 w-full -md:w-full xl:w-3/4 form" @submit.prevent="submit">
         <field-email :field="field.email" :errors="errors.email" />
         <field-username :field="field.username" :errors="errors.username" />

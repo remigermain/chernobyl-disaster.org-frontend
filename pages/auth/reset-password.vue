@@ -1,17 +1,17 @@
 <template>
   <div class="grid-password">
     <div class="password-description">
-      <p class="font-bold text-gray-900 text-2xl">
+      <h1 class="font-bold text-gray-900 text-2xl">
         {{ $t('auth.connection-account') }}
-      </p>
-      <p class="text-sm text-gray-600">
+      </h1>
+      <span class="text-sm text-gray-600">
         {{ $t('utils.or') }}
         <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
                          :title="$t('auth.login')"
         >
           {{ $t('auth.login') }}
         </extra-nuxt-link>
-      </p>
+      </span>
       <p class="text-sm text-gray-600">
         {{ $t('utils.or') }}
         <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"

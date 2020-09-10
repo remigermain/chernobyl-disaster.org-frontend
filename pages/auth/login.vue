@@ -1,18 +1,21 @@
 <template>
   <div class="grid-login">
     <div class="login-description">
-      <p class="font-bold text-gray-900 text-2xl">
+      <h1 class="font-bold text-gray-900 text-2xl">
         {{ $t('auth.connection-account') }}
-      </p>
-      <p class="text-sm text-gray-600">
+      </h1>
+      <span class="text-sm text-gray-600">
         {{ $t('utils.or') }}
         <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
                          :title="$t('auth.create-account')"
         >
           {{ $t('auth.create-account') }}
         </extra-nuxt-link>
-      </p>
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-3/4 form" @submit.prevent="submit">
+      </span>
+      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-3/4 form"
+            :name="$t('auth.form-connection-account')"
+            @submit.prevent="submit"
+      >
         <field-email :field="field.email" :errors="errors.email" />
         <field-password :field="field.password" :errors="errors.password" />
         <div class="flex justify-end mx-auto text-center">
@@ -28,7 +31,7 @@
       </form>
     </div>
     <div class="login-image">
-      <picture>
+      <picture :role="$t('utils.image')">
         <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="home-img" class="login-image-item">
       </picture>
     </div>

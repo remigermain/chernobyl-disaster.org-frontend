@@ -26,6 +26,11 @@ export default {
   },
 
   methods: {
+    // video youtube
+    urlVideo (src) {
+      return src.replace("watch?v=", "embed/")
+    },
+
     // shortcut for router change
     redirect(to) {
       this.$router.push(this.localePath(to))

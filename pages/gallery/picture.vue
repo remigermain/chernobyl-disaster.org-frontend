@@ -6,9 +6,11 @@
       <img v-for="(el, idx) in object"
            :key="el.id"
            class="picture-item"
-           :alt="el.title"
+           :alt="i18nAttr(el, 'title')"
            :src="el.picture.thumbnail"
            loading="lazy"
+           role="button"
+           tabindex="0"
            @click="setCurrent(el, idx)"
       >
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />

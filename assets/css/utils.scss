@@ -33,3 +33,22 @@ symbol {
     display: none;
   }
 }
+
+/* hide the alt attribute */
+img, picture {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+.__nuxt-error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  .logo {
+    display: none;
+  }
+}

@@ -37,13 +37,17 @@
                          class="w-2/4 inline-block"
                          :title="$t('utils.next-event')"
         >
-          <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
+          <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400"
+                    :aria-label="$t('utils.next-event')"
+          />
         </extra-nuxt-link>
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': nextId}}"
                          class="w-2/4 inline-block"
                          :title="$t('utils.next-event')"
         >
-          <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
+          <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400"
+                    :aria-label="$t('utils.next-event')"
+          />
         </extra-nuxt-link>
       </div>
       <div class="icon-timeline w-6 h-12 bg-yellow-600 text-gray-800 shadow-lg"

@@ -1,5 +1,6 @@
 const isDev = process.env.NODE_ENV !== "production"
-const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
+//const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
+const apiUrl = "http://localhost:8000/"
 
 export default {
 
@@ -154,10 +155,10 @@ export default {
 
   css: [
     "destyle.css/destyle.css",
-    "~/assets/css/main.scss",
-    "~/assets/css/fonts.scss",
-    "~/assets/css/reset.scss",
-    "~/assets/css/utils.scss",
+    "@/assets/css/main.scss",
+    "@/assets/css/fonts.scss",
+    "@/assets/css/reset.scss",
+    "@/assets/css/utils.scss",
   ],
 
   toast: {
@@ -191,7 +192,7 @@ export default {
       ...require("./config/babel").default
     },
 
-    optimizeCSS: true,
+    optimizeCSS: isDev,
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

@@ -50,6 +50,10 @@ export default {
 
 <style lang="scss" scoped>
 
+.input:focus {
+  @apply .bg-gray-100;
+}
+
 .input.empty:hover ~ .input-label {
   cursor: text;
 }
