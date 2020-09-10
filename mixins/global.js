@@ -40,7 +40,7 @@ export default {
       if (el) return el[key]
 
       // if obj has key
-      if (obj.key) return obj[key]
+      if (obj[key]) return obj[key]
 
       // return first langs
       if (obj.langs.length > 0) return obj.langs[0][key]

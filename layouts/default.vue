@@ -6,7 +6,7 @@
       </h1>
     </div>
     <navbar />
-    <div class="grid-layout-contents hide-scroolbar">
+    <div id="layout-contents" class="grid-layout-contents hide-scroolbar">
       <nuxt />
     </div>
   </main>

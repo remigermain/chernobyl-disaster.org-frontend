@@ -1,44 +1,49 @@
 <template>
-  <div class="shadow-lg md:bg-gray-900 grid-extra w-full h-full rounded-lg timeline-extra" :class="{'active': activeMenu}">
-    <div class="extra-toolbar-mobile bg-gray-800" @click="toogleActive">
-      <span class="ml-6 w-2/4 capitalize">
-        {{ $t('utils.menu') }}
-      </span>
-      <span class="mr-6 text-right w-2/4">
-        <svg-icon name="arrow-up" class="extra-toolbar-mobile-icon" :class="{'active': activeMenu}" />
-      </span>
-    </div>
-    <nav class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg -md:rounded-b-lg">
-      <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': pictureActive, 'bg-gray-900 -md:rounded-lg': !pictureActive}" @click.prevent="pictureShow">
-        <svg-icon name="photo" class="extra-icon-mobile" />
-      </button>
-      <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}" @click.prevent="videoShow">
-        <svg-icon name="movie" class="extra-icon-mobile" />
-      </button>
-    </nav>
-    <div class="extra-toolbar-desktop overflow-y-scroll flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
-      <template v-if="pictureActive">
-        <img v-for="(img, idx) in object.pictures"
-             :key="img.id"
-             :alt="img.title"
-             :src="img.picture.thumbnail"
-             loading="lazy"
-             class="extra extra-picture"
-             @click="setCurrent(img, idx)"
-        >
-        <span v-if="object.pictures.length == 0" class="italic text-gray-700 text-opacity-50">
-          {{ empty }}
+  <div class="wrapper">
+    <div class="fix-mobile" />
+    <div class="shadow-lg grid-extra w-full h-full rounded-lg" :class="{'active': activeMenu}">
+      <div class="extra-toolbar-mobile bg-gray-800" @click="toogleActive">
+        <span class="ml-6 w-2/4 capitalize">
+          {{ $t('utils.menu') }}
         </span>
-        <lazy-gallery-detail-picture v-else
-                                     :object="current"
-                                     :idx="currentIdx"
-                                     :length="object.pictures.length"
-                                     @close="removeCurrent"
-                                     @next="nextDetail"
-                                     @prev="prevDetail"
-        />
-      </template>
+        <span class="mr-6 text-right w-2/4">
+          <svg-icon name="arrow-up" class="extra-toolbar-mobile-icon" :class="{'active': activeMenu}" />
+        </span>
+      </div>
+      <nav class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg"
+           :class="{'active': activeMenu}"
+      >
+        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': pictureActive, 'bg-gray-900 -md:rounded-lg': !pictureActive}" @click.prevent="pictureShow">
+          <svg-icon name="photo" class="extra-icon-mobile" />
+        </button>
+        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}" @click.prevent="videoShow">
+          <svg-icon name="movie" class="extra-icon-mobile" />
+        </button>
+      </nav>
+      <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
+        <template v-if="pictureActive">
+          <img v-for="(img, idx) in object.pictures"
+               :key="img.id"
+               :alt="img.title"
+               :src="img.picture.thumbnail"
+               loading="lazy"
+               class="extra extra-picture"
+               @click="setCurrent(img, idx)"
+          >
+          <span v-if="object.pictures.length == 0" class="italic text-gray-700 text-opacity-50">
+            {{ empty }}
+          </span>
+        </template>
+      </div>
     </div>
+    <lazy-gallery-detail-picture v-if="pictureActive && object.pictures.length != 0"
+                                 :object="current"
+                                 :idx="currentIdx"
+                                 :length="object.pictures.length"
+                                 @close="removeCurrent"
+                                 @next="nextDetail"
+                                 @prev="prevDetail"
+    />
   </div>
 </template>
 
@@ -65,7 +70,8 @@ export default {
       active: active.PICTURE,
       current: null,
       currentIdx: 0,
-      activeMenu: false
+      activeMenu: false,
+      parent: null
     }
   },
 
@@ -82,6 +88,12 @@ export default {
       } else {
         return this.object.videos
       }
+    }
+  },
+
+  beforeMount() {
+    if (process.client) {
+      this.parent = document.getElementById("layout-contents")
     }
   },
 
@@ -139,6 +151,12 @@ export default {
   }
 }
 
+.fix-mobile {
+  display: none;
+  height: 50px;
+  width: 100%;
+}
+
 @media screen and (max-width: 1350px){
   .extra {
     width: 14%
@@ -168,6 +186,7 @@ export default {
   }
 }
 
+
 @media screen and (max-width: 850px){
   .extra-toolbar-mobile {
     display: flex;
@@ -179,18 +198,28 @@ export default {
     transition: height .6s;
     height: 60px;
     border-top-width: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: white;
     &.active {
       height: 70vh;
     }
   }
 
+  .fix-mobile {
+    display: block;
+  }
+
   .extra-toolbar-desktop {
     flex-direction: row;
-    overflow: hidden;
-    display: flex;
+    display: none;
     & > .extra-btn {
       width: 50%;
       height: auto;
+    }
+    &.active {
+      display: flex;
     }
   }
   .extra-icon-mobile {
@@ -198,4 +227,5 @@ export default {
     height: 3em;
   }
 }
+
 </style>

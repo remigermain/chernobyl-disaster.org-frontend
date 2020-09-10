@@ -91,7 +91,7 @@ export default {
     return $axios.get(`tag/${params.id}/`)
       .then(response => {
         if (response.status != 200) {
-          throw Error("") // TODO
+          throw Error("")
         }
         return { object: response.data }
       })

@@ -1,4 +1,11 @@
 {
+    "about": {
+        "contact": "contact",
+        "contribute-gitlab": "contribute-gitlab",
+        "contribute-language": "contribute-language",
+        "creator-website": "creator-website",
+        "help-creator": "help-creator"
+    },
     "admin": {
         "field": {
             "report": "report",
@@ -92,12 +99,6 @@
             "detail": "detail",
             "list": "list"
         }
-    },
-    "aria": {
-        "edit": "edit",
-        "next": "next",
-        "prev": "prev",
-        "sort-by": "sort-by"
     },
     "auth": {
         "ForgetPassword": "ForgetPassword",
@@ -225,21 +226,31 @@
         "create": "create",
         "currently": "currently",
         "delete": "delete",
+        "edit": "edit",
         "empty": "empty",
+        "hours": "hours",
         "identifier": "identifier",
         "language": "language",
         "link": "link",
         "list": "list",
         "loading": "loading",
+        "love": "love",
         "menu": "menu",
+        "minutes": "minutes",
+        "mood-sad": "mood-sad",
         "need-translate": "need-translate",
+        "next": "next",
+        "next-event": "next-event",
         "no": "no",
+        "open-menu": "open-menu",
         "or": "or",
+        "prev": "prev",
         "preview": "preview",
         "require": "require",
         "search": "search",
         "secondes": "secondes",
         "send": "send",
+        "sort-by": "sort-by",
         "total": "total",
         "translate": "translate",
         "update": "update",

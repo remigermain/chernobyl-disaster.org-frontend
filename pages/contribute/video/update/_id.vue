@@ -96,7 +96,7 @@ export default {
     return $axios.get(`video/${params.id}/`)
       .then(response => {
         if (response.status != 200) {
-          throw Error("") // TODO
+          throw Error("")
         }
         return { object: response.data }
       })

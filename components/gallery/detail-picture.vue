@@ -13,27 +13,31 @@
           <extra-nuxt-link v-if="$auth.loggedIn"
                            :to="{name: 'contribute-picture-id', params: {id: object.id}}"
                            class="toolbar-item"
-                           :aria-label="$t('aria.edit')"
+                           :title="$t('utils.edit')"
           >
             <svg-icon name="settings" class="w-inherit h-inherit" />
           </extra-nuxt-link>
-          <svg-icon name="x" class="toolbar-item" @click="$emit('close')" />
+          <svg-icon name="x"
+                    class="toolbar-item"
+                    :aria-label="$t('utils.close')"
+                    @click="$emit('close')"
+          />
         </div>
       </div>
       <svg-icon v-show="hasPrev"
                 name="arrow-left"
                 class="toolbar-item toolbar-slide-prev"
-                :aria-label="$t('aria.prev')"
+                :aria-label="$t('utils.prev')"
                 @click="$emit('prev')"
       />
       <svg-icon v-show="hasNext"
                 name="arrow-right"
                 class="toolbar-item toolbar-slide-next"
-                :aria-label="$t('aria.next')"
+                :aria-label="$t('utils.next')"
                 @click="$emit('next')"
       />
       <div class="picture-item-container">
-        <img :alt="object.title"
+        <img :alt="i18nAttr(object, 'title')"
              :src="object.picture.full"
              class="picture-item mx-auto shadow-md"
              loading="lazy"

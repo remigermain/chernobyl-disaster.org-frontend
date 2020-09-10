@@ -1,19 +1,21 @@
 <template>
   <div class="grid-about">
-    <section class="about-description">
+    <section class="about-description text-center">
       <section>
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
         </h2>
-        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
-          <svg-icon name="brand-gitlab" role="img" :aria-label="Gitlab" />
+        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('about.contribute-gitlab')">
+          <svg-icon name="brand-gitlab" role="img" aria-label="Gitlab" />
           Gitlab
         </a>
-        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
+        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('about.contribute-language')">
           <svg-icon name="language" role="img" :aria-label="$t('pages.about.traduction')" />
           {{ $t('pages.about.traduction') }}
         </a>
-        <extra-nuxt-link :to="{name: 'contact'}" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500">
+        <extra-nuxt-link :to="{name: 'contact'}" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500"
+                         :title="$t('about.contact')"
+        >
           <svg-icon name="mail" role="img" :aria-label="$t('pages.about.contact')" />
           {{ $t('pages.about.contact') }}
         </extra-nuxt-link>
@@ -22,13 +24,13 @@
         <h3 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributors') }}
           <div class="wrapper text-red-800">
-            <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$('aria.love')" />
+            <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
           </div>
         </h3>
         <p class="text-gray-800">
           {{ $t('pages.about.thanks-contributors') }}
-          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$('aria.love')" />
-          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$('aria.love')" />
+          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
+          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
         </p>
       </section>
       <section class="floa-left contributors">
@@ -39,12 +41,12 @@
         </template>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
-          <svg-icon name="mood-sad" role="img" :aria-label="$('aria.mood-sad')" />
+          <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
         </span>
       </section>
       <article>
         <h1 class="text-2xl italic text-gray-800 pr-4">
-          <a href="https://germainremi.fr" class="text-purple-800 hover:text-purple-500">
+          <a href="https://germainremi.fr" class="text-purple-800 hover:text-purple-500" :title="$t('about.creator-website')">
             @GERMAIN remi
           </a>
         </h1>
@@ -54,13 +56,17 @@
           </picture>
           {{ $t('pages.about.creator-description') }}
         </p>
+      </article>
+      <article>
         <h4 class="text-xl text-md capitalize">
           {{ $t('pages.about.help-me') }}
         </h4>
         <p class="text-center text-gray-800 text-sm">
           {{ $t('pages.about.help-me-description') }}
         </p>
-        <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden">
+        <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden"
+           :title="$t('about.help-creator')"
+        >
           {{ $t('pages.about.buy-me-coffe') }}
         </a>
       </article>

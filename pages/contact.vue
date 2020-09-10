@@ -5,7 +5,9 @@
         {{ $t('auth.contact') }}
       </p>
       <p class="text-sm text-gray-600">
-        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
+        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
+                         :title="$t('auth.connection-account')"
+        >
           {{ $t('auth.connection-account') }}
         </extra-nuxt-link>
       </p>

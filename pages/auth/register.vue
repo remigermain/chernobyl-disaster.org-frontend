@@ -79,7 +79,7 @@ export default {
       this.$axios.post("auth/registration/", form)
         .then(response => {
           if (response.status != 201) {
-            throw Error("") // TODO
+            throw Error("")
           }
           this.$i18nToast().success(this.$t("auth.registeration-success"))
           event.target.reset()

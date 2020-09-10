@@ -18,7 +18,7 @@ export default {
     return app.$axios.get("event/?no_page=true")
       .then(response => {
         if (response.status != 200) {
-          throw Error("") // TODO
+          throw Error("")
         }
         // change date string to Date object
         const result = response.data.map(el => {
@@ -27,6 +27,7 @@ export default {
         })
 
         // simulate many event
+        // TODO
         let results = [
             ...result.map(x => {return {...x, id: x.id *1 }}),
           ...result.map(x => {return {...x, id: x.id * 10}}),
@@ -66,7 +67,7 @@ export default {
 @media screen and (max-width: 850px){
   .grid-timeline {
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 60px 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
   }
 
 }

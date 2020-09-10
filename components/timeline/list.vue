@@ -18,6 +18,7 @@
                              :to="{name: 'timeline-slug', params: {'slug': element.slug}}"
                              class="timeline-element group block p-4 cursor-pointer hover:bg-gray-700 text-white relative rounded-md mt-1"
                              :class="{'bg-gray-700': current.id == element.id, 'bg-gray-800': current.id != element.id}"
+                             :title="i18nAttr(element, 'title')"
             >
               <span class="timeline-point bg-yellow-600 shadow-sm" :class="{'active': current.id == element.id }" />
               <time v-show="!isTimeEmpty(element.date)" :datetime="element.date.toLocaleTimeString($i18n.locale)" class="text-xl italic">
@@ -34,20 +35,20 @@
       <div class="w-full flex justify-center bg-gray-900 rounded-b-md text-white">
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}"
                          class="w-2/4 inline-block"
-                         :aria-label="$('aria.next-event')"
+                         :title="$t('utils.next-event')"
         >
           <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': nextId}}"
                          class="w-2/4 inline-block"
-                         :aria-label="$('aria.next-event')"
+                         :title="$t('utils.next-event')"
         >
           <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400" />
         </extra-nuxt-link>
       </div>
       <div class="icon-timeline w-6 h-12 bg-yellow-600 text-gray-800 shadow-lg"
            :class="{'active rounded-l-full': active, 'rounded-r-full': !active}"
-           :aria-label="$('aria.open-menu')"
+           :aria-label="$t('utils.open-menu')"
            @click="toogleActive"
       >
         <svg-icon name="arrow-right" class="w-8" />

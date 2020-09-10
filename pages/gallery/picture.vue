@@ -39,7 +39,7 @@ export default {
     return app.$axios.get(asynDataUrl("picture", route.query))
       .then(response => {
         if (response.status != 200) {
-          throw Error("") // TODO
+          throw Error("")
         }
         return {
           object: response.data.results,

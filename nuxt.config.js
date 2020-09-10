@@ -3,7 +3,6 @@ const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
 
 export default {
 
-  mode: "universal",
   target: "server",
   ssr: true,
 

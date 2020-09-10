@@ -6,7 +6,9 @@
       </p>
       <p class="text-sm text-gray-600">
         {{ $t('utils.or') }}
-        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700">
+        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
+                         :title="$t('auth.create-account')"
+        >
           {{ $t('auth.create-account') }}
         </extra-nuxt-link>
       </p>
@@ -14,7 +16,9 @@
         <field-email :field="field.email" :errors="errors.email" />
         <field-password :field="field.password" :errors="errors.password" />
         <div class="flex justify-end mx-auto text-center">
-          <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto">
+          <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto"
+                           :title="$t('auth.ForgetPassword')"
+          >
             {{ $t('auth.ForgetPassword') }}
           </extra-nuxt-link>
         </div>

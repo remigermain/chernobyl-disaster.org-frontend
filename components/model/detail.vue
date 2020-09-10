@@ -12,6 +12,7 @@
         </button>
         <extra-nuxt-link :to="path"
                          class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
+                         :title="$t('tools.update')"
         >
           {{ $t('tools.update') }}
           <svg-icon name="edit" class=" w-24px text-white" />
