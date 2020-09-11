@@ -141,8 +141,8 @@
             "creator-website": "creator-website",
             "description": "Ce site retrace les \u00e9v\u00e8nements de l'accident qui a conduit \u00e0 cette catastrophe et ces cons\u00e9quences, illustr\u00e9 par photo, vid\u00e9o et document d'archive.",
             "help-creator": "site web du cr\u00e9ateur",
-            "help-me": "aidez-moi",
-            "help-me-description": "si le site est gratuit, open source gratuit et il le restera ! le coût de l'infrastructure devrait augmenter avec le nombre de photos ajoutées, et le coût annuel est actuellement de 100 euros (c'est un petit serveur) ; c'est pourquoi vous pouvez m'aider à assumer ce coût en me payant une petite somme, cela me permettra d'acheter un meilleur serveur, et même dans le futur avec une instance pour les vidéos !",
+            "help-me": "aidez moi",
+            "help-me-description": "ce site est gratuit, open source et il le restera ! le coût de l'infrastructure devrait augmenter avec le nombre de photos ajoutées, et le coût annuel est actuellement de 100 euros (c'est un petit serveur), c'est pourquoi vous pouvez m'aider à assumer ce coût en me payant une petite somme, cela me permettra d'acheter un meilleur serveur, et même dans le futur avec une instance pour les vidéos !",
             "no-contributors": "aucun contributeur",
             "thanks-contributors": "merci aux contributeurs",
             "translation": "traduction"

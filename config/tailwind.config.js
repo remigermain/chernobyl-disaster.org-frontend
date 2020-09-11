@@ -99,6 +99,13 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
+  variants: {
+    textColor: ["responsive", "hover", "focus", "group-hover"],
+    translate: ["responsive", "hover", "group-hover"],
+    opacity: ["responsive", "hover", "group-hover"],
+    position: ["responsive", "hover", "group-hover"],
+    scale: ["responsive", "hover", "group-hover"],
+  },
   purge: {
     enabled: process.env.NODE_ENV === "production",
     content: [

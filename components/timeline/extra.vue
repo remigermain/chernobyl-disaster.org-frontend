@@ -10,7 +10,7 @@
           <svg-icon name="arrow-up" class="extra-toolbar-mobile-icon" :class="{'active': activeMenu}" />
         </span>
       </div>
-      <nav class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg"
+      <nav class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-yellow-600 md:rounded-l-lg md:rounded-b-lg"
            :class="{'active': activeMenu}"
       >
         <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': pictureActive, 'bg-gray-900 -md:rounded-lg': !pictureActive}"
@@ -19,7 +19,7 @@
         >
           <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('utils.picture')" />
         </button>
-        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}"
+        <button class="w-full h-2/4 px-4 extra-btn md:rounded-b-lg" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}"
                 :title="$t('utils.goto-video')"
                 @click.prevent="videoShow"
         >
@@ -43,7 +43,9 @@
           </span>
         </template>
         <template v-else>
-          <iframe :src="urlVideo(el.video)" frameborder="0"
+          <iframe v-for="el in object.videos"
+                  :key="el.id"
+                  :src="urlVideo(el.video)" frameborder="0"
                   class="extra extra-picture"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen

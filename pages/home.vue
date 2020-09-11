@@ -8,10 +8,11 @@
         {{ $t('pages.home.description') }}
         {{ $t('pages.about.description') }}
       </p>
-      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800"
+      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="group px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800"
                             :title="$t('utils.goto-timeline')"
       >
         {{ $t('menu.timeline') }}
+        <svg-icon name="caret-right" role="img" aria-label="arrow" class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-2" />
       </lazy-extra-nuxt-link>
     </article>
     <div class="index-image">

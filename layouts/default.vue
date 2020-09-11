@@ -1,9 +1,11 @@
 <template>
   <main class="grid-layout">
     <div class="grid-layout-title">
-      <h1 class="grid-layout-title-item font-russia">
-        chernobyl
-      </h1>
+      <extra-nuxt-link :to="{name: 'home'}" :title="$t('menu.home')">
+        <h1 class="grid-layout-title-item font-russia">
+          chernobyl
+        </h1>
+      </extra-nuxt-link>
     </div>
     <navbar />
     <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('utils.content')">

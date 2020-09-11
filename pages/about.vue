@@ -21,12 +21,12 @@
         </extra-nuxt-link>
       </section>
       <section>
-        <h3 class="text-3xl text-md capitalize">
+        <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributors') }}
           <div class="wrapper text-red-800">
             <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
           </div>
-        </h3>
+        </h2>
         <p class="text-gray-800">
           {{ $t('pages.about.thanks-contributors') }}
           <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
@@ -45,11 +45,11 @@
         </span>
       </section>
       <article>
-        <h1 class="text-2xl italic text-gray-800 pr-4">
+        <h2 class="text-3xl italic text-gray-800 pr-4">
           <a href="https://germainremi.fr" class="text-purple-800 hover:text-purple-500" :title="$t('pages.about.creator-website')">
             @GERMAIN remi
           </a>
-        </h1>
+        </h2>
         <p class="text-gray-800">
           <picture>
             <img loading="lazy" alt="germain remi" src="~/assets/img/profil/profil.jpg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
@@ -58,18 +58,21 @@
         </p>
       </article>
       <article>
-        <h4 class="text-xl text-md capitalize">
+        <h4 class="text-3xl text-md capitalize">
           {{ $t('pages.about.help-me') }}
         </h4>
-        <p class="text-center text-gray-800 text-sm">
+        <p class="text-center text-gray-800 text-md">
           {{ $t('pages.about.help-me-description') }}
         </p>
-        <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden"
-           :title="$t('pages.about.help-creator')"
-        >
-          {{ $t('pages.about.buy-me-coffe') }}
-        </a>
       </article>
+      <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold rounded-sm group hover:bg-gray-800 btn-icon-show overflow-hidden"
+         :title="$t('pages.about.help-creator')"
+      >
+        {{ $t('pages.about.buy-me-coffe') }}
+        <svg-icon name="mug" role="img" :aria-label="$t('pages.about.buy-me-coffe')"
+                  class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-1 ml-2"
+        />
+      </a>
     </section>
     <div class="about-image">
       <picture>
