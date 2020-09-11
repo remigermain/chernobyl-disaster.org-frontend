@@ -1,5 +1,4 @@
 import iconTrash from "@/assets/svg/trash.svg"
-import has from "lodash/has"
 
 export default {
 
@@ -65,7 +64,8 @@ export default {
       return `langs[${idx}]`
     },
     getErrorsIdx(tab, idx, key) {
-      if (tab.length >= idx && has(tab[idx], key)) {
+      if (!tab) return []
+      if (tab.length >= idx && tab[idx]?.[key]) {
         return tab[idx][key]
       }
       return []

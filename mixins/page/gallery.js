@@ -1,5 +1,4 @@
 import { galleryUrl} from "@/lib/gallery"
-import isNil from "lodash/isNil"
 
 export default {
 
@@ -13,6 +12,7 @@ export default {
       interval: 0,
       inRequestPrev: false,
       inRequestNext: false,
+      error: false
     }
   },
 
@@ -69,6 +69,7 @@ export default {
     reset () {
       // reset data when query params change
       this.object = []
+      this.error = false
       this.page = 1
       this.pageSet = []
       this.completed = false
@@ -116,7 +117,7 @@ export default {
       })
     },
     refresh (callback) {
-      if (this.inRequest) {
+      if (this.inRequest || this.error) {
         return
       }
 
@@ -133,14 +134,17 @@ export default {
           this.inRequest = false
           this.inRequestPrev = false
           this.inRequestNext = false
-          if (isNil(response.data.next)) {
+          if (!response.data.next) {
             this.completed = true
           }
           if (callback) {
             callback(response)
           }
         })
-        .catch((error) => { this.$i18nToast().error(error) })
+        .catch((error) => {
+          this.$i18nToast().error(error)
+          this.error = true
+        })
         .finally(() => {
           this.inRequest = false
           this.inRequestPrev = false

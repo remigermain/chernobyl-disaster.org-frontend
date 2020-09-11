@@ -54,8 +54,8 @@ export default {
   async asyncData ({redirect, $axios, app}) {
     // get objects
     try {
-      const response = await $axios.get("event/?page=1")
-      const responseLang = await $axios.get("event/?page=1&completed=false")
+      const response = await $axios.get("event/?page=1&contribute=true")
+      const responseLang = await $axios.get("event/?page=1&completed=false&contribute=true")
       if (response.status != 200 || responseLang.status != 200) {
         throw Error(app.i18n.t("errors.status"))
       }

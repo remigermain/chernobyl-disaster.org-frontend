@@ -21,7 +21,7 @@
           </model-field>
           <model-tags :tags="object.tags" />
         </div>
-        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
+        <div class="w-2/4 -md:w-full flex flex-col justify-center text-2xl text-gray-800 detail-items">
           <p class="text-3xl capitalize">
             {{ $t('utils.preview') }} :
           </p>

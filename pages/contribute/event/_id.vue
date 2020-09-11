@@ -47,7 +47,7 @@ export default {
   ],
 
   asyncData ({ params, $axios, app, redirect }) {
-    return $axios.get(`event/${params.id}/`)
+    return $axios.get(`event/${params.id}/?contribute=true`)
       .then(response => {
         if (response.status != 200) {
           throw Error(app.i18n.t("errors.status"))

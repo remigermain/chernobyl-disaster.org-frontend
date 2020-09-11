@@ -72,7 +72,7 @@
         </td>
         <td>
           <lazy-admin-textarea class="border-none"
-                               :prefix="prefixLang(idx)"
+                               :prefix="prefixLang(idx + object.langs.length)"
                                :label="false"
                                :field="fields.langs.description"
                                :action="false"

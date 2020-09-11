@@ -16,10 +16,11 @@ select:-webkit-autofill:focus {
   box-shadow: 0 0 0px 1000px white inset;
 }
 
-input, textarea {
-  &:invalid,
-  &:-moz-submit-invalid,
-  &:-moz-ui-invalid {
-    box-shadow: none;
-  }
+input:invalid,
+textarea:invalid
+input:-moz-submit-invalid,
+textarea:-moz-submit-invalid,
+input:-moz-ui-invalid,
+textarea:-moz-ui-invalid {
+  box-shadow: none;
 }

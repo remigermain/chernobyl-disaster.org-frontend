@@ -67,7 +67,7 @@ export default {
 
 .input-label {
   transition: transform .3s, opacity .3s;
-  transform: translateY(70%);
+  transform: translateY(100%);
   opacity: .5;
 }
 </style>

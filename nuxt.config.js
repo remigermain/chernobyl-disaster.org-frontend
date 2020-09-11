@@ -155,10 +155,10 @@ export default {
 
   css: [
     "destyle.css/destyle.css",
-    "@/assets/css/main.scss",
-    "@/assets/css/fonts.scss",
-    "@/assets/css/reset.scss",
-    "@/assets/css/utils.scss",
+    "~assets/css/main.css",
+    "~assets/css/fonts.css",
+    "~assets/css/reset.css",
+    "~assets/css/utils.scss",
   ],
 
   toast: {
@@ -167,12 +167,7 @@ export default {
     position: "top-center",
   },
 
-  styleResources: {
-    scss: [
-      "~/assets/css/var/*.scss",
-      "~/assets/css/var/*.sass",
-    ]
-  },
+  styleResources: {},
 
   tailwindcss: {
     configPath: "~/config/tailwind.config.js",
@@ -180,8 +175,8 @@ export default {
     exposeConfig: false
   },
 
-  purgecss: {
-    whiteListPatterns: [/svg.*/],
+  purgeCSS: {
+    whiteListPatterns: [/svg.*/, "svg", "symbol"],
   },
 
   build: {
@@ -192,7 +187,7 @@ export default {
       ...require("./config/babel").default
     },
 
-    optimizeCSS: isDev,
+    optimizeCSS: !isDev,
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

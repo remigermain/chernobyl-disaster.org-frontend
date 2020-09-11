@@ -41,7 +41,6 @@ img, picture {
   overflow: hidden;
 }
 
-
 .__nuxt-error-page {
   display: flex;
   justify-content: center;
@@ -51,4 +50,8 @@ img, picture {
   .logo {
     display: none;
   }
+}
+
+.__nuxt-error-page .logo {
+  display: none;
 }

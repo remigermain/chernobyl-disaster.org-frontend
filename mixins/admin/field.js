@@ -1,8 +1,6 @@
 /*
   mixxins for field/input components
 */
-import { isNil } from "lodash"
-
 import fieldInline  from "@/components/admin/inline"
 import fieldBase  from "@/components/admin/base"
 
@@ -43,7 +41,7 @@ export default {
 
   computed: {
     name () {
-      if (!isNil(this.prefix)) {
+      if (this.prefix) {
         return `${this.prefix}[${this.field.name}]`
       }
       return this.field.name
