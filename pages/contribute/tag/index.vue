@@ -78,7 +78,7 @@ export default {
       tableFieldLang: [
         {field: "id", label: this.$t("admin.model.id"), type: Number},
         {field: "name", label: this.$t("admin.model.name"), type: String},
-        {field: "not_available_languages", label: this.$t("admin.model.no-translate"), type: Array},
+        {field: "not_available_languages", label: this.$t("admin.model.no-translation"), type: Array},
       ],
     }
   },

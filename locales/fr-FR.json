@@ -70,7 +70,7 @@
             "event": "\u00e9v\u00e9nement",
             "id": "id",
             "name": "nom",
-            "no-translate": "pas de traduction",
+            "no-translation": "pas de traduction",
             "photographer": "photographe",
             "picture": "photo",
             "profil": "profil",
@@ -88,13 +88,13 @@
     "auth": {
         "change-password": "changer le mot de passe",
         "comfirm-new-password": "Confirmer le nouveau mot de passe",
-        "confirme-delete-account": "confirmer la suppression du compte ",
-        "connection-account": "connection-account",
+        "confirme-delete-account": "confirmer la suppression du compte",
+        "connection-account": "ce connecter",
         "create-account": "cr\u00e9er un compte",
         "delete-account": "supprimer le compte",
         "field": {
             "comfirm-password": "mot de passe de confirmation",
-            "email": "email",
+            "email": "e-mail",
             "password": "mot de passe",
             "username": "nom d'utilisateur"
         },
@@ -116,7 +116,7 @@
         "language": "traduction manquante",
         "network": "erreur, pas de connexion internet",
         "refresh": "erreur lors du rafra\u00eechissement",
-        "server": "erreur du serveur ",
+        "server": "erreur du serveur",
         "update": "erreur lors de la mise \u00e0 jour"
     },
     "menu": {
@@ -137,12 +137,11 @@
             "contribute-translate": "contribuer en traduisant",
             "contributing": "contribution",
             "contributors": "contributeurs",
-            "creator-description": "Germain rémi développeur web sur lyon en france. je suis passionné par l'histoire de Tchernobyl et toutes ses conséquences, de tous les sacrifices que les peuples de l'ussr ont dû subir pour éviter une plus grande catastrophe, c'est pourquoi j'ai créé ce site, pour ne pas oublier ce que ces peuples ont fait pour nous, et pour les générations futures.",
-            "creator-website": "creator-website",
+            "creator-description": "Germain r\u00e9mi d\u00e9veloppeur web sur lyon en france. je suis passionn\u00e9 par l'histoire de Tchernobyl et toutes ses cons\u00e9quences, de tous les sacrifices que les peuples de l'ussr ont d\u00fb subir pour \u00e9viter une plus grande catastrophe, c'est pourquoi j'ai cr\u00e9\u00e9 ce site, pour ne pas oublier ce que ces peuples ont fait pour nous, et pour les g\u00e9n\u00e9rations futures.",
+            "creator-website": "site du cr\u00e9ateur",
             "description": "Ce site retrace les \u00e9v\u00e8nements de l'accident qui a conduit \u00e0 cette catastrophe et ces cons\u00e9quences, illustr\u00e9 par photo, vid\u00e9o et document d'archive.",
-            "help-creator": "site web du cr\u00e9ateur",
             "help-me": "aidez moi",
-            "help-me-description": "ce site est gratuit, open source et il le restera ! le coût de l'infrastructure devrait augmenter avec le nombre de photos ajoutées, et le coût annuel est actuellement de 100 euros (c'est un petit serveur), c'est pourquoi vous pouvez m'aider à assumer ce coût en me payant une petite somme, cela me permettra d'acheter un meilleur serveur, et même dans le futur avec une instance pour les vidéos !",
+            "help-me-description": "ce site est gratuit, open source et il le restera ! le co\u00fbt de l'infrastructure devrait augmenter avec le nombre de photos ajout\u00e9es, et le co\u00fbt annuel est actuellement de 100 euros (c'est un petit serveur), c'est pourquoi vous pouvez m'aider \u00e0 assumer ce co\u00fbt en me payant une petite somme, cela me permettra d'acheter un meilleur serveur, et m\u00eame dans le futur avec une instance pour les vid\u00e9os !",
             "no-contributors": "aucun contributeur",
             "thanks-contributors": "merci aux contributeurs",
             "translation": "traduction"
@@ -157,7 +156,7 @@
                 "title": "contact"
             },
             "home": {
-                "title": "chernobyle.org"
+                "title": "chernobyl.org"
             },
             "login": {
                 "description": "connectez-vous \u00e0 chernobyle.org pour contribuer \u00e0 la communaut\u00e9, et partagez votre photo, votre vid\u00e9o et bien plus encore !",
@@ -255,7 +254,7 @@
         "translate": "traduire",
         "un-lock-password": "d\u00e9verrouiller le mot de passe",
         "update": "mise \u00e0 jour",
-        "video": "video",
+        "video": "vid\u00e9o",
         "yes": "oui"
     }
 }

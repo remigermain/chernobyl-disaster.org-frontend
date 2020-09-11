@@ -66,7 +66,7 @@
         </p>
       </article>
       <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold rounded-sm group hover:bg-gray-800 btn-icon-show overflow-hidden"
-         :title="$t('pages.about.help-creator')"
+         :title="$t('pages.about.help-me')"
       >
         {{ $t('pages.about.buy-me-coffe') }}
         <svg-icon name="mug" role="img" :aria-label="$t('pages.about.buy-me-coffe')"

@@ -1,6 +1,5 @@
 const isDev = process.env.NODE_ENV !== "production"
-//const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
-const apiUrl = "http://localhost:8000/"
+const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
 
 export default {
 
@@ -28,14 +27,8 @@ export default {
   },
 
   plugins: [
-    {
-      src: "~/plugins/components-client",
-      ssr: false
-    },
-    {
-      src: "~/plugins/components-server",
-      ssr: true
-    },
+    {src: "~/plugins/matomo.js", ssr: false},
+    {src: "~/plugins/datetime.js", ssr: true},
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
@@ -51,6 +44,12 @@ export default {
     "@nuxtjs/toast",
     "nuxt-i18n",
   ],
+
+  pwa: {
+    manifest: {
+      lang: "fr"
+    }
+  },
 
   i18n: require("./config/i18n").default, // i18n required in top
 
