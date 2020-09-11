@@ -1,282 +1,261 @@
 {
-    "about": {
-        "contact": "contact",
-        "contribute-gitlab": "contribute-gitlab",
-        "contribute-language": "contribute-language",
-        "creator-website": "creator-website",
-        "help-creator": "help-creator"
-    },
     "admin": {
-        "field": {
-            "report": "report",
-            "tags": "tags"
-        },
         "help": {
             "global": {
-                "event": "event",
-                "language": "language",
-                "people": "people",
-                "picture": "picture",
-                "report": "report",
-                "tag": "tag",
-                "video": "video"
+                "event": "ce sont les \u00e9v\u00e9nements importants de Tchernobyl, tous ces \u00e9v\u00e9nements seront dans la chronologie du site.",
+                "language": "la langue du texte que vous avez \u00e9crit",
+                "people": "ce sont des personnes importantes dans l'histoire de Tchernobyl.",
+                "picture": "ce sont les images",
+                "report": "vous pouvez les signaler, les supprimer, les modifier ou autre.",
+                "tag": "ce sont des \u00e9tiquettes qui aident \u00e0 la recherche d'un \u00e9l\u00e9ment",
+                "video": "ce sont les video"
             },
             "model": {
                 "event": {
-                    "date": "date",
+                    "date": "la date au moment o\u00f9 l'\u00e9v\u00e9nement commence, vous pouvez simplement r\u00e9gler la date sans l'heure (la laisser \u00e0 00:00 minuit), pour ajouter \u00e9galement des secondes sp\u00e9cifiques dans des cas particuliers (comme l'explosion du r\u00e9acteur \u00e0 1h23m44s).",
                     "langs": {
-                        "description": "description",
-                        "title": "title"
+                        "description": "une description de l'\u00e9v\u00e9nement",
+                        "title": "un titre de l'\u00e9v\u00e9nement"
                     },
-                    "title": "title"
+                    "title": "ce titre est utilis\u00e9 pour avoir une vue rapide de cet \u00e9v\u00e9nement, doit \u00eatre en anglais !"
                 },
                 "people": {
-                    "biography": "biography",
-                    "born": "born",
-                    "death": "death",
-                    "name": "name",
-                    "profil": "profil",
-                    "wikipedia": "wikipedia"
+                    "biography": "une biographie de cette personne, sa vie ... ect.",
+                    "born": "quand est-il n\u00e9",
+                    "death": "quand est-il mort",
+                    "name": "sont nom",
+                    "profil": "une image de lui",
+                    "wikipedia": "un lien vers wikipedia s'il y en a un"
                 },
                 "picture": {
-                    "date": "date",
+                    "date": "quand la photo a \u00e9t\u00e9 prise",
                     "langs": {
-                        "title": "title"
+                        "title": "un titre pour la photo"
                     },
-                    "photographer": "photographer",
-                    "picture": "picture",
-                    "title": "title"
+                    "photographer": "vous pouvez enregistrer qui a pris cette photo",
+                    "picture": "la photo",
+                    "title": "ce titre est utilis\u00e9 pour avoir une vue rapide de la photo, doit \u00eatre en anglais !"
                 },
                 "tag": {
                     "langs": {
-                        "name": "name"
+                        "name": "une traduction de l'\u00e9tiquettes"
                     }
                 },
                 "video": {
-                    "date": "date",
+                    "date": "quand la vid\u00e9o a \u00e9t\u00e9 prise",
                     "langs": {
-                        "title": "title"
+                        "title": "un titre pour la vid\u00e9o"
                     },
-                    "title": "title",
-                    "video": "video"
+                    "title": "ce titre est utilis\u00e9 pour avoir une vue rapide de la vid\u00e9o, doit \u00eatre en anglais !",
+                    "video": "la vid\u00e9o"
                 }
             }
         },
         "label": {
-            "account": "account",
-            "event": "event",
-            "people": "people",
-            "picture": "picture",
-            "report": "report",
+            "account": "compte",
+            "event": "\u00e9v\u00e9nement",
+            "people": "personnes",
+            "picture": "photo",
+            "report": "signaler",
             "tag": "tag",
-            "video": "video"
+            "tags": "tags",
+            "video": "vid\u00e9o"
         },
         "model": {
-            "biography": "biography",
-            "born": "born",
+            "biography": "biographie",
+            "born": "n\u00e9e",
             "date": "date",
-            "death": "death",
+            "death": "d\u00e9c\u00e8s",
             "description": "description",
-            "event": "event",
+            "event": "\u00e9v\u00e9nement",
             "id": "id",
-            "language": "language",
-            "message": "message",
-            "name": "name",
-            "need-translate": "need-translate",
-            "new-comfirm-password": "new-comfirm-password",
-            "new-password": "new-password",
-            "no-translate": "no-translate",
-            "old-password": "old-password",
-            "photographer": "photographer",
-            "picture": "picture",
+            "name": "nom",
+            "no-translate": "pas de traduction",
+            "photographer": "photographe",
+            "picture": "photo",
             "profil": "profil",
             "tags": "tags",
-            "title": "title",
-            "video": "video",
-            "wikipedia": "wikipedia"
+            "title": "titre",
+            "video": "vid\u00e9o",
+            "wikipedia": "wikipedia",
+            "your-message": "votre message"
         },
         "tools": {
-            "detail": "detail",
-            "list": "list"
+            "detail": "d\u00e9tail",
+            "list": "liste"
         }
     },
     "auth": {
-        "ForgetPassword": "ForgetPassword",
-        "change-password": "change-password",
+        "change-password": "changer le mot de passe",
+        "comfirm-new-password": "Confirmer le nouveau mot de passe",
+        "confirme-delete-account": "confirmer la suppression du compte ",
         "connection-account": "connection-account",
-        "contact": "contact",
-        "create-account": "create-account",
-        "delete-account": "delete-account",
-        "delete-account-confirme": "delete-account-confirme",
+        "create-account": "cr\u00e9er un compte",
+        "delete-account": "supprimer le compte",
         "field": {
-            "comfirm-password": "comfirm-password",
+            "comfirm-password": "mot de passe de confirmation",
             "email": "email",
-            "password": "password",
-            "username": "username"
+            "password": "mot de passe",
+            "username": "nom d'utilisateur"
         },
-        "form-connection-account": "form-connection-account",
-        "goto-login": "goto-login",
-        "login": "login",
-        "logout": "logout",
-        "register": "register",
-        "register-account": "register-account",
-        "registeration-success": "registeration-success",
-        "reset-password": "reset-password"
+        "forget-password": "mot de passe oubli\u00e9",
+        "goto-login": "aller \u00e0 la page de connexion",
+        "login": "connexion",
+        "logout": "d\u00e9connexion",
+        "new-password": "nouveau mot de passe",
+        "old-password": "ancien mot de passe",
+        "register": "s'enregistrer",
+        "register-account": "cr\u00e9er un compte",
+        "registeration-success": "compte cr\u00e9er succ\u00e8s, v\u00e9rifiez votre email avant de vous connecter",
+        "reset-password": "r\u00e9initialiser le mot de passe"
     },
     "errors": {
-        "auth": "auth",
-        "create": "create",
-        "error-in-form": "error-in-form",
-        "language": "language",
-        "network": "network",
-        "refresh": "refresh",
-        "server": "server",
-        "update": "update"
+        "auth": "probl\u00e8me de connexion",
+        "create": "erreur lors de la cr\u00e9ation",
+        "error-in-form": "erreur dans le formulaire",
+        "language": "traduction manquante",
+        "network": "erreur, pas de connexion internet",
+        "refresh": "erreur lors du rafra\u00eechissement",
+        "server": "erreur du serveur ",
+        "update": "erreur lors de la mise \u00e0 jour"
     },
     "menu": {
         "about": "A propos de",
-        "contact": "contact",
         "contribute": "contribuer",
-        "gallery": "gallery",
+        "gallery": "galerie",
         "home": "accueil",
-        "login": "connexion",
-        "picture": "photo",
+        "picture": "images",
         "register": "s'inscrire",
-        "reset-password": "reset-password",
-        "timeline": "timeline",
+        "timeline": "chronologie",
         "video": "vid\u00e9o"
     },
     "pages": {
         "about": {
-            "buy-me-coffe": "buy-me-coffe",
+            "buy-me-coffe": "me payer un caf\u00e9",
             "contact": "contact",
-            "contributing": "contributing",
-            "contributors": "contributors",
-            "creator-description": "creator-description",
-            "help-me": "help-me",
-            "help-me-description": "help-me-description",
-            "no-contributors": "no-contributors",
-            "thanks-contributors": "thanks-contributors",
-            "traduction": "traduction"
+            "contribute-gitlab": "contribuer sur gitlab",
+            "contribute-translate": "contribuer en traduisant",
+            "contributing": "contribution",
+            "contributors": "contributeurs",
+            "creator-description": "Germain rémi développeur web sur lyon en france. je suis passionné par l'histoire de Tchernobyl et toutes ses conséquences, de tous les sacrifices que les peuples de l'ussr ont dû subir pour éviter une plus grande catastrophe, c'est pourquoi j'ai créé ce site, pour ne pas oublier ce que ces peuples ont fait pour nous, et pour les générations futures.",
+            "creator-website": "creator-website",
+            "description": "Ce site retrace les \u00e9v\u00e8nements de l'accident qui a conduit \u00e0 cette catastrophe et ces cons\u00e9quences, illustr\u00e9 par photo, vid\u00e9o et document d'archive.",
+            "help-creator": "site web du cr\u00e9ateur",
+            "help-me": "aidez-moi",
+            "help-me-description": "si le site est gratuit, open source gratuit et il le restera ! le coût de l'infrastructure devrait augmenter avec le nombre de photos ajoutées, et le coût annuel est actuellement de 100 euros (c'est un petit serveur) ; c'est pourquoi vous pouvez m'aider à assumer ce coût en me payant une petite somme, cela me permettra d'acheter un meilleur serveur, et même dans le futur avec une instance pour les vidéos !",
+            "no-contributors": "aucun contributeur",
+            "thanks-contributors": "merci aux contributeurs",
+            "translation": "traduction"
         },
         "home": {
-            "description": "La catastrophe nucl\u00e9aire de Tchernobyl est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l'accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L'IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d'importantes cons\u00e9quences \u00e9conomiques et sociales. Ce site retrace les \u00e9v\u00e8nements de l'accident qui a conduit \u00e0 cette catastrophe et ces cons\u00e9quences, illustr\u00e9 par photo, vid\u00e9o et document d'archive.",
+            "description": "La catastrophe nucl\u00e9aire de Tchernobyl est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l'accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L'IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d'importantes cons\u00e9quences \u00e9conomiques et sociales.",
             "presentation": "pr\u00e9sentation"
         },
         "meta": {
-            "about": {
-                "description": "description",
-                "title": "title"
-            },
             "contact": {
-                "description": "description",
-                "title": "title"
+                "description": "contactez moi",
+                "title": "contact"
             },
             "home": {
-                "description": "description",
-                "title": "title"
+                "title": "chernobyle.org"
             },
             "login": {
-                "description": "description",
-                "title": "title"
+                "description": "connectez-vous \u00e0 chernobyle.org pour contribuer \u00e0 la communaut\u00e9, et partagez votre photo, votre vid\u00e9o et bien plus encore !",
+                "title": "connexion"
             },
             "picture": {
-                "description": "description",
-                "title": "title"
+                "description": "une immense galerie de photos d'\u00e9poque sur toute l'histoire de Tchernobyl, de la construction, \u00e0 la photo de l'explosion du r\u00e9acteur, en passant par les liquidateurs.",
+                "title": "gallery d'images"
             },
             "register": {
-                "description": "description",
-                "title": "title"
+                "description": "rejoignez la communaut\u00e9 chernobyle.org pour partagez votre photo, votre vid\u00e9o et bien plus encore !",
+                "title": "inscription"
             },
             "reset-password": {
-                "description": "description",
-                "title": "title"
+                "description": "Vous avez oubli\u00e9 votre mot de passe ? r\u00e9initialisez-le !",
+                "title": "r\u00e9initialisez votre mot de passe"
             },
             "video": {
-                "description": "description",
-                "title": "title"
+                "description": "une immense galerie de vid\u00e9os d'\u00e9poque sur toute l'histoire de Tchernobyl, de la construction, \u00e0 la vid\u00e9o de l'explosion du r\u00e9acteur, en passant par les liquidateurs.",
+                "title": "gallery vid\u00e9os"
             }
         }
     },
     "success": {
-        "contact": "contact",
-        "create": "create",
-        "delete-account": "delete-account",
-        "report": "report",
-        "update": "update"
+        "contact": "votre message a \u00e9t\u00e9 envoy\u00e9 avec succ\u00e8s",
+        "create": "cr\u00e9ation effectu\u00e9e avec succ\u00e8s",
+        "delete-account": "suppression du compte avec succ\u00e8s",
+        "report": "signaler envoy\u00e9 avec succ\u00e8s",
+        "update": "mise \u00e0 jour effectu\u00e9e avec succ\u00e8s"
     },
     "tools": {
         "action": "action",
-        "add": "add",
-        "ascending": "ascending",
-        "cancel": "cancel",
-        "create": "create",
+        "add": "ajouter",
+        "ascending": "croissant",
+        "cancel": "annuler",
         "date": "date",
-        "descending": "descending",
-        "name": "name",
-        "save": "save",
-        "save-add-other": "save-add-other",
-        "save-continue-editing": "save-continue-editing",
-        "search": "search",
-        "update": "update"
+        "descending": "d\u00e9croissant",
+        "name": "nom",
+        "save": "sauvegarder",
+        "save-add-other": "sauvegarder et ajouter d'autres",
+        "save-continue-editing": "sauvegarder et continuer l'\u00e9dition"
     },
     "utils": {
         "actions": "actions",
-        "actual-link": "actual-link",
-        "cancel": "cancel",
-        "change-language": "change-language",
-        "change-order": "change-order",
-        "close": "close",
-        "content": "content",
-        "create": "create",
-        "currently": "currently",
-        "delete": "delete",
-        "edit": "edit",
-        "email": "email",
-        "empty": "empty",
-        "goto-about": "goto-about",
-        "goto-contribute": "goto-contribute",
-        "goto-gallery": "goto-gallery",
-        "goto-gallery-picture": "goto-gallery-picture",
-        "goto-gallery-video": "goto-gallery-video",
-        "goto-home": "goto-home",
-        "goto-picture": "goto-picture",
-        "goto-timeline": "goto-timeline",
-        "goto-video": "goto-video",
-        "hours": "hours",
-        "identifier": "identifier",
+        "actual-link": "lien actuel",
+        "cancel": "annuler",
+        "change-language": "changer de langue",
+        "change-sort-order": "modifier l'ordre de tri",
+        "close": "fermer",
+        "contact": "contact",
+        "content": "contenu",
+        "create": "cr\u00e9er",
+        "currently": "actuellement",
+        "delete": "supprimer",
+        "edit": "\u00e9diter",
+        "empty": "vide",
+        "goto-about": "aller \u00e0 propos de",
+        "goto-contribute": "aller contribuer",
+        "goto-gallery": "aller \u00e0 la galerie",
+        "goto-gallery-picture": "aller \u00e0 la galerie d'image",
+        "goto-gallery-video": "aller \u00e0 la galerie vid\u00e9o",
+        "goto-home": "aller \u00e0 la page d'accueil",
+        "goto-picture": "aller aux l'image",
+        "goto-timeline": "aller \u00e0 la chronologie",
+        "goto-video": "aller aux vid\u00e9os",
+        "hours": "heures",
+        "identifier": "identifiant",
         "image": "image",
-        "language": "language",
-        "link": "link",
-        "list": "list",
-        "loading": "loading",
-        "lock-password": "lock-password",
-        "love": "love",
+        "language": "langue",
+        "link": "lien",
+        "list": "liste",
+        "loading": "chargement",
+        "lock-password": "verrouiller le mot de passe",
+        "love": "amour",
         "menu": "menu",
-        "minutes": "minutes",
-        "mood-sad": "mood-sad",
+        "minutes": "min",
+        "mood-sad": "humeur triste",
         "navigation": "navigation",
-        "navigation-site": "navigation-site",
-        "need-translate": "need-translate",
-        "next": "next",
-        "next-event": "next-event",
-        "no": "no",
-        "open-menu": "open-menu",
-        "or": "or",
-        "picture": "picture",
-        "prev": "prev",
-        "preview": "preview",
-        "require": "require",
-        "search": "search",
-        "secondes": "secondes",
-        "send": "send",
-        "sort-by": "sort-by",
+        "need-translated": "besoin de traduction",
+        "next": "suivant",
+        "next-event": "prochain \u00e9v\u00e9nement",
+        "no": "non",
+        "open-menu": "ouvrir menu",
+        "or": "ou",
+        "picture": "photo",
+        "prev": "pr\u00e9c\u00e9dent",
+        "preview": "aper\u00e7u",
+        "required": "n\u00e9cessaire",
+        "search": "recherchez",
+        "secondes": "sec",
+        "send": "envoyer",
+        "site-navigation": "site-navigation",
+        "sort-by": "tri\u00e9 par",
         "total": "total",
-        "translate": "translate",
-        "un-lock-password": "un-lock-password",
-        "update": "update",
-        "username": "username",
+        "translate": "traduire",
+        "un-lock-password": "d\u00e9verrouiller le mot de passe",
+        "update": "mise \u00e0 jour",
         "video": "video",
-        "yes": "yes"
+        "yes": "oui"
     }
 }

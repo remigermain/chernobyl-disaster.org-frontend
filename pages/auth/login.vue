@@ -13,16 +13,15 @@
         </extra-nuxt-link>
       </span>
       <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-3/4 form"
-            :name="$t('auth.form-connection-account')"
             @submit.prevent="submit"
       >
         <field-email :field="field.email" :errors="errors.email" />
         <field-password :field="field.password" :errors="errors.password" />
         <div class="flex justify-end mx-auto text-center">
           <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto"
-                           :title="$t('auth.ForgetPassword')"
+                           :title="$t('auth.forget-password')"
           >
-            {{ $t('auth.ForgetPassword') }}
+            {{ $t('auth.forget-password') }}
           </extra-nuxt-link>
         </div>
         <field-submit>
@@ -81,7 +80,7 @@ export default {
 
   head () {
     return {
-      title: this.$t("menu.login"),
+      title: this.$t("auth.login"),
       meta: [
           { hid: "description", name: "description", content: this.$t("pages.meta.login.description") },
           { property: "og:title", content: this.$t("pages.meta.login.title")},

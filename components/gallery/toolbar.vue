@@ -11,12 +11,12 @@
         </span>
       </div>
       <nav class="gallery-toolbar-desktop  wrapper" :class="{'active': active}">
-        <field-text v-model="search" :field="{label: $t('tools.search') }" class="toolbar-search" role="search">
+        <field-text v-model="search" :field="{label: $t('utils.search') }" class="toolbar-search" role="search">
           <template v-slot:icon>
             <svg-icon name="search" />
           </template>
         </field-text>
-        <label :name="$t('utils.change-order')" class="wrapper">
+        <label :name="$t('utils.change-sort-order')" class="wrapper">
           <select v-model="ordering" class="form-select bg-gray-200" :aria-label="$t('utils.sort-by')">
             <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
               {{ choice.label }}
@@ -79,8 +79,8 @@ export default {
       ordering: "",
       active: false,
       orderingChoices: [
-        {label: `${this.$t("tools.create")} - ${this.$t("tools.ascending")}`, value: "id"},
-        {label: `${this.$t("tools.create")} - ${this.$t("tools.descending")}`, value: "-id"},
+        {label: `${this.$t("utils.create")} - ${this.$t("tools.ascending")}`, value: "id"},
+        {label: `${this.$t("utils.create")} - ${this.$t("tools.descending")}`, value: "-id"},
         {label: `${this.$t("tools.date")} - ${this.$t("tools.ascending")}`, value: "date"},
         {label: `${this.$t("tools.date")} - ${this.$t("tools.descending")}`, value: "-date"},
         {label: `${this.$t("tools.name")} - ${this.$t("tools.ascending")}`, value: "title"},

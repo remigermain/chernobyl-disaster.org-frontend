@@ -35,7 +35,7 @@
           <div v-if="active" class="modal flex justify-center items-center" @click.prevent="active = false">
             <div class="flex flex-col shadows bg-white rounded-lg px-4 pt-4 pb-1" @click.stop>
               <span class="mb-8">
-                {{ $t('auth.delete-account-confirme') }}
+                {{ $t('auth.confirme-delete-account') }}
               </span>
               <div class="flex justify-end">
                 <button class="py-1 px-4 border border-solid border-gray-800 rounded-md mr-1 hover:bg-gray-200" @click.prevent="active = false">
@@ -68,19 +68,19 @@ export default {
       },
       field: {
         oldpassword: {
-          label: this.$t("admin.model.old-password"),
+          label: this.$t("auth.old-password"),
           name: "old_password",
           required: true,
           max_length: 50,
         },
         password1: {
-          label: this.$t("admin.model.new-password"),
+          label: this.$t("auth.new-password"),
           name: "new_password1",
           required: true,
           max_length: 50,
         },
         password2: {
-          label: this.$t("admin.model.new-comfirm-password"),
+          label: this.$t("auth.comfirm-new-password"),
           name: "new_password2",
           required: true,
           max_length: 50,

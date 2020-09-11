@@ -8,7 +8,7 @@
       <lazy-extra-nuxt-link v-if="create" :to="{name: `contribute-${model}-create`}"
                             class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
       >
-        {{ $t('tools.create') }}
+        {{ $t('utils.create') }}
         <svg-icon name="plus" class=" w-24px text-white" />
       </lazy-extra-nuxt-link>
     </div>

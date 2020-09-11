@@ -4,7 +4,7 @@
       <div class="flex justify-between flex-wrap">
         <div class="w-2/4 flex items-center">
           <h2 class="capitalize">
-            {{ $t('admin.field.report') }}
+            {{ $t('admin.label.report') }}
           </h2>
         </div>
         <div class="w-2/4 text-right">

@@ -2,7 +2,7 @@
   <div class="grid-contact">
     <section class="contact-description">
       <p class="font-bold text-gray-900 text-2xl">
-        {{ $t('auth.contact') }}
+        {{ $t('utils.contact') }}
       </p>
       <p class="text-sm text-gray-600">
         <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
@@ -35,7 +35,7 @@ export default {
   data () {
     return {
       message: {
-        label: this.$t("admin.model.message"),
+        label: this.$t("admin.model.your-message"),
         name: "message",
         required: true,
       },
@@ -81,7 +81,7 @@ export default {
 
   head () {
     return {
-      title: this.$t("menu.contact"),
+      title: this.$t("utils.contact"),
       meta: [
           { hid: "description", name: "description", content: this.$t("pages.meta.contact.description") },
           { property: "og:title", content: this.$t("pages.meta.contact.title")},

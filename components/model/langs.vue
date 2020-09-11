@@ -10,7 +10,7 @@
         <slot :obj="obj" />
         <div>
           <span class="detail-item-title">
-            {{ $t("admin.model.language") }} :
+            {{ $t("utils.language") }} :
           </span>
           <span class="detail-item-content">
             {{ getLang(obj.language) }}

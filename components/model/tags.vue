@@ -1,7 +1,7 @@
 <template>
   <span>
     <span class="detail-item-title">
-      {{ $t("admin.field.tags") }} :
+      {{ $t("admin.label.tags") }} :
     </span>
     <span v-if="tags.length" class="flex flex-wrap mt-2">
       <span v-for="id in tags" :key="id" class="rounded-l-full rounded-r-full bg-blue-700 text-gray-400 text-sm py-1 px-3 mr-1 mt-1">

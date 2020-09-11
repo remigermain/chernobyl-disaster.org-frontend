@@ -6,7 +6,7 @@
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
     </label>
-    <nav class="navbar-items" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.navigation-site')">
+    <nav class="navbar-items" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
       <lazy-extra-nuxt-link :to="{name: 'home'}" class="navbar-link"
                             :title="$t('utils.goto-home')"
                             @click="active = false"

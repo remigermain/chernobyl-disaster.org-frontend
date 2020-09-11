@@ -29,7 +29,7 @@
                         @search="searchLang"
       >
         <template v-slot:table-title>
-          {{ $t('admin.model.need-translate') }}
+          {{ $t('utils.need-translated') }}
         </template>
       </lazy-admin-table>
     </template>

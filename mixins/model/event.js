@@ -53,7 +53,7 @@ export default {
             help: this.$t("admin.help.model.event.langs.description")
           },
           language: {
-            label: this.$t("admin.model.language"),
+            label: this.$t("utils.language"),
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],

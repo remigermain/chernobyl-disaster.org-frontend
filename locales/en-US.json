@@ -1,16 +1,5 @@
 {
-    "about": {
-        "contact": "contact",
-        "contribute-gitlab": "contribute-gitlab",
-        "contribute-language": "contribute-language",
-        "creator-website": "creator-website",
-        "help-creator": "help-creator"
-    },
     "admin": {
-        "field": {
-            "report": "report",
-            "tags": "tags"
-        },
         "help": {
             "global": {
                 "event": "event",
@@ -69,6 +58,7 @@
             "picture": "picture",
             "report": "report",
             "tag": "tag",
+            "tags": "tags",
             "video": "video"
         },
         "model": {
@@ -79,21 +69,16 @@
             "description": "description",
             "event": "event",
             "id": "id",
-            "language": "language",
-            "message": "message",
             "name": "name",
-            "need-translate": "need-translate",
-            "new-comfirm-password": "new-comfirm-password",
-            "new-password": "new-password",
             "no-translate": "no-translate",
-            "old-password": "old-password",
             "photographer": "photographer",
             "picture": "picture",
             "profil": "profil",
             "tags": "tags",
             "title": "title",
             "video": "video",
-            "wikipedia": "wikipedia"
+            "wikipedia": "wikipedia",
+            "your-message": "your-message"
         },
         "tools": {
             "detail": "detail",
@@ -101,23 +86,24 @@
         }
     },
     "auth": {
-        "ForgetPassword": "ForgetPassword",
         "change-password": "change-password",
+        "comfirm-new-password": "comfirm-new-password",
+        "confirme-delete-account": "confirme-delete-account",
         "connection-account": "connection-account",
-        "contact": "contact",
         "create-account": "create-account",
         "delete-account": "delete-account",
-        "delete-account-confirme": "delete-account-confirme",
         "field": {
             "comfirm-password": "comfirm-password",
             "email": "email",
             "password": "password",
             "username": "username"
         },
-        "form-connection-account": "form-connection-account",
+        "forget-password": "forget-password",
         "goto-login": "goto-login",
         "login": "login",
         "logout": "logout",
+        "new-password": "new-password",
+        "old-password": "old-password",
         "register": "register",
         "register-account": "register-account",
         "registeration-success": "registeration-success",
@@ -135,14 +121,11 @@
     },
     "menu": {
         "about": "about",
-        "contact": "contact",
         "contribute": "contribute",
         "gallery": "gallery",
         "home": "home",
-        "login": "login",
         "picture": "picture",
         "register": "register",
-        "reset-password": "reset-password",
         "timeline": "timeline",
         "video": "video"
     },
@@ -150,30 +133,30 @@
         "about": {
             "buy-me-coffe": "buy-me-coffe",
             "contact": "contact",
+            "contribute-gitlab": "contribute-gitlab",
+            "contribute-translate": "contribute-translate",
             "contributing": "contributing",
             "contributors": "contributors",
             "creator-description": "creator-description",
+            "creator-website": "creator-website",
+            "description": "description",
+            "help-creator": "help-creator",
             "help-me": "help-me",
             "help-me-description": "help-me-description",
             "no-contributors": "no-contributors",
             "thanks-contributors": "thanks-contributors",
-            "traduction": "traduction"
+            "translation": "translation"
         },
         "home": {
             "description": "The Chernobyl nuclear disaster is a major nuclear accident that occurred on April 26, 1986 in the V.I. Lenin nuclear power plant, then located in the Ukrainian Soviet Socialist Republic, USSR. It is the most serious nuclear disaster of the 20th century, classified at level 7 (the highest) of the International Nuclear Event Scale (INES), surpassing, according to the Institute for Radiation Protection and Nuclear Safety (IRSN), by its immediate environmental impacts the Fukushima nuclear accident of 2011, classified at the same level. The IRSN mentions for these accidents potential health effects, lasting contamination of territories and important economic and social consequences. This site recounts the events of the accident that led to this disaster and its consequences, illustrated by photo, video and archive document. Translated with www.DeepL.com/Translator (free version)",
             "presentation": "presentation"
         },
         "meta": {
-            "about": {
-                "description": "description",
-                "title": "title"
-            },
             "contact": {
                 "description": "description",
                 "title": "title"
             },
             "home": {
-                "description": "description",
                 "title": "title"
             },
             "login": {
@@ -210,29 +193,26 @@
         "add": "add",
         "ascending": "ascending",
         "cancel": "cancel",
-        "create": "create",
         "date": "date",
         "descending": "descending",
         "name": "name",
         "save": "save",
         "save-add-other": "save-add-other",
-        "save-continue-editing": "save-continue-editing",
-        "search": "search",
-        "update": "update"
+        "save-continue-editing": "save-continue-editing"
     },
     "utils": {
         "actions": "actions",
         "actual-link": "actual-link",
         "cancel": "cancel",
         "change-language": "change-language",
-        "change-order": "change-order",
+        "change-sort-order": "change-sort-order",
         "close": "close",
+        "contact": "contact",
         "content": "content",
         "create": "create",
         "currently": "currently",
         "delete": "delete",
         "edit": "edit",
-        "email": "email",
         "empty": "empty",
         "goto-about": "goto-about",
         "goto-contribute": "goto-contribute",
@@ -256,8 +236,7 @@
         "minutes": "min",
         "mood-sad": "mood-sad",
         "navigation": "navigation",
-        "navigation-site": "navigation-site",
-        "need-translate": "need-translate",
+        "need-translated": "need-translated",
         "next": "next",
         "next-event": "next-event",
         "no": "no",
@@ -266,16 +245,16 @@
         "picture": "picture",
         "prev": "prev",
         "preview": "preview",
-        "require": "require",
+        "required": "required",
         "search": "search",
         "secondes": "sec",
         "send": "send",
+        "site-navigation": "site-navigation",
         "sort-by": "sort-by",
         "total": "total",
         "translate": "translate",
         "un-lock-password": "un-lock-password",
         "update": "update",
-        "username": "username",
         "video": "video",
         "yes": "yes"
     }

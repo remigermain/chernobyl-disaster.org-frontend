@@ -6,6 +6,7 @@
       </h1>
       <p class="mb-16 text-lg leading-7 break-words inline-block mt-2">
         {{ $t('pages.home.description') }}
+        {{ $t('pages.about.description') }}
       </p>
       <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="px-4 py-4 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800"
                             :title="$t('utils.goto-timeline')"
@@ -29,16 +30,16 @@ export default {
     return {
       title: this.$t("menu.home"),
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.meta.home.description") },
+          { hid: "description", name: "description", content: this.$t("pages.home.description") },
           { property: "og:title", content: this.$t("pages.meta.home.title")},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.meta.home.description")},
+          { property: "og:description", content: this.$t("pages.home.description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.meta.home.description") },
+          { name: "twitter:card", content: this.$t("pages.home.description") },
           { name: "twitter:site", content: this.$siteName},
           { name: "twitter:title", content: this.$t("pages.meta.home.title") },
-          { name: "twitter:description", content: this.$t("pages.meta.home.description") },
+          { name: "twitter:description", content: this.$t("pages.home.description") },
           { name: "twitter:image", content: "/favicon.ico" },
           { name: "twitter:image:alt", content: this.$t("pages.meta.home.title") }
       ]

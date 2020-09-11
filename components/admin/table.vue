@@ -5,7 +5,7 @@
         <slot name="table-title" />
       </div>
       <div class="p-2 mb-2 w-2/4">
-        <field-text v-model="search" :field="{label: $t('tools.search') }">
+        <field-text v-model="search" :field="{label: $t('utils.search') }">
           <template v-slot:icon>
             <svg-icon name="search" class="cursor-pointer hover:text-purple-700" @click="$emit('search', search)" />
           </template>

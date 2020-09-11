@@ -29,7 +29,7 @@
                         @search="searchLang"
       >
         <template v-slot:table-title>
-          {{ $t('admin.model.need-translate') }}
+          {{ $t('utils.need-translated') }}
         </template>
       </lazy-admin-table>
     </template>
@@ -86,7 +86,7 @@ export default {
         {field: "id", label: this.$t("admin.model.id")},
         {field: "title", label: this.$t("admin.model.title")},
         {field: "date", label: this.$t("admin.model.date")},
-        {field: "not_available_languages", label: this.$t("admin.model.need-translate")},
+        {field: "not_available_languages", label: this.$t("utils.need-translated")},
       ],
     }
   },

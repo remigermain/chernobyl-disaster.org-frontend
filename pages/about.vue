@@ -5,16 +5,16 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
         </h2>
-        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('about.contribute-gitlab')">
+        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('pages.about.contribute-gitlab')">
           <svg-icon name="brand-gitlab" role="img" aria-label="Gitlab" />
           Gitlab
         </a>
-        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('about.contribute-language')">
-          <svg-icon name="language" role="img" :aria-label="$t('pages.about.traduction')" />
-          {{ $t('pages.about.traduction') }}
+        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('pages.about.contribute-translate')">
+          <svg-icon name="language" role="img" :aria-label="$t('pages.about.translation')" />
+          {{ $t('pages.about.translation') }}
         </a>
         <extra-nuxt-link :to="{name: 'contact'}" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500"
-                         :title="$t('about.contact')"
+                         :title="$t('pages.about.contact')"
         >
           <svg-icon name="mail" role="img" :aria-label="$t('pages.about.contact')" />
           {{ $t('pages.about.contact') }}
@@ -46,7 +46,7 @@
       </section>
       <article>
         <h1 class="text-2xl italic text-gray-800 pr-4">
-          <a href="https://germainremi.fr" class="text-purple-800 hover:text-purple-500" :title="$t('about.creator-website')">
+          <a href="https://germainremi.fr" class="text-purple-800 hover:text-purple-500" :title="$t('pages.about.creator-website')">
             @GERMAIN remi
           </a>
         </h1>
@@ -65,7 +65,7 @@
           {{ $t('pages.about.help-me-description') }}
         </p>
         <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white font-bold rounded-sm hover:bg-gray-800 btn-icon-show overflow-hidden"
-           :title="$t('about.help-creator')"
+           :title="$t('pages.about.help-creator')"
         >
           {{ $t('pages.about.buy-me-coffe') }}
         </a>
@@ -100,18 +100,18 @@ export default {
     return {
       title: this.$t("menu.about"),
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.meta.about.description") },
-          { property: "og:title", content: this.$t("pages.meta.about.title")},
+          { hid: "description", name: "description", content: this.$t("pages.about.description") },
+          { property: "og:title", content: this.$t("menu.about")},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.meta.about.description")},
+          { property: "og:description", content: this.$t("pages.about.description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.meta.about.description") },
+          { name: "twitter:card", content: this.$t("pages.about.description") },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.meta.about.title") },
-          { name: "twitter:description", content: this.$t("pages.meta.about.description") },
+          { name: "twitter:title", content: this.$t("menu.about") },
+          { name: "twitter:description", content: this.$t("pages.about.description") },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.meta.about.title") }
+          { name: "twitter:image:alt", content: this.$t("menu.about") }
       ]
     }
   }
