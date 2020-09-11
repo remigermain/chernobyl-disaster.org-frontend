@@ -26,16 +26,9 @@ export default {
           return el
         })
 
-        // simulate many event
-        // TODO
-        let results = [
-            ...result.map(x => {return {...x, id: x.id *1 }}),
-          ...result.map(x => {return {...x, id: x.id * 10}}),
-          ...result.map(x => {return {...x, id: x.id * 100}}),
-          ...result.map(x => {return {...x, id: x.id * 1000}})]
         return {
-          object: results,
-          current: timelineElement(results, route.params.slug)
+          object: result,
+          current: timelineElement(result, route.params.slug)
         }
       })
   },
