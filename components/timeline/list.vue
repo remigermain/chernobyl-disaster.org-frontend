@@ -20,7 +20,12 @@
                              :class="{'bg-gray-700': current.id == element.id, 'bg-gray-800': current.id != element.id}"
                              :title="i18nAttr(element, 'title')"
             >
-              <span class="timeline-point bg-yellow-600 shadow-sm" :class="{'active': current.id == element.id }" />
+              <span class="timeline-point shadow-sm"
+                    :class="{
+                      'active bg-blue-600': current.id == element.id,
+                      'bg-blue-800': current.id != element.id
+                    }"
+              />
               <time v-show="!isTimeEmpty(element.date)" :datetime="element.date.toLocaleTimeString($i18n.locale)" class="text-xl italic">
                 {{ element.date.toLocaleTimeString($i18n.locale) }}
               </time>
@@ -50,12 +55,12 @@
           />
         </extra-nuxt-link>
       </div>
-      <div class="icon-timeline w-6 h-12 bg-yellow-600 text-gray-800 shadow-lg"
+      <div class="icon-timeline w-6 h-12 bg-blue-800 text-gray-800 shadow-lg"
            :class="{'active rounded-l-full': active, 'rounded-r-full': !active}"
            :aria-label="$t('utils.open-menu')"
            @click="toogleActive"
       >
-        <svg-icon name="arrow-right" class="w-8" />
+        <svg-icon name="arrow-right" class="w-8 text-white text-xl" />
       </div>
     </div>
     <div class="background-navbar" :class="{'active': active, 'hidden': !active }" @click="active = false" />

@@ -17,7 +17,7 @@
           </template>
         </field-text>
         <label :name="$t('utils.change-sort-order')" class="wrapper">
-          <select v-model="ordering" class="form-select bg-gray-200" :aria-label="$t('utils.sort-by')">
+          <select v-model="ordering" class="form-select bg-gray-200 mt-2" :aria-label="$t('utils.sort-by')">
             <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
               {{ choice.label }}
             </option>
@@ -26,7 +26,7 @@
             </option>
           </select>
         </label>
-        <button class="p-2 bg-gray-700 rounded-md text-white hover:bg-gray-800 text-center" @click="submit">
+        <button class="p-2 bg-gray-800 rounded-md text-white hover:bg-gray-700 text-center" @click="submit">
           {{ $t('utils.search') }}
         </button>
         <span class="border-b border-gray-500" />

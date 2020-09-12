@@ -1,6 +1,6 @@
 <template>
-  <div class="grid-login">
-    <div class="login-description">
+  <div class="grid-form">
+    <div class="form-description">
       <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
         <h1 class="font-bold text-gray-900 text-2xl">
           {{ $t('auth.connection-account') }}
@@ -31,9 +31,9 @@
         </form>
       </section>
     </div>
-    <div class="login-image">
+    <div class="form-image">
       <picture :role="$t('utils.image')">
-        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="home-img" class="login-image-item">
+        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="home-img" class="form-image-item">
       </picture>
     </div>
   </div>
@@ -101,69 +101,3 @@ export default {
   }
 }
 </script>
-
-
-<style lang="scss" scoped>
-.grid-login {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  height: 100%;
-}
-
-.login-description {
-  grid-area: 1 / 1 / 1 / 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 5rem;
-}
-
-.login-image {
-  grid-area: 1 / 2 / 1 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  margin-right: 4rem;
-  margin-left: 4rem;
-  .login-image-item {
-    object-fit: cover;
-  }
-}
-
-@media screen and (max-width:1200px){
-  .login-description  {
-    padding: 2rem;
-  }
-}
-
-@media screen and (max-width:1000px){
-  .login-image {
-    width: 100vw;
-    height: 100vh;
-    justify-content: end;
-    margin: 0;
-    transform: translate(0, -50%);
-    top: 50%;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-    opacity: .3;
-    .login-image-item {
-      border-bottom-left-radius: 50%;
-      border-top-left-radius: 50%;
-    }
-  }
-  .login-description  {
-    grid-area: 1 / 1 / 1 / 3;
-  }
-}
-
-.form > * + * {
-  margin-top: .5rem
-}
-</style>
