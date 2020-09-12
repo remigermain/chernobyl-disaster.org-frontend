@@ -17,3 +17,12 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/nuxtjs
 
+
+# image responseive
+assets/img/**/*-mobile.*
+assets/img/**/*-tablet.*
+assets/img/**/*.avif
+assets/img/**/*.webp
+
+# remove lighthouse report
+*.html

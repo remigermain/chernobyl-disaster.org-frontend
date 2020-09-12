@@ -1,5 +1,6 @@
 const isDev = process.env.NODE_ENV !== "production"
-const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
+// const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
+const apiUrl = "http://localhost:8000/"
 
 export default {
 
@@ -176,7 +177,7 @@ export default {
   },
 
   purgeCSS: {
-    whiteListPatterns: [/svg.*/, "svg", "symbol"],
+    whiteListPatterns: [/svg.*/, "svg", "symbol", "__nuxt-error-page"],
   },
 
   build: {

@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=developement nuxt",
-    "build": "cross-env NODE_ENV=production nuxt build",
+    "build": "yarn prebuild && cross-env NODE_ENV=production nuxt build",
     "start": "cross-env NODE_ENV=production nuxt start",
+    "prebuild": "./script/prebuild.sh",
     "export": "nuxt export",
     "serve": "nuxt serve",
     "generate": "nuxt generate",
