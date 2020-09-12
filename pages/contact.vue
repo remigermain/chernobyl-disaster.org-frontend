@@ -1,23 +1,21 @@
 <template>
   <div class="grid-contact">
     <section class="contact-description">
-      <p class="font-bold text-gray-900 text-2xl">
-        {{ $t('utils.contact') }}
-      </p>
-      <p class="text-sm text-gray-600">
-        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
-                         :title="$t('auth.connection-account')"
-        >
-          {{ $t('auth.connection-account') }}
-        </extra-nuxt-link>
-      </p>
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-3/4 form" @submit.prevent="submit">
-        <field-email v-if="!$auth.loggedIn" v-model="data.email" :field="email" :errors="errors.email" />
-        <field-textarea v-model="data.message" :field="message" :errors="errors.message" />
-        <field-submit>
-          {{ $t('utils.send') }}
-        </field-submit>
-      </form>
+      <div class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
+        <p class="font-bold text-gray-900 text-2xl">
+          {{ $t('utils.contact') }}
+        </p>
+        <p class="text-sm text-gray-600">
+          {{ $t('pages.contact.description') }}
+        </p>
+        <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
+          <field-email v-model="data.email" :field="email" :errors="errors.email" />
+          <field-textarea v-model="data.message" :field="message" :errors="errors.message" />
+          <field-submit>
+            {{ $t('utils.send') }}
+          </field-submit>
+        </form>
+      </div>
     </section>
     <div class="contact-image">
       <picture>
@@ -45,7 +43,7 @@ export default {
         required: true,
       },
       data: {
-        email: "",
+        email: (this.$auth.loggedIn ? this.$auth.user.email : ""),
         message: ""
       },
       errors: {
@@ -115,7 +113,6 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 5rem;
 }
 
 .contact-image {
@@ -162,6 +159,6 @@ export default {
 }
 
 .form > * + * {
-  margin-top: 2rem
+  margin-top: .5rem
 }
 </style>

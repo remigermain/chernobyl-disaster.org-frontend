@@ -1,31 +1,33 @@
 <template>
   <div class="grid-password">
     <div class="password-description">
-      <h1 class="font-bold text-gray-900 text-2xl">
-        {{ $t('auth.connection-account') }}
-      </h1>
-      <span class="text-sm text-gray-600">
-        {{ $t('utils.or') }}
-        <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
-                         :title="$t('auth.login')"
-        >
-          {{ $t('auth.login') }}
-        </extra-nuxt-link>
-      </span>
-      <p class="text-sm text-gray-600">
-        {{ $t('utils.or') }}
-        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
-                         :title="$t('auth.create-account')"
-        >
-          {{ $t('auth.create-account') }}
-        </extra-nuxt-link>
-      </p>
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-2/4 form" @submit.prevent="submit">
-        <field-email :field="field.email" />
-        <field-submit>
-          {{ $t('auth.reset-password') }}
-        </field-submit>
-      </form>
+      <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
+        <h1 class="font-bold text-gray-900 text-2xl">
+          {{ $t('auth.connection-account') }}
+        </h1>
+        <span class="text-sm text-gray-600">
+          {{ $t('utils.or') }}
+          <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+                           :title="$t('auth.login')"
+          >
+            {{ $t('auth.login') }}
+          </extra-nuxt-link>
+        </span>
+        <p class="text-sm text-gray-600">
+          {{ $t('utils.or') }}
+          <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
+                           :title="$t('auth.create-account')"
+          >
+            {{ $t('auth.create-account') }}
+          </extra-nuxt-link>
+        </p>
+        <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
+          <field-email :field="field.email" />
+          <field-submit class="submit">
+            {{ $t('auth.reset-password') }}
+          </field-submit>
+        </form>
+      </section>
     </div>
     <div class="password-image">
       <picture>
@@ -156,7 +158,10 @@ export default {
 }
 
 .form > * + * {
-  margin-top: 2rem
+  margin-top: .5rem
 }
 
+.submit {
+  margin-top: 2em !important;
+}
 </style>

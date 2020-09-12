@@ -1,7 +1,7 @@
 <template>
   <main class="grid-layout">
     <div class="grid-layout-title">
-      <extra-nuxt-link :to="{name: 'home'}" :title="$t('menu.home')">
+      <extra-nuxt-link :to="{name: 'home'}" :title="$t('menu.home')" class="hover:text-gray-700">
         <h1 class="grid-layout-title-item font-russia">
           chernobyl
         </h1>

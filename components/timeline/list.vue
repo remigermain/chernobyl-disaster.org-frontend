@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="timeline-list-grid shadow-lg rounded-md border-t-8 border-gray-800" :class="{'active': active}">
-      <section id="timeline" class="timeline overflow-y-scroll flex flex-col items-center">
+      <section id="timeline" class="timeline pr-11px hover:pr-0 overflow-y-hidden hover:overflow-y-scroll flex flex-col items-center">
         <section v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
           <header class="timeline-date flex items-center text-center flex-col px-4">
             <time :datetime="obj.date.getFullYear()" class="text-3xl">

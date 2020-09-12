@@ -155,6 +155,7 @@ export default {
   css: [
     "destyle.css/destyle.css",
     "~assets/css/main.css",
+    "~assets/css/grid-form.scss",
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",

@@ -1,26 +1,28 @@
 <template>
   <div class="grid-register">
     <div class="register-description">
-      <h1 class="font-bold text-gray-900 text-2xl">
-        {{ $t('auth.register-account') }}
-      </h1>
-      <span class="text-sm text-gray-600">
-        {{ $t('utils.or') }}
-        <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
-                              :title="$t('auth.goto-login')"
-        >
-          {{ $t('auth.login') }}
-        </lazy-extra-nuxt-link>
-      </span>
-      <form class="bg-white shadow-md rounded px-8 py-6 mb-4 w-full -md:w-full xl:w-3/4 form" @submit.prevent="submit">
-        <field-email :field="field.email" :errors="errors.email" />
-        <field-username :field="field.username" :errors="errors.username" />
-        <field-password :field="field.password1" :errors="errors.password1" />
-        <field-password :field="field.password2" :errors="errors.password2" />
-        <field-submit>
-          {{ $t('auth.register') }}
-        </field-submit>
-      </form>
+      <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
+        <h1 class="font-bold text-gray-900 text-2xl">
+          {{ $t('auth.register-account') }}
+        </h1>
+        <span class="text-sm text-gray-600">
+          {{ $t('utils.or') }}
+          <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+                                :title="$t('auth.goto-login')"
+          >
+            {{ $t('auth.login') }}
+          </lazy-extra-nuxt-link>
+        </span>
+        <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
+          <field-email :field="field.email" :errors="errors.email" />
+          <field-username :field="field.username" :errors="errors.username" />
+          <field-password :field="field.password1" :errors="errors.password1" />
+          <field-password :field="field.password2" :errors="errors.password2" />
+          <field-submit class="submit">
+            {{ $t('auth.register') }}
+          </field-submit>
+        </form>
+      </section>
     </div>
     <div class="register-image">
       <picture>
@@ -176,6 +178,10 @@ export default {
 }
 
 .form > * + * {
-  margin-top: 1rem
+  margin-top: .5rem
+}
+
+.submit {
+  margin-top: 2em !important;
 }
 </style>

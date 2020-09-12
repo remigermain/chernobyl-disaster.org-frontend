@@ -1,33 +1,35 @@
 <template>
   <div class="grid-login">
     <div class="login-description">
-      <h1 class="font-bold text-gray-900 text-2xl">
-        {{ $t('auth.connection-account') }}
-      </h1>
-      <span class="text-sm text-gray-600">
-        {{ $t('utils.or') }}
-        <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
-                         :title="$t('auth.create-account')"
-        >
-          {{ $t('auth.create-account') }}
-        </extra-nuxt-link>
-      </span>
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-6 mb-4 w-3/4 -md:w-full xl:w-3/4 form"
-            @submit.prevent="submit"
-      >
-        <field-email :field="field.email" :errors="errors.email" />
-        <field-password :field="field.password" :errors="errors.password" />
-        <div class="flex justify-end mx-auto text-center">
-          <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto"
-                           :title="$t('auth.forget-password')"
+      <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
+        <h1 class="font-bold text-gray-900 text-2xl">
+          {{ $t('auth.connection-account') }}
+        </h1>
+        <span class="text-sm text-gray-600">
+          {{ $t('utils.or') }}
+          <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
+                           :title="$t('auth.create-account')"
           >
-            {{ $t('auth.forget-password') }}
+            {{ $t('auth.create-account') }}
           </extra-nuxt-link>
-        </div>
-        <field-submit>
-          {{ $t('auth.login') }}
-        </field-submit>
-      </form>
+        </span>
+        <form class="my-4 mx-8 w-3/4 form"
+              @submit.prevent="submit"
+        >
+          <field-email :field="field.email" :errors="errors.email" />
+          <field-password :field="field.password" :errors="errors.password" />
+          <div class="flex justify-end mx-auto text-center my-2">
+            <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto italic space tracking-tighter"
+                             :title="$t('auth.forget-password')"
+            >
+              {{ $t('auth.forget-password') }}
+            </extra-nuxt-link>
+          </div>
+          <field-submit>
+            {{ $t('auth.login') }}
+          </field-submit>
+        </form>
+      </section>
     </div>
     <div class="login-image">
       <picture :role="$t('utils.image')">
@@ -162,6 +164,6 @@ export default {
 }
 
 .form > * + * {
-  margin-top: 2rem
+  margin-top: .5rem
 }
 </style>

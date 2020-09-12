@@ -75,6 +75,15 @@ module.exports = {
       },
       colors: {
         inherit: "inherit",
+      },
+      padding: {
+        "8px": "8px",
+        "9px": "9px",
+        "10px": "10px",
+        "11px": "11px",
+        "12px": "12px",
+        "13px": "13px",
+        "14px": "14px",
       }
     },
   },
@@ -105,6 +114,8 @@ module.exports = {
     opacity: ["responsive", "hover", "group-hover"],
     position: ["responsive", "hover", "group-hover"],
     scale: ["responsive", "hover", "group-hover"],
+    overflow: ["responsive", "hover"],
+    padding: ["responsive", "hover"],
   },
   purge: {
     enabled: process.env.NODE_ENV === "production",
