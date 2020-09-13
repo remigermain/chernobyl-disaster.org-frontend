@@ -7,7 +7,7 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="navbar-items" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
-      <lazy-extra-nuxt-link :to="{name: 'index'}" class="navbar-link"
+      <lazy-extra-nuxt-link :to="{name: 'index'}" class="navbar-link exact"
                             :title="$t('utils.goto-home')"
                             @click="active = false"
       >
@@ -92,6 +92,14 @@ export default {
   width: 100%;
   z-index: 3;
   .navbar-link {
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
     &::after {
       transition: width .4s, opacity .5s;
       content: '';
@@ -105,22 +113,11 @@ export default {
     &::first-letter {
       text-transform: capitalize;
     }
-    &.nuxt-link-active {
+    &:not(.exact).nuxt-link-active, &.exact.nuxt-link-exact-active {
       opacity: 1;
       &::after, &::after {
         width: 100%;
         opacity: 1;
-      }
-    }
-    &:not(.nuxt-link-active)
-    {
-      opacity: .5;
-      &:hover {
-        opacity: 1;
-        &::after {
-          width: 100%;
-          opacity: 1;
-        }
       }
     }
   }

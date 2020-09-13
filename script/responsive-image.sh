@@ -12,7 +12,7 @@ imgs=(
 convert () {
   # $1 == resize
   # $2 == suffix
-  echo -e "\n$2 resize [$1]"
+  echo -e "\n$2 resize [$1%]"
   for img in ${imgs[@]}; do
     magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.webp"
     magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.avif"
@@ -22,21 +22,21 @@ convert () {
 }
 
 mobile () {
-  convert "35%" "-mobile"
+  convert "35" "-mobile"
 }
 
 tablet () {
-  convert "70%" "-tablet"
+  convert "70" "-tablet"
 }
 
 desktop () {
-  convert "100%" ""
+  convert "100" ""
 }
 
 all () {
+  desktop
   tablet
   mobile
-  desktop
 }
 
 usage () {

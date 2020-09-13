@@ -2,13 +2,13 @@ export default {
   locales: [
     {
       code: "fr",
-      // iso: "fr-FR",
+      iso: "fr-FR",
       file: "fr-FR.json",
       name: "Français",
     },
     {
       code: "en",
-      // iso: "en-US",
+      iso: "en-US",
       file: "en-US.json",
       name: "English",
     },

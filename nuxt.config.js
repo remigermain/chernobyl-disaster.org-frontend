@@ -106,8 +106,6 @@ export default {
     "@nuxtjs/eslint-module",
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/style-resources",
-    "@aceforth/nuxt-optimized-images",
     "nuxt-purgecss",
     "@nuxtjs/svg-sprite"
   ],
@@ -144,10 +142,6 @@ export default {
     },
   ],
 
-  optimizedImages: {
-    optimizeImages: true
-  },
-
   svgSprite: {
     input: "~/assets/svg",
     output: "~/assets/svg-compile",
@@ -167,8 +161,6 @@ export default {
     iconPack: "callback",
     position: "top-center",
   },
-
-  styleResources: {},
 
   tailwindcss: {
     configPath: "~/config/tailwind.config.js",

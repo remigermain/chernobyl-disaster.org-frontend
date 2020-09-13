@@ -5,15 +5,19 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
         </h2>
-        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('pages.about.contribute-gitlab')">
+        <a href="//TODO" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
+           :title="$t('pages.about.contribute-gitlab')"
+        >
           <svg-icon name="brand-gitlab" role="img" aria-label="Gitlab" />
           Gitlab
         </a>
-        <a href="//TODO" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500" :title="$t('pages.about.contribute-translate')">
+        <a href="//TODO" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
+           :title="$t('pages.about.contribute-translate')"
+        >
           <svg-icon name="language" role="img" :aria-label="$t('pages.about.translation')" />
           {{ $t('pages.about.translation') }}
         </a>
-        <extra-nuxt-link :to="{name: 'contact'}" class="px-4 py-4 font-bold rounded-sm hover:text-gray-500"
+        <extra-nuxt-link :to="{name: 'contact'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
                          :title="$t('pages.about.contact')"
         >
           <svg-icon name="mail" role="img" :aria-label="$t('pages.about.contact')" />
@@ -60,7 +64,7 @@
             <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
             <!-- <source srcset="~/assets/img/profil/profil.avif" media="(min-width: 850px)" format="image/avif"> -->
             <source srcset="~/assets/img/profil/profil.webp" media="(min-width: 850px)" format="image/webp">
-            <img loading="lazy" src="~/assets/img/profil/profil.jpeg" alt="image" format="image/jpeg" class="form-image-item">
+            <img loading="lazy" src="~/assets/img/profil/profil.jpeg" alt="image" format="image/jpeg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
           </picture>
           {{ $t('pages.about.creator-description') }}
         </p>
