@@ -14,8 +14,8 @@
         <a href="//TODO" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
            :title="$t('pages.about.contribute-translate')"
         >
-          <svg-icon name="language" role="img" :aria-label="$t('pages.about.translation')" />
-          {{ $t('pages.about.translation') }}
+          <svg-icon name="language" role="img" :aria-label="$t('utils.translation')" />
+          {{ $t('utils.translation') }}
         </a>
         <extra-nuxt-link :to="{name: 'contact'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
                          :title="$t('pages.about.contact')"

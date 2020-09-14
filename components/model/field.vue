@@ -1,12 +1,13 @@
 <template>
   <span>
     <span class="detail-item-title">
-      {{ label }} :
+      {{ field.label }} :
     </span>
     <span v-if="value" class="detail-item-content">
-      <slot>
-        {{ value }}
-      </slot>
+      <template v-if="!$slots.default">
+        {{ field.display ? field.display(value) : value }}
+      </template>
+      <slot v-else />
     </span>
     <span v-else class="text-sm text-gray-500 italic">
       {{ empty }}
@@ -18,12 +19,12 @@
 export default {
 
   props: {
-    label: {
-      type: String,
+    field: {
+      type: Object,
       required: true
     },
     value: {
-      type: [String, Number],
+      type: [String, Number, Object],
       default: null
     },
   }

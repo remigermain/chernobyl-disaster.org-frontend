@@ -32,13 +32,15 @@ export default {
           label: this.$t("admin.model.born"),
           name: "born",
           required: false,
-          help: this.$t("admin.help.model.people.born")
+          help: this.$t("admin.help.model.people.born"),
+          display: val => this.getDateYear(val) || val
         },
         death: {
           label: this.$t("admin.model.death"),
           name: "death",
           required: false,
-          help: this.$t("admin.help.model.people.death")
+          help: this.$t("admin.help.model.people.death"),
+          display: val => this.getDateYear(val) || val
         },
         profil: {
           label: this.$t("admin.model.profil"),

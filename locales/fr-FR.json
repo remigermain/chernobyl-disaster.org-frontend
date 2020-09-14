@@ -68,9 +68,7 @@
             "death": "d\u00e9c\u00e8s",
             "description": "description",
             "event": "\u00e9v\u00e9nement",
-            "id": "id",
             "name": "nom",
-            "no-translation": "pas de traduction",
             "photographer": "photographe",
             "picture": "photo",
             "profil": "profil",
@@ -144,8 +142,7 @@
             "help-me": "aidez moi",
             "help-me-description": "ce site est gratuit, open source et il le restera ! le co\u00fbt de l'infrastructure devrait augmenter avec le nombre de photos ajout\u00e9es, et le co\u00fbt annuel est actuellement de 100 euros (c'est un petit serveur), c'est pourquoi vous pouvez m'aider \u00e0 assumer ce co\u00fbt en me payant une petite somme, cela me permettra d'acheter un meilleur serveur, et m\u00eame dans le futur avec une instance pour les vid\u00e9os !",
             "no-contributors": "aucun contributeur",
-            "thanks-contributors": "merci aux contributeurs",
-            "translation": "traduction"
+            "thanks-contributors": "merci aux contributeurs"
         },
         "contact": {
             "description": "description"
@@ -247,7 +244,6 @@
         "or": "ou",
         "picture": "photo",
         "prev": "pr\u00e9c\u00e9dent",
-        "preview": "aper\u00e7u",
         "required": "n\u00e9cessaire",
         "search": "recherchez",
         "secondes": "sec",
@@ -255,7 +251,7 @@
         "site-navigation": "site-navigation",
         "sort-by": "tri\u00e9 par",
         "total": "total",
-        "translate": "traduire",
+        "translation": "traduction",
         "un-lock-password": "d\u00e9verrouiller le mot de passe",
         "update": "mise \u00e0 jour",
         "video": "vid\u00e9o",

@@ -9,7 +9,8 @@
       {{ model.label }}
     </template>
     <template v-slot:table>
-      <lazy-admin-table :fields="tableField"
+      <lazy-admin-table :fields="fields"
+                        :columns="columns"
                         :length="objectlength"
                         :model="model.name"
                         :object-list="objectList"
@@ -20,7 +21,8 @@
           {{ $t('admin.tools.list') }}
         </template>
       </lazy-admin-table>
-      <lazy-admin-table :fields="tableFieldLang"
+      <lazy-admin-table :fields="fields"
+                        :columns="columnsLang"
                         :length="objectlengthLang"
                         :model="model.name"
                         :object-list="objectListLang"
@@ -71,15 +73,12 @@ export default {
 
   data () {
     return {
-      tableField: [
-        {field: "id", label: this.$t("admin.model.id")},
-        {field: "name", label: this.$t("admin.model.name")}
-      ],
-      tableFieldLang: [
-        {field: "id", label: this.$t("admin.model.id")},
-        {field: "name", label: this.$t("admin.model.name")},
-        {field: "not_available_languages", label: "no translate"},
-      ],
+      columns: ["id", "name"],
+      columnsLang: ["id", "name", {
+          field: "not_available_languages",
+          label: this.$t("utils.need-translated")
+        }
+      ]
     }
   },
 

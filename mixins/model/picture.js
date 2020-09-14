@@ -52,7 +52,8 @@ export default {
           name: "event",
           required: false,
           choices: this.$store.getters["model/events"],
-          help: this.$t("admin.help.global.event")
+          help: this.$t("admin.help.global.event"),
+          display: ev => this.$store.getters["model/event"](ev)?.display_name || ev
         },
         picture: {
           label: this.$t("admin.model.picture"),
@@ -64,15 +65,17 @@ export default {
           label: this.$t("admin.model.date"),
           name: "date",
           required: false,
-          help: this.$t("admin.help.model.picture.date")
+          help: this.$t("admin.help.model.picture.date"),
+          display: val => this.getDateYear(val) || val
         },
         photographer: {
           label: this.$t("admin.model.photographer"),
           name: "photographer",
           model: "people",
           required: false,
-          choices: this.$store.getters["model/photographer"],
-          help: this.$t("admin.help.model.picture.photographer")
+          choices: this.$store.getters["model/photographers"],
+          help: this.$t("admin.help.model.picture.photographer"),
+          display: val => this.$store.getters["model/photographer"](val)?.display_name || val
         },
         langs: {
           title: {
@@ -87,7 +90,7 @@ export default {
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("admin.help.global.language")
+            help: this.$t("admin.help.global.language"),
           }
         }
       },

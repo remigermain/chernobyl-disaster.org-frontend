@@ -20,7 +20,9 @@
       </div>
     </div>
     <lazy-model-report :class="{'hidden': !showReport}" :uuid="model" @close="toogleReport" />
-    <slot name="detail" />
+    <div class="flex flex-col p-4 text-lg space-y-3">
+      <slot name="detail" />
+    </div>
   </div>
 </template>
 

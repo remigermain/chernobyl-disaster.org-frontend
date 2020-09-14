@@ -12,18 +12,12 @@
       </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:detail>
-      <div class="flex -md:flex-col items-center p-4 flex-wrap">
-        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
-          <model-field :label="fields.name.label" :value="object.name" />
-        </div>
-        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
-          <model-langs :object="object.langs">
-            <template slot-scope="{obj}">
-              <model-field :label="fields.langs.name.label" :value="obj.name" />
-            </template>
-          </model-langs>
-        </div>
-      </div>
+      <model-field :field="fields.name" :value="object.name" />
+      <model-langs :object="object.langs">
+        <template slot-scope="{obj}">
+          <model-field :field="fields.langs.name" :value="obj.name" />
+        </template>
+      </model-langs>
     </template>
   </lazy-model-detail>
 </template>

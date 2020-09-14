@@ -12,27 +12,23 @@
       </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:detail>
-      <div class="flex -md:flex-col items-center p-4 flex-wrap">
-        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
-          <model-field :label="fields.name.label" :value="object.name" />
-          <model-field :label="fields.born.label" :value="object.born" />
-          <model-field :label="fields.death.label" :value="object.death" />
-          <model-field :label="fields.wikipedia.label" :value="object.wikipedia">
-            <a :href="object.wikipedia" rel="noopener noreferrer" target="_blank" class="text-purple-800 text-sm">
-              {{ $t('utils.link') }}
-            </a>
-          </model-field>
-          <model-tags :tags="object.tags" />
-        </div>
-        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
-          <img :src="object.profil.full" :alt="object.name">
-        </div>
-        <model-langs :object="object.langs">
-          <template slot-scope="{obj}">
-            <model-field :label="fields.langs.biography.label" :value="obj.biography" />
-          </template>
-        </model-langs>
-      </div>
+      <model-field :field="fields.name" :value="object.name" />
+      <model-field :field="fields.born" :value="object.born" />
+      <model-field :field="fields.death" :value="object.death" />
+      <model-field :field="fields.wikipedia" :value="object.wikipedia">
+        <a :href="object.wikipedia" rel="noopener noreferrer" target="_blank" class="text-purple-800 text-sm">
+          {{ $t('utils.link') }}
+        </a>
+      </model-field>
+      <model-tags :tags="object.tags" />
+      <model-field :field="fields.profil" :value="object.profil">
+        <img :src="object.profil.full" :alt="object.name">
+      </model-field>
+      <model-langs :object="object.langs">
+        <template slot-scope="{obj}">
+          <model-field :field="fields.langs.biography" :value="obj.biography" />
+        </template>
+      </model-langs>
     </template>
   </lazy-model-detail>
 </template>

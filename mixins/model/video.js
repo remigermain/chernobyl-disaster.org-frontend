@@ -38,7 +38,8 @@ export default {
           name: "event",
           required: false,
           choices: this.$store.getters["model/events"],
-          help: this.$t("admin.help.global.event")
+          help: this.$t("admin.help.global.event"),
+          display: ev => this.$store.getters["model/event"](ev)?.display_name || ev
         },
         video: {
           label: this.$t("admin.model.video"),
@@ -50,7 +51,8 @@ export default {
           label: this.$t("admin.model.date"),
           name: "date",
           required: false,
-          help: this.$t("admin.help.model.video.date")
+          help: this.$t("admin.help.model.video.date"),
+          display: val => this.getDateYear(val) || val
         },
         langs: {
           title: {

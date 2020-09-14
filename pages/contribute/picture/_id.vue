@@ -12,30 +12,24 @@
       </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:detail>
-      <div class="flex -md:flex-col items-center p-4 flex-wrap">
-        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
-          <model-field :label="fields.title.label" :value="object.title" />
-          <model-event :label="fields.event.label" :value="object.event" />
-          <model-field :label="fields.date.label" :value="object.date">
-            {{ getDateYear(object.date) }}
-          </model-field>
-          <model-field :label="fields.photographer.label" :value="object.photographer">
-            <div v-if="object.photographer">
-              {{ object.photographer.name }}
-              <img :src="object.photographer.profil.thumbnail" :alt="object.photographer.name" class="rounded-full">
-            </div>
-          </model-field>
-          <model-tags :tags="object.tags" />
-        </div>
-        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items">
-          <img loading="lazy" :src="object.picture.full" :alt="object.title" class="w-64">
-        </div>
-        <model-langs :object="object.langs">
-          <template slot-scope="{obj}">
-            <model-field :label="fields.langs.title.label" :value="obj.title" />
-          </template>
-        </model-langs>
-      </div>
+      <model-field :field="fields.title" :value="object.title" />
+      <model-field :field="fields.event" :value="object.event" />
+      <model-field :field="fields.date" :value="object.date" />
+      <model-field :field="fields.photographer" :value="object.photographer">
+        <span v-if="object.photographer">
+          {{ fields.photographer.display(object.photographer) }}
+          <img :src="object.photographer.profil.thumbnail" alt="img" class="rounded-full">
+        </span>
+      </model-field>
+      <model-tags :tags="object.tags" />
+      <model-field :field="fields.picture" :value="object.picture">
+        <img :src="object.picture.full" :alt="object.title">
+      </model-field>
+      <model-langs :object="object.langs">
+        <template slot-scope="{obj}">
+          <model-field :field="fields.langs.title" :value="obj.title" />
+        </template>
+      </model-langs>
     </template>
   </lazy-model-detail>
 </template>

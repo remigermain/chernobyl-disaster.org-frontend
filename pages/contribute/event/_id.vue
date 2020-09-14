@@ -12,24 +12,18 @@
       </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:detail>
-      <div class="flex -md:flex-col items-center p-4 flex-wrap">
-        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-item h-64">
-          <model-field :label="fields.title.label" :value="object.title" />
-          <model-field :label="fields.date.label" :value="object.date">
-            {{ getDateYear(object.date) }}
-          </model-field>
-          <model-tags :tags="object.tags" />
-        </div>
-        <div class="w-2/4 -md:w-full flex justify-center text-2xl text-gray-800 detail-items h-64">
-          <timeline-extra :object="object" />
-        </div>
-        <model-langs :object="object.langs">
-          <template slot-scope="{obj}">
-            <model-field :label="fields.langs.title.label" :value="obj.title" />
-            <model-field :label="fields.langs.description.label" :value="obj.description" />
-          </template>
-        </model-langs>
+      <model-field :field="fields.title" :value="object.title" />
+      <model-field :field="fields.date" :value="object.date" />
+      <model-tags :tags="object.tags" />
+      <div class="w-full h-40">
+        <timeline-extra :object="object" />
       </div>
+      <model-langs :object="object.langs">
+        <template slot-scope="{obj}">
+          <model-field :field="fields.langs.title" :value="obj.title" />
+          <model-field :field="fields.langs.description" :value="obj.description" />
+        </template>
+      </model-langs>
     </template>
   </lazy-model-detail>
 </template>

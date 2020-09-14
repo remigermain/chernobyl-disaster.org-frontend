@@ -12,29 +12,20 @@
       </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:detail>
-      <div class="flex -md:flex-col items-center p-4 flex-wrap">
-        <div class="w-2/4 -md:w-full flex justify-center pl-10 flex-col text-2xl text-gray-800 detail-items">
-          <model-field :label="fields.title.label" :value="object.title" />
-          <model-event :label="fields.event.label" :value="object.event" />
-          <model-field :label="fields.date.label" :value="object.date">
-            {{ getDateYear(object.date) }}
-          </model-field>
-          <model-tags :tags="object.tags" />
-        </div>
-        <div class="w-2/4 -md:w-full flex flex-col justify-center text-2xl text-gray-800 detail-items">
-          <p class="text-3xl capitalize">
-            {{ $t('utils.preview') }} :
-          </p>
-          <iframe :src="urlVideo(object.video)" frameborder="0" class="video-detail"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-          />
-        </div>
-        <model-langs :object="object.langs">
-          <template slot-scope="{obj}">
-            <model-field :label="fields.langs.title.label" :value="obj.title" />
-          </template>
-        </model-langs>
-      </div>
+      <model-field :field="fields.title" :value="object.title" />
+      <model-field :field="fields.event" :value="object.event" />
+      <model-field :field="fields.date" :value="object.date" />
+      <model-tags :tags="object.tags" />
+      <model-field :field="fields.video" :value="object.video">
+        <iframe :src="urlVideo(object.video)" frameborder="0" class="video-detail"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+        />
+      </model-field>
+      <model-langs :object="object.langs">
+        <template slot-scope="{obj}">
+          <model-field :field="fields.langs.title" :value="obj.title" />
+        </template>
+      </model-langs>
     </template>
   </lazy-model-detail>
 </template>

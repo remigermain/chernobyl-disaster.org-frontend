@@ -15,19 +15,14 @@
     <table class="w-full table">
       <thead>
         <tr class="shadow-xs">
-          <th v-for="field in fields" :key="field.field"
+          <th v-for="col in columns" :key="getField(col)"
               class="text-gray-600 hover:text-gray-800 table-head cursor-pointer p-2"
-              :class="{
-                'text-gray-800': current.field === field.field
-              }"
-              @click="sort(field)"
+              :class="{'text-gray-800': current === getField(col)}"
+              @click="sort(col)"
           >
-            {{ field.label }}
+            {{ convertLabel(col) }}
             <svg-icon name="arrow-up" class="transform w-5"
-                      :class="{
-                        '-rotate-180': reverse,
-                        'invisible': current.field != field.field
-                      }"
+                      :class="{'-rotate-180': reverse, 'invisible': current != getField(col)}"
             />
           </th>
           <th class="text-gray-700 table-head align-middle text-center">
@@ -37,16 +32,14 @@
       </thead>
       <tbody>
         <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light shadow-xs">
-          <template v-for="field in fields">
-            <td :key="field.field" class="p-2">
-              <template v-if="obj[field.field]">
-                {{ convertName(field, obj[field.field]) }}
-              </template>
-              <span v-else class="text-xs text-gray-600 italic text-opacity-75">
-                {{ empty }}
-              </span>
-            </td>
-          </template>
+          <td v-for="col in columns" :key="getField(col)" class="p-2">
+            <template v-if="obj[getField(col)]">
+              {{ convertName(col, obj[getField(col)]) }}
+            </template>
+            <span v-else class="text-xs text-gray-600 italic text-opacity-75">
+              {{ empty }}
+            </span>
+          </td>
           <td class="p-2 text-gray-800 text-center">
             <lazy-extra-nuxt-link :to="{name: `contribute-${model}-id`, params:{ id: obj.id} }">
               <svg-icon name="eye" class="cursor-pointer text-blue-700 action-btn" />
@@ -57,7 +50,7 @@
           </td>
         </tr>
         <tr v-if="list.length === 0" class="text-center">
-          <td :colspan="fields.length + 1" class="p-2 bg-gray-300 text-xs text-gray-600 italic text-opacity-75">
+          <td :colspan="columns.length + 1" class="p-2 bg-gray-300 text-xs text-gray-600 italic text-opacity-75">
             {{ empty }}
           </td>
         </tr>
@@ -84,7 +77,11 @@ export default {
       required: true,
     },
     fields: {
-      type: Array[Object],
+      type: Object,
+      required: true
+    },
+    columns: {
+      type: Array[String],
       required: true
     },
     length: {
@@ -99,7 +96,7 @@ export default {
 
   data () {
     return {
-      current: {field: null},
+      current: null,
       reverse: false,
       list: this.objectList,
       search: ""
@@ -113,18 +110,24 @@ export default {
   },
 
   methods: {
-    sort (field) {
-      this.current = field
+    getField (col) {
+      return (col.field || col)
+    },
+    sort (order) {
+      this.current = this.getField(order)
       this.reverse = !this.reverse
-      const f = field.field
+      const f = this.getField(order)
       if (this.reverse) {
         this.list = this.list.sort((el1, el2) => el1[f] > el2[f])
       } else {
         this.list = this.list.sort((el1, el2) => el1[f] < el2[f])
       }
     },
-    convertName(field, value) {
-      return field.fnc?.(value) || (Array.isArray(value) ? value.join() : value)
+    convertName (col, value) {
+      return this.fields[this.getField(col)]?.display?.(value) || value
+    },
+    convertLabel (col) {
+      return this.fields[this.getField(col)]?.label || col.label || col
     }
   }
 

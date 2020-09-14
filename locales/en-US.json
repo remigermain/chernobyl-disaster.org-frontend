@@ -68,9 +68,7 @@
             "death": "death",
             "description": "description",
             "event": "event",
-            "id": "id",
             "name": "name",
-            "no-translation": "no-translation",
             "photographer": "photographer",
             "picture": "picture",
             "profil": "profil",
@@ -144,8 +142,7 @@
             "help-me": "help-me",
             "help-me-description": "help-me-description",
             "no-contributors": "no-contributors",
-            "thanks-contributors": "thanks-contributors",
-            "translation": "translation"
+            "thanks-contributors": "thanks-contributors"
         },
         "contact": {
             "description": "description"
@@ -247,7 +244,6 @@
         "or": "or",
         "picture": "picture",
         "prev": "prev",
-        "preview": "preview",
         "required": "required",
         "search": "search",
         "secondes": "secondes",
@@ -255,7 +251,7 @@
         "site-navigation": "site-navigation",
         "sort-by": "sort-by",
         "total": "total",
-        "translate": "translate",
+        "translation": "translation",
         "un-lock-password": "un-lock-password",
         "update": "update",
         "video": "video",
