@@ -54,7 +54,7 @@ export default {
     },
     requestError (error) {
       if (error.response?.data?.detail) {
-        this.$i18nToast().error(this.$t("errors.auth")).goAway(4000)
+        this.$i18nToast().error(this.$t("errors.auth")).goAway(10000)
       }
       else if (error.response?.data) {
         // assign response to error
@@ -62,17 +62,27 @@ export default {
         // if non_field_errors as set, create toast
         if (error.response.data.non_field_errors) {
           error.response.data.non_field_errors.forEach(msg => {
-            this.$i18nToast().error(msg).goAway(4000)
+            this.$i18nToast().error(msg).goAway(10000)
           })
         } else {
-          this.$i18nToast().error(this.$t("errors.error-in-form")).goAway(4000)
+          this.$i18nToast().error(this.$t("errors.error-in-form")).goAway(10000)
+        }
+        if (Array.isArray(this.errors.langs)) {
+          this.errors.langs.forEach(msg => {
+            if (typeof msg === "string") {
+              if (msg === "101") { // error unique translate
+                msg = this.$t("errors.unique-translate", {"model": this.model.label})
+              }
+              this.$i18nToast().error(msg).goAway(10000)
+            }
+          })
         }
       } else if (error.message === "Network Error") {
         // ERROR network
-        this.$i18nToast().error(this.$t("errors.network")).goAway(4000)
+        this.$i18nToast().error(this.$t("errors.network")).goAway(10000)
       } else {
         // create ERROR server
-        this.$i18nToast().error(this.$t("errors.server")).goAway(4000)
+        this.$i18nToast().error(this.$t("errors.server")).goAway(10000)
       }
     }
   }

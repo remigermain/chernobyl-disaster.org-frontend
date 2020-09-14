@@ -15,65 +15,46 @@
     <template v-slot:form>
       <lazy-admin-text :value="object.name" :field="fields.name" :errors="errors.name" />
     </template>
-    <template v-slot:table-header>
-      <th> {{ fields.langs.name.label }} </th>
-      <th> {{ $t('utils.language') }} </th>
-      <th> {{ $t('utils.actions') }} </th>
-    </template>
     <template v-slot:form-lang>
-      <!-- actual langs -->
-      <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center rounded-b-lg">
-        <td class="text-center">
-          <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
-          <lazy-admin-text :value="lang.name"
-                           class="border-none"
+      <model-card-lang v-for="(lang, idx) in object.langs" :key="lang.id" :lang="langConv(lang.language)">
+        <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
+        <lazy-admin-text class="border-none"
+                         :value="lang.name"
+                         :prefix="prefixLang(idx)"
+                         :field="fields.langs.name"
+                         :action="false"
+                         :errors="getErrorsIdx(errors.langs, idx, 'name')"
+        />
+        <lazy-admin-select class="border-none"
+                           :value="lang.language"
                            :prefix="prefixLang(idx)"
-                           :label="false"
-                           :field="fields.langs.name"
+                           :field="fields.langs.language"
                            :action="false"
-          />
-          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'name')" />
-        </td>
-        <td>
-          <lazy-admin-select :value="lang.language"
-                             class="border-none"
-                             :prefix="prefixLang(idx)"
-                             :label="false"
-                             :field="fields.langs.language"
-                             :action="false"
-          />
-          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'language')" />
-        </td>
-        <td />
-      </tr>
-      <tr v-for="(val, idx) in langs" :key="val">
-        <td>
-          <lazy-admin-text class="border-none"
-                           :prefix="prefixLang(idx + object.langs.length)"
-                           :label="false"
-                           :field="fields.langs.name"
-                           :action="false"
-          />
-          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'name')" />
-        </td>
-        <td>
-          <lazy-admin-select class="border-none"
-                             :prefix="prefixLang(idx + object.langs.length)"
-                             :label="false"
-                             :field="fields.langs.language"
-                             :action="false"
-          />
-          <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'language')" />
-        </td>
-        <td>
+                           :errors="getErrorsIdx(errors.langs, idx, 'language')"
+        />
+      </model-card-lang>
+      <model-card-lang v-for="(lang, idx) in langs" :key="lang" :lang="$t('tools.new')">
+        <template v-slot:header>
           <lazy-admin-action :add="false"
                              :edit="false"
                              :deleted="true"
                              :field="fields.langs.language"
                              @delete="deleteLang(idx)"
           />
-        </td>
-      </tr>
+        </template>
+        <lazy-admin-text class="border-none"
+                         :prefix="prefixLang(idx)"
+                         :field="fields.langs.title"
+                         :action="false"
+                         :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'title')"
+        />
+        <lazy-admin-select class="border-none"
+                           :prefix="prefixLang(idx)"
+                           :field="fields.langs.language"
+                           :action="false"
+                           :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'language')"
+        />
+      </model-card-lang>
     </template>
   </lazy-model-form>
 </template>

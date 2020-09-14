@@ -117,6 +117,7 @@
         "network": "erreur, pas de connexion internet",
         "refresh": "erreur lors du rafra\u00eechissement",
         "server": "erreur du serveur",
+        "unique-translate": "cette object \"{model}\" a un doublon de traduction",
         "update": "erreur lors de la mise \u00e0 jour"
     },
     "menu": {
@@ -145,6 +146,9 @@
             "no-contributors": "aucun contributeur",
             "thanks-contributors": "merci aux contributeurs",
             "translation": "traduction"
+        },
+        "contact": {
+            "description": "description"
         },
         "home": {
             "description": "La catastrophe nucl\u00e9aire de Tchernobyl est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l'accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L'IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d'importantes cons\u00e9quences \u00e9conomiques et sociales.",
@@ -195,6 +199,7 @@
         "date": "date",
         "descending": "d\u00e9croissant",
         "name": "nom",
+        "new": "nouveau",
         "save": "sauvegarder",
         "save-add-other": "sauvegarder et ajouter d'autres",
         "save-continue-editing": "sauvegarder et continuer l'\u00e9dition"
@@ -224,7 +229,6 @@
         "goto-video": "aller aux vid\u00e9os",
         "hours": "heures",
         "identifier": "identifiant",
-        "image": "image",
         "language": "langue",
         "link": "lien",
         "list": "liste",

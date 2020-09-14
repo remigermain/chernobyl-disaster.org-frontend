@@ -2,52 +2,52 @@
     "admin": {
         "help": {
             "global": {
-                "event": "these are the important events of Chernobyl, all these events will be in the chronology of the site.",
-                "language": "the language of the text you wrote",
-                "people": "They are important people in the history of Chernobyl.",
-                "picture": "these are the images",
-                "report": "you can report them, delete them, modify them or anything else.",
-                "tag": "they are labels that help in the search for an item",
-                "video": "these are the videos"
+                "event": "event",
+                "language": "language",
+                "people": "people",
+                "picture": "picture",
+                "report": "report",
+                "tag": "tag",
+                "video": "video"
             },
             "model": {
                 "event": {
-                    "date": "the date when the event starts, you can simply set the date without the time (leave it at 00:00 midnight), to also add specific seconds in special cases (such as the explosion of the reactor at 1h23m44s).",
+                    "date": "date",
                     "langs": {
-                        "description": "a description of the event",
-                        "title": "a title of the event"
+                        "description": "description",
+                        "title": "title"
                     },
-                    "title": "this title is used to get a quick view of this event, must be in English!"
+                    "title": "title"
                 },
                 "people": {
-                    "biography": "a biography of this person, his life ... ect.",
-                    "born": "when was he born",
-                    "death": "when did he die",
-                    "name": "are name",
-                    "profil": "an image of him",
-                    "wikipedia": "a link to wikipedia if there is one"
+                    "biography": "biography",
+                    "born": "born",
+                    "death": "death",
+                    "name": "name",
+                    "profil": "profil",
+                    "wikipedia": "wikipedia"
                 },
                 "picture": {
-                    "date": "when the photo was taken",
+                    "date": "date",
                     "langs": {
-                        "title": "a title for the photo"
+                        "title": "title"
                     },
-                    "photographer": "you can record who took this picture",
-                    "picture": "the photo",
-                    "title": "this title is used to have a quick view of the photo, must be in English!"
+                    "photographer": "photographer",
+                    "picture": "picture",
+                    "title": "title"
                 },
                 "tag": {
                     "langs": {
-                        "name": "a translation of the tag"
+                        "name": "name"
                     }
                 },
                 "video": {
-                    "date": "when the video was taken",
+                    "date": "date",
                     "langs": {
-                        "title": "a title for the video"
+                        "title": "title"
                     },
-                    "title": "this title is used to have a quick view of the video, must be in English!",
-                    "video": "the video"
+                    "title": "title",
+                    "video": "video"
                 }
             }
         },
@@ -70,7 +70,7 @@
             "event": "event",
             "id": "id",
             "name": "name",
-            "no-translation": "no translation",
+            "no-translation": "no-translation",
             "photographer": "photographer",
             "picture": "picture",
             "profil": "profil",
@@ -78,7 +78,7 @@
             "title": "title",
             "video": "video",
             "wikipedia": "wikipedia",
-            "your-message": "your message"
+            "your-message": "your-message"
         },
         "tools": {
             "detail": "detail",
@@ -86,41 +86,42 @@
         }
     },
     "auth": {
-        "change-password": "change the password",
-        "comfirm-new-password": "Confirm new password",
-        "confirme-delete-account": "confirm the deletion of the account",
-        "connection-account": "sing in",
-        "create-account": "create an account",
-        "delete-account": "delete the account",
+        "change-password": "change-password",
+        "comfirm-new-password": "comfirm-new-password",
+        "confirme-delete-account": "confirme-delete-account",
+        "connection-account": "connection-account",
+        "create-account": "create-account",
+        "delete-account": "delete-account",
         "field": {
-            "comfirm-password": "confirmation password",
+            "comfirm-password": "comfirm-password",
             "email": "email",
             "password": "password",
             "username": "username"
         },
-        "forget-password": "Forgot your password",
-        "goto-login": "go to the the login page",
+        "forget-password": "forget-password",
+        "goto-login": "goto-login",
         "login": "login",
         "logout": "logout",
-        "new-password": "new password",
-        "old-password": "old password",
+        "new-password": "new-password",
+        "old-password": "old-password",
         "register": "register",
-        "register-account": "register account",
-        "registeration-success": "account create successful, check your email before logging in",
-        "reset-password": "reset password"
+        "register-account": "register-account",
+        "registeration-success": "registeration-success",
+        "reset-password": "reset-password"
     },
     "errors": {
-        "auth": "connection problem",
-        "create": "error during creation",
-        "error-in-form": "error in the form",
-        "language": "missing translation",
-        "network": "error, no internet connection",
-        "refresh": "error when refreshing",
-        "server": "server error ",
-        "update": "error during the update"
+        "auth": "auth",
+        "create": "create",
+        "error-in-form": "error-in-form",
+        "language": "language",
+        "network": "network",
+        "refresh": "refresh",
+        "server": "server",
+        "unique-translate": "unique-translate",
+        "update": "update"
     },
     "menu": {
-        "about": "About us",
+        "about": "about",
         "contribute": "contribute",
         "gallery": "gallery",
         "home": "home",
@@ -131,61 +132,64 @@
     },
     "pages": {
         "about": {
-            "buy-me-coffe": "buy me a coffee",
+            "buy-me-coffe": "buy-me-coffe",
             "contact": "contact",
-            "contribute-gitlab": "contribute on gitlab",
-            "contribute-translate": "contribute by translating",
+            "contribute-gitlab": "contribute-gitlab",
+            "contribute-translate": "contribute-translate",
             "contributing": "contributing",
             "contributors": "contributors",
-            "creator-description": "Germain r\u00e9mi web developer on lyon in france. i am passionate about the history of chernobyl and all its consequences, of all the sacrifices that the peoples of the ussr had to undergo to the avoid a greater catastrophe, that's why i created this site, not to forget what these peoples have done for us, and for the future generations.",
-            "creator-website": "creator's site",
-            "description": "This site recounts the events of the accident that led to this disaster and its consequences, illustrated by photo, video and archive document.",
-            "help-me": "help me",
-            "help-me-description": "this site is free, open source and it will remain so! the cost of the infrastructure should increase with the number of photos added, and the annual cost is currently 100 euros (it's a small server), that's why you can help me to assume this cost by paying me a small sum, it will allow me to buy a better server, and even in the future with an instance for the videos!",
-            "no-contributors": "no contributors",
-            "thanks-contributors": "thank you to the contributors",
+            "creator-description": "creator-description",
+            "creator-website": "creator-website",
+            "description": "description",
+            "help-me": "help-me",
+            "help-me-description": "help-me-description",
+            "no-contributors": "no-contributors",
+            "thanks-contributors": "thanks-contributors",
             "translation": "translation"
         },
+        "contact": {
+            "description": "description"
+        },
         "home": {
-            "description": "The Chernobyl nuclear disaster is a major nuclear accident that occurred on April 26, 1986 in the V.I. Lenin nuclear power plant, then located in the Ukrainian Soviet Socialist Republic, USSR. It is the most serious nuclear disaster of the 20th century, classified at level 7 (the highest) of the International Nuclear Event Scale (INES), surpassing, according to the Institute for Radiation Protection and Nuclear Safety (IRSN), by its immediate environmental impacts the Fukushima nuclear accident of 2011, classified at the same level. The IRSN mentions for these accidents potential health effects, lasting contamination of territories and important economic and social consequences.",
+            "description": "description",
             "presentation": "presentation"
         },
         "meta": {
             "contact": {
-                "description": "contact me",
-                "title": "contact"
+                "description": "description",
+                "title": "title"
             },
             "home": {
-                "title": "chernobyl.org"
+                "title": "title"
             },
             "login": {
-                "description": "connect to chernobyle.org to contribute to the community, and share your photo, video and much more!",
-                "title": "connection"
+                "description": "description",
+                "title": "title"
             },
             "picture": {
-                "description": "a huge gallery of period photos on the whole history of Chernobyl, from the construction, to the photo of the explosion of the reactor, through the liquidators.",
-                "title": "image gallery"
+                "description": "description",
+                "title": "title"
             },
             "register": {
-                "description": "join the chernobyle.org community to share your photo, video and much more!",
-                "title": "registration"
+                "description": "description",
+                "title": "title"
             },
             "reset-password": {
-                "description": "Forgot your password? Reset it!",
-                "title": "reset your password"
+                "description": "description",
+                "title": "title"
             },
             "video": {
-                "description": "a huge gallery of period videos on the whole history of Chernobyl, from the construction, to the video of the explosion of the reactor, to the liquidators.",
-                "title": "video gallery"
+                "description": "description",
+                "title": "title"
             }
         }
     },
     "success": {
-        "contact": "your message has been sent successfully",
-        "create": "creation successfully completed",
-        "delete-account": "successful deletion of the account",
-        "report": "report sent successfully",
-        "update": "update successfully completed"
+        "contact": "contact",
+        "create": "create",
+        "delete-account": "delete-account",
+        "report": "report",
+        "update": "update"
     },
     "tools": {
         "action": "action",
@@ -195,16 +199,17 @@
         "date": "date",
         "descending": "descending",
         "name": "name",
+        "new": "new",
         "save": "save",
-        "save-add-other": "save and add other",
-        "save-continue-editing": "save and continue editing"
+        "save-add-other": "save-add-other",
+        "save-continue-editing": "save-continue-editing"
     },
     "utils": {
         "actions": "actions",
-        "actual-link": "actual link",
+        "actual-link": "actual-link",
         "cancel": "cancel",
-        "change-language": "change language",
-        "change-sort-order": "change the sort order",
+        "change-language": "change-language",
+        "change-sort-order": "change-sort-order",
         "close": "close",
         "contact": "contact",
         "content": "content",
@@ -213,46 +218,45 @@
         "delete": "delete",
         "edit": "edit",
         "empty": "empty",
-        "goto-about": "go to the about",
-        "goto-contribute": "go to the contribute",
-        "goto-gallery": "go to the gallery",
-        "goto-gallery-picture": "go to the picture's gallery",
-        "goto-gallery-video": "go to the video's gallery",
-        "goto-home": "go to the home",
-        "goto-picture": "go to the picture",
-        "goto-timeline": "go to the timeline",
-        "goto-video": "go to the video",
+        "goto-about": "goto-about",
+        "goto-contribute": "goto-contribute",
+        "goto-gallery": "goto-gallery",
+        "goto-gallery-picture": "goto-gallery-picture",
+        "goto-gallery-video": "goto-gallery-video",
+        "goto-home": "goto-home",
+        "goto-picture": "goto-picture",
+        "goto-timeline": "goto-timeline",
+        "goto-video": "goto-video",
         "hours": "hours",
         "identifier": "identifier",
-        "image": "image",
         "language": "language",
         "link": "link",
         "list": "list",
         "loading": "loading",
-        "lock-password": "lock the password",
+        "lock-password": "lock-password",
         "love": "love",
         "menu": "menu",
-        "minutes": "min",
-        "mood-sad": "mood sad",
+        "minutes": "minutes",
+        "mood-sad": "mood-sad",
         "navigation": "navigation",
-        "need-translated": "need translated",
+        "need-translated": "need-translated",
         "next": "next",
-        "next-event": "next timeline's event",
+        "next-event": "next-event",
         "no": "no",
-        "open-menu": "open menu",
+        "open-menu": "open-menu",
         "or": "or",
         "picture": "picture",
-        "prev": "previous",
+        "prev": "prev",
         "preview": "preview",
         "required": "required",
         "search": "search",
-        "secondes": "sec",
+        "secondes": "secondes",
         "send": "send",
-        "site-navigation": "site navigation",
-        "sort-by": "sort by",
+        "site-navigation": "site-navigation",
+        "sort-by": "sort-by",
         "total": "total",
         "translate": "translate",
-        "un-lock-password": "unlock the password",
+        "un-lock-password": "un-lock-password",
         "update": "update",
         "video": "video",
         "yes": "yes"

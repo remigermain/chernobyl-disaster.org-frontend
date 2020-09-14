@@ -30,7 +30,7 @@ IGNORE_KEY = [
 LOCALES_PATH = './locales'
 
 # regex pour trouver les traductions
-REGEX = r'\$t\((.*?)\)'
+REGEX = r'\$t\(([\w\d\.\-]+)'
 reg = re.compile(REGEX)
 
 # flags que prend le programme
@@ -90,7 +90,7 @@ def in_extention(name):
 # function qui lie le dossier, si c'est un fichier
 # on apelle le parse_file
 def read_dir(path):
-    global reg, debug
+    global reg, reg2, debug
     fnc = []
 
     for f in os.listdir(path):
