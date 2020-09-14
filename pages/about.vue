@@ -1,6 +1,6 @@
 <template>
-  <div class="grid-about">
-    <section class="about-description text-center">
+  <div class="grid-common">
+    <section class="common-description text-center space-y-4">
       <section>
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
@@ -27,22 +27,17 @@
       <section>
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributors') }}
-          <div class="wrapper text-red-800">
-            <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
-          </div>
         </h2>
         <p class="text-gray-800">
           {{ $t('pages.about.thanks-contributors') }}
+          <wbr>
           <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
           <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
+          <wbr>
         </p>
-      </section>
-      <section class="floa-left contributors">
-        <template v-for="user in contributors">
-          <span :key="user" class="text-sm">
-            {{ user }}
-          </span>
-        </template>
+        <span v-for="user in contributors" :key="user" class="text-sm">
+          {{ user }}
+        </span>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
           <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
@@ -54,7 +49,7 @@
             @GERMAIN remi
           </a>
         </h2>
-        <p class="text-gray-800">
+        <p class="text-gray-800 text-justify">
           <picture role="img">
             <!-- <source srcset="~/assets/img/profil/profil-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
             <source srcset="~/assets/img/profil/profil-mobile.webp" media="(max-width: 550px)" format="image/webp">
@@ -73,7 +68,7 @@
         <h4 class="text-3xl text-md capitalize">
           {{ $t('pages.about.help-me') }}
         </h4>
-        <p class="text-center text-gray-800 text-md">
+        <p class="text-center text-gray-800 text-md text-justify">
           {{ $t('pages.about.help-me-description') }}
         </p>
       </article>
@@ -86,7 +81,7 @@
         />
       </a>
     </section>
-    <div class="about-image">
+    <div class="common-image">
       <picture role="img">
         <!-- <source srcset="~/assets/img/background-about-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
         <source srcset="~/assets/img/background-about-mobile.webp" media="(max-width: 550px)" format="image/webp">
@@ -96,7 +91,7 @@
         <source srcset="~/assets/img/background-about-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
         <!-- <source srcset="~/assets/img/background-about.avif" media="(min-width: 850px)" format="image/avif"> -->
         <source srcset="~/assets/img/background-about.webp" media="(min-width: 850px)" format="image/webp">
-        <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="image" format="image/jpeg" class="form-image-item">
+        <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="image" format="image/jpeg" class="common-img">
       </picture>
     </div>
   </div>
@@ -105,6 +100,8 @@
 <script>
 export default {
   name: "About",
+
+  transition: "common",
 
   asyncData({app}) {
     return app.$axios.get("populate/contributors")
@@ -144,68 +141,6 @@ export default {
 
 
 <style lang="scss" scoped>
-.grid-about {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  height: 100%;
-}
-
-.about-description {
-  grid-area: 1 / 1 / 1 / 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 5rem;
-  & > * + * {
-    margin-top: 1rem
-  }
-}
-
-.about-image {
-  grid-area: 1 / 2 / 1 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  margin-right: 4rem;
-  margin-left: 4rem;
-  .about-image-item {
-    object-fit: cover;
-  }
-}
-
-@media screen and (max-width:1200px){
-  .about-description  {
-    padding: 2rem;
-  }
-}
-
-@media screen and (max-width:1000px){
-  .about-image {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    justify-content: end;
-    transform: translate(0, -50%);
-    top: 50%;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-    opacity: .3;
-    .about-image-item {
-      border-bottom-left-radius: 50%;
-      border-top-left-radius: 50%;
-    }
-  }
-  .about-description  {
-    grid-area: 1 / 1 / 1 / 3;
-  }
-}
-
 .about-profil {
   shape-outside: circle();
 }

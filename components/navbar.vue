@@ -37,7 +37,7 @@
       >
         {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
-      <label :name="$t('utils.change-language')" class="wrapper">
+      <label :name="$t('utils.change-language')">
         <select v-model="value" class="form-select block mt-1 bg-gray-100">
           <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
             {{ lang.name }}

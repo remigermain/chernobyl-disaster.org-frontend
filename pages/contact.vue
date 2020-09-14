@@ -1,42 +1,28 @@
 <template>
-  <div class="grid-form">
-    <section class="form-description">
-      <div class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
-        <p class="font-bold text-gray-900 text-2xl">
-          {{ $t('utils.contact') }}
-        </p>
-        <p class="text-sm text-gray-600">
-          {{ $t('pages.contact.description') }}
-        </p>
-        <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
-          <field-email v-model="data.email" :field="email" :errors="errors.email" />
-          <field-textarea v-model="data.message" :field="message" :errors="errors.message" />
-          <field-submit>
-            {{ $t('utils.send') }}
-          </field-submit>
-        </form>
-      </div>
-    </section>
-    <div class="form-image">
-      <picture role="img">
-        <!-- <source srcset="~/assets/img/background-login-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login-mobile.webp" media="(max-width: 550px)" format="image/webp">
-        <source srcset="~/assets/img/background-login-mobile.jpeg" media="(max-width: 550px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-login-tablet.avif" media="(max-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login-tablet.webp" media="(max-width: 850px)" format="image/webp">
-        <source srcset="~/assets/img/background-login-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-login.avif" media="(min-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login.webp" media="(min-width: 850px)" format="image/webp">
-        <img loading="lazy" src="~/assets/img/background-login.jpeg" alt="image" format="image/jpeg" class="form-image-item">
-      </picture>
-    </div>
-  </div>
+  <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
+    <p class="font-bold text-gray-900 text-2xl">
+      {{ $t('utils.contact') }}
+    </p>
+    <p class="text-sm text-gray-600">
+      {{ $t('pages.contact.description') }}
+    </p>
+    <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
+      <field-email v-model="data.email" :field="email" :errors="errors.email" />
+      <field-textarea v-model="data.message" :field="message" :errors="errors.message" />
+      <field-submit>
+        {{ $t('utils.send') }}
+      </field-submit>
+    </form>
+  </section>
 </template>
 
 <script>
 
 export default {
   name: "Contact",
+
+  layout: "auth",
+  transition: "auth",
 
   data () {
     return {

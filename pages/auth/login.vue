@@ -1,56 +1,42 @@
 <template>
-  <div class="grid-form">
-    <div class="form-description">
-      <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
-        <h1 class="font-bold text-gray-900 text-2xl">
-          {{ $t('auth.connection-account') }}
-        </h1>
-        <span class="text-sm text-gray-600">
-          {{ $t('utils.or') }}
-          <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
-                           :title="$t('auth.create-account')"
-          >
-            {{ $t('auth.create-account') }}
-          </extra-nuxt-link>
-        </span>
-        <form class="my-4 mx-8 w-3/4 form"
-              @submit.prevent="submit"
+  <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form">
+    <h1 class="font-bold text-gray-900 text-2xl">
+      {{ $t('auth.connection-account') }}
+    </h1>
+    <span class="text-sm text-gray-600">
+      {{ $t('utils.or') }}
+      <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
+                       :title="$t('auth.create-account')"
+      >
+        {{ $t('auth.create-account') }}
+      </extra-nuxt-link>
+    </span>
+    <form class="my-4 w-3/4 form"
+          @submit.prevent="submit"
+    >
+      <field-email :field="field.email" :errors="errors.email" />
+      <field-password :field="field.password" :errors="errors.password" />
+      <div class="flex justify-end mx-auto text-center my-2">
+        <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto italic space tracking-tighter"
+                         :title="$t('auth.forget-password')"
         >
-          <field-email :field="field.email" :errors="errors.email" />
-          <field-password :field="field.password" :errors="errors.password" />
-          <div class="flex justify-end mx-auto text-center my-2">
-            <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto italic space tracking-tighter"
-                             :title="$t('auth.forget-password')"
-            >
-              {{ $t('auth.forget-password') }}
-            </extra-nuxt-link>
-          </div>
-          <field-submit>
-            {{ $t('auth.login') }}
-          </field-submit>
-        </form>
-      </section>
-    </div>
-    <div class="form-image">
-      <picture role="img">
-        <!-- <source srcset="~/assets/img/background-login-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login-mobile.webp" media="(max-width: 550px)" format="image/webp">
-        <source srcset="~/assets/img/background-login-mobile.jpeg" media="(max-width: 550px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-login-tablet.avif" media="(max-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login-tablet.webp" media="(max-width: 850px)" format="image/webp">
-        <source srcset="~/assets/img/background-login-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-login.avif" media="(min-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login.webp" media="(min-width: 850px)" format="image/webp">
-        <img loading="lazy" src="~/assets/img/background-login.jpeg" alt="image" format="image/jpeg" class="form-image-item">
-      </picture>
-    </div>
-  </div>
+          {{ $t('auth.forget-password') }}
+        </extra-nuxt-link>
+      </div>
+      <field-submit>
+        {{ $t('auth.login') }}
+      </field-submit>
+    </form>
+  </section>
 </template>
 
 <script>
 
 export default {
   name: "AuthLogin",
+
+  layout: "auth",
+  transition: "auth",
 
   data () {
     return {

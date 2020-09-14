@@ -1,0 +1,67 @@
+/*
+** for all page
+*/
+.page-enter-active,
+.page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+/*
+** for home and about
+*/
+.common-enter-active,
+.common-leave-active {
+  transition: opacity .5s;
+  .common-image, .common-description {
+    transition: transform .5s;
+  }
+}
+.common-enter,
+.common-leave-to {
+  opacity: 0;
+  .common-image {
+    transform: translateX(30px);
+  }
+  .common-description {
+    transform: translateX(-30px);
+  }
+}
+
+/*
+** for auth page auth/*
+*/
+.auth-enter-active,
+.auth-leave-active {
+  transition: transform .5s, opacity .5s;
+}
+.auth-enter,
+.auth-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/*
+** for timeline
+*/
+.timeline-enter-active,
+.timeline-leave-active {
+  transition: opacity .5s;
+  .timeline-list-grid, .grid-extra {
+    transition: transform .5s;
+  }
+}
+.timeline-enter,
+.timeline-leave-to {
+  opacity: 0;
+
+  .timeline-list-grid {
+    transform: translateX(-30px);
+  }
+  .grid-extra {
+    transform: translateY(30px);
+  }
+}

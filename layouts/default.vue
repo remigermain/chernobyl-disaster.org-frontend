@@ -9,7 +9,8 @@
     </div>
     <navbar />
     <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('utils.content')">
-      <nuxt />
+      <nuxt v-if="!$slots.default" />
+      <slot />
     </section>
   </main>
 </template>

@@ -37,12 +37,12 @@
         </section>
         <div class="timeline-content relative" />
       </section>
-      <div class="w-full flex justify-center bg-gray-900 rounded-b-md text-white">
+      <div class="w-full flex justify-center bg-gray-900 rounded-b-md text-white overflow-hidden">
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}"
                          class="w-2/4 inline-block"
                          :title="$t('utils.next-event')"
         >
-          <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:-translate-x-2 transform transition-transform duration-400"
+          <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:-translate-x-2 transform transition-transform duration-400"
                     :aria-label="$t('utils.next-event')"
           />
         </extra-nuxt-link>
@@ -50,7 +50,7 @@
                          class="w-2/4 inline-block"
                          :title="$t('utils.next-event')"
         >
-          <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:scale-110 hover:translate-x-2 transform transition-transform duration-400"
+          <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:translate-x-2 transform transition-transform duration-400"
                     :aria-label="$t('utils.next-event')"
           />
         </extra-nuxt-link>
@@ -141,6 +141,7 @@ export default {
       if (process.client) {
         const el = document.getElementById(this.current.id)
         if (el) {
+          // el.scrollIntoView({behavior: "smooth"})
           scrollIntoView(el, {behavior: "smooth", scrollMode: "always"})
         }
       }

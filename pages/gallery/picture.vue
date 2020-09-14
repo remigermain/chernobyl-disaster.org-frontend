@@ -3,16 +3,18 @@
     <div class="flex w-full flex-wrap justify-around">
       <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
       <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
-      <img v-for="(el, idx) in object"
-           :key="el.id"
-           class="picture-item"
-           :alt="i18nAttr(el, 'title')"
-           :src="el.picture.thumbnail"
-           loading="lazy"
-           role="button"
-           tabindex="0"
-           @click="setCurrent(el, idx)"
-      >
+      <transition-group name="img" tag="div" class="wrapper">
+        <img v-for="(el, idx) in object"
+             :key="el.id"
+             class="picture-item"
+             :alt="i18nAttr(el, 'title')"
+             :src="el.picture.thumbnail"
+             loading="lazy"
+             role="button"
+             tabindex="0"
+             @click="setCurrent(el, idx)"
+        >
+      </transition-group>
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>
@@ -164,5 +166,13 @@ export default {
   .picture-item {
     width: 100%;
   }
+}
+
+.img-enter-active, .img-leave-active {
+  transition: all 1s;
+}
+.img-enter, .img-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

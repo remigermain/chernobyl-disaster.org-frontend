@@ -32,6 +32,9 @@ export default {
     "auth",
   ],
 
+  layout: "default",
+  transition: "page",
+
   data () {
     return {
       menus: [

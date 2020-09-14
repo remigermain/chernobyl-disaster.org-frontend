@@ -1,49 +1,35 @@
 <template>
-  <div class="grid-form">
-    <div class="form-description">
-      <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
-        <h1 class="font-bold text-gray-900 text-2xl">
-          {{ $t('auth.register-account') }}
-        </h1>
-        <span class="text-sm text-gray-600">
-          {{ $t('utils.or') }}
-          <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
-                                :title="$t('auth.goto-login')"
-          >
-            {{ $t('auth.login') }}
-          </lazy-extra-nuxt-link>
-        </span>
-        <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
-          <field-email :field="field.email" :errors="errors.email" />
-          <field-username :field="field.username" :errors="errors.username" />
-          <field-password :field="field.password1" :errors="errors.password1" />
-          <field-password :field="field.password2" :errors="errors.password2" />
-          <field-submit class="submit">
-            {{ $t('auth.register') }}
-          </field-submit>
-        </form>
-      </section>
-    </div>
-    <div class="form-image">
-      <picture role="img">
-        <!-- <source srcset="~/assets/img/background-login-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login-mobile.webp" media="(max-width: 550px)" format="image/webp">
-        <source srcset="~/assets/img/background-login-mobile.jpeg" media="(max-width: 550px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-login-tablet.avif" media="(max-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login-tablet.webp" media="(max-width: 850px)" format="image/webp">
-        <source srcset="~/assets/img/background-login-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-login.avif" media="(min-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-login.webp" media="(min-width: 850px)" format="image/webp">
-        <img loading="lazy" src="~/assets/img/background-login.jpeg" alt="image" format="image/jpeg" class="form-image-item">
-      </picture>
-    </div>
-  </div>
+  <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form">
+    <h1 class="font-bold text-gray-900 text-2xl">
+      {{ $t('auth.register-account') }}
+    </h1>
+    <span class="text-sm text-gray-600">
+      {{ $t('utils.or') }}
+      <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+                            :title="$t('auth.goto-login')"
+      >
+        {{ $t('auth.login') }}
+      </lazy-extra-nuxt-link>
+    </span>
+    <form class="my-4 w-3/4 form" @submit.prevent="submit">
+      <field-email :field="field.email" :errors="errors.email" />
+      <field-username :field="field.username" :errors="errors.username" />
+      <field-password :field="field.password1" :errors="errors.password1" />
+      <field-password :field="field.password2" :errors="errors.password2" />
+      <field-submit class="submit">
+        {{ $t('auth.register') }}
+      </field-submit>
+    </form>
+  </section>
 </template>
 
 <script>
 
 export default {
   name: "AuthRegister",
+
+  layout: "auth",
+  transition: "auth",
 
   data () {
     return {

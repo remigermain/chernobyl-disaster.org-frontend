@@ -150,7 +150,8 @@ export default {
   css: [
     "destyle.css/destyle.css",
     "~assets/css/main.css",
-    "~assets/css/grid-form.scss",
+    "~assets/css/transition.scss",
+    "~assets/css/grid-common.scss",
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",
@@ -169,7 +170,8 @@ export default {
   },
 
   purgeCSS: {
-    whiteListPatterns: [/svg.*/, "svg", "symbol", "__nuxt-error-page"],
+    whiteListPatterns: [/svg.*/, "svg", "symbol", "__nuxt-error-page", "page-enter-active", "page-leave-active",
+    "page-enter", "test-leave-to", "test-enter-active", "test-leave-active", "test-enter", "test-leave-to"],
   },
 
   build: {

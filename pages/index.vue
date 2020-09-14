@@ -1,6 +1,6 @@
 <template>
-  <div class="grid-index">
-    <article class="index-description">
+  <div class="grid-common">
+    <article class="common-description">
       <h1 class="text-2xl uppercase extra-auto transition-opacity duration-400 z-1 italic text-opacity-50 tracking-tighter font-bold">
         {{ $t('pages.home.presentation') }}
       </h1>
@@ -15,7 +15,7 @@
         <svg-icon name="caret-right" role="img" aria-label="arrow" class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-2" />
       </lazy-extra-nuxt-link>
     </article>
-    <div class="index-image">
+    <div class="common-image">
       <picture role="img">
         <!-- <source srcset="~/assets/img/background-home-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
         <source srcset="~/assets/img/background-home-mobile.webp" media="(max-width: 550px)" format="image/webp">
@@ -25,7 +25,7 @@
         <source srcset="~/assets/img/background-home-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
         <!-- <source srcset="~/assets/img/background-home.avif" media="(min-width: 850px)" format="image/avif"> -->
         <source srcset="~/assets/img/background-home.webp" media="(min-width: 850px)" format="image/webp">
-        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="image" format="image/jpeg" class="form-image-item">
+        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="image" format="image/jpeg" class="common-img">
       </picture>
     </div>
   </div>
@@ -34,6 +34,8 @@
 <script>
 export default {
   name: "Home",
+
+  transition: "common",
 
   head () {
     return {
@@ -57,64 +59,3 @@ export default {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.grid-index {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  height: 100%;
-}
-
-.index-description {
-  grid-area: 1 / 1 / 1 / 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 5rem;
-}
-
-.index-image {
-  grid-area: 1 / 2 / 1 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  margin-right: 4rem;
-  margin-left: 4rem;
-  .index-image-item {
-    object-fit: cover;
-  }
-}
-
-@media screen and (max-width:1200px){
-  .index-description  {
-    padding: 2rem;
-  }
-}
-
-@media screen and (max-width:1000px){
-  .index-image {
-    width: 100vw;
-    height: 100vh;
-    justify-content: end;
-    margin: 0;
-    transform: translate(0, -50%);
-    top: 50%;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-    opacity: .3;
-    .index-image-item {
-      border-bottom-left-radius: 50%;
-      border-top-left-radius: 50%;
-    }
-  }
-  .index-description  {
-    grid-area: 1 / 1 / 1 / 3;
-  }
-}
-</style>

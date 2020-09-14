@@ -13,6 +13,7 @@ export default {
   name: "Timeline",
 
   mixins: [timelineMixins],
+  transition: "timeline",
 
   async asyncData({ app, route }) {
     return app.$axios.get("event/?no_page=true")
