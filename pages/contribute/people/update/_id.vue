@@ -25,7 +25,7 @@
       <th> {{ $t('utils.language') }} </th>
       <th> {{ $t('utils.actions') }} </th>
     </template>
-    <template v-slot:table-body>
+    <template v-slot:form-lang>
       <!-- actual langs -->
       <tr v-for="(lang, idx) in object.langs" :key="lang.id" class="text-center rounded-b-lg">
         <td class="text-center">

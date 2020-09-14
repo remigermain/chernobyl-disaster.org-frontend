@@ -11,29 +11,19 @@
     </div>
     <form class="flex flex-col justify-end pt-16" enctype="multipart/form-data" @submit.prevent="$emit('submit', $event)">
       <slot name="form" />
-      <div class="w-full">
-        <table v-if="lang" class="overflow-x-scroll w-full table-lang">
-          <thead>
-            <tr>
-              <th colspan="100%">
-                <div class="bg-blue-700 text-white p-2 mt-4 capitalize  w-full rounded-t-sm">
-                  <slot name="label" /> {{ $t('utils.language') }}
-                </div>
-              </th>
-            </tr>
-            <tr class="text-center bg-head rounded-b-lg">
-              <slot name="table-header" />
-            </tr>
-          </thead>
-          <tbody class="text-center">
-            <slot name="table-body" />
-          </tbody>
-        </table>
-        <button type="button" class="p-1 text-md w-max-content rounded-md mt-2 hover:text-green-800" @click="$emit('add-extra')">
-          <svg-icon name="plus" class="inline text-green-800" />
-          {{ $t('tools.add') }}
-        </button>
+      <div v-if="lang" class="w-full mt-1">
+        <div class="w-full bg-blue-700 rounded-md text-white p-2 text-center">
+          <slot name="label" /> {{ $t('utils.language') }}
+          <svg-icon name="language" />
+        </div>
+        <div class="w-full space-y-2 mt-2">
+          <slot name="form-lang" />
+        </div>
       </div>
+      <button type="button" class="px-2 py-2 mt-2 text-gray-200 bg-blue-600 hover:bg-blue-800 rounded-md w-max-content" @click="$emit('add-extra')">
+        <svg-icon name="plus" class="inline" />
+        {{ $t('tools.add') }}
+      </button>
       <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-b-lg">
         <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click.stop.prevent="$router.back()">
           {{ $t('tools.cancel') }}

@@ -1,15 +1,16 @@
 <template>
-  <div class="p-3 flex justify-between items-center flex-col border-b border-gray-700 border-opacity-50 -md:justify-center">
-    <label v-if="label" class="w-full text-gray-700 text-sm font-bold mb-2 capitalize">
+  <div class="p-3 flex justify-between items-center flex-col border-b border-gray-700 border-opacity-50 -md:justify-center text-center">
+    <label v-if="label" class="w-full text-gray-700 text-lg font-bold mb-2 capitalize">
+      <svg-icon name="help" class="cursor-pointer text-gray-500 hover:text-gray-700" @click="toogleHelp" />
       <slot name="label" />
     </label>
-    <div class="w-full flex items-center p-2">
+    <admin-help v-if="label && active" :field="field" />
+    <div class="w-full flex items-center p-2 text-left">
       <slot name="icon">
         <template v-slot:icon />
       </slot>
       <slot name="input" />
     </div>
-    <admin-help v-if="label && active" :field="field" />
     <admin-error :errors="errors" />
   </div>
 </template>

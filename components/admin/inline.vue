@@ -1,6 +1,6 @@
 <template>
   <div class="md:p-3 flex justify-between items-center flex-wrap border-b border-gray-700 border-opacity-50 -md:justify-center">
-    <label v-if="label" class="text-xl capitalize italic w2/4 text-gray-800 -md:w-full">
+    <label v-if="label" class="w2/4 -md:w-full text-gray-700 text-lg font-bold mb-2 capitalize">
       <svg-icon name="help" class="cursor-pointer text-gray-500 hover:text-gray-700" @click="toogleHelp" />
       <slot name="label" />
     </label>

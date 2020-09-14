@@ -24,7 +24,7 @@
       <th> {{ $t('utils.language') }} </th>
       <th> {{ $t('utils.actions') }} </th>
     </template>
-    <template v-slot:table-body>
+    <template v-slot:form-lang>
       <tr v-for="(val, idx) in langs" :key="val">
         <td>
           <lazy-admin-textarea class="border-none"
