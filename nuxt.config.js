@@ -48,7 +48,7 @@ export default {
 
   pwa: {
     manifest: {
-      lang: "fr"
+      theme_color: "#1a202cff"
     }
   },
 

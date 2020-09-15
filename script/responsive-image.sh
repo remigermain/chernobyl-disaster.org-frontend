@@ -2,7 +2,7 @@
 
 cd assets/img
 
-imgs=(
+images=(
   background-home.jpeg
   background-about.jpeg
   background-login.jpeg
@@ -13,7 +13,7 @@ convert () {
   # $1 == resize
   # $2 == suffix
   echo -e "\n$2 resize [$1%]"
-  for img in ${imgs[@]}; do
+  for img in ${images[@]}; do
     magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.webp"
     magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.avif"
     magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.jpeg"
@@ -57,9 +57,9 @@ main() {
             usage
         fi
     done;
-    if [[ $# == 0 ]]; then
-      usage
-    fi
 }
 
+if [[ $# == 0 ]]; then
+  usage
+fi
 main $@

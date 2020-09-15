@@ -3,6 +3,7 @@
     <div class="grid-layout-title">
       <extra-nuxt-link :to="{name: 'index'}" :title="$t('menu.home')" class="hover:text-gray-700">
         <h1 class="grid-layout-title-item font-russia">
+          <svg-icon name="logo" />
           chernobyl
         </h1>
       </extra-nuxt-link>
@@ -18,7 +19,7 @@
 <style lang="scss">
 .grid-layout {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: auto repeat(9, 1fr);
   grid-template-rows: auto 1fr;
   padding: .8rem;
   height: 100vh;
@@ -26,7 +27,6 @@
 }
 
 .grid-layout-title {
-  grid-area: 1 / 1 / 2 / 3;
   display: flex;
   justify-items: center;
   align-items: center;
