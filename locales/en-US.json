@@ -6,7 +6,7 @@
                 "language": "the language of the text you wrote",
                 "people": "They are important people in the history of Chernobyl.",
                 "picture": "these are the images",
-                "report": "you can report them, delete them, modify them or anything else.",
+                "report": "you can report any object, to delete, modify or otherwise, you write what you want (in French or English) and I will take care of it as soon as possible.",
                 "tag": "they are labels that help in the search for an item",
                 "video": "these are the videos"
             },
@@ -14,27 +14,27 @@
                 "event": {
                     "date": "the date when the event starts, you can simply set the date without the time (leave it at 00:00 midnight), to also add specific seconds in special cases (such as the explosion of the reactor at 1h23m44s).",
                     "langs": {
-                        "description": "a description of the event",
-                        "title": "a title of the event"
+                        "description": "write you the description of the event, what happened, why, or ...ect, this will be used in the texts displayed in the timeline.",
+                        "title": "you give a title to the video to give a brief description of it, in the language select"
                     },
-                    "title": "this title is used to get a quick view of this event, must be in English!"
+                    "title": "you give a title to the video to give a brief description of it, must be in English!"
                 },
                 "people": {
                     "biography": "a biography of this person, his life ... ect.",
-                    "born": "when was he born",
-                    "death": "when did he die",
-                    "name": "are name",
-                    "profil": "an image of him",
+                    "born": "the date on which he or she was born",
+                    "death": "the date on which he is deceased",
+                    "name": "the name and surname of the person",
+                    "profil": "a photo showing him from the front.",
                     "wikipedia": "a link to wikipedia if there is one"
                 },
                 "picture": {
-                    "date": "when the photo was taken",
+                    "date": "this is the date (approximate or precise) on which the photo was taken",
                     "langs": {
-                        "title": "a title for the photo"
+                        "title": "you give a title to the video to give a brief description of it, in the language select"
                     },
-                    "photographer": "you can record who took this picture",
-                    "picture": "the photo",
-                    "title": "this title is used to have a quick view of the photo, must be in English!"
+                    "photographer": "you can inform the person who took this picture (e.g. Igor Kostine for example).",
+                    "picture": "you upload an image of the best possible quality",
+                    "title": "you give a title to the video to give a brief description of it, must be in English!"
                 },
                 "tag": {
                     "langs": {
@@ -42,12 +42,12 @@
                     }
                 },
                 "video": {
-                    "date": "when the video was taken",
+                    "date": "this is the date (approximate or precise) on which the video was taken",
                     "langs": {
-                        "title": "a title for the video"
+                        "title": "you give a title to the video to give a brief description of it, in the language select"
                     },
-                    "title": "this title is used to have a quick view of the video, must be in English!",
-                    "video": "the video"
+                    "title": "you give a title to the video to give a brief description of it. must be in English",
+                    "video": "the link of the video, you can put a youtube link, peertube ( all the others are not tested )"
                 }
             }
         },
@@ -121,6 +121,7 @@
     "menu": {
         "about": "About us",
         "contribute": "contribute",
+        "dashboard": "dashboard",
         "gallery": "gallery",
         "home": "home",
         "picture": "picture",
@@ -193,17 +194,21 @@
         "add": "add",
         "ascending": "ascending",
         "cancel": "cancel",
+        "creator": "creator",
         "date": "date",
         "descending": "descending",
         "name": "name",
         "new": "new",
         "save": "save",
         "save-add-other": "save and add other",
-        "save-continue-editing": "save and continue editing"
+        "save-continue-editing": "save and continue editing",
+        "uuid": "uuid"
     },
     "utils": {
         "actions": "actions",
         "actual-link": "actual link",
+        "best-contributor": "best contributor",
+        "best-contributor-week": "best contributor of the week",
         "cancel": "cancel",
         "change-language": "change language",
         "change-sort-order": "change the sort order",
@@ -227,6 +232,7 @@
         "hours": "hours",
         "identifier": "identifier",
         "language": "language",
+        "last-contributing": "last contribution",
         "link": "link",
         "list": "list",
         "loading": "loading",

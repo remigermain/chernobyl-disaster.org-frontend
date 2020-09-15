@@ -4,6 +4,7 @@
     <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4 min-h-full">
       <nuxt-child :key="$route.fullPath" />
       <div v-if="$route.matched.length == 1" class="flex flex-wrap justify-center p-4 gap-4">
+        <contribute-user :object="object" />
         <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-gray-500">
           <div>
             <h1 class="text-2xl capitalize italic text-opacity-75">
@@ -34,6 +35,21 @@ export default {
 
   layout: "default",
   transition: "page",
+
+  asyncData({app}) {
+    return app.$axios.get("populate/overview")
+      .then(response => {
+        if (response.status != 200) {
+          throw Error("")
+        }
+        return {
+          object: response.data
+        }
+      })
+      .catch(() => {
+        // TODO
+      })
+  },
 
   data () {
     return {

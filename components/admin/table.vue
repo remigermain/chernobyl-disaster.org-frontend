@@ -41,10 +41,10 @@
             </span>
           </td>
           <td class="p-2 text-gray-800 text-center">
-            <lazy-extra-nuxt-link :to="{name: `contribute-${model}-id`, params:{ id: obj.id} }">
+            <lazy-extra-nuxt-link :to="{name: `contribute-${obj.uuid || model}-id`, params:{ id: obj.object_id || obj.id} }">
               <svg-icon name="eye" class="cursor-pointer text-blue-700 action-btn" />
             </lazy-extra-nuxt-link>
-            <lazy-extra-nuxt-link :to="{name: `contribute-${model}-update-id`, params:{ id: obj.id} }">
+            <lazy-extra-nuxt-link :to="{name: `contribute-${obj.uuid || model}-update-id`, params:{ id: obj.object_id || obj.id} }">
               <svg-icon name="edit" class="cursor-pointer text-purple-700 action-btn" />
             </lazy-extra-nuxt-link>
           </td>

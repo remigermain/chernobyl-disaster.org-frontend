@@ -5,36 +5,36 @@
                 "event": "ce sont les \u00e9v\u00e9nements importants de Tchernobyl, tous ces \u00e9v\u00e9nements seront dans la chronologie du site.",
                 "language": "la langue du texte que vous avez \u00e9crit",
                 "people": "ce sont des personnes importantes dans l'histoire de Tchernobyl.",
-                "picture": "ce sont les images",
-                "report": "vous pouvez les signaler, les supprimer, les modifier ou autre.",
+                "picture": "ce toutes les images",
+                "report": "vous pouvez signaler tout objet, \u00e0 supprimer, \u00e0 modifier ou autre, vous \u00e9crivez ce que vous voulez (en fran\u00e7ais ou en anglais) et je m'en occupe d\u00e8s que possible.",
                 "tag": "ce sont des \u00e9tiquettes qui aident \u00e0 la recherche d'un \u00e9l\u00e9ment",
-                "video": "ce sont les video"
+                "video": "ce sont toutes video"
             },
             "model": {
                 "event": {
                     "date": "la date au moment o\u00f9 l'\u00e9v\u00e9nement commence, vous pouvez simplement r\u00e9gler la date sans l'heure (la laisser \u00e0 00:00 minuit), pour ajouter \u00e9galement des secondes sp\u00e9cifiques dans des cas particuliers (comme l'explosion du r\u00e9acteur \u00e0 1h23m44s).",
                     "langs": {
-                        "description": "une description de l'\u00e9v\u00e9nement",
-                        "title": "un titre de l'\u00e9v\u00e9nement"
+                        "description": "vous \u00e9crire la description de l'\u00e9v\u00e9nement, ce qui s'est pass\u00e9, pourquoi, ou ...ect, cela sera utilis\u00e9 dans les textes affich\u00e9s dans la chronologie.",
+                        "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description de l'\u00e9v\u00e9nement, dans la langue choisie"
                     },
-                    "title": "ce titre est utilis\u00e9 pour avoir une vue rapide de cet \u00e9v\u00e9nement, doit \u00eatre en anglais !"
+                    "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description de cet \u00e9v\u00e9nement, doit \u00eatre en anglais !"
                 },
                 "people": {
                     "biography": "une biographie de cette personne, sa vie ... ect.",
-                    "born": "quand est-il n\u00e9",
-                    "death": "quand est-il mort",
-                    "name": "sont nom",
-                    "profil": "une image de lui",
+                    "born": "la date \u00e0 laquelle il ou elle est n\u00e9(e)",
+                    "death": "la date \u00e0 laquelle il est d\u00e9c\u00e9d\u00e9",
+                    "name": "le nom et le pr\u00e9nom de la personne",
+                    "profil": "une photo le montrant de face.",
                     "wikipedia": "un lien vers wikipedia s'il y en a un"
                 },
                 "picture": {
-                    "date": "quand la photo a \u00e9t\u00e9 prise",
+                    "date": "il s'agit de la date (approximative ou pr\u00e9cise) \u00e0 laquelle la photo a \u00e9t\u00e9 prise",
                     "langs": {
-                        "title": "un titre pour la photo"
+                        "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description. dans la langue choisie"
                     },
-                    "photographer": "vous pouvez enregistrer qui a pris cette photo",
-                    "picture": "la photo",
-                    "title": "ce titre est utilis\u00e9 pour avoir une vue rapide de la photo, doit \u00eatre en anglais !"
+                    "photographer": "vous pouvez informer la personne qui a pris cette photo (par exemple Igor Kostine).",
+                    "picture": "vous t\u00e9l\u00e9chargez une image de la meilleure qualit\u00e9 possible",
+                    "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description, doit \u00eatre en anglais !"
                 },
                 "tag": {
                     "langs": {
@@ -42,12 +42,12 @@
                     }
                 },
                 "video": {
-                    "date": "quand la vid\u00e9o a \u00e9t\u00e9 prise",
+                    "date": "il s'agit de la date (approximative ou pr\u00e9cise) \u00e0 laquelle la vid\u00e9o a \u00e9t\u00e9 prise",
                     "langs": {
-                        "title": "un titre pour la vid\u00e9o"
+                        "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description. dans la langue choisie"
                     },
-                    "title": "ce titre est utilis\u00e9 pour avoir une vue rapide de la vid\u00e9o, doit \u00eatre en anglais !",
-                    "video": "la vid\u00e9o"
+                    "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description., doit \u00eatre en anglais !",
+                    "video": "le lien de la vid\u00e9o, vous pouvez mettre un lien youtube, peertube ( tous les autres ne sont pas test\u00e9s )"
                 }
             }
         },
@@ -121,6 +121,7 @@
     "menu": {
         "about": "A propos de",
         "contribute": "contribuer",
+        "dashboard": "dashboard",
         "gallery": "galerie",
         "home": "accueil",
         "picture": "images",
@@ -193,17 +194,21 @@
         "add": "ajouter",
         "ascending": "croissant",
         "cancel": "annuler",
+        "creator": "creator",
         "date": "date",
         "descending": "d\u00e9croissant",
         "name": "nom",
         "new": "nouveau",
         "save": "sauvegarder",
         "save-add-other": "sauvegarder et ajouter d'autres",
-        "save-continue-editing": "sauvegarder et continuer l'\u00e9dition"
+        "save-continue-editing": "sauvegarder et continuer l'\u00e9dition",
+        "uuid": "uuid"
     },
     "utils": {
         "actions": "actions",
         "actual-link": "lien actuel",
+        "best-contributor": "meilleur contributeur",
+        "best-contributor-week": "meilleur contributeur de la semaine",
         "cancel": "annuler",
         "change-language": "changer de langue",
         "change-sort-order": "modifier l'ordre de tri",
@@ -227,6 +232,7 @@
         "hours": "heures",
         "identifier": "identifiant",
         "language": "langue",
+        "last-contributing": "derni\u00e8re contribution",
         "link": "lien",
         "list": "liste",
         "loading": "chargement",

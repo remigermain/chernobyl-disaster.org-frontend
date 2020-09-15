@@ -21,11 +21,13 @@ import galleryMixin from "@/mixins/page/gallery"
 import { asynDataUrl } from "@/lib/gallery"
 
 export default {
-    name: "GalleryVideo",
+  name: "GalleryVideo",
 
   mixins: [
     galleryMixin
   ],
+
+  scrollToTop: true,
 
   asyncData({app, route}) {
     return app.$axios.get(asynDataUrl("video", route.query))

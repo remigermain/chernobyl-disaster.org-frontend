@@ -39,6 +39,8 @@ export default {
     galleryMixin
   ],
 
+  scrollToTop: true,
+
   asyncData({app, route}) {
     return app.$axios.get(asynDataUrl("picture", route.query))
       .then(response => {

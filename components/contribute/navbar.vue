@@ -7,6 +7,10 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="contribute-navbar-items" :class="{'active': active }">
+      <extra-nuxt-link :to="{name: 'contribute'}" class="contribute-navbar-link ml-4">
+        <svg-icon name="dashboard" />
+        {{ $t('menu.dashboard') }}
+      </extra-nuxt-link>
       <button class="contribute-navbar-link ml-4" @click="$auth.logout()">
         <svg-icon name="logout" />
         {{ $t('auth.logout') }}
