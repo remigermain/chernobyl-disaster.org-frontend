@@ -28,16 +28,18 @@
       </nav>
       <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
         <template v-if="pictureActive">
-          <img v-for="(img, idx) in object.pictures"
-               :key="img.id"
-               :alt="i18nAttr(img, 'title')"
-               :src="img.picture.thumbnail"
-               loading="lazy"
-               class="extra extra-picture"
-               tabindex="0"
-               role="button"
-               @click="setCurrent(img, idx)"
-          >
+          <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
+            <source :srcset="img.picture.thumbnail_webp" type="image/webp">
+            <img :alt="i18nAttr(img, 'title')"
+                 :src="img.picture.thumbnail_jepg"
+                 loading="lazy"
+                 class="extra extra-picture"
+                 tabindex="0"
+                 role="button"
+                 type="image/jpeg"
+                 @click="setCurrent(img, idx)"
+            >
+          </picture>
           <span v-if="object.pictures.length == 0" class="italic text-gray-700 text-opacity-50">
             {{ empty }}
           </span>
