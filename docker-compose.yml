@@ -7,9 +7,9 @@ services:
     build: ./
     command: yarn start
     env_file:
-      - .env
+      - ./.env
     expose:
-      - 3000
+      - 3001
     networks:
       - nginx-proxy
 

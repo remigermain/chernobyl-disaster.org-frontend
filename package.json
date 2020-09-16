@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=developement nuxt",
-    "build": "yarn build:pre && nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt",
+    "build": "yarn clean && yarn build:pre && yarn build:nuxt",
+    "build:nuxt": "nuxt build",
     "build:pre": "./script/prebuild.sh",
+    "start": "nuxt start",
     "export": "nuxt export",
     "serve": "nuxt serve",
     "generate": "nuxt generate",
@@ -42,7 +43,6 @@
     "babel-eslint": "^10.1.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "babel-plugin-transform-remove-debugger": "^6.9.4",
-    "cross-env": "^7.0.2",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
@@ -56,7 +56,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
     "nuxt-purgecss": "^1.0.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.2",
     "sass-loader": "^9.0.2",
     "scroll-into-view-if-needed": "^2.2.25"
   }

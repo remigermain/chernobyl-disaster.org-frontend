@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from django.core.management.utils import get_random_secret_key
 import argparse
 import re
 
@@ -12,7 +11,7 @@ def main():
         "BACKEND_URL": "http://localhost:8000",
         "SITE_URL": "http://localhost:3000",
         "SITE_NAME": "chernobyl",
-        "NODE_ENV": "production"
+        "SERVER_PORT": None,
     }
 
     env = ENV.copy()

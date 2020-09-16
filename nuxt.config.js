@@ -1,8 +1,14 @@
+const isDev = process.env.NODE_ENV != "production"
+
 export default {
   target: "server",
   ssr: true,
 
   telemetry: false,
+
+  server: {
+    port: process.env.SERVER_PORT || 3000
+  },
 
   head: {
     title: process.env.npm_package_name || "",
@@ -95,7 +101,7 @@ export default {
   },
 
   axios: {
-    baseURL: process.env.BACKEND_URL,
+    baseURL: process.env.BACKEND_URL || "http://localhost:8000",
   },
 
   buildModules: [
@@ -183,14 +189,14 @@ export default {
   },
 
   build: {
-    indicator: process.env.NODE_ENV,
-    devtools: process.env.NODE_ENV,
+    indicator: isDev,
+    devtools: isDev,
 
     babel: {
       ...require("./config/babel").default,
     },
 
-    optimizeCSS: !process.env.NODE_ENV,
+    optimizeCSS: !isDev,
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
