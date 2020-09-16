@@ -37,12 +37,10 @@
 
 @media screen and (max-width:1000px){
   .common-image {
-    width: 100vw;
     height: 100vh;
     justify-content: end;
     margin: 0;
-    transform: translate(0, -50%);
-    top: 50%;
+    top: 0;
     right: 0;
     position: absolute;
     z-index: -1;

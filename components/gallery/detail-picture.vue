@@ -168,11 +168,11 @@ export default {
 
   & > .toolbar-right {
     padding-right: 10px;
-    justify-content: end;
+    justify-content: flex-end;
   }
   & > .toolbar-left {
     padding-left: 10px;
-    justify-content: start;
+    justify-content: flex-start;
   }
   & > .toolbar-right, & > .toolbar-left {
     width: 50%;
