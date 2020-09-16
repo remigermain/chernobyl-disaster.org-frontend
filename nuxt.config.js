@@ -1,9 +1,4 @@
-const isDev = process.env.NODE_ENV !== "production"
-// const apiUrl = isDev ? "http://localhost:8000/": "https://chernobyl.org/"
-const apiUrl = "http://localhost:8000/"
-
 export default {
-
   target: "server",
   ssr: true,
 
@@ -14,22 +9,25 @@ export default {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: process.env.npm_package_description || "" }
+      {
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || "",
+      },
     ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" }
-    ]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
   render: {
     http2: {
-      push: true, pushAssets: null
-    }
+      push: true,
+      pushAssets: null,
+    },
   },
 
   plugins: [
-    {src: "~/plugins/matomo.js", ssr: false},
-    {src: "~/plugins/datetime.js", ssr: true},
+    { src: "~/plugins/matomo.js", ssr: false },
+    { src: "~/plugins/datetime.js", ssr: true },
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
@@ -48,22 +46,20 @@ export default {
 
   pwa: {
     manifest: {
-      theme_color: "#1a202cff"
-    }
+      theme_color: "#1a202cff",
+    },
   },
 
   i18n: require("./config/i18n").default, // i18n required in top
 
   sitemap: {
-    hostname: apiUrl,
+    hostname: process.env.SITE_URL,
     gzip: true,
-    exclude: [
-      "/contribute/**",
-    ],
+    exclude: ["/contribute/**"],
   },
   robots: {
     UserAgent: "*",
-    Disallow: "/contribute/*"
+    Disallow: "/contribute/*",
   },
 
   auth: {
@@ -73,33 +69,33 @@ export default {
       login: "/auth/login",
       logout: "/auth/login",
       callback: "/auth/login",
-      home: "/"
+      home: "/",
     },
     strategies: {
       local: {
         endpoints: {
           login: {
-            url: `${apiUrl}auth/login/`,
+            url: "auth/login/",
             method: "post",
-            propertyName: "key"
+            propertyName: "key",
           },
           logout: {
-            url: `${apiUrl}auth/logout/`,
-            method: "post"
+            url: "auth/logout/",
+            method: "post",
           },
           user: {
-            url: `${apiUrl}auth/user/`,
+            url: "auth/user/",
             method: "get",
-            propertyName: false
-          }
+            propertyName: false,
+          },
         },
-        tokenType: "Token"
+        tokenType: "Token",
       },
-    }
+    },
   },
 
   axios: {
-    baseURL: apiUrl
+    baseURL: process.env.BACKEND_URL,
   },
 
   buildModules: [
@@ -107,38 +103,38 @@ export default {
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
     "nuxt-purgecss",
-    "@nuxtjs/svg-sprite"
+    "@nuxtjs/svg-sprite",
   ],
 
   components: [
     "~/components",
     {
       path: "~/components/admin/",
-      prefix: "admin"
+      prefix: "admin",
     },
     {
       path: "~/components/extra/",
-      prefix: "extra"
+      prefix: "extra",
     },
     {
       path: "~/components/field/",
-      prefix: "field"
+      prefix: "field",
     },
     {
       path: "~/components/model/",
-      prefix: "model"
+      prefix: "model",
     },
     {
       path: "~/components/gallery/",
-      prefix: "gallery"
+      prefix: "gallery",
     },
     {
       path: "~/components/timeline/",
-      prefix: "timeline"
+      prefix: "timeline",
     },
     {
       path: "~/components/contribute/",
-      prefix: "contribute"
+      prefix: "contribute",
     },
   ],
 
@@ -166,23 +162,35 @@ export default {
   tailwindcss: {
     configPath: "~/config/tailwind.config.js",
     cssPatg: "~/assets/css/tailwind.css",
-    exposeConfig: false
+    exposeConfig: false,
   },
 
   purgeCSS: {
-    whiteListPatterns: [/svg.*/, "svg", "symbol", "__nuxt-error-page", "page-enter-active", "page-leave-active",
-    "page-enter", "test-leave-to", "test-enter-active", "test-leave-active", "test-enter", "test-leave-to"],
+    whiteListPatterns: [
+      /svg.*/,
+      "svg",
+      "symbol",
+      "__nuxt-error-page",
+      "page-enter-active",
+      "page-leave-active",
+      "page-enter",
+      "test-leave-to",
+      "test-enter-active",
+      "test-leave-active",
+      "test-enter",
+      "test-leave-to",
+    ],
   },
 
   build: {
-    indicator: isDev,
-    devtools: isDev,
+    indicator: process.env.NODE_ENV,
+    devtools: process.env.NODE_ENV,
 
     babel: {
-      ...require("./config/babel").default
+      ...require("./config/babel").default,
     },
 
-    optimizeCSS: !isDev,
+    optimizeCSS: !process.env.NODE_ENV,
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -190,9 +198,9 @@ export default {
           enforce: "pre",
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
-          exclude: /(node_modules)|(\.svg$)/
+          exclude: /(node_modules)|(\.svg$)/,
         })
       }
-    }
-  }
+    },
+  },
 }

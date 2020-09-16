@@ -29,3 +29,7 @@ assets/img/**/*.webp
 
 # log
 *.log
+
+
+#
+.env

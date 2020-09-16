@@ -1,4 +1,4 @@
 import Vue from "vue"
 
 Vue.prototype.$pagination = 10
-Vue.prototype.$siteName = "chernobyl.org"
+Vue.prototype.$siteName = process.env.SITE_NAME

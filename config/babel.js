@@ -1,10 +1,8 @@
-const isDev = process.env.NODE_ENV !== "production"
-
 let plugins = [
   "@babel/plugin-proposal-optional-chaining",
 ]
 
-if (!isDev) {
+if (process.env.NODE_ENV) {
   plugins = [
     ...plugins,
     "babel-plugin-transform-remove-console",
