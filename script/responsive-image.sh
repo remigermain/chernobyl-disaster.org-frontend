@@ -26,7 +26,7 @@ convert () {
         echo "file $FILE exists"
       else
         magick $img -resize "$1%" $FILE
-        echo "[OK] $img..."
+        echo "[OK] $FILE..."
       fi
     done
   done
