@@ -14,9 +14,13 @@ convert () {
   # $2 == suffix
   echo -e "\n$2 resize [$1%]"
   for img in ${images[@]}; do
-    magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.webp"
-    magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.avif"
-    magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.jpeg"
+    if [ -f "$img" ]; then
+      echo "file $img exists"
+    else
+      magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.webp"
+      magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.avif"
+      magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.jpeg"
+    fi
     echo "[OK] $img..."
   done ;
 }
