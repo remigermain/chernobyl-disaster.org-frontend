@@ -9,20 +9,27 @@ images=(
   profil/profil.jpeg
 )
 
+extentions=(
+  jpeg
+  avif
+  webp
+)
+
 convert () {
   # $1 == resize
   # $2 == suffix
   echo -e "\n$2 resize [$1%]"
   for img in ${images[@]}; do
-    if [ -f "$img" ]; then
-      echo "file $img exists"
-    else
-      magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.webp"
-      magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.avif"
-      magick $img -resize $1% "$(echo $img | cut -f1 -d".")$2.jpeg"
-    fi
-    echo "[OK] $img..."
-  done ;
+    for ex in ${extentions[@]}; do
+      FILE="$(echo $img | cut -f1 -d".")$2.$ex"
+      if [ -f "$FILE" ]; then
+        echo "file $FILE exists"
+      else
+        magick $img -resize "$1%" $FILE
+        echo "[OK] $img..."
+      fi
+    done
+  done
 }
 
 mobile () {
