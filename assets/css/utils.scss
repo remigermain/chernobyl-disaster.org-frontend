@@ -55,3 +55,7 @@ img, picture {
 .__nuxt-error-page .logo {
   display: none;
 }
+
+picture {
+  display: contents;
+}

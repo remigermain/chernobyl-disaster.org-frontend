@@ -51,15 +51,15 @@
         </h2>
         <p class="text-gray-800 text-justify">
           <picture role="img">
-            <!-- <source srcset="~/assets/img/profil/profil-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
-            <source srcset="~/assets/img/profil/profil-mobile.webp" media="(max-width: 550px)" format="image/webp">
-            <source srcset="~/assets/img/profil/profil-mobile.jpeg" media="(max-width: 550px)" format="image/jpeg">
-            <!-- <source srcset="~/assets/img/profil/profil-tablet.avif" media="(max-width: 850px)" format="image/avif"> -->
-            <source srcset="~/assets/img/profil/profil-tablet.webp" media="(max-width: 850px)" format="image/webp">
-            <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
-            <!-- <source srcset="~/assets/img/profil/profil.avif" media="(min-width: 850px)" format="image/avif"> -->
-            <source srcset="~/assets/img/profil/profil.webp" media="(min-width: 850px)" format="image/webp">
-            <img loading="lazy" src="~/assets/img/profil/profil.jpeg" alt="image" format="image/jpeg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
+            <!-- <source srcset="~/assets/img/profil/profil-mobile.avif" media="(max-width: 550px)" type="image/avif"> -->
+            <source srcset="~/assets/img/profil/profil-mobile.webp" media="(max-width: 550px)" type="image/webp">
+            <source srcset="~/assets/img/profil/profil-mobile.jpeg" media="(max-width: 550px)" type="image/jpeg">
+            <!-- <source srcset="~/assets/img/profil/profil-tablet.avif" media="(max-width: 850px)" type="image/avif"> -->
+            <source srcset="~/assets/img/profil/profil-tablet.webp" media="(max-width: 850px)" type="image/webp">
+            <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
+            <!-- <source srcset="~/assets/img/profil/profil.avif" media="(min-width: 850px)" type="image/avif"> -->
+            <source srcset="~/assets/img/profil/profil.webp" media="(min-width: 850px)" type="image/webp">
+            <img loading="lazy" src="~/assets/img/profil/profil.jpeg" alt="image" type="image/jpeg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
           </picture>
           {{ $t('pages.about.creator-description') }}
         </p>
@@ -83,15 +83,15 @@
     </section>
     <div class="common-image">
       <picture role="img">
-        <!-- <source srcset="~/assets/img/background-about-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-about-mobile.webp" media="(max-width: 550px)" format="image/webp">
-        <source srcset="~/assets/img/background-about-mobile.jpeg" media="(max-width: 550px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-about-tablet.avif" media="(max-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-about-tablet.webp" media="(max-width: 850px)" format="image/webp">
-        <source srcset="~/assets/img/background-about-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-about.avif" media="(min-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-about.webp" media="(min-width: 850px)" format="image/webp">
-        <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="image" format="image/jpeg" class="common-img">
+        <!-- <source srcset="~/assets/img/background-about-mobile.avif" media="(max-width: 550px)" type="image/avif"> -->
+        <source srcset="~/assets/img/background-about-mobile.webp" media="(max-width: 550px)" type="image/webp">
+        <source srcset="~/assets/img/background-about-mobile.jpeg" media="(max-width: 550px)" type="image/jpeg">
+        <!-- <source srcset="~/assets/img/background-about-tablet.avif" media="(max-width: 850px)" type="image/avif"> -->
+        <source srcset="~/assets/img/background-about-tablet.webp" media="(max-width: 850px)" type="image/webp">
+        <source srcset="~/assets/img/background-about-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
+        <!-- <source srcset="~/assets/img/background-about.avif" media="(min-width: 850px)" type="image/avif"> -->
+        <source srcset="~/assets/img/background-about.webp" media="(min-width: 850px)" type="image/webp">
+        <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="image" type="image/jpeg" class="common-img">
       </picture>
     </div>
   </div>

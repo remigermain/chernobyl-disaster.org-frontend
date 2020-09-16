@@ -4,16 +4,18 @@
       <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
       <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
       <transition-group name="img" tag="div" class="wrapper">
-        <img v-for="(el, idx) in object"
-             :key="el.id"
-             class="picture-item"
-             :alt="i18nAttr(el, 'title')"
-             :src="el.picture.thumbnail"
-             loading="lazy"
-             role="button"
-             tabindex="0"
-             @click="setCurrent(el, idx)"
-        >
+        <picture v-for="(el, idx) in object" :key="el.id" role="img" class="picture-item">
+          <source :srcset="el.picture.thumbnail_webp" type="image/webp">
+          <img class="picture-item"
+               :alt="i18nAttr(el, 'title')"
+               :src="el.picture.thumbnail_jpeg"
+               loading="lazy"
+               role="button"
+               tabindex="0"
+               type="image/jpeg"
+               @click="setCurrent(el, idx)"
+          >
+        </picture>
       </transition-group>
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />

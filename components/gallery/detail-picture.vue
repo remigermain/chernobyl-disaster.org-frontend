@@ -37,11 +37,15 @@
                 @click="$emit('next')"
       />
       <div class="picture-item-container">
-        <img :alt="i18nAttr(object, 'title')"
-             :src="object.picture.full"
-             class="picture-item mx-auto shadow-md"
-             loading="lazy"
-        >
+        <picture class="picture-item mx-auto shadow-md">
+          <source :srcset="object.picture.original_webp" type="image/webp">
+          <img :alt="i18nAttr(object, 'title')"
+               :src="object.picture.original_jpeg"
+               class="picture-item mx-auto shadow-md"
+               loading="lazy"
+               type="image/jpeg"
+          >
+        </picture>
       </div>
       <section class="picture-title">
         <h2>

@@ -17,15 +17,15 @@
     </article>
     <div class="common-image">
       <picture role="img">
-        <!-- <source srcset="~/assets/img/background-home-mobile.avif" media="(max-width: 550px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-home-mobile.webp" media="(max-width: 550px)" format="image/webp">
-        <source srcset="~/assets/img/background-home-mobile.jpeg" media="(max-width: 550px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-home-tablet.avif" media="(max-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-home-tablet.webp" media="(max-width: 850px)" format="image/webp">
-        <source srcset="~/assets/img/background-home-tablet.jpeg" media="(max-width: 850px)" format="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-home.avif" media="(min-width: 850px)" format="image/avif"> -->
-        <source srcset="~/assets/img/background-home.webp" media="(min-width: 850px)" format="image/webp">
-        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="image" format="image/jpeg" class="common-img">
+        <!-- <source srcset="~/assets/img/background-home-mobile.avif" media="(max-width: 550px)" type="image/avif"> -->
+        <source srcset="~/assets/img/background-home-mobile.webp" media="(max-width: 550px)" type="image/webp">
+        <source srcset="~/assets/img/background-home-mobile.jpeg" media="(max-width: 550px)" type="image/jpeg">
+        <!-- <source srcset="~/assets/img/background-home-tablet.avif" media="(max-width: 850px)" type="image/avif"> -->
+        <source srcset="~/assets/img/background-home-tablet.webp" media="(max-width: 850px)" type="image/webp">
+        <source srcset="~/assets/img/background-home-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
+        <!-- <source srcset="~/assets/img/background-home.avif" media="(min-width: 850px)" type="image/avif"> -->
+        <source srcset="~/assets/img/background-home.webp" media="(min-width: 850px)" type="image/webp">
+        <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="image" type="image/jpeg" class="common-img">
       </picture>
     </div>
   </div>
