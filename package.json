@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "yarn clean && yarn build:pre && yarn build:nuxt",
+    "build": "yarn build:pre && yarn build:nuxt",
+    "buildLnpm": "npm run build:pre && npm run build:nuxt",
     "build:nuxt": "nuxt build",
     "build:pre": "./scripts/prebuild.sh",
     "start": "nuxt start",

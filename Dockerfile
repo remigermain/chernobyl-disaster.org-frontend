@@ -4,7 +4,7 @@ WORKDIR /var/www/nuxt
 
 COPY . .
 
-RUN apk add imagemagick bash
+RUN apk add imagemagick bash yarn
 
 RUN export $(cat .env | xargs) && yarn install
 RUN export $(cat .env | xargs) && yarn build
