@@ -53,7 +53,10 @@ export default {
       return this.$t("errors.language")
     },
     requestError (error) {
-      if (error.response?.data?.detail) {
+      if (error.response?.status >= 500) {
+        this.$i18nToast().error(this.$t("errors.server")).goAway(10000)
+      }
+      else if (error.response?.data?.detail) {
         this.$i18nToast().error(this.$t("errors.auth")).goAway(10000)
       }
       else if (error.response?.data) {

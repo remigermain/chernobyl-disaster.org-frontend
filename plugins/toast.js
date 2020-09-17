@@ -6,7 +6,7 @@ import Vue from "vue"
 
 Vue.prototype.$i18nToast = function () {
 
-  const cancel = {
+  const close = {
     action: {
       text: this.$t("utils.close"),
       onClick: (e, toast) => {
@@ -20,13 +20,13 @@ Vue.prototype.$i18nToast = function () {
       return this.$toast.show(text, options)
     },
     "success": (text, options) => {
-      return this.$toast.success(text, options).goAway(3000)
+      return this.$toast.success(text, {...close, ...options}).goAway(3000)
     },
     "info": (text, options) => {
-      return this.$toast.info(text, {...cancel, ...options}).goAway(4000)
+      return this.$toast.info(text, {...close, ...options}).goAway(4000)
     },
     "error": (text, options) => {
-      return this.$toast.error(text, {...cancel, ...options})
+      return this.$toast.error(text, {...close, ...options})
     },
   }
 

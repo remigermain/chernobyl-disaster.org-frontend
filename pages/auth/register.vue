@@ -79,7 +79,7 @@ export default {
           if (response.status != 201) {
             throw Error("")
           }
-          this.$i18nToast().success(this.$t("auth.registeration-success"))
+          this.$i18nToast().success(this.$t("auth.registeration-success")).goAway(8000)
           event.target.reset()
           this.redirect({ name: "auth-login" })
         })
