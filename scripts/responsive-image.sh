@@ -11,7 +11,6 @@ images=(
 
 extentions=(
   jpeg
-  avif
   webp
 )
 

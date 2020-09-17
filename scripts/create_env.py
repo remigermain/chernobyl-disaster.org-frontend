@@ -11,7 +11,7 @@ def main():
         "BACKEND_URL": "http://localhost:8000",
         "SITE_URL": "http://localhost:3000",
         "SITE_NAME": "chernobyl",
-        "SERVER_PORT": None,
+        "NUXT_PORT": None,
     }
 
     if flag.merge:
