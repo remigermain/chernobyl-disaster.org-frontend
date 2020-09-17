@@ -23,7 +23,7 @@ convert () {
     for ex in ${extentions[@]}; do
       FILE="$(echo $img | cut -f1 -d".")$2.$ex"
       if [ -f "$FILE" ]; then
-        echo "file $FILE exists"
+        echo "[EXIST] $FILE..."
       else
         magick $img -resize "$1%" $FILE
         echo "[OK] $FILE..."
