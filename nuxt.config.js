@@ -178,15 +178,6 @@ export default {
   },
 
   build: {
-
-    // postcss: {
-    //   preset: {
-    //     autoprefixer: {
-    //       browsers: ["last 2 versions", "ie >= 9"]
-    //     }
-    //   }
-    // },
-
     babel: {
       ...require("./config/babel").default,
     },
