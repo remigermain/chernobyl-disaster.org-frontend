@@ -47,11 +47,6 @@
           >
         </picture>
       </div>
-      <section class="picture-title">
-        <h2>
-          {{ i18nAttr(object, 'title') }}
-        </h2>
-      </section>
     </div>
   </div>
 </template>
@@ -140,15 +135,6 @@ export default {
     object-fit: contain;
     margin-left: auto;
     margin-right: auto;
-  }
-  .picture-title {
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
-    height: 5vh;
-    color: white;
-    text-align: center;
-    font-size: 1.5rem;
   }
 }
 /*

@@ -53,7 +53,7 @@ export default {
           required: false,
           choices: this.$store.getters["model/events"],
           help: this.$t("admin.help.global.event"),
-          display: ev => this.$store.getters["model/event"](ev)?.display_name || ev
+          display: obj => this.$store.getters["model/event"](obj.event)?.display_name
         },
         picture: {
           label: this.$t("admin.model.picture"),
@@ -66,7 +66,7 @@ export default {
           name: "date",
           required: false,
           help: this.$t("admin.help.model.picture.date"),
-          display: val => this.getDateYear(val) || val
+          display: obj => this.getDateYear(obj.date)
         },
         photographer: {
           label: this.$t("admin.model.photographer"),
@@ -75,7 +75,7 @@ export default {
           required: false,
           choices: this.$store.getters["model/photographers"],
           help: this.$t("admin.help.model.picture.photographer"),
-          display: val => this.$store.getters["model/photographer"](val)?.display_name || val
+          display: obj => this.$store.getters["model/photographer"](obj.photographer)?.display_name
         },
         langs: {
           title: {

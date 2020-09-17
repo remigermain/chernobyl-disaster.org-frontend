@@ -26,10 +26,11 @@
                       'bg-blue-800': current.id != element.id
                     }"
               />
-              <time v-show="!isTimeEmpty(element.date)" :datetime="element.date.toLocaleTimeString($i18n.locale)" class="text-xl italic">
+              <timeline-min-time :date="element.date" />
+              <!-- <time v-show="!isTimeEmpty(element.date)" :datetime="element.date.toLocaleTimeString($i18n.locale)" class="italic">
                 {{ element.date.toLocaleTimeString($i18n.locale) }}
-              </time>
-              <h4 class="timeline-footer">
+              </time> -->
+              <h4>
                 {{ i18nAttr(element, 'title') }}
               </h4>
             </extra-nuxt-link>
@@ -42,11 +43,6 @@
                          class="w-2/4 inline-block h-full"
                          :title="$t('utils.next-event')"
         >
-          <!-- <object type="image/svg+xml" item-prop="image"
-                  class="h-full w-full hover:text-gray-300 hover:-translate-x-2 transform transition-transform duration-400"
-                  :data="require('~/assets/svg/arrow-left.svg')"
-                  :aria-label="$t('utils.next-event')"
-          /> -->
           <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:-translate-x-2 transform transition-transform duration-400"
                     :aria-label="$t('utils.next-event')"
           />

@@ -37,7 +37,7 @@ export default {
           name: "date",
           required: true,
           help: this.$t("admin.help.model.event.date"),
-          display: value => this.getDateYear(value) || value
+          display: obj => this.getDateYear(obj.date)
         },
         langs: {
           title: {

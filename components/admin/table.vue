@@ -1,7 +1,7 @@
 <template>
-  <div class="shadow-md md:p-4">
-    <div class="flex justify-between items-center">
-      <div class="w-2/4 capitalize text-2xl">
+  <div class="shadow-md md:p-4 mt-4">
+    <div class="flex justify-between items-center -md:flex-col -md:justify-center -md:items-center">
+      <div class="w-2/4 capitalize text-2xl -md:text-center">
         <slot name="table-title" />
       </div>
       <div class="p-2 mb-2 w-2/4">
@@ -34,7 +34,7 @@
         <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light shadow-xs">
           <td v-for="col in columns" :key="getField(col)" class="p-2">
             <template v-if="obj[getField(col)]">
-              {{ convertName(col, obj[getField(col)]) }}
+              {{ convertName(obj, col) }}
             </template>
             <span v-else class="text-xs text-gray-600 italic text-opacity-75">
               {{ empty }}
@@ -123,8 +123,8 @@ export default {
         this.list = this.list.sort((el1, el2) => el1[f] < el2[f])
       }
     },
-    convertName (col, value) {
-      return this.fields[this.getField(col)]?.display?.(value) || value
+    convertName (obj, col) {
+      return this.fields[this.getField(col)]?.display?.(obj) || obj[this.getField(col)]
     },
     convertLabel (col) {
       return this.fields[this.getField(col)]?.label || col.label || col

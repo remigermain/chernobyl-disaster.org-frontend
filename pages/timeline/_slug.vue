@@ -4,14 +4,7 @@
       <time :datetime="current.date" class="text-4xl -sm:text-lg -sm:font-semibold">
         {{ getDateYear(current.date) }}
       </time>
-      <div v-show="!isTimeEmpty(current.date)" :datetime="current.date" class="timeline-time">
-        <span class="items text-3xl font-bold"> {{ hours }} </span>
-        <span class="items text-3xl font-bold"> {{ minutes }} </span>
-        <span class="text-3xl font-bold"> {{ seconds }} </span>
-        <span class="italic uppercase text-gray-600 text-opacity-75 text-xs"> {{ $t('utils.hours') }} </span>
-        <span class="italic uppercase text-gray-600 text-opacity-75 text-xs"> {{ $t('utils.minutes') }} </span>
-        <span class="italic uppercase text-gray-600 text-opacity-75 text-xs"> {{ $t('utils.secondes') }} </span>
-      </div>
+      <timeline-time :date="current.date" />
     </div>
     <h1 class="timeline-title text-4xl -sm:text-lg capitalize italic text-center">
       <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-event-id', params: {id: current.id}}"
@@ -115,22 +108,6 @@ export default {
 }
 .timeline-extra {
   grid-area: 3 / 2 / 4 / 3;
-}
-
-.timeline-time {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  text-align: center;
-  & > .items {
-    position: relative;
-    margin: 0 .2em;
-    &::after {
-      content: ':';
-      position: absolute;
-      right: -.3em;
-      top: 0;
-    }
-  }
 }
 
 </style>

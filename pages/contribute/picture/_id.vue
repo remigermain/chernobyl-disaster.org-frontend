@@ -23,7 +23,7 @@
       </model-field>
       <model-tags :tags="object.tags" />
       <model-field :field="fields.picture" :value="object.picture">
-        <img :src="object.picture.full" :alt="object.title">
+        <img :src="object.picture.original_jpeg" :alt="object.title">
       </model-field>
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">

@@ -49,6 +49,7 @@
                   :key="el.id"
                   :src="urlVideo(el.video)" frameborder="0"
                   class="extra extra-picture"
+                  loading="lazy"
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
           />

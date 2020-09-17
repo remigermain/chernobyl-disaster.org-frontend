@@ -15,15 +15,15 @@
       <model-field :field="fields.title" :value="object.title" />
       <model-field :field="fields.date" :value="object.date" />
       <model-tags :tags="object.tags" />
-      <div class="w-full h-40">
-        <timeline-extra :object="object" />
-      </div>
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">
           <model-field :field="fields.langs.title" :value="obj.title" />
           <model-field :field="fields.langs.description" :value="obj.description" />
         </template>
       </model-langs>
+      <div class="extra">
+        <timeline-extra :object="object" />
+      </div>
     </template>
   </lazy-model-detail>
 </template>
@@ -63,5 +63,12 @@ export default {
 .event-detail {
   width: 100%;
   min-height: 300px;
+}
+
+@media screen and (min-width: 850px){
+  .extra {
+    width: 100%;
+    height: 200px;
+  }
 }
 </style>

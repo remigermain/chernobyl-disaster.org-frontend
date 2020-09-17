@@ -1,6 +1,6 @@
 import base from "./base"
 
-const TIME_REFRESH = 20000 // every 20 secondes
+const TIME_REFRESH = 20000 // every 20 seconds
 
 export default {
 

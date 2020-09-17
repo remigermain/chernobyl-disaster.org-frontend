@@ -57,8 +57,8 @@
             "people": "personnes",
             "picture": "photo",
             "report": "signaler",
-            "tag": "tag",
-            "tags": "tags",
+            "tag": "étiquette",
+            "tags": "étiquettes",
             "video": "vid\u00e9o"
         },
         "model": {
@@ -72,7 +72,7 @@
             "photographer": "photographe",
             "picture": "photo",
             "profil": "profil",
-            "tags": "tags",
+            "tags": "étiquettes",
             "title": "titre",
             "video": "vid\u00e9o",
             "wikipedia": "wikipedia",
@@ -202,7 +202,7 @@
         "save": "sauvegarder",
         "save-add-other": "sauvegarder et ajouter d'autres",
         "save-continue-editing": "sauvegarder et continuer l'\u00e9dition",
-        "uuid": "uuid"
+        "uuid": "type"
     },
     "utils": {
         "actions": "actions",
@@ -252,7 +252,7 @@
         "prev": "pr\u00e9c\u00e9dent",
         "required": "n\u00e9cessaire",
         "search": "recherchez",
-        "secondes": "sec",
+        "seconds": "sec",
         "send": "envoyer",
         "site-navigation": "site-navigation",
         "sort-by": "tri\u00e9 par",

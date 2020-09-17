@@ -20,21 +20,21 @@
           <slot name="form-lang" />
         </div>
       </div>
-      <button type="button" class="px-2 py-2 mt-2 text-gray-200 bg-blue-600 hover:bg-blue-800 rounded-md w-max-content" @click="$emit('add-extra')">
+      <button type="button" class="p-2 mt-2 text-gray-200 bg-blue-600 hover:bg-blue-800 rounded-md w-max-content" @click="$emit('add-extra')">
         <svg-icon name="plus" class="inline" />
         {{ $t('tools.add') }}
       </button>
-      <div class="w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-b-lg">
-        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click.stop.prevent="$router.back()">
+      <div class="button-model w-full text-right p-4 bg-gray-400 mt-2 text-white text-sm rounded-b-lg">
+        <button type="submit" class="p-2 bg-blue-600 hover:bg-blue-800 rounded-md" @click.stop.prevent="$router.back()">
           {{ $t('tools.cancel') }}
         </button>
-        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="new">
+        <button type="submit" class="p-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="new">
           {{ $t('tools.save-add-other') }}
         </button>
-        <button type="submit" class="px-2 py-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="continue">
+        <button type="submit" class="p-2 bg-blue-600 hover:bg-blue-800 rounded-md" data-type="continue">
           {{ $t('tools.save-continue-editing') }}
         </button>
-        <button type="submit" class="px-2 py-2 bg-blue-700 hover:bg-blue-800 rounded-md" data-type="detail">
+        <button type="submit" class="p-2 bg-blue-700 hover:bg-blue-800 rounded-md" data-type="detail">
           {{ $t('tools.save') }}
         </button>
       </div>
@@ -70,5 +70,8 @@ export default {
   tbody tr:nth-of-type(even) {
     background-color:  rgba(116, 116, 116, 0.1);
   }
+}
+.button-model > * {
+  margin-top: .5em;
 }
 </style>

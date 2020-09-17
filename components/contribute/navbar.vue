@@ -7,7 +7,7 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="contribute-navbar-items" :class="{'active': active }">
-      <extra-nuxt-link :to="{name: 'contribute'}" class="contribute-navbar-link ml-4">
+      <extra-nuxt-link :to="{name: 'contribute'}" class="contribute-navbar-link exact ml-4">
         <svg-icon name="dashboard" />
         {{ $t('menu.dashboard') }}
       </extra-nuxt-link>
@@ -77,6 +77,14 @@ export default {
     margin-top: .7em
   }
   .contribute-navbar-link {
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+      &::after {
+        width: 100%;
+        opacity: 1;
+      }
+    }
     &::after {
       transition: width .4s, opacity .5s;
       content: '';
@@ -87,22 +95,11 @@ export default {
       border-radius: 3px;
       opacity: 0;
     }
-    &.nuxt-link-active {
+    &.nuxt-link-active:not(.exact), &.nuxt-link-exact-active.exact {
       opacity: 1;
       &::after {
         width: 100%;
         opacity: 1;
-      }
-    }
-    &:not(.nuxt-link-active)
-    {
-      opacity: .5;
-      &:hover {
-        opacity: 1;
-        &::after {
-          width: 100%;
-          opacity: 1;
-        }
       }
     }
   }
@@ -136,17 +133,12 @@ export default {
   }
 }
 
-
-</style>
-
-
-// burger
-<style lang="scss" scoped>
 .burger {
   --height-span-burger: 6px;
   --margin-span-burger: 4px;
   display: none;
   width: 40px;
+  z-index: 0;
   cursor: pointer;
   span {
     display: block;

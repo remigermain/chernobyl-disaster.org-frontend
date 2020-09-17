@@ -202,7 +202,7 @@
         "save": "save",
         "save-add-other": "save and add other",
         "save-continue-editing": "save and continue editing",
-        "uuid": "uuid"
+        "uuid": "type"
     },
     "utils": {
         "actions": "actions",
@@ -252,7 +252,7 @@
         "prev": "previous",
         "required": "required",
         "search": "search",
-        "secondes": "sec",
+        "seconds": "sec",
         "send": "send",
         "site-navigation": "site navigation",
         "sort-by": "sort by",

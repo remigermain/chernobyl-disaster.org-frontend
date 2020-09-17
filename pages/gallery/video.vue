@@ -8,6 +8,7 @@
     <div class="grid-video">
       <div v-for="el in object" :key="el.id" class="video-item">
         <iframe :src="urlVideo(el.video)" frameborder="0"
+                loading="lazy"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
         />
       </div>

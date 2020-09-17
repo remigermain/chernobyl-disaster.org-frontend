@@ -28,7 +28,7 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributors') }}
         </h2>
-        <p class="text-gray-800">
+        <p class="text-gray-800 font-medium">
           {{ $t('pages.about.thanks-contributors') }}
           <wbr>
           <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
@@ -49,7 +49,7 @@
             @GERMAIN remi
           </a>
         </h2>
-        <p class="text-gray-800 text-justify">
+        <p class="text-gray-800 text-justify font-medium">
           <picture role="img">
             <source srcset="~/assets/img/profil/profil-tablet.webp" media="(max-width: 850px)" type="image/webp">
             <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
@@ -63,7 +63,7 @@
         <h4 class="text-3xl text-md capitalize">
           {{ $t('pages.about.help-me') }}
         </h4>
-        <p class="text-center text-gray-800 text-md text-justify">
+        <p class="text-center text-gray-800 text-md text-justify font-medium">
           {{ $t('pages.about.help-me-description') }}
         </p>
       </article>

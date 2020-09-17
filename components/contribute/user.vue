@@ -11,11 +11,11 @@
       <h2 class="title text-gray-800 p-1 text-center text-xl font-semibold w-2/4">
         {{ $t('utils.best-contributor') }}
       </h2>
-      <h2 class="title text-gray-800 p-1 text-center text-xl font-semibold w-2/4">
+      <h2 class="title text-gray-800 p-1 text-center text-xl font-semibold w-2/4 -md:order-1">
         {{ $t('utils.best-contributor-week') }}
       </h2>
       <contribute-ranking :object="object['create']" />
-      <contribute-ranking :object="object['update']" />
+      <contribute-ranking :object="object['update']" class="-md:order-2" />
     </div>
     <div class="w-full">
       <lazy-admin-table :fields="fields"
@@ -55,15 +55,16 @@ export default {
         date: {
           field: "date",
           label: this.$t("tools.date"),
-          display: date => this.getDateYear(date)
+          display: obj => this.getDateYear(obj.date)
         },
         uuid: {
           field: "uuid",
-          label: this.$t("tools.uuid")
+          label: this.$t("tools.uuid"),
+          display: obj => this.$t(`admin.label.${obj.uuid}`)
         },
         display: {
           field: "display",
-          label: this.$t("admin.model.title")
+          label: this.$t("admin.model.title"),
         }
       },
       columns: ["creator", "date", "display", "uuid"],

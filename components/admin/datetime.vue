@@ -18,7 +18,7 @@
         >
         <label class="flex justify-between items-center mt-2">
           <span class="">
-            {{ $t('utils.secondes') }}
+            {{ $t('utils.seconds') }}
           </span>
           <input v-model="secondsValue" type="number" min="0" max="59" class="datetime w-20">
         </label>
