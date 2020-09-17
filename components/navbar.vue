@@ -147,24 +147,22 @@ export default {
     justify-self: center;
     padding-right: .5em;
     .navbar-items {
-      transition: transform var(--navbar--annimation-duration);
+      transition: transform .5s;
       position: fixed;
+      height: 100%;
       width: 50%;
       min-width: 250px;
-      height: 100%;
       top: 0;
       right: 0;
       background-color: rgb(255, 255, 255);
       justify-content: center;
       flex-direction: column;
-      visibility: hidden;
+      transform: translateX(110%);
       font-size: 1.4em;
-      transform: translateX(100%);
       & > * + * {
         margin-top: 2em
       }
       &.active {
-        visibility: visible;
         transform: translateX(0);
       }
     }

@@ -105,34 +105,6 @@ export default {
   }
 }
 
-@media screen and (max-width:900px){
-  .grid-layout-contribute-navbar {
-    padding-right: .5em;
-    .contribute-navbar-items {
-      transition: transform var(--contribute-navbar--annimation-duration);
-      position: fixed;
-      width: auto;
-      padding: 0 1.5em;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background-color: rgb(255, 255, 255);
-      justify-content: center;
-      flex-direction: column;
-      visibility: hidden;
-      font-size: 1.4em;
-      transform: translateX(100%);
-      & > * + * {
-        margin-top: .8em
-      }
-      &.active {
-        visibility: visible;
-        transform: translateX(0);
-      }
-    }
-  }
-}
-
 .burger {
   --height-span-burger: 6px;
   --margin-span-burger: 4px;
@@ -167,6 +139,29 @@ export default {
 }
 
 @media screen and (max-width:900px){
+  .grid-layout-contribute-navbar {
+    padding-right: .5em;
+    .contribute-navbar-items {
+      transition: transform .5s;
+      position: fixed;
+      width: auto;
+      height: 100%;
+      top: 0;
+      background-color: rgb(255, 255, 255);
+      justify-content: center;
+      flex-direction: column;
+      font-size: 1.4em;
+      left: 0;
+      transform: translateX(-110%);
+      & > * + * {
+        margin-top: .8em;
+      }
+      &.active {
+        padding: 0 1.5em;
+        transform: translateX(0);
+      }
+    }
+  }
   .burger {
     display: inline;
   }
