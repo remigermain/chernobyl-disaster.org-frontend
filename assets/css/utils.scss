@@ -2,7 +2,7 @@
   display: contents;
 }
 
-svg {
+svg, object {
   width: 1em;
   height: 1em;
   display: inline-block;
@@ -58,4 +58,8 @@ img, picture {
 
 picture {
   display: contents;
+}
+
+select {
+  height: 2.5em;
 }

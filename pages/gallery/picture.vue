@@ -149,7 +149,7 @@ export default {
     cursor: pointer;
     object-fit: cover;
     &:hover {
-      transform: scale(105%);
+      transform: scale(1.05);
     }
   }
 }

@@ -25,7 +25,7 @@
       >
         {{ $t('menu.gallery') }}
       </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'contribute'}" class="navbar-link"
+      <lazy-extra-nuxt-link :to="contributeLink" class="navbar-link"
                             :title="$t('utils.goto-contribute')"
                             @click="active = false"
       >
@@ -57,6 +57,12 @@ export default {
       active: false,
       value: this.$i18n.locale
     }
+  },
+
+  computed: {
+    contributeLink () {
+      return {name: (this.$auth.loggedIn ? "contribute" : "auth")}
+    },
   },
 
   watch: {

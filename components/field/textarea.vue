@@ -47,7 +47,7 @@ export default {
 
 .input:not(.empty), .input.empty:focus {
   & ~ .input-label {
-    transform: translateY(0) scale(90%) translateX(-5%);
+    transform: translateY(0) translateX(-5%) scale(.9);
     opacity: 1;
   }
 }

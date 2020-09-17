@@ -1,14 +1,8 @@
-const isDev = process.env.NODE_ENV != "production"
-
 export default {
   target: "server",
   ssr: true,
 
   telemetry: false,
-
-  server: {
-    port: process.env.SERVER_PORT || 3000
-  },
 
   head: {
     title: process.env.npm_package_name || "",
@@ -180,23 +174,22 @@ export default {
       "page-enter-active",
       "page-leave-active",
       "page-enter",
-      "test-leave-to",
-      "test-enter-active",
-      "test-leave-active",
-      "test-enter",
-      "test-leave-to",
     ],
   },
 
   build: {
-    indicator: isDev,
-    devtools: isDev,
+
+    // postcss: {
+    //   preset: {
+    //     autoprefixer: {
+    //       browsers: ["last 2 versions", "ie >= 9"]
+    //     }
+    //   }
+    // },
 
     babel: {
       ...require("./config/babel").default,
     },
-
-    optimizeCSS: !isDev,
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

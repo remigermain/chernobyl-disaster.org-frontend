@@ -1,6 +1,6 @@
 <template>
   <div class="grid-common">
-    <article class="common-description">
+    <article class="common-description description-home">
       <h1 class="text-2xl uppercase extra-auto transition-opacity duration-400 z-1 italic text-opacity-50 tracking-tighter font-bold">
         {{ $t('pages.home.presentation') }}
       </h1>
@@ -17,13 +17,8 @@
     </article>
     <div class="common-image">
       <picture role="img">
-        <!-- <source srcset="~/assets/img/background-home-mobile.avif" media="(max-width: 550px)" type="image/avif"> -->
-        <source srcset="~/assets/img/background-home-mobile.webp" media="(max-width: 550px)" type="image/webp">
-        <source srcset="~/assets/img/background-home-mobile.jpeg" media="(max-width: 550px)" type="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-home-tablet.avif" media="(max-width: 850px)" type="image/avif"> -->
         <source srcset="~/assets/img/background-home-tablet.webp" media="(max-width: 850px)" type="image/webp">
         <source srcset="~/assets/img/background-home-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
-        <!-- <source srcset="~/assets/img/background-home.avif" media="(min-width: 850px)" type="image/avif"> -->
         <source srcset="~/assets/img/background-home.webp" media="(min-width: 850px)" type="image/webp">
         <img loading="lazy" src="~/assets/img/background-home.jpeg" alt="image" type="image/jpeg" class="common-img">
       </picture>
@@ -59,3 +54,9 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+.description-home {
+  height: calc(100% + 80px);
+}
+</style>

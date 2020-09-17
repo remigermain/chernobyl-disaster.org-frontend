@@ -10,6 +10,18 @@
   opacity: 0;
 }
 
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity .3s;
+}
+.layout-enter,
+.layout-leave-to {
+  opacity: 0;
+}
+
+
+
 /*
 ** for home and about
 */

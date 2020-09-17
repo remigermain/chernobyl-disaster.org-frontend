@@ -26,7 +26,7 @@
             </option>
           </select>
         </label>
-        <button class="p-2 bg-gray-800 rounded-md text-white hover:bg-gray-700 text-center" @click="submit">
+        <button class="p-2 mx-2 h-12 bg-gray-800 rounded-md text-white hover:bg-gray-700 text-center" @click="submit">
           {{ $t('utils.search') }}
         </button>
         <span class="border-b border-gray-500" />
@@ -222,9 +222,6 @@ export default {
     display: flex;
   }
   .gallery-toolbar-desktop {
-    & > *:first-child {
-      margin-top: 1rem;
-    }
     select  {
       margin-left: .5rem;
       margin-right: .5rem;

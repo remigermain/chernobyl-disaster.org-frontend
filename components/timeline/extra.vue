@@ -168,7 +168,7 @@ export default {
     cursor: pointer;
     transition: transform .4s;
     &:hover {
-      transform: scale(105%);
+      transform: scale(1.05);
     }
   }
 }

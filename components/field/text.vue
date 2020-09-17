@@ -60,8 +60,7 @@ export default {
 
 .input:not(.empty), .input.empty:focus {
   & ~ .input-label {
-    transform: translateY(calc(0% - .5rem)) translateX(-5%) scale(90%);
-    opacity: 1;
+    transform: translateY(calc(0% - .5rem)) translateX(-5%) scale(.9);
   }
 }
 

@@ -4,7 +4,8 @@
       <extra-nuxt-link :to="{name: 'index'}" :title="$t('menu.home')" class="hover:text-gray-700">
         <h1 class="grid-layout-title-item font-russia">
           <svg-icon name="logo" />
-          chernobyl
+          <!-- <object type="image/svg+xml" item-prop="image" :data="require('~/assets/svg/logo.svg')" /> -->
+          <span>chernobyl</span>
         </h1>
       </extra-nuxt-link>
     </div>

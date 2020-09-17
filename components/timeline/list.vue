@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="timeline-list-grid shadow-lg rounded-md border-t-8 border-gray-800" :class="{'active': active}">
-      <section id="timeline" class="timeline pr-11px hover:pr-0 overflow-y-hidden hover:overflow-y-scroll flex flex-col items-center">
+      <section id="timeline" class="timeline overflow-y-scroll flex flex-col items-center">
         <section v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
           <header class="timeline-date flex items-center text-center flex-col px-4">
             <time :datetime="obj.date.getFullYear()" class="text-3xl">
@@ -37,17 +37,22 @@
         </section>
         <div class="timeline-content relative" />
       </section>
-      <div class="w-full flex justify-center bg-gray-900 rounded-b-md text-white overflow-hidden">
+      <div class="w-full h-full flex justify-center bg-gray-900 rounded-b-md text-white overflow-hidden">
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}"
-                         class="w-2/4 inline-block"
+                         class="w-2/4 inline-block h-full"
                          :title="$t('utils.next-event')"
         >
+          <!-- <object type="image/svg+xml" item-prop="image"
+                  class="h-full w-full hover:text-gray-300 hover:-translate-x-2 transform transition-transform duration-400"
+                  :data="require('~/assets/svg/arrow-left.svg')"
+                  :aria-label="$t('utils.next-event')"
+          /> -->
           <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:-translate-x-2 transform transition-transform duration-400"
                     :aria-label="$t('utils.next-event')"
           />
         </extra-nuxt-link>
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': nextId}}"
-                         class="w-2/4 inline-block"
+                         class="w-2/4 inline-block h-full"
                          :title="$t('utils.next-event')"
         >
           <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:translate-x-2 transform transition-transform duration-400"
@@ -182,8 +187,6 @@ export default {
 
 <style lang="scss" scoped>
 .timeline {
-  width: 100%;
-  height: 100%;
   & > *:not(:first-child) {
     margin-top: 2em;
   }

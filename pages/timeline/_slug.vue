@@ -1,7 +1,7 @@
 <template>
   <article class="wrapper">
-    <div class="timeline-date">
-      <time :datetime="current.date" class="text-4xl">
+    <div class="timeline-date -sm:flex-row">
+      <time :datetime="current.date" class="text-4xl -sm:text-lg -sm:font-semibold">
         {{ getDateYear(current.date) }}
       </time>
       <div v-show="!isTimeEmpty(current.date)" :datetime="current.date" class="timeline-time">
@@ -13,7 +13,7 @@
         <span class="italic uppercase text-gray-600 text-opacity-75 text-xs"> {{ $t('utils.secondes') }} </span>
       </div>
     </div>
-    <h1 class="timeline-title text-4xl capitalize italic text-center">
+    <h1 class="timeline-title text-4xl -sm:text-lg capitalize italic text-center">
       <extra-nuxt-link v-if="$auth.loggedIn" :to="{name: 'contribute-event-id', params: {id: current.id}}"
                        :title="$t('utils.edit')"
       >
@@ -128,6 +128,7 @@ export default {
       content: ':';
       position: absolute;
       right: -.3em;
+      top: 0;
     }
   }
 }

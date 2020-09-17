@@ -1,6 +1,6 @@
 <template>
   <div class="grid-common">
-    <section class="common-description text-center space-y-4">
+    <section class="common-description text-center space-y-4 description-about">
       <section>
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
@@ -51,13 +51,8 @@
         </h2>
         <p class="text-gray-800 text-justify">
           <picture role="img">
-            <!-- <source srcset="~/assets/img/profil/profil-mobile.avif" media="(max-width: 550px)" type="image/avif"> -->
-            <source srcset="~/assets/img/profil/profil-mobile.webp" media="(max-width: 550px)" type="image/webp">
-            <source srcset="~/assets/img/profil/profil-mobile.jpeg" media="(max-width: 550px)" type="image/jpeg">
-            <!-- <source srcset="~/assets/img/profil/profil-tablet.avif" media="(max-width: 850px)" type="image/avif"> -->
             <source srcset="~/assets/img/profil/profil-tablet.webp" media="(max-width: 850px)" type="image/webp">
             <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
-            <!-- <source srcset="~/assets/img/profil/profil.avif" media="(min-width: 850px)" type="image/avif"> -->
             <source srcset="~/assets/img/profil/profil.webp" media="(min-width: 850px)" type="image/webp">
             <img loading="lazy" src="~/assets/img/profil/profil.jpeg" alt="image" type="image/jpeg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
           </picture>
@@ -144,4 +139,8 @@ export default {
 .about-profil {
   shape-outside: circle();
 }
+.description-about {
+  height: calc(100% + 80px);
+}
+
 </style>
