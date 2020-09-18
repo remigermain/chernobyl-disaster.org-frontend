@@ -84,7 +84,7 @@
         }
     },
     "auth": {
-        "change-password": "change-password",
+        "change-password": "changer le mot de passe",
         "check-email": "v\u00e9rifier votre email",
         "check-email-description": "avant de vous connecter, vous devez valider votre adresse email",
         "comfirm-new-password": "Confirmer le nouveau mot de passe",
