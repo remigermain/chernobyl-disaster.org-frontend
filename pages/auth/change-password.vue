@@ -1,6 +1,5 @@
 <template>
   <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form">
-    {{ $route.query }}
     <h1 class="font-bold text-gray-900 text-2xl">
       {{ $t('auth.new-password') }}
     </h1>
@@ -13,8 +12,8 @@
       </extra-nuxt-link>
     </span>
     <form class="my-4 w-3/4 form" @submit.prevent="submit">
-      <field-password :field="field.password1" :error="errors.password1" />
-      <field-password :field="field.password2" :error="errors.password2" />
+      <field-password :field="field.new_password1" :errors="errors.new_password1" />
+      <field-password :field="field.new_password2" :errors="errors.new_password2" />
       <field-submit class="submit">
         {{ $t('auth.change-password') }}
       </field-submit>
@@ -41,12 +40,12 @@ export default {
         new_password2: [],
       },
       field: {
-        password1: {
+        new_password1: {
           label: this.$t("auth.field.password"),
           name: "new_password1",
           required: true,
         },
-        password2: {
+        new_password2: {
           label: this.$t("auth.field.comfirm-password"),
           name: "new_password2",
           required: true,

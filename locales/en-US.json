@@ -86,6 +86,7 @@
     "auth": {
         "change-password": "change-password",
         "check-email": "check your mail",
+        "check-email-description": "before logging in you must validate your email",
         "comfirm-new-password": "Confirm new password",
         "confirme-delete-account": "confirm the deletion of the account",
         "connection-account": "sing in",

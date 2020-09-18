@@ -11,6 +11,9 @@
         {{ $t('auth.login') }}
       </lazy-extra-nuxt-link>
     </span>
+    <p class="text-sm leading-5 text-gray-500">
+      {{ $t('auth.check-email-description') }}
+    </p>
     <form class="my-4 w-3/4 form"
           @submit.prevent="submit"
     >
@@ -36,7 +39,7 @@ export default {
   methods: {
     submit () {
       this.loading = true
-      this.$axios.post("auth/registration/check-email/", {key: this.$route.query.key})
+      this.$axios.post("auth/registration/verify-email/", {key: this.$route.query.key})
       .then(response => {
         if (response.status != 200) {
           throw Error("")

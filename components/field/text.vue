@@ -24,7 +24,7 @@
         <slot name="icon-right" />
       </span>
     </div>
-    <admin-error :errors="errors" />
+    <lazy-admin-error :errors="errors" />
   </div>
 </template>
 
@@ -38,10 +38,6 @@ export default {
     type: {
       type: String,
       default: "text"
-    },
-    errors: {
-      type: Array,
-      default: () => []
     },
     autocomplete: {
       type: String,

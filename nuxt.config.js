@@ -174,6 +174,8 @@ export default {
       "page-enter-active",
       "page-leave-active",
       "page-enter",
+      "action",
+      "ripple"
     ],
   },
 

@@ -86,12 +86,13 @@
     "auth": {
         "change-password": "change-password",
         "check-email": "v\u00e9rifier votre email",
+        "check-email-description": "avant de vous connecter, vous devez valider votre adresse email",
         "comfirm-new-password": "Confirmer le nouveau mot de passe",
         "confirme-delete-account": "confirmer la suppression du compte",
         "connection-account": "ce connecter",
         "create-account": "cr\u00e9er un compte",
         "delete-account": "supprimer le compte",
-        "delete-account-description": "Êtes-vous sûr de vouloir désactiver votre compte ? Toutes vos données seront définitivement supprimées. Cette action ne peut être annulée.",
+        "delete-account-description": "\u00cates-vous s\u00fbr de vouloir d\u00e9sactiver votre compte ? Toutes vos donn\u00e9es seront d\u00e9finitivement supprim\u00e9es. Cette action ne peut \u00eatre annul\u00e9e.",
         "email-verified": "votre adresse email a \u00e9t\u00e9 v\u00e9rifi\u00e9e",
         "field": {
             "comfirm-password": "mot de passe de confirmation",
