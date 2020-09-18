@@ -1,9 +1,9 @@
 <template>
   <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
-    <p class="font-bold text-gray-900 text-2xl">
+    <p class="font-bold text-gray-900 text-2xl capitalize">
       {{ $t('utils.contact') }}
     </p>
-    <p class="text-sm text-gray-600">
+    <p class="text-sm text-gray-900 w-2/4 p-2 italic text-opacity-50 leading-3 bg-gray-300 rounded-sm -lg:w-1/3 -md:w-3/4">
       {{ $t('pages.contact.description') }}
     </p>
     <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">

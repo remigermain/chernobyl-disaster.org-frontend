@@ -84,12 +84,14 @@
         }
     },
     "auth": {
-        "change-password": "change the password",
+        "change-password": "change-password",
+        "check-email": "check your mail",
         "comfirm-new-password": "Confirm new password",
         "confirme-delete-account": "confirm the deletion of the account",
         "connection-account": "sing in",
         "create-account": "create an account",
         "delete-account": "delete the account",
+        "email-verified": "your email has been verified",
         "field": {
             "comfirm-password": "confirmation password",
             "email": "email",
@@ -102,10 +104,11 @@
         "logout": "logout",
         "new-password": "new password",
         "old-password": "old password",
+        "rechange-password": "reset password",
         "register": "register",
         "register-account": "register account",
         "registeration-success": "account create successful, check your email before logging in",
-        "reset-password": "reset password"
+        "validate": "validate"
     },
     "errors": {
         "auth": "connection problem",
@@ -146,7 +149,7 @@
             "thanks-contributors": "thank you to the contributors"
         },
         "contact": {
-            "description": "description"
+            "description": "you can contact me for any request, I will answer you as soon as possible!"
         },
         "home": {
             "description": "The Chernobyl nuclear disaster is a major nuclear accident that occurred on April 26, 1986 in the V.I. Lenin nuclear power plant, then located in the Ukrainian Soviet Socialist Republic, USSR. It is the most serious nuclear disaster of the 20th century, classified at level 7 (the highest) of the International Nuclear Event Scale (INES), surpassing, according to the Institute for Radiation Protection and Nuclear Safety (IRSN), by its immediate environmental impacts the Fukushima nuclear accident of 2011, classified at the same level. The IRSN mentions for these accidents potential health effects, lasting contamination of territories and important economic and social consequences.",
@@ -168,13 +171,13 @@
                 "description": "a huge gallery of period photos on the whole history of Chernobyl, from the construction, to the photo of the explosion of the reactor, through the liquidators.",
                 "title": "image gallery"
             },
+            "rechange-password": {
+                "description": "Forgot your password? Reset it!",
+                "title": "reset your password"
+            },
             "register": {
                 "description": "join the chernobyle.org community to share your photo, video and much more!",
                 "title": "registration"
-            },
-            "reset-password": {
-                "description": "Forgot your password? Reset it!",
-                "title": "reset your password"
             },
             "video": {
                 "description": "a huge gallery of period videos on the whole history of Chernobyl, from the construction, to the video of the explosion of the reactor, to the liquidators.",
@@ -186,6 +189,7 @@
         "contact": "your message has been sent successfully",
         "create": "creation successfully completed",
         "delete-account": "successful deletion of the account",
+        "password-changed": "the password has been changed",
         "report": "report sent successfully",
         "update": "update successfully completed"
     },

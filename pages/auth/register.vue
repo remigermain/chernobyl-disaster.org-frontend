@@ -56,13 +56,11 @@ export default {
           label: this.$t("auth.field.password"),
           name: "password1",
           required: true,
-          max_length: 50,
         },
         password2: {
           label: this.$t("auth.field.comfirm-password"),
           name: "password2",
           required: true,
-          max_length: 50,
         }
       }
     }
