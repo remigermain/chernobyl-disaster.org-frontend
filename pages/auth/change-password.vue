@@ -28,9 +28,6 @@ export default {
   name: "AuthResetPassword",
 
   validate ({query}) {
-    console.log(!!query.uid && !!query.token)
-    console.log(!!query.uid, !!query.token)
-    console.log(query.uid, query.token)
     return !!query.uid && !!query.token
   },
 

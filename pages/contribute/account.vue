@@ -9,9 +9,9 @@
       {{ $t('admin.label.account') }}
     </template>
     <template v-slot:table>
-      <div class="flex justify-center flex-col items-center">
-        <div class="-sm:w-full -md:w-1/3 w-2/4">
-          <h2 class="text-xl">
+      <div class="flex justify-around flex-wrap items-center">
+        <div class="-sm:w-full shadow-md border pt-4 rounded">
+          <h2 class="text-xl text-center capitalize">
             {{ $t('auth.change-password') }}
           </h2>
           <form class="account-form shadow-sm p-4" @submit.prevent="submitPassword">
@@ -23,8 +23,8 @@
             </field-submit>
           </form>
         </div>
-        <div class="-sm:w-full -md:w-1/3 w-2/4">
-          <h2 class="text-xl">
+        <div class="-sm:w-full shadow-md border p-4 rounded">
+          <h2 class="text-xl text-center capitalize">
             {{ $t('auth.delete-account') }}
           </h2>
           <form class="account-form shadow-sm p-4" @submit.prevent="active = true">
@@ -33,17 +33,46 @@
             </button>
           </form>
           <div v-if="active" class="modal flex justify-center items-center" @click.prevent="active = false">
-            <div class="flex flex-col shadows bg-white rounded-lg px-4 pt-4 pb-1" @click.stop>
-              <span class="mb-8">
-                {{ $t('auth.confirme-delete-account') }}
-              </span>
-              <div class="flex justify-end">
-                <button class="py-1 px-4 border border-solid border-gray-800 rounded-md mr-1 hover:bg-gray-200" @click.prevent="active = false">
-                  {{ $t('utils.cancel') }}
-                </button>
-                <button class="py-1 px-4 bg-red-800 rounded-md text-white hover:bg-red-700" @click.prevent="submitDelete">
-                  {{ $t('utils.yes') }}
-                </button>
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform
+                  transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" @click.stop
+            >
+              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                    <svg-icon name="alert-triangle" class="h-6 w-6 text-red-600" />
+                  </div>
+                  <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                      {{ $t('auth.confirme-delete-account') }}
+                    </h3>
+                    <div class="mt-2">
+                      <p class="text-sm leading-5 text-gray-500">
+                        {{ $t('auth.delete-account-description') }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+                  <button type="button" class="inline-flex justify-center w-full rounded-md border
+                  border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500
+                  focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                          @click.prevent="submitDelete"
+                  >
+                    {{ $t('utils.delete') }}
+                  </button>
+                </span>
+                <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+                  <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2
+                    bg-white text-base leading-6 font-medium text-gray-700 shadow-sm
+                    hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue
+                      transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                          @click.prevent="active = false"
+                  >
+                    {{ $t('utils.cancel') }}
+                  </button>
+                </span>
               </div>
             </div>
           </div>

@@ -91,7 +91,8 @@
         "connection-account": "ce connecter",
         "create-account": "cr\u00e9er un compte",
         "delete-account": "supprimer le compte",
-        "email-verified": "votre adresse email a été vérifiée",
+        "delete-account-description": "Êtes-vous sûr de vouloir désactiver votre compte ? Toutes vos données seront définitivement supprimées. Cette action ne peut être annulée.",
+        "email-verified": "votre adresse email a \u00e9t\u00e9 v\u00e9rifi\u00e9e",
         "field": {
             "comfirm-password": "mot de passe de confirmation",
             "email": "e-mail",
@@ -124,7 +125,7 @@
     "menu": {
         "about": "A propos de",
         "contribute": "contribuer",
-        "dashboard": "dashboard",
+        "dashboard": "tableau de bord",
         "gallery": "galerie",
         "home": "accueil",
         "picture": "images",
@@ -189,7 +190,7 @@
         "contact": "votre message a \u00e9t\u00e9 envoy\u00e9 avec succ\u00e8s",
         "create": "cr\u00e9ation effectu\u00e9e avec succ\u00e8s",
         "delete-account": "suppression du compte avec succ\u00e8s",
-        "password-changed": "le mot de passe a été modifié",
+        "password-changed": "le mot de passe a \u00e9t\u00e9 modifi\u00e9",
         "report": "signaler envoy\u00e9 avec succ\u00e8s",
         "update": "mise \u00e0 jour effectu\u00e9e avec succ\u00e8s"
     },

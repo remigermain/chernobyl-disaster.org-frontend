@@ -17,7 +17,7 @@
       <field-username :field="field.username" :errors="errors.username" />
       <field-password :field="field.password" :errors="errors.password" />
       <div class="flex justify-end mx-auto text-center my-2">
-        <extra-nuxt-link :to="{name: 'auth-rechange-password'}" class="text-purple-900 font-md m-sm:w-full my-auto italic space tracking-tighter"
+        <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto italic space tracking-tighter"
                          :title="$t('auth.forget-password')"
         >
           {{ $t('auth.forget-password') }}

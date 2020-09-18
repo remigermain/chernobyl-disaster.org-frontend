@@ -77,6 +77,7 @@ export default {
     margin-top: .7em
   }
   .contribute-navbar-link {
+    width: max-content;
     opacity: .5;
     &:hover {
       opacity: 1;

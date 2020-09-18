@@ -91,6 +91,7 @@
         "connection-account": "sing in",
         "create-account": "create an account",
         "delete-account": "delete the account",
+        "delete-account-description": "delete-account-description",
         "email-verified": "your email has been verified",
         "field": {
             "comfirm-password": "confirmation password",
