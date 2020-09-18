@@ -1,6 +1,6 @@
 FROM node:alpine
 
-WORKDIR /var/www/nuxt
+WORKDIR /var/www/chernobyl_frontend
 
 COPY . .
 

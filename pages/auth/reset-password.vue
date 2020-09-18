@@ -61,7 +61,7 @@ export default {
       this.$axios.post("auth/password/reset/", form)
         .then((response) => {
           this.redirect({ name: "auth-login" })
-          this.$i18nToast().info(response.data.detail).goAway(4000)
+          this.i18nToast.info(response.data.detail).goAway(4000)
         })
         .catch((error) => { this.requestError(error) })
         .finally(() => { this.loading = false })

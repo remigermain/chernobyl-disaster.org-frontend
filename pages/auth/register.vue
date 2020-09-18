@@ -79,11 +79,11 @@ export default {
           if (response.status != 201) {
             throw Error("")
           }
-          this.$i18nToast().success(this.$t("auth.registeration-success")).goAway(8000)
+          this.i18nToast.success(this.$t("auth.registeration-success")).goAway(8000)
           event.target.reset()
           this.redirect({ name: "auth-login" })
         })
-        .catch((error) => {this.requestError(error) })
+        .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })
     }
   },

@@ -21,7 +21,7 @@ export default {
             throw Error(this.$t("errors.update"))
           }
 
-          this.$i18nToast().success(this.$t("success.update"))
+          this.i18nToast.success(this.$t("success.update"))
           // redirect after
           if (event.submitter.dataset.type === "new") {
             this.redirect({...this.pathCreate.path})

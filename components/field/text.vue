@@ -10,6 +10,7 @@
                :name="field.name"
                :maxlength="field.max_length"
                :required="field.required"
+               :autocomplete="autocomplete"
                :class="{'empty': valueModel === '' }"
                class="p-2 input"
                @input="$emit('input', valueModel)"
@@ -41,6 +42,10 @@ export default {
     errors: {
       type: Array,
       default: () => []
+    },
+    autocomplete: {
+      type: String,
+      default: "off"
     }
   },
 

@@ -67,7 +67,7 @@ export default {
           }
           this.$emit("close")
           this.message = ""
-          this.$i18nToast().success(this.$t("success.report"))
+          this.i18nToast.success(this.$t("success.report"))
         })
         .catch((error) => { this.requestError(error) })
         .finally(() => { this.loading = false })

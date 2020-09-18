@@ -20,7 +20,7 @@ export default {
             throw Error(this.$t("errors.create"))
           }
           // assigne data
-          this.$i18nToast().success(this.$t("success.create"))
+          this.i18nToast.success(this.$t("success.create"))
           // redirect after
           if (event.submitter.dataset.type === "continue") {
             this.redirect({...this.pathUpdate.path, params: {id: response.data.id}})

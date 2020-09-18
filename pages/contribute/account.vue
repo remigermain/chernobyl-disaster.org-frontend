@@ -104,7 +104,7 @@ export default {
           if (response.status != 200) {
             throw Error("")
           }
-          this.$i18nToast().success(response.data.detail).goAway(4000)
+          this.i18nToast.success(response.data.detail).goAway(4000)
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })
@@ -117,7 +117,7 @@ export default {
           if (response.status != 200) {
             throw Error("")
           }
-          this.$i18nToast().success(this.$t("success.delete-account"))
+          this.i18nToast.success(this.$t("success.delete-account"))
           this.$auth.logout()
           this.redirect({ name: "home" })
         })

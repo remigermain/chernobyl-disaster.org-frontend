@@ -1,7 +1,11 @@
 <template>
-  <lazy-field-text v-bind="$attrs" type="email">
+  <lazy-field-text v-bind="$attrs" type="email"
+                   autocomplete="email"
+                   @input="$emit('input', $event)"
+                   @change="$emit('change', $event)"
+  >
     <template v-slot:icon>
-      <svg-icon name="mail" class="inline text-gray-600 cursor-pointer" :aria-label="$t('auth.field.email')" />
+      <svg-icon name="mail" class="inline text-gray-600" :aria-label="$t('auth.field.email')" />
     </template>
   </lazy-field-text>
 </template>

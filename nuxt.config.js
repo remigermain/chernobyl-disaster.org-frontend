@@ -31,7 +31,6 @@ export default {
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
-    "~/plugins/toast.js",
   ],
 
   modules: [

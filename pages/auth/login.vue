@@ -14,7 +14,7 @@
     <form class="my-4 w-3/4 form"
           @submit.prevent="submit"
     >
-      <field-email :field="field.email" :errors="errors.email" />
+      <field-username :field="field.username" :errors="errors.username" />
       <field-password :field="field.password" :errors="errors.password" />
       <div class="flex justify-end mx-auto text-center my-2">
         <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-900 font-md m-sm:w-full my-auto italic space tracking-tighter"
@@ -41,21 +41,19 @@ export default {
   data () {
     return {
       errors: {
-        email: [],
+        username: [],
         password: [],
       },
       field: {
-        email: {
-          label: this.$t("auth.field.email"),
-          name: "email",
+        username: {
+          label: this.$t("auth.field.username"),
+          name: "username",
           required: true,
-          max_length: 50,
         },
         password: {
           label: this.$t("auth.field.password"),
           name: "password",
           required: true,
-          max_length: 50,
         }
       }
     }
@@ -65,7 +63,7 @@ export default {
     submit (event) {
       const form = new FormData(event.target)
       this.loading = true
-      this.errors = {email: [], password: []}
+      this.errors = {username: [], password: []}
 
       this.$auth.loginWith("local", {data: form})
         .then(() => { this.redirect({ name: "contribute" }) })

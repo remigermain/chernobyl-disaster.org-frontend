@@ -142,7 +142,7 @@ export default {
           }
         })
         .catch((error) => {
-          this.$i18nToast().error(error)
+          this.i18nToast.error(error)
           this.error = true
         })
         .finally(() => {

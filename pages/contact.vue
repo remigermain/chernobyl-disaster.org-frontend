@@ -60,7 +60,7 @@ export default {
           if (response.status != 201) {
             throw Error("")
           }
-          this.$i18nToast().success(this.$t("success.contact"))
+          this.i18nToast.success(this.$t("success.contact"))
           this.data = {
             email: "",
             message: ""

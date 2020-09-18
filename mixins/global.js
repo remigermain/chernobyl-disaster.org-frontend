@@ -11,13 +11,38 @@ export default {
   computed: {
     empty () {
       return `-- ${this.$t("utils.empty")} --`
+    },
+    i18nToast () {
+      const close = {
+        action: {
+          text: this.$t("utils.close"),
+          onClick: (e, toast) => {
+            toast.goAway(0)
+          }
+        }
+      }
+
+      return {
+        "show": (text, options) => {
+          return this.$toast.show(text, options)
+        },
+        "success": (text, options) => {
+          return this.$toast.success(text, {...close, ...options})
+        },
+        "info": (text, options) => {
+          return this.$toast.info(text, {...close, ...options})
+        },
+        "error": (text, options) => {
+          return this.$toast.error(text, {...close, ...options})
+        },
+      }
     }
   },
 
   watch: {
     loading (value) {
       if (value) {
-        this.toastLoading = this.$i18nToast().show(this.$t("utils.loading"))
+        this.toastLoading = this.i18nToast.show(this.$t("utils.loading"))
       } else if (this.toastLoading) {
         this.toastLoading.remove()
       }
@@ -54,21 +79,21 @@ export default {
     },
     requestError (error) {
       if (error.response?.status >= 500) {
-        this.$i18nToast().error(this.$t("errors.server")).goAway(10000)
+        this.i18nToast.error(this.$t("errors.server")).goAway(10000)
       }
       else if (error.response?.data?.detail) {
-        this.$i18nToast().error(this.$t("errors.auth")).goAway(10000)
+        this.i18nToast.error(this.$t("errors.auth")).goAway(10000)
       }
       else if (error.response?.data) {
         // assign response to error
-        this.errors = error.response.data
+        this.errors = {...this.errors, ...error.response.data}
         // if non_field_errors as set, create toast
         if (error.response.data.non_field_errors) {
           error.response.data.non_field_errors.forEach(msg => {
-            this.$i18nToast().error(msg).goAway(10000)
+            this.i18nToast.error(msg).goAway(10000)
           })
         } else {
-          this.$i18nToast().error(this.$t("errors.error-in-form")).goAway(10000)
+          this.i18nToast.error(this.$t("errors.error-in-form")).goAway(10000)
         }
         if (Array.isArray(this.errors.langs)) {
           this.errors.langs.forEach(msg => {
@@ -76,16 +101,16 @@ export default {
               if (msg === "101") { // error unique translate
                 msg = this.$t("errors.unique-translate", {"model": this.model.label})
               }
-              this.$i18nToast().error(msg).goAway(10000)
+              this.i18nToast.error(msg).goAway(10000)
             }
           })
         }
       } else if (error.message === "Network Error") {
         // ERROR network
-        this.$i18nToast().error(this.$t("errors.network")).goAway(10000)
+        this.i18nToast.error(this.$t("errors.network")).goAway(10000)
       } else {
         // create ERROR server
-        this.$i18nToast().error(this.$t("errors.server")).goAway(10000)
+        this.i18nToast.error(this.$t("errors.server")).goAway(10000)
       }
     }
   }
