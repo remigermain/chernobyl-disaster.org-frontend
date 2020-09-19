@@ -175,7 +175,15 @@ export default {
       "page-leave-active",
       "page-enter",
       "action",
-      "ripple"
+      "ripple",
+      "list-leave-to",
+      "list-enter",
+      "list-leave-active",
+      "list-enter-active",
+      "navbar-enter-active",
+      "navbar-leave-active ",
+      "navbar-enter",
+      "navbar-leave-to",
     ],
   },
 

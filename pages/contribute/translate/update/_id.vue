@@ -9,19 +9,25 @@
     <div class="flex">
       <lazy-contribute-translate-navbar :object="object" class="shadow-sm rounded-md  p-2 w-max-content" @select="asset" />
       <div class=" w-full space-y-2 px-2 parent">
-        <div v-for="obj in current" :key="obj.id" class="flex flex-col">
-          <div class="w-full border-gray-500 border-t-4 rounded-md p-2 mt-2 cursor-pointer text-center italic text-opacity-75"
-               @click="toogleActive(obj.id)"
-          >
-            <span class="leading-3 p-2 font-bold rounded-full">
-              {{ obj.key }}
-            </span>
-            <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-180': active == obj.id}" />
+        <transition-group name="list">
+          <div v-for="obj in current" :key="obj.id" class="flex flex-col items">
+            <div class="w-full border-gray-500 border-t-4 rounded-md p-2 mt-2 cursor-pointer italic text-opacity-75"
+                 @click="toogleActive(obj.id)"
+            >
+              <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-90': active == obj.id}" />
+              <span class="leading-3 p-2 font-bold rounded-full">
+                {{ obj.key.split(".")[1] }}
+              </span>
+            </div>
+            <div class="relative overflow-hidden">
+              <div class="w-full flex flex-col space-y-1 leading-6 transform p-2 transition-all duration-400"
+                   :class="{'-translate-y-full opacity-0 absolute': active != obj.id, 'translate-x-0 opacity-100 block': active == obj.id}"
+              >
+                <contribute-translate-preview :object="obj" @refresh="refresh" />
+              </div>
+            </div>
           </div>
-          <div class="w-full flex flex-col space-y-1 leading-6 p-2" :class="{'hidden': active != obj.id}">
-            <contribute-translate-preview :object="obj" @refresh="refresh" />
-          </div>
-        </div>
+        </transition-group>
         <span v-if="object.length === 0" class=" flex justify-center text-sm text-gray-500 italic">
           {{ empty }}
         </span>
@@ -81,8 +87,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .parent > *:nth-of-type(even):not(.active) {
-//   background-color: rgba(13, 30, 53, 0.76);
-//   color: white;
-// }
+.list-enter-active,
+.list-leave-active {
+  transition: opacity .4s, transform .4s;
+}
+.list-enter,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(-20px);
+}
 </style>

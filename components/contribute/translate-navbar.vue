@@ -13,9 +13,11 @@
         {{ list[key].label }}
         <svg-icon name="arrow-down" class="transition-transform transform duration-400" :class="{'-rotate-180': active == key}" />
       </div>
-      <div v-if="list[key].childs.length > 1 && active == key" class="ml-4 py-2" :depth="depth + 1">
-        <translate-navbar :object="list[key].childs" @select="submit" />
-      </div>
+      <transition name="navbar">
+        <div v-if="list[key].childs.length > 1 && active == key" class="ml-4 py-2" :depth="depth + 1">
+          <translate-navbar :object="list[key].childs" @select="submit" />
+        </div>
+      </transition>
     </li>
   </ol>
 </template>
@@ -89,4 +91,20 @@ export default {
 .list {
   min-width: 170px;
 }
+
+.navbar-enter-active,
+.navbar-leave-active {
+  transition: opacity .5s;
+  li {
+    transition: transform .5s;
+  }
+}
+.navbar-enter,
+.navbar-leave-to {
+  opacity: 0;
+  li {
+    transform: translateX(-10px);
+  }
+}
+
 </style>
