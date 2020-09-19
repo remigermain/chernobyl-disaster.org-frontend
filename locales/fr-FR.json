@@ -8,6 +8,7 @@
                 "picture": "ce toutes les images",
                 "report": "vous pouvez signaler tout objet, \u00e0 supprimer, \u00e0 modifier ou autre, vous \u00e9crivez ce que vous voulez (en fran\u00e7ais ou en anglais) et je m'en occupe d\u00e8s que possible.",
                 "tag": "ce sont des \u00e9tiquettes qui aident \u00e0 la recherche d'un \u00e9l\u00e9ment",
+                "translate": "translate",
                 "video": "ce sont toutes video"
             },
             "model": {
@@ -41,6 +42,7 @@
                         "name": "une traduction de l'\u00e9tiquettes"
                     }
                 },
+                "translate": "translate",
                 "video": {
                     "date": "il s'agit de la date (approximative ou pr\u00e9cise) \u00e0 laquelle la vid\u00e9o a \u00e9t\u00e9 prise",
                     "langs": {
@@ -59,6 +61,7 @@
             "report": "signaler",
             "tag": "\u00e9tiquette",
             "tags": "\u00e9tiquettes",
+            "translate": "translate",
             "video": "vid\u00e9o"
         },
         "model": {
@@ -66,14 +69,17 @@
             "born": "n\u00e9e",
             "date": "date",
             "death": "d\u00e9c\u00e8s",
+            "deleted": "deleted",
             "description": "description",
             "event": "\u00e9v\u00e9nement",
+            "file": "file",
             "name": "nom",
             "photographer": "photographe",
             "picture": "photo",
             "profil": "profil",
             "tags": "\u00e9tiquettes",
             "title": "titre",
+            "value": "value",
             "video": "vid\u00e9o",
             "wikipedia": "wikipedia",
             "your-message": "votre message"
@@ -202,7 +208,7 @@
         "cancel": "annuler",
         "creator": "creator",
         "date": "date",
-        "deleted": "êtes-vous sûr de vouloir supprimer cet objet ?",
+        "deleted": "\u00eates-vous s\u00fbr de vouloir supprimer cet objet ?",
         "descending": "d\u00e9croissant",
         "name": "nom",
         "new": "nouveau",
@@ -255,6 +261,7 @@
         "no": "non",
         "open-menu": "ouvrir menu",
         "or": "ou",
+        "percentage": "percentage",
         "picture": "photo",
         "prev": "pr\u00e9c\u00e9dent",
         "required": "n\u00e9cessaire",
@@ -263,10 +270,13 @@
         "send": "envoyer",
         "site-navigation": "site-navigation",
         "sort-by": "tri\u00e9 par",
+        "submit": "submit",
         "total": "total",
+        "translate": "translate",
         "translation": "traduction",
         "un-lock-password": "d\u00e9verrouiller le mot de passe",
         "update": "mettre \u00e0 jour",
+        "upload": "upload",
         "video": "vid\u00e9o",
         "yes": "oui"
     }

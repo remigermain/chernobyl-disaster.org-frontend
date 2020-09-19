@@ -33,7 +33,8 @@
       <tbody>
         <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light shadow-xs">
           <td v-for="col in columns" :key="getField(col)" class="p-2">
-            <template v-if="obj[getField(col)]">
+            <slot v-if="$slots.default" :obj="obj" :col="col" />
+            <template v-else-if="isNotEmpty(obj[getField(col)])">
               {{ convertName(obj, col) }}
             </template>
             <span v-else class="text-xs text-gray-600 italic text-opacity-75">
@@ -41,15 +42,18 @@
             </span>
           </td>
           <td class="p-2 text-gray-800 text-center">
-            <lazy-extra-nuxt-link :to="{name: `contribute-${obj.uuid || model}-id`, params:{ id: obj.object_id || obj.id} }">
+            <lazy-extra-nuxt-link v-if="detail" :to="{name: `contribute-${obj.uuid || model}-id`, params:{ id: obj.object_id || obj.id} }">
               <svg-icon name="eye" class="cursor-pointer text-blue-700 action-btn" />
             </lazy-extra-nuxt-link>
             <lazy-extra-nuxt-link :to="{name: `contribute-${obj.uuid || model}-update-id`, params:{ id: obj.object_id || obj.id} }">
               <svg-icon name="edit" class="cursor-pointer text-purple-700 action-btn" />
             </lazy-extra-nuxt-link>
-            <button v-if="$auth.hasScope('deleted')" @click="setDeleted(obj.object_id || obj.id, obj.uuid || model)">
-              <svg-icon name="trash" class="cursor-pointer text-red-700 action-btn" />
-            </button>
+            <template v-if="$auth.hasScope('staff')">
+              <slot name="delete" :obj="obj" />
+              <button v-if="deleted" @click="setDeleted(obj.object_id || obj.id, obj.uuid || model)">
+                <svg-icon name="trash" class="cursor-pointer text-red-700 action-btn" />
+              </button>
+            </template>
           </td>
         </tr>
         <tr v-if="list.length === 0" class="text-center">
@@ -95,6 +99,14 @@ export default {
     model: {
       type: String,
       required: true,
+    },
+    deleted: {
+      type: Boolean,
+      default: true
+    },
+    detail: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -116,6 +128,9 @@ export default {
   },
 
   methods: {
+    isNotEmpty (value) {
+      return typeof value !== "undefined" && value != null
+    },
     setDeleted (id, model) {
       this.deleted = id
       this.deletedId = id

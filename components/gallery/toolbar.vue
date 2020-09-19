@@ -132,7 +132,6 @@ export default {
 .gallery-toolbar {
   display: flex;
   flex-direction: column;
-  padding: .5em;
   overflow-y: scroll;
   & > .gallery-toolbar-desktop > * + * {
     margin-top: .5rem;

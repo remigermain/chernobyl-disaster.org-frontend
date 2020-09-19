@@ -15,7 +15,7 @@
       <lazy-admin-text :field="fields.name" :errors="errors.name" />
     </template>
     <template v-slot:form-lang>
-      <model-card-lang v-for="(lang, idx) in langs" :key="lang" :lang="$t('tools.new')">
+      <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
         <template v-slot:header>
           <lazy-admin-action :add="false"
                              :edit="false"

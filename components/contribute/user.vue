@@ -96,7 +96,6 @@ export default {
 
   methods: {
     setPagination (val) {
-      console.log(val)
       this.pagination = val
     },
     search (val) {

@@ -16,7 +16,7 @@
       <lazy-admin-text :value="object.name" :field="fields.name" :errors="errors.name" />
     </template>
     <template v-slot:form-lang>
-      <model-card-lang v-for="(lang, idx) in object.langs" :key="lang.id" :lang="langConv(lang.language)">
+      <model-card-lang v-for="(lang, idx) in object.langs" :key="lang.id" :title="langConv(lang.language)">
         <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
         <lazy-admin-text class="border-none"
                          :value="lang.name"
@@ -33,7 +33,7 @@
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
         />
       </model-card-lang>
-      <model-card-lang v-for="(lang, idx) in langs" :key="lang" :lang="$t('tools.new')">
+      <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
         <template v-slot:header>
           <lazy-admin-action :add="false"
                              :edit="false"

@@ -8,6 +8,7 @@
                 "picture": "these are the images",
                 "report": "you can report any object, to delete, modify or otherwise, you write what you want (in French or English) and I will take care of it as soon as possible.",
                 "tag": "they are labels that help in the search for an item",
+                "translate": "translate",
                 "video": "these are the videos"
             },
             "model": {
@@ -41,6 +42,7 @@
                         "name": "a translation of the tag"
                     }
                 },
+                "translate": "translate",
                 "video": {
                     "date": "this is the date (approximate or precise) on which the video was taken",
                     "langs": {
@@ -59,6 +61,7 @@
             "report": "report",
             "tag": "tag",
             "tags": "tags",
+            "translate": "translate",
             "video": "video"
         },
         "model": {
@@ -66,14 +69,17 @@
             "born": "born",
             "date": "date",
             "death": "death",
+            "deleted": "deleted",
             "description": "description",
             "event": "event",
+            "file": "file",
             "name": "name",
             "photographer": "photographer",
             "picture": "picture",
             "profil": "profil",
             "tags": "tags",
             "title": "title",
+            "value": "value",
             "video": "video",
             "wikipedia": "wikipedia",
             "your-message": "your message"
@@ -255,6 +261,7 @@
         "no": "no",
         "open-menu": "open menu",
         "or": "or",
+        "percentage": "percentage",
         "picture": "picture",
         "prev": "previous",
         "required": "required",
@@ -263,10 +270,13 @@
         "send": "send",
         "site-navigation": "site navigation",
         "sort-by": "sort by",
+        "submit": "submit",
         "total": "total",
+        "translate": "translate",
         "translation": "translation",
         "un-lock-password": "unlock the password",
         "update": "update",
+        "upload": "upload",
         "video": "video",
         "yes": "yes"
     }

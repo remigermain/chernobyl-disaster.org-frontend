@@ -7,16 +7,16 @@
     </template>
     <template v-slot:input>
       <div class="flex flex-col flex-wrap">
-        <span v-if="valueModel.full" class="p-2">
+        <span v-if="valueModel.original_jpeg" class="p-2">
           {{ $t('utils.currently') }} :
-          <a :href="valueModel.full" class="text-purple-700 text-md italic" rel="noopener noreferrer" target="_blank">
-            <img :src="valueModel.thumbnail" loading="lazy" alt="">
+          <a :href="valueModel.original_jpeg" class="text-purple-700 text-md italic" rel="noopener noreferrer" target="_blank">
+            <img :src="valueModel.thumbnail_jpeg" loading="lazy" alt="">
           </a>
         </span>
         <input type="file"
                :name="name"
                accept="image/*"
-               :required="valueModel.full ? false : field.required"
+               :required="valueModel.original_jpeg ? false : field.required"
                @change="$emit('change', $event.target.files[0])"
         >
       </div>

@@ -15,7 +15,7 @@
           <extra-nuxt-link :to="el.to" class="text-center bg-gray-800 hover:bg-gray-700 text-white border-r-4 border-gray-900 rounded-bl-lg">
             {{ $t('utils.list') }}
           </extra-nuxt-link>
-          <extra-nuxt-link :to="el.toCreate" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-br-lg">
+          <extra-nuxt-link v-if="el.toCreate" :to="el.toCreate" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-br-lg">
             {{ $t('utils.create') }}
           </extra-nuxt-link>
         </div>
@@ -83,6 +83,11 @@ export default {
           help: this.$t("admin.help.global.video"),
           to: {name: "contribute-video"},
           toCreate: {name: "contribute-video-create"}
+        },
+        {
+          name: this.$t("utils.translation"),
+          help: this.$t("admin.help.global.translate"),
+          to: {name: "contribute-translate"},
         },
       ]
     }

@@ -17,7 +17,7 @@
           {{ $t('utils.update') }}
           <svg-icon name="edit" class="w-24px" />
         </extra-nuxt-link>
-        <button v-if="$auth.hasScope('deleted')"
+        <button v-if="$auth.hasScope('staff')"
                 class="px-2 py-2 bg-red-800 hover:bg-red-700 text-white rounded-md self-end capitalize"
                 @click="active = true"
         >

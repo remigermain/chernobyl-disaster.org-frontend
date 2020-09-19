@@ -1,7 +1,7 @@
 <template>
   <div class="w-full shadow-lg">
     <div class="w-full rounded-md border-t-4 border-blue-700 p-2 text-center flex justify-around text-lg">
-      <span>
+      <span v-if="header">
         {{ $t('utils.language') }}:
         <span class="text-indigo-700 font-bold">
           {{ lang }}
@@ -19,9 +19,13 @@
 <script>
 export default {
   props: {
-    lang: {
+    title: {
       type: String,
       required: true
+    },
+    header: {
+      type: Boolean,
+      default: true
     }
   },
 
