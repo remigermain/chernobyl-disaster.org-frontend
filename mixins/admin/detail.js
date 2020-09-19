@@ -8,10 +8,7 @@ export default {
 
   methods: {
     isTimeEmpty (date) {
-      if (date.getHours() == 0 && date.getMinutes() == 0 && date.getSeconds() == 0) {
-        return true
-      }
-      return false
+      return (date.getHours() === 0 && date.getMinutes() === 0 && date.getSeconds() === 0)
     },
     getDateYear (date) {
       const _date = (date instanceof Date ? date : new Date(date))

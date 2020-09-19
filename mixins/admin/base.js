@@ -68,10 +68,7 @@ export default {
     },
     getErrorsIdx(tab, idx, key) {
       if (!tab) return []
-      if (tab.length >= idx && tab[idx]?.[key]) {
-        return tab[idx][key]
-      }
-      return []
+      return tab[idx]?.[key] ?? []
     }
   }
 
