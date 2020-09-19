@@ -1,5 +1,5 @@
 <template>
-  <lazy-model-detail :path="pathUpdate.path" :model="model.name">
+  <lazy-model-detail :path="pathUpdate.path" :model="model.name" :object-id="object.id">
     <template v-slot:label>
       {{ model.label }}
     </template>

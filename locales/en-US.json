@@ -113,7 +113,6 @@
         "validate": "validate"
     },
     "errors": {
-        "auth": "connection problem",
         "create": "error during creation",
         "error-in-form": "error in the form",
         "language": "missing translation",
@@ -191,6 +190,7 @@
         "contact": "your message has been sent successfully",
         "create": "creation successfully completed",
         "delete-account": "successful deletion of the account",
+        "deleted": "deletion successfully completes",
         "password-changed": "the password has been changed",
         "report": "report sent successfully",
         "update": "update successfully completed"
@@ -202,6 +202,7 @@
         "cancel": "cancel",
         "creator": "creator",
         "date": "date",
+        "deleted": "are you sure you want to delete this object?",
         "descending": "descending",
         "name": "name",
         "new": "new",

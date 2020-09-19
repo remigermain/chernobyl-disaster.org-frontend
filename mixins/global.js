@@ -82,7 +82,7 @@ export default {
         this.i18nToast.error(this.$t("errors.server")).goAway(10000)
       }
       else if (error.response?.data?.detail) {
-        this.i18nToast.error(this.$t("errors.auth")).goAway(10000)
+        this.i18nToast.error(error.response.data.detail).goAway(10000)
       }
       else if (error.response?.data) {
         // assign response to error

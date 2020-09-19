@@ -113,7 +113,6 @@
         "validate": "valider"
     },
     "errors": {
-        "auth": "probl\u00e8me de connexion",
         "create": "erreur lors de la cr\u00e9ation",
         "error-in-form": "erreur dans le formulaire",
         "language": "traduction manquante",
@@ -191,6 +190,7 @@
         "contact": "votre message a \u00e9t\u00e9 envoy\u00e9 avec succ\u00e8s",
         "create": "cr\u00e9ation effectu\u00e9e avec succ\u00e8s",
         "delete-account": "suppression du compte avec succ\u00e8s",
+        "deleted": "suppression effectu\u00e9e avec succ\u00e8s",
         "password-changed": "le mot de passe a \u00e9t\u00e9 modifi\u00e9",
         "report": "signaler envoy\u00e9 avec succ\u00e8s",
         "update": "mise \u00e0 jour effectu\u00e9e avec succ\u00e8s"
@@ -202,6 +202,7 @@
         "cancel": "annuler",
         "creator": "creator",
         "date": "date",
+        "deleted": "êtes-vous sûr de vouloir supprimer cet objet ?",
         "descending": "d\u00e9croissant",
         "name": "nom",
         "new": "nouveau",

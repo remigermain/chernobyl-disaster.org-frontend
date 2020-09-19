@@ -47,6 +47,9 @@
             <lazy-extra-nuxt-link :to="{name: `contribute-${obj.uuid || model}-update-id`, params:{ id: obj.object_id || obj.id} }">
               <svg-icon name="edit" class="cursor-pointer text-purple-700 action-btn" />
             </lazy-extra-nuxt-link>
+            <button v-if="$auth.hasScope('deleted')" @click="setDeleted(obj.object_id || obj.id, obj.uuid || model)">
+              <svg-icon name="trash" class="cursor-pointer text-red-700 action-btn" />
+            </button>
           </td>
         </tr>
         <tr v-if="list.length === 0" class="text-center">
@@ -65,6 +68,7 @@
         {{ $t('utils.total') }} : {{ length }}
       </span>
     </div>
+    <admin-modal v-if="deletedId" :object="deletedId" :model="deletedModel" @close="deletedId = null" />
   </div>
 </template>
 
@@ -99,7 +103,9 @@ export default {
       current: null,
       reverse: false,
       list: this.objectList,
-      search: ""
+      search: "",
+      deletedId: null,
+      deletedModel: null
     }
   },
 
@@ -110,6 +116,11 @@ export default {
   },
 
   methods: {
+    setDeleted (id, model) {
+      this.deleted = id
+      this.deletedId = id
+      this.deletedModel = model
+    },
     getField (col) {
       return (col.field || col)
     },
