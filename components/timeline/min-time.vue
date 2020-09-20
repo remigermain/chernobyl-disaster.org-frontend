@@ -7,7 +7,7 @@
       <span class="items text-xs w-max-content">
         {{ minutes }}{{ this.$t("utils.minutes")[0] }}
       </span>
-      <span class="space-items text-xs w-max-content">
+      <span class="items text-xs w-max-content">
         {{ seconds }}{{ this.$t("utils.seconds")[0] }}
       </span>
     </time>
@@ -53,21 +53,17 @@ export default {
 
 <style lang="scss" scoped>
 
-.space-items {
-  margin: 0 .2em;
-}
-
 .timeline-time {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
   & > .items {
     position: relative;
-    margin: 0 .5em;
-    &::after {
+    margin: 0 .3em;
+    &:not(:last-child)::after {
       content: ':';
       position: absolute;
-      right: -.5em;
+      right: -.4em;
       top: 0;
     }
   }

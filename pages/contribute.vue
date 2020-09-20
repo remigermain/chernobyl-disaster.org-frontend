@@ -12,7 +12,9 @@
             </h1>
             {{ el.help }}
           </div>
-          <extra-nuxt-link :to="el.to" class="text-center bg-gray-800 hover:bg-gray-700 text-white border-r-4 border-gray-900 rounded-bl-lg">
+          <extra-nuxt-link :to="el.to" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-bl-lg"
+                           :class="{'col-span-2 rounded-br-lg': !el.toCreate, 'border-gray-900 border-r-4': el.toCreate}"
+          >
             {{ $t('utils.list') }}
           </extra-nuxt-link>
           <extra-nuxt-link v-if="el.toCreate" :to="el.toCreate" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-br-lg">

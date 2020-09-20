@@ -9,7 +9,7 @@
     <div class="card-buble flex justify-center items-center">
       <span class="bg-indigo-700 buble tree shadow-md">3</span>
     </div>
-    <div class="bg-white text-gray-700 shadow-md italic font-medium rounded-lg flex flex-col justify-center items-center card-buble">
+    <div class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble">
       {{ second.username || empty }}
       <span class="text-indigo-700">
         {{ second.count }}
@@ -84,8 +84,10 @@ export default {
 .card-buble {
   width: max-content;
   width: 100px;
-  height: 40px;
+  // height: 40px;
   border-radius: 10px;
+  word-break: break-word;
+  padding: .5em;
 }
 
 .trophy {

@@ -17,24 +17,29 @@
           <svg-icon name="language" role="img" :aria-label="$t('utils.translation')" />
           {{ $t('utils.translation') }}
         </extra-nuxt-link>
-        <extra-nuxt-link :to="{name: 'contact'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
-                         :title="$t('pages.about.contact')"
+        <extra-nuxt-link :to="{name: 'aut-login'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
+                         :title="$t('auth.connection-account')"
         >
-          <svg-icon name="mail" role="img" :aria-label="$t('pages.about.contact')" />
-          {{ $t('pages.about.contact') }}
+          <svg-icon name="user" role="img" :aria-label="$t('auth.connection-account')" />
+          {{ $t('auth.connection-account') }}
         </extra-nuxt-link>
       </section>
       <section>
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributors') }}
         </h2>
-        <p class="text-gray-800 font-medium">
+        <h2 class="text-gray-800 font-medium">
           {{ $t('pages.about.thanks-contributors') }}
+          <div class="inline-flex">
+            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />
+          </div>
+          <div class="inline-flex">
+            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />
+          </div>
           <wbr>
-          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
-          <svg-icon name="heart" class="text-red-800" role="img" :aria-label="$t('utils.love')" />
-          <wbr>
-        </p>
+        </h2>
         <span v-for="user in contributors" :key="user" class="text-sm">
           {{ user }}
         </span>
@@ -59,20 +64,29 @@
           {{ $t('pages.about.creator-description') }}
         </p>
       </article>
+      <extra-nuxt-link :to="{name: 'contact'}" class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold
+                                                      rounded-full group hover:bg-gray-800 btn-icon-show overflow-hidden"
+                       :title="$t('pages.about.contact')"
+      >
+        {{ $t('pages.about.contact') }}
+        <svg-icon name="mail" role="img" :aria-label="$t('pages.about.contact')"
+                  class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-1 mx-2"
+        />
+      </extra-nuxt-link>
       <article>
         <h4 class="text-3xl text-md capitalize">
           {{ $t('pages.about.help-me') }}
         </h4>
-        <p class="text-center text-gray-800 text-md text-justify font-medium">
+        <p class="text-gray-800 text-md text-justify font-medium">
           {{ $t('pages.about.help-me-description') }}
         </p>
       </article>
-      <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold rounded-sm group hover:bg-gray-800 btn-icon-show overflow-hidden"
+      <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold rounded-full group hover:bg-gray-800 btn-icon-show overflow-hidden"
          :title="$t('pages.about.help-me')"
       >
         {{ $t('pages.about.buy-me-coffe') }}
         <svg-icon name="mug" role="img" :aria-label="$t('pages.about.buy-me-coffe')"
-                  class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-1 ml-2"
+                  class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-1 mx-2"
         />
       </a>
     </section>
