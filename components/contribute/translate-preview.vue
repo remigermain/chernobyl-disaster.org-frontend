@@ -17,6 +17,7 @@
     </div>
     <form class="flex flex-col space-y-2" @submit.prevent="submit">
       <textarea v-model="value"
+                v-autosize
                 class="form-textarea bg-gray-200"
                 name="value"
                 :action="false"

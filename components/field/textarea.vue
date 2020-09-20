@@ -6,6 +6,7 @@
       </span>
       <label class="w-full text-gray-700 text-sm font-bold mb-2 capitalize flex flex-col-reverse border-b-2 border-gray-600">
         <textarea v-model="valueModel"
+                  v-autosize
                   :name="field.name"
                   :maxlength="field.max_length"
                   :required="field.required"

@@ -31,6 +31,7 @@ export default {
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
+    {src: "~/plugins/directive.js", ssr: false}
   ],
 
   modules: [
