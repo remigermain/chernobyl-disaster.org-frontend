@@ -141,17 +141,17 @@
     },
     "pages": {
         "about": {
-            "buy-me-coffe": "me payer un caf\u00e9",
+            "buy-me-coffe": "M’offrir un café.",
             "contact": "contact",
             "contribute-gitlab": "contribuer sur gitlab",
             "contribute-translate": "contribuer en traduisant",
             "contributing": "contribution",
             "contributors": "contributeurs",
-            "creator-description": "Germain r\u00e9mi d\u00e9veloppeur web sur lyon en france. je suis passionn\u00e9 par l'histoire de Tchernobyl et toutes ses cons\u00e9quences, de tous les sacrifices que les peuples de l'ussr ont d\u00fb subir pour \u00e9viter une plus grande catastrophe, c'est pourquoi j'ai cr\u00e9\u00e9 ce site, pour ne pas oublier ce que ces peuples ont fait pour nous, et pour les g\u00e9n\u00e9rations futures.",
+            "creator-description": "Développeur web basé sur Lyon (France) et passionné par l'histoire de Tchernobyl. Je me suis intéressé sur les conséquences et sacrifices que les citoyens de l’URSS ont dû traverser pour amoindrir aux mieux les effets néfastes de ce cataclysme. C'est pourquoi j'ai créé ce site, afin de faire perdurer leurs histoires et ne pas oublier ce que ces hommes et femmes ont fait pour nous, et pour les générations futures.",
             "creator-website": "site du cr\u00e9ateur",
             "description": "Ce site retrace les \u00e9v\u00e8nements de l'accident qui a conduit \u00e0 cette catastrophe et ces cons\u00e9quences, illustr\u00e9 par photo, vid\u00e9o et document d'archive.",
-            "help-me": "aidez moi",
-            "help-me-description": "ce site est gratuit, open source et il le restera ! le co\u00fbt de l'infrastructure devrait augmenter avec le nombre de photos ajout\u00e9es, et le co\u00fbt annuel est actuellement de 100 euros (c'est un petit serveur), c'est pourquoi vous pouvez m'aider \u00e0 assumer ce co\u00fbt en me payant une petite somme, cela me permettra d'acheter un meilleur serveur, et m\u00eame dans le futur avec une instance pour les vid\u00e9os !",
+            "help-me": "Aidez-moi",
+            "help-me-description": "Ce site est gratuit, open-source et le restera !Pourquoi m’aider ? Actuellement, le coût annuel de l’infrastructure est de 100 euros. Mais celui-ci se verra augmenter en conséquence du nombre de photographies stocké sur le site web.Afin de m’aider à assumer ce coût, et sur la base du volontariat, je mets à disposition une cagnotte sur laquelle vous pouvez me donner un coup de main.Bien évidemment, si l’argent cumulé est supérieur aux dépenses engendré initialement. Je me servirai de cette somme afin d’améliorer le service proposé, et pourquoi pas, rajouter une instance de stockage pour les vidéos.",
             "no-contributors": "aucun contributeur",
             "thanks-contributors": "merci aux contributeurs"
         },

@@ -9,23 +9,22 @@
     <div class="card-buble flex justify-center items-center">
       <span class="bg-indigo-700 buble tree shadow-md">3</span>
     </div>
-    <div class="bg-white text-gray-700 shadow-md italic font-medium rounded-lg flex justify-center items-center card-buble">
-      <span v-if="object.length >= 2">
-        {{ object[1].user }}
-      </span>
-      <span v-else class="text-xs text-gray-400">
-        {{ empty }}
+    <div class="bg-white text-gray-700 shadow-md italic font-medium rounded-lg flex flex-col justify-center items-center card-buble">
+      {{ second.username || empty }}
+      <span class="text-indigo-700">
+        {{ second.count }}
       </span>
     </div>
-    <div class="bg-white text-gray-700 shadow-md italic font-medium rounded-lg flex justify-center items-center card-buble">
-      {{ object[0].user }}
-    </div>
-    <div class="bg-white text-gray-700 shadow-md italic font-medium rounded-lg flex justify-center items-center card-buble">
-      <span v-if="object.length >= 3">
-        {{ object[2].user }}
+    <div class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble">
+      {{ first.username || empty }}
+      <span class="text-indigo-700">
+        {{ first.count }}
       </span>
-      <span v-else class="text-xs text-gray-400">
-        {{ empty }}
+    </div>
+    <div class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble">
+      {{ third.username || empty }}
+      <span class="text-indigo-700">
+        {{ third.count }}
       </span>
     </div>
   </div>
@@ -38,6 +37,21 @@ export default {
       type: Array[Object],
       required: true
     },
+  },
+
+  computed: {
+    first() {
+      return this.object.first
+    },
+    second() {
+      return this.object.second
+    },
+    third() {
+      return this.object.third
+    },
+    unk () {
+      return this.$t("utils.empty")
+    }
   }
 }
 </script>

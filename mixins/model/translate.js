@@ -6,16 +6,6 @@ export default {
         label: this.$t("admin.label.translate"),
       },
       fields: {
-        file: {
-          label: this.$t("admin.model.file"),
-          name: "file",
-          required: true,
-        },
-        deleted: {
-          label: this.$t("admin.model.deleted"),
-          name: "deleted",
-          required: false,
-        },
         language: {
           label: this.$t("utils.language"),
           name: "language",

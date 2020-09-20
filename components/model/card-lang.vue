@@ -4,7 +4,7 @@
       <span v-if="header">
         {{ $t('utils.language') }}:
         <span class="text-indigo-700 font-bold">
-          {{ lang }}
+          {{ title }}
         </span>
       </span>
       <span v-if="!$slots.header" />
@@ -43,7 +43,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>

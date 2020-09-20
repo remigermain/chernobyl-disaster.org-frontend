@@ -14,8 +14,8 @@
       <h2 class="title text-gray-800 p-1 text-center text-xl font-semibold w-2/4 -md:order-1">
         {{ $t('utils.best-contributor-week') }}
       </h2>
-      <contribute-ranking :object="object['create']" />
-      <contribute-ranking :object="object['update']" class="-md:order-2" />
+      <contribute-ranking :object="object['total']" />
+      <contribute-ranking :object="object['week']" class="-md:order-2" />
     </div>
     <div class="w-full">
       <lazy-admin-table :fields="fields"
