@@ -9,25 +9,23 @@
     <div class="flex">
       <lazy-contribute-translate-navbar :object="object" class="shadow-sm rounded-md  p-2 w-max-content" @select="asset" />
       <div class=" w-full space-y-2 px-2 parent">
-        <transition-group name="list">
-          <div v-for="obj in current" :key="obj.id" class="flex flex-col items">
-            <div class="w-full border-gray-500 border-t-4 rounded-md p-2 mt-2 cursor-pointer italic text-opacity-75"
-                 @click="toogleActive(obj.id)"
+        <div v-for="obj in current" :key="obj.id" class="flex flex-col items">
+          <div class="w-full border-gray-500 border-t-4 rounded-md p-2 mt-2 cursor-pointer italic text-opacity-75"
+               @click="toogleActive(obj.id)"
+          >
+            <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-90': active == obj.id}" />
+            <span class="leading-3 p-2 font-bold rounded-full">
+              {{ obj.key.split(".")[1] }}
+            </span>
+          </div>
+          <div class="relative overflow-hidden">
+            <div class="w-full flex flex-col space-y-1 leading-6 transform p-2 transition-all duration-400"
+                 :class="{'-translate-y-full opacity-0 absolute': active != obj.id, 'translate-x-0 opacity-100 block': active == obj.id}"
             >
-              <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-90': active == obj.id}" />
-              <span class="leading-3 p-2 font-bold rounded-full">
-                {{ obj.key.split(".")[1] }}
-              </span>
-            </div>
-            <div class="relative overflow-hidden">
-              <div class="w-full flex flex-col space-y-1 leading-6 transform p-2 transition-all duration-400"
-                   :class="{'-translate-y-full opacity-0 absolute': active != obj.id, 'translate-x-0 opacity-100 block': active == obj.id}"
-              >
-                <contribute-translate-preview :object="obj" @refresh="refresh" />
-              </div>
+              <contribute-translate-preview :object="obj" @refresh="refresh" />
             </div>
           </div>
-        </transition-group>
+        </div>
         <span v-if="object.length === 0" class=" flex justify-center text-sm text-gray-500 italic">
           {{ empty }}
         </span>
@@ -38,8 +36,8 @@
 
 <script>
 export default {
-  validate ({ params, store }) {
-    return !!store.getters["model/lang"](params.id)
+  validate ({ params }) {
+    return params.id.match(/^\d+$/)
   },
 
   asyncData({ app }) {
@@ -67,11 +65,16 @@ export default {
     }
   },
 
+  created () {
+    this.active = this.$route.params.id
+  },
+
   methods: {
     toogleActive (id) {
       if (id === this.active) {
-        this.active = -1
+        this.id = -1
       } else {
+        this.$router.push({params: {id: id.toString()}})
         this.active = id
       }
     },

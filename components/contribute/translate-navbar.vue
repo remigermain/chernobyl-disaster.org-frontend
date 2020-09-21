@@ -23,7 +23,6 @@
 </template>
 
 <script>
-// import TranslateMenu from "@/components/contribute/translate"
 export default {
   name: "TranslateNavbar",
 
@@ -68,6 +67,14 @@ export default {
       })
       return list
     },
+  },
+
+  created () {
+    // select the element from id params
+    const obj = this.object.find(e => e.id == this.$route.params.id)
+    if (obj) {
+      this.toogleActive(obj.key.split(".")[0])
+    }
   },
 
   methods: {
