@@ -9,23 +9,29 @@
     <div class="card-buble flex justify-center items-center">
       <span class="bg-indigo-700 buble tree shadow-md">3</span>
     </div>
-    <div class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble">
-      {{ second.username || empty }}
-      <span class="text-indigo-700">
-        {{ second.count }}
+    <div
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"
+    >
+      <span v-if="second">
+        {{ second.username }}
+        <span class="text-indigo-700">{{ second.count }}</span>
       </span>
+      <span v-else class="italic text-opacity-50 text-gray-700">{{ empty }}</span>
     </div>
-    <div class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble">
+    <div
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"
+    >
       {{ first.username || empty }}
-      <span class="text-indigo-700">
-        {{ first.count }}
-      </span>
+      <span class="text-indigo-700">{{ first.count }}</span>
     </div>
-    <div class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble">
-      {{ third.username || empty }}
-      <span class="text-indigo-700">
-        {{ third.count }}
+    <div
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"
+    >
+      <span v-if="third">
+        {{ third.username }}
+        <span class="text-indigo-700">{{ third.count }}</span>
       </span>
+      <span v-else class="italic text-opacity-50 text-gray-700">{{ empty }}</span>
     </div>
   </div>
 </template>
@@ -57,7 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .second {
   width: 70px;
   height: 70px;
@@ -87,17 +92,17 @@ export default {
   // height: 40px;
   border-radius: 10px;
   word-break: break-word;
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .trophy {
- display: grid;
- grid-template-columns: auto auto auto;
- grid-template-rows: 3em auto auto;
- gap: .1em
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 3em auto auto;
+  gap: 0.1em;
 }
 
 .title {
-  grid-area:  1 / 1 / 1 / 4;
+  grid-area: 1 / 1 / 1 / 4;
 }
 </style>

@@ -9,7 +9,7 @@
       <textarea v-model="valueModel"
                 v-autosize
                 :name="name"
-                class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700 w-inherit admin-textarea"
+                class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700 w-inherit form-textarea"
                 :placeholder="field.label"
                 :maxlength="field.max_length"
                 :required="field.required"
@@ -32,6 +32,6 @@ export default {
 
 <style lang="scss">
 .admin-textarea {
-  height: 200px;
+  min-height: 200px;
 }
 </style>

@@ -11,7 +11,7 @@
                   :maxlength="field.max_length"
                   :required="field.required"
                   :class="{'empty': valueModel === '' }"
-                  class="p-2 input h-48"
+                  class="p-2 input min-area"
                   @input="$emit('input', valueModel)"
                   @change="$emit('change', valueModel)"
         />
@@ -57,5 +57,8 @@ export default {
   transition: transform .3s, opacity .3s;
   transform: translateY(150%);
   opacity: .5;
+}
+.min-area {
+  min-height: 250px;
 }
 </style>

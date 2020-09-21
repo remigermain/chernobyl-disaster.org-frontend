@@ -3,7 +3,7 @@
     <div class="rounded border flex flex-col space-y-2 p-2">
       <label>
         {{ $t('utils.language') }}
-        <select v-model="langValue" class="form-select bg-gray-400 bg-opacity-75">
+        <select v-model="langValue" class="form-select bg-gray-400 bg-opacity-75" :disabled="!locales.length">
           <option v-for="lang in locales" :key="lang.value" :value="lang.value"
                   :selected="lang.value === $i18n.defaultLocale"
           >
@@ -11,8 +11,11 @@
           </option>
         </select>
       </label>
-      <span class="form-textarea bg-gray-200 italic p-2 text-opacity-75 text-gray-800">
+      <span v-if="locales.length" class="form-textarea bg-gray-200 italic p-2 text-opacity-75 text-gray-800">
         {{ preview }}
+      </span>
+      <span v-else class="form-textarea bg-gray-200 italic p-2 text-opacity-75 text-gray-800">
+        {{ $t('utils.no-example-available') }}
       </span>
     </div>
     <form class="flex flex-col space-y-2" @submit.prevent="submit">
@@ -48,7 +51,7 @@ export default {
       value: this.getValue(this.$route.params.id),
       langValue: "",
       errors: {langs: [{value: []}]},
-      locales: this.$store.getters["model/langs"].filter(t => t.value != this.$route.params.id),
+      locales: this.getLocales(),
       obj: this.object,
       model: {
         label: this.object.key
@@ -66,12 +69,18 @@ export default {
   },
 
   created () {
-    this.langValue = this.locales[0].value
+    this.langValue = this.locales[0]?.value || ""
   },
 
   methods: {
+    getLocales () {
+      const id = this.$route.params.id
+      return this.$store.getters["model/langs"].filter(t => {
+        return t.value != id && this.getValue(t.value)
+      })
+    },
     getValue (lang) {
-      return this.object.langs.find(x => x.language == lang)?.value || ""
+      return this.object.langs.find(x => x.language == lang)?.value
     },
     submit () {
       this.errors = {langs: [{value: []}]}

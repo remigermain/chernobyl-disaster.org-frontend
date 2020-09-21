@@ -15,7 +15,7 @@
     <table class="w-full table">
       <thead>
         <tr class="shadow-xs">
-          <th v-for="col in columns" :key="getField(col)"
+          <th v-for="(col, idx) in columns" :key="`thead-${idx}-${convertLabel(col)}`"
               class="text-gray-600 hover:text-gray-800 table-head cursor-pointer p-2"
               :class="{'text-gray-800': current === getField(col)}"
               @click="sort(col)"
@@ -31,8 +31,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="obj in list" :key="obj.id" class="border-b-1 border-gray-700 text-gray-700 font-light shadow-xs">
-          <td v-for="col in columns" :key="getField(col)" class="p-2">
+        <tr v-for="(obj,idx) in list" :key="`${idx}-${obj.id}`" class="border-b-1 border-gray-700 text-gray-700 font-light shadow-xs">
+          <td v-for="col in columns" :key="`tbody-${idx}-${convertLabel(col)}`" class="p-2">
             <slot v-if="$slots.default" :obj="obj" :col="col" />
             <template v-else-if="isNotEmpty(obj[getField(col)])">
               {{ convertName(obj, col) }}

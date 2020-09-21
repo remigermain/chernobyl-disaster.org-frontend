@@ -17,7 +17,7 @@
           <svg-icon name="language" role="img" :aria-label="$t('utils.translation')" />
           {{ $t('utils.translation') }}
         </extra-nuxt-link>
-        <extra-nuxt-link :to="{name: 'aut-login'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
+        <extra-nuxt-link :to="{name: 'auth-login'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
                          :title="$t('auth.connection-account')"
         >
           <svg-icon name="user" role="img" :aria-label="$t('auth.connection-account')" />

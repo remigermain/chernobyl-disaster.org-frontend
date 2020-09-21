@@ -28,8 +28,8 @@ export default {
           } else if (event.submitter.dataset.type === "detail") {
             this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
           } else {
-            this.object = response.data
             this.langs = []
+            this.$nuxt.refresh()
           }
         })
         .catch(error => { this.requestError(error) })
