@@ -5,17 +5,22 @@
            :class="{'border-blue-700': active == key, 'opacity-75': active != key}"
            @click.prevent.stop="toogleActive(key)"
       >
-        <span class="w-8 h-8 bg-gray-700 text-white leading-3 text-lg flex justify-center items-center rounded-full shadow-md"
-              :class="{'bg-indigo-700': active == key}"
-        >
-          {{ list[key].currents.length + list[key].childs.length }}
-        </span>
+        <div class="relative mt-1">
+          <span class="w-8 h-8 bg-gray-700 text-white leading-3 text-lg flex justify-center items-center rounded-full shadow-md"
+                :class="{'bg-indigo-700': active == key}"
+          >
+            {{ lengthKey(key) }}
+          </span>
+          <span v-if="list[key].empty" class="bg-red-600 w-5 h-5 missing-buble leading-3 italic text-gray-200 text-xs flex justify-center items-center rounded-full">
+            {{ list[key].empty }}
+          </span>
+        </div>
         {{ list[key].label }}
         <svg-icon name="arrow-down" class="transition-transform transform duration-400" :class="{'-rotate-180': active == key}" />
       </div>
       <transition name="navbar">
-        <div v-if="list[key].childs.length > 1 && active == key" class="ml-4 py-2" :depth="depth + 1">
-          <translate-navbar :object="list[key].childs" @select="submit" />
+        <div v-if="childActive(key)" class="ml-4 py-2">
+          <translate-navbar :object="list[key].childs" @select="$emit('select', $event)" />
         </div>
       </transition>
     </li>
@@ -35,10 +40,6 @@ export default {
       type: Array,
       required: true
     },
-    depth: {
-      type: Number,
-      default: 0
-    }
   },
 
   data () {
@@ -50,37 +51,50 @@ export default {
   computed: {
     list () {
       const list = {}
+
       this.object.forEach(el => {
-        const sp = el.key.split(".")
-        if (!list[sp[0]]) {
-          list[sp[0]] = {
-            label: sp[0],
+        const key = el.key[0]
+
+        if (!list[key]) {
+          list[key] = {
+            label: key,
+            empty: 0,
             childs: [],
             currents: [],
           }
         }
-        if (sp.length > 2) {
-          list[sp[0]].childs.push({...el, key: sp.slice(1).join(".")})
+        if (el.empty) {
+          list[key].empty += 1
+        }
+        if (el.key.length > 2) {
+          list[key].childs.push({...el, key: el.key.slice(1)})
         } else {
-          list[sp[0]].currents.push(el)
+          list[key].currents.push(el)
         }
       })
+
       return list
     },
   },
 
   created () {
     // select the element from id params
-    const obj = this.object.find(e => e.id == this.$route.params.id)
+    const obj = this.object.find(e => e.id == this.$route.query.id)
     if (obj) {
-      this.toogleActive(obj.key.split(".")[0])
+      this.toogleActive(obj.key[0])
     }
+
   },
 
   methods: {
-    submit (ev) {
-      this.$emit("select", ev)
+    lengthKey (key) {
+      return this.list[key].currents.length + this.list[key].childs.length
     },
+
+    childActive (key) {
+      return this.active == key && this.list[key].childs.length > 1
+    },
+
     toogleActive (key) {
       if (this.active == key) {
         this.active = null
@@ -112,6 +126,13 @@ export default {
   li {
     transform: translateX(-10px);
   }
+}
+
+.missing-buble {
+  position: absolute;
+  top:0;
+  right:0;
+  transform: translate(50%, -40%);
 }
 
 </style>

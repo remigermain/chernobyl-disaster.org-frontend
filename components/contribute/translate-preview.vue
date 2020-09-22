@@ -1,20 +1,23 @@
 <template>
   <div class="wrapper space-y-2">
-    <div class="rounded border flex flex-col space-y-2 p-2">
-      <label>
-        {{ $t('utils.language') }}
-        <select v-model="langValue" class="form-select bg-gray-400 bg-opacity-75" :disabled="!locales.length">
-          <option v-for="lang in locales" :key="lang.value" :value="lang.value"
-                  :selected="lang.value === $i18n.defaultLocale"
-          >
-            {{ lang.display_name }}
-          </option>
-        </select>
-      </label>
-      <span v-if="locales.length" class="form-textarea bg-gray-200 italic p-2 text-opacity-75 text-gray-800">
-        {{ preview }}
-      </span>
-      <span v-else class="form-textarea bg-gray-200 italic p-2 text-opacity-75 text-gray-800">
+    <div class="rounded border flex flex-col space-y-2 p-2" :class="{'italic ' : !locales.length}">
+      <strong>
+        {{ $t('utils.other-language') }}:
+      </strong>
+      <template v-if="locales.length">
+        <label>
+          {{ $t('utils.language') }}
+          <select v-model="selectLocale" class="form-select min-select bg-gray-400 bg-opacity-75 " :disabled="!locales.length">
+            <option v-for="lang in locales" :key="lang.value" :value="lang.value">
+              {{ lang.display_name }}
+            </option>
+          </select>
+        </label>
+        <span class=" bg-gray-300 italic p-2 text-opacity-75 text-gray-800">
+          {{ previewValue }}
+        </span>
+      </template>
+      <span v-else class=" italic p-2 text-opacity-75 text-gray-800">
         {{ $t('utils.no-example-available') }}
       </span>
     </div>
@@ -26,7 +29,7 @@
                 :action="false"
                 :inline="false"
       />
-      <admin-error :errors="errors.langs[0].value" />
+      <admin-error :errors="errors.value" />
       <div class="flex justify-end p-2">
         <button class="p-2 bg-blue-700 text-white rounded-lg w-max-content float-right">
           {{ $t('utils.submit') }}
@@ -48,61 +51,95 @@ export default {
 
   data () {
     return {
-      value: this.getValue(this.$route.params.id),
-      langValue: "",
-      errors: {langs: [{value: []}]},
-      locales: this.getLocales(),
       obj: this.object,
-      model: {
-        label: this.object.key
-      }
+      value: "",
+      selectLocale: "",
+      errors: {
+        value: [],
+        language: []
+      },
     }
   },
 
   computed: {
     preview () {
-      return this.getValue(this.langValue)
+      return this.obj.langs.find(x => x.language == this.selectLocale)
     },
-    currentObj () {
-      return  this.obj.langs.find(x => x.language == this.$route.params.id) || null
+    previewValue () {
+      return this.preview?.value || null
+    },
+    current () {
+      return this.obj.langs.find(x => x.language == this.$route.params.id)
+    },
+    locale () {
+      return this.$store.getters["model/lang"](this.$route.params.id)
+    },
+    locales () {
+      /* get diff locales form params id and value need to set */
+      return this.$store.getters["model/langs"].filter(t => {
+        return (
+          t.value != this.$route.params.id &&
+          this.obj.langs.find(x => x.language == t.value && x.value)
+        )
+      })
     }
   },
 
   created () {
-    this.langValue = this.locales[0]?.value || ""
+    // if params is different form locale
+    let locale
+    if (this.$i18n.defaultLocale != this.$route.params.id &&
+        this.locales.find(l => l.language == this.$route.params.id)) {
+      locale = this.$i18n.defaultLocale
+    }
+    this.selectLocale = locale || this.locales[0]?.value || ""
+
+    this.value = this.current?.value || ""
   },
 
   methods: {
-    getLocales () {
-      const id = this.$route.params.id
-      return this.$store.getters["model/langs"].filter(t => {
-        return t.value != id && this.getValue(t.value)
-      })
-    },
-    getValue (lang) {
-      return this.object.langs.find(x => x.language == lang)?.value
-    },
     submit () {
-      this.errors = {langs: [{value: []}]}
+      this.errors = {value: [], language: []}
       this.loading = true
+
+      /* generate data */
       const data = {
-        langs: [{
-          language: this.$route.params.id,
-          value: this.value,
-          parent_key: this.obj.id
-        }]
+        language: this.$route.params.id,
+        value: this.value,
       }
-      if (this.currentObj?.id >= 0) {
-        data.langs[0].id = this.currentObj.id
+
+      if (this.current?.id) {
+        this.update(data)
+      } else {
+        this.create(data)
       }
-      this.$axios.patch(`translate/${this.obj.id}/`, data)
+    },
+    create (data) {
+      /* generate data */
+      data["parent_key"] = this.object.id
+
+      this.$axios.post("translatelang/", data)
+        .then(response => {
+          if (response.status != 201) {
+            throw Error("")
+          }
+          this.i18nToast.success(this.$t("success.update")).goAway(5000)
+          this.$emit("refresh")
+          this.$nuxt.refresh()
+        })
+        .catch(error => { this.requestError(error) })
+        .finally(() => { this.loading = false })
+    },
+    update (data) {
+      this.current.id
+      this.$axios.patch(`translatelang/${this.current.id}/`, data)
         .then(response => {
           if (response.status != 200) {
             throw Error("")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
           this.$emit("refresh")
-          this.obj = response.data
+          this.$nuxt.refresh()
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })
@@ -112,3 +149,9 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+.min-select {
+  min-width: 120px;
+}
+</style>

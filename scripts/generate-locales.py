@@ -68,7 +68,7 @@ def check(ret, name, read):
         local_name_split = message.split('.')
         if local_name_split[0] in IGNORE_KEY:
             continue
-        local_name = (".".os.path.join(local_name_split[:-1]))
+        local_name = (".".join(local_name_split[:-1]))
         if local_name != original_name and not flag.no_print:
             key_trans = local_name_split[-1]
 
@@ -95,8 +95,8 @@ def read_dir(path):
     fnc = []
 
     for f in os.listdir(path):
-        name = os.join(path, f)
-        if os.path.sfile(name) and in_extention(name):
+        name = os.path.join(path, f)
+        if os.path.isfile(name) and in_extention(name):
             # lis le fichier, supprimer les quotes
             # et recupaire par une regex le $t(KEY)
             with open(name, 'r') as _file:
@@ -256,7 +256,7 @@ def main():
         # recupere les local
         res = re.findall(r'locales\s*:\s*\[(.+?)\]', res)
         # recupere le code
-        locales = re.findall(r'file:"(.+?)"', "".os.path.join(res))
+        locales = re.findall(r'file:"(.+?)"', "".join(res))
 
     # on ecrit le fichier
     for local in locales:
@@ -276,7 +276,7 @@ def main():
             f.write(result)
 
     print("Make messages OK")
-    locales = ", ".os.path.join(set(locales))
+    locales = ", ".join(set(locales))
     print(f"Messages generate for: {locales}")
     if newkeys:
         print("key add: ", set(newkeys))

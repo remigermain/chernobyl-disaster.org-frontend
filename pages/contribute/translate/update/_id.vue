@@ -11,11 +11,15 @@
       <div class=" w-full space-y-2 px-2 parent">
         <div v-for="obj in current" :key="obj.id" class="flex flex-col items">
           <div class="w-full border-gray-500 border-t-4 rounded-md p-2 mt-2 cursor-pointer italic text-opacity-75"
+               :class="{'border-blue-700': active == obj.id}"
                @click="toogleActive(obj.id)"
           >
             <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-90': active == obj.id}" />
+            <span v-if="obj.empty" class="bg-red-800 text-white rounded-full p-1 text-xs italic font-bold">
+              {{ $t('utils.missing') }}
+            </span>
             <span class="leading-3 p-2 font-bold rounded-full">
-              {{ obj.key.split(".")[1] }}
+              {{ obj.key[1] }}
             </span>
           </div>
           <div class="relative overflow-hidden">
@@ -36,19 +40,23 @@
 
 <script>
 export default {
-  validate ({ params }) {
-    return params.id.match(/^\d+$/)
+  validate ({ params, store }) {
+    return !!store.getters["model/lang"](params.id)
   },
 
-  asyncData({ app }) {
+  asyncData({ app, params }) {
     return app.$axios.get("translate/?no_page=true")
       .then(response => {
         if (response.status != 200) {
           throw Error("")
         }
-        return {
-          object: response.data
-        }
+        const object = response.data.map(e => {
+          e.key = e.key.split(".")
+          const el = e.langs.find(l => l.language == params.id)
+          e.empty = (!el || !el.value)
+          return e
+        })
+        return {object}
       })
       .catch(() => {})
   },
@@ -66,17 +74,22 @@ export default {
   },
 
   created () {
-    this.active = this.$route.params.id
+    if (this.$route.query.id?.match(/^\d+$/)) {
+      this.active = parseInt(this.$route.query.id)
+    }
   },
 
   methods: {
     toogleActive (id) {
       if (id === this.active) {
-        this.id = -1
+        this.active = null
       } else {
-        this.$router.push({params: {id: id.toString()}})
+        this.$router.push({query: {id: id.toString()}})
         this.active = id
       }
+    },
+    missing (obj) {
+      return !!obj.langs.find(l => l.language == this.$route.params.id && l.value)
     },
     asset (ev) {
       this.current = ev
