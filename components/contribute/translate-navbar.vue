@@ -1,6 +1,8 @@
 <template>
   <ol class="space-y-1">
-    <li v-for="key in Object.keys(list)" :key="key" class="text-sm capitalize list">
+    <li v-for="key in Object.keys(list)" :key="key" class="text-sm capitalize list"
+        :class="{' border-l-4 border-blue-700 rounded-tl-lg rounded-bl-lg ': active == key}"
+    >
       <div class="shadow-sm rounded-md border-t-4 border-gray-500 p-2 cursor-pointer flex items-center justify-between"
            :class="{'border-blue-700': active == key, 'opacity-75': active != key}"
            @click.prevent.stop="toogleActive(key)"
@@ -11,9 +13,11 @@
           >
             {{ lengthKey(key) }}
           </span>
-          <span v-if="list[key].empty" class="bg-red-600 w-5 h-5 missing-buble leading-3 italic text-gray-200 text-xs flex justify-center items-center rounded-full">
-            {{ list[key].empty }}
-          </span>
+          <transition name="opacity">
+            <span v-if="list[key].empty" class="bg-red-800 w-5 h-5 missing-buble leading-3 italic text-gray-200 text-xs flex justify-center items-center rounded-full">
+              {{ list[key].empty }}
+            </span>
+          </transition>
         </div>
         {{ list[key].label }}
         <svg-icon name="arrow-down" class="transition-transform transform duration-400" :class="{'-rotate-180': active == key}" />
@@ -78,10 +82,12 @@ export default {
   },
 
   watch: {
-    object () {
-      if (this.active) {
-        this.$emit("select", this.list[this.active].currents)
-      }
+    object() {
+      this.$nextTick(() => {
+        if (this.active) {
+          this.$emit("select", this.list[this.active].currents)
+        }
+      })
     }
   },
 
@@ -131,7 +137,7 @@ export default {
 .navbar-leave-to {
   opacity: 0;
   li {
-    transform: translateX(-10px);
+    transform: translateX(-10px) translateY(-100%);
   }
 }
 

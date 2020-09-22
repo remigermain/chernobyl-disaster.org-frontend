@@ -20,8 +20,6 @@
   opacity: 0;
 }
 
-
-
 /*
 ** for home and about
 */
@@ -76,4 +74,18 @@
   .grid-extra {
     transform: translateY(30px);
   }
+}
+
+
+/*
+  transition components
+*/
+
+.opacity-enter-active,
+.opacity-leave-active {
+  transition: opacity .3s;
+}
+.opacity-enter,
+.opacity-leave-to {
+  opacity: 0;
 }

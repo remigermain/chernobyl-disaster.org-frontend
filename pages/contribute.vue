@@ -95,6 +95,14 @@ export default {
     }
   },
 
+  mounted () {
+    this.__$timeout = setInterval(this.$nuxt.refresh, 20000)
+  },
+
+  beforeDestroy () {
+    clearInterval(this.__$timeout)
+  }
+
 }
 </script>
 

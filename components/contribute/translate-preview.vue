@@ -51,7 +51,6 @@ export default {
 
   data () {
     return {
-      obj: this.object,
       value: "",
       selectLocale: "",
       errors: {
@@ -63,13 +62,13 @@ export default {
 
   computed: {
     preview () {
-      return this.obj.langs.find(x => x.language == this.selectLocale)
+      return this.object.langs.find(x => x.language == this.selectLocale)
     },
     previewValue () {
       return this.preview?.value || null
     },
     current () {
-      return this.obj.langs.find(x => x.language == this.$route.params.id)
+      return this.object.langs.find(x => x.language == this.$route.params.id)
     },
     locale () {
       return this.$store.getters["model/lang"](this.$route.params.id)
@@ -79,7 +78,7 @@ export default {
       return this.$store.getters["model/langs"].filter(t => {
         return (
           t.value != this.$route.params.id &&
-          this.obj.langs.find(x => x.language == t.value && x.value)
+          this.object.langs.find(x => x.language == t.value && x.value)
         )
       })
     }
@@ -124,7 +123,7 @@ export default {
             throw Error("")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
-          this.$nuxt.refresh()
+          this.$emit("refresh")
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })
@@ -137,7 +136,7 @@ export default {
             throw Error("")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
-          this.$nuxt.refresh()
+          this.$emit("refresh")
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })
