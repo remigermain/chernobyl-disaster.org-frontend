@@ -42,15 +42,15 @@
             </span>
           </td>
           <td class="p-2 text-gray-800 text-center">
-            <lazy-extra-nuxt-link v-if="detail" :to="{name: `contribute-${obj.uuid || model}-id`, params:{ id: obj.object_id || obj.id} }">
+            <lazy-extra-nuxt-link v-if="detail && !obj.query" :to="{name: `contribute-${obj.uuid || model}-id`, params:{ id: obj.object_id || obj.id} }">
               <svg-icon name="eye" class="cursor-pointer text-blue-700 action-btn" />
             </lazy-extra-nuxt-link>
-            <lazy-extra-nuxt-link :to="{name: `contribute-${obj.uuid || model}-update-id`, params:{ id: obj.object_id || obj.id} }">
+            <lazy-extra-nuxt-link :to="genLink(obj)">
               <svg-icon name="edit" class="cursor-pointer text-purple-700 action-btn" />
             </lazy-extra-nuxt-link>
             <template v-if="$auth.hasScope('staff')">
               <slot name="delete" :obj="obj" />
-              <button v-if="deleted" @click="setDeleted(obj.object_id || obj.id, obj.uuid || model)">
+              <button v-if="deleted" @click="setDeleted(obj)">
                 <svg-icon name="trash" class="cursor-pointer text-red-700 action-btn" />
               </button>
             </template>
@@ -72,7 +72,7 @@
         {{ $t('utils.total') }} : {{ length }}
       </span>
     </div>
-    <admin-modal v-if="deletedId" :object="deletedId" :model="deletedModel" @close="deletedId = null" />
+    <admin-modal v-if="deletedId" :object="deletedId" :model="deletedModel" @close="close" />
   </div>
 </template>
 
@@ -128,13 +128,26 @@ export default {
   },
 
   methods: {
+    close () {
+      this.deletedId = null
+      this.$nuxt.refresh()
+    },
+    genLink (obj) {
+      const link = {
+        name: `contribute-${obj.uuid || this.model}-update-id`,
+        params:{ id: obj.object_id || obj.id}
+      }
+      if (obj.query) {
+        link.query = obj.query
+      }
+      return link
+    },
     isNotEmpty (value) {
       return typeof value !== "undefined" && value != null
     },
-    setDeleted (id, model) {
-      this.deleted = id
-      this.deletedId = id
-      this.deletedModel = model
+    setDeleted (obj) {
+      this.deletedId = (obj.detail ? obj.detail : obj.object_id || obj.id)
+      this.deletedModel = (obj.detail ? "translatelang" : obj.uuid || this.model)
     },
     getField (col) {
       return (col.field || col)

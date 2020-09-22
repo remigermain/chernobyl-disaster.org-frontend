@@ -124,7 +124,6 @@ export default {
             throw Error("")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
-          this.$emit("refresh")
           this.$nuxt.refresh()
         })
         .catch(error => { this.requestError(error) })
@@ -138,7 +137,6 @@ export default {
             throw Error("")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
-          this.$emit("refresh")
           this.$nuxt.refresh()
         })
         .catch(error => { this.requestError(error) })

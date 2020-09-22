@@ -77,13 +77,20 @@ export default {
     },
   },
 
+  watch: {
+    object () {
+      if (this.active) {
+        this.$emit("select", this.list[this.active].currents)
+      }
+    }
+  },
+
   created () {
     // select the element from id params
     const obj = this.object.find(e => e.id == this.$route.query.id)
     if (obj) {
       this.toogleActive(obj.key[0])
     }
-
   },
 
   methods: {

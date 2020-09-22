@@ -26,7 +26,7 @@
             <div class="w-full flex flex-col space-y-1 leading-6 transform p-2 transition-all duration-400"
                  :class="{'-translate-y-full opacity-0 absolute': active != obj.id, 'translate-x-0 opacity-100 block': active == obj.id}"
             >
-              <contribute-translate-preview :object="obj" @refresh="refresh" />
+              <contribute-translate-preview :object="obj" />
             </div>
           </div>
         </div>
@@ -94,9 +94,6 @@ export default {
     asset (ev) {
       this.current = ev
     },
-    refresh () {
-      this.$nuxt.refresh()
-    }
   }
 
 }
