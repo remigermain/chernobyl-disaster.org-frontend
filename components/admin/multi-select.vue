@@ -6,7 +6,7 @@
       </span>
     </template>
     <template v-slot:input>
-      <select v-model="valueModel" :name="name" multiple="true" class=" invisible w-0 h-0 "
+      <select v-model="valueModel" :name="name" multiple="true" class="md:invisible md:w-0 md:h-0 -md:field-select-multiple"
               :required="field.required"
               @input="$emit('input', valueModel)"
               @change="$emit('input', valueModel)"
@@ -18,7 +18,7 @@
           {{ choice.display_name }}
         </option>
       </select>
-      <div class="w-full h-full">
+      <div class="w-full h-full -md:hidden">
         <div class="space-y-2 space-x-2 flex flex-wrap items-baseline select-new overflow-y-scroll">
           <admin-tag v-for="v in valueModel" :key="v" :name="findChoices(v).display_name" @close="unselect(v)" />
         </div>
