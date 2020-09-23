@@ -162,7 +162,7 @@ export default {
 
 .all-contributor {
   height: auto;
-  min-height: 200px;
+  max-height: 200px;
   overflow-y: scroll;
 }
 
