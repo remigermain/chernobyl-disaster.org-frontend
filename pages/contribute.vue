@@ -3,7 +3,7 @@
     <contribute-navbar :menus="menus" />
     <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4 min-h-full">
       <nuxt-child :key="$route.fullPath" />
-      <div v-if="$route.matched.length == 1" class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
+      <div v-if="havChild" class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
         <contribute-user :object="object" />
         <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-gray-500">
           <div>
@@ -95,8 +95,17 @@ export default {
     }
   },
 
+  computed: {
+    haveChild () {
+      return this.$route.matched.length == 1
+    }
+  },
+
   mounted () {
-    this.__$timeout = setInterval(this.$nuxt.refresh, 20000)
+    // refesh component when have not child
+    if (this.haveChild) {
+      this.__$timeout = setInterval(this.$nuxt.refresh, 20000)
+    }
   },
 
   beforeDestroy () {

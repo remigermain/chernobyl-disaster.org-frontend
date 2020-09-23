@@ -15,6 +15,8 @@
                class="p-2 input"
                @input="$emit('input', valueModel)"
                @change="$emit('change', valueModel)"
+               @blur="$emit('blur')"
+               @focus="$emit('focus')"
         >
         <span class="input-label">
           {{ field.label }}

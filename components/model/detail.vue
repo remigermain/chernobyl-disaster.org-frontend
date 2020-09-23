@@ -30,7 +30,7 @@
     <div class="flex flex-col p-4 text-lg space-y-3">
       <slot name="detail" />
     </div>
-    <admin-modal v-if="active" :object="objectId" :model="model" @close="active = null" />
+    <admin-modal v-if="active" :object="objectId" :model="model" @close="active = null" @delete="deleted" />
   </div>
 </template>
 
@@ -60,6 +60,10 @@ export default {
   },
 
   methods: {
+    deleted () {
+      this.active = false
+      this.$router.push({name: "contribute-model"})
+    },
     toogleReport () {
       this.showReport = !this.showReport
     },
