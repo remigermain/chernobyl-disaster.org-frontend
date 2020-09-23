@@ -30,19 +30,21 @@
         </h2>
         <h2 class="text-gray-800 font-medium">
           {{ $t('pages.about.thanks-contributors') }}
-          <div class="inline-flex">
+          <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />
           </div>
-          <div class="inline-flex">
+          <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />
           </div>
           <wbr>
         </h2>
-        <span v-for="user in contributors" :key="user" class="text-sm">
-          {{ user }}
-        </span>
+        <div class="all-contributor">
+          <span v-for="user in contributors" :key="user" class="text-sm">
+            {{ user }}
+          </span>
+        </div>
         <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
           <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
@@ -153,8 +155,15 @@ export default {
 .about-profil {
   shape-outside: circle();
 }
+
 .description-about {
   height: calc(100% + 80px);
+}
+
+.all-contributor {
+  height: auto;
+  min-height: 200px;
+  overflow-y: scroll;
 }
 
 </style>
