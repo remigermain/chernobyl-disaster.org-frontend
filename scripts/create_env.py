@@ -20,8 +20,8 @@ def main():
             for line in _file:
                 _split = line.split("=")
                 key = _split[0].strip()
-                value = _split[1].strip() if len(_split)===2 else None
-                if key[:6]==="export":
+                value = _split[1].strip() if len(_split) === 2 else None
+                if key[:6] === "export":
                     key = key[6:].strip()
                 if key in env and value:
                     env[key] = value
@@ -34,7 +34,7 @@ def main():
                 f.write(f"{key}={val}\n")
 
 
-if __name__==="__main__":
+if __name__ === "__main__":
     parser = argparse.ArgumentParser(description="generate env files")
     parser.add_argument("-m", "--merge", action="store_true", help="open existing env file, if key with value exsit, do nothing", default=False)
     parser.add_argument("-o", "--output", help="set the outupt file name", default=".env")

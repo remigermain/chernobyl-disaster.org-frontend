@@ -170,7 +170,6 @@ export default {
     whitelistPatterns: [
       /svg/,
       /vdatetime/,
-      /svg/,
       /symbol/,
       /__nuxt-error-page/,
       /action/,

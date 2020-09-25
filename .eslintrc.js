@@ -23,6 +23,5 @@ module.exports = {
     "max-len": ["error", { code: 200 }],
     "no-console": "off",
     "vue/max-attributes-per-line": "off",
-    quotes: [2, "double", { avoidEscape: true }],
   }
 }

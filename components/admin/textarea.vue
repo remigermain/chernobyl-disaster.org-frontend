@@ -7,6 +7,7 @@
     </template>
     <template v-slot:input>
       <textarea v-model="valueModel"
+                v-autosize
                 :name="name"
                 class="bg-gray-200 rounded p-2 block border border-blue-700 focus:border-purple-700 w-inherit form-textarea"
                 :placeholder="field.label"

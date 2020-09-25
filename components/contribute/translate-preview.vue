@@ -59,13 +59,13 @@ export default {
 
   computed: {
     preview () {
-      return this.object.langs.find(x => x.language===this.selectLocale)
+      return this.object.langs.find(x => x.language === this.selectLocale)
     },
     previewValue () {
       return this.preview?.value || null
     },
     current () {
-      return this.object.langs.find(x => x.language===this.$route.params.id)
+      return this.object.langs.find(x => x.language === this.$route.params.id)
     },
     locale () {
       return this.$store.getters["model/lang"](this.$route.params.id)
@@ -75,7 +75,7 @@ export default {
       return this.$store.getters["model/langs"].filter(t => {
         return (
           t.value!==this.$route.params.id &&
-          this.object.langs.find(x => x.language===t.value && x.value)
+          this.object.langs.find(x => x.language === t.value && x.value)
         )
       })
     }
@@ -85,7 +85,7 @@ export default {
     // if params is different form locale
     let locale
     if (this.$i18n.defaultLocale!==this.$route.params.id &&
-        this.locales.find(l => l.language===this.$route.params.id)) {
+        this.locales.find(l => l.language === this.$route.params.id)) {
       locale = this.$i18n.defaultLocale
     }
     this.selectLocale = locale || this.locales[0]?.value || ""

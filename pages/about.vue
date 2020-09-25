@@ -45,7 +45,7 @@
             {{ user }}
           </span>
         </div>
-        <span v-if="contributors.length===0" class="text-center italic text-blue-700 contributors-empty">
+        <span v-if="contributors.length === 0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
           <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
         </span>
@@ -56,7 +56,7 @@
             @GERMAIN remi
           </a>
         </h2>
-        <p class="text-gray-800 text-justify font-medium">
+        <div class="text-gray-800 text-justify font-medium">
           <picture role="img">
             <source srcset="~/assets/img/profil/profil-tablet.webp" media="(max-width: 850px)" type="image/webp">
             <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
@@ -64,7 +64,7 @@
             <img loading="lazy" src="~/assets/img/profil/profil.jpeg" alt="image" type="image/jpeg" class="rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
           </picture>
           {{ $t('pages.about.creator-description') }}
-        </p>
+        </div>
       </article>
       <extra-nuxt-link :to="{name: 'contact'}" class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold
                                                       rounded-full group hover:bg-gray-800 btn-icon-show overflow-hidden"
@@ -156,9 +156,9 @@ export default {
   shape-outside: circle();
 }
 
-.description-about {
-  height: calc(100% + 80px);
-}
+// .description-about {
+//   height: calc(100% + 80px);
+// }
 
 .all-contributor {
   height: auto;

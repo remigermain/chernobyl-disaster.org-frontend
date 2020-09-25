@@ -18,7 +18,7 @@
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>
-    <span v-if="object.length===0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
+    <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
       {{ empty }}
     </span>
     <lazy-gallery-detail-picture :object="current"
@@ -90,7 +90,7 @@ export default {
       /*
       ** same has nextDetail but for previous object
       */
-      if (!this.hasPrevPage && this.currentIdx===0) {
+      if (!this.hasPrevPage && this.currentIdx === 0) {
         this.prevPage()
           .then(() => {
             this.setCurrent(this.object[this.currentIdx - 1], this.currentIdx - 1)

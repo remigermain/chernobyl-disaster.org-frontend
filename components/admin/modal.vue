@@ -12,11 +12,6 @@
             <h3 class="text-lg leading-6 font-medium text-gray-900">
               {{ $t('tools.deleted') }}
             </h3>
-            <!-- <div class="mt-2">
-              <p class="text-sm leading-5 text-gray-500">
-                {{ $t('tools.deleted-descrition') }}
-              </p>
-            </div> -->
           </div>
         </div>
       </div>
@@ -68,6 +63,7 @@ export default {
             throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.deleted"))
+          this.redirect({name: `contribute-${this.model}`})
         })
         .catch(error => { this.requestError(error) })
         .finally(() => {

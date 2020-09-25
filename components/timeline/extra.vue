@@ -40,7 +40,7 @@
                  @click="setCurrent(img, idx)"
             >
           </picture>
-          <span v-if="object.pictures.length===0" class="italic text-gray-700 text-opacity-50">
+          <span v-if="object.pictures.length === 0" class="italic text-gray-700 text-opacity-50">
             {{ empty }}
           </span>
         </template>
@@ -53,7 +53,7 @@
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
           />
-          <span v-if="object.videos.length===0" class="italic text-gray-700 text-opacity-50">
+          <span v-if="object.videos.length === 0" class="italic text-gray-700 text-opacity-50">
             {{ empty }}
           </span>
         </template>

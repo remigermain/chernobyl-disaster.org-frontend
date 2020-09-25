@@ -24,17 +24,17 @@ export const mutations = {
 
 export const getters = {
   langs: state => state.langs,
-  lang: state => value => state.langs.find(t => t.value===value),
+  lang: state => value => state.langs.find(t => t.value === value),
 
   events: state => state.events,
-  event: state => value => state.events.find(t => t.value===value),
+  event: state => value => state.events.find(t => t.value === value),
 
   tags: state => state.tags,
-  tag: state => value => state.tags.find(t => t.value===value),
+  tag: state => value => state.tags.find(t => t.value === value),
 
   peoples: state => state.peoples,
-  people: state => value => state.peoples.find(t => t.value===value),
+  people: state => value => state.peoples.find(t => t.value === value),
 
   photographers: state => state.photographers,
-  photographer: state => value => state.photographers.find(t => t.value===value),
+  photographer: state => value => state.photographers.find(t => t.value === value),
 }

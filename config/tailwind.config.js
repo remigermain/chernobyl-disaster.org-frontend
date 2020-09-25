@@ -91,7 +91,7 @@ module.exports = {
     require("@tailwindcss/custom-forms"),
     ({ addUtilities, _, theme, variants }) => {
       const colors = flattenColorPalette(theme("borderColor"))
-      delete colors["default"]
+      delete colors.default
 
       const colorMap = Object.keys(colors)
         .map(color => ({

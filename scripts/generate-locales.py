@@ -44,13 +44,13 @@ def debug(string):
 def remove_extention(name):
     for ext in EXTENTION:
         _len = len(ext)
-        if name[-_len:]===ext:
+        if name[-_len:] === ext:
             return name[:-_len - 1]
     raise Exception("no extention")
 
 
 # verifie le nom du fichier clef
-# TYPE===componenet ou page
+# TYPE === componenet ou page
 # TYPE-name_file.XXXX
 # ex: file = './pages/user.vue' devras etre "pages-user.XXXX"
 error_name = False
@@ -84,7 +84,7 @@ def check(ret, name, read):
 def in_extention(name):
     for ext in EXTENTION:
         _len = len(ext)
-        if name[-_len:]===ext:
+        if name[-_len:] === ext:
             return True
     return False
 
@@ -141,7 +141,7 @@ def construct(dct, element, original):
                     f"ERROR for key {original}\n{key} existe with other value: {val}")
                 exit(-1)
             construct(dct[key], element, original)
-        elif _len===1:
+        elif _len === 1:
             dct[key][element[0]] = key if flag.default else ""
         else:
             dct[key] = key if flag.default else ""
@@ -282,7 +282,7 @@ def main():
         print("key add: ", set(newkeys))
 
 
-if __name__==='__main__':
+if __name__ === '__main__':
     parser = argparse.ArgumentParser(
         description="create locales languages files")
     parser.add_argument('-c', '--compile', action="store_true",

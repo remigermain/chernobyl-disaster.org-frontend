@@ -87,6 +87,9 @@
 export default {
   name: "ContributeAccount",
 
+  layout: "page",
+  transition: "page",
+
   data () {
     return {
       active: false,

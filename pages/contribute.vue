@@ -97,7 +97,7 @@ export default {
 
   computed: {
     haveChild () {
-      return this.$route.matched.length===1
+      return this.$route.matched.length === 1
     }
   },
 

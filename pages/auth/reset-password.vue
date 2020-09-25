@@ -11,14 +11,14 @@
         {{ $t('auth.login') }}
       </extra-nuxt-link>
     </span>
-    <p class="text-sm text-gray-600">
+    <div class="text-sm text-gray-600">
       {{ $t('utils.or') }}
       <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
                        :title="$t('auth.create-account')"
       >
         {{ $t('auth.create-account') }}
       </extra-nuxt-link>
-    </p>
+    </div>
     <form class="my-4 w-3/4 form" @submit.prevent="submit">
       <field-email :field="field.email" />
       <field-submit class="submit">

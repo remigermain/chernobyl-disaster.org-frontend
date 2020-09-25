@@ -15,8 +15,8 @@ extentions=(
 )
 
 convert () {
-  # $1===resize
-  # $2===suffix
+  # $1 === resize
+  # $2 === suffix
   echo -e "\n$2 resize [$1%]"
   for img in ${images[@]}; do
     for ex in ${extentions[@]}; do
@@ -57,11 +57,11 @@ usage () {
 
 main() {
     for av in $@; do
-        if [ $av==="all" ]; then
+        if [ $av === "all" ]; then
             all
-        elif [ $av==="tablet" ]; then
+        elif [ $av === "tablet" ]; then
           tablet
-        elif [ $av==="mobile" ]; then
+        elif [ $av === "mobile" ]; then
           mobile
         else
             usage
@@ -69,7 +69,7 @@ main() {
     done;
 }
 
-if [[ $#===0 ]]; then
+if [[ $# === 0 ]]; then
   usage
 fi
 main $@

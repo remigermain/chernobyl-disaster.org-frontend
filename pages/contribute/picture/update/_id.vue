@@ -90,12 +90,12 @@ export default {
   methods: {
     assignFormData (form) {
       // remove picture key if is empty
-      console.log(form.get("picture"))
-      if (form.get("picture") === "") {
+      const pic = form.get("picture")
+      if (!pic || pic.size === 0) {
         form.delete("picture")
       }
       // remove date key if is empty
-      if (form.get("date") === "") {
+      if (!form.get("date")) {
         form.delete("date")
       }
     },

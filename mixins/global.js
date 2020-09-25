@@ -62,11 +62,11 @@ export default {
     },
     i18nAttr(obj, key) {
       // locale lang
-      let el = obj.langs.find(el => el.language===this.$i18n.locale)
+      let el = obj.langs.find(el => el.language === this.$i18n.locale)
       if (el) return el[key]
 
       // default lang
-      el = obj.langs.find(el => el.language===this.$i18n.defaultLocale)
+      el = obj.langs.find(el => el.language === this.$i18n.defaultLocale)
       if (el) return el[key]
 
       // if obj has key
