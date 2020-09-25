@@ -163,10 +163,19 @@ export default {
       }
     },
     convertName (obj, col) {
-      return this.fields[this.getField(col)]?.display?.(obj) || obj[this.getField(col)]
+      return (
+        this.fields[this.getField(col)]?.display?.(obj) ||
+        col.display?.(obj) ||
+        obj[this.getField(col)] ||
+        obj
+      )
     },
     convertLabel (col) {
-      return this.fields[this.getField(col)]?.label || col.label || col
+      return (
+        this.fields[this.getField(col)]?.label ||
+        col.label ||
+        col
+      )
     }
   }
 

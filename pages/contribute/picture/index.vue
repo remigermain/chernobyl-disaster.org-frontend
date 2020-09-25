@@ -77,7 +77,8 @@ export default {
       columnsLang: ["id", "title",
         {
           field: "not_available_languages",
-          label: this.$t("utils.need-translation")
+          label: this.$t("utils.need-translation"),
+          display: (obj) => obj.not_available_languages.join(", ")
         }
       ],
     }
