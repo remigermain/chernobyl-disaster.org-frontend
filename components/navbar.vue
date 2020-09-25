@@ -38,12 +38,16 @@
         {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
       <label :name="$t('utils.change-language')">
-        <select v-model="value" class="form-select block mt-1 bg-gray-100">
+        <select v-model="value" class="form-select block mt-1 bg-gray-400 bg-opacity-25">
           <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
             {{ lang.name }}
           </option>
         </select>
       </label>
+      <button v-if="$auth.loggedIn" class="hover:text-gray-700 transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
+        <svg-icon name="logout" />
+        {{ $t('auth.logout') }}
+      </button>
     </nav>
   </div>
 </template>
@@ -83,7 +87,7 @@ export default {
 <style lang="scss">
 
 .grid-layout-navbar {
-  grid-area: 1 / 6 / 2 / 11;
+  grid-area: 1 / 5 / 2 / 11;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,19 +133,19 @@ export default {
   }
 }
 
-@media screen and (max-width:1200px){
-  .grid-layout-navbar {
-    grid-area: 1 / 5 / 2 / 11;
-  }
-}
-
-@media screen and (max-width:1100px){
+@media screen and (max-width:1300px){
   .grid-layout-navbar {
     grid-area: 1 / 4 / 2 / 11;
   }
 }
 
-@media screen and (max-width:900px){
+@media screen and (max-width:1200px){
+  .grid-layout-navbar {
+    grid-area: 1 / 3 / 2 / 11;
+  }
+}
+
+@media screen and (max-width:1000px){
   .grid-layout-navbar {
     grid-area: 1 / 10 / 2 / 11;
     justify-self: center;

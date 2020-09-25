@@ -27,7 +27,7 @@ export default {
 
   plugins: [
     { src: "~/plugins/matomo.js", ssr: false },
-    { src: "~/plugins/datetime.js", ssr: true },
+    { src: "~/plugins/datetime.js", ssr: false },
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
@@ -167,24 +167,17 @@ export default {
   },
 
   purgeCSS: {
-    whiteListPatterns: [
-      /svg.*/,
-      "svg",
-      "symbol",
-      "__nuxt-error-page",
-      "page-enter-active",
-      "page-leave-active",
-      "page-enter",
-      "action",
-      "ripple",
-      "list-leave-to",
-      "list-enter",
-      "list-leave-active",
-      "list-enter-active",
-      "navbar-enter-active",
-      "navbar-leave-active ",
-      "navbar-enter",
-      "navbar-leave-to",
+    whitelistPatterns: [
+      /svg/,
+      /vdatetime/,
+      /svg/,
+      /symbol/,
+      /__nuxt-error-page/,
+      /action/,
+      /ripple/,
+      /-(leave|enter|appear)(|-(to|from|active))$/,
+      /^(?!(|.*?:)cursor-move).+-move$/,
+      /^nuxt-link(|-exact)-active$/
     ],
   },
 

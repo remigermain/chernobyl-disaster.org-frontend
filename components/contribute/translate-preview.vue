@@ -22,16 +22,9 @@
       </span>
     </div>
     <form class="flex flex-col space-y-2" @submit.prevent="submit">
-      <textarea v-model="value"
-                v-autosize
-                class="form-textarea bg-gray-200"
-                name="value"
-                :action="false"
-                :inline="false"
-      />
-      <admin-error :errors="errors.value" />
+      <field-textarea v-model="value" :field="field" :errors="errors.value" :min="false" />
       <div class="flex justify-end p-2">
-        <button class="p-2 bg-blue-700 text-white rounded-lg w-max-content float-right">
+        <button class="p-2 bg-blue-700 text-white rounded-lg w-max-content float-right hover:bg-indigo-700 transition-colors duration-300">
           {{ $t('utils.submit') }}
         </button>
       </div>
@@ -57,6 +50,10 @@ export default {
         value: [],
         language: []
       },
+      field: {
+        name: "value",
+        label: this.$t("utils.translation")
+      }
     }
   },
 

@@ -9,9 +9,15 @@
       {{ $t('utils.translation') }}
     </template>
     <template v-slot:table>
-      <div class="flex">
-        <lazy-contribute-translate-navbar :object="object" class="shadow-sm rounded-md  p-2 w-max-content" @select="assign" />
-        <div class=" w-full space-y-2 px-2 parent">
+      <div class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line">{{ $t('help.translate.description') }}</div>
+      <div class="flex mt-6">
+        <div class="flex flex-col rounded-md h-max-content">
+          <span class="text-lg italic leading-3 p-2 bg-blue-700 text-white rounded-md capitalize text-center">
+            {{ $t('utils.category') }}
+          </span>
+          <lazy-contribute-translate-navbar :object="object" class="shadow-sm rounded-md  p-2 w-max-content" @select="assign" />
+        </div>
+        <div class=" w-full space-y-2 px-2 parent mt-6">
           <div v-for="obj in current" :key="obj.id" class="flex flex-col items">
             <div class="w-full border-gray-500 border-t-4 rounded-md p-2 mt-2 cursor-pointer italic text-opacity-75"
                  :class="{'border-blue-700': active == obj.id}"
@@ -53,12 +59,12 @@ export default {
   asyncData({ app, params }) {
     return app.$axios.get("translate/?no_page=true")
       .then(response => {
-        if (response.status != 200) {
+        if (response.status !== 200) {
           throw Error("")
         }
         const object = response.data.map(e => {
           e.key = e.key.split(".")
-          const el = e.langs.find(l => l.language == params.id)
+          const el = e.langs.find(l => l.language === params.id)
           e.empty = (!el || !el.value)
           return e
         })
@@ -76,7 +82,7 @@ export default {
       field: {
         label: this.$t("admin.model.value"),
         name: "value",
-        help: this.$t("admin.help.model.translate")
+        help: this.$t("help.translate.description")
       },
     }
   },
@@ -100,7 +106,7 @@ export default {
       return !!obj.langs.find(l => l.language == this.$route.params.id && l.value)
     },
     assign (ev) {
-      this.current = ev
+      this.current = ev.sort((a, b) => a.key[1].localeCompare(b.key[1]))
     },
     refresh () {
       this.$nuxt.refresh()

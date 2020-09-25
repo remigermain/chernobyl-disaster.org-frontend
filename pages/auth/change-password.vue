@@ -41,12 +41,12 @@ export default {
       },
       field: {
         new_password1: {
-          label: this.$t("auth.field.password"),
+          label: this.$t("auth.password"),
           name: "new_password1",
           required: true,
         },
         new_password2: {
-          label: this.$t("auth.field.comfirm-password"),
+          label: this.$t("auth.comfirm-password"),
           name: "new_password2",
           required: true,
         }

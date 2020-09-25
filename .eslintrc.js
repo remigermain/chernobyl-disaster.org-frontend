@@ -6,15 +6,18 @@ module.exports = {
     node: true
   },
   extends: [
+    "@nuxtjs",
     "eslint:recommended",
-    "plugin:vue/recommended"
+    "plugin:vue/recommended",
+    "prettier",
+    "prettier/vue"
   ],
   parserOptions: {
     ecmaVersion: 11,
     sourceType: "module",
     parser: "babel-eslint"
   },
-  plugins: ["vue"],
+  plugins: ["vue", "prettier"],
   rules: {
     semi: [2, "never"],
     "max-len": ["error", { code: 200 }],

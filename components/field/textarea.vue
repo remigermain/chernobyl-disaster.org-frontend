@@ -6,12 +6,11 @@
       </span>
       <label class="w-full text-gray-700 text-sm font-bold mb-2 capitalize flex flex-col-reverse border-b-2 border-gray-600">
         <textarea v-model="valueModel"
-                  v-autosize
                   :name="field.name"
                   :maxlength="field.max_length"
                   :required="field.required"
-                  :class="{'empty': valueModel === '' }"
-                  class="p-2 input min-area"
+                  :class="{'empty': valueModel === '', 'min-area': min }"
+                  class="p-2 input"
                   @input="$emit('input', valueModel)"
                   @change="$emit('change', valueModel)"
         />
@@ -34,6 +33,10 @@ export default {
     errors: {
       type: Array,
       required: true,
+    },
+    min: {
+      type: Boolean,
+      default: true
     }
   }
 

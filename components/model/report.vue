@@ -16,7 +16,7 @@
           </span>
         </div>
         <div class="w-full mt-4 p-4 rounded bg-green-700 bg-opacity-25 italic text-sm text-opacity-50">
-          {{ $t('admin.help.global.report') }}
+          {{ $t('help.report.global-description') }}
         </div>
       </div>
       <form class="mt-4" @submit.prevent="submit">

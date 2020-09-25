@@ -24,7 +24,7 @@ export default {
     },
     pathDetail () {
       return {
-        label: this.$t("admin.tools.detail"),
+        label: this.$t("tools.detail"),
         path: {
           name: `contribute-${this.model.name}-id`,
           params: this.$route.params

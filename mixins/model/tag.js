@@ -20,7 +20,7 @@ export default {
           name: "name",
           required: true,
           max_length: 50,
-          help: this.$t("admin.help.global.tag")
+          help: this.$t("help.tag.global-description")
         },
         langs: {
           name: {
@@ -28,14 +28,14 @@ export default {
             name: "name",
             max_length: 50,
             required: true,
-            help: this.$t("admin.help.model.tag.langs.name")
+            help: this.$t("help.tag.langs-name")
           },
           language: {
             label: this.$t("utils.language"),
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("admin.help.global.language")
+            help: this.$t("help.language.global-description")
           }
         }
       },

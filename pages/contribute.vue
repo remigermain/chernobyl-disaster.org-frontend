@@ -58,37 +58,37 @@ export default {
       menus: [
         {
           name: this.$t("admin.label.event"),
-          help: this.$t("admin.help.global.event"),
+          help: this.$t("help.event.global-description"),
           to: {name: "contribute-event"},
           toCreate: {name: "contribute-event-create"}
         },
         {
           name: this.$t("admin.label.people"),
-          help: this.$t("admin.help.global.people"),
+          help: this.$t("help.people.global-description"),
           to: {name: "contribute-people"},
           toCreate: {name: "contribute-people-create"}
         },
         {
           name: this.$t("admin.label.tag"),
-          help: this.$t("admin.help.global.tag"),
+          help: this.$t("help.tag.global-description"),
           to: {name: "contribute-tag"},
           toCreate: {name: "contribute-tag-create"}
         },
         {
           name: this.$t("admin.label.picture"),
-          help: this.$t("admin.help.global.picture"),
+          help: this.$t("help.picture.global-description"),
           to: {name: "contribute-picture"},
           toCreate: {name: "contribute-picture-create"}
         },
         {
           name: this.$t("admin.label.video"),
-          help: this.$t("admin.help.global.video"),
+          help: this.$t("help.video.global-description"),
           to: {name: "contribute-video"},
           toCreate: {name: "contribute-video-create"}
         },
         {
           name: this.$t("utils.translation"),
-          help: this.$t("admin.help.global.translate"),
+          help: this.$t("help.translate.global-description"),
           to: {name: "contribute-translate"},
         },
       ]

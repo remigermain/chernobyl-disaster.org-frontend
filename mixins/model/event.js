@@ -22,7 +22,7 @@ export default {
           name: "title",
           required: true,
           max_length: 100,
-          help: this.$t("admin.help.model.event.title")
+          help: this.$t("help.event.title")
         },
         tags: {
           label: this.$t("admin.model.tags"),
@@ -30,13 +30,13 @@ export default {
           model: "tag",
           required: false,
           choices: this.$store.getters["model/tags"],
-          help: this.$t("admin.help.global.tag")
+          help: this.$t("help.tag.global-description")
         },
         date: {
           label: this.$t("admin.model.date"),
           name: "date",
           required: true,
-          help: this.$t("admin.help.model.event.date"),
+          help: this.$t("help.event.date"),
           display: obj => this.getDateYear(obj.date)
         },
         langs: {
@@ -45,20 +45,20 @@ export default {
             name: "title",
             max_length: 100,
             required: true,
-            help: this.$t("admin.help.model.event.langs.title")
+            help: this.$t("help.event.langs-title")
           },
           description: {
             label: this.$t("admin.model.description"),
             name: "description",
             required: true,
-            help: this.$t("admin.help.model.event.langs.description")
+            help: this.$t("help.event.langs-description")
           },
           language: {
             label: this.$t("utils.language"),
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("admin.help.global.language")
+            help: this.$t("help.language.global-description")
           }
         }
       },

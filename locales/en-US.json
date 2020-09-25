@@ -1,58 +1,5 @@
 {
     "admin": {
-        "help": {
-            "global": {
-                "event": "these are the important events of Chernobyl, all these events will be in the chronology of the site.",
-                "language": "the language of the text you wrote",
-                "people": "They are important people in the history of Chernobyl.",
-                "picture": "these are the images",
-                "report": "you can report any object, to delete, modify or otherwise, you write what you want (in French or English) and I will take care of it as soon as possible.",
-                "tag": "they are labels that help in the search for an item",
-                "translate": "translate",
-                "video": "these are the videos"
-            },
-            "model": {
-                "event": {
-                    "date": "the date when the event starts, you can simply set the date without the time (leave it at 00:00 midnight), to also add specific seconds in special cases (such as the explosion of the reactor at 1h23m44s).",
-                    "langs": {
-                        "description": "write you the description of the event, what happened, why, or ...ect, this will be used in the texts displayed in the timeline.",
-                        "title": "you give a title to the video to give a brief description of it, in the language select"
-                    },
-                    "title": "you give a title to the video to give a brief description of it, must be in English!"
-                },
-                "people": {
-                    "biography": "a biography of this person, his life ... ect.",
-                    "born": "the date on which he or she was born",
-                    "death": "the date on which he is deceased",
-                    "name": "the name and surname of the person",
-                    "profil": "a photo showing him from the front.",
-                    "wikipedia": "a link to wikipedia if there is one"
-                },
-                "picture": {
-                    "date": "this is the date (approximate or precise) on which the photo was taken",
-                    "langs": {
-                        "title": "you give a title to the video to give a brief description of it, in the language select"
-                    },
-                    "photographer": "you can inform the person who took this picture (e.g. Igor Kostine for example).",
-                    "picture": "you upload an image of the best possible quality",
-                    "title": "you give a title to the video to give a brief description of it, must be in English!"
-                },
-                "tag": {
-                    "langs": {
-                        "name": "a translation of the tag"
-                    }
-                },
-                "translate": "translate",
-                "video": {
-                    "date": "this is the date (approximate or precise) on which the video was taken",
-                    "langs": {
-                        "title": "you give a title to the video to give a brief description of it, in the language select"
-                    },
-                    "title": "you give a title to the video to give a brief description of it. must be in English",
-                    "video": "the link of the video, you can put a youtube link, peertube ( all the others are not tested )"
-                }
-            }
-        },
         "label": {
             "account": "account",
             "event": "event",
@@ -81,10 +28,6 @@
             "video": "video",
             "wikipedia": "wikipedia",
             "your-message": "your message"
-        },
-        "tools": {
-            "detail": "detail",
-            "list": "list"
         }
     },
     "auth": {
@@ -92,28 +35,26 @@
         "check-email": "check your mail",
         "check-email-description": "before logging in you must validate your email",
         "comfirm-new-password": "Confirm new password",
+        "comfirm-password": "confirmation password",
         "confirme-delete-account": "confirm the deletion of the account",
         "connection-account": "sing in",
         "create-account": "create an account",
         "delete-account": "delete the account",
         "delete-account-description": "Are you sure you want to deactivate your account? All your data will be permanently deleted. This action cannot be undone.",
+        "email": "email",
         "email-verified": "your email has been verified",
-        "field": {
-            "comfirm-password": "confirmation password",
-            "email": "email",
-            "password": "password",
-            "username": "username"
-        },
         "forget-password": "Forgot your password",
         "goto-login": "go to the the login page",
         "login": "login",
         "logout": "logout",
         "new-password": "new password",
         "old-password": "old password",
+        "password": "password",
         "rechange-password": "reset password",
         "register": "register",
         "register-account": "register account",
         "registeration-success": "account create successful, check your email before logging in",
+        "username": "username",
         "validate": "validate"
     },
     "errors": {
@@ -125,6 +66,53 @@
         "server": "server error ",
         "unique-translate": "this object \"{model}\" has a duplicate translation",
         "update": "error during the update"
+    },
+    "help": {
+        "event": {
+            "date": "the date when the event starts, you can simply set the date without the time (leave it at 00:00 midnight), to also add specific seconds in special cases (such as the explosion of the reactor at 1h23m44s).",
+            "global-description": "global-description",
+            "langs-description": "write you the description of the event, what happened, why, or ...ect, this will be used in the texts displayed in the timeline.",
+            "langs-title": "you give a title to the video to give a brief description of it, in the language select",
+            "title": "you give a title to the video to give a brief description of it, must be in English!"
+        },
+        "language": {
+            "global-description": "global-description"
+        },
+        "people": {
+            "biography": "a biography of this person, his life ... ect.",
+            "born": "the date on which he or she was born",
+            "death": "the date on which he is deceased",
+            "global-description": "global-description",
+            "name": "the name and surname of the person",
+            "profil": "a photo showing him from the front.",
+            "wikipedia": "a link to wikipedia if there is one"
+        },
+        "picture": {
+            "date": "this is the date (approximate or precise) on which the photo was taken",
+            "global-description": "global-description",
+            "langs-title": "you give a title to the video to give a brief description of it, in the language select",
+            "photographer": "you can inform the person who took this picture (e.g. Igor Kostine for example).",
+            "picture": "you upload an image of the best possible quality",
+            "title": "you give a title to the video to give a brief description of it, must be in English!"
+        },
+        "report": {
+            "global-description": "global-description"
+        },
+        "tag": {
+            "global-description": "global-description",
+            "langs-name": "a translation of the tag"
+        },
+        "translate": {
+            "description": "you can help to translate this site!\nOn this page you will find under each category the texts to be translated (names of menus, buttons, help messages for content creation, etc.).",
+            "global-description": "global-description"
+        },
+        "video": {
+            "date": "this is the date (approximate or precise) on which the video was taken",
+            "global-description": "global-description",
+            "langs-title": "you give a title to the video to give a brief description of it, in the language select",
+            "title": "you give a title to the video to give a brief description of it. must be in English",
+            "video": "the link of the video, you can put a youtube link, peertube ( all the others are not tested )"
+        }
     },
     "menu": {
         "about": "About us",
@@ -154,40 +142,33 @@
             "thanks-contributors": "thank you to the contributors"
         },
         "contact": {
-            "description": "you can contact me for any request, I will answer you as soon as possible!"
+            "description": "you can contact me for any request, I will answer you as soon as possible!",
+            "title": "contact"
         },
         "home": {
             "description": "The Chernobyl nuclear disaster is a major nuclear accident that occurred on April 26, 1986 in the V.I. Lenin nuclear power plant, then located in the Ukrainian Soviet Socialist Republic, USSR. It is the most serious nuclear disaster of the 20th century, classified at level 7 (the highest) of the International Nuclear Event Scale (INES), surpassing, according to the Institute for Radiation Protection and Nuclear Safety (IRSN), by its immediate environmental impacts the Fukushima nuclear accident of 2011, classified at the same level. The IRSN mentions for these accidents potential health effects, lasting contamination of territories and important economic and social consequences.",
-            "presentation": "presentation"
+            "presentation": "presentation",
+            "title": "chernobyl.org"
         },
-        "meta": {
-            "contact": {
-                "description": "contact me",
-                "title": "contact"
-            },
-            "home": {
-                "title": "chernobyl.org"
-            },
-            "login": {
-                "description": "connect to chernobyle.org to contribute to the community, and share your photo, video and much more!",
-                "title": "connection"
-            },
-            "picture": {
-                "description": "a huge gallery of period photos on the whole history of Chernobyl, from the construction, to the photo of the explosion of the reactor, through the liquidators.",
-                "title": "image gallery"
-            },
-            "rechange-password": {
-                "description": "Forgot your password? Reset it!",
-                "title": "reset your password"
-            },
-            "register": {
-                "description": "join the chernobyle.org community to share your photo, video and much more!",
-                "title": "registration"
-            },
-            "video": {
-                "description": "a huge gallery of period videos on the whole history of Chernobyl, from the construction, to the video of the explosion of the reactor, to the liquidators.",
-                "title": "video gallery"
-            }
+        "login": {
+            "description": "connect to chernobyle.org to contribute to the community, and share your photo, video and much more!",
+            "title": "connection"
+        },
+        "picture": {
+            "description": "a huge gallery of period photos on the whole history of Chernobyl, from the construction, to the photo of the explosion of the reactor, through the liquidators.",
+            "title": "image gallery"
+        },
+        "rechange-password": {
+            "description": "Forgot your password? Reset it!",
+            "title": "reset your password"
+        },
+        "register": {
+            "description": "join the chernobyle.org community to share your photo, video and much more!",
+            "title": "registration"
+        },
+        "video": {
+            "description": "a huge gallery of period videos on the whole history of Chernobyl, from the construction, to the video of the explosion of the reactor, to the liquidators.",
+            "title": "video gallery"
         }
     },
     "success": {
@@ -208,6 +189,8 @@
         "date": "date",
         "deleted": "are you sure you want to delete this object?",
         "descending": "descending",
+        "detail": "detail",
+        "list": "list",
         "name": "name",
         "new": "new",
         "save": "save",
@@ -218,9 +201,11 @@
     "utils": {
         "actions": "actions",
         "actual-link": "actual link",
+        "admin": "admin",
         "best-contributor": "best contributor",
         "best-contributor-week": "best contributor of the week",
         "cancel": "cancel",
+        "category": "category",
         "change-language": "change language",
         "change-sort-order": "change the sort order",
         "close": "close",
@@ -229,6 +214,7 @@
         "create": "create",
         "currently": "currently",
         "delete": "delete",
+        "download": "download",
         "edit": "edit",
         "empty": "empty",
         "goto-about": "go to the about",
@@ -254,7 +240,7 @@
         "missing": "missing",
         "mood-sad": "mood sad",
         "navigation": "navigation",
-        "need-translated": "need translated",
+        "need-translation": "need translation",
         "next": "next",
         "next-event": "next timeline's event",
         "no": "no",

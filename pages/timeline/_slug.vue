@@ -17,9 +17,7 @@
       {{ i18nAttr(current, 'title') }}
     </h1>
     <section class="overflow-y-scroll">
-      <p class="timeline-text p-4 leading-6">
-        {{ i18nAttr(current, 'description') }}
-      </p>
+      <p class="timeline-text p-4 leading-6 whitespace-pre-line">{{ i18nAttr(current, 'description') }}</p>
     </section>
     <timeline-extra class="timeline-extra" :object="current" />
   </article>
@@ -43,15 +41,15 @@ export default {
   computed: {
     hours () {
       const h = this.current.date.getHours().toString()
-      return (h.length == 1 ? `0${h}`: h)
+      return (h.length === 1 ? `0${h}`: h)
     },
     minutes () {
       const h = this.current.date.getMinutes().toString()
-      return (h.length == 1 ? `0${h}`: h)
+      return (h.length === 1 ? `0${h}`: h)
     },
     seconds () {
       const h = this.current.date.getSeconds().toString()
-      return (h.length == 1 ? `0${h}`: h)
+      return (h.length === 1 ? `0${h}`: h)
     },
   },
 

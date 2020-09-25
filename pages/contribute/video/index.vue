@@ -18,7 +18,7 @@
                         @search="search"
       >
         <template v-slot:table-title>
-          {{ $t('admin.tools.list') }}
+          {{ $t('tools.list') }}
         </template>
       </lazy-admin-table>
       <lazy-admin-table :fields="fields"
@@ -31,7 +31,7 @@
                         @search="searchLang"
       >
         <template v-slot:table-title>
-          {{ $t('utils.need-translated') }}
+          {{ $t('utils.need-translation') }}
         </template>
       </lazy-admin-table>
     </template>
@@ -77,7 +77,7 @@ export default {
       columnsLang: ["id", "title",
         {
           field: "not_available_languages",
-          label: this.$t("utils.need-translated")
+          label: this.$t("utils.need-translation")
         }
       ],
     }

@@ -5,7 +5,7 @@
                    @change="$emit('change', $event)"
   >
     <template v-slot:icon>
-      <svg-icon name="mail" class="inline text-gray-600" :aria-label="$t('auth.field.email')" />
+      <svg-icon name="mail" class="inline text-gray-600" :aria-label="$t('auth.email')" />
     </template>
   </lazy-field-text>
 </template>

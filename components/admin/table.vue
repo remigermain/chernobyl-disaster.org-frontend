@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(obj,idx) in list" :key="`${idx}-${obj.id}`" class="border-b-1 border-gray-700 text-gray-700 font-light shadow-xs">
+        <tr v-for="(obj,idx) in list" :key="`${idx}-${obj.id}`" class="border-b-1 border-gray-700 text-gray-700 shadow-xs font-medium">
           <td v-for="col in columns" :key="`tbody-${idx}-${convertLabel(col)}`" class="p-2">
             <slot v-if="$slots.default" :obj="obj" :col="col" />
             <template v-else-if="isNotEmpty(obj[getField(col)])">

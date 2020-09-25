@@ -10,7 +10,7 @@ export default {
           label: this.$t("utils.language"),
           name: "language",
           choices: this.$store.getters["model/langs"],
-          help: this.$t("admin.help.global.language"),
+          help: this.$t("help.language.global-description"),
           display: o => this.$store.getters["model/lang"](o.language).display_name
         },
         ratio: {

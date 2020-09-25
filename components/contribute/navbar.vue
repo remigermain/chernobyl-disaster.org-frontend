@@ -11,10 +11,6 @@
         <svg-icon name="dashboard" />
         {{ $t('menu.dashboard') }}
       </extra-nuxt-link>
-      <button class="contribute-navbar-link ml-4" @click="$auth.logout()">
-        <svg-icon name="logout" />
-        {{ $t('auth.logout') }}
-      </button>
       <lazy-extra-nuxt-link :to="{name: 'contribute-account'}" class="contribute-navbar-link ml-4" @click="active = false">
         {{ $t("admin.label.account") }}
       </lazy-extra-nuxt-link>
@@ -64,7 +60,7 @@ export default {
 @media screen and (min-width: 900px){
   .grid-layout-contribute-navbar {
     display: block;
-    margin-top: 5rem;
+    margin-top: 1.5rem;
   }
 }
 
@@ -78,7 +74,7 @@ export default {
   }
   .contribute-navbar-link {
     width: max-content;
-    opacity: .5;
+    opacity: .7;
     &:hover {
       opacity: 1;
       &::after {

@@ -1,6 +1,6 @@
 <template>
   <ol class="space-y-1">
-    <li v-for="key in Object.keys(list)" :key="key" class="text-sm capitalize list"
+    <li v-for="key in listKeys" :key="key" class="text-sm capitalize list"
         :class="{' border-l-4 border-blue-700 rounded-tl-lg rounded-bl-lg ': active == key}"
     >
       <div class="shadow-sm rounded-md border-t-4 border-gray-500 p-2 cursor-pointer flex items-center justify-between"
@@ -79,6 +79,9 @@ export default {
 
       return list
     },
+    listKeys () {
+      return Object.keys(this.list).sort((a, b) => a.localeCompare(b))
+    }
   },
 
   watch: {

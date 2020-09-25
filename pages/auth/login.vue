@@ -46,12 +46,12 @@ export default {
       },
       field: {
         username: {
-          label: this.$t("auth.field.username"),
+          label: this.$t("auth.username"),
           name: "username",
           required: true,
         },
         password: {
-          label: this.$t("auth.field.password"),
+          label: this.$t("auth.password"),
           name: "password",
           required: true,
         }
@@ -76,18 +76,18 @@ export default {
     return {
       title: this.$t("auth.login"),
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.meta.login.description") },
-          { property: "og:title", content: this.$t("pages.meta.login.title")},
+          { hid: "description", name: "description", content: this.$t("pages.login.description") },
+          { property: "og:title", content: this.$t("pages.login.title")},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.meta.login.description")},
+          { property: "og:description", content: this.$t("pages.login.description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.meta.login.description") },
+          { name: "twitter:card", content: this.$t("pages.login.description") },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.meta.login.title") },
-          { name: "twitter:description", content: this.$t("pages.meta.login.description") },
+          { name: "twitter:title", content: this.$t("pages.login.title") },
+          { name: "twitter:description", content: this.$t("pages.login.description") },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.meta.login.title") }
+          { name: "twitter:image:alt", content: this.$t("pages.login.title") }
       ]
     }
   }

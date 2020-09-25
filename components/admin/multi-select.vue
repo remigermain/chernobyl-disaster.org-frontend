@@ -31,7 +31,7 @@
             <ol>
               <li v-for="s in searchOption" :key="s.value"
                   class="text-gray-800 leading-4 p-2 hover:bg-gray-300 cursor-pointer"
-                  @click="select(s.value)"
+                  @click.prevent.stop="select(s.value)"
               >
                 {{ s.display_name }}
               </li>

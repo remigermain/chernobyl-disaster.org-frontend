@@ -1,58 +1,5 @@
 {
     "admin": {
-        "help": {
-            "global": {
-                "event": "ce sont les \u00e9v\u00e9nements importants de Tchernobyl, tous ces \u00e9v\u00e9nements seront dans la chronologie du site.",
-                "language": "la langue du texte que vous avez \u00e9crit",
-                "people": "ce sont des personnes importantes dans l'histoire de Tchernobyl.",
-                "picture": "ce toutes les images",
-                "report": "vous pouvez signaler tout objet, \u00e0 supprimer, \u00e0 modifier ou autre, vous \u00e9crivez ce que vous voulez (en fran\u00e7ais ou en anglais) et je m'en occupe d\u00e8s que possible.",
-                "tag": "ce sont des \u00e9tiquettes qui aident \u00e0 la recherche d'un \u00e9l\u00e9ment",
-                "translate": "translate",
-                "video": "ce sont toutes video"
-            },
-            "model": {
-                "event": {
-                    "date": "la date au moment o\u00f9 l'\u00e9v\u00e9nement commence, vous pouvez simplement r\u00e9gler la date sans l'heure (la laisser \u00e0 00:00 minuit), pour ajouter \u00e9galement des secondes sp\u00e9cifiques dans des cas particuliers (comme l'explosion du r\u00e9acteur \u00e0 1h23m44s).",
-                    "langs": {
-                        "description": "vous \u00e9crire la description de l'\u00e9v\u00e9nement, ce qui s'est pass\u00e9, pourquoi, ou ...ect, cela sera utilis\u00e9 dans les textes affich\u00e9s dans la chronologie.",
-                        "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description de l'\u00e9v\u00e9nement, dans la langue choisie"
-                    },
-                    "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description de cet \u00e9v\u00e9nement, doit \u00eatre en anglais !"
-                },
-                "people": {
-                    "biography": "une biographie de cette personne, sa vie ... ect.",
-                    "born": "la date \u00e0 laquelle il ou elle est n\u00e9(e)",
-                    "death": "la date \u00e0 laquelle il est d\u00e9c\u00e9d\u00e9",
-                    "name": "le nom et le pr\u00e9nom de la personne",
-                    "profil": "une photo le montrant de face.",
-                    "wikipedia": "un lien vers wikipedia s'il y en a un"
-                },
-                "picture": {
-                    "date": "il s'agit de la date (approximative ou pr\u00e9cise) \u00e0 laquelle la photo a \u00e9t\u00e9 prise",
-                    "langs": {
-                        "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description. dans la langue choisie"
-                    },
-                    "photographer": "vous pouvez informer la personne qui a pris cette photo (par exemple Igor Kostine).",
-                    "picture": "vous t\u00e9l\u00e9chargez une image de la meilleure qualit\u00e9 possible",
-                    "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description, doit \u00eatre en anglais !"
-                },
-                "tag": {
-                    "langs": {
-                        "name": "une traduction de l'\u00e9tiquettes"
-                    }
-                },
-                "translate": "translate",
-                "video": {
-                    "date": "il s'agit de la date (approximative ou pr\u00e9cise) \u00e0 laquelle la vid\u00e9o a \u00e9t\u00e9 prise",
-                    "langs": {
-                        "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description. dans la langue choisie"
-                    },
-                    "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description., doit \u00eatre en anglais !",
-                    "video": "le lien de la vid\u00e9o, vous pouvez mettre un lien youtube, peertube ( tous les autres ne sont pas test\u00e9s )"
-                }
-            }
-        },
         "label": {
             "account": "compte",
             "event": "\u00e9v\u00e9nement",
@@ -81,10 +28,6 @@
             "video": "vid\u00e9o",
             "wikipedia": "wikipedia",
             "your-message": "votre message"
-        },
-        "tools": {
-            "detail": "d\u00e9tail",
-            "list": "liste"
         }
     },
     "auth": {
@@ -92,28 +35,26 @@
         "check-email": "v\u00e9rifier votre email",
         "check-email-description": "avant de vous connecter, vous devez valider votre adresse email",
         "comfirm-new-password": "Confirmer le nouveau mot de passe",
+        "comfirm-password": "mot de passe de confirmation",
         "confirme-delete-account": "confirmer la suppression du compte",
         "connection-account": "ce connecter",
         "create-account": "cr\u00e9er un compte",
         "delete-account": "supprimer le compte",
         "delete-account-description": "\u00cates-vous s\u00fbr de vouloir d\u00e9sactiver votre compte ? Toutes vos donn\u00e9es seront d\u00e9finitivement supprim\u00e9es. Cette action ne peut \u00eatre annul\u00e9e.",
+        "email": "e-mail",
         "email-verified": "votre adresse email a \u00e9t\u00e9 v\u00e9rifi\u00e9e",
-        "field": {
-            "comfirm-password": "mot de passe de confirmation",
-            "email": "e-mail",
-            "password": "mot de passe",
-            "username": "nom d'utilisateur"
-        },
         "forget-password": "mot de passe oubli\u00e9",
         "goto-login": "aller \u00e0 la page de connexion",
         "login": "connexion",
         "logout": "d\u00e9connexion",
         "new-password": "nouveau mot de passe",
         "old-password": "ancien mot de passe",
+        "password": "mot de passe",
         "rechange-password": "r\u00e9initialiser le mot de passe",
         "register": "s'enregistrer",
         "register-account": "cr\u00e9er un compte",
         "registeration-success": "compte cr\u00e9er succ\u00e8s, v\u00e9rifiez votre email avant de vous connecter",
+        "username": "nom d'utilisateur",
         "validate": "valider"
     },
     "errors": {
@@ -125,6 +66,53 @@
         "server": "erreur du serveur",
         "unique-translate": "cette object \"{model}\" a un doublon de traduction",
         "update": "erreur lors de la mise \u00e0 jour"
+    },
+    "help": {
+        "event": {
+            "date": "la date au moment o\u00f9 l'\u00e9v\u00e9nement commence, vous pouvez simplement r\u00e9gler la date sans l'heure (la laisser \u00e0 00:00 minuit), pour ajouter \u00e9galement des secondes sp\u00e9cifiques dans des cas particuliers (comme l'explosion du r\u00e9acteur \u00e0 1h23m44s).",
+            "global-description": "ce sont les \u00e9v\u00e9nements importants de Tchernobyl, tous ces \u00e9v\u00e9nements seront dans la chronologie du site.",
+            "langs-description": "vous \u00e9crire la description de l'\u00e9v\u00e9nement, ce qui s'est pass\u00e9, pourquoi, ou ...ect, cela sera utilis\u00e9 dans les textes affich\u00e9s dans la chronologie.",
+            "langs-title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description de l'\u00e9v\u00e9nement, dans la langue choisie",
+            "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description de cet \u00e9v\u00e9nement, doit \u00eatre en anglais !"
+        },
+        "language": {
+            "global-description": "la langue du texte que vous avez \u00e9crit"
+        },
+        "people": {
+            "biography": "une biographie de cette personne, sa vie ... ect.",
+            "born": "la date \u00e0 laquelle il ou elle est n\u00e9(e)",
+            "death": "la date \u00e0 laquelle il est d\u00e9c\u00e9d\u00e9",
+            "global-description": "ce sont des personnes importantes dans l'histoire de Tchernobyl.",
+            "name": "le nom et le pr\u00e9nom de la personne",
+            "profil": "une photo le montrant de face.",
+            "wikipedia": "un lien vers wikipedia s'il y en a un"
+        },
+        "picture": {
+            "date": "il s'agit de la date (approximative ou pr\u00e9cise) \u00e0 laquelle la photo a \u00e9t\u00e9 prise",
+            "global-description": "ce toutes les images",
+            "langs-title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description. dans la langue choisie",
+            "photographer": "vous pouvez informer la personne qui a pris cette photo (par exemple Igor Kostine).",
+            "picture": "vous t\u00e9l\u00e9chargez une image de la meilleure qualit\u00e9 possible",
+            "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description, doit \u00eatre en anglais !"
+        },
+        "report": {
+            "global-description": "vous pouvez signaler tout objet, \u00e0 supprimer, \u00e0 modifier ou autre, vous \u00e9crivez ce que vous voulez (en fran\u00e7ais ou en anglais) et je m'en occupe d\u00e8s que possible."
+        },
+        "tag": {
+            "global-description": "ce sont des \u00e9tiquettes qui aident \u00e0 la recherche d'un \u00e9l\u00e9ment",
+            "langs-name": "une traduction de l'\u00e9tiquettes"
+        },
+        "translate": {
+            "description": "vous pouvez aider \u00e0 traduire ce site !\nSur cette page, vous trouverez sous chaque cat\u00e9gorie les textes \u00e0 traduire (noms des menus, boutons, messages d'aide pour la cr\u00e9ation de contenu, etc...)",
+            "global-description": "translate"
+        },
+        "video": {
+            "date": "il s'agit de la date (approximative ou pr\u00e9cise) \u00e0 laquelle la vid\u00e9o a \u00e9t\u00e9 prise",
+            "global-description": "global-description",
+            "langs-title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description. dans la langue choisie",
+            "title": "vous donnez un titre \u00e0 la vid\u00e9o pour en donner une br\u00e8ve description., doit \u00eatre en anglais !",
+            "video": "le lien de la vid\u00e9o, vous pouvez mettre un lien youtube, peertube ( tous les autres ne sont pas test\u00e9s )"
+        }
     },
     "menu": {
         "about": "A propos de",
@@ -154,40 +142,33 @@
             "thanks-contributors": "merci aux contributeurs"
         },
         "contact": {
-            "description": "vous pouvez me contacter pour toute demande, je vous r\u00e9pondrai dans les plus brefs d\u00e9lais !"
+            "description": "vous pouvez me contacter pour toute demande, je vous r\u00e9pondrai dans les plus brefs d\u00e9lais !",
+            "title": "contact"
         },
         "home": {
             "description": "La catastrophe nucl\u00e9aire de Tchernobyl est un accident nucl\u00e9aire majeur survenu le 26 avril 1986 dans la centrale nucl\u00e9aire V.I. L\u00e9nine, situ\u00e9e \u00e0 l'\u00e9poque en r\u00e9publique socialiste sovi\u00e9tique d'Ukraine, en URSS. Il s'agit de la plus grave catastrophe nucl\u00e9aire du XXe si\u00e8cle, class\u00e9e au niveau 7 (le plus \u00e9lev\u00e9) de l'\u00e9chelle internationale des \u00e9v\u00e9nements nucl\u00e9aires (INES), surpassant, d'apr\u00e8s l'Institut de radioprotection et de s\u00fbret\u00e9 nucl\u00e9aire (IRSN), par ses impacts environnementaux imm\u00e9diats l'accident nucl\u00e9aire de Fukushima de 2011, class\u00e9 au m\u00eame niveau. L'IRSN mentionne pour ces accidents des effets sanitaires potentiels, une contamination durable de territoires et d'importantes cons\u00e9quences \u00e9conomiques et sociales.",
-            "presentation": "pr\u00e9sentation"
+            "presentation": "pr\u00e9sentation",
+            "title": "chernobyl.org"
         },
-        "meta": {
-            "contact": {
-                "description": "contactez moi",
-                "title": "contact"
-            },
-            "home": {
-                "title": "chernobyl.org"
-            },
-            "login": {
-                "description": "connectez-vous \u00e0 chernobyle.org pour contribuer \u00e0 la communaut\u00e9, et partagez votre photo, votre vid\u00e9o et bien plus encore !",
-                "title": "connexion"
-            },
-            "picture": {
-                "description": "une immense galerie de photos d'\u00e9poque sur toute l'histoire de Tchernobyl, de la construction, \u00e0 la photo de l'explosion du r\u00e9acteur, en passant par les liquidateurs.",
-                "title": "gallery d'images"
-            },
-            "rechange-password": {
-                "description": "Vous avez oubli\u00e9 votre mot de passe ? r\u00e9initialisez-le !",
-                "title": "r\u00e9initialisez votre mot de passe"
-            },
-            "register": {
-                "description": "rejoignez la communaut\u00e9 chernobyle.org pour partagez votre photo, votre vid\u00e9o et bien plus encore !",
-                "title": "inscription"
-            },
-            "video": {
-                "description": "une immense galerie de vid\u00e9os d'\u00e9poque sur toute l'histoire de Tchernobyl, de la construction, \u00e0 la vid\u00e9o de l'explosion du r\u00e9acteur, en passant par les liquidateurs.",
-                "title": "gallery vid\u00e9os"
-            }
+        "login": {
+            "description": "connectez-vous \u00e0 chernobyle.org pour contribuer \u00e0 la communaut\u00e9, et partagez votre photo, votre vid\u00e9o et bien plus encore !",
+            "title": "connexion"
+        },
+        "picture": {
+            "description": "une immense galerie de photos d'\u00e9poque sur toute l'histoire de Tchernobyl, de la construction, \u00e0 la photo de l'explosion du r\u00e9acteur, en passant par les liquidateurs.",
+            "title": "gallery d'images"
+        },
+        "rechange-password": {
+            "description": "Vous avez oubli\u00e9 votre mot de passe ? r\u00e9initialisez-le !",
+            "title": "r\u00e9initialisez votre mot de passe"
+        },
+        "register": {
+            "description": "rejoignez la communaut\u00e9 chernobyle.org pour partagez votre photo, votre vid\u00e9o et bien plus encore !",
+            "title": "inscription"
+        },
+        "video": {
+            "description": "une immense galerie de vid\u00e9os d'\u00e9poque sur toute l'histoire de Tchernobyl, de la construction, \u00e0 la vid\u00e9o de l'explosion du r\u00e9acteur, en passant par les liquidateurs.",
+            "title": "gallery vid\u00e9os"
         }
     },
     "success": {
@@ -208,6 +189,8 @@
         "date": "date",
         "deleted": "\u00eates-vous s\u00fbr de vouloir supprimer cet objet ?",
         "descending": "d\u00e9croissant",
+        "detail": "d\u00e9tail",
+        "list": "liste",
         "name": "nom",
         "new": "nouveau",
         "save": "sauvegarder",
@@ -218,9 +201,11 @@
     "utils": {
         "actions": "actions",
         "actual-link": "lien actuel",
+        "admin": "admin",
         "best-contributor": "meilleur contributeur",
         "best-contributor-week": "meilleur contributeur de la semaine",
         "cancel": "annuler",
+        "category": "category",
         "change-language": "changer de langue",
         "change-sort-order": "modifier l'ordre de tri",
         "close": "fermer",
@@ -229,6 +214,7 @@
         "create": "cr\u00e9er",
         "currently": "actuellement",
         "delete": "supprimer",
+        "download": "t\u00e9l\u00e9charger",
         "edit": "\u00e9diter",
         "empty": "vide",
         "goto-about": "aller \u00e0 propos de",
@@ -254,7 +240,7 @@
         "missing": "missing",
         "mood-sad": "humeur triste",
         "navigation": "navigation",
-        "need-translated": "besoin de traduction",
+        "need-translation": "besoin de traduction",
         "next": "suivant",
         "next-event": "prochain \u00e9v\u00e9nement",
         "no": "non",

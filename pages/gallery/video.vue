@@ -53,18 +53,18 @@ export default {
     return {
       title: this.$t("menu.video"),
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.meta.video.description") },
-          { property: "og:title", content: this.$t("pages.meta.video.title")},
+          { hid: "description", name: "description", content: this.$t("pages.video.description") },
+          { property: "og:title", content: this.$t("pages.video.title")},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.meta.video.description")},
+          { property: "og:description", content: this.$t("pages.video.description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.meta.video.description") },
+          { name: "twitter:card", content: this.$t("pages.video.description") },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.meta.video.title") },
-          { name: "twitter:description", content: this.$t("pages.meta.video.description") },
+          { name: "twitter:title", content: this.$t("pages.video.title") },
+          { name: "twitter:description", content: this.$t("pages.video.description") },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.meta.video.title") }
+          { name: "twitter:image:alt", content: this.$t("pages.video.title") }
       ]
     }
   }

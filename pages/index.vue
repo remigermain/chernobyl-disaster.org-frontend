@@ -37,17 +37,17 @@ export default {
       title: this.$t("menu.home"),
       meta: [
           { hid: "description", name: "description", content: this.$t("pages.home.description") },
-          { property: "og:title", content: this.$t("pages.meta.home.title")},
+          { property: "og:title", content: this.$t("pages.home.title")},
           { property: "og:site_name", content: this.$siteName },
           { property: "og:description", content: this.$t("pages.home.description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
           { name: "twitter:card", content: this.$t("pages.home.description") },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.meta.home.title") },
+          { name: "twitter:title", content: this.$t("pages.home.title") },
           { name: "twitter:description", content: this.$t("pages.home.description") },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.meta.home.title") }
+          { name: "twitter:image:alt", content: this.$t("pages.home.title") }
       ]
     }
   }

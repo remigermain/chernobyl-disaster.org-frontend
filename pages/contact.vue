@@ -32,7 +32,7 @@ export default {
         required: true,
       },
       email: {
-        label: this.$t("auth.field.email"),
+        label: this.$t("auth.email"),
         name: "email",
         required: true,
       },
@@ -75,18 +75,18 @@ export default {
     return {
       title: this.$t("utils.contact"),
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.meta.contact.description") },
-          { property: "og:title", content: this.$t("pages.meta.contact.title")},
+          { hid: "description", name: "description", content: this.$t("pages.contact.description") },
+          { property: "og:title", content: this.$t("pages.contact.title")},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.meta.contact.description")},
+          { property: "og:description", content: this.$t("pages.contact.description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.meta.contact.description") },
+          { name: "twitter:card", content: this.$t("pages.contact.description") },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.meta.contact.title") },
-          { name: "twitter:description", content: this.$t("pages.meta.contact.description") },
+          { name: "twitter:title", content: this.$t("pages.contact.title") },
+          { name: "twitter:description", content: this.$t("pages.contact.description") },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.meta.contact.title") }
+          { name: "twitter:image:alt", content: this.$t("pages.contact.title") }
       ]
     }
   }

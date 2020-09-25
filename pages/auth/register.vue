@@ -41,24 +41,24 @@ export default {
       },
       field: {
         email: {
-          label: this.$t("auth.field.email"),
+          label: this.$t("auth.email"),
           name: "email",
           required: true,
           max_length: 50,
         },
         username: {
-          label: this.$t("auth.field.username"),
+          label: this.$t("auth.username"),
           name: "username",
           required: true,
           max_length: 50,
         },
         password1: {
-          label: this.$t("auth.field.password"),
+          label: this.$t("auth.password"),
           name: "password1",
           required: true,
         },
         password2: {
-          label: this.$t("auth.field.comfirm-password"),
+          label: this.$t("auth.comfirm-password"),
           name: "password2",
           required: true,
         }
@@ -90,18 +90,18 @@ export default {
     return {
       title: this.$t("menu.register"),
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.meta.register.description") },
-          { property: "og:title", content: this.$t("pages.meta.register.title")},
+          { hid: "description", name: "description", content: this.$t("pages.register.description") },
+          { property: "og:title", content: this.$t("pages.register.title")},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.meta.register.description")},
+          { property: "og:description", content: this.$t("pages.register.description")},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.meta.register.description") },
+          { name: "twitter:card", content: this.$t("pages.register.description") },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.meta.register.title") },
-          { name: "twitter:description", content: this.$t("pages.meta.register.description") },
+          { name: "twitter:title", content: this.$t("pages.register.title") },
+          { name: "twitter:description", content: this.$t("pages.register.description") },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.meta.register.title") }
+          { name: "twitter:image:alt", content: this.$t("pages.register.title") }
       ]
     }
   }

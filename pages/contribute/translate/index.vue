@@ -21,7 +21,7 @@
           @search="search"
         >
           <template v-slot:table-title>
-            {{ $t('admin.tools.list') }}
+            {{ $t('tools.list') }}
           </template>
           <template v-slot:delete="{obj}">
             <button @click="setDeleted(obj.language)">
