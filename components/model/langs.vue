@@ -11,9 +11,9 @@
            @click="toogleActive(obj.id)"
       >
         {{ $store.getters["model/lang"](obj.language).display_name }}
-        <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-180': active == obj.id}" />
+        <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-180': active===obj.id}" />
       </div>
-      <div class="w-full flex flex-col space-y-1 leading-6" :class="{'hidden': active != obj.id}">
+      <div class="w-full flex flex-col space-y-1 leading-6" :class="{'hidden': active!==obj.id}">
         <slot :obj="obj" />
       </div>
     </div>

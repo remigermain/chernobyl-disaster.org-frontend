@@ -62,8 +62,8 @@ export default {
       }
       this.$axios.post("issue/", data)
         .then(response => {
-          if (response.status != 201) {
-            throw Error("")
+          if (response.status!==201) {
+            throw new Error("error-server")
           }
           this.$emit("close")
           this.message = ""

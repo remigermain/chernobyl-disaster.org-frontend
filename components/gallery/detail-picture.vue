@@ -1,7 +1,7 @@
 <template>
   <div class="picture-detail" :class="{
     'detail-transition' : transition === true || object === null,
-    'detail-active': object != null
+    'detail-active': object!==null
   }"
   >
     <div v-if="object" class="wrapper">

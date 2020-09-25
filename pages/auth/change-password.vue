@@ -67,8 +67,8 @@ export default {
       }
       this.$axios.post("auth/password/reset/confirm/", data)
         .then(response => {
-          if (response.status != 200) {
-            throw Error("")
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.password-changed")).goAway(6000)
           this.redirect({name: "auth-login"})

@@ -41,8 +41,8 @@ export default {
   asyncData({app}) {
     return app.$axios.get("populate/overview")
       .then(response => {
-        if (response.status != 200) {
-          throw Error("")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         return {
           object: response.data
@@ -97,7 +97,7 @@ export default {
 
   computed: {
     haveChild () {
-      return this.$route.matched.length == 1
+      return this.$route.matched.length===1
     }
   },
 

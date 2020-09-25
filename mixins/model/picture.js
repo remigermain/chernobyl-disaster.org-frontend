@@ -15,8 +15,8 @@ export default {
   middleware({ store, $axios }) {
     return $axios.get("populate/picture")
       .then(response => {
-        if (response.status != 200) {
-          throw Error("error")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         store.commit("model/POPULATE_PICTURE", response.data)
       })

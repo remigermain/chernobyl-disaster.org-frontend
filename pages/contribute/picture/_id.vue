@@ -49,8 +49,8 @@ export default {
   asyncData ({ params, $axios, app, redirect }) {
     return $axios.get(`picture/${params.id}/`)
       .then(response => {
-        if (response.status != 200) {
-          throw Error(app.i18n.t("errors.status"))
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         return {
           object: response.data,

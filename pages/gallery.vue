@@ -12,8 +12,8 @@ export default {
   asyncData ({ app, store }) {
     return app.$axios.get("populate/people")
       .then(response => {
-        if (response.status != 200) {
-          throw Error("")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         store.commit("model/POPULATE_PEOPLES", response.data)
       })

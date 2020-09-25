@@ -122,16 +122,12 @@ export default {
     submitPassword (event) {
       const form = new FormData(event.target)
       this.loading = true
-      this.errors = {
-        new_password1: [],
-        new_password2: [],
-        old_password: []
-      },
+      this.errors = { new_password1: [], new_password2: [], old_password: []}
 
       this.$axios.post("auth/password/change/", form)
         .then(response => {
-          if (response.status != 200) {
-            throw Error("")
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(response.data.detail).goAway(4000)
         })
@@ -143,8 +139,8 @@ export default {
 
       this.$axios.post("auth/delete/")
         .then(response => {
-          if (response.status != 200) {
-            throw Error("")
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.delete-account"))
           this.$auth.logout()

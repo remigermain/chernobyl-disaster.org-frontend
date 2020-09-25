@@ -74,8 +74,8 @@ export default {
 
       this.$axios.post("auth/registration/", form)
         .then(response => {
-          if (response.status != 201) {
-            throw Error("")
+          if (response.status!==201) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("auth.registeration-success")).goAway(8000)
           event.target.reset()

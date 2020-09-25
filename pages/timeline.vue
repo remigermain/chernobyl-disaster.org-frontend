@@ -15,11 +15,11 @@ export default {
   mixins: [timelineMixins],
   transition: "timeline",
 
-  async asyncData({ app, route }) {
+  asyncData({ app, route }) {
     return app.$axios.get("event/?no_page=true")
       .then(response => {
-        if (response.status != 200) {
-          throw Error("")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         // change date string to Date object
         const result = response.data.map(el => {
@@ -43,7 +43,6 @@ export default {
   methods: {
     setCurrent (obj) {
       this.current = obj
-      //this.redirect({name: "timeline-id", params: {id: this.i18nAttr(this.current, "title").replace(" ", "_")}})
     }
   },
 }

@@ -59,13 +59,13 @@ export default {
 
   computed: {
     preview () {
-      return this.object.langs.find(x => x.language == this.selectLocale)
+      return this.object.langs.find(x => x.language===this.selectLocale)
     },
     previewValue () {
       return this.preview?.value || null
     },
     current () {
-      return this.object.langs.find(x => x.language == this.$route.params.id)
+      return this.object.langs.find(x => x.language===this.$route.params.id)
     },
     locale () {
       return this.$store.getters["model/lang"](this.$route.params.id)
@@ -74,8 +74,8 @@ export default {
       /* get diff locales form params id and value need to set */
       return this.$store.getters["model/langs"].filter(t => {
         return (
-          t.value != this.$route.params.id &&
-          this.object.langs.find(x => x.language == t.value && x.value)
+          t.value!==this.$route.params.id &&
+          this.object.langs.find(x => x.language===t.value && x.value)
         )
       })
     }
@@ -84,8 +84,8 @@ export default {
   created () {
     // if params is different form locale
     let locale
-    if (this.$i18n.defaultLocale != this.$route.params.id &&
-        this.locales.find(l => l.language == this.$route.params.id)) {
+    if (this.$i18n.defaultLocale!==this.$route.params.id &&
+        this.locales.find(l => l.language===this.$route.params.id)) {
       locale = this.$i18n.defaultLocale
     }
     this.selectLocale = locale || this.locales[0]?.value || ""
@@ -112,12 +112,12 @@ export default {
     },
     create (data) {
       /* generate data */
-      data["parent_key"] = this.object.id
+      data.parent_key = this.object.id
 
       this.$axios.post("translatelang/", data)
         .then(response => {
-          if (response.status != 201) {
-            throw Error("")
+          if (response.status!==201) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
           this.$emit("refresh")
@@ -126,11 +126,10 @@ export default {
         .finally(() => { this.loading = false })
     },
     update (data) {
-      this.current.id
       this.$axios.patch(`translatelang/${this.current.id}/`, data)
         .then(response => {
-          if (response.status != 200) {
-            throw Error("")
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
           this.$emit("refresh")

@@ -77,11 +77,11 @@ export default {
     list () {
       let obj = []
       if (this.searchVal) {
-        obj = this.object["results"].filter(x => {
+        obj = this.object.results.filter(x => {
           return x.uuid.match(this.searchVal) || x.display.match(this.searchVal) || x.creator.match(this.searchVal)
         })
       } else {
-        obj = this.object["results"]
+        obj = this.object.results
       }
       return obj
     },

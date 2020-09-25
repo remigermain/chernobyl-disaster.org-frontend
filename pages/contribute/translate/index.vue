@@ -55,8 +55,8 @@ export default {
   asyncData ({app}) {
     return app.$axios.get("populate/translate/overview")
       .then(response => {
-        if (response.status != 200) {
-          throw Error("")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         return {
           object: response.data,

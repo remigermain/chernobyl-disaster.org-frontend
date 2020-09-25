@@ -54,8 +54,8 @@ export default {
     refresh () {
       this.$axios.get(this.url)
         .then(response => {
-          if (response.status != 200) {
-            throw Error(this.$t("errors.refresh"))
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
           this.objectList = response.data.results
           this.objectlength = response.data.count
@@ -65,8 +65,8 @@ export default {
     refreshLang () {
       this.$axios.get(this.urlLang)
         .then(response => {
-          if (response.status != 200) {
-            throw Error(this.$t("errors.refresh"))
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
           this.objectListLang = response.data.results
           this.objectlengthLang = response.data.count

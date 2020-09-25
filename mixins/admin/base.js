@@ -54,9 +54,7 @@ export default {
     langConv (lang) {
       return this.$store.getters["model/lang"](lang).display_name
     },
-    assignFormData () {
-      return
-    },
+    assignFormData () {},
     addLang () {
       this.langs.push(this.counter++)
     },

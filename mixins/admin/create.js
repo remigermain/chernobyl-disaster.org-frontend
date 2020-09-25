@@ -16,8 +16,8 @@ export default {
 
       this.$axios.post(`${this.model.name}/`, form)
         .then(response => {
-          if (response.status != 201) {
-            throw Error(this.$t("errors.create"))
+          if (response.status!==201) {
+            throw new Error("error-server")
           }
           // assigne data
           this.i18nToast.success(this.$t("success.create"))

@@ -77,7 +77,7 @@ export default {
       this.$axios.post("populate/translate/upload", form)
         .then(response => {
           if (response.status !== 200) {
-            throw Error("")
+            throw new Error("error-server")
           }
           this.i18nToast.info(
             `${this.$t("utils.delete")}: ${response.data.removed}

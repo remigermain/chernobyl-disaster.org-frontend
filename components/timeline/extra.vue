@@ -40,7 +40,7 @@
                  @click="setCurrent(img, idx)"
             >
           </picture>
-          <span v-if="object.pictures.length == 0" class="italic text-gray-700 text-opacity-50">
+          <span v-if="object.pictures.length===0" class="italic text-gray-700 text-opacity-50">
             {{ empty }}
           </span>
         </template>
@@ -53,13 +53,13 @@
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
           />
-          <span v-if="object.videos.length == 0" class="italic text-gray-700 text-opacity-50">
+          <span v-if="object.videos.length===0" class="italic text-gray-700 text-opacity-50">
             {{ empty }}
           </span>
         </template>
       </div>
     </div>
-    <lazy-gallery-detail-picture v-if="pictureActive && object.pictures.length != 0"
+    <lazy-gallery-detail-picture v-if="pictureActive && object.pictures.length!==0"
                                  :object="current"
                                  :idx="currentIdx"
                                  :length="object.pictures.length"
@@ -125,10 +125,10 @@ export default {
       this.activeMenu = !this.activeMenu
     },
     pictureShow () {
-      return this.active = active.PICTURE
+      this.active = active.PICTURE
     },
     videoShow () {
-      return this.active = active.VIDEO
+      this.active = active.VIDEO
     },
     setCurrent (current, idx) {
       this.current = current

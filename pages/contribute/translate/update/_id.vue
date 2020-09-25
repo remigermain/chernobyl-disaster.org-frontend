@@ -20,10 +20,10 @@
         <div class=" w-full space-y-2 px-2 parent mt-6">
           <div v-for="obj in current" :key="obj.id" class="flex flex-col items">
             <div class="w-full border-gray-500 border-t-4 rounded-md p-2 mt-2 cursor-pointer italic text-opacity-75"
-                 :class="{'border-blue-700': active == obj.id}"
+                 :class="{'border-blue-700': active===obj.id}"
                  @click="toogleActive(obj.id)"
             >
-              <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-90': active == obj.id}" />
+              <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-90': active===obj.id}" />
               <transition name="opacity">
                 <span v-if="obj.empty" class="bg-red-800 text-white rounded-full p-1 text-xs italic font-bold">
                   {{ $t('utils.missing') }}
@@ -35,7 +35,7 @@
             </div>
             <div class="relative overflow-hidden">
               <div class="w-full flex flex-col space-y-1 leading-6 transform p-2 transition-all duration-400"
-                   :class="{'-translate-y-full opacity-0 absolute': active != obj.id, 'translate-x-0 opacity-100 block': active == obj.id}"
+                   :class="{'-translate-y-full opacity-0 absolute': active!==obj.id, 'translate-x-0 opacity-100 block': active===obj.id}"
               >
                 <contribute-translate-preview :object="obj" @refresh="refresh" />
               </div>
@@ -60,7 +60,7 @@ export default {
     return app.$axios.get("translate/?no_page=true")
       .then(response => {
         if (response.status !== 200) {
-          throw Error("")
+          throw new Error("error-server")
         }
         const object = response.data.map(e => {
           e.key = e.key.split(".")
@@ -103,7 +103,7 @@ export default {
       }
     },
     missing (obj) {
-      return !!obj.langs.find(l => l.language == this.$route.params.id && l.value)
+      return !!obj.langs.find(l => l.language===this.$route.params.id && l.value)
     },
     assign (ev) {
       this.current = ev.sort((a, b) => a.key[1].localeCompare(b.key[1]))

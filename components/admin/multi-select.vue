@@ -35,7 +35,7 @@
               >
                 {{ s.display_name }}
               </li>
-              <li v-if="searchOption.length == 0" class="p-2 italic text-opacity-75 text-gray-800 text-center">
+              <li v-if="searchOption.length===0" class="p-2 italic text-opacity-75 text-gray-800 text-center">
                 {{ empty }}
               </li>
             </ol>
@@ -69,7 +69,7 @@ export default {
   computed: {
     optionAvailable () {
       const a =  this.field.choices.filter(x => {
-        return !this.valueModel.find(t => t == x.value)
+        return !this.valueModel.find(t => t===x.value)
       })
       return a
     },
@@ -88,7 +88,7 @@ export default {
 
   methods: {
     findChoices(id) {
-      return this.field.choices.find(x => x.value == id)
+      return this.field.choices.find(x => x.value===id)
     },
     find (value) {
       this.searchValue = value

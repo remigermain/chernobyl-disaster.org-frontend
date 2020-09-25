@@ -17,13 +17,13 @@
                              :key="`${obj.id}-${element.id}`"
                              :to="{name: 'timeline-slug', params: {'slug': element.slug}}"
                              class="timeline-element group block p-4 cursor-pointer hover:bg-gray-700 text-white relative rounded-md mt-1"
-                             :class="{'bg-gray-700': current.id == element.id, 'bg-gray-800': current.id != element.id}"
+                             :class="{'bg-gray-700': current.id===element.id, 'bg-gray-800': current.id!==element.id}"
                              :title="i18nAttr(element, 'title')"
             >
               <span class="timeline-point shadow-sm"
                     :class="{
-                      'active bg-blue-600': current.id == element.id,
-                      'bg-blue-800': current.id != element.id
+                      'active bg-blue-600': current.id===element.id,
+                      'bg-blue-800': current.id!==element.id
                     }"
               />
               <timeline-min-time :date="element.date" />
@@ -149,9 +149,9 @@ export default {
     },
     compareDate (original, newEl) {
       if (
-        newEl.getFullYear() != original.getFullYear() ||
-        newEl.getMonth() != original.getMonth() ||
-        newEl.getDay() != original.getDay()
+        newEl.getFullYear()!==original.getFullYear() ||
+        newEl.getMonth()!==original.getMonth() ||
+        newEl.getDay()!==original.getDay()
       ) {
         return true
       }
@@ -163,7 +163,7 @@ export default {
       */
       const list = []
       this.object.forEach((el, idx) => {
-        if (list.length == 0 || this.compareDate(list[list.length - 1].date, el.date)) {
+        if (list.length===0 || this.compareDate(list[list.length - 1].date, el.date)) {
           list.push({ date: el.date, id: idx, list: [el]})
         } else {
           list[list.length - 1].list.push(el)
@@ -217,7 +217,7 @@ export default {
   --size: 1em;
   position: absolute;
   top: var(--size);
-  // 8 px == border size
+  // 8 px===border size
   left: calc((var(--size) + 8px) / 2 * -1);
   right: unset;
   transform-origin: center;

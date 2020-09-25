@@ -64,8 +64,8 @@ export default {
       this.loading = true
       this.$axios.delete(`${this.model}/${this.object}/`)
         .then(response => {
-          if (response.status != 204) {
-            throw Error("")
+          if (response.status!==204) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.deleted"))
         })

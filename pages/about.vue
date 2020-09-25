@@ -45,7 +45,7 @@
             {{ user }}
           </span>
         </div>
-        <span v-if="contributors.length == 0" class="text-center italic text-blue-700 contributors-empty">
+        <span v-if="contributors.length===0" class="text-center italic text-blue-700 contributors-empty">
           {{ $t('pages.about.no-contributors') }}
           <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
         </span>
@@ -117,8 +117,8 @@ export default {
   asyncData({app}) {
     return app.$axios.get("populate/contributors")
       .then(response => {
-        if (response.status != 200) {
-          throw Error("")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         return {contributors: response.data.results }
       })

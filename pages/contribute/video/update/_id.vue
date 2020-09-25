@@ -80,8 +80,8 @@ export default {
   asyncData ({params, redirect, $axios, app}) {
     return $axios.get(`video/${params.id}/`)
       .then(response => {
-        if (response.status != 200) {
-          throw Error("")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         return { object: response.data }
       })

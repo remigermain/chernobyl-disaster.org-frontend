@@ -36,15 +36,15 @@ export default {
   computed: {
     hours () {
       const h = this.date.getHours().toString()
-      return (h.length == 1 ? `0${h}`: h)
+      return (h.length===1 ? `0${h}`: h)
     },
     minutes () {
       const h = this.date.getMinutes().toString()
-      return (h.length == 1 ? `0${h}`: h)
+      return (h.length===1 ? `0${h}`: h)
     },
     seconds () {
       const h = this.date.getSeconds().toString()
-      return (h.length == 1 ? `0${h}`: h)
+      return (h.length===1 ? `0${h}`: h)
     },
   },
 

@@ -22,7 +22,7 @@
           >
             {{ convertLabel(col) }}
             <svg-icon name="arrow-up" class="transform w-5"
-                      :class="{'-rotate-180': reverse, 'invisible': current != getField(col)}"
+                      :class="{'-rotate-180': reverse, 'invisible': current!==getField(col)}"
             />
           </th>
           <th class="text-gray-700 table-head align-middle text-center">
@@ -143,7 +143,7 @@ export default {
       return link
     },
     isNotEmpty (value) {
-      return typeof value !== "undefined" && value != null
+      return typeof value !== "undefined" && value!==null
     },
     setDeleted (obj) {
       this.deletedId = (obj.detail ? obj.detail : obj.object_id || obj.id)

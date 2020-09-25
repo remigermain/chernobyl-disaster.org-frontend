@@ -1,15 +1,15 @@
 <template>
   <ol class="space-y-1">
     <li v-for="key in listKeys" :key="key" class="text-sm capitalize list"
-        :class="{' border-l-4 border-blue-700 rounded-tl-lg rounded-bl-lg ': active == key}"
+        :class="{' border-l-4 border-blue-700 rounded-tl-lg rounded-bl-lg ': active===key}"
     >
       <div class="shadow-sm rounded-md border-t-4 border-gray-500 p-2 cursor-pointer flex items-center justify-between"
-           :class="{'border-blue-700': active == key, 'opacity-75': active != key}"
+           :class="{'border-blue-700': active===key, 'opacity-75': active!==key}"
            @click.prevent.stop="toogleActive(key)"
       >
         <div class="relative mt-1">
           <span class="w-8 h-8 bg-gray-700 text-white leading-3 text-lg flex justify-center items-center rounded-full shadow-md"
-                :class="{'bg-indigo-700': active == key}"
+                :class="{'bg-indigo-700': active===key}"
           >
             {{ lengthKey(key) }}
           </span>
@@ -20,7 +20,7 @@
           </transition>
         </div>
         {{ list[key].label }}
-        <svg-icon name="arrow-down" class="transition-transform transform duration-400" :class="{'-rotate-180': active == key}" />
+        <svg-icon name="arrow-down" class="transition-transform transform duration-400" :class="{'-rotate-180': active===key}" />
       </div>
       <transition name="navbar">
         <div v-if="childActive(key)" class="ml-4 py-2">
@@ -96,7 +96,7 @@ export default {
 
   created () {
     // select the element from id params
-    const obj = this.object.find(e => e.id == this.$route.query.id)
+    const obj = this.object.find(e => e.id===this.$route.query.id)
     if (obj) {
       this.toogleActive(obj.key[0])
     }
@@ -108,11 +108,11 @@ export default {
     },
 
     childActive (key) {
-      return this.active == key && this.list[key].childs.length > 1
+      return this.active===key && this.list[key].childs.length > 1
     },
 
     toogleActive (key) {
-      if (this.active == key) {
+      if (this.active===key) {
         this.active = null
       } else {
         this.active = key

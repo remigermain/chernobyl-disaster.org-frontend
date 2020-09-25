@@ -17,8 +17,8 @@ export default {
 
       this.$axios.patch(`${this.model.name}/${this.$route.params.id}/`, form)
         .then(response => {
-          if (response.status != 200) {
-            throw Error(this.$t("errors.update"))
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
 
           this.i18nToast.success(this.$t("success.update"))

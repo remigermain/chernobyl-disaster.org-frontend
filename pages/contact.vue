@@ -57,8 +57,8 @@ export default {
 
       this.$axios.post("contact/", this.data)
         .then(response => {
-          if (response.status != 201) {
-            throw Error("")
+          if (response.status!==201) {
+            throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.contact"))
           this.data = {

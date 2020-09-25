@@ -18,7 +18,7 @@ export default {
 
   watch: {
     "$route.query" (newquery, oldquery) {
-      if (newquery.search != oldquery.search || newquery.ordering != oldquery.ordering) {
+      if (newquery.search!==oldquery.search || newquery.ordering!==oldquery.ordering) {
         this.reset()
       }
     }
@@ -100,8 +100,8 @@ export default {
           this.inRequestNext = true
 
           // save the old height
-          let oldHeight = this.$el.scrollHeight
-          let oldTop = this.$el.scrollTop
+          const oldHeight = this.$el.scrollHeight
+          const oldTop = this.$el.scrollTop
           this.refresh(response => {
             // prepand the new data
             this.object = [...response.data.results, ...this.object]
@@ -127,8 +127,8 @@ export default {
       this.inRequest = true
       return this.$axios.get(this.url)
         .then(response => {
-          if (response.status != 200) {
-            throw Error("")
+          if (response.status!==200) {
+            throw new Error("error-server")
           }
           this.length = response.data.count
           this.inRequest = false

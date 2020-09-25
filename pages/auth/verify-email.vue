@@ -41,8 +41,8 @@ export default {
       this.loading = true
       this.$axios.post("auth/registration/verify-email/", {key: this.$route.query.key})
       .then(response => {
-        if (response.status != 200) {
-          throw Error("")
+        if (response.status!==200) {
+          throw new Error("error-server")
         }
         this.i18nToast.success(this.$t("auth.email-verified")).goAway(6000)
         this.redirect({name: "auth-login"})
