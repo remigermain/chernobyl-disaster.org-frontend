@@ -13,10 +13,10 @@
     </template>
     <template v-slot:form>
       <lazy-admin-text :field="fields.title" :errors="errors.title" />
-      <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
-      <lazy-admin-select :field="fields.event" :errors="errors.event" />
       <lazy-admin-url :field="fields.video" :errors="errors.video" />
-      <admin-datetime :field="fields.date" :errors="errors.date" />
+      <lazy-admin-select :field="fields.event" :errors="errors.event" />
+      <lazy-admin-datetime :field="fields.date" :errors="errors.date" />
+      <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
     </template>
     <template v-slot:form-lang>
       <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
@@ -28,17 +28,17 @@
                              @delete="deleteLang(idx)"
           />
         </template>
-        <lazy-admin-text class="border-none"
-                         :prefix="prefixLang(idx)"
-                         :field="fields.langs.title"
-                         :action="false"
-                         :errors="getErrorsIdx(errors.langs, idx, 'title')"
-        />
         <lazy-admin-select class="border-none"
                            :prefix="prefixLang(idx)"
                            :field="fields.langs.language"
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
+        />
+        <lazy-admin-text class="border-none"
+                         :prefix="prefixLang(idx)"
+                         :field="fields.langs.title"
+                         :action="false"
+                         :errors="getErrorsIdx(errors.langs, idx, 'title')"
         />
       </model-card-lang>
     </template>

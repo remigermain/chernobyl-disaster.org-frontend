@@ -13,8 +13,10 @@
     </template>
     <template v-slot:form>
       <lazy-admin-text :field="fields.name" :errors="errors.name" />
-      <lazy-admin-date :field="fields.born" :errors="errors.born" />
-      <lazy-admin-date :field="fields.death" :errors="errors.death" />
+      <div class="w-full flex justify-around">
+        <lazy-admin-date :field="fields.born" :errors="errors.born" />
+        <lazy-admin-date :field="fields.death" :errors="errors.death" />
+      </div>
       <lazy-admin-image :field="fields.profil" :errors="errors.profil" />
       <lazy-admin-url :field="fields.wikipedia" :errors="errors.wikipedia" />
       <lazy-admin-multi-select :field="fields.tags" :errors="errors.tags" />
@@ -35,14 +37,12 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
         />
-        <client-only>
-          <lazy-admin-text-editor class="border-none"
-                          :prefix="prefixLang(idx)"
-                          :field="fields.langs.biography"
-                          :action="false"
-                          :errors="getErrorsIdx(errors.langs, idx, 'biography')"
-          />
-        </client-only>
+        <lazy-admin-text-editor class="border-none"
+                        :prefix="prefixLang(idx)"
+                        :field="fields.langs.biography"
+                        :action="false"
+                        :errors="getErrorsIdx(errors.langs, idx, 'biography')"
+        />
       </model-card-lang>
     </template>
   </lazy-model-form>

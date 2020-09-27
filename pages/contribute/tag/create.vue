@@ -24,17 +24,17 @@
                              @delete="deleteLang(idx)"
           />
         </template>
-        <lazy-admin-text class="border-none"
-                         :prefix="prefixLang(idx)"
-                         :field="fields.langs.name"
-                         :action="false"
-                         :errors="getErrorsIdx(errors.langs, idx, 'name')"
-        />
         <lazy-admin-select class="border-none"
                            :prefix="prefixLang(idx)"
                            :field="fields.langs.language"
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
+        />
+        <lazy-admin-text class="border-none"
+                         :prefix="prefixLang(idx)"
+                         :field="fields.langs.name"
+                         :action="false"
+                         :errors="getErrorsIdx(errors.langs, idx, 'name')"
         />
       </model-card-lang>
     </template>

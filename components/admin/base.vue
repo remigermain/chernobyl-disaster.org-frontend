@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 flex justify-between items-center flex-col border-b border-gray-700 border-opacity-50 -md:justify-center text-center">
+  <div class="p-3 flex justify-between items-center flex-col -md:justify-center text-center">
     <label v-if="label" class="w-full text-gray-700 text-lg font-bold mb-2 capitalize">
       <svg-icon name="help" class="cursor-pointer text-gray-500 hover:text-gray-700" @click="toogleHelp" />
       <slot name="label" />

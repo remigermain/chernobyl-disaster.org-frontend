@@ -14,8 +14,10 @@
     </template>
     <template v-slot:form>
       <lazy-admin-text :value="object.name" :field="fields.name" :errors="errors.name" />
-      <lazy-admin-date :value="object.born" :field="fields.born" :errors="errors.born" />
-      <lazy-admin-date :value="object.death" :field="fields.death" :errors="errors.death" />
+      <div class="w-full flex justify-around">
+        <lazy-admin-date :value="object.born" :field="fields.born" :errors="errors.born" />
+        <lazy-admin-date :value="object.death" :field="fields.death" :errors="errors.death" />
+      </div>
       <lazy-admin-image :value="object.profil" :field="fields.profil" :errors="errors.profil" />
       <lazy-admin-url :value="object.wikipedia" :field="fields.wikipedia" :errors="errors.wikipedia" />
       <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
@@ -37,15 +39,13 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
         />
-        <client-only>
-          <lazy-admin-text-editor class="border-none"
-                                 :value="lang.language"
-                                 :prefix="prefixLang(idx)"
-                                 :field="fields.langs.biography"
-                                 :action="false"
-                                 :errors="getErrorsIdx(errors.langs, idx, 'biography')"
-          />
-        </client-only>
+        <lazy-admin-text-editor class="border-none"
+                                :value="lang.language"
+                                :prefix="prefixLang(idx)"
+                                :field="fields.langs.biography"
+                                :action="false"
+                                :errors="getErrorsIdx(errors.langs, idx, 'biography')"
+        />
       </model-card-lang>
 
       <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
@@ -63,14 +63,12 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'language')"
         />
-        <client-only>
-          <lazy-admin-text class="border-none"
-                          :prefix="prefixLang(idx)"
-                          :field="fields.langs.biography"
-                          :action="false"
-                          :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'biography')"
-          />
-        </client-only>
+        <lazy-admin-text-editor class="border-none"
+                        :prefix="prefixLang(idx)"
+                        :field="fields.langs.biography"
+                        :action="false"
+                        :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'biography')"
+        />
       </model-card-lang>
     </template>
   </lazy-model-form>
