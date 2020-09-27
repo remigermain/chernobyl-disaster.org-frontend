@@ -58,14 +58,11 @@
         "validate": "valider"
     },
     "errors": {
-        "create": "erreur lors de la cr\u00e9ation",
         "error-in-form": "erreur dans le formulaire",
         "language": "traduction manquante",
         "network": "erreur, pas de connexion internet",
-        "refresh": "erreur lors du rafra\u00eechissement",
         "server": "erreur du serveur",
-        "unique-translate": "cette object \"{model}\" a un doublon de traduction",
-        "update": "erreur lors de la mise \u00e0 jour"
+        "unique-translate": "cette object \"{model}\" a un doublon de traduction"
     },
     "help": {
         "event": {

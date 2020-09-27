@@ -58,14 +58,11 @@
         "validate": "validate"
     },
     "errors": {
-        "create": "error during creation",
         "error-in-form": "error in the form",
         "language": "missing translation",
         "network": "error, no internet connection",
-        "refresh": "error when refreshing",
         "server": "server error ",
-        "unique-translate": "this object \"{model}\" has a duplicate translation",
-        "update": "error during the update"
+        "unique-translate": "this object \"{model}\" has a duplicate translation"
     },
     "help": {
         "event": {
