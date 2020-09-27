@@ -36,7 +36,7 @@
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
         />
         <client-only>
-          <lazy-admin-texteditor class="border-none"
+          <lazy-admin-text-editor class="border-none"
                           :prefix="prefixLang(idx)"
                           :field="fields.langs.biography"
                           :action="false"

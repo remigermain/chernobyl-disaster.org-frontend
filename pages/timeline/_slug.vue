@@ -16,8 +16,8 @@
       </extra-nuxt-link>
       {{ i18nAttr(current, 'title') }}
     </h1>
-    <section class="overflow-y-scroll">
-      <p class="timeline-text p-4 leading-6 whitespace-pre-line" v-html="$sanitizeHtml(i18nAttr(current, 'description'))"/>
+    <section class="overflow-y-scroll ql-snow">
+      <span class="timeline-text p-4 leading-6 whitespace-pre-line ql-editor" v-html="$sanitizeHtml(i18nAttr(current, 'description'))"/>
     </section>
     <timeline-extra class="timeline-extra" :object="current" />
   </article>

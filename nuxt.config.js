@@ -31,7 +31,8 @@ export default {
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
-    {src: "~/plugins/directive.js", ssr: false}
+    {src: "~/plugins/directive.js", ssr: false},
+    {src: "~/plugins/quil.js", ssr: false}
   ],
 
   modules: [
@@ -152,6 +153,9 @@ export default {
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",
+
+    'quill/dist/quill.core.css',
+    'quill/dist/quill.snow.css',
   ],
 
   toast: {
@@ -174,6 +178,7 @@ export default {
       /__nuxt-error-page/,
       /action/,
       /ripple/,
+      /ql-/,
       /-(leave|enter|appear)(|-(to|from|active))$/,
       /^(?!(|.*?:)cursor-move).+-move$/,
       /^nuxt-link(|-exact)-active$/

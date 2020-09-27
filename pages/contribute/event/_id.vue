@@ -17,11 +17,11 @@
       <model-tags :tags="object.tags" />
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">
-          <div class="flex flex-col">
+          <div class="flex flex-col ql-snow">
             <h2 class="timeline-title text-4xl -sm:text-lg capitalize italic text-center">
               {{ obj.title }}
             </h2>
-            <p class="timeline-text p-4 leading-6 whitespace-pre-line" v-html="$sanitizeHtml(obj.description)"/>
+            <p class="timeline-text p-4 leading-6 whitespace-pre-line ql-editor" v-html="$sanitizeHtml(obj.description)"/>
           </div>
         </template>
       </model-langs>

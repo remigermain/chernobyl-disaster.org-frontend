@@ -36,15 +36,13 @@
 
         />
         <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'title')" />
-        <client-only>
-          <lazy-admin-texteditor :value="lang.description"
-                                class="border-none"
-                                :prefix="prefixLang(idx)"
-                                :field="fields.langs.description"
-                                :action="false"
+        <lazy-admin-text-editor :value="lang.description"
+                              class="border-none"
+                              :prefix="prefixLang(idx)"
+                              :field="fields.langs.description"
+                              :action="false"
 
-          />
-        </client-only>
+        />
         <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'description')" />
       </model-card-lang>
       <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
@@ -68,15 +66,13 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'language')"
         />
-        <client-only>
-          <lazy-admin-texteditor class="border-none"
-                                :prefix="prefixLang(idx + object.langs.length)"
-                                :field="fields.langs.description"
-                                :action="false"
+        <lazy-admin-text-editor class="border-none"
+                              :prefix="prefixLang(idx + object.langs.length)"
+                              :field="fields.langs.description"
+                              :action="false"
 
-                                :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'description')"
-          />
-        </client-only>
+                              :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'description')"
+        />
       </model-card-lang>
     </template>
   </lazy-model-form>

@@ -26,7 +26,9 @@
       </model-field>
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">
-          <p class="timeline-text p-4 leading-6 whitespace-pre-line" v-html="$sanitizeHtml(obj.biography)"/>
+          <div class="ql-snow wrapper">
+            <p class="timeline-text p-4 leading-6 ql-editor" v-html="$sanitizeHtml(obj.biography)"/>
+          </div>
         </template>
       </model-langs>
     </template>
