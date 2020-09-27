@@ -33,7 +33,7 @@
             <img :alt="i18nAttr(img, 'title')"
                  :src="img.picture.thumbnail_jepg"
                  loading="lazy"
-                 class="extra extra-picture"
+                 class="w-full h-full object-cover"
                  tabindex="0"
                  role="button"
                  type="image/jpeg"

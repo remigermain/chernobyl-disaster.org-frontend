@@ -17,7 +17,7 @@
         <quill-editor
           ref="editor"
           v-model="valueModel"
-          class="w-full"
+          class="w-full text-xl"
           :options="editorOption"
         />
     </template>

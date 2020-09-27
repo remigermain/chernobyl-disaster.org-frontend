@@ -5,7 +5,7 @@
       <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
       <picture v-for="(el, idx) in object" :key="el.id" role="img" class="picture-item">
         <source :srcset="el.picture.thumbnail_webp" type="image/webp">
-        <img class="picture-item"
+        <img class="w-full h-full object-cover"
              :alt="i18nAttr(el, 'title')"
              :src="el.picture.thumbnail_jpeg"
              loading="lazy"
