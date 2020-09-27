@@ -9,7 +9,7 @@
       <input v-model="valueModel"
              :type="type"
              :name="name"
-             class="input"
+             class="input w-full"
              :placeholder="field.label"
              :maxlength="field.max_length"
              :required="field.required"

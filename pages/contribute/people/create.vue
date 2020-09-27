@@ -35,12 +35,14 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
         />
-        <lazy-admin-text class="border-none"
-                         :prefix="prefixLang(idx)"
-                         :field="fields.langs.biography"
-                         :action="false"
-                         :errors="getErrorsIdx(errors.langs, idx, 'biography')"
-        />
+        <client-only>
+          <lazy-admin-texteditor class="border-none"
+                          :prefix="prefixLang(idx)"
+                          :field="fields.langs.biography"
+                          :action="false"
+                          :errors="getErrorsIdx(errors.langs, idx, 'biography')"
+          />
+        </client-only>
       </model-card-lang>
     </template>
   </lazy-model-form>

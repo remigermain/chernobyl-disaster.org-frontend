@@ -35,7 +35,7 @@ export default {
     },
     inline: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     errors: {
       type: Array,

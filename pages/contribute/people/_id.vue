@@ -26,7 +26,7 @@
       </model-field>
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">
-          <model-field :field="fields.langs.biography" :value="obj.biography" />
+          <p class="timeline-text p-4 leading-6 whitespace-pre-line" v-html="$sanitizeHtml(obj.biography)"/>
         </template>
       </model-langs>
     </template>

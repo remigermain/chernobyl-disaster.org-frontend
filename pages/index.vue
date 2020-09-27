@@ -8,6 +8,8 @@
         {{ $t('pages.home.description') }}
         {{ $t('pages.about.description') }}
       </p>
+      <textarea v-model="text" />
+      <p v-html="$sanitizeHtml(text)" />
       <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="group px-4 py-4 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800"
                             :title="$t('utils.goto-timeline')"
       >
@@ -31,6 +33,12 @@ export default {
   name: "Home",
 
   transition: "common",
+
+  data () {
+    return {
+      text: ""
+    }
+  },
 
   head () {
     return {

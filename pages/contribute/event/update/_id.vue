@@ -13,21 +13,14 @@
       </lazy-contribute-breadcrumb>
     </template>
     <template v-slot:form>
-      <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title" />
+      <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title"  />
+      <admin-datetime :value="object.date" :field="fields.date" :errors="errors.date"/>
       <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
-      <admin-datetime :value="object.date" :field="fields.date" :errors="errors.date" />
     </template>
     <template v-slot:form-lang>
       <!-- actual langs -->
       <model-card-lang v-for="(lang, idx) in object.langs" :key="lang.id" :title="langConv(lang.language)">
         <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
-        <lazy-admin-text :value="lang.title"
-                         class="border-none"
-                         :prefix="prefixLang(idx)"
-                         :field="fields.langs.title"
-                         :action="false"
-        />
-        <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'title')" />
         <lazy-admin-select :value="lang.language"
                            class="border-none"
                            :prefix="prefixLang(idx)"
@@ -35,13 +28,23 @@
                            :action="false"
         />
         <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'language')" />
-        <lazy-admin-textarea :value="lang.description"
-                             class="border-none"
-                             :prefix="prefixLang(idx)"
-                             :field="fields.langs.description"
-                             :action="false"
-                             :inline="false"
+        <lazy-admin-text :value="lang.title"
+                         class="border-none"
+                         :prefix="prefixLang(idx)"
+                         :field="fields.langs.title"
+                         :action="false"
+
         />
+        <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'title')" />
+        <client-only>
+          <lazy-admin-texteditor :value="lang.description"
+                                class="border-none"
+                                :prefix="prefixLang(idx)"
+                                :field="fields.langs.description"
+                                :action="false"
+
+          />
+        </client-only>
         <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'description')" />
       </model-card-lang>
       <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
@@ -54,10 +57,10 @@
           />
         </template>
         <lazy-admin-text class="border-none"
-                         :prefix="prefixLang(idx + object.langs.length)"
-                         :field="fields.langs.title"
-                         :action="false"
-                         :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'title')"
+                        :prefix="prefixLang(idx + object.langs.length)"
+                        :field="fields.langs.title"
+                        :action="false"
+                        :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'title')"
         />
         <lazy-admin-select class="border-none"
                            :prefix="prefixLang(idx + object.langs.length)"
@@ -65,13 +68,15 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'language')"
         />
-        <lazy-admin-textarea class="border-none"
-                             :prefix="prefixLang(idx + object.langs.length)"
-                             :field="fields.langs.description"
-                             :action="false"
-                             :inline="false"
-                             :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'description')"
-        />
+        <client-only>
+          <lazy-admin-texteditor class="border-none"
+                                :prefix="prefixLang(idx + object.langs.length)"
+                                :field="fields.langs.description"
+                                :action="false"
+
+                                :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'description')"
+          />
+        </client-only>
       </model-card-lang>
     </template>
   </lazy-model-form>

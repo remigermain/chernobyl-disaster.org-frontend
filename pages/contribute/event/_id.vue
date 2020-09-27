@@ -17,8 +17,12 @@
       <model-tags :tags="object.tags" />
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">
-          <model-field :field="fields.langs.title" :value="obj.title" />
-          <model-field :field="fields.langs.description" :value="obj.description" />
+          <div class="flex flex-col">
+            <h2 class="timeline-title text-4xl -sm:text-lg capitalize italic text-center">
+              {{ obj.title }}
+            </h2>
+            <p class="timeline-text p-4 leading-6 whitespace-pre-line" v-html="$sanitizeHtml(obj.description)"/>
+          </div>
         </template>
       </model-langs>
       <div class="extra">

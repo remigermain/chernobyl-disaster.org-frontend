@@ -51,7 +51,7 @@
                          :prefix="prefixLang(idx)"
                          :field="fields.langs.title"
                          :action="false"
-                         :inline="false"
+
                          :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'title')"
         />
         <lazy-admin-select class="border-none"

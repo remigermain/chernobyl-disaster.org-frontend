@@ -37,13 +37,15 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx, 'language')"
         />
-        <lazy-admin-text class="border-none"
-                         :value="lang.language"
-                         :prefix="prefixLang(idx)"
-                         :field="fields.langs.biography"
-                         :action="false"
-                         :errors="getErrorsIdx(errors.langs, idx, 'biography')"
-        />
+        <client-only>
+          <lazy-admin-texteditor class="border-none"
+                                 :value="lang.language"
+                                 :prefix="prefixLang(idx)"
+                                 :field="fields.langs.biography"
+                                 :action="false"
+                                 :errors="getErrorsIdx(errors.langs, idx, 'biography')"
+          />
+        </client-only>
       </model-card-lang>
 
       <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
@@ -61,12 +63,14 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'language')"
         />
-        <lazy-admin-text class="border-none"
-                         :prefix="prefixLang(idx)"
-                         :field="fields.langs.biography"
-                         :action="false"
-                         :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'biography')"
-        />
+        <client-only>
+          <lazy-admin-text class="border-none"
+                          :prefix="prefixLang(idx)"
+                          :field="fields.langs.biography"
+                          :action="false"
+                          :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'biography')"
+          />
+        </client-only>
       </model-card-lang>
     </template>
   </lazy-model-form>
