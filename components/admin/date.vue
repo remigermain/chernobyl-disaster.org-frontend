@@ -7,7 +7,9 @@
     </template>
     <template v-slot:input>
       <div class="flex flex-col">
-        <vue-datetime v-model="valueModel" min-datetime="1900-W01-1" value-zone="Europe/Kiev" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
+        <vue-datetime v-model="valueModel" min-datetime="1900-W01-1" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}">
+          <svg-icon slot="before" name="calendar"/>
+        </vue-datetime>
         <input v-model="allValue" type="text" :name="name" class="hidden">
       </div>
     </template>
@@ -43,12 +45,10 @@ export default {
 <style scoped>
 
 .datetime {
-  padding: 0.5rem !important;
+  padding: .3em .5em;
+  height: 2.2em;
   display: block !important;
-  border-width: 1px !important;
-  border-radius: 0.25rem !important;
-  border-color: rgb(43, 108, 176) !important;
-  background-color: rgb(237, 242, 247) !important;
+  border: 1px solid #d2d2d2;
 }
 </style>
 

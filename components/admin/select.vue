@@ -35,13 +35,15 @@ export default {
 </script>
 
 <style scoped>
-.select {
+.form-select {
   min-width: 180px;
+  width: max-content;
   width: auto;
   width: auto;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5px 6px;
+  padding-right: 36px;
   margin-top: 0;
 }
 </style>

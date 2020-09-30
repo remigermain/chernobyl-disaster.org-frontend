@@ -6,14 +6,17 @@
       </span>
     </template>
     <template v-slot:input>
-      <div class="flex flex-wrap">
-        <vue-datetime v-model="pickerModel" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
-        <vue-timepicker v-model="data" format="HH:mm:ss" manual-input fixed-dropdown-button auto-scroll />
+      <div class="flex flex-wrap flex-col space-y-2">
+        <vue-datetime v-model="pickerModel" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}">
+          <svg-icon slot="before" name="calendar"/>
+        </vue-datetime>
+        <vue-timepicker v-model="data" format="HH:mm:ss" manual-input fixed-dropdown-button auto-scroll>
+          <svg-icon slot="icon" name="clock"/>
+        </vue-timepicker>
         <input v-model="dateModel" class="hidden" :name="field.name" />
         <input v-model="haveHours" class="hidden" name="have_hour" />
         <input v-model="haveMinute" class="hidden" name="have_minute" />
         <input v-model="haveSecond" class="hidden" name="have_second" />
-        {{ data }}
       </div>
     </template>
   </component>
@@ -80,13 +83,20 @@ export default {
 }
 </script>
 <style scoped>
-
 .datetime {
-  padding: 0.5rem !important;
+  padding: .3em .5em;
+  height: 2.2em;
   display: block !important;
-  border-width: 1px !important;
-  border-radius: 0.25rem !important;
-  border-color: rgb(43, 108, 176) !important;
-  background-color: rgb(237, 242, 247) !important;
+  border: 1px solid #d2d2d2;
+}
+</style>
+
+<style>
+.vue__time-picker .dropdown ul li:not([disabled]).active {
+  background: #416ab8;
+}
+.vue__time-picker,
+.vue__time-picker > input {
+  width: 100% !important;
 }
 </style>
