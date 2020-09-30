@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
     <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="wrapper timeline-time w-min-content mb-1" :class="{'w-max-content': min}">
-      <span class="items text-xs w-max-content">
+      <span v-if="date.have_hour" class="items text-xs w-max-content">
         {{ hours }}{{ this.$t("utils.hours")[0] }}
       </span>
-      <span class="items text-xs w-max-content">
+      <span v-if="date.have_minute"  class="items text-xs w-max-content">
         {{ minutes }}{{ this.$t("utils.minutes")[0] }}
       </span>
-      <span class="items text-xs w-max-content">
+      <span v-if="date.have_second" class="items text-xs w-max-content">
         {{ seconds }}{{ this.$t("utils.seconds")[0] }}
       </span>
     </time>
@@ -31,15 +31,15 @@ export default {
 
   computed: {
     hours () {
-      const h = this.date.date.getHours().toString()
+      const h = this.date.date.getUTCHours().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
     minutes () {
-      const h = this.date.date.getMinutes().toString()
+      const h = this.date.date.getUTCMinutes().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
     seconds () {
-      const h = this.date.date.getSeconds().toString()
+      const h = this.date.date.getUTCSeconds().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
   },

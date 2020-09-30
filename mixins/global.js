@@ -115,6 +115,7 @@ export default {
     },
 
     getFullDate (date, checkTime=true) {
+      if (!date) return null
       const _date = (typeof date === "string" ? new Date(date) : new Date(date.date))
       let options = {year: "numeric", month: "long", day: "numeric" }
       if (checkTime && !this.isTimeEmpty(date)) {

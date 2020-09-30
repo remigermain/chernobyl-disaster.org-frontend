@@ -14,7 +14,7 @@
     <template v-slot:detail>
       <model-field :field="fields.title" :value="object.title" />
       <model-field :field="fields.event" :value="object.event" />
-      <model-field :field="fields.date" :value="object.date" />
+      <model-field :field="fields.date" :value="object" />
       <model-field :field="fields.photographer" :value="object.photographer">
         <span v-if="object.photographer">
           {{ fields.photographer.display(object.photographer) }}

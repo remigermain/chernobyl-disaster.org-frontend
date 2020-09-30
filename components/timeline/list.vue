@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="timeline-list-grid shadow-lg rounded-md border-t-8 border-gray-800" :class="{'active': active}">
-      <section id="timeline" class="timeline overflow-y-scroll flex flex-col items-center">
+      <section id="timeline" class="timeline overflow-y-scroll">
         <section v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
           <header class="timeline-date flex items-center text-center flex-col px-4">
             <time :datetime="obj.date.date.getFullYear()" class="text-3xl">
@@ -33,7 +33,6 @@
             </extra-nuxt-link>
           </section>
         </section>
-        <div class="timeline-content relative" />
       </section>
       <div class="w-full h-full flex justify-center bg-gray-900 rounded-b-md text-white overflow-hidden">
         <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}"
@@ -184,7 +183,7 @@ export default {
     margin-top: .5em;
   }
   & > *:last-child {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
 }
 

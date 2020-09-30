@@ -76,3 +76,9 @@ export default {
   background-color: rgb(237, 242, 247) !important;
 }
 </style>
+
+<style>
+.quill-editor .ql-editor {
+  font-size: 1.35em;
+}
+</style>

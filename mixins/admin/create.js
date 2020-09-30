@@ -28,6 +28,7 @@ export default {
             this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
           } else {
             event.srcElement.reset() // reset all input in form
+            this.langs = []
           }
         })
         .catch(error => { this.requestError(error) })

@@ -5,7 +5,7 @@
     </span>
     <span v-if="value" class="detail-item-content">
       <template v-if="!$slots.default">
-        {{ field.display ? field.display(value) : value }}
+        {{ field.display ? field.display(value) : value[field.name] || value }}
       </template>
       <slot v-else />
     </span>

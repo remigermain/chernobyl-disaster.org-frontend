@@ -13,7 +13,7 @@
     </template>
     <template v-slot:detail>
       <model-field :field="fields.title" :value="object.title" />
-      <model-field :field="fields.date" :value="object.date" />
+      <model-field :field="fields.date" :value="object" />
       <model-tags :tags="object.tags" />
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">
