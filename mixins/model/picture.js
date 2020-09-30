@@ -66,7 +66,7 @@ export default {
           name: "date",
           required: false,
           help: this.$t("help.picture.date"),
-          display: obj => this.getDateYear(obj.date)
+          display: obj => this.getFullDate(obj.date)
         },
         photographer: {
           label: this.$t("admin.model.photographer"),

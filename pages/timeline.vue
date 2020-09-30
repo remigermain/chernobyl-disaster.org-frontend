@@ -6,13 +6,10 @@
 </template>
 
 <script>
-import timelineMixins from "@/mixins/page/timeline"
 import { timelineElement } from "@/lib/timeline"
 
 export default {
   name: "Timeline",
-
-  mixins: [timelineMixins],
   transition: "timeline",
 
   asyncData({ app, route }) {

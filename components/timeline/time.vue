@@ -18,11 +18,7 @@
 </template>
 
 <script>
-import timelineMixins from "@/mixins/page/timeline"
-
 export default {
-
-  mixins: [timelineMixins],
 
   props: {
     date: {

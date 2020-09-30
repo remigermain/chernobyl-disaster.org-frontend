@@ -37,7 +37,7 @@ export default {
           name: "date",
           required: true,
           help: this.$t("help.event.date"),
-          display: obj => this.getDateYear(obj.date)
+          display: obj => this.getFullDate(obj.date)
         },
         langs: {
           title: {

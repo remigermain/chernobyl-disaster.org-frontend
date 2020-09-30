@@ -52,7 +52,7 @@ export default {
           name: "date",
           required: false,
           help: this.$t("help.video.date"),
-          display: obj => this.getDateYear(obj.date)
+          display: obj => this.getFullDate(obj.date)
         },
         langs: {
           title: {

@@ -24,12 +24,8 @@
 </template>
 
 <script>
-import timelineMixins from "@/mixins/page/timeline"
-
 export default {
   name: "TimelineDetail",
-
-  mixins: [timelineMixins],
 
   props: {
     current: {

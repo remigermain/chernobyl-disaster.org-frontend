@@ -66,13 +66,10 @@
 </template>
 
 <script>
-import timelineMixins from "@/mixins/page/timeline"
 import { timelineElement } from "@/lib/timeline"
 import scrollIntoView from "scroll-into-view-if-needed"
 
 export default {
-
-  mixins: [timelineMixins],
 
   props: {
     object: {
