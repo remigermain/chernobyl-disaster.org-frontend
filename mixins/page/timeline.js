@@ -7,7 +7,7 @@ export default {
       return date.toLocaleDateString(this.$i18n.locale, { month: "long", day: "numeric" })
     },
     isTimeEmpty (date) {
-      return (date.getHours() === 0 && date.getMinutes() === 0 && date.getSeconds() === 0)
+      return !date.have_second && !date.have_minute && !date.have_hour
     },
     getTime (date) {
       return date.toLocaleTimeString(this.$i18n.locale)

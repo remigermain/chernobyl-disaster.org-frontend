@@ -1,8 +1,8 @@
 <template>
   <article class="wrapper">
     <div class="timeline-date -sm:flex-row">
-      <time :datetime="current.date" class="text-4xl -sm:text-lg -sm:font-semibold">
-        {{ getDateYear(current.date) }}
+      <time :datetime="current.date.date" class="text-4xl -sm:text-lg -sm:font-semibold">
+        {{ getDateYear(current.date.date) }}
       </time>
       <timeline-time :date="current.date" />
     </div>

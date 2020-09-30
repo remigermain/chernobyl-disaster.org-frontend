@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <time v-if="!isTimeEmpty(date)" :datetime="date" class="wrapper timeline-time">
+    <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="wrapper timeline-time">
       <span class="items text-3xl font-bold"> {{ hours }} </span>
       <span class="items text-3xl font-bold"> {{ minutes }} </span>
       <span class="space-items text-3xl font-bold"> {{ seconds }} </span>
@@ -26,22 +26,22 @@ export default {
 
   props: {
     date: {
-      type: [String, Date],
+      type: Object,
       default: null
     },
   },
 
   computed: {
     hours () {
-      const h = this.date.getHours().toString()
+      const h = this.date.date.getHours().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
     minutes () {
-      const h = this.date.getMinutes().toString()
+      const h = this.date.date.getMinutes().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
     seconds () {
-      const h = this.date.getSeconds().toString()
+      const h = this.date.date.getSeconds().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
   },

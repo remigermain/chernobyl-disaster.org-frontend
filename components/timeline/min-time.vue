@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <time v-if="!isTimeEmpty(date)" :datetime="date" class="wrapper timeline-time w-min-content mb-1" :class="{'w-max-content': min}">
+    <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="wrapper timeline-time w-min-content mb-1" :class="{'w-max-content': min}">
       <span class="items text-xs w-max-content">
         {{ hours }}{{ this.$t("utils.hours")[0] }}
       </span>
@@ -23,7 +23,7 @@ export default {
 
   props: {
     date: {
-      type: [String, Date],
+      type: Object,
       default: null
     },
     min: {
@@ -35,15 +35,15 @@ export default {
 
   computed: {
     hours () {
-      const h = this.date.getHours().toString()
+      const h = this.date.date.getHours().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
     minutes () {
-      const h = this.date.getMinutes().toString()
+      const h = this.date.date.getMinutes().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
     seconds () {
-      const h = this.date.getSeconds().toString()
+      const h = this.date.date.getSeconds().toString()
       return (h.length === 1 ? `0${h}`: h)
     },
   },

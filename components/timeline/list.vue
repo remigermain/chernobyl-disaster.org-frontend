@@ -4,11 +4,11 @@
       <section id="timeline" class="timeline overflow-y-scroll flex flex-col items-center">
         <section v-for="obj in listCopy" :key="obj.id" class="timeline-content relative z-0 pl-2">
           <header class="timeline-date flex items-center text-center flex-col px-4">
-            <time :datetime="obj.date.getFullYear()" class="text-3xl">
-              {{ obj.date.getFullYear() }}
+            <time :datetime="obj.date.date.getFullYear()" class="text-3xl">
+              {{ obj.date.date.getFullYear() }}
             </time>
-            <time :datetime="getDate(obj.date)" class="text-md italic text-gray-700">
-              {{ getDate(obj.date) }}
+            <time :datetime="getDate(obj.date.date)" class="text-md italic text-gray-700">
+              {{ getDate(obj.date.date) }}
             </time>
           </header>
           <section class="timeline-item mr-1">
@@ -27,9 +27,6 @@
                     }"
               />
               <timeline-min-time :date="element.date" />
-              <!-- <time v-show="!isTimeEmpty(element.date)" :datetime="element.date.toLocaleTimeString($i18n.locale)" class="italic">
-                {{ element.date.toLocaleTimeString($i18n.locale) }}
-              </time> -->
               <h4>
                 {{ i18nAttr(element, 'title') }}
               </h4>
@@ -149,9 +146,9 @@ export default {
     },
     compareDate (original, newEl) {
       if (
-        newEl.getFullYear()!==original.getFullYear() ||
-        newEl.getMonth()!==original.getMonth() ||
-        newEl.getDay()!==original.getDay()
+        newEl.getFullYear() !== original.getFullYear() ||
+        newEl.getMonth() !== original.getMonth() ||
+        newEl.getDay() !== original.getDay()
       ) {
         return true
       }
@@ -163,7 +160,7 @@ export default {
       */
       const list = []
       this.object.forEach((el, idx) => {
-        if (list.length === 0 || this.compareDate(list[list.length - 1].date, el.date)) {
+        if (list.length === 0 || this.compareDate(list[list.length - 1].date.date, el.date.date)) {
           list.push({ date: el.date, id: idx, list: [el]})
         } else {
           list[list.length - 1].list.push(el)

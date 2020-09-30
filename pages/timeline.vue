@@ -23,7 +23,7 @@ export default {
         }
         // change date string to Date object
         const result = response.data.map(el => {
-          el.date = new Date(el.date)
+          el.date.date = new Date(el.date.date)
           return el
         })
 

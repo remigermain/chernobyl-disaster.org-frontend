@@ -32,8 +32,8 @@ export default {
 
   data () {
     return {
-      pickerModel: this.value.date,
-      data: this.splitDate(this.value.date)
+      pickerModel: this.value?.date || "",
+      data: this.splitDate(this.value?.date || "")
     }
   },
 
@@ -67,13 +67,13 @@ export default {
     }
   },
 
-
   methods: {
     needDigits (num) {
       num = num.toString()
       return (num.length === 1 ? `0${num}` : num)
     },
     splitDate (ori) {
+      if (!ori) return {}
       const date = new Date(Date.parse(ori))
       const data = {}
       if (this.value.have_hour) {
