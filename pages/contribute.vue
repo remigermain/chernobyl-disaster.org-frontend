@@ -44,11 +44,19 @@ export default {
         if (response.status!==200) {
           throw new Error("error-server")
         }
+        const results = response.data.results.map(o => {
+          o.date = new Date(o.date)
+          return o
+        })
         return {
-          object: response.data
+          object: {
+            ...response.data,
+            results
+          }
         }
       })
-      .catch(() => {
+      .catch((error) => {
+        console.log(error)
         // TODO
       })
   },

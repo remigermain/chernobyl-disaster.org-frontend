@@ -55,7 +55,7 @@ export default {
         date: {
           field: "date",
           label: this.$t("tools.date"),
-          display: obj => this.getDateYear(obj.date)
+          display: obj => this.getDateMini(obj.date)
         },
         uuid: {
           field: "uuid",

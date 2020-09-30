@@ -125,6 +125,9 @@ export default {
     getDateYear (date) {
       return date.toLocaleDateString(this.$i18n.locale, {year: "numeric", month: "long", day: "numeric" })
     },
+    getDateMini (date) {
+      return date.toLocaleDateString(this.$i18n.locale, {year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit"})
+    },
     getDate (date) {
       return date.toLocaleDateString(this.$i18n.locale, { month: "long", day: "numeric" })
     },
