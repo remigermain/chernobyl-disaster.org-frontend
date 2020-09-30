@@ -96,10 +96,7 @@ export default {
       if (!pic || pic.size === 0) {
         form.delete("picture")
       }
-      // remove date key if is empty
-      if (!form.get("date")) {
-        form.delete("date")
-      }
+
     },
   }
 

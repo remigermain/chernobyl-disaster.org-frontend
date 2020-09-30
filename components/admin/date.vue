@@ -8,7 +8,8 @@
     <template v-slot:input>
       <div class="flex flex-col">
         <vue-datetime v-model="valueModel" min-datetime="1900-W01-1" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}">
-          <svg-icon slot="before" name="calendar"/>
+          <svg-icon slot="before" name="calendar" class="opacity-50 text-2xl"/>
+          <svg-icon slot="after" name="x" class="opacity-50 text-2xl" @click="valueModel = null" />
         </vue-datetime>
         <input v-model="allValue" type="text" :name="name" class="hidden">
       </div>

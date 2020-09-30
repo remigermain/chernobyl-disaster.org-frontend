@@ -89,15 +89,5 @@ export default {
         return redirect(app.localePath({name: "contribute-video"}))
       })
   },
-
-  methods: {
-    assignFormData (form) {
-      // remove date key if is empty
-      if (form.get("date") === "") {
-        form.delete("date")
-      }
-    },
-  }
-
 }
 </script>
