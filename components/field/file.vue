@@ -5,13 +5,3 @@
     </template>
   </lazy-field-text>
 </template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
-</style>

@@ -93,6 +93,7 @@ export default {
 
   watch: {
     object (newValue, oldValue) {
+      console.log(newValue)
       this.transition = !oldValue
     }
   },

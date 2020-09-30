@@ -44,6 +44,10 @@ export default {
     autocomplete: {
       type: String,
       default: "off"
+    },
+    errors: {
+      type: Array,
+      default: () => []
     }
   },
 

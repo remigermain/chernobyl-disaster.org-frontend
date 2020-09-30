@@ -6,22 +6,14 @@
       </span>
     </template>
     <template v-slot:input>
-      <div class="flex flex-col">
-        <vue-datetime v-model="valueModel" type="datetime" value-zone="Europe/Kiev" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
-        <input v-model="allValue"
-               type="datetime-local"
-               :name="name"
-               class="hidden"
-               :required="field.required"
-               @change="$emit('change', valueModel)"
-               @input="$emit('input', valueModel)"
-        >
-        <label class="flex justify-between items-center mt-2">
-          <span class="">
-            {{ $t('utils.seconds') }}
-          </span>
-          <input v-model="secondsValue" type="number" min="0" max="59" class="datetime w-20">
-        </label>
+      <div class="flex flex-wrap">
+        <vue-datetime v-model="pickerModel" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}" />
+        <vue-timepicker v-model="data" format="HH:mm:ss" manual-input fixed-dropdown-button auto-scroll />
+        <input v-model="dateModel" class="hidden" :name="field.name" />
+        <input v-model="haveHours" class="hidden" name="have_hour" />
+        <input v-model="haveMinute" class="hidden" name="have_minute" />
+        <input v-model="haveSecond" class="hidden" name="have_second" />
+        {{ data }}
       </div>
     </template>
   </component>
@@ -34,33 +26,55 @@ export default {
 
   mixins: [FieldMixins],
 
-
   data () {
     return {
-      secondsValue: new Date(this.value).getSeconds(),
-      allValue: this.value
+      pickerModel: this.value.date,
+      data: this.splitDate()
     }
   },
 
-  watch: {
-    valueModel (value) {
-      if (value) {
-        const date = new Date(value)
-        date.setSeconds(this.secondsValue)
-        this.allValue = date.toISOString()
-      } else {
-        this.allValue = null
-      }
+  computed: {
+    haveHours () {
+      const val = parseInt(this.data.HH)
+      return val >= 0 && val <= 24
     },
-    secondsValue (value) {
-      if (value) {
-        const date = new Date(this.valueModel)
-        date.setSeconds(value)
-        this.allValue = date.toISOString()
-      } else {
-        this.allValue = null
-      }
+    haveMinute () {
+      const val = parseInt(this.data.mm)
+      return val >= 0 && val <= 59
     },
+    haveSecond () {
+      const val = parseInt(this.data.ss)
+      return val >= 0 && val <= 59
+    },
+    dateModel () {
+      const date = new Date(Date.parse(this.pickerModel))
+      date.setHours((this.data.HH || 0) - (date.getTimezoneOffset() / 60))
+      date.setMinutes(this.data.mm || 0)
+      date.setSeconds(this.data.ss || 0)
+      return date.toISOString()
+    }
+  },
+
+
+  methods: {
+    needDigits (num) {
+      num = num.toString()
+      return (num.length === 1 ? `0${num}` : num)
+    },
+    splitDate () {
+      const date = new Date(Date.parse(this.value.date))
+      const data = {}
+      if (this.value.have_hour) {
+        data.HH = this.needDigits(date.getHours() + (date.getTimezoneOffset() / 60))
+      }
+      if (this.value.have_minute) {
+        data.mm = this.needDigits(date.getMinutes())
+      }
+      if (this.value.have_second) {
+        data.ss = this.needDigits(date.getSeconds())
+      }
+      return data
+    }
   }
 
 }

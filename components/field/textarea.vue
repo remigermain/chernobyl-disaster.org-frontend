@@ -33,12 +33,12 @@ export default {
   props: {
     errors: {
       type: Array,
-      required: true,
+      default: () => []
     },
     min: {
       type: Boolean,
       default: true
-    }
+    },
   }
 
 }

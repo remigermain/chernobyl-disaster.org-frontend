@@ -32,7 +32,7 @@ export default {
     errors: {
       type: Array,
       default: () => []
-    },
+    }
   },
 
   data () {

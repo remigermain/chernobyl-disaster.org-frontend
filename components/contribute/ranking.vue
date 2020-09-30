@@ -21,8 +21,11 @@
     <div
       class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"
     >
-      {{ first.username || empty }}
-      <span class="text-indigo-700">{{ first.count }}</span>
+      <span v-if="first">
+        {{ first.username }}
+        <span class="text-indigo-700">{{ first.count }}</span>
+      </span>
+      <span v-else class="italic text-opacity-50 text-gray-700">{{ empty }}</span>
     </div>
     <div
       class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"

@@ -37,10 +37,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    errors: {
-      type: Array,
-      default: () => []
-    }
   },
 
   computed: {

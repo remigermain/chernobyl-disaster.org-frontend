@@ -35,6 +35,7 @@
     "vue-datetime": "^1.0.0-beta.13",
     "vue-matomo": "^3.14.0-0",
     "vue-quill-editor": "^3.0.6",
+    "vue2-timepicker": "^1.1.5",
     "weekstart": "^1.0.1"
   },
   "devDependencies": {
