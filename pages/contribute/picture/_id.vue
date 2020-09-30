@@ -17,8 +17,7 @@
       <model-field :field="fields.date" :value="object" />
       <model-field :field="fields.photographer" :value="object.photographer">
         <span v-if="object.photographer">
-          {{ fields.photographer.display(object.photographer) }}
-          <img :src="object.photographer.profil.thumbnail" alt="img" class="rounded-full">
+          {{ fields.photographer.display(object) }}
         </span>
       </model-field>
       <model-tags :tags="object.tags" />
