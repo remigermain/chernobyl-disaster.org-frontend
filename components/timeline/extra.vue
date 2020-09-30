@@ -237,6 +237,8 @@ export default {
   .extra-toolbar-desktop {
     flex-direction: row;
     display: none;
+    height: max-content;
+    max-height: calc(70vh - 60px - 48px);
     & > .extra-btn {
       width: 50%;
       height: auto;

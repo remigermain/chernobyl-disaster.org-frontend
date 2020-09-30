@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center trophy text-white w-2/4 mt-4">
+  <div class="flex justify-center trophy text-white w-2/4 mt-4 text-center">
     <div class="card-buble flex justify-center items-center">
       <span class="bg-indigo-700 buble second shadow-md">2</span>
     </div>
