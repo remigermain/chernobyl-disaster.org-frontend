@@ -134,10 +134,13 @@
             "creator-website": "site du cr\u00e9ateur",
             "description": "Ce site retrace les \u00e9v\u00e8nements de l'accident qui a conduit \u00e0 cette catastrophe et ces cons\u00e9quences, illustr\u00e9 par photo, vid\u00e9o et document d'archive.",
             "donation": "donation",
+            "donators": "donateurs",
             "help-me": "Aidez-moi",
             "help-me-description": "Ce site est gratuit, open-source et le restera !Pourquoi m\u2019aider ? Actuellement, le co\u00fbt annuel de l\u2019infrastructure est de 170 euros. Mais celui-ci se verra augmenter en cons\u00e9quence du nombre de photographies stock\u00e9 sur le site web.Afin de m\u2019aider \u00e0 assumer ce co\u00fbt, et sur la base du volontariat, je mets \u00e0 disposition une cagnotte sur laquelle vous pouvez me donner un coup de main.Bien \u00e9videmment, si l\u2019argent cumul\u00e9 est sup\u00e9rieur aux d\u00e9penses engendr\u00e9 initialement. Je me servirai de cette somme afin d\u2019am\u00e9liorer le service propos\u00e9, et pourquoi pas, rajouter une instance de stockage pour les vid\u00e9os.",
             "no-contributors": "aucun contributeur",
-            "thanks-contributors": "merci aux contributeurs"
+            "no-donators": "aucun donateurs",
+            "thanks-contributors": "merci aux contributeurs",
+            "thanks-donators": "merci aux donateurs"
         },
         "contact": {
             "description": "vous pouvez me contacter pour toute demande, je vous r\u00e9pondrai dans les plus brefs d\u00e9lais !",

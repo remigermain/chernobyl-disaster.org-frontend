@@ -26,6 +26,32 @@
       </section>
       <section>
         <h2 class="text-3xl text-md capitalize">
+          {{ $t('pages.about.donators') }}
+        </h2>
+        <h2 class="text-gray-800 font-medium">
+          {{ $t('pages.about.thanks-donators') }}
+          <div class="inline-flex relative">
+            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />
+          </div>
+          <div class="inline-flex relative">
+            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />
+          </div>
+          <wbr>
+        </h2>
+        <div class="all-contributor">
+          <span v-for="user in donators" :key="user" class="text-sm">
+            {{ user }}
+          </span>
+        </div>
+        <span v-if="donators.length === 0" class="text-center italic text-blue-700 contributors-empty">
+          {{ $t('pages.about.no-donators') }}
+          <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
+        </span>
+      </section>
+      <section>
+        <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributors') }}
         </h2>
         <h2 class="text-gray-800 font-medium">
@@ -122,10 +148,13 @@ export default {
         if (response.status!==200) {
           throw new Error("error-server")
         }
-        return {contributors: response.data.results }
+        return {
+          contributors: response.data.contributors,
+          donators: response.data.donators
+        }
       })
       .catch(() => {
-        return {contributors: [] }
+        return {contributors: [], donators: [] }
       })
   },
 
