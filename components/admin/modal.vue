@@ -75,15 +75,3 @@ export default {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.modal {
-  top:0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  z-index: 45;
-  @apply .bg-gray-900 .bg-opacity-75;
-}
-</style>

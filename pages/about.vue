@@ -5,7 +5,7 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
         </h2>
-        <a :href="$gitlab" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
+        <a href="https://gitlab.com/chernobyl.org" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-500 hover:scale-125 transform transition-transform duration-150"
            :title="$t('pages.about.contribute-gitlab')"
         >
           <svg-icon name="brand-gitlab" role="img" aria-label="Gitlab" />
@@ -83,15 +83,17 @@
           {{ $t('pages.about.help-me-description') }}
         </p>
       </article>
-      <a href="//TODO" class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold rounded-full group hover:bg-gray-800 btn-icon-show overflow-hidden"
+      <button class="px-3 py-3 bg-gray-900 text-white relative transition-all duration-400 font-bold rounded-full group hover:bg-gray-800 btn-icon-show overflow-hidden"
          :title="$t('pages.about.help-me')"
+         @click="activeDonation = true"
       >
-        {{ $t('pages.about.buy-me-coffe') }}
-        <svg-icon name="mug" role="img" :aria-label="$t('pages.about.buy-me-coffe')"
+        {{ $t('pages.about.donation') }}
+        <svg-icon name="wallet" role="img" :aria-label="$t('pages.about.buy-me-coffe')"
                   class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-1 mx-2"
         />
-      </a>
+      </button>
     </section>
+    <donation v-if="activeDonation" @close="activeDonation = false"/>
     <div class="common-image">
       <picture role="img">
         <!-- <source srcset="~/assets/img/background-about-mobile.avif" media="(max-width: 550px)" type="image/avif"> -->
@@ -125,6 +127,12 @@ export default {
       .catch(() => {
         return {contributors: [] }
       })
+  },
+
+  data () {
+    return {
+      activeDonation: false
+    }
   },
 
   head () {
