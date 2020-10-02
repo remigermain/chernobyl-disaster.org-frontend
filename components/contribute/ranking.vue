@@ -50,13 +50,13 @@ export default {
 
   computed: {
     first() {
-      return this.object.first
+      return this.object[0]
     },
     second() {
-      return this.object.second
+      return this.object[1]
     },
     third() {
-      return this.object.third
+      return this.object[2]
     },
     unk () {
       return this.$t("utils.empty")
