@@ -38,9 +38,9 @@
       />
       <div class="picture-item-container">
         <picture class="picture-item mx-auto shadow-md">
-          <source :srcset="object.picture.original_webp" type="image/webp">
+          <source :srcset="$media(object.picture.original_webp)" type="image/webp">
           <img :alt="i18nAttr(object, 'title')"
-               :src="object.picture.original_jpeg"
+               :src="$media(object.picture.original_jpeg)"
                class="picture-item mx-auto shadow-md"
                loading="lazy"
                type="image/jpeg"

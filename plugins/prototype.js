@@ -17,3 +17,8 @@ Vue.prototype.$sanitizeHtml = (value) => {
     }
   })
 }
+
+
+const toUrlBackend = url => `${process.env.BACKEND_URL}${url}`
+Vue.prototype.$media = toUrlBackend
+Vue.prototype.$static = toUrlBackend

@@ -22,7 +22,7 @@
       </model-field>
       <model-tags :tags="object.tags" />
       <model-field :field="fields.profil" :value="object.profil">
-        <img :src="object.profil.original_jpeg" :alt="object.name">
+        <img :src="$media(object.profil.original_jpeg)" :alt="object.name">
       </model-field>
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">

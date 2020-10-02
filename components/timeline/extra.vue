@@ -29,9 +29,9 @@
       <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
         <template v-if="pictureActive">
           <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
-            <source :srcset="img.picture.thumbnail_webp" type="image/webp">
+            <source :srcset="$media(img.picture.thumbnail_webp)" type="image/webp">
             <img :alt="i18nAttr(img, 'title')"
-                 :src="img.picture.thumbnail_jepg"
+                 :src="$media(img.picture.thumbnail_jepg)"
                  loading="lazy"
                  class="w-full h-full object-cover"
                  tabindex="0"
