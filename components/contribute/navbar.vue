@@ -57,7 +57,7 @@ export default {
   font-size: 1.2rem;
 }
 
-@media screen and (min-width: 900px){
+@media screen and (min-width: 1000px){
   .grid-layout-contribute-navbar {
     display: block;
     margin-top: 1.5rem;
@@ -135,7 +135,7 @@ export default {
   }
 }
 
-@media screen and (max-width:900px){
+@media screen and (max-width:1000px){
   .grid-layout-contribute-navbar {
     padding-right: .5em;
     .contribute-navbar-items {
