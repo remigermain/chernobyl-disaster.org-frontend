@@ -45,11 +45,11 @@
           <span v-for="user in donators" :key="user" class="text-sm inline-block">
             {{ user }}
           </span>
+          <span v-if="donators.length === 0" class="text-center italic text-blue-700 contributors-empty">
+            {{ $t('pages.about.no-donators') }}
+            <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
+          </span>
         </div>
-        <span v-if="donators.length === 0" class="text-center italic text-blue-700 contributors-empty">
-          {{ $t('pages.about.no-donators') }}
-          <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
-        </span>
       </section>
       <section>
         <h2 class="text-3xl text-md capitalize">
@@ -71,11 +71,11 @@
           <span v-for="user in contributors" :key="user" class="text-sm inline-block">
             {{ user }}
           </span>
+          <span v-if="contributors.length === 0" class="text-center italic text-blue-700 contributors-empty">
+            {{ $t('pages.about.no-contributors') }}
+            <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
+          </span>
         </div>
-        <span v-if="contributors.length === 0" class="text-center italic text-blue-700 contributors-empty">
-          {{ $t('pages.about.no-contributors') }}
-          <svg-icon name="mood-sad" role="img" :aria-label="$t('utils.mood-sad')" />
-        </span>
       </section>
     </section>
     <div class="bg-img-about">
