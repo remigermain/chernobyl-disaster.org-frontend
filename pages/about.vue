@@ -85,7 +85,7 @@
         <source srcset="~/assets/img/background-about-tablet.webp" media="(max-width: 850px)" type="image/webp">
         <source srcset="~/assets/img/background-about-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
         <source srcset="~/assets/img/background-about.webp" media="(min-width: 850px)" type="image/webp">
-        <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="image" type="image/jpeg" class="h-full w-full">
+        <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="image" type="image/jpeg" class="h-full w-full object-cover">
       </picture>
     </div>
     <div class="common-about space-y-4">
