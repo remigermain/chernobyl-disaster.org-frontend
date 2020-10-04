@@ -52,6 +52,9 @@ export default {
     meta: {
       theme_color: "#1a202cff",
     },
+    manifest: {
+      theme_color: "#1a202cff",
+    }
   },
 
   i18n: require("./config/i18n").default, // i18n required in top

@@ -13,6 +13,7 @@ export default {
       name: "English",
     },
   ],
+  baseUrl: process.env.SITE_URL,
   strategy: "prefix",
   defaultLocale: "en",
   lazy: true,
