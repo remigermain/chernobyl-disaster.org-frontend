@@ -88,8 +88,9 @@ export default {
   },
 
   created () {
-    if (this.$route.query.id?.match(/^\d+$/)) {
-      this.active = parseInt(this.$route.query.id)
+    const id = this.$route.query.id
+    if (id && id.match(/^\d+$/)) {
+      this.active = parseInt(id)
     }
   },
 

@@ -163,16 +163,18 @@ export default {
       }
     },
     convertName (obj, col) {
+      const key = this.getField(col)
       return (
-        this.fields[this.getField(col)]?.display?.(obj) ||
-        col.display?.(obj) ||
-        obj[this.getField(col)] ||
+        this.fields[key] && this.fields[key].display && this.fields[key].display(obj) ||
+        col.display && col.display(obj) ||
+        obj[key] ||
         obj
       )
     },
     convertLabel (col) {
+      const key = this.getField(col)
       return (
-        this.fields[this.getField(col)]?.label ||
+        this.fields[key] && this.fields[key].label ||
         col.label ||
         col
       )

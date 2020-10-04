@@ -32,8 +32,8 @@ export default {
 
   data () {
     return {
-      pickerModel: this.value?.date || "",
-      data: this.splitDate(this.value?.date || "")
+      pickerModel: this.value && this.value.date || "",
+      data: this.splitDate(this.value && this.value.date || "")
     }
   },
 

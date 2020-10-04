@@ -62,7 +62,7 @@ export default {
       return this.object.langs.find(x => x.language === this.selectLocale)
     },
     previewValue () {
-      return this.preview?.value || null
+      return this.preview && this.preview.value || null
     },
     current () {
       return this.object.langs.find(x => x.language === this.$route.params.id)
@@ -88,9 +88,9 @@ export default {
         this.locales.find(l => l.language === this.$route.params.id)) {
       locale = this.$i18n.defaultLocale
     }
-    this.selectLocale = locale || this.locales[0]?.value || ""
+    this.selectLocale = locale || this.locales[0] && this.locales[0].value || ""
 
-    this.value = this.current?.value || ""
+    this.value = this.current && this.current.value || ""
   },
 
   methods: {
@@ -104,7 +104,7 @@ export default {
         value: this.value,
       }
 
-      if (this.current?.id) {
+      if (this.current && this.current.id) {
         this.update(data)
       } else {
         this.create(data)

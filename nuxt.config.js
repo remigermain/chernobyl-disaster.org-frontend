@@ -192,9 +192,6 @@ export default {
   },
 
   build: {
-    babel: {
-      ...require("./config/babel").default,
-    },
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

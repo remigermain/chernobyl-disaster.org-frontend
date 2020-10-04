@@ -78,13 +78,13 @@ export default {
       return this.$t("errors.language")
     },
     requestError (error) {
-      if (error.response?.status >= 500) {
+      if (!error.response || error.response.status >= 500) {
         this.i18nToast.error(this.$t("errors.server")).goAway(10000)
       }
-      else if (error.response?.data?.detail) {
+      else if (error.response.data && error.response.data.detail) {
         this.i18nToast.error(error.response.data.detail).goAway(10000)
       }
-      else if (error.response?.data) {
+      else if (error.response.data) {
         // assign response to error
         this.errors = {...this.errors, ...error.response.data}
         // if non_field_errors as set, create toast

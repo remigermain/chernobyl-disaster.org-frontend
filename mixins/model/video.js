@@ -39,7 +39,10 @@ export default {
           required: false,
           choices: this.$store.getters["model/events"],
           help: this.$t("help.event.global-description"),
-          display: obj => this.$store.getters["model/event"](obj.event)?.display_name
+          display: obj => {
+            const ev = this.$store.getters["model/event"](obj.event)
+            return ev && ev.display_name || null
+          }
         },
         video: {
           label: this.$t("admin.model.video"),
