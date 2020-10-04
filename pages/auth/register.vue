@@ -3,7 +3,7 @@
     <h1 class="font-bold text-gray-900 text-2xl">
       {{ $t('auth.register-account') }}
     </h1>
-    <span class="text-sm text-gray-600">
+    <span class="text-sm text-gray-700">
       {{ $t('utils.or') }}
       <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
                             :title="$t('auth.goto-login')"

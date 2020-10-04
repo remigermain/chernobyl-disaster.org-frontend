@@ -3,7 +3,7 @@
     <h1 class="font-bold text-gray-900 text-2xl">
       {{ $t('auth.check-email') }}
     </h1>
-    <span class="text-sm text-gray-600">
+    <span class="text-sm text-gray-700">
       {{ $t('utils.or') }}
       <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
                             :title="$t('auth.goto-login')"
@@ -11,7 +11,7 @@
         {{ $t('auth.login') }}
       </lazy-extra-nuxt-link>
     </span>
-    <p class="text-sm leading-5 text-gray-500">
+    <p class="text-sm leading-5 text-gray-700">
       {{ $t('auth.check-email-description') }}
     </p>
     <form class="my-4 w-3/4 form"
