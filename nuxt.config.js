@@ -106,7 +106,7 @@ export default {
     "@nuxtjs/eslint-module",
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
-    "nuxt-purgecss",
+    // "nuxt-purgecss",
     "@nuxtjs/svg-sprite",
   ],
 
@@ -155,6 +155,8 @@ export default {
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",
+    'quill/dist/quill.core.css',
+    'quill/dist/quill.snow.css',
   ],
 
   toast: {
@@ -169,6 +171,7 @@ export default {
     exposeConfig: false,
   },
 
+  // many problemes with purge ...
   purgeCSS: {
     enabled: false,
     whitelist: ["vue__time-picker"],

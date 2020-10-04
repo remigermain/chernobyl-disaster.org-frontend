@@ -17,21 +17,15 @@
       {{ i18nAttr(current, 'title') }}
     </h1>
     <section class="overflow-y-scroll ql-snow">
-      <span class="timeline-text p-4 leading-6 whitespace-pre-line ql-editor" v-html="$sanitizeHtml(i18nAttr(current, 'description'))"/>
+      <span class="timeline-text p-4 leading-6 whitespace-pre-line ql-editor" v-html="i18nAttr(current, 'description')"/>
     </section>
     <timeline-extra class="timeline-extra" :object="current" />
   </article>
 </template>
 
 <script>
-import sanitize from "@/mixins/admin/sanitize"
-
 export default {
   name: "TimelineDetail",
-
-  mixins: [
-    sanitize
-  ],
 
   props: {
     current: {
@@ -58,7 +52,7 @@ export default {
   head () {
 
     const title = this.i18nAttr(this.current, "title")
-    const description = this.$removeHtml(this.i18nAttr(this.current, "description"))
+    const description = this.i18nAttr(this.current, "_description")
 
     return {
       title,

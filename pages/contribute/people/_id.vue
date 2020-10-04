@@ -27,7 +27,7 @@
       <model-langs :object="object.langs">
         <template slot-scope="{obj}">
           <div class="ql-snow wrapper">
-            <p class="timeline-text p-4 leading-6 ql-editor" v-html="$sanitizeHtml(obj.biography)"/>
+            <p class="timeline-text p-4 leading-6 ql-editor" v-html="obj.biography"/>
           </div>
         </template>
       </model-langs>
@@ -37,15 +37,14 @@
 
 <script>
 import detail from "@/mixins/admin/detail"
-import sanitize from "@/mixins/admin/sanitize"
 import People from "@/mixins/model/people"
+import { sanitizeHtml } from "@/lib/sanitize"
 
 export default {
   name: "ContrubtePeopleDetail",
 
   mixins: [
     detail,
-    sanitize,
     People
   ],
 
@@ -55,6 +54,11 @@ export default {
         if (response.status!==200) {
           throw new Error("error-server")
         }
+
+        response.data.forEach(obj => {
+          obj.biography = sanitizeHtml(obj.biography)
+        })
+
         return {
           object: response.data,
         }

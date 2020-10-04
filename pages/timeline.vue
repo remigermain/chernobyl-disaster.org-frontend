@@ -7,6 +7,7 @@
 
 <script>
 import { timelineElement } from "@/lib/timeline"
+import { sanitizeHtml, removeHtml } from "@/lib/sanitize"
 
 export default {
   name: "Timeline",
@@ -19,15 +20,22 @@ export default {
           throw new Error("error-server")
         }
         // change date string to Date object
-        const result = response.data.map(el => {
+        response.data.forEach(el => {
           el.date.date = new Date(el.date.date)
+          el.langs.forEach(obj => {
+            obj.description = sanitizeHtml(obj.description)
+            obj._description = removeHtml(obj.description) // for meta
+          })
           return el
         })
 
         return {
-          object: result,
-          current: timelineElement(result, route.params.slug)
+          object: response.data,
+          current: timelineElement(response.data, route.params.slug)
         }
+      })
+      .catch(() => {
+        // TODO
       })
   },
 

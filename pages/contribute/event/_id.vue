@@ -21,7 +21,7 @@
             <h2 class="timeline-title text-4xl -sm:text-lg capitalize italic text-center">
               {{ obj.title }}
             </h2>
-            <p class="timeline-text p-4 leading-6 whitespace-pre-line ql-editor" v-html="$sanitizeHtml(obj.description)"/>
+            <p class="timeline-text p-4 leading-6 whitespace-pre-line ql-editor" v-html="obj.description"/>
           </div>
         </template>
       </model-langs>
@@ -34,8 +34,8 @@
 
 <script>
 import detail from "@/mixins/admin/detail"
-import sanitize from "@/mixins/admin/sanitize"
 import event from "@/mixins/model/event"
+import { sanitizeHtml } from "@/lib/sanitize"
 
 export default {
   name: "ContrubteEventDetail",
@@ -43,7 +43,6 @@ export default {
   mixins: [
     detail,
     event,
-    sanitize
   ],
 
   asyncData ({ params, $axios, app, redirect }) {
@@ -52,6 +51,10 @@ export default {
         if (response.status!==200) {
           throw new Error("error-server")
         }
+        response.data.langs.forEach(obj => {
+          obj.description = sanitizeHtml(obj.description)
+        })
+
         return {
           object: response.data,
         }
