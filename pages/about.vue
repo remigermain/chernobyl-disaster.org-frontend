@@ -93,8 +93,8 @@
         <a href="https://germainremi.fr" target="_blank" rel="noopener,noreferrer"
            class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 hover:scale-105 transform transition-transform duration-300"
            :title="$t('pages.about.creator-website')">
-          <svg-icon name="link" />
           <h1>
+            <svg-icon name="link" />
             GERMAIN Rémi
           </h1>
         </a>
