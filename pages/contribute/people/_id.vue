@@ -37,6 +37,7 @@
 
 <script>
 import detail from "@/mixins/admin/detail"
+import sanitize from "@/mixins/admin/sanitize"
 import People from "@/mixins/model/people"
 
 export default {
@@ -44,6 +45,7 @@ export default {
 
   mixins: [
     detail,
+    sanitize,
     People
   ],
 

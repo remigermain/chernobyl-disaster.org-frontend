@@ -19,10 +19,11 @@
 
 <script>
 import FieldMixins from "@/mixins/admin/field"
+import dateField from "@/mixins/admin/dateField"
 
 export default {
 
-  mixins: [FieldMixins],
+  mixins: [FieldMixins, dateField],
 
  data () {
     return {

@@ -22,10 +22,15 @@
 
 <script>
 import FieldMixins from "@/mixins/admin/field"
+import autosize from "v-autosize/dist/plugin"
+
 export default {
 
-  mixins: [FieldMixins],
+  directives: {
+    autosize
+  },
 
+  mixins: [FieldMixins],
 }
 </script>
 

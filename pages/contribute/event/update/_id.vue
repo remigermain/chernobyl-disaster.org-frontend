@@ -36,7 +36,7 @@
 
         />
         <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'title')" />
-        <lazy-admin-text-editor :value="lang.description"
+        <admin-text-editor :value="lang.description"
                               class="border-none"
                               :prefix="prefixLang(idx)"
                               :field="fields.langs.description"
@@ -66,7 +66,7 @@
                            :action="false"
                            :errors="getErrorsIdx(errors.langs, idx + object.langs.length, 'language')"
         />
-        <lazy-admin-text-editor class="border-none"
+        <admin-text-editor class="border-none"
                               :prefix="prefixLang(idx + object.langs.length)"
                               :field="fields.langs.description"
                               :action="false"

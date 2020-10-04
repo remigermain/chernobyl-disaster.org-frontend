@@ -24,8 +24,14 @@
 </template>
 
 <script>
+import sanitize from "@/mixins/admin/sanitize"
+
 export default {
   name: "TimelineDetail",
+
+  mixins: [
+    sanitize
+  ],
 
   props: {
     current: {

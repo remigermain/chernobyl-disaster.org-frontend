@@ -33,12 +33,10 @@ export default {
 
   plugins: [
     { src: "~/plugins/matomo.js", ssr: false },
-    { src: "~/plugins/datetime.js", ssr: false },
+    { src: "~/plugins/quil.js", ssr: false },
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
-    {src: "~/plugins/directive.js", ssr: false},
-    {src: "~/plugins/quil.js", ssr: false}
   ],
 
   modules: [

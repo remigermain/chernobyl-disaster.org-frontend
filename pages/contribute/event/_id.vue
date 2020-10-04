@@ -34,6 +34,7 @@
 
 <script>
 import detail from "@/mixins/admin/detail"
+import sanitize from "@/mixins/admin/sanitize"
 import event from "@/mixins/model/event"
 
 export default {
@@ -41,7 +42,8 @@ export default {
 
   mixins: [
     detail,
-    event
+    event,
+    sanitize
   ],
 
   asyncData ({ params, $axios, app, redirect }) {
