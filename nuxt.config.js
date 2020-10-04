@@ -49,7 +49,6 @@ export default {
   ],
 
   pwa: {
-    icon: false,
     manifest: {
       theme_color: "#1a202cff",
     },

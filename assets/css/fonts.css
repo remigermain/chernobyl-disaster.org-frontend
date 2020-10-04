@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'russia';
   src: url('~assets/fonts/Russian.ttf') format("TrueType");
+  font-display: swap;
 }
 
 .font-russia {

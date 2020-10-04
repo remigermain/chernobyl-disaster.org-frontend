@@ -56,21 +56,25 @@ export default {
   },
 
   head () {
+
+    const title = this.i18nAttr(this.current, "title")
+    const description = this.$removeHtml(this.i18nAttr(this.current, "description"))
+
     return {
-      title: this.i18nAttr(this.current, "title"),
+      title,
       meta: [
-          { hid: "description", name: "description", content: this.i18nAttr(this.current, "description") },
-          { property: "og:title", content: this.i18nAttr(this.current, "title")},
+          { hid: "description", name: "description", content: description },
+          { property: "og:title", content: title},
           { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.i18nAttr(this.current, "description")},
+          { property: "og:description", content: description},
           { property: "og:type", content: "website"},
           { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.i18nAttr(this.current, "description") },
+          { name: "twitter:card", content: description },
           { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.i18nAttr(this.current, "title") },
-          { name: "twitter:description", content: this.i18nAttr(this.current, "description") },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: description },
           { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.i18nAttr(this.current, "title") }
+          { name: "twitter:image:alt", content: title }
       ]
     }
   }

@@ -15,6 +15,11 @@ export default {
           '*': ['style']
         }
       })
+    },
+
+    // remove all html tags
+    $removeHtml (value) {
+      return sanitizeHtml(value, {allowedTags: []})
     }
   }
 }
