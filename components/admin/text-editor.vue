@@ -26,6 +26,7 @@
 
 <script>
 import FieldMixins from "@/mixins/admin/field"
+import Vue from 'vue'
 
 export default {
 
@@ -59,6 +60,12 @@ export default {
           ]
         }
       }
+    }
+  },
+
+  created () {
+    if (process.client) {
+      Vue.use(require("vue-quill-editor").default)
     }
   },
 

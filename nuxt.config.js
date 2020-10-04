@@ -32,8 +32,7 @@ export default {
   },
 
   plugins: [
-    { src: "~/plugins/matomo.js", ssr: false },
-    { src: "~/plugins/quil.js", ssr: false },
+    { src: "~/plugins/matomo.client.js", ssr: false },
     "~/plugins/axios.js",
     "~/plugins/mixins.js",
     "~/plugins/prototype.js",
@@ -157,9 +156,6 @@ export default {
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",
-
-    'quill/dist/quill.core.css',
-    'quill/dist/quill.snow.css',
   ],
 
   toast: {
@@ -175,6 +171,8 @@ export default {
   },
 
   purgeCSS: {
+    enabled: false,
+    whitelist: ["vue__time-picker"],
     whitelistPatterns: [
       /svg/,
       /vdatetime/,
@@ -183,6 +181,7 @@ export default {
       /action/,
       /ripple/,
       /ql-/,
+      /time-picker/,
       /-(leave|enter|appear)(|-(to|from|active))$/,
       /^(?!(|.*?:)cursor-move).+-move$/,
       /^nuxt-link(|-exact)-active$/
