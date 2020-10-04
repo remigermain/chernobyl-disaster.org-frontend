@@ -4,7 +4,7 @@
     <div class="gallery-toolbar hide-scroolbar" :class="{'active': active}">
       <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
-          {{ $t('utils.menu') }}
+          {{ $t('utils.menu-media') }}
         </span>
         <span class="mr-6 text-right w-2/4">
           <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
