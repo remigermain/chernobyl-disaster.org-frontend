@@ -94,7 +94,7 @@
            class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 hover:scale-105 transform transition-transform duration-300"
            :title="$t('pages.about.creator-website')">
           <svg-icon name="link" />
-          germain remi
+          GERMAIN Rémi
         </a>
         <div class="text-gray-800 text-justify font-medium mb-6">
           <picture role="img">
