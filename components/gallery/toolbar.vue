@@ -55,11 +55,15 @@
                 tabindex="0"
                 @click="submitPeople(p.name)"
           >
-            <img :src="p.profil"
-                 class="w-12 rounded-full object-cover h-12"
-                 :alt="p.name"
-                 role="button"
-            >
+            <picture>
+              <source :srcset="$media(p.profil.thumbnail_webp)" type="image/webp" />
+              <img :src="$media(p.profil.thumbnail_jpeg)"
+                  class="w-12 rounded-full object-cover h-12"
+                  :alt="p.name"
+                  role="button"
+                  type="image/jepg"
+              >
+            </picture>
             <span class=" break-words hover:text-indigo-700">
               {{ p.name }}
             </span>
