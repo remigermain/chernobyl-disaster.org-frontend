@@ -49,7 +49,7 @@ export default {
   ],
 
   pwa: {
-    manifest: {
+    meta: {
       theme_color: "#1a202cff",
     },
   },

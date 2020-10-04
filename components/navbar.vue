@@ -6,7 +6,7 @@
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
     </label>
-    <nav class="navbar-items" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
+    <nav class="navbar-items relative" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
       <lazy-extra-nuxt-link :to="{name: 'index'}" class="navbar-link exact"
                             :title="$t('utils.goto-home')"
                             @click="active = false"
@@ -37,18 +37,25 @@
       >
         {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
-      <label>
-        <span class="hidden">{{ $t('utils.change-language') }}</span>
-        <select v-model="value" class="form-select block mt-1 bg-gray-400 bg-opacity-25">
-          <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
-            {{ lang.name }}
-          </option>
-        </select>
-      </label>
-      <button v-if="$auth.loggedIn" class="hover:text-gray-700 transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
-        <svg-icon name="logout" />
-        {{ $t('auth.logout') }}
-      </button>
+      <div class="absolute settings-child right-0 top-0 bg-white p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
+        <button v-if="$auth.loggedIn" class="hover:text-gray-700 transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
+          <svg-icon name="logout" />
+          {{ $t('auth.logout') }}
+        </button>
+        <label for="lang" class="block">
+          <span class="text-lg leading-3 italic text-gray-700 font-medium">
+            {{ $t('utils.language') }}:
+          </span>
+          <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-25">
+            <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
+              {{ lang.name }}
+            </option>
+          </select>
+        </label>
+      </div>
+      <svg-icon name="settings" class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl"
+                @click="activeSetting = !activeSetting"
+      />
     </nav>
   </div>
 </template>
@@ -60,7 +67,8 @@ export default {
   data () {
     return {
       active: false,
-      value: this.$i18n.locale
+      value: this.$i18n.locale,
+      activeSetting: false,
     }
   },
 
@@ -193,7 +201,25 @@ export default {
   }
 }
 
+@media screen and (min-width:1000px){
+  .settings-hide {
+    visibility: hidden;
+  }
+}
+
 @media screen and (max-width:1000px){
+
+  // menu settings
+  .settings-child {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: unset
+  }
+  .settings-btn {
+    display: none;
+  }
+
   .burger {
     display: inline;
   }
