@@ -2,9 +2,9 @@
   <div class="grid-common">
     <section class="common-description text-center space-y-4">
       <section>
-        <h2 class="text-3xl text-md capitalize">
+        <h1 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
-        </h2>
+        </h1>
         <a href="https://gitlab.com/chernobyl.org" target="_blank" rel="noopener,noreferrer"
            class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
            :title="$t('pages.about.contribute-gitlab')"
@@ -94,7 +94,9 @@
            class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 hover:scale-105 transform transition-transform duration-300"
            :title="$t('pages.about.creator-website')">
           <svg-icon name="link" />
-          GERMAIN Rémi
+          <h1>
+            GERMAIN Rémi
+          </h1>
         </a>
         <div class="text-gray-800 text-justify font-medium mb-6">
           <picture role="img">
@@ -107,9 +109,9 @@
         </div>
       </article>
       <article class="text-center">
-        <h4 class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 rounded-md inline-grid">
+        <h2 class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 rounded-md inline-grid">
           {{ $t('pages.about.help-us') }}
-        </h4>
+        </h2>
         <p class="text-gray-800 text-md text-justify font-medium">
           {{ $t('pages.about.help-us-description') }}
         </p>

@@ -27,9 +27,9 @@
                     }"
               />
               <timeline-min-time :date="element.date" />
-              <h4>
+              <h1>
                 {{ i18nAttr(element, 'title') }}
-              </h4>
+              </h1>
             </extra-nuxt-link>
           </section>
         </section>
