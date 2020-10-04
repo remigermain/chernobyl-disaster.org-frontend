@@ -1,18 +1,24 @@
 <template>
   <div class="wrapper">
-    <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="wrapper timeline-time">
-      <span v-if="date.have_hour" class="items text-3xl font-bold"> {{ hours }} </span>
-      <span v-if="date.have_minute" class="items text-3xl font-bold"> {{ minutes }} </span>
-      <span v-if="date.have_second" class="space-items text-3xl font-bold"> {{ seconds }} </span>
-      <span v-if="date.have_hour" class="italic uppercase text-gray-600 text-opacity-75 text-xs">
-        {{ $t("utils.hours") }}
-      </span>
-      <span v-if="date.have_minute" class="italic uppercase text-gray-600 text-opacity-75 text-xs">
-        {{ $t("utils.minutes") }}
-      </span>
-      <span v-if="date.have_second" class="italic uppercase text-gray-600 text-opacity-75 text-xs">
-        {{ $t("utils.seconds") }}
-      </span>
+    <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="timeline-time">
+      <div v-if="date.have_hour" class="flex flex-col items min-size">
+        <span class="time text-3xl font-bold">{{ hours }}</span>
+        <span class="italic uppercase text-gray-600 text-opacity-75 text-xs">
+          {{ $t("utils.hours") }}
+        </span>
+      </div>
+      <div v-if="date.have_minute" class="flex flex-col items min-size">
+        <span class="time text-3xl font-bold">{{ minutes }}</span>
+        <span class="italic uppercase text-gray-600 text-opacity-75 text-xs">
+          {{ $t("utils.minutes") }}
+        </span>
+      </div>
+      <div v-if="date.have_second" class="flex flex-col items min-size">
+        <span class="time text-3xl font-bold">{{ seconds }}</span>
+        <span class="italic uppercase text-gray-600 text-opacity-75 text-xs">
+          {{ $t("utils.seconds") }}
+        </span>
+      </div>
     </time>
   </div>
 </template>
@@ -47,24 +53,24 @@ export default {
 
 <style lang="scss" scoped>
 
-.space-items {
-  margin: 0 .2em;
-}
-
 .timeline-time {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   text-align: center;
   & > .items {
     position: relative;
     margin: 0 .2em;
-    &::after {
+    &:not(:last-child) > .time::after {
       content: ':';
       position: absolute;
-      right: -.3em;
+      right: -.2em;
       top: 0;
     }
   }
+}
+
+.min-size {
+  width: 40px;
+  height: auto;
 }
 
 </style>
