@@ -42,7 +42,7 @@
           <svg-icon name="logout" />
           {{ $t('auth.logout') }}
         </button>
-        <label for="lang" class="block">
+        <label for="lang" class="flex justify-center items-center">
           <span class="text-lg leading-3 italic text-gray-700 font-medium">
             {{ $t('utils.language') }}:
           </span>
