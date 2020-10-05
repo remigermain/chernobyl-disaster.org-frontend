@@ -17,7 +17,7 @@
       {{ i18nAttr(current, 'title') }}
     </h1>
     <section class="overflow-y-scroll ql-snow">
-      <span class="timeline-text p-4 leading-6 whitespace-pre-line ql-editor" v-html="i18nAttr(current, 'description')"/>
+      <span class="timeline-text p-4 leading-6 ql-editor antialiased text-lg" v-html="i18nAttr(current, 'description')"/>
     </section>
     <timeline-extra class="timeline-extra" :object="current" />
   </article>

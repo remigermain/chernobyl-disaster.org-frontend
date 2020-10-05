@@ -37,7 +37,7 @@
       >
         {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
-      <div class="absolute settings-child right-0 top-0 bg-white p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
+      <div class="absolute settings-child right-0 top-0 p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
         <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
           <svg-icon name="logout" />
           {{ $t('auth.logout') }}
@@ -54,7 +54,7 @@
           <span class="text-lg leading-3 italic text-gray-700 font-medium language-label">
             {{ $t('utils.language') }}:
           </span>
-          <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-25">
+          <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-25 text-center">
             <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
               {{ lang.name }}
             </option>
@@ -205,6 +205,10 @@ export default {
   }
 }
 
+.dark-mode .burger > span {
+  background-color: white;
+}
+
 .background-navbar {
   transition: background-color .2s;
   background-color: transparent;
@@ -220,10 +224,8 @@ export default {
 }
 
 .dark-mode .background-navbar.active {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(38, 38, 38, 0.83);
 }
-
-
 
 @media screen and (min-width:1000px){
   .settings-hide {
@@ -279,10 +281,12 @@ export default {
     background-color: rgb(0, 0, 0);
   }
 }
-
+.settings-child   {
+  background-color: #f9f9f9;
+}
 .dark-mode {
   .settings-child   {
-    background-color: black;
+    background-color: #2b2b2b;
     .language-label {
       @apply text-gray-200
     }

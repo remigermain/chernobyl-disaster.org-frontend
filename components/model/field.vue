@@ -39,6 +39,10 @@ export default {
   text-transform: capitalize;
 }
 
+.dark-mode .detail-item-title {
+  @apply text-gray-600
+}
+
 .detail-item-content {
   font-style: italic
 }

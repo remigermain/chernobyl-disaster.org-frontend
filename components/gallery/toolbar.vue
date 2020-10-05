@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="fix-mobile" />
-    <div class="gallery-toolbar hide-scroolbar" :class="{'active': active}">
+    <div class="gallery-toolbar hide-scroolbar z-0" :class="{'active': active}">
       <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
-          {{ $t('utils.menu-media') }}
+          {{ $t('utils.menu-medias') }}
         </span>
         <span class="mr-6 text-right w-2/4">
           <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
@@ -17,7 +17,7 @@
           </template>
         </field-text>
         <label :name="$t('utils.change-sort-order')" class="wrapper">
-          <select v-model="ordering" class="form-select bg-gray-200 mt-2" :aria-label="$t('utils.sort-by')">
+          <select v-model="ordering" class="form-select bg-gray-200 mt-2 text-center" :aria-label="$t('utils.sort-by')">
             <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
               {{ choice.label }}
             </option>
@@ -50,7 +50,7 @@
         </div>
         <span class="border-b border-gray-500" />
         <div class="toolbar-peoples">
-          <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item hover:bg-gray-300 rounded-md"
+          <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item group hover:bg-gray-300 rounded-md"
                 role="button"
                 tabindex="0"
                 @click="submitPeople(p.name)"
@@ -64,7 +64,7 @@
                   type="image/jepg"
               >
             </picture>
-            <span class=" break-words hover:text-indigo-700">
+            <span class=" break-words group-hover:text-indigo-700">
               {{ p.name }}
             </span>
           </span>
@@ -213,7 +213,7 @@ export default {
     height: 60px;
     transition: height .6s;
     position: absolute;
-    background-color: white;
+    // background-color: white;
     bottom: 0;
     left: 0;
     z-index: 1;

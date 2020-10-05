@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .input {
   padding: 0.5rem !important;
@@ -45,5 +45,9 @@ export default {
   border-radius: 0.25rem !important;
   border-color: rgb(43, 108, 176) !important;
   background-color: rgb(237, 242, 247) !important;
+}
+
+.dark-mode .input {
+  background-color: #4a5568 !important;
 }
 </style>

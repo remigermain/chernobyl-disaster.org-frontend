@@ -30,12 +30,12 @@
           >
             <ol>
               <li v-for="s in searchOption" :key="s.value"
-                  class="text-gray-800 leading-4 p-2 hover:bg-gray-300 cursor-pointer"
+                  class="text-gray-800 leading-4 p-2 hover:bg-gray-300 cursor-pointer data"
                   @click.prevent.stop="select(s.value)"
               >
                 {{ s.display_name }}
               </li>
-              <li v-if="searchOption.length === 0" class="p-2 italic text-opacity-75 text-gray-800 text-center">
+              <li v-if="searchOption.length === 0" class="p-2 italic text-opacity-75 text-gray-800 text-center empty">
                 {{ empty }}
               </li>
             </ol>
@@ -105,7 +105,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .field-select-multiple {
   height: auto;
   min-height: 200px;
@@ -123,5 +123,18 @@ export default {
 
 .options-select-search {
   max-height: 180px;
+}
+
+.dark-mode .options-select-search {
+  @apply bg-gray-700 text-gray-300;
+  .data {
+    @apply text-gray-300;
+    &:hover {
+      @apply bg-gray-800
+    }
+  }
+  .empty {
+    @apply text-gray-500
+  }
 }
 </style>

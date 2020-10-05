@@ -237,6 +237,10 @@ export default {
   background: linear-gradient(white 1%, #0909094d);
 }
 
+.dark-mode .timeline-list-grid  {
+  background: #1d1f24;
+}
+
 .icon-timeline {
   display: none;
   position: absolute;
@@ -256,6 +260,7 @@ export default {
     max-width: 400px;
     transition: transform .5s;
     transform: translateX(calc(-100% - 1.1vw));
+    z-index: 41;
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -263,7 +268,6 @@ export default {
     }
     background-color: white;
     &.active {
-      z-index: 41;
       transform: translateX(0);
     }
   }

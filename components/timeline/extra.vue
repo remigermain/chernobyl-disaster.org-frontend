@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="fix-mobile" />
-    <div class="shadow-lg grid-extra w-full h-full rounded-lg" :class="{'active': activeMenu}">
+    <div class="shadow-lg grid-extra overflow-hidden w-full h-full rounded-lg" :class="{'active': activeMenu}">
       <div class="extra-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
           {{ $t('utils.menu-medias') }}
@@ -26,7 +26,7 @@
           <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('utils.video')" />
         </button>
       </nav>
-      <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0, 'active': activeMenu}">
+      <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0}">
         <template v-if="pictureActive">
           <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
             <source :srcset="$media(img.picture.thumbnail_webp)" type="image/webp">
@@ -40,7 +40,7 @@
                  @click="setCurrent(img, idx)"
             >
           </picture>
-          <span v-if="object.pictures.length === 0" class="italic text-gray-700 text-opacity-50">
+          <span v-if="object.pictures.length === 0" class="italic text-gray-700 text-opacity-50 empty">
             {{ empty }}
           </span>
         </template>
@@ -53,7 +53,7 @@
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                   allowfullscreen
           />
-          <span v-if="object.videos.length === 0" class="italic text-gray-700 text-opacity-50">
+          <span v-if="object.videos.length === 0" class="italic text-gray-700 text-opacity-50 empty">
             {{ empty }}
           </span>
         </template>
@@ -224,7 +224,6 @@ export default {
     position: absolute;
     bottom: 0;
     left: 0;
-    background-color: white;
     &.active {
       height: 70vh;
     }
@@ -236,20 +235,27 @@ export default {
 
   .extra-toolbar-desktop {
     flex-direction: row;
-    display: none;
+    display: flex;
     height: max-content;
+    background-color: white;
+    height: 100%;
     max-height: calc(70vh - 60px - 48px);
     & > .extra-btn {
       width: 50%;
       height: auto;
     }
-    &.active {
-      display: flex;
-    }
   }
   .extra-icon-mobile {
     width: inherit;
     height: 3em;
+  }
+  .dark-mode {
+    .extra-toolbar-desktop {
+      @apply bg-gray-800;
+      .empty {
+        @apply text-gray-400
+      }
+    }
   }
 }
 

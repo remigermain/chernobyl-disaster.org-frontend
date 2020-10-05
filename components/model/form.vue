@@ -78,4 +78,10 @@ export default {
 .form-border > * {
   @apply border-b border-gray-700 border-opacity-50;
 }
+
+.dark-mode {
+  .button-model {
+    @apply bg-gray-800
+  }
+}
 </style>

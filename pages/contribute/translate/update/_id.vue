@@ -9,7 +9,7 @@
       {{ $t('utils.translation') }}
     </template>
     <template v-slot:table>
-      <div class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line">{{ $t('help.translate.description') }}</div>
+      <div class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line description">{{ $t('help.translate.description') }}</div>
       <div class="flex mt-6">
         <div class="flex flex-col rounded-md h-max-content">
           <span class="text-lg italic leading-3 p-2 bg-blue-700 text-white rounded-md capitalize text-center">
@@ -127,4 +127,11 @@ export default {
   opacity: 0;
   transform: translateX(-20px);
 }
+
+.dark-mode {
+  .description {
+    @apply text-gray-300
+  }
+}
+
 </style>

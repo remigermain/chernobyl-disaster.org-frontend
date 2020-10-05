@@ -9,8 +9,8 @@
       {{ $t('admin.label.account') }}
     </template>
     <template v-slot:table>
-      <div class="flex justify-around flex-wrap items-center">
-        <div class="-sm:w-full shadow-md border pt-4 rounded">
+      <div class="flex justify-around flex-wrap items-center account">
+        <div class="-sm:w-full shadow-md border pt-4 rounded password">
           <h2 class="text-xl text-center capitalize">
             {{ $t('auth.change-password') }}
           </h2>
@@ -23,11 +23,11 @@
             </field-submit>
           </form>
         </div>
-        <div class="-sm:w-full shadow-md border p-4 rounded">
+        <div class="-sm:w-full shadow-md border p-4 rounded delete">
           <h2 class="text-xl text-center capitalize">
             {{ $t('auth.delete-account') }}
           </h2>
-          <form class="account-form shadow-sm p-4" @submit.prevent="active = true">
+          <form class="account-form p-4" @submit.prevent="active = true">
             <button type="submit" class="px-2 py-2 bg-red-800 rounded text-gray-200 hover:bg-red-900 w-full mt-4 text-center">
               {{ $t('utils.delete') }}
             </button>
@@ -36,7 +36,7 @@
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform
                   transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" @click.stop
             >
-              <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
                   <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                     <svg-icon name="alert-triangle" class="h-6 w-6 text-red-600" />
@@ -163,5 +163,14 @@ export default {
 <style lang="scss" scoped>
 .account-form > * {
   margin-top: 1.5rem
+}
+
+.dark-mode .account > {
+  .password {
+    @apply bg-gray-700 border-none
+  }
+  .delete {
+    @apply bg-gray-700 border-none
+  }
 }
 </style>

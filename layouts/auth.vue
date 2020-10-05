@@ -24,3 +24,11 @@ export default {
   }
 }
 </script>
+
+
+
+<style lang="scss">
+.dark-mode .section-form {
+  @apply bg-gray-800 border-none;
+}
+</style>

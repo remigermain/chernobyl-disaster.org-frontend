@@ -10,31 +10,31 @@
       <span class="bg-indigo-700 buble tree shadow-md">3</span>
     </div>
     <div
-      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
     >
-      <span v-if="second">
+      <span v-if="second" class="data">
         {{ second.username }}
         <span class="text-indigo-700">{{ second.count }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700">{{ empty }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ empty }}</span>
     </div>
     <div
-      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
     >
-      <span v-if="first">
+      <span v-if="first" class="data">
         {{ first.username }}
         <span class="text-indigo-700">{{ first.count }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700">{{ empty }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ empty }}</span>
     </div>
     <div
-      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble"
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
     >
-      <span v-if="third">
+      <span v-if="third" class="data">
         {{ third.username }}
         <span class="text-indigo-700">{{ third.count }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700">{{ empty }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ empty }}</span>
     </div>
   </div>
 </template>
@@ -96,6 +96,15 @@ export default {
   border-radius: 10px;
   word-break: break-word;
   padding: 0.5em;
+}
+
+.dark-mode {
+  .card-buble.items {
+    @apply text-gray-300 bg-gray-800;
+    .data {
+      @apply text-gray-300;
+    }
+  }
 }
 
 .trophy {

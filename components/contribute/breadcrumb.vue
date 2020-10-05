@@ -18,4 +18,16 @@
 .bread-crumb:not(:last-child) > :hover {
   color: rgba(85, 60, 154, 1);
 }
+
+.dark-mode {
+  .bread-crumb {
+    @apply text-gray-200;
+    > ::after {
+      @apply text-gray-500;
+    }
+    &:not(:last-child) > :hover {
+      @apply text-gray-500
+    }
+  }
+}
 </style>

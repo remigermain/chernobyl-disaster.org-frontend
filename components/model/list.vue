@@ -11,7 +11,8 @@
         {{ $t('utils.create') }}
         <svg-icon name="plus" class=" w-24px text-white" />
       </lazy-extra-nuxt-link>
-      <p v-if="description" class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line">{{ $t(`help.${model}.global-description`) }}</p>
+      <p v-if="description"
+         class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line description">{{ $t(`help.${model}.global-description`) }}</p>
     </div>
     <slot name="table" />
     <slot name="table-lang" />
@@ -42,3 +43,11 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+.dark-mode {
+  .description {
+    @apply text-gray-300
+  }
+}
+</style>

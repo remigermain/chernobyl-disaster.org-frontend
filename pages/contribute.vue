@@ -6,7 +6,7 @@
       <div v-if="haveChild" class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
         <contribute-user :object="object" />
         <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-gray-500">
-          <div>
+          <div class="tulp">
             <h1 class="text-2xl capitalize italic text-opacity-75">
               {{ el.name }}
             </h1>
@@ -165,6 +165,10 @@ export default {
   & > * {
     padding: 1em;
   }
+}
+
+.dark-mode .tulp {
+  @apply bg-gray-900
 }
 
 </style>

@@ -57,7 +57,7 @@
           </td>
         </tr>
         <tr v-if="list.length === 0" class="text-center">
-          <td :colspan="columns.length + 1" class="p-2 bg-gray-300 text-xs text-gray-600 italic text-opacity-75">
+          <td :colspan="columns.length + 1" class="p-2 bg-gray-300 text-xs text-gray-600 italic text-opacity-75 empty">
             {{ empty }}
           </td>
         </tr>
@@ -205,6 +205,20 @@ export default {
 
 .table tr:nth-of-type(even) {
   background-color:  rgba(116, 116, 116, 0.1);
+}
+
+.dark-mode {
+  .table  {
+    tr, td {
+      @apply text-gray-300;
+    }
+    tr:nth-of-type(even) {
+      background-color:  rgba(116, 116, 116, 0.3);
+    }
+    tr > td.empty {
+      @apply bg-gray-700
+    }
+  }
 }
 
 .table-head {
