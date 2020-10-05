@@ -40,6 +40,9 @@ import detail from "@/mixins/admin/detail"
 import People from "@/mixins/model/people"
 import { sanitizeHtml } from "@/lib/sanitize"
 
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+
 export default {
   name: "ContrubtePeopleDetail",
 

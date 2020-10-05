@@ -24,6 +24,8 @@
 </template>
 
 <script>
+
+import 'quill/dist/quill.snow.css'
 export default {
   name: "TimelineDetail",
 

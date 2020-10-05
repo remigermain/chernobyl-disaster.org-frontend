@@ -161,8 +161,6 @@ export default {
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",
-    'quill/dist/quill.core.css',
-    'quill/dist/quill.snow.css',
   ],
 
   toast: {
