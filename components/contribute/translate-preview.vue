@@ -23,8 +23,14 @@
     </div>
     <form class="flex flex-col space-y-2" @submit.prevent="submit">
       <field-textarea v-model="value" :field="field" :errors="errors.value" :min="false" />
-      <div class="flex justify-end p-2">
-        <button class="p-2 bg-blue-700 text-white rounded-lg w-max-content float-right hover:bg-indigo-700 transition-colors duration-300">
+      <div class="flex justify-end p-2 space-x-2">
+        <button v-if="$auth.hasScope('staff') && current && current.id" type="button"
+                class="p-2 bg-red-700 text-white rounded-lg w-max-content float-right hover:bg-red-800 transition-colors duration-300"
+                @click="deleted"
+        >
+          <svg-icon name="trash" />
+        </button>
+        <button type="submit" class="p-2 bg-blue-700 text-white rounded-lg w-max-content float-right hover:bg-indigo-700 transition-colors duration-300">
           {{ $t('utils.submit') }}
         </button>
       </div>
@@ -46,6 +52,7 @@ export default {
     return {
       value: "",
       selectLocale: "",
+      activeModal: false,
       errors: {
         value: [],
         language: []
@@ -116,7 +123,7 @@ export default {
 
       this.$axios.post("translatelang/", data)
         .then(response => {
-          if (response.status!==201) {
+          if (response.status !== 201) {
             throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
@@ -128,7 +135,7 @@ export default {
     update (data) {
       this.$axios.patch(`translatelang/${this.current.id}/`, data)
         .then(response => {
-          if (response.status!==200) {
+          if (response.status !== 200) {
             throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
@@ -136,7 +143,19 @@ export default {
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })
-
+    },
+    deleted () {
+      this.$axios.delete(`translatelang/${this.current.id}/`)
+        .then(response => {
+          if (response.status !== 204) {
+            throw new Error("error-server")
+          }
+          this.i18nToast.success(this.$t("success.deleted")).goAway(5000)
+          this.$emit("refresh")
+          this.value = ""
+        })
+        .catch(error => { this.requestError(error) })
+        .finally(() => { this.loading = false })
     }
   }
 

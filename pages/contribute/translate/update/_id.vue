@@ -1,5 +1,5 @@
 <template>
-  <lazy-model-list :model="$t('utils.translation')" :create="false">
+  <lazy-model-list :model="$t('utils.translation')" :create="false" :description="false">
     <template v-slot:breadcrumbs>
       <lazy-contribute-breadcrumb>
         {{ $t('utils.translation') }}

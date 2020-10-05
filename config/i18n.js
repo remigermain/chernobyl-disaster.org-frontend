@@ -14,7 +14,7 @@ export default {
     },
   ],
   baseUrl: process.env.SITE_URL,
-  strategy: "prefix",
+  strategy: "prefix_except_default",
   defaultLocale: "en",
   lazy: true,
   langDir: "locales/",

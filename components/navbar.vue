@@ -48,7 +48,7 @@
           </span>
           <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-25">
             <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
-              {{ lang.name }}
+              {{ lang.name }} - {{ $t('percentage', lang.code) }}%
             </option>
           </select>
         </label>

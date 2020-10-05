@@ -50,10 +50,11 @@ export default {
 
   pwa: {
     meta: {
-      theme_color: "#1a202cff",
+      theme_color: "#1a202c",
+      nativeUI: true,
     },
     manifest: {
-      theme_color: "#1a202cff",
+      theme_color: "#1a202c",
     }
   },
 
@@ -194,6 +195,7 @@ export default {
   },
 
   build: {
+    optimizeCSS: true,
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {

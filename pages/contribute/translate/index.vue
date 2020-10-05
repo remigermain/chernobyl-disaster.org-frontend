@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <lazy-model-list :model="model.name" :create="false">
+    <lazy-model-list :model="model.name" :create="false" :description="false">
       <template v-slot:breadcrumbs>
         <lazy-contribute-breadcrumb>{{ pathList.label }}</lazy-contribute-breadcrumb>
       </template>

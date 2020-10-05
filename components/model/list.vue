@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-y-2">
       <slot name="breadcrumbs" />
       <h1 class="text-3xl capitalize self-start">
         <slot name="label" />
@@ -11,6 +11,7 @@
         {{ $t('utils.create') }}
         <svg-icon name="plus" class=" w-24px text-white" />
       </lazy-extra-nuxt-link>
+      <p v-if="description" class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line">{{ $t(`help.${model}.global-description`) }}</p>
     </div>
     <slot name="table" />
     <slot name="table-lang" />
@@ -30,6 +31,10 @@ export default {
       required: true
     },
     create: {
+      type: Boolean,
+      default: true
+    },
+    description: {
       type: Boolean,
       default: true
     }
