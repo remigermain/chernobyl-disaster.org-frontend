@@ -98,7 +98,7 @@
             GERMAIN Rémi
           </h1>
         </a>
-        <div class="text-gray-800 text-justify font-medium mb-6">
+        <div class="text-gray-800 text-justify font-medium mb-6 description">
           <picture role="img">
             <source srcset="~/assets/img/profil/profil-tablet.webp" media="(max-width: 850px)" type="image/webp">
             <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
@@ -112,7 +112,7 @@
         <h2 class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 rounded-md inline-grid">
           {{ $t('pages.about.help-us') }}
         </h2>
-        <p class="text-gray-800 text-md text-justify font-medium">
+        <p class="text-gray-800 text-md text-justify font-medium description-help">
           {{ $t('pages.about.help-us-description') }}
         </p>
       </article>
@@ -211,6 +211,10 @@ export default {
   height: auto;
   max-height: 200px;
 }
+.dark-mode .all-contributor {
+  @apply bg-gray-800
+}
+
 .sub-mt {
   margin-top: -1em !important;
 }
@@ -243,6 +247,12 @@ export default {
     width: 200%;
     margin-top: 2em;
     grid-area: unset;
+  }
+}
+
+.dark-mode {
+  .description, .description-help {
+    @apply text-gray-600
   }
 }
 
