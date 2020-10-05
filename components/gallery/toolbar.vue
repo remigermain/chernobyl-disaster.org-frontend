@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="fix-mobile" />
-    <div class="gallery-toolbar hide-scroolbar z-0" :class="{'active': active}">
+    <div class="gallery-toolbar hide-scroolbar" :class="{'active': active}">
       <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
           {{ $t('utils.menu-medias') }}
@@ -10,7 +10,7 @@
           <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
         </span>
       </div>
-      <nav class="gallery-toolbar-desktop  wrapper" :class="{'active': active}">
+      <nav class="gallery-toolbar-desktop overflow-y-scroll  wrapper" :class="{'active': active}">
         <field-text v-model="search" :field="{label: $t('utils.search') }" class="toolbar-search" role="search">
           <template v-slot:icon>
             <svg-icon name="search" />
@@ -26,7 +26,7 @@
             </option>
           </select>
         </label>
-        <button class="p-2 mx-2 h-12 bg-gray-800 rounded-md text-white hover:bg-gray-700 text-center" @click="submit">
+        <button class="p-2 mx-2 h-12 bg-gray-800 rounded-md text-xl text-white text-white hover:bg-gray-700 text-center" @click="submit">
           {{ $t('utils.search') }}
         </button>
         <span class="border-b border-gray-500" />
@@ -214,10 +214,9 @@ export default {
     height: 60px;
     transition: height .6s;
     position: absolute;
-    // background-color: white;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 0;
     &.active {
       height: 70vh;
     }
@@ -225,7 +224,24 @@ export default {
   .gallery-toolbar-mobile {
     display: flex;
   }
+
+  .dark-mode {
+    .toolbar-search,
+    .gallery-toolbar-desktop {
+      @apply bg-gray-900
+    }
+  }
+
   .gallery-toolbar-desktop {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+    z-index: 1;
+    & > .gallery-toolbar-desktop > * + * {
+      margin-top: .5rem;
+    }
+    background-color: white;
     select  {
       margin-left: .5rem;
       margin-right: .5rem;

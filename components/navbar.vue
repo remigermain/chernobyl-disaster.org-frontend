@@ -233,9 +233,27 @@ export default {
   }
 }
 
+.settings-child {
+  background-color: #f9f9f9;
+}
+.dark-mode {
+  .settings-child   {
+    background-color: #2b2b2b;
+    .language-label {
+      @apply text-gray-200
+    }
+  }
+}
+
+
 @media screen and (max-width:1000px){
 
   // menu settings
+  .dark-mode {
+    .settings-child {
+      background-color: black;
+    }
+  }
   .settings-child {
     position: relative;
     display: flex;
@@ -279,17 +297,6 @@ export default {
   }
   .dark-mode .grid-layout-navbar .navbar-items {
     background-color: rgb(0, 0, 0);
-  }
-}
-.settings-child   {
-  background-color: #f9f9f9;
-}
-.dark-mode {
-  .settings-child   {
-    background-color: #2b2b2b;
-    .language-label {
-      @apply text-gray-200
-    }
   }
 }
 
