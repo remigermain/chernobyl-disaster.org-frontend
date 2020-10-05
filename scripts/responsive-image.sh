@@ -24,7 +24,7 @@ convert () {
       if [ -f "$FILE" ]; then
         echo "[EXIST] $FILE..."
       else
-        magick $img -resize "$1%" $FILE
+        magick $img -resize "$1%" -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace RGB $FILE
         echo "[OK] $FILE..."
       fi
     done
@@ -63,6 +63,8 @@ main() {
           tablet
         elif [ $av == "mobile" ]; then
           mobile
+        elif [ $av == "desktop" ]; then
+          desktop
         else
             usage
         fi
