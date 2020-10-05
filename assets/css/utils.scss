@@ -77,3 +77,11 @@ select {
   z-index: 45;
   @apply .bg-gray-900 .bg-opacity-75;
 }
+
+/*
+dark mode
+*/
+
+.modal {
+  @apply .bg-white;
+}

@@ -38,12 +38,20 @@
         {{ $t('menu.about') }}
       </lazy-extra-nuxt-link>
       <div class="absolute settings-child right-0 top-0 bg-white p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
-        <button v-if="$auth.loggedIn" class="hover:text-gray-700 transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
+        <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
           <svg-icon name="logout" />
           {{ $t('auth.logout') }}
         </button>
-        <label for="lang" class="flex justify-center items-center">
-          <span class="text-lg leading-3 italic text-gray-700 font-medium">
+        <div class="flex justify-around">
+          <svg-icon name="sun"  class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-white text-gray-800"
+                    @click="setLight"
+          />
+          <svg-icon name="moon" class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-black text-white"
+                    @click="setDark"
+          />
+        </div>
+        <label for="lang" class="flex justify-center items-center flex-col gap-y-2">
+          <span class="text-lg leading-3 italic text-gray-700 font-medium language-label">
             {{ $t('utils.language') }}:
           </span>
           <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-25">
@@ -87,6 +95,12 @@ export default {
   methods: {
     toogleNavbar () {
       this.active = !this.active
+    },
+    setLight () {
+      this.$colorMode.preference = "light"
+    },
+    setDark () {
+      this.$colorMode.preference = "dark"
     }
   }
 
@@ -141,6 +155,10 @@ export default {
       }
     }
   }
+}
+
+.navbar-items .navbar-link::after {
+  background-color: white;
 }
 
 @media screen and (max-width:1300px){
@@ -201,6 +219,12 @@ export default {
   }
 }
 
+.dark-mode .background-navbar.active {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+
 @media screen and (min-width:1000px){
   .settings-hide {
     visibility: hidden;
@@ -249,6 +273,18 @@ export default {
       &.active {
         transform: translateX(0);
       }
+    }
+  }
+  .dark-mode .grid-layout-navbar .navbar-items {
+    background-color: rgb(0, 0, 0);
+  }
+}
+
+.dark-mode {
+  .settings-child   {
+    background-color: black;
+    .language-label {
+      @apply text-gray-200
     }
   }
 }

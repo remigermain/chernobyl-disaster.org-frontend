@@ -1,10 +1,9 @@
 <template>
   <main class="grid-layout">
     <div class="grid-layout-title">
-      <extra-nuxt-link :to="{name: 'index'}" :title="$t('menu.home')" class="hover:text-gray-700">
+      <extra-nuxt-link :to="{name: 'index'}" :title="$t('menu.home')" class="hover:text-gray-700 title-site">
         <h1 class="grid-layout-title-item font-russia">
           <svg-icon name="logo" />
-          <!-- <object type="image/svg+xml" item-prop="image" :data="require('~/assets/svg/logo.svg')" /> -->
           <span>chernobyl</span>
         </h1>
       </extra-nuxt-link>
@@ -41,5 +40,20 @@
 .grid-layout-contents {
   grid-area: 2 / 1 / 2 / 11;
   overflow-y: scroll;
+}
+
+/*
+  dark mode
+*/
+.dark-mode {
+  .grid-layout {
+    @apply bg-black;
+  }
+  .grid-layout-title {
+    color: rgb(207, 207, 207);
+    .title-site:hover {
+      color: rgb(170, 170, 170);
+    }
+  }
 }
 </style>

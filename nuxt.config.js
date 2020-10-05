@@ -110,6 +110,7 @@ export default {
     "@nuxtjs/eslint-module",
     "@nuxt/components",
     "@nuxtjs/tailwindcss",
+    '@nuxtjs/color-mode',
     // "nuxt-purgecss",
     "@nuxtjs/svg-sprite",
   ],
@@ -153,7 +154,8 @@ export default {
 
   css: [
     "destyle.css/destyle.css",
-    "~assets/css/main.css",
+    "~assets/css/main.scss",
+    "~assets/css/dark-mode.scss",
     "~assets/css/transition.scss",
     "~assets/css/grid-common.scss",
     "~assets/css/fonts.css",

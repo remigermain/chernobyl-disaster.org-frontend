@@ -1,6 +1,6 @@
 <template>
   <div class="grid-common">
-    <section class="common-description text-center space-y-4">
+    <section class="common-description text-center space-y-4 z-1">
       <section>
         <h1 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
@@ -88,7 +88,7 @@
         <img loading="lazy" src="~/assets/img/background-about.jpeg" alt="image" type="image/jpeg" class="h-full w-full object-cover">
       </picture>
     </div>
-    <div class="common-about space-y-4">
+    <div class="common-about space-y-4 z-1">
       <article class="w-full inline-grid">
         <a href="https://germainremi.fr" target="_blank" rel="noopener,noreferrer"
            class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 hover:scale-105 transform transition-transform duration-300"
@@ -226,7 +226,7 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: -1;
+  z-index: 0;
   opacity: 0.1;
   height: 100%;
   width: 100%;
