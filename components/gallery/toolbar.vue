@@ -159,6 +159,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     transition: opacity .4s;
+    font-weight: 600;
     & > svg {
       width: 12%;
     }
@@ -166,7 +167,7 @@ export default {
       width: 50%;
     }
     &:not(.nuxt-link-active) {
-      opacity: .4;
+      opacity: .7;
     }
     &:hover {
       opacity: 1;
