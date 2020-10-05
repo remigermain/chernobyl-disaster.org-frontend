@@ -29,6 +29,9 @@ export default {
 
 <style lang="scss">
 .dark-mode .section-form {
-  @apply bg-gray-800 border-none;
+  @apply bg-gray-900 border-none;
+  h1 {
+    @apply text-gray-400
+  }
 }
 </style>
