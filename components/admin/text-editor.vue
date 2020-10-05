@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 .input {
   padding: 0.5rem !important;
@@ -82,10 +82,24 @@ export default {
   border-color: rgb(43, 108, 176) !important;
   background-color: rgb(237, 242, 247) !important;
 }
-</style>
-
-<style>
 .quill-editor .ql-editor {
   font-size: 1.35em;
+}
+</style>
+
+<style lang="scss">
+.dark-mode .quill-editor .ql-toolbar {
+  .ql-picker,
+  .ql-stroke {
+    color: white !important;
+    stroke: white !important;
+  }
+  button:hover {
+    .ql-picker,
+    .ql-stroke {
+      color: #06c !important;
+      stroke: #06c  !important;
+    }
+  }
 }
 </style>
