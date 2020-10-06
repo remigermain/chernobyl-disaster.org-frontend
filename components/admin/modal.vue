@@ -63,7 +63,7 @@ export default {
             throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.deleted"))
-          this.redirect({name: `contribute-${this.model}`})
+          this.$router.push(this.localePath({name: `contribute-${this.model}`}))
         })
         .catch(error => { this.requestError(error) })
         .finally(() => {

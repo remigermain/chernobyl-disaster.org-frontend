@@ -5,12 +5,12 @@
       <h1 class="text-3xl capitalize self-start">
         <slot name="label" />
       </h1>
-      <lazy-extra-nuxt-link v-if="create" :to="{name: `contribute-${model}-create`}"
+      <nuxt-link v-if="create"  :to="localePath({name: `contribute-${model}-create`})"
                             class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
       >
         {{ $t('utils.create') }}
         <svg-icon name="plus" class=" w-24px text-white" />
-      </lazy-extra-nuxt-link>
+      </nuxt-link>
       <p v-if="description"
          class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line description">{{ $t(`help.${model}.global-description`) }}</p>
     </div>

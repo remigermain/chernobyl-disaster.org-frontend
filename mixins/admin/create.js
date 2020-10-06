@@ -23,9 +23,9 @@ export default {
           this.i18nToast.success(this.$t("success.create"))
           // redirect after
           if (event.submitter.dataset.type === "continue") {
-            this.redirect({...this.pathUpdate.path, params: {id: response.data.id}})
+            this.$router.push(this.localePath({...this.pathUpdate.path, params: {id: response.data.id}}))
           } else if (event.submitter.dataset.type === "detail") {
-            this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
+            this.$router.push(this.localePath({...this.pathDetail.path, params: {id: response.data.id}}))
           } else {
             event.srcElement.reset() // reset all input in form
             this.langs = []

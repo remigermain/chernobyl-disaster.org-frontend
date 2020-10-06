@@ -5,11 +5,11 @@
     </h1>
     <span class="text-sm text-gray-700">
       {{ $t('utils.or') }}
-      <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md text-purple-700"
                             :title="$t('auth.goto-login')"
       >
         {{ $t('auth.login') }}
-      </lazy-extra-nuxt-link>
+      </nuxt-link>
     </span>
     <form class="my-4 w-3/4 form" @submit.prevent="submit">
       <field-email :field="field.email" :errors="errors.email" />
@@ -79,7 +79,7 @@ export default {
           }
           this.i18nToast.success(this.$t("auth.registeration-success")).goAway(8000)
           event.target.reset()
-          this.redirect({ name: "auth-login" })
+          this.$router.push(this.localePath({ name: "auth-login" }))
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })

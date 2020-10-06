@@ -12,13 +12,13 @@
             </time>
           </header>
           <section class="timeline-item mr-1">
-            <extra-nuxt-link v-for="element in obj.list"
-                             :id="element.id"
-                             :key="`${obj.id}-${element.id}`"
-                             :to="{name: 'timeline-slug', params: {'slug': element.slug}}"
-                             class="timeline-element group block p-4 cursor-pointer hover:bg-gray-700 text-white relative rounded-md mt-1"
-                             :class="{'bg-gray-700': current.id === element.id, 'bg-gray-800': current.id!==element.id}"
-                             :title="i18nAttr(element, 'title')"
+            <nuxt-link v-for="element in obj.list"
+                       :id="element.id"
+                       :key="`${obj.id}-${element.id}`"
+                       :to="localePath({name: 'timeline-slug', params: {'slug': element.slug}})"
+                       class="timeline-element group block p-4 cursor-pointer hover:bg-gray-700 text-white relative rounded-md mt-1"
+                       :class="{'bg-gray-700': current.id === element.id, 'bg-gray-800': current.id!==element.id}"
+                       :title="i18nAttr(element, 'title')"
             >
               <span class="timeline-point shadow-sm"
                     :class="{
@@ -26,31 +26,31 @@
                       'bg-blue-800': current.id!==element.id
                     }"
               />
-              <timeline-min-time :date="element.date" />
+              <lazy-timeline-min-time :date="element.date" />
               <h1>
                 {{ i18nAttr(element, 'title') }}
               </h1>
-            </extra-nuxt-link>
+            </nuxt-link>
           </section>
         </section>
       </section>
       <div class="w-full h-full flex justify-center bg-gray-900 rounded-b-md text-white overflow-hidden">
-        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': prevId}}"
+        <nuxt-link  :to="localePath({name: 'timeline-slug', params: {'slug': prevId}})"
                          class="w-2/4 inline-block h-full"
                          :title="$t('utils.next-event')"
         >
           <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:-translate-x-2 transform transition-transform duration-400"
                     :aria-label="$t('utils.next-event')"
           />
-        </extra-nuxt-link>
-        <extra-nuxt-link :to="{name: 'timeline-slug', params: {'slug': nextId}}"
+        </nuxt-link>
+        <nuxt-link  :to="localePath({name: 'timeline-slug', params: {'slug': nextId}})"
                          class="w-2/4 inline-block h-full"
                          :title="$t('utils.next-event')"
         >
           <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:translate-x-2 transform transition-transform duration-400"
                     :aria-label="$t('utils.next-event')"
           />
-        </extra-nuxt-link>
+        </nuxt-link>
       </div>
       <div class="icon-timeline w-6 h-12 bg-blue-800 text-gray-800 shadow-lg"
            :class="{'active rounded-l-full': active, 'rounded-r-full': !active}"
@@ -66,9 +66,14 @@
 
 <script>
 import { timelineElement } from "@/lib/timeline"
-import scrollIntoView from "scroll-into-view-if-needed"
+
+import dateMixinx from "@/mixins/date"
 
 export default {
+
+  mixins: [
+    dateMixinx
+  ],
 
   props: {
     object: {
@@ -125,9 +130,6 @@ export default {
   },
 
   methods: {
-    toUrlParams (st) {
-      return st.replace(/\s+/g, "-")
-    },
     toogleActive () {
       this.active = !this.active
     },
@@ -135,20 +137,16 @@ export default {
       if (process.client) {
         const el = document.getElementById(this.current.id)
         if (el) {
-          // el.scrollIntoView({behavior: "smooth"})
-          scrollIntoView(el, {behavior: "smooth", scrollMode: "always"})
+          el.scrollIntoView({behavior: "smooth", block: "center", inline: "center"})
         }
       }
     },
     compareDate (original, newEl) {
-      if (
+      return (
         newEl.getFullYear() !== original.getFullYear() ||
         newEl.getMonth() !== original.getMonth() ||
         newEl.getDay() !== original.getDay()
-      ) {
-        return true
-      }
-      return false
+      )
     },
     listCreate () {
       /*
@@ -165,7 +163,7 @@ export default {
       return list
     },
     setCurrent (element) {
-      this.redirect({name: "timeline-slug", params: {"slug": element.slug}})
+      this.$router.push(this.localePath({name: "timeline-slug", params: {"slug": element.slug}}))
       this.current = element
       this.scroll()
       this.$emit("select", element)

@@ -5,11 +5,11 @@
     </h1>
     <span class="text-sm text-gray-700">
       {{ $t('utils.or') }}
-      <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
+      <nuxt-link  :to="localePath({name : 'auth-register'})" class="text-md text-purple-700"
                        :title="$t('auth.create-account')"
       >
         {{ $t('auth.create-account') }}
-      </extra-nuxt-link>
+      </nuxt-link>
     </span>
     <form class="my-4 w-3/4 form"
           @submit.prevent="submit"
@@ -17,11 +17,11 @@
       <field-username :field="field.username" :errors="errors.username" />
       <field-password :field="field.password" :errors="errors.password" />
       <div class="flex justify-end mx-auto text-center my-2">
-        <extra-nuxt-link :to="{name: 'auth-reset-password'}" class="text-purple-700 font-md m-sm:w-full my-auto italic space tracking-tighter"
+        <nuxt-link  :to="localePath({name: 'auth-reset-password'})" class="text-purple-700 font-md m-sm:w-full my-auto italic space tracking-tighter"
                          :title="$t('auth.forget-password')"
         >
           {{ $t('auth.forget-password') }}
-        </extra-nuxt-link>
+        </nuxt-link>
       </div>
       <field-submit>
         {{ $t('auth.login') }}
@@ -66,7 +66,7 @@ export default {
       this.errors = {username: [], password: []}
 
       this.$auth.loginWith("local", {data: form})
-        .then(() => { this.redirect({ name: "contribute" }) })
+        .then(() => { this.$router.push(this.localePath({ name: "contribute" })) })
         .catch((error) => { this.requestError(error) })
         .finally(() => { this.loading = false })
     }

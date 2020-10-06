@@ -7,16 +7,16 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="contribute-navbar-items" :class="{'active': active }">
-      <extra-nuxt-link :to="{name: 'contribute'}" class="contribute-navbar-link exact ml-4">
+      <nuxt-link  :to="localePath({name: 'contribute'})" class="contribute-navbar-link exact ml-4">
         <svg-icon name="dashboard" />
         {{ $t('menu.dashboard') }}
-      </extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'contribute-account'}" class="contribute-navbar-link ml-4" @click="active = false">
+      </nuxt-link>
+      <nuxt-link  :to="localePath({name: 'contribute-account'})" class="contribute-navbar-link ml-4" @click="active = false">
         {{ $t("admin.label.account") }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link v-for="menu in menus" :key="menu.to.name" :to="menu.to" class="contribute-navbar-link ml-4" @click="active = false">
+      </nuxt-link>
+      <nuxt-link v-for="menu in menus" :key="menu.to.name"  :to="localePath(menu.to)" class="contribute-navbar-link ml-4" @click="active = false">
         {{ menu.name }}
-      </lazy-extra-nuxt-link>
+      </nuxt-link>
     </nav>
   </div>
 </template>

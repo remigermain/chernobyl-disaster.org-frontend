@@ -5,19 +5,19 @@
     </h1>
     <span class="text-sm text-gray-700">
       {{ $t('utils.or') }}
-      <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md text-purple-700"
                        :title="$t('auth.login')"
       >
         {{ $t('auth.login') }}
-      </extra-nuxt-link>
+      </nuxt-link>
     </span>
     <div class="text-sm text-gray-700">
       {{ $t('utils.or') }}
-      <extra-nuxt-link :to="{name : 'auth-register'}" class="text-md text-purple-700"
+      <nuxt-link  :to="localePath({name : 'auth-register'})" class="text-md text-purple-700"
                        :title="$t('auth.create-account')"
       >
         {{ $t('auth.create-account') }}
-      </extra-nuxt-link>
+      </nuxt-link>
     </div>
     <form class="my-4 w-3/4 form" @submit.prevent="submit">
       <field-email :field="field.email" />
@@ -60,7 +60,7 @@ export default {
 
       this.$axios.post("auth/password/reset/", form)
         .then((response) => {
-          this.redirect({ name: "auth-login" })
+          this.$router.push(this.localePath({ name: "auth-login" }))
           this.i18nToast.success(response.data.detail).goAway(4000)
         })
         .catch((error) => { this.requestError(error) })

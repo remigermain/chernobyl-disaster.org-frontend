@@ -1,3 +1,5 @@
+import dateMixins from "@/mixins/date"
+
 const errorsField = {
   name: [],
   born: [],
@@ -11,7 +13,12 @@ const errorsField = {
   }]
 }
 
+
 export default {
+
+  mixins: [
+    dateMixins
+  ],
 
   data () {
 

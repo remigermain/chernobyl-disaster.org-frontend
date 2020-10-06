@@ -5,11 +5,11 @@
     </h1>
     <span class="text-sm text-gray-700">
       {{ $t('utils.or') }}
-      <extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md text-purple-700"
                        :title="$t('auth.login')"
       >
         {{ $t('auth.login') }}
-      </extra-nuxt-link>
+      </nuxt-link>
     </span>
     <form class="my-4 w-3/4 form" @submit.prevent="submit">
       <field-password :field="field.new_password1" :errors="errors.new_password1" />
@@ -71,7 +71,7 @@ export default {
             throw new Error("error-server")
           }
           this.i18nToast.success(this.$t("success.password-changed")).goAway(6000)
-          this.redirect({name: "auth-login"})
+          this.$router.push(this.localePath({name: "auth-login"}))
         })
         .catch(error => { this.requestError(error) })
         .finally(() => { this.loading = false })

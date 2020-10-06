@@ -42,12 +42,12 @@
             </span>
           </td>
           <td class="p-2 text-gray-800 text-center">
-            <lazy-extra-nuxt-link v-if="detail && !obj.query" :to="{name: `contribute-${obj.uuid || model}-id`, params:{ id: obj.object_id || obj.id} }">
+            <nuxt-link v-if="detail && !obj.query"  :to="localePath({name: `contribute-${obj.uuid || model}-id`, params:{ id: obj.object_id || obj.id} })">
               <svg-icon name="eye" class="cursor-pointer text-blue-700 action-btn" />
-            </lazy-extra-nuxt-link>
-            <lazy-extra-nuxt-link :to="genLink(obj)">
+            </nuxt-link>
+            <nuxt-link  :to="localePath(genLink(obj))">
               <svg-icon name="edit" class="cursor-pointer text-purple-700 action-btn" />
-            </lazy-extra-nuxt-link>
+            </nuxt-link>
             <template v-if="$auth.hasScope('staff')">
               <slot name="delete" :obj="obj" />
               <button v-if="deleted" @click="setDeleted(obj)">

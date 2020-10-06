@@ -5,9 +5,9 @@
     </template>
     <template v-slot:breadcrumbs>
       <lazy-contribute-breadcrumb>
-        <lazy-extra-nuxt-link :to="pathList.path">
+        <nuxt-link  :to="localePath(pathList.path)">
           {{ pathList.label }}
-        </lazy-extra-nuxt-link>
+        </nuxt-link>
         {{ pathUpdate.label }}
         {{ $route.params.id }}
       </lazy-contribute-breadcrumb>

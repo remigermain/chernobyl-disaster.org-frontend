@@ -31,22 +31,22 @@
         </button>
         <span class="border-b border-gray-500" />
         <div class="toolbar-menu">
-          <lazy-extra-nuxt-link :to="{name: 'gallery-picture'}" class="toolbar-link"
+          <nuxt-link  :to="localePath({name: 'gallery-picture'})" class="toolbar-link"
                                 :title="$t('utils.goto-gallery-picture')"
           >
             <svg-icon name="photo" class="w-6 h-6" role="img" :aria-label="$t('utils.picture')" />
             <span class="gallery-toolbar-text">
               {{ $t('menu.picture') }}
             </span>
-          </lazy-extra-nuxt-link>
-          <lazy-extra-nuxt-link :to="{name: 'gallery-video'}" class="toolbar-link"
+          </nuxt-link>
+          <nuxt-link  :to="localePath({name: 'gallery-video'})" class="toolbar-link"
                                 :title="$t('utils.goto-gallery-video')"
           >
             <svg-icon name="movie" class="w-6 h-6" role="img" :aria-label="$t('utils.video')" />
             <span class="gallery-toolbar-text">
               {{ $t('menu.video') }}
             </span>
-          </lazy-extra-nuxt-link>
+          </nuxt-link>
         </div>
         <span class="border-b border-gray-500" />
         <div class="toolbar-peoples">

@@ -10,13 +10,13 @@
           {{ position }}
         </div>
         <div class="toolbar-right">
-          <extra-nuxt-link v-if="$auth.loggedIn"
-                           :to="{name: 'contribute-picture-id', params: {id: object.id}}"
+          <nuxt-link v-if="$auth.loggedIn"
+                           :to="localePath({name: 'contribute-picture-id', params: {id: object.id}})"
                            class="toolbar-item"
                            :title="$t('utils.edit')"
           >
             <svg-icon name="settings" class="w-inherit h-inherit" />
-          </extra-nuxt-link>
+          </nuxt-link>
           <svg-icon name="x"
                     class="toolbar-item"
                     :aria-label="$t('utils.close')"
@@ -82,9 +82,6 @@ export default {
     },
     hasNext () {
       return this.length - 1 > this.idx
-    },
-    translate () {
-      return this.translateLeft || this.translateRight
     },
     position () {
       return `${this.idx + 1} / ${this.length}`

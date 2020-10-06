@@ -1,12 +1,12 @@
 <template>
   <main class="grid-layout">
     <div class="grid-layout-title">
-      <extra-nuxt-link :to="{name: 'index'}" :title="$t('menu.home')" class="hover:text-gray-700 title-site">
+      <nuxt-link  :to="localePath({name: 'index'})" :title="$t('menu.home')" class="hover:text-gray-700 title-site">
         <h1 class="grid-layout-title-item font-russia">
           <svg-icon name="logo" />
           <span>chernobyl</span>
         </h1>
-      </extra-nuxt-link>
+      </nuxt-link>
     </div>
     <navbar />
     <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('utils.content')">

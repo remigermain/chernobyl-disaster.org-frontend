@@ -7,36 +7,36 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="navbar-items relative" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
-      <lazy-extra-nuxt-link :to="{name: 'index'}" class="navbar-link exact"
+      <nuxt-link  :to="localePath({name: 'index'})" class="navbar-link exact"
                             :title="$t('utils.goto-home')"
                             @click="active = false"
       >
         {{ $t('menu.home') }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'timeline'}" class="navbar-link"
+      </nuxt-link>
+      <nuxt-link  :to="localePath({name: 'timeline'})" class="navbar-link"
                             :title="$t('utils.goto-timeline')"
                             @click="active = false"
       >
         {{ $t('menu.timeline') }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'gallery'}" class="navbar-link"
+      </nuxt-link>
+      <nuxt-link  :to="localePath({name: 'gallery'})" class="navbar-link"
                             :title="$t('utils.goto-gallery')"
                             @click="active = false"
       >
         {{ $t('menu.gallery') }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="contributeLink" class="navbar-link"
+      </nuxt-link>
+      <nuxt-link  :to="localePath(contributeLink)" class="navbar-link"
                             :title="$t('utils.goto-contribute')"
                             @click="active = false"
       >
         {{ $t('menu.contribute') }}
-      </lazy-extra-nuxt-link>
-      <lazy-extra-nuxt-link :to="{name: 'about'}" class="navbar-link"
+      </nuxt-link>
+      <nuxt-link  :to="localePath({name: 'about'})" class="navbar-link"
                             :title="$t('utils.goto-about')"
                             @click="active = false"
       >
         {{ $t('menu.about') }}
-      </lazy-extra-nuxt-link>
+      </nuxt-link>
       <div class="absolute settings-child right-0 top-0 p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
         <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
           <svg-icon name="logout" />

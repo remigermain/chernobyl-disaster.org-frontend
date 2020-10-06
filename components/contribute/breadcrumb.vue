@@ -1,8 +1,8 @@
 <template>
   <div class="bread-crumb text-md text-opacity-50 text-gray-700">
-    <lazy-extra-nuxt-link :to="{name: 'contribute'}">
+    <nuxt-link  :to="localePath({name: 'contribute'})">
       {{ $t('menu.dashboard') }}
-    </lazy-extra-nuxt-link>
+    </nuxt-link>
     <slot />
   </div>
 </template>

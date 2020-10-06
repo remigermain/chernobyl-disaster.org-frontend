@@ -24,9 +24,9 @@ export default {
           this.i18nToast.success(this.$t("success.update"))
           // redirect after
           if (event.submitter.dataset.type === "new") {
-            this.redirect({...this.pathCreate.path})
+            this.$router.push(this.localePath({...this.pathCreate.path}))
           } else if (event.submitter.dataset.type === "detail") {
-            this.redirect({...this.pathDetail.path, params: {id: response.data.id}})
+            this.$router.push(this.localePath({...this.pathDetail.path, params: {id: response.data.id}}))
           } else {
             this.langs = []
             this.$nuxt.refresh()

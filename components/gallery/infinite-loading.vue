@@ -25,17 +25,15 @@ export default {
     topVisible () {
       return this.$el.getBoundingClientRect().bottom > this.$parent.$el.getBoundingClientRect().top
     },
-    emit () {
-      this.$emit("visible")
-      return true
-    },
     isVisible () {
       if (this.position === "top") {
         if (this.topVisible()) {
-          return this.emit()
+          this.$emit("visible")
+          return true
         }
       } else if (this.bottomVisible()) {
-          return this.emit()
+        this.$emit("visible")
+        return true
       }
       return false
     }

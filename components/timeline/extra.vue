@@ -121,6 +121,9 @@ export default {
   },
 
   methods: {
+    urlVideo (src) {
+      return src.replace("watch?v=", "embed/")
+    },
     toogleActive () {
       this.activeMenu = !this.activeMenu
     },

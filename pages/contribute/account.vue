@@ -147,7 +147,7 @@ export default {
           }
           this.i18nToast.success(this.$t("success.delete-account"))
           this.$auth.logout()
-          this.redirect({ name: "home" })
+          this.$router.push(this.localePath({ name: "home" }))
         })
         .catch((error) => { this.requestError(error) })
         .finally(() => {

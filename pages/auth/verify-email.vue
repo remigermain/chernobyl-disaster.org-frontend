@@ -5,11 +5,11 @@
     </h1>
     <span class="text-sm text-gray-700">
       {{ $t('utils.or') }}
-      <lazy-extra-nuxt-link :to="{name : 'auth-login'}" class="text-md text-purple-700"
+      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md text-purple-700"
                             :title="$t('auth.goto-login')"
       >
         {{ $t('auth.login') }}
-      </lazy-extra-nuxt-link>
+      </nuxt-link>
     </span>
     <p class="text-sm leading-5 text-gray-700">
       {{ $t('auth.check-email-description') }}
@@ -45,7 +45,7 @@ export default {
           throw new Error("error-server")
         }
         this.i18nToast.success(this.$t("auth.email-verified")).goAway(6000)
-        this.redirect({name: "auth-login"})
+        this.$router.push(this.localePath({name: "auth-login"}))
       })
       .catch(error => { this.requestError(error) })
       .finally(() => { this.loading = false })

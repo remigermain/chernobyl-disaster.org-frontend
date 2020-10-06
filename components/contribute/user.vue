@@ -95,6 +95,9 @@ export default {
   },
 
   methods: {
+    getDateMini (date) {
+      return date.toLocaleDateString(this.$i18n.locale, {year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit"})
+    },
     setPagination (val) {
       this.pagination = val
     },

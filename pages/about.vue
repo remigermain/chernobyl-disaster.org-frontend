@@ -12,18 +12,18 @@
           <svg-icon name="brand-gitlab" role="img" aria-label="Gitlab" />
           Gitlab
         </a>
-        <extra-nuxt-link :to="{name: 'contribute-translate'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
+        <nuxt-link  :to="localePath({name: 'contribute-translate'})" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
                          :title="$t('pages.about.contribute-translate')"
         >
           <svg-icon name="language" role="img" :aria-label="$t('utils.translation')" />
           {{ $t('utils.translation') }}
-        </extra-nuxt-link>
-        <extra-nuxt-link :to="{name: 'auth-login'}" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
+        </nuxt-link>
+        <nuxt-link  :to="localePath({name: 'auth-login'})" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
                          :title="$t('auth.connection-account')"
         >
           <svg-icon name="user" role="img" :aria-label="$t('auth.connection-account')" />
           {{ $t('auth.connection-account') }}
-        </extra-nuxt-link>
+        </nuxt-link>
       </section>
       <section>
         <h2 class="text-3xl text-md capitalize">
@@ -140,12 +140,12 @@
           <span class="font-bold uppercase text-base">liberapay</span>
         </a>
       </div>
-      <extra-nuxt-link :to="{name: 'contact'}" class="flex flex-col items-center space-y-2 group" :title="$t('pages.about.contact')">
+      <nuxt-link  :to="localePath({name: 'contact'})" class="flex flex-col items-center space-y-2 group" :title="$t('pages.about.contact')">
         <div class=" h-12 w-12 flex justify-center items-center bg-gray-800 rounded-full shadow-sm">
           <svg-icon name="mail" :aria-label="$t('pages.about.contact')" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
         </div>
         <span class="font-bold uppercase text-base">{{ $t('pages.about.contact') }}</span>
-      </extra-nuxt-link>
+      </nuxt-link>
     </div>
   </div>
 </template>

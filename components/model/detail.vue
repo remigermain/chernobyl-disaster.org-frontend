@@ -10,13 +10,13 @@
           {{ $t('admin.label.report') }}
           <svg-icon name="send" class="w-24px" />
         </button>
-        <extra-nuxt-link :to="path"
+        <nuxt-link  :to="localePath(path)"
                          class="px-2 py-2 bg-blue-800 text-white rounded-md self-end capitalize hover:bg-blue-600"
                          :title="$t('utils.update')"
         >
           {{ $t('utils.update') }}
           <svg-icon name="edit" class="w-24px" />
-        </extra-nuxt-link>
+        </nuxt-link>
         <button v-if="$auth.hasScope('staff')"
                 class="px-2 py-2 bg-red-800 hover:bg-red-700 text-white rounded-md self-end capitalize"
                 @click="active = true"

@@ -14,6 +14,8 @@ export default {
         name: "description",
         content: process.env.npm_package_description || "",
       },
+      { name: "og:image", content: "/icon.png" },
+      { name: "twitter:image", content: "/icon.png" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
@@ -120,10 +122,6 @@ export default {
     {
       path: "~/components/admin/",
       prefix: "admin",
-    },
-    {
-      path: "~/components/extra/",
-      prefix: "extra",
     },
     {
       path: "~/components/field/",

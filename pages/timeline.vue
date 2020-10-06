@@ -1,6 +1,6 @@
 <template>
   <div class="grid-timeline">
-    <timeline-list :class="{'active': active}" :object="object" @select="setCurrent" />
+    <lazy-timeline-list :class="{'active': active}" :object="object" @select="setCurrent" />
     <nuxt-child :current="current" />
   </div>
 </template>
@@ -13,7 +13,14 @@ export default {
   name: "Timeline",
   transition: "timeline",
 
-  asyncData({ app, route }) {
+  asyncData({ app, route, store }) {
+
+    if (store.getters["timeline/has_populate"]) {
+        return {
+          object: store.getters["timeline/events"],
+          current: timelineElement(store.getters["timeline/events"], route.params.slug)
+        }
+    }
     return app.$axios.get("event/?no_page=true")
       .then(response => {
         if (response.status!==200) {
@@ -28,20 +35,18 @@ export default {
           })
           return el
         })
-
+        store.commit("timeline/EVENTS", response.data)
         return {
           object: response.data,
           current: timelineElement(response.data, route.params.slug)
         }
       })
-      .catch(() => {
-        // TODO
-      })
+      .catch(() => {})
   },
 
   data () {
     return {
-      active: false
+      active: false,
     }
   },
 

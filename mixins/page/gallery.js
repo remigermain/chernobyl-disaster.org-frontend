@@ -10,6 +10,7 @@ export default {
       currentObject: null,
       completed: false,
       interval: 0,
+      inRequest: false,
       inRequestPrev: false,
       inRequestNext: false,
       error: false

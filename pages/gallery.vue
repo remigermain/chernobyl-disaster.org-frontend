@@ -10,7 +10,9 @@ export default {
   name: "Gallery",
 
   asyncData ({ app, store }) {
-    return app.$axios.get("populate/people")
+    // poopulate sotre if not people
+    if (!store.getters["model/peoples"].length) {
+      return app.$axios.get("populate/people")
       .then(response => {
         if (response.status!==200) {
           throw new Error("error-server")
@@ -20,6 +22,7 @@ export default {
       .catch(() => {
         // TODO
       })
+    }
   }
 }
 </script>

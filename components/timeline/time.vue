@@ -24,7 +24,13 @@
 </template>
 
 <script>
+import dateMixinx from "@/mixins/date"
+
 export default {
+
+  mixins: [
+    dateMixinx
+  ],
 
   props: {
     date: {

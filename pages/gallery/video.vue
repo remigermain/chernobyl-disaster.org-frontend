@@ -52,6 +52,12 @@ export default {
     }
   },
 
+  methods: {
+    urlVideo (src) {
+      return src.replace("watch?v=", "embed/")
+    },
+  },
+
   head () {
     return {
       title: this.$t("menu.video"),
