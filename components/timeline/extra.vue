@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="fix-mobile" />
-    <div class="shadow-lg grid-extra overflow-hidden w-full h-full rounded-lg" :class="{'active': activeMenu}">
+    <div class="shadow-lg grid-extra overflow-hidden w-full h-full timeline:rounded-lg" :class="{'active': activeMenu}">
       <div class="extra-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
           {{ $t('utils.menu-medias') }}
@@ -13,50 +13,58 @@
       <nav class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-blue-800 md:rounded-l-lg md:rounded-b-lg"
            :class="{'active': activeMenu}"
       >
-        <button class="w-full h-2/4 px-4 extra-btn" :class="{'bg-gray-800': pictureActive, 'bg-gray-900 -md:rounded-lg': !pictureActive}"
+        <button class="w-full h-2/4 px-4 extra-btn"
+                :class="{
+                  'timeline:bg-gray-800 -timeline:text-gray-800': pictureActive,
+                  'timeline:bg-gray-900 -timeline:bg-gray-800 -timeline:rounded-b-lg': !pictureActive
+                }"
                 :title="$t('utils.goto-picture')"
                 @click.prevent="pictureShow"
         >
           <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('utils.picture')" />
         </button>
-        <button class="w-full h-2/4 px-4 extra-btn md:rounded-b-lg" :class="{'bg-gray-800': videoActive, 'bg-gray-900 -md:rounded-lg': !videoActive}"
+        <button class="w-full h-2/4 px-4 extra-btn timeline:rounded-b-lg"
+                :class="{
+                  'timeline:bg-gray-800 -timeline:text-gray-800': videoActive,
+                  'timeline:bg-gray-900 -timeline:bg-gray-800 -timeline:rounded-b-lg': !videoActive
+                }"
                 :title="$t('utils.goto-video')"
                 @click.prevent="videoShow"
         >
           <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('utils.video')" />
         </button>
       </nav>
-      <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden flex flex-wrap" :class="{'justify-center items-center ': activeExtra.length === 0}">
-        <template v-if="pictureActive">
-          <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
-            <source :srcset="$media(img.picture.thumbnail_webp)" type="image/webp">
-            <img :alt="i18nAttr(img, 'title')"
-                 :src="$media(img.picture.thumbnail_jepg)"
-                 loading="lazy"
-                 class="w-full h-full object-cover"
-                 tabindex="0"
-                 role="button"
-                 type="image/jpeg"
-                 @click="setCurrent(img, idx)"
-            >
-          </picture>
-          <span v-if="object.pictures.length === 0" class="italic text-gray-700 text-opacity-50 empty">
-            {{ empty }}
-          </span>
-        </template>
-        <template v-else>
-          <iframe v-for="el in object.videos"
-                  :key="el.id"
-                  :src="urlVideo(el.video)" frameborder="0"
-                  class="extra extra-picture"
+      <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden ">
+        <div class="flex flex-wrap" :class="{'justify-center items-center h-full w-full': activeExtra.length === 0, 'h-min-content': activeExtra.length >= 1}">
+          <template v-if="pictureActive">
+            <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
+              <source :srcset="$media(img.picture.thumbnail_webp)" type="image/webp">
+              <img :alt="i18nAttr(img, 'title')"
+                  :src="$media(img.picture.thumbnail_jepg)"
                   loading="lazy"
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-          />
-          <span v-if="object.videos.length === 0" class="italic text-gray-700 text-opacity-50 empty">
+                  class="w-full h-full object-cover"
+                  tabindex="0"
+                  role="button"
+                  type="image/jpeg"
+                  @click="setCurrent(img, idx)"
+              >
+            </picture>
+
+          </template>
+          <template v-else>
+            <iframe v-for="el in object.videos"
+                    :key="el.id"
+                    :src="urlVideo(el.video)" frameborder="0"
+                    class="extra extra-picture"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+            />
+          </template>
+          <span v-if="activeExtra.length === 0" class="italic text-gray-700 text-opacity-50 empty">
             {{ empty }}
           </span>
-        </template>
+        </div>
       </div>
     </div>
     <lazy-gallery-detail-picture v-if="pictureActive && object.pictures.length!==0"
@@ -254,7 +262,7 @@ export default {
   }
   .dark-mode {
     .extra-toolbar-desktop {
-      @apply bg-gray-800;
+      @apply bg-gray-900;
       .empty {
         @apply text-gray-400
       }

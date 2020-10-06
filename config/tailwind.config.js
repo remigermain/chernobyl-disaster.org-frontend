@@ -1,4 +1,5 @@
 const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette").default
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   theme: {
@@ -59,6 +60,10 @@ module.exports = {
         "max-content": "max-content"
       },
       screens: {
+        "mobile": "1000px",
+        "-mobile": {max: "1000px"},
+        "timeline": "850px",
+        "-timeline": {max: "850px"},
         "xl": "1280px",
         "-xl": {max: "1279px"},
         "-lg": {max: "1023px"},
@@ -103,6 +108,15 @@ module.exports = {
 
       addUtilities({...colorMap}, variants("borderColor"))
     },
+
+    // add dark-mode
+    ({ addVariant, e}) => {
+      addVariant('dark-mode', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.dark-mode ${e(`dark-mode${separator}${className}`)}`
+        })
+      })
+    }
   ],
   future: {
     removeDeprecatedGapUtilities: true,

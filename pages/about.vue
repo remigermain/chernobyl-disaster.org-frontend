@@ -212,7 +212,7 @@ export default {
   max-height: 200px;
 }
 .dark-mode .all-contributor {
-  @apply bg-gray-800
+  @apply bg-gray-800 text-white;
 }
 
 .sub-mt {
