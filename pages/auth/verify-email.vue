@@ -28,13 +28,13 @@
 
 export default {
   name: "AuthLogin",
-
   layout: "auth",
-  transition: "auth",
 
   validate ({query}) {
     return !!query.key
   },
+
+  transition: "auth",
 
   methods: {
     submit () {

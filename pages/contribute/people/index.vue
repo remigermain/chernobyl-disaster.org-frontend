@@ -1,14 +1,14 @@
 <template>
   <lazy-model-list :model="model.name">
-    <template v-slot:breadcrumbs>
+    <template #breadcrumbs>
       <lazy-contribute-breadcrumb>
         {{ pathList.label }}
       </lazy-contribute-breadcrumb>
     </template>
-    <template v-slot:label>
+    <template #label>
       {{ model.label }}
     </template>
-    <template v-slot:table>
+    <template #table>
       <lazy-admin-table :fields="fields"
                         :columns="columns"
                         :length="objectlength"
@@ -17,7 +17,7 @@
                         @pagination="pagnination"
                         @search="search"
       >
-        <template v-slot:table-title>
+        <template #table-title>
           {{ $t('tools.list') }}
         </template>
       </lazy-admin-table>
@@ -30,7 +30,7 @@
                         @pagination="pagninationLang"
                         @search="searchLang"
       >
-        <template v-slot:table-title>
+        <template #table-title>
           {{ $t('utils.need-translation') }}
         </template>
       </lazy-admin-table>

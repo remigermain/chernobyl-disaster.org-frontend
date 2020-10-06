@@ -235,7 +235,7 @@ export default {
   background: linear-gradient(white 1%, #0909094d);
 }
 
-.dark-mode .timeline-list-grid  {
+.dark .timeline-list-grid  {
   background: #1d1f24;
 }
 

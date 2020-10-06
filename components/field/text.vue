@@ -78,7 +78,7 @@ export default {
   opacity: .5;
 }
 
-.dark-mode {
+.dark {
   .field-input {
     @apply text-gray-400;
     &:focus {

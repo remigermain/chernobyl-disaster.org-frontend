@@ -98,7 +98,7 @@ export default {
   padding: 0.5em;
 }
 
-.dark-mode {
+.dark {
   .card-buble.items {
     @apply text-gray-300 bg-gray-800;
     .data {

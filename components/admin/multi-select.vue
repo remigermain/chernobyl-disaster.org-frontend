@@ -1,11 +1,11 @@
 <template>
   <component :is="component" v-bind="$attrs" :field="fieldCopy">
-    <template v-slot:label>
+    <template #label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}
       </span>
     </template>
-    <template v-slot:input>
+    <template #input>
       <select v-model="valueModel" :name="name" multiple="true" class="md:invisible md:w-0 md:h-0 -md:field-select-multiple"
               :required="field.required"
               @input="$emit('input', valueModel)"
@@ -125,7 +125,7 @@ export default {
   max-height: 180px;
 }
 
-.dark-mode .options-select-search {
+.dark .options-select-search {
   @apply bg-gray-700 text-gray-300;
   .data {
     @apply text-gray-300;

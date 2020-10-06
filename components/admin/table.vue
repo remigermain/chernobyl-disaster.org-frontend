@@ -6,7 +6,7 @@
       </div>
       <div class="p-2 mb-2 w-2/4">
         <field-text v-model="search" :field="{label: $t('utils.search') }">
-          <template v-slot:icon>
+          <template #icon>
             <svg-icon name="search" class="cursor-pointer hover:text-purple-700" @click="$emit('search', search)" />
           </template>
         </field-text>
@@ -207,7 +207,7 @@ export default {
   background-color:  rgba(116, 116, 116, 0.1);
 }
 
-.dark-mode {
+.dark {
   .table  {
     tr, td {
       @apply text-gray-300;

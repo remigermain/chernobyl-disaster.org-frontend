@@ -79,7 +79,7 @@ export default {
   @apply border-b border-gray-700 border-opacity-50;
 }
 
-.dark-mode {
+.dark {
   .button-model {
     @apply bg-gray-800
   }

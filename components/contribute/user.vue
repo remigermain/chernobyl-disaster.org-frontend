@@ -26,7 +26,7 @@
                         @pagination="setPagination"
                         @search="search"
       >
-        <template v-slot:table-title>
+        <template #table-title>
           {{ $t('utils.last-contributing') }}
         </template>
       </lazy-admin-table>

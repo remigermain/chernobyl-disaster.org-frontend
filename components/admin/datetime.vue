@@ -1,11 +1,11 @@
 <template>
   <component :is="component" v-bind="$attrs" :field="fieldCopy">
-    <template v-slot:label>
+    <template #label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}
       </span>
     </template>
-    <template v-slot:input>
+    <template #input>
       <div class="flex flex-wrap flex-col space-y-2">
         <vue-datetime v-model="pickerModel" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}">
           <svg-icon slot="before" name="calendar" class="opacity-50 text-2xl" />

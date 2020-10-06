@@ -157,7 +157,7 @@ export default {
   }
 }
 
-.dark-mode .navbar-items .navbar-link::after {
+.dark .navbar-items .navbar-link::after {
   background-color: white;
 }
 
@@ -205,7 +205,7 @@ export default {
   }
 }
 
-.dark-mode .burger > span {
+.dark .burger > span {
   background-color: white;
 }
 
@@ -223,7 +223,7 @@ export default {
   }
 }
 
-.dark-mode .background-navbar.active {
+.dark .background-navbar.active {
   background-color: rgba(38, 38, 38, 0.83);
 }
 
@@ -236,7 +236,7 @@ export default {
 .settings-child {
   background-color: #f9f9f9;
 }
-.dark-mode {
+.dark {
   .settings-child   {
     background-color: #2b2b2b;
     .language-label {
@@ -249,7 +249,7 @@ export default {
 @media screen and (max-width:1000px){
 
   // menu settings
-  .dark-mode {
+  .dark {
     .settings-child {
       background-color: black;
     }
@@ -295,7 +295,7 @@ export default {
       }
     }
   }
-  .dark-mode .grid-layout-navbar .navbar-items {
+  .dark .grid-layout-navbar .navbar-items {
     background-color: rgb(0, 0, 0);
   }
 }

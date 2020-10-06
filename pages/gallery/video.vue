@@ -1,7 +1,7 @@
 <template>
   <div class="grid-document" @scroll="scroll">
     <gallery-infinite-loading ref="prevLoading" position="top" :completed="!hasPrevPage" @visible="prevPage">
-      <template v-slot:completed>
+      <template #completed>
         &nbsp;
       </template>
     </gallery-infinite-loading>
@@ -52,12 +52,6 @@ export default {
     }
   },
 
-  methods: {
-    urlVideo (src) {
-      return src.replace("watch?v=", "embed/")
-    },
-  },
-
   head () {
     return {
       title: this.$t("menu.video"),
@@ -76,7 +70,14 @@ export default {
           { name: "twitter:image:alt", content: this.$t("pages.video.title") }
       ]
     }
-  }
+  },
+
+  methods: {
+    urlVideo (src) {
+      return src.replace("watch?v=", "embed/")
+    },
+  },
+
 }
 </script>
 

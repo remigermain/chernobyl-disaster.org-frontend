@@ -29,13 +29,13 @@
 <script>
 export default {
   name: "Contribute",
+  layout: "default",
 
   middleware: [
     "model",
     "auth",
   ],
 
-  layout: "default",
   transition: "page",
 
   asyncData({app}) {
@@ -167,7 +167,7 @@ export default {
   }
 }
 
-.dark-mode .tulp {
+.dark .tulp {
   @apply bg-gray-900
 }
 

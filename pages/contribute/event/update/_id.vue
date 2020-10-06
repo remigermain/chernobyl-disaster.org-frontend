@@ -1,9 +1,9 @@
 <template>
   <lazy-model-form @submit="submit" @add-extra="addLang">
-    <template v-slot:label>
+    <template #label>
       {{ model.label }}
     </template>
-    <template v-slot:breadcrumbs>
+    <template #breadcrumbs>
       <lazy-contribute-breadcrumb>
         <nuxt-link  :to="localePath(pathList.path)">
           {{ pathList.label }}
@@ -12,12 +12,12 @@
         {{ $route.params.id }}
       </lazy-contribute-breadcrumb>
     </template>
-    <template v-slot:form>
+    <template #form>
       <lazy-admin-text :value="object.title" :field="fields.title" :errors="errors.title"  />
       <admin-datetime :value="object.date" :field="fields.date" :errors="errors.date"/>
       <lazy-admin-multi-select :value="object.tags" :field="fields.tags" :errors="errors.tags" />
     </template>
-    <template v-slot:form-lang>
+    <template #form-lang>
       <!-- actual langs -->
       <model-card-lang v-for="(lang, idx) in object.langs" :key="lang.id" :title="langConv(lang.language)">
         <input class="hidden" :name="`${prefixLang(idx)}[id]`" :value="lang.id">
@@ -46,7 +46,7 @@
         <lazy-admin-error :errors="getErrorsIdx(errors.langs, idx, 'description')" />
       </model-card-lang>
       <model-card-lang v-for="(lang, idx) in langs" :key="lang" :title="$t('tools.new')">
-        <template v-slot:header>
+        <template #header>
           <lazy-admin-action :add="false"
                              :edit="false"
                              :deleted="true"

@@ -1,11 +1,11 @@
 <template>
   <component :is="component" v-bind="$attrs" :field="fieldCopy">
-    <template v-slot:label>
+    <template #label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}
       </span>
     </template>
-    <template v-slot:input>
+    <template #input>
         <textarea v-model="valueModel"
                     :name="name"
                     class="opacity-0 w-0 h-0"
@@ -90,7 +90,7 @@ export default {
 </style>
 
 <style lang="scss">
-.dark-mode .quill-editor .ql-toolbar {
+.dark .quill-editor .ql-toolbar {
   .ql-picker,
   .ql-stroke {
     color: white !important;

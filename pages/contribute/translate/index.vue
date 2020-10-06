@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
     <lazy-model-list :model="model.name" :create="false" :description="false">
-      <template v-slot:breadcrumbs>
+      <template #breadcrumbs>
         <lazy-contribute-breadcrumb>{{ pathList.label }}</lazy-contribute-breadcrumb>
       </template>
-      <template v-slot:label>
+      <template #label>
         {{ model.label }}
       </template>
-      <template v-slot:table>
+      <template #table>
         <contribute-translate-admin v-if="$auth.hasScope('staff')" />
         <lazy-admin-table
           :fields="fields"
@@ -20,10 +20,10 @@
           @pagination="setPagination"
           @search="search"
         >
-          <template v-slot:table-title>
+          <template #table-title>
             {{ $t('tools.list') }}
           </template>
-          <template v-slot:delete="{obj}">
+          <template #delete="{obj}">
             <button @click="setDeleted(obj.language)">
               <svg-icon name="trash" class="cursor-pointer text-red-700 action-btn" />
             </button>

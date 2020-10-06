@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dark-mode {
+.dark {
   .description {
     @apply text-gray-300
   }

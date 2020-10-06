@@ -1,11 +1,11 @@
 <template>
   <component :is="component" v-bind="$attrs" :field="fieldCopy">
-    <template v-slot:label>
+    <template #label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}
       </span>
     </template>
-    <template v-slot:input>
+    <template #input>
       <input v-model="valueModel"
              :type="type"
              :name="name"
@@ -47,7 +47,7 @@ export default {
   background-color: rgb(237, 242, 247) !important;
 }
 
-.dark-mode .input {
+.dark .input {
   background-color: #4a5568 !important;
 }
 </style>

@@ -25,12 +25,12 @@
 
 export default {
   name: "AuthResetPassword",
+  layout: "auth",
 
   validate ({query}) {
     return !!query.uid && !!query.token
   },
 
-  layout: "auth",
   transition: "auth",
 
   data () {

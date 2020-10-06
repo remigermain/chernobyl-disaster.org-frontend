@@ -1,11 +1,11 @@
 <template>
   <component :is="component" v-bind="$attrs" :field="fieldCopy">
-    <template v-slot:label>
+    <template #label>
       <span :class="{'text-gray-500': !field.required}">
         {{ field.label }}
       </span>
     </template>
-    <template v-slot:input>
+    <template #input>
       <textarea v-model="valueModel"
                 v-autosize
                 :name="name"
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import FieldMixins from "~/mixins/admin/field"
 import autosize from "v-autosize"
+import FieldMixins from "~/mixins/admin/field"
 
 export default {
 

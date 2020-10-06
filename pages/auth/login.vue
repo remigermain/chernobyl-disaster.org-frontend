@@ -59,19 +59,6 @@ export default {
     }
   },
 
-  methods: {
-    submit (event) {
-      const form = new FormData(event.target)
-      this.loading = true
-      this.errors = {username: [], password: []}
-
-      this.$auth.loginWith("local", {data: form})
-        .then(() => { this.$router.push(this.localePath({ name: "contribute" })) })
-        .catch((error) => { this.requestError(error) })
-        .finally(() => { this.loading = false })
-    }
-  },
-
   head () {
     return {
       title: this.$t("auth.login"),
@@ -90,6 +77,20 @@ export default {
           { name: "twitter:image:alt", content: this.$t("pages.login.title") }
       ]
     }
-  }
+  },
+
+  methods: {
+    submit (event) {
+      const form = new FormData(event.target)
+      this.loading = true
+      this.errors = {username: [], password: []}
+
+      this.$auth.loginWith("local", {data: form})
+        .then(() => { this.$router.push(this.localePath({ name: "contribute" })) })
+        .catch((error) => { this.requestError(error) })
+        .finally(() => { this.loading = false })
+    }
+  },
+
 }
 </script>

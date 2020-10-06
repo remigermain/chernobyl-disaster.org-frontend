@@ -1,5 +1,4 @@
 const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette").default
-const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   theme: {
@@ -107,15 +106,6 @@ module.exports = {
         }))
 
       addUtilities({...colorMap}, variants("borderColor"))
-    },
-
-    // add dark-mode
-    ({ addVariant, e}) => {
-      addVariant('dark-mode', ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `.dark-mode ${e(`dark-mode${separator}${className}`)}`
-        })
-      })
     }
   ],
   future: {
@@ -123,10 +113,10 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   variants: {
-    textColor: ["responsive", "hover", "focus", "group-hover"],
-    backgroundColor: ["responsive", "hover", "focus", "group-hover"],
+    textColor: ["responsive", "hover", "focus", "group-hover", "dark"],
+    backgroundColor: ["responsive", "hover", "focus", "group-hover", "dark"],
     translate: ["responsive", "hover", "group-hover"],
-    opacity: ["responsive", "hover", "group-hover"],
+    opacity: ["responsive", "hover", "group-hover", "dark"],
     position: ["responsive", "hover", "group-hover"],
     scale: ["responsive", "hover", "group-hover"],
     overflow: ["responsive", "hover"],
@@ -140,5 +130,9 @@ module.exports = {
       "layouts/**/*.vue",
       "pages/**/*.vue",
     ],
-  }
+  },
+  experimental: {
+    darkModeVariant: true
+  },
+  dark: 'class'
 }

@@ -211,7 +211,7 @@ export default {
   height: auto;
   max-height: 200px;
 }
-.dark-mode .all-contributor {
+.dark .all-contributor {
   @apply bg-gray-800 text-white;
 }
 
@@ -250,7 +250,7 @@ export default {
   }
 }
 
-.dark-mode {
+.dark {
   .description, .description-help {
     @apply text-gray-600
   }

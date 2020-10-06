@@ -12,7 +12,7 @@
       </div>
       <nav class="gallery-toolbar-desktop overflow-y-scroll  wrapper" :class="{'active': active}">
         <field-text v-model="search" :field="{label: $t('utils.search') }" class="toolbar-search" role="search">
-          <template v-slot:icon>
+          <template #icon>
             <svg-icon name="search" />
           </template>
         </field-text>
@@ -225,7 +225,7 @@ export default {
     display: flex;
   }
 
-  .dark-mode {
+  .dark {
     .toolbar-search,
     .gallery-toolbar-desktop {
       @apply bg-gray-900

@@ -6,9 +6,6 @@
     </label>
     <admin-help v-if="label && active" :field="field" />
     <div class="w-full flex items-center p-2 text-left justify-center">
-      <slot name="icon">
-        <template v-slot:icon />
-      </slot>
       <slot name="input" />
     </div>
     <admin-error :errors="errors" />

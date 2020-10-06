@@ -52,22 +52,6 @@ export default {
     }
   },
 
-  methods: {
-    submit (event) {
-      const form = new FormData(event.target)
-      this.loading = true
-      this.errors = {email: []}
-
-      this.$axios.post("auth/password/reset/", form)
-        .then((response) => {
-          this.$router.push(this.localePath({ name: "auth-login" }))
-          this.i18nToast.success(response.data.detail).goAway(4000)
-        })
-        .catch((error) => { this.requestError(error) })
-        .finally(() => { this.loading = false })
-    }
-  },
-
   head () {
     return {
       title: this.$t("auth.rechange-password"),
@@ -86,6 +70,22 @@ export default {
           { name: "twitter:image:alt", content: this.$t("pages.rechange-password.title") }
       ]
     }
-  }
+  },
+
+  methods: {
+    submit (event) {
+      const form = new FormData(event.target)
+      this.loading = true
+      this.errors = {email: []}
+
+      this.$axios.post("auth/password/reset/", form)
+        .then((response) => {
+          this.$router.push(this.localePath({ name: "auth-login" }))
+          this.i18nToast.success(response.data.detail).goAway(4000)
+        })
+        .catch((error) => { this.requestError(error) })
+        .finally(() => { this.loading = false })
+    }
+  },
 }
 </script>

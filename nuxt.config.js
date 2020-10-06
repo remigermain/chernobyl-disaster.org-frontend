@@ -112,9 +112,9 @@ export default {
   buildModules: [
     "@nuxtjs/eslint-module",
     "@nuxt/components",
-    "@nuxtjs/tailwindcss",
-    '@nuxtjs/color-mode',
     // "nuxt-purgecss",
+    '@nuxtjs/color-mode',
+    "@nuxtjs/tailwindcss",
     "@nuxtjs/svg-sprite",
   ],
 
@@ -171,7 +171,11 @@ export default {
   tailwindcss: {
     configPath: "~/config/tailwind.config.js",
     cssPatg: "~/assets/css/tailwind.css",
-    exposeConfig: false,
+    exposeConfig: true,
+  },
+
+  colorMode: {
+    classSuffix: ''
   },
 
   // many problemes with purge ...

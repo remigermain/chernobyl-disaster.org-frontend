@@ -5,9 +5,6 @@
       <slot name="label" />
     </label>
     <div class="w-2/4 flex items-center p-2 -md:w-full -md:justify-center">
-      <slot name="icon">
-        <template v-slot:icon />
-      </slot>
       <slot name="input" />
     </div>
     <admin-help v-if="label && active" :field="field" />

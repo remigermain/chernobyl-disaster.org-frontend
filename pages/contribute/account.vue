@@ -1,14 +1,14 @@
 <template>
   <lazy-model-list :model="$t('admin.label.account')" :create="false" :description="false">
-    <template v-slot:breadcrumbs>
+    <template #breadcrumbs>
       <lazy-contribute-breadcrumb>
         {{ $t('admin.label.account') }}
       </lazy-contribute-breadcrumb>
     </template>
-    <template v-slot:label>
+    <template #label>
       {{ $t('admin.label.account') }}
     </template>
-    <template v-slot:table>
+    <template #table>
       <div class="flex justify-around flex-wrap items-center account">
         <div class="-sm:w-full shadow-md border pt-4 rounded password">
           <h2 class="text-xl text-center capitalize">
@@ -165,7 +165,7 @@ export default {
   margin-top: 1.5rem
 }
 
-.dark-mode .account > {
+.dark .account > {
   .password {
     @apply bg-gray-700 border-none
   }

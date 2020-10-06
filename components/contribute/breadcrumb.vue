@@ -19,7 +19,7 @@
   color: rgba(85, 60, 154, 1);
 }
 
-.dark-mode {
+.dark {
   .bread-crumb {
     @apply text-gray-200;
     > ::after {

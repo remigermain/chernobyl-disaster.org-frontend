@@ -47,6 +47,26 @@ export default {
     }
   },
 
+  head () {
+    return {
+      title: this.$t("utils.contact"),
+      meta: [
+          { hid: "description", name: "description", content: this.$t("pages.contact.description") },
+          { property: "og:title", content: this.$t("pages.contact.title")},
+          { property: "og:site_name", content: this.$siteName },
+          { property: "og:description", content: this.$t("pages.contact.description")},
+          { property: "og:type", content: "website"},
+          { property: "og:url", content: this.$siteName},
+          { name: "twitter:card", content: this.$t("pages.contact.description") },
+          { name: "twitter:site", content: this.$siteName},
+          { name: "twitter:title", content: this.$t("pages.contact.title") },
+          { name: "twitter:description", content: this.$t("pages.contact.description") },
+          { name: "twitter:image", content: "/favicon.ico" },
+          { name: "twitter:image:alt", content: this.$t("pages.contact.title") }
+      ]
+    }
+  },
+
   methods: {
     submit () {
       this.loading = true
@@ -71,24 +91,5 @@ export default {
     }
   },
 
-  head () {
-    return {
-      title: this.$t("utils.contact"),
-      meta: [
-          { hid: "description", name: "description", content: this.$t("pages.contact.description") },
-          { property: "og:title", content: this.$t("pages.contact.title")},
-          { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.contact.description")},
-          { property: "og:type", content: "website"},
-          { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.contact.description") },
-          { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.contact.title") },
-          { name: "twitter:description", content: this.$t("pages.contact.description") },
-          { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.contact.title") }
-      ]
-    }
-  }
 }
 </script>

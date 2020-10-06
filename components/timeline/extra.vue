@@ -260,7 +260,7 @@ export default {
     width: inherit;
     height: 3em;
   }
-  .dark-mode {
+  .dark {
     .extra-toolbar-desktop {
       @apply bg-gray-900;
       .empty {

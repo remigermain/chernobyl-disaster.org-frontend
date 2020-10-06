@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style lang="scss">
-.dark-mode .section-form {
+.dark .section-form {
   @apply border-none;
   background-color: #2b2b2b;
   h1 {

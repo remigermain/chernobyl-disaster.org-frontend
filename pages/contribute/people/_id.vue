@@ -1,9 +1,9 @@
 <template>
   <lazy-model-detail :path="pathUpdate.path" :model="model.name" :object-id="object.id">
-    <template v-slot:label>
+    <template #label>
       {{ model.label }}
     </template>
-    <template v-slot:breadcrumbs>
+    <template #breadcrumbs>
       <lazy-contribute-breadcrumb>
         <nuxt-link  :to="localePath(pathList.path)">
           {{ pathList.label }}
@@ -11,7 +11,7 @@
         {{ $route.params.id }}
       </lazy-contribute-breadcrumb>
     </template>
-    <template v-slot:detail>
+    <template #detail>
       <model-field :field="fields.name" :value="object.name" />
       <model-field :field="fields.born" :value="object.born" />
       <model-field :field="fields.death" :value="object.death" />

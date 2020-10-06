@@ -1,14 +1,14 @@
 <template>
   <lazy-model-list :model="$t('utils.translation')" :create="false" :description="false">
-    <template v-slot:breadcrumbs>
+    <template #breadcrumbs>
       <lazy-contribute-breadcrumb>
         {{ $t('utils.translation') }}
       </lazy-contribute-breadcrumb>
     </template>
-    <template v-slot:label>
+    <template #label>
       {{ $t('utils.translation') }}
     </template>
-    <template v-slot:table>
+    <template #table>
       <div class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line description">{{ $t('help.translate.description') }}</div>
       <div class="flex mt-6">
         <div class="flex flex-col rounded-md h-max-content">
@@ -73,8 +73,6 @@ export default {
       .catch(() => {})
   },
 
-  watchQuery: ["id"],
-
   data () {
     return {
       active: -1,
@@ -86,6 +84,8 @@ export default {
       },
     }
   },
+
+  watchQuery: ["id"],
 
   created () {
     const id = this.$route.query.id
@@ -114,6 +114,7 @@ export default {
     }
   }
 
+
 }
 </script>
 
@@ -128,7 +129,7 @@ export default {
   transform: translateX(-20px);
 }
 
-.dark-mode {
+.dark {
   .description {
     @apply text-gray-300
   }

@@ -39,7 +39,7 @@ export default {
   text-transform: capitalize;
 }
 
-.dark-mode .detail-item-title {
+.dark .detail-item-title {
   @apply text-gray-600
 }
 

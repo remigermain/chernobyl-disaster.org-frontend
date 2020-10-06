@@ -45,7 +45,7 @@
 /*
   dark mode
 */
-.dark-mode {
+.dark {
   .grid-layout-title {
     color: rgb(207, 207, 207);
     .title-site:hover {
