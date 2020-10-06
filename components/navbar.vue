@@ -157,7 +157,7 @@ export default {
   }
 }
 
-.navbar-items .navbar-link::after {
+.dark-mode .navbar-items .navbar-link::after {
   background-color: white;
 }
 

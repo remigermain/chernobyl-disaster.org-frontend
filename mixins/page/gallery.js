@@ -47,15 +47,18 @@ export default {
     },
   },
 
-  mounted() {
+  mounted () {
     if (process.client) {
-        this.interval = setInterval(() => {
-          if (!this.scroll()) { clearInterval(this.interval) }
-        }, 1)
+      this.loopScroll()
     }
   },
 
   methods: {
+    loopScroll () {
+      this.interval = setInterval(() => {
+        if (!this.scroll()) { clearInterval(this.interval) }
+      }, 1)
+    },
     scroll () {
       // check if prev and next is visible , and refresh page
       let ret = false
@@ -76,7 +79,7 @@ export default {
       this.completed = false
       this.refresh(response => {
         this.object = response.data.results
-        this.scroll()
+        this.loopScroll()
       })
     },
     nextPage() {
