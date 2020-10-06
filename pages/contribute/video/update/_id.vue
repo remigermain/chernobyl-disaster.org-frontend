@@ -69,8 +69,8 @@
 </template>
 
 <script>
-import Update from "@/mixins/admin/update"
-import Video from "@/mixins/model/video"
+import Update from "~/mixins/admin/update"
+import Video from "~/mixins/model/video"
 
 export default {
   name: "ContrubteVideoUpdate",

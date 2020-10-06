@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import create from "@/mixins/admin/create"
-import people from "@/mixins/model/people"
+import create from "~/mixins/admin/create"
+import people from "~/mixins/model/people"
 
 export default {
   name: "ContrubtePictureCreate",

@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import translate from "@/mixins/model/translate"
-import base from "@/mixins/admin/base"
+import translate from "~/mixins/model/translate"
+import base from "~/mixins/admin/base"
 
 export default {
   name: "ContrubteTranslateList",

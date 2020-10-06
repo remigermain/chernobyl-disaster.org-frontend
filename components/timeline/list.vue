@@ -65,9 +65,9 @@
 </template>
 
 <script>
-import { timelineElement } from "@/lib/timeline"
+import { timelineElement } from "~/lib/timeline"
 
-import dateMixinx from "@/mixins/date"
+import dateMixinx from "~/mixins/date"
 
 export default {
 

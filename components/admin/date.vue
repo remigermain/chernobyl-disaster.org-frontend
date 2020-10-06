@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/admin/field"
-import dateField from "@/mixins/admin/dateField"
+import FieldMixins from "~/mixins/admin/field"
+import dateField from "~/mixins/admin/dateField"
 
 export default {
 

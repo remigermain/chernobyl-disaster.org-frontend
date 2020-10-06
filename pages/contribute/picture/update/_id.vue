@@ -68,8 +68,8 @@
 </template>
 
 <script>
-import Update from "@/mixins/admin/update"
-import Picture from "@/mixins/model/picture"
+import Update from "~/mixins/admin/update"
+import Picture from "~/mixins/model/picture"
 
 export default {
   name: "ContrubtePictureUpdate",

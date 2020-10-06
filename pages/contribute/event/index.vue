@@ -40,9 +40,9 @@
 
 <script>
 
-import detail from "@/mixins/admin/detail"
-import list from "@/mixins/admin/list"
-import event from "@/mixins/model/event"
+import detail from "~/mixins/admin/detail"
+import list from "~/mixins/admin/list"
+import event from "~/mixins/model/event"
 
 export default {
   name: "ContrubteEventList",

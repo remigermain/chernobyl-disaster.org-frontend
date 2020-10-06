@@ -79,8 +79,8 @@
 </template>
 
 <script>
-import Update from "@/mixins/admin/update"
-import Event from "@/mixins/model/event"
+import Update from "~/mixins/admin/update"
+import Event from "~/mixins/model/event"
 
 export default {
   name: "ContrubteEventUpdate",

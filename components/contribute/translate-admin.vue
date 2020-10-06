@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import translate from "@/mixins/model/translate"
+import translate from "~/mixins/model/translate"
 
 export default {
 

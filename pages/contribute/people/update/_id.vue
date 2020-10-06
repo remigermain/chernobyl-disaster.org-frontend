@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import Update from "@/mixins/admin/update"
-import Document from "@/mixins/model/people"
+import Update from "~/mixins/admin/update"
+import Document from "~/mixins/model/people"
 
 export default {
   name: "ContrubteDocumentUpdate",

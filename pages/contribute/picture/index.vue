@@ -40,8 +40,8 @@
 
 <script>
 
-import list from "@/mixins/admin/list"
-import picture from "@/mixins/model/picture"
+import list from "~/mixins/admin/list"
+import picture from "~/mixins/model/picture"
 
 export default {
   name: "ContrubtePictureList",

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { timelineElement } from "@/lib/timeline"
-import { sanitizeHtml, removeHtml } from "@/lib/sanitize"
+import { timelineElement } from "~/lib/timeline"
+import { sanitizeHtml, removeHtml } from "~/lib/sanitize"
 
 export default {
   name: "Timeline",

@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/admin/field"
 import autosize from "v-autosize"
+import FieldMixins from "~/mixins/admin/field"
 
 export default {
 

@@ -40,8 +40,8 @@
 
 <script>
 
-import list from "@/mixins/admin/list"
-import people from "@/mixins/model/people"
+import list from "~/mixins/admin/list"
+import people from "~/mixins/model/people"
 
 export default {
   name: "ContrubtePeopleList",

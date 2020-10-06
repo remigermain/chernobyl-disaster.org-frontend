@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import dateMixinx from "@/mixins/date"
+import dateMixinx from "~/mixins/date"
 
 export default {
 

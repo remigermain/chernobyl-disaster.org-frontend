@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import detail from "@/mixins/admin/detail"
+import detail from "~/mixins/admin/detail"
 
 export default {
 

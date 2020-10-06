@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import picture from "@/mixins/model/picture"
-import create from "@/mixins/admin/create"
+import picture from "~/mixins/model/picture"
+import create from "~/mixins/admin/create"
 
 export default {
   name: "ContrubtePictureCreate",

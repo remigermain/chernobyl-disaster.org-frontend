@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import detail from "@/mixins/admin/detail"
-import tag from "@/mixins/model/tag"
+import detail from "~/mixins/admin/detail"
+import tag from "~/mixins/model/tag"
 
 export default {
   name: "ContrubteTagDetail",

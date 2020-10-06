@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import detail from "@/mixins/admin/detail"
-import video from "@/mixins/model/video"
+import detail from "~/mixins/admin/detail"
+import video from "~/mixins/model/video"
 
 export default {
   name: "ContrubteVideoDetail",

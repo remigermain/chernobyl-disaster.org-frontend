@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import create from "@/mixins/admin/create"
-import event from "@/mixins/model/event"
+import create from "~/mixins/admin/create"
+import event from "~/mixins/model/event"
 
 export default {
   name: "ContrubteEventCreate",

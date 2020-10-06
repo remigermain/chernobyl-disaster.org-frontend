@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import detail from "@/mixins/admin/detail"
-import event from "@/mixins/model/event"
-import { sanitizeHtml } from "@/lib/sanitize"
+import detail from "~/mixins/admin/detail"
+import event from "~/mixins/model/event"
+import { sanitizeHtml } from "~/lib/sanitize"
 
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'

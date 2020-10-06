@@ -40,8 +40,8 @@
 
 <script>
 
-import list from "@/mixins/admin/list"
-import video from "@/mixins/model/video"
+import list from "~/mixins/admin/list"
+import video from "~/mixins/model/video"
 
 export default {
   name: "ContrubteVideoList",

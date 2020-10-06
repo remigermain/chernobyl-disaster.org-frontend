@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import Update from "@/mixins/admin/update"
-import Tag from "@/mixins/model/tag"
+import Update from "~/mixins/admin/update"
+import Tag from "~/mixins/model/tag"
 
 export default {
   name: "ContrubteTagUpdate",

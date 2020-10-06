@@ -1,4 +1,4 @@
-import iconTrash from "@/assets/svg/trash.svg"
+import iconTrash from "~/assets/svg/trash.svg"
 
 export default {
 

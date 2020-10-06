@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import galleryMixin from "@/mixins/page/gallery"
-import { asynDataUrl } from "@/lib/gallery"
+import galleryMixin from "~/mixins/page/gallery"
+import { asynDataUrl } from "~/lib/gallery"
 
 export default {
   name: "GalleryVideo",

@@ -1,8 +1,8 @@
 /*
   mixxins for field/input components
 */
-import fieldInline  from "@/components/admin/inline"
-import fieldBase  from "@/components/admin/base"
+import fieldInline  from "~/components/admin/inline"
+import fieldBase  from "~/components/admin/base"
 
 export default {
 

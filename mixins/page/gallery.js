@@ -1,4 +1,4 @@
-import { galleryUrl} from "@/lib/gallery"
+import { galleryUrl} from "~/lib/gallery"
 
 export default {
 

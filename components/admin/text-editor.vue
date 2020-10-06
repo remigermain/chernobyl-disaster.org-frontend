@@ -25,8 +25,8 @@
 </template>
 
 <script>
-import FieldMixins from "@/mixins/admin/field"
 import Vue from 'vue'
+import FieldMixins from "~/mixins/admin/field"
 
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'

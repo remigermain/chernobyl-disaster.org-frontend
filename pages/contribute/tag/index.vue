@@ -40,8 +40,8 @@
 
 <script>
 
-import list from "@/mixins/admin/list"
-import tags from "@/mixins/model/tag"
+import list from "~/mixins/admin/list"
+import tags from "~/mixins/model/tag"
 
 export default {
   name: "ContrubteTagsList",

@@ -1,4 +1,4 @@
-import dateMixins from "@/mixins/date"
+import dateMixins from "~/mixins/date"
 
 const errorsField = {
   name: [],

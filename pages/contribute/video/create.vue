@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import create from "@/mixins/admin/create"
-import video from "@/mixins/model/video"
+import create from "~/mixins/admin/create"
+import video from "~/mixins/model/video"
 
 export default {
   name: "ContrubtePictureCreate",
