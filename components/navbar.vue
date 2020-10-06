@@ -7,33 +7,33 @@
       <span class="bg-gray-700" />
     </label>
     <nav class="navbar-items relative" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
-      <nuxt-link  :to="localePath({name: 'index'})" class="navbar-link exact"
+      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact"
                             :title="$t('utils.goto-home')"
-                            @click="active = false"
+                            @click.native="active = false"
       >
         {{ $t('menu.home') }}
       </nuxt-link>
-      <nuxt-link  :to="localePath({name: 'timeline'})" class="navbar-link"
+      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link"
                             :title="$t('utils.goto-timeline')"
-                            @click="active = false"
+                            @click.native="active = false"
       >
         {{ $t('menu.timeline') }}
       </nuxt-link>
-      <nuxt-link  :to="localePath({name: 'gallery'})" class="navbar-link"
+      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link"
                             :title="$t('utils.goto-gallery')"
-                            @click="active = false"
+                            @click.native="active = false"
       >
         {{ $t('menu.gallery') }}
       </nuxt-link>
-      <nuxt-link  :to="localePath(contributeLink)" class="navbar-link"
+      <nuxt-link :to="localePath(contributeLink)" class="navbar-link"
                             :title="$t('utils.goto-contribute')"
-                            @click="active = false"
+                            @click.native="active = false"
       >
         {{ $t('menu.contribute') }}
       </nuxt-link>
-      <nuxt-link  :to="localePath({name: 'about'})" class="navbar-link"
+      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link"
                             :title="$t('utils.goto-about')"
-                            @click="active = false"
+                            @click.native="active = false"
       >
         {{ $t('menu.about') }}
       </nuxt-link>
