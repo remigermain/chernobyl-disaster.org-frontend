@@ -1,0 +1,9 @@
+image: node:latest
+
+before_script:
+  - npm install -G yarn
+  - yarn install
+
+test:
+  script:
+    - yarn test
