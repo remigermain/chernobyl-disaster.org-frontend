@@ -216,7 +216,7 @@ export default {
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     &.active {
       height: 70vh;
     }

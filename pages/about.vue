@@ -5,7 +5,7 @@
         <h1 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
         </h1>
-        <a href="https://gitlab.com/chernobyl.org" target="_blank" rel="noopener,noreferrer"
+        <a href="gitlab.com/chernobyl-disaster.org" target="_blank" rel="noopener,noreferrer"
            class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
            :title="$t('pages.about.contribute-gitlab')"
         >
@@ -90,7 +90,7 @@
     </div>
     <div class="common-about space-y-4 z-0">
       <article class="w-full inline-grid">
-        <a href="https://germainremi.fr" target="_blank" rel="noopener,noreferrer"
+        <a href="germainremi.fr" target="_blank" rel="noopener,noreferrer"
            class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 hover:scale-105 transform transition-transform duration-300"
            :title="$t('pages.about.creator-website')">
           <h1>
@@ -117,7 +117,7 @@
         </p>
       </article>
       <div class=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex justify-around flex-wrap items-center gap-4">
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener,noreferrer">
+        <form action="www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener,noreferrer">
           <input type="hidden" name="cmd" value="_s-xclick" />
           <input type="hidden" name="hosted_button_id" value="JKC2WU8HYUNVA" />
           <button type="submit"  class="flex flex-col items-center space-y-2 group">
@@ -127,13 +127,13 @@
             <span class="font-bold uppercase text-base">Paypal</span>
             </button>
         </form>
-        <a href="https://www.buymeacoffee.com/rgermain" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
+        <a href="www.buymeacoffee.com/rgermain" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
           <div class=" h-12 w-12 flex justify-center items-center bg-green-700 rounded-full shadow-sm">
             <svg-icon name="mug" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
           </div>
           <span class="font-bold uppercase text-base">buy me a coffee</span>
         </a>
-        <a href="https://liberapay.com/rgermain/donate" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
+        <a href="liberapay.com/rgermain/donate" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
           <div class=" h-12 w-12 flex justify-center items-center bg-yellow-600 rounded-full shadow-sm">
             <svg-icon name="liberapay" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
           </div>
