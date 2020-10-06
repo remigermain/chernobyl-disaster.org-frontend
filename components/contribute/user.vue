@@ -8,10 +8,10 @@
       </h1>
     </div>
     <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
-      <h2 class="title text-gray-800 p-1 text-center text-xl font-semibold w-2/4">
+      <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4">
         {{ $t('utils.best-contributor') }}
       </h2>
-      <h2 class="title text-gray-800 p-1 text-center text-xl font-semibold w-2/4 -md:order-1">
+      <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4 -md:order-1">
         {{ $t('utils.best-contributor-week') }}
       </h2>
       <contribute-ranking :object="object['total']" />

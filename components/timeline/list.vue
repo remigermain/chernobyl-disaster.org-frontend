@@ -258,7 +258,7 @@ export default {
     max-width: 400px;
     transition: transform .5s;
     transform: translateX(calc(-100% - 1.1vw));
-    z-index: 41;
+    z-index: 0;
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -266,13 +266,14 @@ export default {
     }
     background-color: white;
     &.active {
+      z-index: 40;
       transform: translateX(0);
     }
   }
   .icon-timeline {
     display: flex;
     align-items: center;
-    z-index: 42;
+    z-index: 0;
     transform: translateX(100%);
     transition: transform .5s;
     &:hover {
@@ -282,6 +283,7 @@ export default {
       transition: transform .5s;
     }
     &.active {
+      z-index: 41;
       transform: translateX(0);
       &:hover {
         transform: translateX(-0.3em) scale(1.4);
@@ -310,7 +312,7 @@ export default {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 40;
+    z-index: 39;
     &.active {
       background-color: rgba(0, 0, 0, 0.7);
     }

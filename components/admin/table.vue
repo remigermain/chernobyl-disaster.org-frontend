@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-md md:p-4 mt-4">
+  <div class="shadow-md md:p-4 mt-4 dark:bg-gray-800 rounded-lg">
     <div class="flex justify-between items-center -md:flex-col -md:justify-center -md:items-center">
       <div class="w-2/4 capitalize text-2xl -md:text-center">
         <slot name="table-title" />
@@ -16,7 +16,7 @@
       <thead>
         <tr class="shadow-xs">
           <th v-for="(col, idx) in columns" :key="`thead-${idx}-${convertLabel(col)}`"
-              class="text-gray-600 hover:text-gray-800 table-head cursor-pointer p-2"
+              class="text-gray-600 hover:text-gray-800 table-head cursor-pointer p-2 dark:text-gray-200 dark:hover:text-gray-400"
               :class="{'text-gray-800': current === getField(col)}"
               @click="sort(col)"
           >
@@ -25,19 +25,19 @@
                       :class="{'-rotate-180': reverse, 'invisible': current!==getField(col)}"
             />
           </th>
-          <th class="text-gray-700 table-head align-middle text-center">
+          <th class="text-gray-700 dark:text-gray-200 table-head align-middle text-center">
             {{ $t('tools.action') }}
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(obj,idx) in list" :key="`${idx}-${obj.id}`" class="border-b-1 border-gray-700 text-gray-700 shadow-xs font-medium">
+        <tr v-for="(obj,idx) in list" :key="`${idx}-${obj.id}`" class="border-b-1 border-gray-700 text-gray-700 dark:text-gray-200 shadow-xs font-medium">
           <td v-for="col in columns" :key="`tbody-${idx}-${convertLabel(col)}`" class="p-2">
             <slot v-if="$slots.default" :obj="obj" :col="col" />
             <template v-else-if="isNotEmpty(obj[getField(col)])">
               {{ convertName(obj, col) }}
             </template>
-            <span v-else class="text-xs text-gray-600 italic text-opacity-75">
+            <span v-else class="text-xs text-gray-600 dark:text-gray-600 italic text-opacity-75">
               {{ empty }}
             </span>
           </td>
@@ -205,20 +205,6 @@ export default {
 
 .table tr:nth-of-type(even) {
   background-color:  rgba(116, 116, 116, 0.1);
-}
-
-.dark {
-  .table  {
-    tr, td {
-      @apply text-gray-300;
-    }
-    tr:nth-of-type(even) {
-      background-color:  rgba(116, 116, 116, 0.3);
-    }
-    tr > td.empty {
-      @apply bg-gray-700
-    }
-  }
 }
 
 .table-head {

@@ -1,12 +1,12 @@
 <template>
-  <div class="grid-layout-contribute-navbar">
+  <div class="grid-layout-contribute-navbar ">
     <div class="background-contribute-navbar" :class="{'active': active, 'hidden': !active }" @click="active = false" />
     <label class="burger" :class="{'active': active }" @click="toogleNavbar">
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
       <span class="bg-gray-700" />
     </label>
-    <nav class="contribute-navbar-items" :class="{'active': active }">
+    <nav class="contribute-navbar-items -mobile:dark:bg-black" :class="{'active': active }">
       <nuxt-link  :to="localePath({name: 'contribute'})" class="contribute-navbar-link exact ml-4">
         <svg-icon name="dashboard" />
         {{ $t('menu.dashboard') }}
@@ -138,25 +138,25 @@ export default {
 @media screen and (max-width:1000px){
   .grid-layout-contribute-navbar {
     padding-right: .5em;
-    .contribute-navbar-items {
-      transition: transform .5s;
-      position: fixed;
-      width: auto;
-      height: 100%;
-      top: 0;
-      background-color: rgb(255, 255, 255);
-      justify-content: center;
-      flex-direction: column;
-      font-size: 1.4em;
-      left: 0;
-      transform: translateX(-110%);
-      & > * + * {
-        margin-top: .8em;
-      }
-      &.active {
-        padding: 0 1.5em;
-        transform: translateX(0);
-      }
+  }
+  .contribute-navbar-items {
+    transition: transform .5s;
+    position: fixed;
+    width: auto;
+    height: 100%;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.4em;
+    left: 0;
+    transform: translateX(-110%);
+    & > * + * {
+      margin-top: .8em;
+    }
+    &.active {
+      padding: 0 1.5em;
+      transform: translateX(0);
     }
   }
   .burger {
@@ -176,5 +176,17 @@ export default {
   &.active {
     background-color: rgba(0, 0, 0, 0.7);
   }
+}
+
+.dark .background-contribute-navbar.active {
+  background-color: rgba(38, 38, 38, 0.83);
+}
+
+.dark .contribute-navbar-items .contribute-navbar-link::after {
+  background-color: white;
+}
+
+.dark .burger > span {
+  background-color: white;
 }
 </style>
