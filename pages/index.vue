@@ -8,7 +8,7 @@
         {{ $t('pages.home.description') }}
         {{ $t('pages.about.description') }}
       </p>
-      <nuxt-link  :to="localePath({name: 'timeline'})" class="group px-4 py-4 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800"
+      <nuxt-link  :to="localePath({name: 'timeline'})" class="btn-timeline group px-4 py-4 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800"
                             :title="$t('utils.goto-timeline')"
       >
         {{ $t('menu.timeline') }}
@@ -57,5 +57,12 @@ export default {
 <style lang="scss" scoped>
 .description-home {
   height: calc(100% + 80px);
+}
+
+.dark-mode .btn-timeline {
+  background-color: #2b2b2b;
+  &:hover {
+    background-color: #383838;
+  }
 }
 </style>
