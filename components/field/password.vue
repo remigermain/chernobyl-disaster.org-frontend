@@ -1,12 +1,12 @@
 <template>
-  <lazy-field-text v-bind="$attrs" :type="passwordType">
+  <lazy-field-text v-bind="$attrs" :type="passwordType" @input="$emit('input', $event)">
     <template #icon>
       <svg-icon name="lock" class="inline text-gray-600"
                 :aria-label="$t('utils.lock-password')"
       />
     </template>
     <template #icon-right>
-      <svg-icon :name="icon" class="inline text-gray-800 cursor-pointer animate-pulse"
+      <svg-icon :name="icon" class="inline cursor-pointer animate-pulse hover:scale-110 transform transition-transofrm duration-300"
                 :aria-label="$t('utils.lock-password')"
                 role="button"
                 @click="showPassword = !showPassword"

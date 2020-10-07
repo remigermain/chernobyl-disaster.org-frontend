@@ -134,7 +134,7 @@ export default {
           }
           this.i18nToast.success(response.data.detail).goAway(4000)
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     },
     submitDelete () {
@@ -149,7 +149,7 @@ export default {
           this.$auth.logout()
           this.$router.push(this.localePath({ name: "home" }))
         })
-        .catch((error) => { this.requestError(error) })
+        .catch((error) => { this.responseError(error) })
         .finally(() => {
           this.loading = false
           this.active = false

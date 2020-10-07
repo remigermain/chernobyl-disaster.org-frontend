@@ -1,5 +1,6 @@
 
 export default function ({$axios, store}) {
+
   // populate store with global items like tags, langs, event ..ect
   return $axios.get("populate/store")
     .then(response => {

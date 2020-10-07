@@ -1,22 +1,18 @@
 <template>
-  <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form">
+  <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2">
     <h1 class="font-bold text-gray-900 text-2xl">
       {{ $t('auth.check-email') }}
     </h1>
-    <span class="text-sm text-gray-700">
+    <span class="text-sm text-gray-700 dark:text-gray-200">
       {{ $t('utils.or') }}
-      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md text-purple-700"
-                            :title="$t('auth.goto-login')"
-      >
+      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md font-semibold hover:text-indigo-500 text-indigo-600" :title="$t('auth.goto-login')">
         {{ $t('auth.login') }}
       </nuxt-link>
     </span>
     <p class="text-sm leading-5 text-gray-700">
       {{ $t('auth.check-email-description') }}
     </p>
-    <form class="my-4 w-3/4 form"
-          @submit.prevent="submit"
-    >
+    <form class="my-4 w-3/4 min-min-w-max-content form" @submit.prevent="submit">
       <field-submit>
         {{ $t('auth.validate') }}
       </field-submit>
@@ -47,7 +43,7 @@ export default {
         this.i18nToast.success(this.$t("auth.email-verified")).goAway(6000)
         this.$router.push(this.localePath({name: "auth-login"}))
       })
-      .catch(error => { this.requestError(error) })
+      .catch(error => { this.responseError(error) })
       .finally(() => { this.loading = false })
     }
   }

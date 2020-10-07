@@ -5,23 +5,20 @@
     </h1>
     <span class="text-sm text-gray-700 dark:text-gray-200">
       {{ $t('utils.or') }}
+      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md font-semibold hover:text-indigo-500 text-indigo-600" :title="$t('auth.login')">
+        {{ $t('auth.login') }}
+      </nuxt-link>
+    </span>
+    <div class="text-sm text-gray-700">
+      {{ $t('utils.or') }}
       <nuxt-link  :to="localePath({name : 'auth-register'})" class="text-md font-semibold hover:text-indigo-500 text-indigo-600" :title="$t('auth.create-account')">
         {{ $t('auth.create-account') }}
       </nuxt-link>
-    </span>
+    </div>
     <form class="my-4 w-3/4 min-min-w-max-content space-y-2" @submit.prevent="submit">
-      <field-username v-model="data.username" :field="modelField.username" :errors="errors.username" />
-      <field-password v-model="data.password" :field="modelField.password" :errors="errors.password" />
-      <div class="flex justify-end mx-auto text-center imp-my-4">
-        <nuxt-link  :to="localePath({name: 'auth-forgot-password'})"
-                    class="font-semibold hover:text-indigo-500 text-indigo-600 font-md m-sm:w-full my-auto italic space"
-                    :title="$t('auth.forget-password')"
-        >
-          {{ $t('auth.forget-password') }}
-        </nuxt-link>
-      </div>
-      <field-submit>
-        {{ $t('auth.login') }}
+      <field-email v-model="data.email" :field="modelField.email" />
+      <field-submit class="submit">
+        {{ $t('auth.rechange-password') }}
       </field-submit>
     </form>
   </section>
@@ -29,10 +26,10 @@
 
 <script>
 import accountMixins from "~/mixins/model/account"
-import {setObjectKeysValue} from "~/lib/utils"
+import { setObjectKeysValue } from "~/lib/utils"
 
 export default {
-  name: "AuthLogin",
+  name: "AuthResetPassword",
 
   mixins: [accountMixins],
 
@@ -42,19 +39,14 @@ export default {
   data () {
     return {
       data: {
-        username: "",
-        password: "",
-      },
-      errors: {
-        username: [],
-        password: [],
+        email: ""
       },
     }
   },
 
   head () {
-    const title = this.$t("pages.login.title")
-    const description = this.$t("pages.login.description")
+    const title = this.$t("pages.forgot-password.title")
+    const description = this.$t("pages.forgot-password.description")
     return {
       title,
       meta: [
@@ -73,31 +65,20 @@ export default {
     submit () {
       this.loading = true
 
-      setObjectKeysValue(this.errors, [])
-
-      this.$auth.loginWith("local", {data: this.data})
-        .then(() => {
-          // redirect to contribute page
-          this.$router.push(this.localePath({ name: "contribute" }))
+      this.$axios.post("auth/password/reset/", this.data)
+        .then((response) => {
+          if (response.status !== 200) {
+            throw new Error("error-server")
+          }
+          setObjectKeysValue(this.data, "")
+          this.$router.push(this.localePath({ name: "auth-login" }))
+          this.i18nToast.success(response.data.detail).goAway(4000)
         })
         .catch(error => {
           this.responseError(error)
-            .then(data => {
-              console.log(data)
-              data.username && (this.errors.username = data.username)
-              data.password && (this.errors.password = data.password)
-            })
         })
         .finally(() => { this.loading = false })
     }
   },
 }
 </script>
-
-
-<style lang="scss" scoped>
-.imp-my-4 {
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
-}
-</style>

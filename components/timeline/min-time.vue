@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="wrapper timeline-time w-min-content mb-1" :class="{'w-max-content': min}">
-      <span v-if="date.have_hour" class="items text-xs w-max-content">
+    <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="wrapper timeline-time w-min mb-1 dark:text-gray-400" :class="{'w-max': min}">
+      <span v-if="date.have_hour" class="items text-xs w-max">
         {{ hours }}{{ this.$t("utils.hours")[0] }}
       </span>
-      <span v-if="date.have_minute"  class="items text-xs w-max-content">
+      <span v-if="date.have_minute"  class="items text-xs w-max">
         {{ minutes }}{{ this.$t("utils.minutes")[0] }}
       </span>
-      <span v-if="date.have_second" class="items text-xs w-max-content">
+      <span v-if="date.have_second" class="items text-xs w-max">
         {{ seconds }}{{ this.$t("utils.seconds")[0] }}
       </span>
     </time>

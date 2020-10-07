@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="fix-mobile" />
     <div class="shadow-lg grid-extra overflow-hidden w-full h-full timeline:rounded-lg" :class="{'active': activeMenu}">
-      <div class="extra-toolbar-mobile bg-gray-800" @click="toogleActive">
+      <div class="extra-toolbar-mobile bg-gray-800 w-full flex justify-around" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
           {{ $t('utils.menu-medias') }}
         </span>
@@ -15,8 +15,8 @@
       >
         <button class="w-full h-2/4 px-4 extra-btn"
                 :class="{
-                  'timeline:bg-gray-800 -timeline:text-gray-800': pictureActive,
-                  'timeline:bg-gray-900 -timeline:bg-gray-800 -timeline:rounded-b-lg': !pictureActive
+                  'timeline:bg-gray-800 -timeline:bg-gray-900': pictureActive,
+                  'timeline:bg-gray-900 -timeline:bg-gray-800': !pictureActive
                 }"
                 :title="$t('utils.goto-picture')"
                 @click.prevent="pictureShow"
@@ -25,8 +25,8 @@
         </button>
         <button class="w-full h-2/4 px-4 extra-btn timeline:rounded-b-lg"
                 :class="{
-                  'timeline:bg-gray-800 -timeline:text-gray-800': videoActive,
-                  'timeline:bg-gray-900 -timeline:bg-gray-800 -timeline:rounded-b-lg': !videoActive
+                  'timeline:bg-gray-800 -timeline:bg-gray-900': videoActive,
+                  'timeline:bg-gray-900 -timeline:bg-gray-800': !videoActive
                 }"
                 :title="$t('utils.goto-video')"
                 @click.prevent="videoShow"
@@ -34,8 +34,8 @@
           <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('utils.video')" />
         </button>
       </nav>
-      <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden ">
-        <div class="flex flex-wrap" :class="{'justify-center items-center h-full w-full': activeExtra.length === 0, 'h-min-content': activeExtra.length >= 1}">
+      <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden">
+        <div class="flex flex-wrap" :class="{'justify-center items-center h-full w-full': activeExtra.length === 0, 'h-min': activeExtra.length >= 1}">
           <template v-if="pictureActive">
             <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
               <source :srcset="$media(img.picture.thumbnail_webp)" type="image/webp">
@@ -61,7 +61,7 @@
                     allowfullscreen
             />
           </template>
-          <span v-if="activeExtra.length === 0" class="italic text-gray-700 text-opacity-50 empty">
+          <span v-if="activeExtra.length === 0" class="italic text-gray-700 dark:text-gray-500 text-opacity-50 empty">
             {{ empty }}
           </span>
         </div>
@@ -256,17 +256,12 @@ export default {
       height: auto;
     }
   }
+  .dark .extra-toolbar-desktop {
+    @apply bg-gray-900
+  }
   .extra-icon-mobile {
     width: inherit;
     height: 3em;
-  }
-  .dark {
-    .extra-toolbar-desktop {
-      @apply bg-gray-900;
-      .empty {
-        @apply text-gray-400
-      }
-    }
   }
 }
 

@@ -31,7 +31,7 @@ export default {
             this.langs = []
           }
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     },
   }

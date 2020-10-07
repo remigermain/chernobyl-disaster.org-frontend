@@ -68,10 +68,20 @@ export default {
     gzip: true,
     exclude: ["/contribute/**"],
   },
-  robots: {
-    UserAgent: "*",
-    Disallow: "/contribute/*",
-  },
+  robots: [
+    {
+      UserAgent: "*",
+      Disallow: "/contribute/*",
+    },
+    {
+      UserAgent: "*",
+      Disallow: "/auth/new-password",
+    },
+    {
+      UserAgent: "*",
+      Disallow: "/auth/verify-email",
+    },
+  ],
 
   auth: {
     resetOnError: true,
@@ -123,6 +133,10 @@ export default {
     {
       path: "~/components/admin/",
       prefix: "admin",
+    },
+    {
+      path: "~/components/action/",
+      prefix: "action",
     },
     {
       path: "~/components/field/",

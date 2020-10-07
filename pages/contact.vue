@@ -86,7 +86,7 @@ export default {
             message: ""
           }
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     }
   },

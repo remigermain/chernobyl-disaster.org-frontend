@@ -1,21 +1,19 @@
 <template>
-  <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form">
+  <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2">
     <h1 class="font-bold text-gray-900 text-2xl">
       {{ $t('auth.register-account') }}
     </h1>
-    <span class="text-sm text-gray-700">
+    <span class="text-sm text-gray-700 dark:text-gray-200">
       {{ $t('utils.or') }}
-      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md text-purple-700"
-                            :title="$t('auth.goto-login')"
-      >
+      <nuxt-link  :to="localePath({name : 'auth-login'})" class="text-md font-semibold hover:text-indigo-500 text-indigo-600" :title="$t('auth.goto-login')">
         {{ $t('auth.login') }}
       </nuxt-link>
     </span>
-    <form class="my-4 w-3/4 form" @submit.prevent="submit">
-      <field-email :field="field.email" :errors="errors.email" />
-      <field-username :field="field.username" :errors="errors.username" />
-      <field-password :field="field.password1" :errors="errors.password1" />
-      <field-password :field="field.password2" :errors="errors.password2" />
+    <form class="my-4 w-3/4 min-min-w-max-content space-y-2" @submit.prevent="submit">
+      <field-email v-model="data.email" :field="modelField.email" :errors="errors.email" />
+      <field-username v-model="data.username" :field="modelField.username" :errors="errors.username" />
+      <field-password v-model="data.password1" :field="field.password1" :errors="errors.password1" />
+      <field-password v-model="data.password2" :field="field.password2" :errors="errors.password2" />
       <field-submit class="submit">
         {{ $t('auth.register') }}
       </field-submit>
@@ -24,15 +22,25 @@
 </template>
 
 <script>
+import {setObjectKeysValue} from "~/lib/utils"
+import accountMixins from "~/mixins/model/account"
 
 export default {
   name: "AuthRegister",
+
+  mixins: [accountMixins],
 
   layout: "auth",
   transition: "auth",
 
   data () {
     return {
+      data: {
+        email: "",
+        username: "",
+        password1: "",
+        password2: "",
+      },
       errors: {
         email: [],
         username: [],
@@ -40,68 +48,67 @@ export default {
         password2: [],
       },
       field: {
-        email: {
-          label: this.$t("auth.email"),
-          name: "email",
-          required: true,
-          max_length: 50,
-        },
-        username: {
-          label: this.$t("auth.username"),
-          name: "username",
-          required: true,
-          max_length: 50,
-        },
         password1: {
           label: this.$t("auth.password"),
           name: "password1",
-          required: true,
         },
         password2: {
           label: this.$t("auth.comfirm-password"),
           name: "password2",
-          required: true,
         }
       }
     }
   },
 
   head () {
+    const title = this.$t("pages.register.title")
+    const description = this.$t("pages.register.description")
     return {
-      title: this.$t("menu.register"),
+      title,
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.register.description") },
-          { property: "og:title", content: this.$t("pages.register.title")},
-          { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.register.description")},
-          { property: "og:type", content: "website"},
-          { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.register.description") },
-          { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.register.title") },
-          { name: "twitter:description", content: this.$t("pages.register.description") },
-          { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.register.title") }
+          { hid: "description", name: "description", content: description },
+          { property: "og:title", content: title},
+          { property: "og:description", content: description},
+          { name: "twitter:title", content: title },
+          { name: "twitter:card", content: description },
+          { name: "twitter:description", content: description },
+          { name: "twitter:image:alt", content: title }
       ]
     }
   },
 
-  methods: {
-    submit (event) {
-      const form = new FormData(event.target)
-      this.loading = true
-      this.errors = {email: [], username: [], password1: [], password2: []}
+  created () {
+    /* merge parent model with current */
+    this.password1 = {...this.modelField.password, ...this.password1}
+    this.password2 = {...this.modelField.password, ...this.password2}
+  },
 
-      this.$axios.post("auth/registration/", form)
+  methods: {
+    submit () {
+      this.loading = true
+
+      setObjectKeysValue(this.errors, [])
+
+      this.$axios.post("auth/registration/", this.data)
         .then(response => {
           if (response.status!==201) {
             throw new Error("error-server")
           }
+          // reste value
+          setObjectKeysValue(this.data, "")
+
           this.i18nToast.success(this.$t("auth.registeration-success")).goAway(8000)
-          event.target.reset()
           this.$router.push(this.localePath({ name: "auth-login" }))
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => {
+          this.responseError(error)
+            .then(data => {
+              data.email && (this.errors.email = data.email)
+              data.username && (this.errors.username = data.username)
+              data.password1 && (this.errors.password1 = data.password1)
+              data.password2 && (this.errors.password2 = data.password2)
+            })
+        })
         .finally(() => { this.loading = false })
     }
   },

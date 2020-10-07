@@ -26,7 +26,7 @@
             </option>
           </select>
         </label>
-        <button class="p-2 mx-2 h-12 bg-gray-800 rounded-md text-xl text-white text-white hover:bg-gray-700 text-center" @click="submit">
+        <button class="p-2 mx-2 h-10 rounded-md text-md text-white text-white bg-indigo-600 hover:bg-indigo-700 text-center" @click="submit">
           {{ $t('utils.search') }}
         </button>
         <span class="border-b border-gray-500" />
@@ -50,7 +50,7 @@
         </div>
         <span class="border-b border-gray-500" />
         <div class="toolbar-peoples">
-          <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item group hover:bg-gray-300 rounded-md"
+          <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item group hover:bg-gray-300 rounded-md dark:hover:bg-gray-700"
                 role="button"
                 tabindex="0"
                 @click="submitPeople(p.name)"
@@ -64,7 +64,7 @@
                   type="image/jepg"
               >
             </picture>
-            <span class=" break-words group-hover:text-indigo-700">
+            <span class=" break-words group-hover:text-indigo-700 dark:group-hover:text-gray-200">
               {{ p.name }}
             </span>
           </span>
@@ -137,6 +137,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  width: 100%;
   & > .gallery-toolbar-desktop > * + * {
     margin-top: .5rem;
   }

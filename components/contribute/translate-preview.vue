@@ -25,12 +25,12 @@
       <field-textarea v-model="value" :field="field" :errors="errors.value" :min="false" />
       <div class="flex justify-end p-2 space-x-2">
         <button v-if="$auth.hasScope('staff') && current && current.id" type="button"
-                class="p-2 bg-red-700 text-white rounded-lg w-max-content float-right hover:bg-red-800 transition-colors duration-300"
+                class="p-2 bg-red-700 text-white rounded-lg min-w-max-content float-right hover:bg-red-800 transition-colors duration-300"
                 @click="deleted"
         >
           <svg-icon name="trash" />
         </button>
-        <button type="submit" class="p-2 bg-blue-700 text-white rounded-lg w-max-content float-right hover:bg-indigo-700 transition-colors duration-300">
+        <button type="submit" class="p-2 bg-blue-700 text-white rounded-lg min-w-max-content float-right hover:bg-indigo-700 transition-colors duration-300">
           {{ $t('utils.submit') }}
         </button>
       </div>
@@ -129,7 +129,7 @@ export default {
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
           this.$emit("refresh")
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     },
     update (data) {
@@ -141,7 +141,7 @@ export default {
           this.i18nToast.success(this.$t("success.update")).goAway(5000)
           this.$emit("refresh")
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     },
     deleted () {
@@ -154,7 +154,7 @@ export default {
           this.$emit("refresh")
           this.value = ""
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     }
   }

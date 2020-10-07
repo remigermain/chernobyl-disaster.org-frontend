@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="w-full space-y-2">
     <div class="flex flex-col">
       <lazy-contribute-breadcrumb />
       <slot name="breadcrumbs" />
@@ -18,24 +18,35 @@
       <contribute-ranking :object="object['week']" class="-md:order-2" />
     </div>
     <div class="w-full">
-      <lazy-admin-table :fields="fields"
-                        :columns="columns"
-                        :length="length"
-                        model="f"
-                        :object-list="listPage"
-                        @pagination="setPagination"
-                        @search="search"
-      >
-        <template #table-title>
-          {{ $t('utils.last-contributing') }}
+      <lazy-admin-tabler :length="object.results.length" @pagination="setPagination">
+        <template #head>
+            <th>{{ $t("tools.creator") }}</th>
+            <th>{{ $t("tools.date") }}</th>
+            <th>{{ $t("admin.model.title") }}</th>
+            <th>{{ $t("tools.uuid") }}</th>
+            <th>{{ $t("tools.action") }}</th>
         </template>
-      </lazy-admin-table>
+        <template #body>
+          <tr v-for="(obj, idx) in list" :key="idx">
+            <td>{{ obj.creator }}</td>
+            <td>{{ getDateMini(obj.date) }}</td>
+            <td>{{ obj.display }}</td>
+            <td>{{ $t(`admin.label.${obj.uuid}`) }}</td>
+            <td>
+              <lazy-action-detail :id="obj.id" :model="obj.uuid" />
+              <lazy-action-edit :id="obj.id" :model="obj.uuid" />
+              <lazy-action-delete @click="setDeleted(obj)" />
+            </td>
+          </tr>
+        </template>
+      </lazy-admin-tabler>
     </div>
   </div>
 </template>
 
 <script>
 import detail from "~/mixins/admin/detail"
+import { getDateMini } from "~/lib/date"
 
 export default {
 
@@ -50,60 +61,24 @@ export default {
 
   data () {
     return {
-      fields: {
-        creator: this.$t("tools.creator"),
-        date: {
-          field: "date",
-          label: this.$t("tools.date"),
-          display: obj => this.getDateMini(obj.date)
-        },
-        uuid: {
-          field: "uuid",
-          label: this.$t("tools.uuid"),
-          display: obj => this.$t(`admin.label.${obj.uuid}`)
-        },
-        display: {
-          field: "display",
-          label: this.$t("admin.model.title"),
-        }
-      },
-      columns: ["creator", "date", "display", "uuid"],
       pagination: 1,
-      searchVal: null
     }
   },
 
   computed: {
     list () {
-      let obj = []
-      if (this.searchVal) {
-        obj = this.object.results.filter(x => {
-          return x.uuid.match(this.searchVal) || x.display.match(this.searchVal) || x.creator.match(this.searchVal)
-        })
-      } else {
-        obj = this.object.results
-      }
-      return obj
-    },
-    listPage () {
       const start = (this.pagination * this.$pagination) - this.$pagination
-      return this.list.slice(start, start + this.$pagination)
+      return this.object.results.slice(start, start + this.$pagination)
     },
-    length () {
-      return this.list.length
-    }
   },
 
   methods: {
-    getDateMini (date) {
-      return date.toLocaleDateString(this.$i18n.locale, {year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit"})
-    },
+    getDateMini,
     setPagination (val) {
       this.pagination = val
     },
-    search (val) {
-      this.searchVal = val || null
-      this.pagination = 1
+    setDeleted (val) {
+      this.$store.commit("ACTIVE_BACKGROUND", val)
     }
   }
 

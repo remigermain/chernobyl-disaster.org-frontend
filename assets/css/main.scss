@@ -21,6 +21,8 @@ body {
   position: relative;
   z-index: 1;
   color: #1A202C;
+  @apply transition-colors;
+  @apply duration-300;
 }
 
 /*
@@ -28,7 +30,7 @@ body {
 */
 .dark {
   #__nuxt {
-    background-color: black;
-    color: white;
+    background-color: #0f121a;
+    @apply text-gray-300;
   }
 }

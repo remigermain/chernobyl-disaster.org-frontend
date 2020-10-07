@@ -65,7 +65,7 @@ export default {
           this.i18nToast.success(this.$t("success.deleted"))
           this.$router.push(this.localePath({name: `contribute-${this.model}`}))
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => {
           this.loading = false
           this.$emit("close")

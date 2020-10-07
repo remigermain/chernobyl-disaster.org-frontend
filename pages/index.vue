@@ -1,14 +1,14 @@
 <template>
   <div class="grid-common">
     <article class="common-description description-home">
-      <h1 class="text-2xl uppercase extra-auto transition-opacity duration-400 z-1 italic text-opacity-50 tracking-tighter font-bold">
+      <h1 class="text-2xl uppercase extra-auto transition-opacity duration-300 z-1 italic text-opacity-50 tracking-tighter font-bold">
         {{ $t('pages.home.presentation') }}
       </h1>
       <p class="mb-16 text-lg leading-7 break-words inline-block mt-2 font-medium">
         {{ $t('pages.home.description') }}
         {{ $t('pages.about.description') }}
       </p>
-      <nuxt-link  :to="localePath({name: 'timeline'})" class="dark:bg-gray-200 dark:text-gray-900 dark:hover:bg-gray-300
+      <nuxt-link  :to="localePath({name: 'timeline'})" class="dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-400
         group px-4 py-4 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800"
                             :title="$t('utils.goto-timeline')"
       >

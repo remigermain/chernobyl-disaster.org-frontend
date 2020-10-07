@@ -11,11 +11,11 @@
     <template #table>
       <div class="w-full bg-gray-400 bg-opacity-25 italic text-lg p-4 rounded-md text-gray-800 text-opacity-75 whitespace-pre-line description">{{ $t('help.translate.description') }}</div>
       <div class="flex mt-6">
-        <div class="flex flex-col rounded-md h-max-content">
+        <div class="flex flex-col rounded-md min-min-h-max-content">
           <span class="text-lg italic leading-3 p-2 bg-blue-700 text-white rounded-md capitalize text-center">
             {{ $t('utils.category') }}
           </span>
-          <lazy-contribute-translate-navbar :object="object" class="shadow-sm rounded-md  p-2 w-max-content" @select="assign" />
+          <lazy-contribute-translate-navbar :object="object" class="shadow-sm rounded-md  p-2 min-w-max-content" @select="assign" />
         </div>
         <div class=" w-full space-y-2 px-2 parent mt-6">
           <div v-for="obj in current" :key="obj.id" class="flex flex-col items">

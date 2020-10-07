@@ -2,26 +2,7 @@
   <div class="grid-contribute">
     <contribute-navbar :menus="menus" />
     <div class="grid-contribute-content overflow-y-scroll md:p-4 -md:pt-4 min-h-full">
-      <nuxt-child :key="$route.fullPath" />
-      <div v-if="haveChild" class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
-        <contribute-user :object="object" />
-        <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-gray-500">
-          <div class="tulp">
-            <h1 class="text-2xl capitalize italic text-opacity-75">
-              {{ el.name }}
-            </h1>
-            {{ el.help }}
-          </div>
-          <nuxt-link  :to="localePath(el.to)" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-bl-lg"
-                           :class="{'col-span-2 rounded-br-lg': !el.toCreate, 'border-gray-900 border-r-4': el.toCreate}"
-          >
-            {{ $t('utils.list') }}
-          </nuxt-link>
-          <nuxt-link v-if="el.toCreate"  :to="localePath(el.toCreate)" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-br-lg">
-            {{ $t('utils.create') }}
-          </nuxt-link>
-        </div>
-      </div>
+      <nuxt-child :menus="menus" />
     </div>
   </div>
 </template>
@@ -37,28 +18,6 @@ export default {
   ],
 
   transition: "page",
-
-  asyncData({app}) {
-    return app.$axios.get("populate/overview")
-      .then(response => {
-        if (response.status!==200) {
-          throw new Error("error-server")
-        }
-        const results = response.data.results.map(o => {
-          o.date = new Date(o.date)
-          return o
-        })
-        return {
-          object: {
-            ...response.data,
-            results
-          }
-        }
-      })
-      .catch(() => {
-        // TODO
-      })
-  },
 
   data () {
     return {
@@ -101,24 +60,6 @@ export default {
       ]
     }
   },
-
-  computed: {
-    haveChild () {
-      return this.$route.matched.length === 1
-    }
-  },
-
-  mounted () {
-    // refesh component when have not child
-    if (this.haveChild) {
-      this.__$timeout = setInterval(this.$nuxt.refresh, 20000)
-    }
-  },
-
-  beforeDestroy () {
-    clearInterval(this.__$timeout)
-  }
-
 }
 </script>
 
@@ -130,45 +71,9 @@ export default {
   height: 100%;
 }
 
-.contribute-menu > * + * {
-  margin-top: 2rem
-}
-
-.contribute-link {
-  display: block;
-  transition: color .4s, transform .2s;
-  &.nuxt-link-exact-active {
-    color: rgb(128, 9, 128);
-    transform: translateX(10%);
-  }
-  &:hover {
-    color: rgb(128, 9, 128);
-    transform: translateX(10%);
-  }
-}
-
-
 @media screen and (max-width:1000px){
   .grid-contribute {
     display: block;
   }
 }
-
-.card-model {
-  width: 300px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-row: 1fr;
-  & > *:first-child {
-    grid-area: 1 / 1 / 1 / 3;
-  }
-  & > * {
-    padding: 1em;
-  }
-}
-
-.dark .tulp {
-  @apply bg-gray-900
-}
-
 </style>

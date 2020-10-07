@@ -34,8 +34,12 @@ module.exports = {
         "32px": "32px",
         "40px": "40px",
         "inherit": "inherit",
-        "min-content": "min-content",
-        "max-content": "max-content"
+        "min": "min-content",
+        "max": "max-content"
+      },
+      minWidth: {
+        "min": "min-content",
+        "max": "max-content"
       },
       height: {
         "1/4": "25%",
@@ -55,8 +59,12 @@ module.exports = {
         "32px": "32px",
         "40px": "40px",
         "inherit": "inherit",
-        "min-content": "min-content",
-        "max-content": "max-content"
+        "min": "min-content",
+        "max": "max-content"
+      },
+      minHeight: {
+        "min": "min-content",
+        "max": "max-content"
       },
       screens: {
         "mobile": "1000px",

@@ -2,39 +2,24 @@
   <div class="grid-layout-navbar">
     <div class="background-navbar" :class="{'active': active, 'hidden': !active }" @click="ative = false" />
     <label class="burger" :class="{'active': active }" @click="toogleNavbar">
-      <span class="bg-gray-700" />
-      <span class="bg-gray-700" />
-      <span class="bg-gray-700" />
+      <span class="bg-gray-700 dark:bg-gray-100" />
+      <span class="bg-gray-700 dark:bg-gray-100" />
+      <span class="bg-gray-700 dark:bg-gray-100" />
     </label>
     <nav class="navbar-items relative" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
-      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact"
-                            :title="$t('utils.goto-home')"
-                            @click.native="active = false"
-      >
+      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('utils.goto-home')" @click.native="active = false">
         {{ $t('menu.home') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link"
-                            :title="$t('utils.goto-timeline')"
-                            @click.native="active = false"
-      >
+      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link" :title="$t('utils.goto-timeline')" @click.native="active = false">
         {{ $t('menu.timeline') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link"
-                            :title="$t('utils.goto-gallery')"
-                            @click.native="active = false"
-      >
+      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link" :title="$t('utils.goto-gallery')" @click.native="active = false">
         {{ $t('menu.gallery') }}
       </nuxt-link>
-      <nuxt-link :to="localePath(contributeLink)" class="navbar-link"
-                            :title="$t('utils.goto-contribute')"
-                            @click.native="active = false"
-      >
+      <nuxt-link :to="localePath(contributeLink)" class="navbar-link" :title="$t('utils.goto-contribute')" @click.native="active = false">
         {{ $t('menu.contribute') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link"
-                            :title="$t('utils.goto-about')"
-                            @click.native="active = false"
-      >
+      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('utils.goto-about')" @click.native="active = false">
         {{ $t('menu.about') }}
       </nuxt-link>
       <div class="absolute settings-child right-0 top-0 p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
@@ -46,15 +31,15 @@
           <svg-icon name="sun"  class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-white text-gray-800"
                     @click="setLight"
           />
-          <svg-icon name="moon" class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-black text-white"
+          <svg-icon name="moon" class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-black text-white dark:bg-gray-900"
                     @click="setDark"
           />
         </div>
         <label for="lang" class="flex justify-center items-center flex-col gap-y-2">
-          <span class="text-lg leading-3 italic text-gray-700 font-medium language-label">
+          <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200">
             {{ $t('utils.language') }}:
           </span>
-          <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-25 text-center">
+          <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
             <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
               {{ lang.name }}
             </option>
@@ -205,10 +190,6 @@ export default {
   }
 }
 
-.dark .burger > span {
-  background-color: white;
-}
-
 .background-navbar {
   transition: background-color .2s;
   background-color: transparent;
@@ -234,26 +215,18 @@ export default {
 }
 
 .settings-child {
-  background-color: #f9f9f9;
+  @apply bg-white
 }
+
 .dark {
-  .settings-child   {
-    background-color: #2b2b2b;
-    .language-label {
-      @apply text-gray-200
-    }
+  .settings-child {
+    @apply bg-gray-800
   }
 }
 
 
 @media screen and (max-width:1000px){
 
-  // menu settings
-  .dark {
-    .settings-child {
-      background-color: black;
-    }
-  }
   .settings-child {
     position: relative;
     display: flex;
@@ -296,7 +269,7 @@ export default {
     }
   }
   .dark .grid-layout-navbar .navbar-items {
-    background-color: rgb(0, 0, 0);
+    @apply bg-gray-800
   }
 }
 

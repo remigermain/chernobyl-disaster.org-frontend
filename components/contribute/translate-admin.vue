@@ -13,7 +13,7 @@
       <div class="w-full flex space-y-1 leading-6 transform p-2 transition-all duration-400 justify-around"
             :class="{'-translate-y-full opacity-0 absolute': !active, 'translate-x-0 opacity-100 block': active}"
       >
-        <div class="rounded-md border shadow-md flex flex-col p-2 w-max-content">
+        <div class="rounded-md border shadow-md flex flex-col p-2 min-w-max-content">
           <h1 class="text-2xl font-bold capitalize italic text-gray-700">
             {{ $t('utils.upload') }}
           </h1>
@@ -40,7 +40,7 @@
             <field-submit>{{ $t('utils.submit') }}</field-submit>
           </form>
         </div>
-        <div class="rounded-md border shadow-md flex flex-col p-2 w-max-content h-max-content">
+        <div class="rounded-md border shadow-md flex flex-col p-2 min-w-max-content min-min-h-max-content">
           <h1 class="text-2xl font-bold capitalize italic text-gray-700">
             {{ $t('utils.download') }}
           </h1>
@@ -91,7 +91,7 @@ export default {
           ).goAway(8000)
           this.$nuxt.refresh()
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     }
   },

@@ -13,7 +13,6 @@
                   :class="{'empty': valueModel === '', 'min-area': min }"
                   class="p-2 input"
                   @input="$emit('input', valueModel)"
-                  @change="$emit('change', valueModel)"
         />
         <span class="input-label">
           {{ field.label }}

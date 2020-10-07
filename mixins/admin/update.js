@@ -32,7 +32,7 @@ export default {
             this.$nuxt.refresh()
           }
         })
-        .catch(error => { this.requestError(error) })
+        .catch(error => { this.responseError(error) })
         .finally(() => { this.loading = false })
     },
   }

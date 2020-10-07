@@ -1,8 +1,8 @@
 <template>
   <main class="grid-layout">
     <div class="grid-layout-title">
-      <nuxt-link  :to="localePath({name: 'index'})" :title="$t('menu.home')" class="hover:text-gray-700 title-site">
-        <h1 class="grid-layout-title-item font-russia">
+      <nuxt-link  :to="localePath({name: 'index'})" :title="$t('menu.home')" class="hover:text-gray-700 dark:text-gray-200 dark:hover:text-white">
+        <h1 class="uppercase text-4xl font-russia">
           <svg-icon name="logo" />
           <span>chernobyl</span>
         </h1>
@@ -11,12 +11,30 @@
     <navbar />
     <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('utils.content')">
       <nuxt v-if="!$slots.default" />
-      <slot />
+      <slot v-else />
     </section>
+    <div class="background" :class="{'active': background}" @click="hideBackground" />
   </main>
 </template>
 
-<style lang="scss">
+<script>
+export default {
+
+  computed: {
+    background () {
+      return this.$store.state.have_background
+    }
+  },
+
+  methods: {
+    hideBackground () {
+      this.$store.commit("ACTIVE_BACKGROUND", false)
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
 .grid-layout {
   display: grid;
   grid-template-columns: auto repeat(9, 1fr);
@@ -31,10 +49,6 @@
   justify-items: center;
   align-items: center;
   color: #2D3748;
-  .grid-layout-title-item {
-    text-transform: uppercase;
-    font-size: 2.5rem;
-  }
 }
 
 .grid-layout-contents {
@@ -42,15 +56,18 @@
   overflow-y: scroll;
 }
 
-/*
-  dark mode
-*/
-.dark {
-  .grid-layout-title {
-    color: rgb(207, 207, 207);
-    .title-site:hover {
-      color: rgb(170, 170, 170);
-    }
+.background {
+  transition: background-color .2s;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  &.active {
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.7);
   }
 }
 </style>

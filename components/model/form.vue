@@ -20,7 +20,7 @@
           <slot name="form-lang" />
         </div>
       </div>
-      <button type="button" class="p-2 mt-2 text-gray-200 bg-blue-600 hover:bg-blue-800 rounded-md w-max-content" @click="$emit('add-extra')">
+      <button type="button" class="p-2 mt-2 text-gray-200 bg-blue-600 hover:bg-blue-800 rounded-md min-w-max-content" @click="$emit('add-extra')">
         <svg-icon name="plus" class="inline" />
         {{ $t('tools.add') }}
       </button>

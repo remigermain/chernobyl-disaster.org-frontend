@@ -4,7 +4,7 @@ export const state = () => ({
   events: [],
   tags: [],
   photographers: [],
-  peoples: []
+  peoples: [],
 })
 
 export const mutations = {
@@ -19,7 +19,6 @@ export const mutations = {
   POPULATE_PEOPLES(state, data) {
     state.peoples = data.peoples
   },
-
 }
 
 export const getters = {

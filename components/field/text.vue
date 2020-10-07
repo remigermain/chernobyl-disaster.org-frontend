@@ -9,21 +9,19 @@
                :type="type"
                :name="field.name"
                :maxlength="field.max_length"
+               :minlength="field.min_length"
                :required="field.required"
                :autocomplete="autocomplete"
-               :class="{'empty': valueModel === '' }"
                class="p-2 field-input"
+               :class="{'empty': !valueModel}"
                @input="$emit('input', valueModel)"
-               @change="$emit('change', valueModel)"
-               @blur="$emit('blur')"
-               @focus="$emit('focus')"
         >
         <span class="field-input-label">
           {{ field.label }}
         </span>
       </label>
       <span class="px-2 flex justify-center items-center text-gray-700 field-icon">
-        <slot name="icon-right" />
+        <slot name="icon-right"/>
       </span>
     </div>
     <lazy-admin-error :errors="errors" />
@@ -57,8 +55,32 @@ export default {
 
 <style lang="scss" scoped>
 
-.field-input:focus {
-  @apply bg-gray-100;
+.field-input {
+  @apply text-gray-700;
+  &:focus, &:not(.empty) {
+    @apply bg-gray-200;
+    @apply rounded-t-md
+  }
+}
+
+.field-icon {
+  @apply text-2xl;
+}
+
+.dark {
+  .field-input {
+    @apply text-gray-200;
+    &:focus, &:not(.empty) {
+      @apply bg-gray-700;
+      @apply rounded-t-md
+    }
+  }
+  .field-icon {
+    @apply text-gray-100
+  }
+  .field-input-label {
+    @apply text-gray-100
+  }
 }
 
 .field-input.empty:hover ~ .field-input-label {
@@ -77,20 +99,4 @@ export default {
   transform: translateY(100%);
   opacity: .5;
 }
-
-.dark {
-  .field-input {
-    @apply text-gray-400;
-    &:focus {
-      @apply bg-gray-800 rounded-lg text-white rounded-b-none;
-    }
-  }
-  .field-icon {
-    @apply text-gray-100
-  }
-  .field-input-label {
-    @apply text-gray-100
-  }
-}
-
 </style>

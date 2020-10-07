@@ -26,9 +26,10 @@ export default {
 </script>
 
 <style lang="scss">
+
 .dark .section-form {
   @apply border-none;
-  background-color: #2b2b2b;
+  @apply bg-gray-800;
   h1 {
     @apply text-gray-400
   }

@@ -60,7 +60,7 @@ export default {
           this.objectList = response.data.results
           this.objectlength = response.data.count
         })
-        .catch((error) => {this.requestError(error) })
+        .catch((error) => {this.responseError(error) })
     },
     refreshLang () {
       this.$axios.get(this.urlLang)
@@ -71,7 +71,7 @@ export default {
           this.objectListLang = response.data.results
           this.objectlengthLang = response.data.count
         })
-        .catch((error) => {this.requestError(error) })
+        .catch((error) => {this.responseError(error) })
     }
   },
 

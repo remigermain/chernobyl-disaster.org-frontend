@@ -7,7 +7,7 @@
             <time :datetime="obj.date.date.getFullYear()" class="text-3xl">
               {{ obj.date.date.getFullYear() }}
             </time>
-            <time :datetime="getDate(obj.date.date)" class="text-md italic text-gray-700">
+            <time :datetime="getDate(obj.date.date)" class="text-md italic text-gray-700 dark:text-gray-400">
               {{ getDate(obj.date.date) }}
             </time>
           </header>
@@ -16,18 +16,18 @@
                        :id="element.id"
                        :key="`${obj.id}-${element.id}`"
                        :to="localePath({name: 'timeline-slug', params: {'slug': element.slug}})"
-                       class="timeline-element group block p-4 cursor-pointer hover:bg-gray-700 text-white relative rounded-md mt-1"
-                       :class="{'bg-gray-700': current.id === element.id, 'bg-gray-800': current.id!==element.id}"
+                       class="timeline-element group block p-4 cursor-pointer hover:bg-gray-700 dark:hover:bg-gray-700 text-white relative rounded-md mt-1"
+                       :class="{'bg-gray-700': current.id === element.id, 'bg-gray-800 dark:bg-gray-900': current.id !== element.id}"
                        :title="i18nAttr(element, 'title')"
             >
               <span class="timeline-point shadow-sm"
                     :class="{
-                      'active bg-blue-600': current.id === element.id,
+                      'active bg-indigo-600': current.id === element.id,
                       'bg-blue-800': current.id!==element.id
                     }"
               />
               <lazy-timeline-min-time :date="element.date" />
-              <h1>
+              <h1 class="dark:text-gray-400">
                 {{ i18nAttr(element, 'title') }}
               </h1>
             </nuxt-link>
@@ -52,7 +52,7 @@
           />
         </nuxt-link>
       </div>
-      <div class="icon-timeline w-6 h-12 bg-blue-800 text-gray-800 shadow-lg"
+      <div class="icon-timeline w-6 h-12 bg-blue-800 text-gray-800 shadow-lg dark:text-gray-400"
            :class="{'active rounded-l-full': active, 'rounded-r-full': !active}"
            :aria-label="$t('utils.open-menu')"
            @click="toogleActive"
@@ -191,7 +191,9 @@ export default {
       order: 1;
     }
     .timeline-element {
-      @apply .border-r-8 .border-black .border-l-0;
+      @apply border-r-8;
+      @apply border-black;
+      @apply border-l-0;
     }
     .timeline-point {
       right: calc((var(--size) + 8px) / 2 * -1);
@@ -201,7 +203,9 @@ export default {
 }
 
 .timeline-element {
-  @apply .border-l-8 .border-black .border-r-0;
+  @apply border-l-8;
+  @apply border-black;
+  @apply border-r-0;
 }
 
 .timeline-point {
@@ -236,7 +240,8 @@ export default {
 }
 
 .dark .timeline-list-grid  {
-  background: #1d1f24;
+  background: unset;
+  @apply bg-gray-800;
 }
 
 .icon-timeline {

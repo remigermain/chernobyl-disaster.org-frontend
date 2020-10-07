@@ -2,9 +2,9 @@
   <div class="grid-layout-contribute-navbar ">
     <div class="background-contribute-navbar" :class="{'active': active, 'hidden': !active }" @click="active = false" />
     <label class="burger" :class="{'active': active }" @click="toogleNavbar">
-      <span class="bg-gray-700" />
-      <span class="bg-gray-700" />
-      <span class="bg-gray-700" />
+      <span class="bg-gray-700 dark:bg-gray-100" />
+      <span class="bg-gray-700 dark:bg-gray-100" />
+      <span class="bg-gray-700 dark:bg-gray-100" />
     </label>
     <nav class="contribute-navbar-items -mobile:dark:bg-black" :class="{'active': active }">
       <nuxt-link  :to="localePath({name: 'contribute'})" class="contribute-navbar-link exact ml-4">

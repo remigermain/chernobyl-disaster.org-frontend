@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <p v-for="error in errors" :key="error" class="text-red-800 text-xs italic error">
+    <p v-for="error in errors" :key="error" class="text-red-600 dark:text-red-500 font-medium text-md italic error">
       {{ error }}
     </p>
   </div>

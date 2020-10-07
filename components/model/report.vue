@@ -69,7 +69,7 @@ export default {
           this.message = ""
           this.i18nToast.success(this.$t("success.report"))
         })
-        .catch((error) => { this.requestError(error) })
+        .catch((error) => { this.responseError(error) })
         .finally(() => { this.loading = false })
     }
   }

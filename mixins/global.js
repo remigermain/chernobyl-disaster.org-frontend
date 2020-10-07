@@ -68,42 +68,47 @@ export default {
 
       return this.$t("errors.language")
     },
-    requestError (error) {
-      if (!error.response || error.response.status >= 500) {
-        this.i18nToast.error(this.$t("errors.server")).goAway(10000)
-      }
-      else if (error.response.data && error.response.data.detail) {
-        this.i18nToast.error(error.response.data.detail).goAway(10000)
-      }
-      else if (error.response.data) {
-        // assign response to error
-        this.errors = {...this.errors, ...error.response.data}
-        // if non_field_errors as set, create toast
-        if (error.response.data.non_field_errors) {
-          error.response.data.non_field_errors.forEach(msg => {
-            this.i18nToast.error(msg).goAway(10000)
-          })
+    responseError (error) {
+      /*
+        request Error is a function to generate errors message
+        default message when error is from server
+                                   is offline
+                                   is detail and non_field_error
+      */
+      return new Promise(resolve => {
+        /* if error has not response and data , its a error from server */
+        if (!error.response || !error.response.data || error.response.status >= 500) {
+          this.i18nToast.error(this.$t("errors.server")).goAway(10000)
+        } else if (this.$nuxt.isOffline) {
+          this.i18nToast.error(this.$t("errors.network")).goAway(10000)
         } else {
-          this.i18nToast.error(this.$t("errors.error-in-form")).goAway(10000)
-        }
-        if (Array.isArray(this.errors.langs)) {
-          this.errors.langs.forEach(msg => {
-            if (typeof msg === "string") {
-              if (msg === "101") { // error unique translate
-                msg = this.$t("errors.unique-translate", {"model": this.model.label})
-              }
-              this.i18nToast.error(msg).goAway(10000)
-            }
-          })
-        }
-      } else if (error.message === "Network Error") {
-        // ERROR network
-        this.i18nToast.error(this.$t("errors.network")).goAway(10000)
-      } else {
-        // create ERROR server
-        this.i18nToast.error(this.$t("errors.server")).goAway(10000)
-      }
-    },
-  }
+          const data = error.response.data
 
+          // count errors in data
+          const haveError = Object.keys(data).reduce((val, key) => {
+            return val + (data[key] && data[key].length ? data[key].length : 0)
+          }, 0)
+
+          console.log(haveError)
+
+          if (haveError > 0) {
+            this.i18nToast.error(this.$t('errors.error-in-form')).goAway(10000)
+          }
+          // detail
+          data.detail && this.i18nToast.error(data.detail).goAway(10000)
+
+          // no field errors
+          // console.log(data.non_field_errors);
+          if (data.non_field_errors) {
+            data.non_field_errors.forEach(msg => {
+              this.i18nToast.error(msg).goAway(10000)
+            })
+          }
+
+          // resolve with data
+          resolve(data)
+        }
+      })
+    }
+  }
 }
