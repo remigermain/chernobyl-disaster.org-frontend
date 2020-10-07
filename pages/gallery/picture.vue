@@ -71,21 +71,18 @@ export default {
   },
 
   head () {
+    const title = this.$t("pages.picture.title")
+    const description = this.$t("pages.picture.description")
     return {
-      title: this.$t("menu.picture"),
+      title,
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.picture.description") },
-          { property: "og:title", content: this.$t("pages.picture.title")},
-          { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.picture.description")},
-          { property: "og:type", content: "website"},
-          { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.picture.description") },
-          { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("pages.picture.title") },
-          { name: "twitter:description", content: this.$t("pages.picture.description") },
-          { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("pages.picture.title") }
+          { hid: "description", name: "description", content: description },
+          { property: "og:title", content: title},
+          { property: "og:description", content: description},
+          { name: "twitter:card", content: description },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: description },
+          { name: "twitter:image:alt", content: title }
       ]
     }
   },

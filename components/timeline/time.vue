@@ -24,13 +24,9 @@
 </template>
 
 <script>
-import dateMixinx from "~/mixins/date"
+import { isTimeEmpty } from "~/lib/date"
 
 export default {
-
-  mixins: [
-    dateMixinx
-  ],
 
   props: {
     date: {
@@ -53,6 +49,10 @@ export default {
       return (h.length === 1 ? `0${h}`: h)
     },
   },
+
+  methods: {
+    isTimeEmpty
+  }
 
 }
 </script>

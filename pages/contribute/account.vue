@@ -128,6 +128,17 @@ export default {
     }
   },
 
+  watch: {
+    "$auth.user": {
+      handler () {
+        // reasigne data after fetch user
+        this.data.show_help = this.$auth.user.show_help
+        this.data.default_language = this.$auth.user.default_language
+      },
+      deep: true
+    },
+  },
+
   created () {
     this.field.old_password = {...this.modelField.password, ...this.field.old_password}
     this.field.new_password1 = {...this.modelField.password, ...this.field.new_password1}
@@ -173,7 +184,7 @@ export default {
       setObjectKeysValue(this.errors, [])
       const data = {
         default_language: this.data.default_language,
-        show_help: this.data.show_help,
+        show_help: !this.data.show_help, // why invert bool  ?????
       }
 
       this.$axios.patch("auth/user/", data)
@@ -182,6 +193,7 @@ export default {
             throw new Error("error-server")
           }
           this.i18nToast.success(this.$t('success.update')).goAway(4000)
+          this.$auth.fetchUser()
           // TODO redirect language ?
         })
         .catch((error) => {

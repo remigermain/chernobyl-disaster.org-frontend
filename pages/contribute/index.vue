@@ -20,14 +20,14 @@
       </div>
       <div class="w-full">
         <lazy-admin-tabler :length="object.results.length" @pagination="setPagination">
-          <template #head>
+          <template #thead>
               <th>{{ $t("tools.creator") }}</th>
               <th>{{ $t("tools.date") }}</th>
               <th>{{ $t("admin.model.title") }}</th>
               <th>{{ $t("tools.uuid") }}</th>
               <th>{{ $t("tools.action") }}</th>
           </template>
-          <template #body>
+          <template #tbody>
             <tr v-for="(obj, idx) in list" :key="idx">
               <td>{{ obj.creator }}</td>
               <td>{{ getDateMini(obj.date) }}</td>
@@ -84,7 +84,7 @@ export default {
 
   computed: {
     list () {
-      const start = (this.pagination * this.$pagination) - this.$pagination
+      const start = (this.page * this.$pagination) - this.$pagination
       return this.object.results.slice(start, start + this.$pagination)
     },
   },
@@ -93,6 +93,9 @@ export default {
     getDateMini,
     deleteObject () {
       this.submitDelete(`${this.objDelete.uuid}/${this.objDelete.id}/`)
+    },
+    setPagination (val) {
+      this.page = val
     }
   }
 

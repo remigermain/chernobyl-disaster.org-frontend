@@ -5,7 +5,7 @@
         <h1 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributing') }}
         </h1>
-        <a href="gitlab.com/chernobyl-disaster.org" target="_blank" rel="noopener,noreferrer"
+        <a href="http://www.gitlab.com/chernobyl-disaster.org/" target="_blank" rel="noopener,noreferrer"
            class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
            :title="$t('pages.about.contribute-gitlab')"
         >
@@ -98,7 +98,7 @@
             GERMAIN Rémi
           </h1>
         </a>
-        <div class="text-gray-800 text-justify font-medium mb-6 description">
+        <div class="text-gray-800 text-justify font-medium mb-6 dark:text-gray-500">
           <picture role="img">
             <source srcset="~/assets/img/profil/profil-tablet.webp" media="(max-width: 850px)" type="image/webp">
             <source srcset="~/assets/img/profil/profil-tablet.jpeg" media="(max-width: 850px)" type="image/jpeg">
@@ -112,12 +112,12 @@
         <h2 class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 rounded-md inline-grid">
           {{ $t('pages.about.help-us') }}
         </h2>
-        <p class="text-gray-800 text-md text-justify font-medium description-help">
+        <p class="text-gray-800 text-md text-justify font-medium dark:text-gray-500">
           {{ $t('pages.about.help-us-description') }}
         </p>
       </article>
       <div class=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex justify-around flex-wrap items-center gap-4">
-        <form action="www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener,noreferrer">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener,noreferrer">
           <input type="hidden" name="cmd" value="_s-xclick" />
           <input type="hidden" name="hosted_button_id" value="JKC2WU8HYUNVA" />
           <button type="submit"  class="flex flex-col items-center space-y-2 group">
@@ -127,13 +127,13 @@
             <span class="font-bold uppercase text-base">Paypal</span>
             </button>
         </form>
-        <a href="www.buymeacoffee.com/rgermain" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
+        <a href="https://www.buymeacoffee.com/rgermain" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
           <div class=" h-12 w-12 flex justify-center items-center bg-green-700 rounded-full shadow-sm">
             <svg-icon name="mug" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
           </div>
           <span class="font-bold uppercase text-base">buy me a coffee</span>
         </a>
-        <a href="liberapay.com/rgermain/donate" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
+        <a href="https://liberapay.com/rgermain/donate" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
           <div class=" h-12 w-12 flex justify-center items-center bg-yellow-600 rounded-full shadow-sm">
             <svg-icon name="liberapay" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
           </div>
@@ -156,7 +156,7 @@ export default {
 
   transition: "common",
 
-  asyncData({app}) {
+  asyncData({app, store}) {
     return app.$axios.get("populate/contributors")
       .then(response => {
         if (response.status!==200) {
@@ -167,7 +167,8 @@ export default {
           donators: response.data.donators
         }
       })
-      .catch(() => {
+      .catch(error => {
+        store.commit("ERROR_SERVER", error.message || error)
         return {contributors: [], donators: [] }
       })
   },
@@ -179,21 +180,18 @@ export default {
   },
 
   head () {
+    const title = this.$t("menu.about")
+    const description = this.$t("menu.about")
     return {
-      title: this.$t("menu.about"),
+      title,
       meta: [
-          { hid: "description", name: "description", content: this.$t("pages.about.description") },
-          { property: "og:title", content: this.$t("menu.about")},
-          { property: "og:site_name", content: this.$siteName },
-          { property: "og:description", content: this.$t("pages.about.description")},
-          { property: "og:type", content: "website"},
-          { property: "og:url", content: this.$siteName},
-          { name: "twitter:card", content: this.$t("pages.about.description") },
-          { name: "twitter:site", content: this.$siteName},
-          { name: "twitter:title", content: this.$t("menu.about") },
-          { name: "twitter:description", content: this.$t("pages.about.description") },
-          { name: "twitter:image", content: "/favicon.ico" },
-          { name: "twitter:image:alt", content: this.$t("menu.about") }
+          { hid: "description", name: "description", content: description },
+          { property: "og:title", content: title},
+          { property: "og:description", content: description},
+          { name: "twitter:card", content: description },
+          { name: "twitter:title", content: title},
+          { name: "twitter:description", content: description },
+          { name: "twitter:image:alt", content: title}
       ]
     }
   }
@@ -212,7 +210,8 @@ export default {
   max-height: 200px;
 }
 .dark .all-contributor {
-  @apply bg-gray-800 text-white;
+  @apply bg-gray-800;
+  @apply text-white;
 }
 
 .sub-mt {
@@ -247,12 +246,6 @@ export default {
     width: 200%;
     margin-top: 2em;
     grid-area: unset;
-  }
-}
-
-.dark {
-  .description, .description-help {
-    @apply text-gray-600
   }
 }
 

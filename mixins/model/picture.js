@@ -1,35 +1,19 @@
-import dateMixins from "~/mixins/date"
-
-const errorsField = {
-  title: [],
-  tags: [],
-  event: [],
-  picture: [],
-  date: [],
-  langs: [{
-    title: [],
-    language: [],
-  }]
-}
+import { getFullDate } from "~/lib/date"
 
 export default {
 
-  mixins: [
-    dateMixins
-  ],
-
-  middleware({ store, $axios }) {
-    return $axios.get("populate/picture")
-      .then(response => {
-        if (response.status!==200) {
-          throw new Error("error-server")
-        }
-        store.commit("model/POPULATE_PICTURE", response.data)
-      })
-      .catch(() => {
-        // TODO
-      })
-  },
+  // middleware({ store, $axios }) {
+  //   return $axios.get("populate/picture")
+  //     .then(response => {
+  //       if (response.status!==200) {
+  //         throw new Error("error-server")
+  //       }
+  //       store.commit("model/POPULATE_PICTURE", response.data)
+  //     })
+  //     .catch(() => {
+  //       // TODO
+  //     })
+  // },
 
   data () {
     return {
@@ -75,7 +59,7 @@ export default {
           name: "date",
           required: false,
           help: this.$t("help.picture.date"),
-          display: obj => this.getFullDate(obj.date)
+          display: obj => getFullDate(obj.date)
         },
         photographer: {
           label: this.$t("admin.model.photographer"),
@@ -106,8 +90,6 @@ export default {
           }
         }
       },
-      errorsField,
-      errors: {...errorsField}
     }
   },
 

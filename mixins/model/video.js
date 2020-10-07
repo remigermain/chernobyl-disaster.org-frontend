@@ -1,22 +1,6 @@
-import dateMixins from "~/mixins/date"
-
-const errorsField = {
-  title: [],
-  tags: [],
-  event: [],
-  video: [],
-  date: [],
-  langs: [{
-    title: [],
-    language: [],
-  }]
-}
+import { getFullDate } from "~/lib/date"
 
 export default {
-
-  mixins: [
-    dateMixins
-  ],
 
   data () {
     return {
@@ -62,7 +46,7 @@ export default {
           name: "date",
           required: false,
           help: this.$t("help.video.date"),
-          display: obj => this.getFullDate(obj.date)
+          display: obj => getFullDate(obj.date)
         },
         langs: {
           title: {
@@ -81,8 +65,6 @@ export default {
           }
         }
       },
-      errorsField,
-      errors: {...errorsField}
     }
   },
 

@@ -1,13 +1,14 @@
 <template>
   <div class="shadow-md md:p-4 dark:bg-gray-800 rounded-lg">
+    <slot name="header" />
     <table class="w-full">
       <thead>
         <tr class="shadow-xs">
-          <slot name="head" />
+          <slot name="thead" />
         </tr>
       </thead>
       <tbody>
-        <slot name="body" />
+        <slot name="tbody" />
       </tbody>
     </table>
     <div class="mt-2 text-center">

@@ -1,29 +1,12 @@
-import dateMixins from "~/mixins/date"
-
-const errorsField = {
-  title: [],
-  tags: [],
-  date: [],
-  langs: [{
-    title: [],
-    description: [],
-    language: []
-  }]
-}
 
 export default {
-
-  mixins: [
-    dateMixins
-  ],
-
   data () {
     return {
       model: {
         name: "event",
         label: this.$t("admin.label.event"),
       },
-      fields: {
+      modelField: {
         title: {
           label: this.$t("admin.model.title"),
           name: "title",
@@ -44,7 +27,6 @@ export default {
           name: "date",
           required: true,
           help: this.$t("help.event.date"),
-          display: obj => this.getFullDate(obj.date)
         },
         langs: {
           title: {
@@ -69,8 +51,6 @@ export default {
           }
         }
       },
-      errorsField,
-      errors: {...errorsField}
     }
   },
 

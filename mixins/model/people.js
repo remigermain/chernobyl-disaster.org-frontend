@@ -1,27 +1,8 @@
-import dateMixins from "~/mixins/date"
-
-const errorsField = {
-  name: [],
-  born: [],
-  death: [],
-  profil: [],
-  wikipedia: [],
-  tags: [],
-  langs: [{
-    biography: [],
-    language: [],
-  }]
-}
-
+import { getFullDate } from "~/lib/date"
 
 export default {
 
-  mixins: [
-    dateMixins
-  ],
-
   data () {
-
     return {
       model: {
         name: "people",
@@ -40,14 +21,14 @@ export default {
           name: "born",
           required: false,
           help: this.$t("help.people.born"),
-          display: obj => this.getFullDate(obj.born, false)
+          display: obj => getFullDate(obj.born, false)
         },
         death: {
           label: this.$t("admin.model.death"),
           name: "death",
           required: false,
           help: this.$t("help.people.death"),
-          display: obj => this.getFullDate(obj.born, false)
+          display: obj => getFullDate(obj.born, false)
         },
         profil: {
           label: this.$t("admin.model.profil"),
@@ -85,8 +66,6 @@ export default {
           }
         }
       },
-      errorsField,
-      errors: {...errorsField}
     }
   },
 

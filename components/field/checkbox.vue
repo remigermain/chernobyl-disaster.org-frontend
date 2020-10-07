@@ -3,6 +3,7 @@
     <label class="flex justify-center items-start flex-wrap space-y-2">
         <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200 select-none w-full">
         {{ field.label }}:
+        {{ valueModel }}
       </span>
       <div class="bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500">
         <input v-model="valueModel"

@@ -66,14 +66,9 @@
 
 <script>
 import { timelineElement } from "~/lib/timeline"
-
-import dateMixinx from "~/mixins/date"
+import { getDate} from "~/lib/date"
 
 export default {
-
-  mixins: [
-    dateMixinx
-  ],
 
   props: {
     object: {
@@ -91,6 +86,7 @@ export default {
   },
 
   computed: {
+    getDate,
     hasNext () {
       return this.object.indexOf(this.current) + 1 < this.object.length
     },
