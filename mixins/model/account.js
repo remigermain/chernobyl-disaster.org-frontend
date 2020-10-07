@@ -30,6 +30,7 @@ export default {
           label: this.$t("admin.model.default-language"),
           help: this.$t("help.account.default-language"),
           name: "default_language",
+          choices: this.$store.getters["model/langs"],
         },
         color_mode: {
           label: this.$t("admin.model.color-mode"),

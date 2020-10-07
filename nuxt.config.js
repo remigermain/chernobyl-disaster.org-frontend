@@ -139,6 +139,10 @@ export default {
       prefix: "action",
     },
     {
+      path: "~/components/utils/",
+      prefix: "utils",
+    },
+    {
       path: "~/components/field/",
       prefix: "field",
     },
