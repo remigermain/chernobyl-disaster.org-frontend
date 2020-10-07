@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import FieldMixins from "~/mixins/admin/field"
+import FieldMixins from "~/mixins/field"
 import dateField from "~/mixins/admin/dateField"
 
 export default {

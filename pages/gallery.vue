@@ -19,8 +19,8 @@ export default {
         }
         store.commit("model/POPULATE_PEOPLES", response.data)
       })
-      .catch(() => {
-        // TODO
+      .catch(error => {
+        store.commit("ERROR_SERVER", error.message || error)
       })
     }
   }

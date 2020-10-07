@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import FieldMixins from "~/mixins/admin/field"
+import FieldMixins from "~/mixins/field"
 export default {
 
   mixins: [FieldMixins]

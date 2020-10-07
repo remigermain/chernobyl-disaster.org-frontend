@@ -44,10 +44,10 @@ export default {
 
   scrollToTop: true,
 
-  asyncData({app, route}) {
+  asyncData({app, route, store}) {
     return app.$axios.get(asynDataUrl("picture", route.query))
       .then(response => {
-        if (response.status!==200) {
+        if (response.status !== 200) {
           throw new Error("error-server")
         }
         return {
@@ -55,6 +55,10 @@ export default {
           length: response.data.count,
           completed: !response.data.next
         }
+      })
+      .catch(error => {
+        store.commit("ERROR_SERVER", error.message || error)
+        return { object: [], length: 0, completed: true }
       })
   },
 

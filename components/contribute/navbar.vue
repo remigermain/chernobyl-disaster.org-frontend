@@ -25,16 +25,41 @@
 
 export default {
 
-  props: {
-    menus: {
-      type: Array,
-      required: true
-    }
-  },
-
   data () {
     return {
       active: false,
+      menus: [
+        {
+          name: this.$t("admin.label.event"),
+          help: this.$t("help.event.global-description"),
+          to: {name: "contribute-event"},
+        },
+        {
+          name: this.$t("admin.label.people"),
+          help: this.$t("help.people.global-description"),
+          to: {name: "contribute-people"},
+        },
+        {
+          name: this.$t("admin.label.tag"),
+          help: this.$t("help.tag.global-description"),
+          to: {name: "contribute-tag"},
+        },
+        {
+          name: this.$t("admin.label.picture"),
+          help: this.$t("help.picture.global-description"),
+          to: {name: "contribute-picture"},
+        },
+        {
+          name: this.$t("admin.label.video"),
+          help: this.$t("help.video.global-description"),
+          to: {name: "contribute-video"},
+        },
+        {
+          name: this.$t("utils.translation"),
+          help: this.$t("help.translate.global-description"),
+          to: {name: "contribute-translate"},
+        },
+      ]
     }
   },
 

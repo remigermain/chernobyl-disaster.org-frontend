@@ -23,7 +23,19 @@ export default {
   computed: {
     background () {
       return this.$store.state.have_background
-    }
+    },
+    errorServer () {
+      return this.$store.state.error_server
+    },
+  },
+
+  watch: {
+    errorServer (message) {
+      if (message) {
+        this.i18nToast.error(message).goAway(8000)
+        this.$store.commit("ERROR_SERVER", null)
+      }
+    },
   },
 
   methods: {

@@ -1,28 +1,61 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
-    <contribute-user :object="object" />
-    <div v-for="el in menus" :key="el.to.name" class="card-model shadow-lg rounded-md border-t-4 border-gray-500">
-      <div class="tulp">
-        <h1 class="text-2xl capitalize italic text-opacity-75">
-          {{ el.name }}
+    <div class="w-full space-y-2">
+      <div class="flex flex-col">
+        <lazy-contribute-breadcrumb />
+        <slot name="breadcrumbs" />
+        <h1 class="text-3xl capitalize self-start">
+          {{ $t('menu.dashboard') }}
         </h1>
-        {{ el.help }}
       </div>
-      <nuxt-link :to="localePath(el.to)" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-bl-lg"
-                        :class="{'col-span-2 rounded-br-lg': !el.toCreate, 'border-gray-900 border-r-4': el.toCreate}"
-      >
-        {{ $t('utils.list') }}
-      </nuxt-link>
-      <nuxt-link v-if="el.toCreate"  :to="localePath(el.toCreate)" class="text-center bg-gray-800 hover:bg-gray-700 text-white rounded-br-lg">
-        {{ $t('utils.create') }}
-      </nuxt-link>
+      <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
+        <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4">
+          {{ $t('utils.best-contributor') }}
+        </h2>
+        <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4 -md:order-1">
+          {{ $t('utils.best-contributor-week') }}
+        </h2>
+        <contribute-ranking :object="object.total" />
+        <contribute-ranking :object="object.week" class="-md:order-2" />
+      </div>
+      <div class="w-full">
+        <lazy-admin-tabler :length="object.results.length" @pagination="setPagination">
+          <template #head>
+              <th>{{ $t("tools.creator") }}</th>
+              <th>{{ $t("tools.date") }}</th>
+              <th>{{ $t("admin.model.title") }}</th>
+              <th>{{ $t("tools.uuid") }}</th>
+              <th>{{ $t("tools.action") }}</th>
+          </template>
+          <template #body>
+            <tr v-for="(obj, idx) in list" :key="idx">
+              <td>{{ obj.creator }}</td>
+              <td>{{ getDateMini(obj.date) }}</td>
+              <td>{{ obj.display }}</td>
+              <td>{{ $t(`admin.label.${obj.uuid}`) }}</td>
+              <td>
+                <lazy-action-detail :id="obj.id" :model="obj.uuid" />
+                <lazy-action-edit :id="obj.id" :model="obj.uuid" />
+                <lazy-action-delete @click="setDeleted(obj)" />
+              </td>
+            </tr>
+          </template>
+        </lazy-admin-tabler>
+        <admin-modal v-if="activeModal" @close="activeModal = false" @delete="deleteObject"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import listMixins from "~/mixins/admin/list"
+import { getDateMini } from "~/lib/date"
+
 export default {
   name: "ContributeOverview",
+
+  mixins: [listMixins],
+
   layout: "default",
 
   middleware: [
@@ -32,14 +65,7 @@ export default {
 
   transition: "page",
 
-  props: {
-    menus: {
-      type: Array,
-      required: true,
-    }
-  },
-
-  asyncData({app}) {
+  asyncData({app, store}) {
     return app.$axios.get("populate/overview")
       .then(response => {
         if (response.status!==200) {
@@ -50,10 +76,26 @@ export default {
         })
         return {object: response.data}
       })
-      .catch(() => {
-        // TODO
+      .catch(error => {
+        store.commit("ERROR_SERVER", error.message || error)
+        return {object: {'results': [], 'total': [], 'week': []}}
       })
   },
+
+  computed: {
+    list () {
+      const start = (this.pagination * this.$pagination) - this.$pagination
+      return this.object.results.slice(start, start + this.$pagination)
+    },
+  },
+
+  methods: {
+    getDateMini,
+    deleteObject () {
+      this.submitDelete(`${this.objDelete.uuid}/${this.objDelete.id}/`)
+    }
+  }
+
 }
 </script>
 

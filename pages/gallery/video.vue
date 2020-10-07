@@ -33,7 +33,7 @@ export default {
 
   scrollToTop: true,
 
-  asyncData({app, route}) {
+  asyncData({app, route, store}) {
     return app.$axios.get(asynDataUrl("video", route.query))
       .then(response => {
         if (response.status!==200) {
@@ -41,8 +41,13 @@ export default {
         }
         return {
           object: response.data.results,
+          length: response.data.count,
           completed: !response.data.next
         }
+      })
+      .catch(error => {
+        store.commit("ERROR_SERVER", error.message || error)
+        return { object: [], completed: true }
       })
   },
 

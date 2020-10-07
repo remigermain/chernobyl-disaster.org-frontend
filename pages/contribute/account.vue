@@ -6,10 +6,10 @@
     <h1 class="text-3xl capitalize self-start">
       {{ $t('admin.label.account') }}
     </h1>
-    <div class="flex justify-around flex-wrap account shadow-md border rounded-md ">
+    <div class="flex justify-around flex-wrap account shadow-md border rounded-md dark:bg-gray-800 dark:border-none">
       <div class="-sm:w-full py-4 rounded password">
         <h2 class="text-xl text-center capitalize">
-          {{ $t('auth.change-password') }}
+          {{ $t('account.change-password') }}
         </h2>
         <form class="shadow-sm p-4 space-y-4" @submit.prevent="submitPassword">
           <field-password v-model="data.old_password" :field="field.old_password" :errors="errors.old_password" />
@@ -17,33 +17,38 @@
           <field-password v-model="data.new_password2" :field="field.new_password2" :errors="errors.new_password2" />
           <div class="flex justify-end w-full">
             <field-submit class="w-min-content">
-              {{ $t('auth.change-password') }}
+              {{ $t('account.change-password') }}
             </field-submit>
           </div>
         </form>
       </div>
       <div class="-sm:w-full flex flex-col space-y-2">
-        <form class="p-4 rounded space-y-2" @submit.prevent="submitSettings">
-          <field-checkbox v-model="data.show_help" :field="modelField.show_help" :errors="errors.show_help" />
-          <field-select v-model="data.default_language"  :field="modelField.default_language" :errors="errors.default_language" />
-          <div class="flex justify-end w-full">
-            <field-submit class="w-min-content">
-              {{ $t('utils.update') }}
-            </field-submit>
-          </div>
-        </form>
+        <div class="-sm:w-full py-4 rounded password">
+          <h2 class="text-xl text-center capitalize">
+            {{ $t('account.change-settings') }}
+          </h2>
+          <form class="p-4 rounded space-y-2" @submit.prevent="submitSettings">
+            <field-checkbox v-model="data.show_help" :field="modelField.show_help" :errors="errors.show_help" />
+            <field-select v-model="data.default_language"  :field="modelField.default_language" :errors="errors.default_language" />
+            <div class="flex justify-end w-full">
+              <field-submit class="w-min-content">
+                {{ $t('utils.update') }}
+              </field-submit>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="flex justify-start flex-col account shadow-md border rounded-md">
+    <div class="flex justify-start flex-col account shadow-md border rounded-md dark:border-none">
       <div class="rounded">
-        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-gray-800">
           <div class="flex items-center">
             <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 hover:bg-red-200 transition-colors duration-300
                         sm:mx-0 sm:h-10 sm:w-10 cursor-pointer group" @click="active = true">
               <svg-icon name="x" class="h-6 w-6 text-red-600 group-hover:scale-125 transform duration-300 transition-transform" />
             </div>
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-              <h3 class="text-lg leading-6 font-medium text-gray-900 text-opacity-75">
+              <h3 class="text-lg leading-6 font-medium text-gray-900 text-opacity-75 dark:text-gray-400">
                 {{ $t('auth.delete-account') }}
               </h3>
             </div>
@@ -57,7 +62,7 @@
           <svg-icon name="alert-triangle" class="h-6 w-6 text-red-600" />
         </div>
         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <h3 class="text-lg leading-6 font-medium text-gray-900dark:text-gray-400 ">
             {{ $t('auth.delete-account-description') }}
           </h3>
         </div>

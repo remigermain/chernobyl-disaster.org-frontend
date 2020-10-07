@@ -1,89 +1,35 @@
-import base from "./base"
-
-const TIME_REFRESH = 20000 // every 20 seconds
-
 export default {
-
-  mixins: [
-    base
-  ],
 
   data () {
     return {
-      interval: 0,
-      interval2: 0,
-      lastRefresh: TIME_REFRESH / 1000,
-      lastRefreshLang: TIME_REFRESH / 1000,
-      page: 1,
-      pageLang: 1,
-      searchValue: "",
-      searchValueLang: ""
+      pagination: 1,
+      activeModal: false,
+      objDelete: null
     }
-  },
-
-  computed: {
-    url () {
-      const search = (this.searchValue ? `&search=${this.searchValue}` : "")
-      return `${this.model.name}/?page=${this.page}${search}`
-    },
-    urlLang () {
-      const search = (this.searchValueLang ? `&search=${this.searchValueLang}` : "")
-      return `${this.model.name}/?page=${this.pageLang}&completed=false${search}`
-    },
   },
 
   methods: {
-    pagnination (val) {
-      this.page = val
-      this.refresh()
+    setPagination (num) {
+      this.pagination = num
     },
-    pagninationLang (val) {
-      this.pageLang = val
-      this.refreshLang()
+    setDeleted (obj) {
+      this.objDelete = obj
+      this.activeModal = true
     },
-    search (val) {
-      this.searchValue = val
-      this.page = 1
-      this.refresh()
-    },
-    searchLang (val) {
-      this.searchValueLang = val
-      this.pageLang = 1
-      this.refreshLang()
-    },
-    refresh () {
-      this.$axios.get(this.url)
+    submitDelete (path) {
+      this.loading = true
+      this.activeModal = false
+
+      this.$axios.delete(path)
         .then(response => {
-          if (response.status!==200) {
-            throw new Error("error-server")
+          if (response.status !== 204) {
+            throw new Error("server-error")
           }
-          this.objectList = response.data.results
-          this.objectlength = response.data.count
+          this.i18nToast.success(this.$t('success.delete'))
         })
-        .catch((error) => {this.responseError(error) })
-    },
-    refreshLang () {
-      this.$axios.get(this.urlLang)
-        .then(response => {
-          if (response.status!==200) {
-            throw new Error("error-server")
-          }
-          this.objectListLang = response.data.results
-          this.objectlengthLang = response.data.count
-        })
-        .catch((error) => {this.responseError(error) })
+        .catch(error => { this.responseError(error) })
+        .finally(() => { this.loading = false })
     }
-  },
-
-  mounted () {
-    this.interval = setInterval(() => {
-      this.refreshLang()
-      this.refresh()
-    }, TIME_REFRESH)
-  },
-
-  beforeDestroy () {
-    clearInterval(this.interval)
   }
 
 }

@@ -1,5 +1,5 @@
 
-export default function ({$axios, store}) {
+export default function ({$axios, store, redirect, app}) {
 
   // populate store with global items like tags, langs, event ..ect
   return $axios.get("populate/store")
@@ -9,7 +9,8 @@ export default function ({$axios, store}) {
       }
       store.commit("model/POPULATE", response.data)
     })
-    .catch(() => {
-      // TODO
+    .catch(error => {
+      store.commit("ERROR_SERVER", error.message || error)
+      return redirect(app.localePath({name: "index"}))
     })
 }

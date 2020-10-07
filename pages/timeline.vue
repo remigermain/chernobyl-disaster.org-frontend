@@ -13,7 +13,7 @@ export default {
   name: "Timeline",
   transition: "timeline",
 
-  asyncData({ app, route, store }) {
+  asyncData({ app, route, store, redirect }) {
 
     if (store.getters["timeline/has_populate"]) {
         return {
@@ -41,7 +41,10 @@ export default {
           current: timelineElement(response.data, route.params.slug)
         }
       })
-      .catch(() => {})
+      .catch(error => {
+        store.commit("ERROR_SERVER", error.message || error)
+        return redirect(app.localePath({name: "index"}))
+      })
   },
 
   data () {
