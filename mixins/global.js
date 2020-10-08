@@ -78,7 +78,6 @@ export default {
           data.detail && this.i18nToast.error(data.detail).goAway(10000)
 
           // no field errors
-          // console.log(data.non_field_errors);
           if (data.non_field_errors) {
             data.non_field_errors.forEach(msg => {
               this.i18nToast.error(msg).goAway(10000)

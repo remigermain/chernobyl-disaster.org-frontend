@@ -73,7 +73,6 @@ export default {
         ...date,
         tags,
       }
-      console.log(data)
       return data
     },
 

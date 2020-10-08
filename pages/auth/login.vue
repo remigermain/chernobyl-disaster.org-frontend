@@ -83,7 +83,6 @@ export default {
         .catch(error => {
           this.responseError(error)
             .then(data => {
-              console.log(data)
               data.username && (this.errors.username = data.username)
               data.password && (this.errors.password = data.password)
             })

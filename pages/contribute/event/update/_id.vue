@@ -53,11 +53,7 @@ export default {
         response.data.tags = response.data.tags.map(id => {
           return store.getters["model/tag"](id)
         })
-        console.log(response.data.date)
-
         response.data.date = convertDate(response.data.date)
-
-        console.log(response.data.date)
 
         return {object: response.data}
       })

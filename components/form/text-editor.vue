@@ -57,7 +57,6 @@ export default {
 
   watch: {
     valueModel (newValue) {
-      console.log("valueModel")
       this.$emit('input', newValue)
     }
   },

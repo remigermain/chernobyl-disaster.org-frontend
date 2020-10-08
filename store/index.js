@@ -13,7 +13,6 @@ export const mutations = {
     state.error_server = message
   },
   ON_LOADING (state, value) {
-    console.log("ON_LOADING", value)
     state.on_loading = value
   }
 }
