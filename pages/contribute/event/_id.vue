@@ -8,14 +8,30 @@
           </nuxt-link>
           {{ $t('word.create') }}
         </template>
+        <template #button>
+          <button class="p-2 bg-red-700 rounded text-gray-200 hover:bg-red-600 text-center text-base" @click="activeReport = true">
+            <svg-icon name="send" />
+            {{ $t('word.report') }}
+          </button>
+          <nuxt-link :to="localePath({name: 'contribute-event-update-id', params: {id: object.id}})"
+            class="p-2 bg-blue-700 rounded text-gray-200 hover:bg-blue-600 text-center text-base">
+            <svg-icon name="edit" />
+            {{ $t('word.edit') }}
+          </nuxt-link>
+          <nuxt-link :to="localePath({name: 'contribute-event-create'})"
+            class="p-2 bg-indigo-600 rounded text-gray-200 hover:bg-indigo-700 text-center text-base">
+            <svg-icon name="plus" />
+            {{ $t('word.create') }}
+          </nuxt-link>
+        </template>
       </admin-header>
-      <model-detail :object="object" >
+      <model-detail :object="object">
         <template #head>
           <div class="flex flex-col justify-center space-y-4 text-center">
             <h1 class="text-4xl text-gray-800 leading-3 font-medium">
               {{ object.title }}
             </h1>
-            <div class="flex flex-col">
+            <div class="flex flex-col justify-center">
               <time :datetime="object.date.date" class="text-4xl -sm:text-lg -sm:font-semibold">
                 {{ getDateYear(object.date.date) }}
               </time>
@@ -33,18 +49,25 @@
             </section>
           </div>
         </template>
+        <template #extra>
+          <div class="extra">
+            <timeline-extra :object="object" />
+          </div>
+        </template>
       </model-detail>
+      <admin-report v-if="activeReport" :id="object.id" uuid="event" @close="activeReport = false" />
     </div>
   </div>
 </template>
 
 <script>
 import eventMixins from "~/mixins/model/event"
+import detailMixins from "~/mixins/admin/detail"
 import 'quill/dist/quill.snow.css'
 
 export default {
 
-  mixins: [eventMixins],
+  mixins: [eventMixins, detailMixins],
 
   validate ({params}) {
     return /^\d+$/.test(params.id)
@@ -62,6 +85,8 @@ export default {
           return store.getters["model/tag"](id)
         })
 
+        response.data.date.date = new Date(response.data.date.date)
+
         return {object: response.data}
       })
       .catch(error => {
@@ -69,6 +94,7 @@ export default {
         return redirect(app.localePath({name: 'contribute-event'}))
       })
   },
+
 
   methods: {
     getDateYear (date) {
@@ -79,3 +105,9 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.extra {
+  height: 200px;
+}
+</style>

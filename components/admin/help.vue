@@ -2,7 +2,7 @@
   <div class="p-2 rounded-md shadow-md bg-green-100 font-medium text-gray-800 border-t-4
         rounded-t-md border-green-700 dark:bg-green-700 dark:border-green-900 dark:text-gray-300 text-md">
     <p class="whitespace-pre-line">{{ field.help }}</p>
-    <span class="flex justify-center mt-2 gap-x-4">
+    <span v-show="detail" class="flex justify-center mt-2 gap-x-4">
       <span class="italic font-medium ">
         {{ $t('utils.required') }} :
       </span>
@@ -18,6 +18,10 @@ export default {
   props: {
     field: {
       type: Object,
+      required: true
+    },
+    detail: {
+      type: Boolean,
       required: true
     }
   }

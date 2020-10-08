@@ -61,7 +61,8 @@ export default {
 
 .timeline-time {
   display: flex;
-  text-align: center;
+  // text-align: center;
+  justify-content: center;
   & > .items {
     position: relative;
     margin: 0 .2em;

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col space-y-2">
+  <div class="flex flex-col space-y-2 mb-6">
     <lazy-contribute-breadcrumb>
       <slot name="breadcrumbs" />
     </lazy-contribute-breadcrumb>
@@ -8,14 +8,8 @@
         <svg-icon name="help" class="cursor-pointer transform hover:scale-110 transition-transform duration-200" @click="activeHelp = !activeHelp"/>
         {{ title }}
       </div>
-      <div class="flex justify-around">
+      <div class="flex justify-around gap-x-3">
         <slot name="button" />
-        <button v-if="to" class="p-2 bg-indigo-600 rounded text-gray-200 hover:bg-indigo-700 text-center text-base"
-                @click="$router.push(localePath(to))"
-        >
-          <svg-icon name="plus" />
-          {{ $t('utils.create') }}
-        </button>
       </div>
     </h1>
     <transition name="opacity">
@@ -38,10 +32,6 @@ export default {
       type: String,
       required: true
     },
-    to: {
-      type: Object,
-      default: null
-    }
   },
 
   data () {
