@@ -26,7 +26,8 @@
                 @click="currentLang = lang"
             >
               <div v-if="langExist(lang.value)" class="flex justify-center items-center space-x-2">
-                <svg-icon name="circle-check" class="text-lg font-medium text-green-600" role="img"/>
+                <svg-icon v-if="langIsNew(lang.value)" name="dots-circle-horizontal" class="text-lg font-medium text-green-600" role="img"/>
+                <svg-icon v-else name="circle-check" class="text-lg font-medium text-green-600" role="img"/>
                 <div v-if="haveError(lang.value)" class="inline-flex relative">
                   <svg-icon name="alert-circle" class="text-red-800 dark:text-red-600 relative text-lg font-medium" role="img" />
                   <svg-icon name="alert-circle" class="text-red-800 dark:text-red-600 absolute text-lg font-medium animate-ping" role="img" />

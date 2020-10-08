@@ -5,10 +5,6 @@ export default {
       type: Object,
       required: true,
     },
-    object: {
-      type: Object,
-      default: () => ({})
-    },
     modelField: {
       type: Object,
       required: true
@@ -46,9 +42,16 @@ export default {
   methods: {
 
     langExist (language) {
+      /* find if language have object in list of langs */
       return this.value.langs.find(x => x.language === language)
     },
+    langIsNew (language) {
+      /* find object lang is a new object */
+      return this.langExist(language)._new
+    },
+
     haveError (language) {
+      /* find if language have error */
       const idx = this.value.langs.indexOf(this.langExist(language))
       if (this.errors.langs[idx]) {
         return Object.keys(this.errors.langs[idx]).length
@@ -56,11 +59,13 @@ export default {
       return false
     },
     getErrorIdx(key) {
+      /* get idx of error langs */
       const idx = this.indexOfCurrent
       return this.errors.langs[idx] && this.errors.langs[idx][key] || []
     },
 
     submitDelete() {
+      /* remove only lang object ( only admin user ) */
       this.$store.commit("ON_LOADING")
       this.activeModal = false
 
@@ -79,7 +84,7 @@ export default {
     },
     deleteObject () {
       if (this.currentObj._new) {
-        // remove directly in array if is a new elements
+        /* remove directly in array if is a new elements */
         this.$delete(this.value.langs, this.indexOfCurrent)
       } else {
         this.activeModal = true
