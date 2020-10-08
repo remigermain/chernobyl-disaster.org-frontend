@@ -1,17 +1,18 @@
 <template>
   <form-base :field="field" :errors="errors">
-      <textarea v-model="valueModel"
-                class="hidden"
-                :maxlength="field.max_length"
-                :required="field.required"
-                @input="$emit('input', valueModel)"
-      />
+    <div class="flex justify-center flex-col w-full">
       <quill-editor
         ref="editor"
         v-model="valueModel"
         class="w-full text-xl"
         :options="editorOption"
       />
+      <textarea v-model="valueModel"
+                class="w-0 h-0 opacity-0"
+                :maxlength="field.max_length"
+                :required="field.required"
+      />
+    </div>
   </form-base>
 </template>
 
@@ -54,6 +55,13 @@ export default {
     }
   },
 
+  watch: {
+    valueModel (newValue) {
+      console.log("valueModel")
+      this.$emit('input', newValue)
+    }
+  },
+
   created () {
     if (process.client) {
       Vue.use(require("vue-quill-editor").default)
@@ -79,6 +87,12 @@ export default {
 </style>
 
 <style lang="scss">
+
+.dark .ql-container,.ql-editor.ql-blank::before {
+  @apply bg-gray-700;
+  @apply text-gray-200;
+}
+
 .dark .quill-editor .ql-toolbar {
   .ql-picker,
   .ql-stroke {
