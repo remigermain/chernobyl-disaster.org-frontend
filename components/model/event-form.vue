@@ -2,6 +2,7 @@
   <form class="dark:bg-gray-800 rounded-md shadow-lg" @submit.prevent="submit">
     <form-text v-model="data.title" :field="modelField.title" :errors="errors.title" />
     <form-datetime v-model="data.date" :field="modelField.date" :errors="errors.date" />
+    {{ data.tags }}
     <form-multiselect v-model="data.tags" :field="modelField.tags" :errors="errors.tags" />
     <div class="p-4 space-y-2">
       <div class="rounded-md text-center text-gray-800 bg-gray-400 text-2xl py-2 dark:bg-indigo-700 dark:text-gray-300">
@@ -49,12 +50,13 @@
               {{ $t('utils.add') }}
             </button>
           </div>
+          <div v-else class="flex justify-center items-center flex-col h-full space-y-4">
+            <p class="p-2 bg-gray-300 whitespace-pre-line rounded-md dark:bg-gray-700">{{ $t('help.language-no-selected') }}</p>
+          </div>
         </div>
         <form-submit class="col-span-2"/>
       </div>
-      {{ ddd }}
     </div>
-
   </form>
 </template>
 
@@ -93,14 +95,6 @@ export default {
   },
 
   computed: {
-    ddd () {
-      return {
-        title: this.data.title,
-        date: this.data.date,
-        tags: this.data.tags,
-        langs: this.data.langs,
-      }
-    },
     currentObj () {
       return this.data.langs.find(x => x.language === this.currentLang.value)
     },
@@ -131,7 +125,7 @@ export default {
     },
 
     submit (event) {
-      this.loading = false
+      this.loading = true
 
       const tags = this.data.tags.map(o => {
           const obj =  {name: o.display_name}
@@ -146,8 +140,6 @@ export default {
         ...this.data.date,
         tags,
       }
-
-      console.log()
 
       setObjectKeysValue(this.errors, [])
       this.$axios.post(`${this.model.name}/`, data)
