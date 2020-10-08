@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="fix-mobile" />
-    <div class="gallery-toolbar hide-scroolbar" :class="{'active': active}">
+    <div class="gallery-toolbar hide-scroolbar overflow-x-hidden" :class="{'active': active}">
       <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
           {{ $t('utils.menu-medias') }}
@@ -11,11 +11,7 @@
         </span>
       </div>
       <nav class="gallery-toolbar-desktop overflow-y-scroll  wrapper" :class="{'active': active}">
-        <field-text v-model="search" :field="{label: $t('utils.search') }" class="toolbar-search" role="search">
-          <template #icon>
-            <svg-icon name="search" />
-          </template>
-        </field-text>
+        <field-search v-model="search" :button="false" />
         <label :name="$t('utils.change-sort-order')" class="wrapper">
           <select v-model="ordering" class="form-select bg-gray-200 mt-2 text-center" :aria-label="$t('utils.sort-by')">
             <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
@@ -162,10 +158,10 @@ export default {
     transition: opacity .4s;
     font-weight: 600;
     & > svg {
-      width: 12%;
+      width: 2em;
     }
     & > span {
-      width: 50%;
+      width: 4em;
     }
     &:not(.nuxt-link-active) {
       opacity: .7;

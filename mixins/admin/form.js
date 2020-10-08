@@ -21,61 +21,68 @@ export default {
 
   data () {
     return {
-      data: {...this.value}
+      activeModal: false,
     }
   },
 
   computed: {
     currentObj () {
-      return this.data.langs.find(x => x.language === this.currentLang.value)
+      return this.value.langs.find(x => x.language === this.currentLang.value)
     },
-    indexOf () {
-      return this.data.langs.indexOf(this.currentObj)
+    indexOfCurrent () {
+      return this.value.langs.indexOf(this.currentObj)
     }
   },
 
   watch: {
-    data: {
+    value: {
       handler (newValue) {
         this.$emit('input', newValue)
       },
       deep: true
-    }
+    },
   },
 
   methods: {
 
     langExist (language) {
-      return this.data.langs.find(x => x.language === language)
+      return this.value.langs.find(x => x.language === language)
     },
     haveError (language) {
-      const idx = this.data.langs.indexOf(this.langExist(language))
+      const idx = this.value.langs.indexOf(this.langExist(language))
       if (this.errors.langs[idx]) {
-        return !this.errors.langs[idx].length
+        return Object.keys(this.errors.langs[idx]).length
       }
       return false
     },
-    getErrorIdx(tab, idx, key) {
-      return tab[idx] && tab[idx][key] || []
+    getErrorIdx(key) {
+      const idx = this.indexOfCurrent
+      return this.errors.langs[idx] && this.errors.langs[idx][key] || []
     },
 
-    submitDelete(url) {
-      this.$axios.delete(url)
+    submitDelete() {
+      this.$store.commit("ON_LOADING")
+      this.activeModal = false
+
+      this.$axios.delete(this.urlDeleteLang(this.currentObj))
         .then(response => {
           if (response.status !== 204) {
             throw new Error("errer-server")
           }
           this.i18nToast.success(this.$t('sucess.delete'))
+          // delete object
+          this.$delete(this.value.langs, this.indexOfCurrent)
         })
         .catch(error => { this.responseError(error) })
+        .finally(() => this.$store.commit("ON_LOADING"))
 
     },
-    deleteObject (obj, idx) {
-      if (obj._new) {
+    deleteObject () {
+      if (this.currentObj._new) {
         // remove directly in array if is a new elements
-        this.$delete(this.data.langs, idx)
+        this.$delete(this.value.langs, this.indexOfCurrent)
       } else {
-        this.$emit('delete', obj.id)
+        this.activeModal = true
       }
     }
 

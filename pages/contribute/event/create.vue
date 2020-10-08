@@ -15,7 +15,6 @@
           :model-field="modelField"
           :errors="errors"
           @submit="submit"
-          @delete="deleteObjLang"
         />
       </div>
     </div>
@@ -29,23 +28,18 @@ import createMixins from "~/mixins/admin/create"
 
 export default {
 
-  mixins: [eventMixins, createMixins],
+  mixins: [createMixins, eventMixins],
 
   data () {
     return {
-      data: {
-        title: "",
-        date: {},
-        tags: [],
-        langs: [],
-      },
+      data: {title: "", date: {date: "", time: {HH: "", mm: "", ss: ""}}, tags: [], langs: []}
     }
   },
 
   methods: {
-    deleteObjLang (obj) {
-      //
-    }
+    resetData () {
+      this.data = {title: "", date: {date: "", time: {HH: "", mm: "", ss: ""}}, tags: [], langs: []}
+    },
   }
 
 }

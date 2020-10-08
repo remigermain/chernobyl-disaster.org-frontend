@@ -57,7 +57,8 @@ export default {
         tags: [],
         langs: []
       },
-      pathCreate: "contribute-event",
+      pathHome: "contribute-event",
+      pathCreate: "contribute-event-create",
       pathDetail: "contribute-event-id",
       pathUpdate: "contribute-event-update-id",
     }
@@ -65,13 +66,7 @@ export default {
 
   methods: {
     getData(dataValue) {
-      const tags = dataValue.tags.map(o => {
-        const obj =  {name: o.display_name}
-        if (o.value !== -1) {
-          obj.id = o.value
-        }
-        return obj
-      })
+      const tags = this.convertTagsData(dataValue.tags)
       const data = {
         ...dataValue,
         ...dataValue.date,

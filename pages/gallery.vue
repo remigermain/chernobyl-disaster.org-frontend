@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .grid-gallery {
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 230px 1fr;
   height: 100%;
 }
 

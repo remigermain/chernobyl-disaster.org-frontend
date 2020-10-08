@@ -88,7 +88,7 @@ export default {
 
 <style lang="scss">
 
-.dark .ql-container,.ql-editor.ql-blank::before {
+.dark .ql-container, .dark .ql-editor.ql-blank::before {
   @apply bg-gray-700;
   @apply text-gray-200;
 }

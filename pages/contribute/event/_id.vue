@@ -6,30 +6,20 @@
           <nuxt-link :to="localePath({name: 'contribute-event'})">
             {{ model.label }}
           </nuxt-link>
-          {{ $t('word.update') }} {{ object.id }}
+          {{ $t('word.create') }}
         </template>
       </admin-header>
-      <div class="w-full space-y-4">
-        <model-event-form
-          v-model="object"
-          :model-field="modelField"
-          :errors="errors"
-          @submit="submit"
-          @delete="deleteObjLang"
-        />
-      </div>
+      {{ object }}
     </div>
   </div>
-
 </template>
 
 <script>
 import eventMixins from "~/mixins/model/event"
-import updateMixins from "~/mixins/admin/update"
 
 export default {
 
-  mixins: [updateMixins, eventMixins],
+  mixins: [eventMixins],
 
   validate ({params}) {
     return /^\d+$/.test(params.id)
@@ -54,13 +44,6 @@ export default {
         return redirect(app.localePath({name: 'contribute-event'}))
       })
   },
-
-  methods: {
-    deleteObjLang (obj) {
-      // TODO
-    }
-  },
-
 
 }
 </script>

@@ -29,7 +29,7 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.donators') }}
         </h2>
-        <h2 class="text-gray-800 font-medium italic text-opacity-75 leading-3">
+        <h2 class="text-gray-800 dark:text-gray-300 font-medium italic text-opacity-75 leading-3">
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />
@@ -55,7 +55,7 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('pages.about.contributors') }}
         </h2>
-        <h2 class="text-gray-800 font-medium">
+        <h2 class="text-gray-800 dark:text-gray-300 font-medium">
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('utils.love')" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('utils.love')" />

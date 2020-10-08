@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 flex justify-between items-center flex-col -md:justify-center text-center">
+  <div class="p-3 flex items-center flex-col -md:justify-center text-center">
     <label class="w-full text-gray-700 text-lg font-bold mb-2 capitalize dark:text-gray-400">
       <svg-icon name="help" class="cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" @click="help = !help" />
       {{ field.label }}
@@ -26,10 +26,6 @@ export default {
       type: Array,
       default: () => []
     },
-    sClass: {
-      type: String,
-      default: ""
-    }
   },
 
   data () {

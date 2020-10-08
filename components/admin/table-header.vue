@@ -7,7 +7,7 @@
       </span>
     </div>
     <div class="w-2/4">
-      <field-search v-model="searchValue" @search="$emit('search')" @input="$emit('input', $event)"/>
+      <field-search v-model="searchValue" role="search" @search="$emit('search')" @input="$emit('input', $event)" />
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-md md:p-4 dark:bg-gray-800 rounded-lg">
+  <div class="shadow-md md:p-4 -md:p-2 dark:bg-gray-800 rounded-lg">
     <slot name="header" />
     <table class="w-full">
       <thead>
