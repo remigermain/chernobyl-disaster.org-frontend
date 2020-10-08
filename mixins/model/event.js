@@ -67,11 +67,13 @@ export default {
   methods: {
     getData(dataValue) {
       const tags = this.convertTagsData(dataValue.tags)
+      const date = this.convertDate(dataValue.date)
       const data = {
         ...dataValue,
-        ...dataValue.date,
+        ...date,
         tags,
       }
+      console.log(data)
       return data
     },
 
@@ -81,6 +83,17 @@ export default {
       data.date && (this.errors.date = data.date)
       data.tags && (this.errors.tags = data.tags)
       data.langs && (this.errors.langs = data.langs)
+    },
+
+    addLang (language) {
+      // add langs default value */
+      this.object.langs.push({
+        _new: true,
+        title: '',
+        description: '',
+        language
+      })
+
     },
   }
 

@@ -13,7 +13,7 @@ export default {
       } else if (type === "detail") {
         this.$router.push(this.localePath({name: this.pathDetail, params: {id}}))
       } else {
-        this.resetData()
+        this.data = this.baseData()
       }
 
     },

@@ -16,7 +16,7 @@
         {{ second.username }}
         <span class="text-indigo-700">{{ second.count }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ empty }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("utils.empty") }}</span>
     </div>
     <div
       class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
@@ -25,7 +25,7 @@
         {{ first.username }}
         <span class="text-indigo-700">{{ first.count }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ empty }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("utils.empty") }}</span>
     </div>
     <div
       class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
@@ -34,7 +34,7 @@
         {{ third.username }}
         <span class="text-indigo-700">{{ third.count }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ empty }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("utils.empty") }}</span>
     </div>
   </div>
 </template>

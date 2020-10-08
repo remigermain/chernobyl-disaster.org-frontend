@@ -3,9 +3,6 @@ export default {
 
   computed: {
 
-    empty () {
-      return `-- ${this.$t("utils.empty")} --`
-    },
     i18nToast () {
       const close = {
         action: {

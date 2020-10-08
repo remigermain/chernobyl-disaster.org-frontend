@@ -32,6 +32,7 @@
 <script>
 import eventMixins from "~/mixins/model/event"
 import updateMixins from "~/mixins/admin/update"
+import { convertDate } from "~/lib/contribute"
 
 export default {
 
@@ -52,6 +53,11 @@ export default {
         response.data.tags = response.data.tags.map(id => {
           return store.getters["model/tag"](id)
         })
+        console.log(response.data.date)
+
+        response.data.date = convertDate(response.data.date)
+
+        console.log(response.data.date)
 
         return {object: response.data}
       })
@@ -60,20 +66,6 @@ export default {
         return redirect(app.localePath({name: 'contribute-event'}))
       })
   },
-
-  methods: {
-    addLang (language) {
-      // add langs default value */
-      this.object.langs.push({
-        _new: true,
-        title: '',
-        description: '',
-        language
-      })
-
-    },
-  },
-
 
 }
 </script>

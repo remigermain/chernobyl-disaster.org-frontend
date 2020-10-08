@@ -37,29 +37,13 @@ export default {
 
   mixins: [createMixins, eventMixins],
 
-  data () {
-    return {
-      data: {title: "", date: {date: "", time: {HH: "", mm: "", ss: ""}}, tags: [], langs: []}
-    }
+  data () { return { data: this.baseData() }
   },
 
   methods: {
-    resetData () {
-      this.data = {title: "", date: {date: "", time: {HH: "", mm: "", ss: ""}}, tags: [], langs: []}
+    baseData () {
+      return {title: "", date: {date: "", time: {HH: "", mm: "", ss: ""}}, tags: [], langs: []}
     },
-    addLang (language) {
-      console.log(language, this.data)
-      // add langs default value */
-      this.data.langs.push({
-        _new: true,
-        title: '',
-        description: '',
-        language
-      })
-      console.log(language, this.data)
-
-    },
-
   }
 
 }

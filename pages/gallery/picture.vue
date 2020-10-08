@@ -19,7 +19,7 @@
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>
     <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
-      {{ empty }}
+      {{ this.$t("utils.empty") }}
     </span>
     <lazy-gallery-detail-picture :object="current"
                                  :idx="currentIdx"

@@ -18,7 +18,7 @@
               {{ choice.label }}
             </option>
             <option selected value="">
-              {{ empty }}
+              {{ this.$t("utils.empty") }}
             </option>
           </select>
         </label>

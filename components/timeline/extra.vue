@@ -62,7 +62,7 @@
             />
           </template>
           <span v-if="activeExtra.length === 0" class="italic text-gray-700 dark:text-gray-500 text-opacity-50 empty">
-            {{ empty }}
+            {{ this.$t("utils.empty") }}
           </span>
         </div>
       </div>

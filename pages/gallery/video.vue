@@ -14,7 +14,7 @@
       </div>
     </div>
     <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
-      {{ empty }}
+      {{ this.$t("utils.empty") }}
     </span>
     <gallery-infinite-loading ref="nextLoading" position="bottom" :completed="completed" @visible="nextPage" />
   </div>
