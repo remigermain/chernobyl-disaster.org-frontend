@@ -4,18 +4,18 @@ export default {
     return {
       model: {
         name: "event",
-        label: this.$t("admin.label.event"),
+        label: this.$t("help.event.event"),
       },
       modelField: {
         title: {
-          label: this.$t("admin.model.title"),
+          label: this.$t("word.title"),
           name: "title",
           required: true,
           max_length: 100,
           help: this.$t("help.event.title")
         },
         tags: {
-          label: this.$t("admin.model.tags"),
+          label: this.$t("word.tags"),
           name: "tags",
           model: "tag",
           required: false,
@@ -23,27 +23,27 @@ export default {
           help: this.$t("help.tag.global-description")
         },
         date: {
-          label: this.$t("admin.model.date"),
+          label: this.$t("word.date"),
           name: "date",
           required: true,
           help: this.$t("help.event.date"),
         },
         langs: {
           title: {
-            label: this.$t("admin.model.title"),
+            label: this.$t("word.title"),
             name: "title",
             max_length: 100,
             required: true,
             help: this.$t("help.event.langs-title")
           },
           description: {
-            label: this.$t("admin.model.description"),
+            label: this.$t("word.description"),
             name: "description",
             required: true,
             help: this.$t("help.event.langs-description")
           },
           language: {
-            label: this.$t("utils.language"),
+            label: this.$t("word.language"),
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],

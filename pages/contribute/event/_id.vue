@@ -9,7 +9,21 @@
           {{ $t('word.create') }}
         </template>
       </admin-header>
-      {{ object }}
+      <model-detail :object="object" >
+        <template #head>
+          {{ object.title }}
+          {{ object.date }}
+          {{ object.tags }}
+        </template>
+        <template #lang="{currentObj}">
+          <h1>
+            {{ currentObj.title }}
+          </h1>
+          <p>
+            {{ currentObj.description }}
+          </p>
+        </template>
+      </model-detail>
     </div>
   </div>
 </template>

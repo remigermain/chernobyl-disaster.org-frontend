@@ -6,40 +6,12 @@
 
         <div class="rounded-md text-center text-gray-800 bg-gray-400 text-2xl py-2 dark:bg-indigo-700 dark:text-gray-300">
           <svg-icon name="language" />
-          {{ $t('utils.language')}}
+          {{ $t('word.language')}}
         </div>
         <div class="grid-lang">
 
           <!-- start menu  -->
-          <ol class="py-2 space-y-2">
-            <li class="bg-indigo-700 text-gray-300 rounded-sm p-2">
-              <svg-icon name="language" />
-              {{ $t("utils.language") }}
-            </li>
-            <li v-for="lang in langChoices" :key="lang.value"
-                :class="{'text-indigo-700 border-indigo-700 font-medium dark:text-gray-300 dark:bg-gray-700 dark:border-indigo-700': currentLang.value === lang.value}"
-                class="p-2 shadow-sm bg-gray-400 font-medium rounded-sm flex justify-between cursor-pointer hover:text-indigo-700 hover:bg-gray-400
-                        border-t-4 border-gray-400 dark:bg-gray-900 dark:border-gray-900 transition-colors duration-300"
-                @click="currentLang = lang"
-            >
-              <!-- icon status lang -->
-              <div v-if="langExist(lang.value)" class="flex justify-center items-center space-x-2">
-                <svg-icon v-if="langIsNew(lang.value)" name="dots-circle-horizontal" class="text-lg font-medium text-green-600" role="img"/>
-                <svg-icon v-else name="circle-check" class="text-lg font-medium text-green-600" role="img"/>
-                <div v-if="haveError(lang.value)" class="inline-flex relative">
-                  <svg-icon name="alert-circle" class="text-red-800 dark:text-red-600 relative text-lg font-medium" role="img" />
-                  <svg-icon name="alert-circle" class="text-red-800 dark:text-red-600 absolute text-lg font-medium animate-ping" role="img" />
-                </div>
-              </div>
-
-              <span>
-                {{ lang.display_name }}
-              </span>
-              <div class="flex justify-center items-center self-end">
-                <svg-icon name="arrow-left" class="transform transition-all duration-200 ml-2" role="img" :class="{'rotate-180': currentLang.value == lang.value}" />
-              </div>
-            </li>
-          </ol>
+          <model-navbar-lang v-model="currentLang" :object="value.langs" :errors="errors.langs" />
           <!-- end menu  -->
 
           <div class="p-2">
@@ -55,12 +27,12 @@
             <!-- no current language -->
             <div v-else-if="currentLang.value" class="flex justify-center items-center flex-col h-full space-y-4">
               <span class="text-xl capitalize">{{ currentLang.display_name }}</span>
-              <p class="p-2 bg-gray-300 whitespace-pre-line rounded-md dark:bg-gray-700">{{ $t('help.language-dosent-exist-create-?') }}</p>
+              <p class="p-2 bg-gray-300 whitespace-pre-line rounded-md dark:bg-gray-700">{{ $t('help.language-dosent-exist') }}</p>
               <button type="button" class="px-3 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-md shadow-md text-gray-200"
                       @click.stop.prevent="$emit('add', currentLang.value)"
               >
                 <svg-icon name="plus" />
-                {{ $t('utils.add') }}
+                {{ $t('word.add') }}
               </button>
             </div>
 
@@ -115,9 +87,6 @@ export default {
     currentIndex () {
       return this.value.langs.indexOf(this.currentObj)
     },
-    langChoices () {
-      return this.$store.getters["model/langs"]
-    }
   },
 
   watch: {
@@ -131,23 +100,6 @@ export default {
 
   methods: {
 
-    langExist (language) {
-      /* find if language have object in list of langs */
-      return this.value.langs.find(x => x.language === language)
-    },
-    langIsNew (language) {
-      /* find object lang is a new object */
-      return this.langExist(language)._new
-    },
-
-    haveError (language) {
-      /* find if language have error */
-      const idx = this.value.langs.indexOf(this.langExist(language))
-      if (this.errors.langs[idx]) {
-        return Object.keys(this.errors.langs[idx]).length
-      }
-      return false
-    },
     getErrorIdx() {
       /* get idx of error langs */
       return this.errors.langs[this.currentIndex] || {}
@@ -163,7 +115,7 @@ export default {
           if (response.status !== 204) {
             throw new Error("errer-server")
           }
-          this.i18nToast.success(this.$t('sucess.delete'))
+          this.i18nToast.success(this.$t('message.delete'))
           // delete object
           this.$delete(this.value.langs, this.currentIndex)
         })

@@ -9,13 +9,13 @@
       <div class="w-full space-y-4">
         <lazy-admin-table :length="objectlength" @pagination="setPagination">
           <template #header>
-            <admin-table-header v-model="searchValue" :title="$t('tools.list')" @search="refresh"/>
+            <admin-table-header v-model="searchValue" :title="$t('word.list')" @search="refresh"/>
           </template>
           <template #thead>
               <th> id </th>
               <th>{{ modelField.title.label }}</th>
               <th>{{ modelField.date .label }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in object" :key="idx">
@@ -32,14 +32,14 @@
         </lazy-admin-table>
         <lazy-admin-table :length="objectlengthLang" @pagination="setLangPagination">
           <template #header>
-            <admin-table-header v-model="searchValueLang" :title="$t('utils.need-translation')" @search="refreshLang"/>
+            <admin-table-header v-model="searchValueLang" :title="$t('help.need-translation')" @search="refreshLang"/>
           </template>
           <template #thead>
               <th> id </th>
               <th>{{ modelField.title.label }}</th>
               <th>{{ modelField.date .label }}</th>
-              <th>{{ $t("utils.need-translation") }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("help.need-translation") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in objectLang" :key="idx">
