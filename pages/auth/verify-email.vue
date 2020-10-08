@@ -13,7 +13,7 @@
       {{ $t('auth.check-email-description') }}
     </p>
     <form class="my-4 w-3/4 min-min-w-max-content form" @submit.prevent="submit">
-      <field-submit>
+      <field-submit class="w-full">
         {{ $t('auth.validate') }}
       </field-submit>
     </form>

@@ -1,19 +1,4 @@
-import { getFullDate } from "~/lib/date"
-
 export default {
-
-  // middleware({ store, $axios }) {
-  //   return $axios.get("populate/picture")
-  //     .then(response => {
-  //       if (response.status!==200) {
-  //         throw new Error("error-server")
-  //       }
-  //       store.commit("model/POPULATE_PICTURE", response.data)
-  //     })
-  //     .catch(() => {
-  //       // TODO
-  //     })
-  // },
 
   data () {
     return {
@@ -21,7 +6,7 @@ export default {
         name: "picture",
         label: this.$t("admin.label.picture"),
       },
-      fields: {
+      modelField: {
         title: {
           label: this.$t("admin.model.title"),
           name: "title",
@@ -43,10 +28,6 @@ export default {
           required: false,
           choices: this.$store.getters["model/events"],
           help: this.$t("help.event.global-description"),
-          display: obj => {
-            const ev = this.$store.getters["model/event"](obj.event)
-            return ev && ev.display_name || null
-          }
         },
         picture: {
           label: this.$t("admin.model.picture"),
@@ -59,7 +40,6 @@ export default {
           name: "date",
           required: false,
           help: this.$t("help.picture.date"),
-          display: obj => getFullDate(obj.date)
         },
         photographer: {
           label: this.$t("admin.model.photographer"),
@@ -68,10 +48,6 @@ export default {
           required: false,
           choices: this.$store.getters["model/photographers"],
           help: this.$t("help.picture.photographer"),
-          display: obj => {
-            const ph = this.$store.getters["model/photographer"](obj.photographer)
-            return ph && ph.display_name || null
-          }
         },
         langs: {
           title: {

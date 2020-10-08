@@ -19,7 +19,7 @@
         <contribute-ranking :object="object.week" class="-md:order-2" />
       </div>
       <div class="w-full">
-        <lazy-admin-tabler :length="object.results.length" @pagination="setPagination">
+        <lazy-admin-table :length="object.results.length" @pagination="setPagination">
           <template #thead>
               <th>{{ $t("tools.creator") }}</th>
               <th>{{ $t("tools.date") }}</th>
@@ -36,11 +36,11 @@
               <td>
                 <lazy-action-detail :id="obj.id" :model="obj.uuid" />
                 <lazy-action-edit :id="obj.id" :model="obj.uuid" />
-                <lazy-action-delete @click="setDeleted(obj)" />
+                <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
-        </lazy-admin-tabler>
+        </lazy-admin-table>
         <admin-modal v-if="activeModal" @close="activeModal = false" @delete="deleteObject"/>
       </div>
     </div>

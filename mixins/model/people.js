@@ -1,14 +1,12 @@
-import { getFullDate } from "~/lib/date"
 
 export default {
-
   data () {
     return {
       model: {
         name: "people",
         label: this.$t("admin.label.people"),
       },
-      fields: {
+      modelField: {
         name: {
           label: this.$t("admin.model.name"),
           name: "name",
@@ -21,14 +19,12 @@ export default {
           name: "born",
           required: false,
           help: this.$t("help.people.born"),
-          display: obj => getFullDate(obj.born, false)
         },
         death: {
           label: this.$t("admin.model.death"),
           name: "death",
           required: false,
           help: this.$t("help.people.death"),
-          display: obj => getFullDate(obj.born, false)
         },
         profil: {
           label: this.$t("admin.model.profil"),
@@ -68,5 +64,4 @@ export default {
       },
     }
   },
-
 }

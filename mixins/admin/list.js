@@ -20,7 +20,6 @@ export default {
         },
         not_available_languages: {
           label: this.$t("utils.need-translation"),
-          display: (obj) => obj.not_available_languages.join(", ")
         }
       }
 
@@ -79,6 +78,7 @@ export default {
       this.refreshLang()
     },
     refreshLang () {
+
       const url = generateUrl(this.model.name, this.pageLang, this.searchValueLang, false)
       // refresh for object list languages
       this.$axios.get(url)

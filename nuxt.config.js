@@ -139,6 +139,10 @@ export default {
       prefix: "action",
     },
     {
+      path: "~/components/form/",
+      prefix: "form",
+    },
+    {
       path: "~/components/utils/",
       prefix: "utils",
     },
@@ -178,6 +182,7 @@ export default {
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",
+    "~assets/css/multiselect.scss",
   ],
 
   toast: {

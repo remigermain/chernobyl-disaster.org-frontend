@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-header :title="model.label" :description="$t('help.event.global-description')" :to="{name: 'contribute-event-create'}">
+      <admin-header :title="model.label" :description="$t('help.video.global-description')" :to="{name: 'contribute-video-create'}">
         <template #breadcrumbs>
           {{ model.label }}
         </template>
@@ -14,14 +14,16 @@
           <template #thead>
               <th> id </th>
               <th>{{ modelField.title.label }}</th>
-              <th>{{ modelField.date .label }}</th>
+              <th>{{ modelField.event.label }}</th>
               <th>{{ $t("tools.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in object" :key="idx">
               <td>{{ obj.id }}</td>
               <td>{{ obj.title }}</td>
-              <td>{{ getFullDateTime(obj.date, $i18n.locale) }}</td>
+              <td :class="{'opacity-50 italic text-sm': !obj.event}">
+                {{ obj.event || $t('utils.empty') }}
+              </td>
               <td>
                 <lazy-action-detail :id="obj.id" :model="model.name" />
                 <lazy-action-edit :id="obj.id" :model="model.name" />
@@ -37,7 +39,7 @@
           <template #thead>
               <th> id </th>
               <th>{{ modelField.title.label }}</th>
-              <th>{{ modelField.date .label }}</th>
+              <th>{{ modelField.event.label }}</th>
               <th>{{ $t("utils.need-translation") }}</th>
               <th>{{ $t("tools.action") }}</th>
           </template>
@@ -45,12 +47,15 @@
             <tr v-for="(obj, idx) in objectLang" :key="idx">
               <td>{{ obj.id }}</td>
               <td>{{ obj.title }}</td>
-              <td>{{ getFullDateTime(obj.date, $i18n.locale) }}</td>
+              <td :class="{'opacity-50 italic text-sm': !obj.event}">
+                {{ obj.event || $t('utils.empty') }}
+              </td>
               <td>{{ obj.not_available_languages.join(", ") }}</td>
               <td>
                 <lazy-action-detail :id="obj.id" :model="model.name" />
                 <lazy-action-edit :id="obj.id" :model="model.name" />
-                <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
+                <lazy-action-delete v-if="$auth.hasScope('staff')"
+ @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
@@ -62,20 +67,19 @@
 </template>
 
 <script>
-import { getFullDateTime } from "~/lib/date"
 import { generateUrl } from "~/lib/contribute"
 
 import listMixins from "~/mixins/admin/list"
-import eventMixins from "~/mixins/model/event"
+import pictureMixins from "~/mixins/model/picture"
 
 export default {
 
-  mixins: [listMixins, eventMixins],
+  mixins: [listMixins, pictureMixins],
 
   async asyncData ({redirect, $axios, app, store}) {
     try {
-      const response = await $axios.get(generateUrl("event", 1))
-      const responseLang = await $axios.get(generateUrl("event", 1, null, false))
+      const response = await $axios.get(generateUrl("video", 1))
+      const responseLang = await $axios.get(generateUrl("video", 1, null, false))
       if (response.status !== 200 || responseLang.status !== 200) {
         throw new Error("error-server")
       }
@@ -92,10 +96,6 @@ export default {
       return {object: [], objectlength: 0, objectLang: [], objectlengthLang: 0}
     }
   },
-
-  methods: {
-    getFullDateTime,
-  }
 
 }
 </script>

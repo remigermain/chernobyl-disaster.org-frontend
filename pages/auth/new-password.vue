@@ -12,7 +12,7 @@
     <form class="my-4 w-3/4 min-min-w-max-content space-y-2" @submit.prevent="submit">
       <field-password v-model="data.new_password1" :field="field.new_password1" :errors="errors.new_password1" />
       <field-password v-model="data.new_password2" :field="field.new_password2" :errors="errors.new_password2" />
-      <field-submit>
+      <field-submit class="w-full">
         {{ $t('auth.change-password') }}
       </field-submit>
     </form>

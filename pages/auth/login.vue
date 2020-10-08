@@ -20,7 +20,7 @@
           {{ $t('auth.forget-password') }}
         </nuxt-link>
       </div>
-      <field-submit>
+      <field-submit class="w-full">
         {{ $t('auth.login') }}
       </field-submit>
     </form>

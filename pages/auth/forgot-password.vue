@@ -17,7 +17,7 @@
     </div>
     <form class="my-4 w-3/4 min-min-w-max-content space-y-2" @submit.prevent="submit">
       <field-email v-model="data.email" :field="modelField.email" />
-      <field-submit class="submit">
+      <field-submit class="w-full submit">
         {{ $t('auth.rechange-password') }}
       </field-submit>
     </form>

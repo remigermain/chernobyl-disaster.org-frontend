@@ -14,7 +14,7 @@
       <field-username v-model="data.username" :field="modelField.username" :errors="errors.username" />
       <field-password v-model="data.password1" :field="field.password1" :errors="errors.password1" />
       <field-password v-model="data.password2" :field="field.password2" :errors="errors.password2" />
-      <field-submit class="submit">
+      <field-submit class="w-full submit">
         {{ $t('auth.register') }}
       </field-submit>
     </form>

@@ -1,5 +1,3 @@
-import { getFullDate } from "~/lib/date"
-
 export default {
 
   data () {
@@ -8,7 +6,7 @@ export default {
         name: "video",
         label: this.$t("admin.label.video"),
       },
-      fields: {
+      modelField: {
         title: {
           label: this.$t("admin.model.title"),
           name: "title",
@@ -30,10 +28,6 @@ export default {
           required: false,
           choices: this.$store.getters["model/events"],
           help: this.$t("help.event.global-description"),
-          display: obj => {
-            const ev = this.$store.getters["model/event"](obj.event)
-            return ev && ev.display_name || null
-          }
         },
         video: {
           label: this.$t("admin.model.video"),
@@ -46,7 +40,6 @@ export default {
           name: "date",
           required: false,
           help: this.$t("help.video.date"),
-          display: obj => getFullDate(obj.date)
         },
         langs: {
           title: {

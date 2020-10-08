@@ -1,20 +1,12 @@
-const errorsField = {
-  name: [],
-  langs: [{
-    name: [],
-    language: [],
-  }]
-}
 
 export default {
-
   data () {
     return {
       model: {
         name: "tag",
         label: this.$t("admin.label.tag"),
       },
-      fields: {
+      modelField: {
         name: {
           label: this.$t("admin.model.name"),
           name: "name",
@@ -39,9 +31,6 @@ export default {
           }
         }
       },
-      errorsField,
-      errors: {...errorsField}
     }
   },
-
 }
