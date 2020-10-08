@@ -9,14 +9,21 @@
           {{ $t('word.create') }}
         </template>
       </admin-header>
-      <div class="w-full space-y-4">
-        <model-event-form
-          v-model="data"
-          :model-field="modelField"
-          :errors="errors"
-          @submit="submit"
-        />
-      </div>
+
+      <model-form v-model="data" :errors="errors" delete-model="event-lang" @add="addLang" @submit="submit">
+        <template #head>
+          <form-text v-model="data.title" :field="modelField.title" :errors="errors.title" />
+          <div class="w-full flex flex-wrap justify-around">
+            <form-datetime v-model="data.date" :field="modelField.date" :errors="errors.date" />
+            <form-multiselect v-model="data.tags" :field="modelField.tags" :errors="errors.tags" />
+          </div>
+        </template>
+        <template #lang="{currentObj, currentError}" >
+          <form-text v-model="currentObj.title" :field="modelField.langs.title" :errors="currentError.title" />
+          <form-text-editor v-model="currentObj.description" :field="modelField.langs.description" :errors="currentError.description" />
+        </template>
+      </model-form>
+
     </div>
   </div>
 
@@ -40,6 +47,19 @@ export default {
     resetData () {
       this.data = {title: "", date: {date: "", time: {HH: "", mm: "", ss: ""}}, tags: [], langs: []}
     },
+    addLang (language) {
+      console.log(language, this.data)
+      // add langs default value */
+      this.data.langs.push({
+        _new: true,
+        title: '',
+        description: '',
+        language
+      })
+      console.log(language, this.data)
+
+    },
+
   }
 
 }

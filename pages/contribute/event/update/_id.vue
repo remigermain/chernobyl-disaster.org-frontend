@@ -6,18 +6,24 @@
           <nuxt-link :to="localePath({name: 'contribute-event'})">
             {{ model.label }}
           </nuxt-link>
-          {{ $t('word.update') }} {{ object.id }}
+          {{ $t('word.create') }}
         </template>
       </admin-header>
-      <div class="w-full space-y-4">
-        <model-event-form
-          v-model="object"
-          :model-field="modelField"
-          :errors="errors"
-          @submit="submit"
-          @delete="deleteObjLang"
-        />
-      </div>
+
+      <model-form v-model="object" :errors="errors" delete-model="event-lang" @add="addLang" @submit="submit">
+        <template #head>
+          <form-text v-model="object.title" :field="modelField.title" :errors="errors.title" />
+          <div class="w-full flex flex-wrap justify-around">
+            <form-datetime v-model="object.date" :field="modelField.date" :errors="errors.date" />
+            <form-multiselect v-model="object.tags" :field="modelField.tags" :errors="errors.tags" />
+          </div>
+        </template>
+        <template #lang="{currentObj, currentError}" >
+          <form-text v-model="currentObj.title" :field="modelField.langs.title" :errors="currentError.title" />
+          <form-text-editor v-model="currentObj.description" :field="modelField.langs.description" :errors="currentError.description" />
+        </template>
+      </model-form>
+
     </div>
   </div>
 
@@ -56,9 +62,16 @@ export default {
   },
 
   methods: {
-    deleteObjLang (obj) {
-      // TODO
-    }
+    addLang (language) {
+      // add langs default value */
+      this.object.langs.push({
+        _new: true,
+        title: '',
+        description: '',
+        language
+      })
+
+    },
   },
 
 

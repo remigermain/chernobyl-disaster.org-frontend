@@ -13,5 +13,9 @@ export default {
       })
     },
 
+    getErrorIdx (idx, key) {
+      return this.errors[idx] && this.errors[idx][key] || []
+    }
+
   }
 }
