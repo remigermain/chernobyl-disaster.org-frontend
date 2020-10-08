@@ -1,13 +1,8 @@
 export default {
 
-  data () {
-    return {
-      loading: false,
-      toastLoading: null,
-    }
-  },
 
   computed: {
+
     empty () {
       return `-- ${this.$t("utils.empty")} --`
     },
@@ -38,16 +33,6 @@ export default {
     }
   },
 
-  watch: {
-    loading (value) {
-      if (value) {
-        this.toastLoading = this.i18nToast.show(this.$t("utils.loading"))
-      } else if (this.toastLoading) {
-        this.toastLoading.remove()
-      }
-      return value
-    }
-  },
 
   methods: {
 
@@ -88,8 +73,6 @@ export default {
           const haveError = Object.keys(data).reduce((val, key) => {
             return val + (data[key] && data[key].length ? data[key].length : 0)
           }, 0)
-
-          console.log(haveError)
 
           if (haveError > 0) {
             this.i18nToast.error(this.$t('errors.error-in-form')).goAway(10000)

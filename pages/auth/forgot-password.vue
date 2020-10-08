@@ -63,7 +63,7 @@ export default {
 
   methods: {
     submit () {
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
 
       this.$axios.post("auth/password/reset/", this.data)
         .then((response) => {
@@ -77,7 +77,7 @@ export default {
         .catch(error => {
           this.responseError(error)
         })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     }
   },
 }

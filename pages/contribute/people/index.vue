@@ -9,7 +9,7 @@
       <div class="w-full space-y-4">
         <lazy-admin-table :length="objectlength" @pagination="setPagination">
           <template #header>
-            <model-admin-table-header v-model="searchValue" :title="$t('tools.list')" @search="refresh"/>
+            <admin-table-header v-model="searchValue" :title="$t('tools.list')" @search="refresh"/>
           </template>
           <template #thead>
               <th> id </th>
@@ -30,7 +30,7 @@
         </lazy-admin-table>
         <lazy-admin-table :length="objectlengthLang" @pagination="setLangPagination">
           <template #header>
-            <model-admin-table-header v-model="searchValueLang" :title="$t('utils.need-translation')" @search="refreshLang"/>
+            <admin-table-header v-model="searchValueLang" :title="$t('utils.need-translation')" @search="refreshLang"/>
           </template>
           <template #thead>
               <th> id </th>

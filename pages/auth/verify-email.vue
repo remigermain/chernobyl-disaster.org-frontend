@@ -34,7 +34,7 @@ export default {
 
   methods: {
     submit () {
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
       this.$axios.post("auth/registration/verify-email/", {key: this.$route.query.key})
       .then(response => {
         if (response.status!==200) {
@@ -44,7 +44,7 @@ export default {
         this.$router.push(this.localePath({name: "auth-login"}))
       })
       .catch(error => { this.responseError(error) })
-      .finally(() => { this.loading = false })
+      .finally(() => { this.$store.commit("ON_LOADING", false) })
     }
   }
 }

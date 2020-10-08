@@ -66,7 +66,7 @@ export default {
 
   methods: {
     submit () {
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
       this.errors = {
         message: [],
         email: []
@@ -84,7 +84,7 @@ export default {
           }
         })
         .catch(error => { this.responseError(error) })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     }
   },
 

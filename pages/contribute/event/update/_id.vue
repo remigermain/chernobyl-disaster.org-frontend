@@ -10,7 +10,13 @@
         </template>
       </admin-header>
       <div class="w-full space-y-4">
-        <model-event-form :object="object" />
+        <model-event-form
+          v-model="object"
+          :model-field="modelField"
+          :errors="errors"
+          @submit="submit"
+          @delete="deleteObjLang"
+        />
       </div>
     </div>
   </div>
@@ -19,10 +25,11 @@
 
 <script>
 import eventMixins from "~/mixins/model/event"
+import updateMixins from "~/mixins/admin/update"
 
 export default {
 
-  mixins: [eventMixins],
+  mixins: [eventMixins, updateMixins],
 
   validate ({params}) {
     return /^\d+$/.test(params.id)
@@ -46,7 +53,13 @@ export default {
         store.commit("ERROR_SERVER", error.message || error)
         return redirect(app.localePath({name: 'contribute-event'}))
       })
-  }
+  },
+
+  methods: {
+    deleteObjLang (obj) {
+      // TODO
+    }
+  },
 
 
 }

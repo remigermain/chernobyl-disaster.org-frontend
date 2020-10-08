@@ -18,31 +18,11 @@
 </template>
 
 <script>
+import storeWatcherMixins from "~/mixins/storeWatcher"
 export default {
 
-  computed: {
-    background () {
-      return this.$store.state.have_background
-    },
-    errorServer () {
-      return this.$store.state.error_server
-    },
-  },
+  mixins: [storeWatcherMixins]
 
-  watch: {
-    errorServer (message) {
-      if (message) {
-        this.i18nToast.error(message).goAway(8000)
-        this.$store.commit("ERROR_SERVER", null)
-      }
-    },
-  },
-
-  methods: {
-    hideBackground () {
-      this.$store.commit("ACTIVE_BACKGROUND", false)
-    }
-  }
 }
 </script>
 

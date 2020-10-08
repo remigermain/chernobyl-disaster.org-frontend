@@ -51,7 +51,42 @@ export default {
           }
         }
       },
+      errors: {
+        title: [],
+        date: [],
+        tags: [],
+        langs: []
+      },
+      pathCreate: "contribute-event",
+      pathDetail: "contribute-event-id",
+      pathUpdate: "contribute-event-update-id",
     }
   },
+
+  methods: {
+    getData(dataValue) {
+      const tags = dataValue.tags.map(o => {
+        const obj =  {name: o.display_name}
+        if (o.value !== -1) {
+          obj.id = o.value
+        }
+        return obj
+      })
+      const data = {
+        ...dataValue,
+        ...dataValue.date,
+        tags,
+      }
+      return data
+    },
+
+    assignError (data) {
+      /* add error after request */
+      data.title && (this.errors.title = data.title)
+      data.date && (this.errors.date = data.date)
+      data.tags && (this.errors.tags = data.tags)
+      data.langs && (this.errors.langs = data.langs)
+    },
+  }
 
 }

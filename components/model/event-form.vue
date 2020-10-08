@@ -1,8 +1,7 @@
 <template>
-  <form class="dark:bg-gray-800 rounded-md shadow-lg" @submit.prevent="submit">
+  <form class="dark:bg-gray-800 rounded-md shadow-lg" @submit.prevent="$emit('submit', $event)">
     <form-text v-model="data.title" :field="modelField.title" :errors="errors.title" />
     <form-datetime v-model="data.date" :field="modelField.date" :errors="errors.date" />
-    {{ data.tags }}
     <form-multiselect v-model="data.tags" :field="modelField.tags" :errors="errors.tags" />
     <div class="p-4 space-y-2">
       <div class="rounded-md text-center text-gray-800 bg-gray-400 text-2xl py-2 dark:bg-indigo-700 dark:text-gray-300">
@@ -61,50 +60,30 @@
 </template>
 
 <script>
-import eventMixins from "~/mixins/model/event"
 import formMixin from "~/mixins/admin/form"
-import { setObjectKeysValue } from '~/lib/utils'
 
 export default {
 
-  mixins: [eventMixins, formMixin],
-
-  props: {
-    object: {
-      type: Object,
-      default: () => ({})
-    }
-  },
+  mixins: [formMixin],
 
   data () {
     return {
       currentLang: {},
-      data: {
-        title: this.object.title || "",
-        date: this.object.date || {},
-        tags: this.object.tags || [],
-        langs: this.object.langs || [],
-      },
-      errors: {
-        title: [],
-        date: [],
-        tags: [],
-        langs: []
-      }
-    }
-  },
-
-  computed: {
-    currentObj () {
-      return this.data.langs.find(x => x.language === this.currentLang.value)
-    },
-    indexOf () {
-      return this.data.langs.indexOf(this.currentObj)
     }
   },
 
   methods: {
+    resetData () {
+      /* reset data when set to add other in submit */
+      this.data = {
+        title: "",
+        date: {},
+        tags: [],
+        langs: [],
+      }
+    },
     addLang (language) {
+      /* add langs default value */
       this.data.langs.push({
         _new: true,
         title: '',
@@ -113,86 +92,6 @@ export default {
       })
     },
 
-    langExist (language) {
-      return this.data.langs.find(x => x.language === language)
-    },
-    haveError (language) {
-      const idx = this.data.langs.indexOf(this.langExist(language))
-      if (this.errors.langs[idx]) {
-        return !this.errors.langs[idx].length
-      }
-      return false
-    },
-
-    submit (event) {
-      this.loading = true
-
-      const tags = this.data.tags.map(o => {
-          const obj =  {name: o.display_name}
-          if (o.value !== -1) {
-            obj.id = o.value
-          }
-          return obj
-      })
-
-      const data = {
-        ...this.data,
-        ...this.data.date,
-        tags,
-      }
-
-      setObjectKeysValue(this.errors, [])
-      this.$axios.post(`${this.model.name}/`, data)
-        .then(response => {
-          if (response.status !== 201 ) {
-            throw new Error("error-server")
-          }
-          this.i18nToast.success(this.$t("success.create")).goAway(4000)
-
-          if (event.submitter.dataset.type === "new") {
-            this.$router.push(this.localePath({...this.pathCreate.path}))
-          } else if (event.submitter.dataset.type === "detail") {
-            this.$router.push(this.localePath({...this.pathDetail.path, params: {id: response.data.id}}))
-          } else {
-            this.$nuxt.refresh()
-          }
-
-        })
-        .catch(error => {
-          this.responseError(error)
-            .then(data => {
-              data.title && (this.errors.title = data.title)
-              data.date && (this.errors.date = data.date)
-              data.tags && (this.errors.tags = data.tags)
-              data.langs && (this.errors.langs = data.langs)
-            })
-        })
-        .finally(() => { this.loading = false })
-    },
-
-    submitDelete(url) {
-      this.loading = true
-      this.$axios.delete(url)
-        .then(response => {
-          if (response.status !== 204) {
-            throw new Error("errer-server")
-          }
-          this.i18nToast.success(this.$t('sucess.delete'))
-        })
-        .catch(error => { this.responseError(error) })
-        .finally(() => { this.loading = false })
-    },
-
-    deleteObject (obj, idx) {
-      if (obj._new) {
-        // remove directly in array if is a new elements
-        this.$delete(this.data.langs, idx)
-      } else {
-        this.submitDelete(`eventlang/${obj.id}`)
-        // user is staff so, you can delete this from api
-
-      }
-    }
   }
 
 }

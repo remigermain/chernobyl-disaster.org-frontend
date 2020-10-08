@@ -35,7 +35,7 @@ export default {
       this.activeModal = true
     },
     submitDelete (path) {
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
       this.activeModal = false
 
       this.$axios.delete(path)
@@ -46,7 +46,7 @@ export default {
           this.i18nToast.success(this.$t('success.delete'))
         })
         .catch(error => { this.responseError(error) })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     },
 
     /*

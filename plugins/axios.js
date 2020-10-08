@@ -2,7 +2,7 @@
  ** plugins for change header "Accept-language"
  */
 export default ({ $axios, app }) => {
-  $axios.onRequest((config) => {
+  $axios.onRequest(config => {
     /* get langue */
     const lang = app.i18n.locales.find(el => {
       return el.code === app.i18n.locale

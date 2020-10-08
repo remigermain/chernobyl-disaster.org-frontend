@@ -67,7 +67,7 @@ export default {
 
   methods: {
     submit () {
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
 
       const data = {
         // add current data
@@ -98,7 +98,7 @@ export default {
               data.new_password2 && (this.errors.new_password2 = data.new_password2)
             })
         })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     }
   },
 }

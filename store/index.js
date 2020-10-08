@@ -2,6 +2,7 @@
 export const state = () => ({
   have_background: false,
   error_server: null,
+  on_loading: false
 })
 
 export const mutations = {
@@ -10,6 +11,10 @@ export const mutations = {
   },
   ERROR_SERVER (state, message) {
     state.error_server = message
+  },
+  ON_LOADING (state, value) {
+    console.log("ON_LOADING", value)
+    state.on_loading = value
   }
 }
 

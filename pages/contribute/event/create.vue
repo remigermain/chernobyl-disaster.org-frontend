@@ -10,7 +10,13 @@
         </template>
       </admin-header>
       <div class="w-full space-y-4">
-        <model-event-form />
+        <model-event-form
+          v-model="data"
+          :model-field="modelField"
+          :errors="errors"
+          @submit="submit"
+          @delete="deleteObjLang"
+        />
       </div>
     </div>
   </div>
@@ -19,10 +25,28 @@
 
 <script>
 import eventMixins from "~/mixins/model/event"
+import createMixins from "~/mixins/admin/create"
 
 export default {
 
-  mixins: [eventMixins],
+  mixins: [eventMixins, createMixins],
+
+  data () {
+    return {
+      data: {
+        title: "",
+        date: {},
+        tags: [],
+        langs: [],
+      },
+    }
+  },
+
+  methods: {
+    deleteObjLang (obj) {
+      //
+    }
+  }
 
 }
 </script>

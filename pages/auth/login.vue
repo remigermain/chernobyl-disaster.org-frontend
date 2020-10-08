@@ -71,7 +71,7 @@ export default {
 
   methods: {
     submit () {
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
 
       setObjectKeysValue(this.errors, [])
 
@@ -88,7 +88,7 @@ export default {
               data.password && (this.errors.password = data.password)
             })
         })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     }
   },
 }

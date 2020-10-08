@@ -150,7 +150,7 @@ export default {
       /*
         submit for change password user
       */
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
       setObjectKeysValue(this.errors, [])
 
       const data = {
@@ -174,13 +174,13 @@ export default {
               data.new_password2 && (this.errors.new_password2 = data.new_password2)
             })
         })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     },
     submitSettings () {
       /*
         submit for change settings user
       */
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
       setObjectKeysValue(this.errors, [])
       const data = {
         default_language: this.data.default_language,
@@ -203,10 +203,10 @@ export default {
               data.default_language && (this.errors.default_language = data.default_language)
             })
         })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     },
     submitDelete () {
-      this.loading = true
+      this.$store.commit("ON_LOADING", true)
       this.active = false
       setObjectKeysValue(this.errors, [])
 
@@ -220,7 +220,7 @@ export default {
           this.$router.push(this.localePath({ name: "home" }))
         })
         .catch((error) => { this.responseError(error) })
-        .finally(() => { this.loading = false })
+        .finally(() => { this.$store.commit("ON_LOADING", false) })
     }
   }
 
