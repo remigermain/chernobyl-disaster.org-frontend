@@ -18,6 +18,7 @@
           </div>
         </template>
         <template #lang="{currentObj, currentError}" >
+          <admin-error :errors="currentError.language" class="text-center" />
           <form-text v-model="currentObj.title" :field="modelField.langs.title" :errors="currentError.title" />
           <form-text-editor v-model="currentObj.description" :field="modelField.langs.description" :errors="currentError.description" />
         </template>

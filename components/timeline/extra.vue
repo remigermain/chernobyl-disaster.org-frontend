@@ -38,9 +38,9 @@
         <div class="flex flex-wrap" :class="{'justify-center items-center h-full w-full': activeExtra.length === 0, 'h-min': activeExtra.length >= 1}">
           <template v-if="pictureActive">
             <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
-              <source :srcset="$media(img.picture.thumbnail_webp)" type="image/webp">
+              <source :srcset="img.picture.thumbnail_webp" type="image/webp">
               <img :alt="i18nAttr(img, 'title')"
-                  :src="$media(img.picture.thumbnail_jepg)"
+                  :src="img.picture.thumbnail_jepg"
                   loading="lazy"
                   class="w-full h-full object-cover"
                   tabindex="0"
@@ -67,10 +67,12 @@
         </div>
       </div>
     </div>
-    <lazy-gallery-detail-picture v-if="pictureActive && object.pictures.length!==0"
-                                 :object="current"
+    <lazy-gallery-detail-picture v-if="pictureActive && current"
+                                 :object="current.picture"
                                  :idx="currentIdx"
                                  :length="object.pictures.length"
+                                 :alt="i18nAttr(current, 'title')"
+                                 :to-detail="{name: 'contribute-picture-id', params: {id: current.id}}"
                                  @close="removeCurrent"
                                  @next="nextDetail"
                                  @prev="prevDetail"
@@ -83,8 +85,6 @@
 const active = Object.freeze({
   "PICTURE": 1,
   "VIDEO": 2,
-  "DOCUMENT": 3,
-  "ARTICLE": 4
 })
 
 export default {

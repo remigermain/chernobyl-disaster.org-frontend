@@ -1,14 +1,13 @@
-import Vue from "vue"
 
-// server pagination element
-Vue.prototype.$pagination = 10
 
-// the site name
-Vue.prototype.$siteName = process.env.SITE_NAME
+export default ({ app }, inject) => {
 
-function toUrlBackend (url) {
-  return `${process.env.BACKEND_URL}${url}`
+  // convert media backend to full url
+  inject('media', url =>  `${process.env.BACKEND_URL}${url}` )
+
+  // server pagination element
+  inject('pagination', 10)
+
+  // the site name
+  inject('siteName', process.env.SITE_NAME)
 }
-
-Vue.prototype.$media = toUrlBackend
-Vue.prototype.$static = toUrlBackend

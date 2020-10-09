@@ -1,6 +1,7 @@
 <template>
   <form-base :field="field" :errors="errors">
     <multiselect
+      ref="select"
       v-model="valueModel"
       :placeholder="field.label"
       label="display_name"
@@ -39,6 +40,16 @@ export default {
   watch: {
     valueModel (newValue) {
       this.$emit('input', newValue)
+    }
+  },
+
+  mounted () {
+    if (process.client) {
+      const selectInput = document.querySelector('.multiselect__input')
+      if (selectInput) {
+        console.log(this.field)
+        selectInput.setAttribute('maxlength', this.field.max_length)
+      }
     }
   },
 

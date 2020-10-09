@@ -15,7 +15,7 @@ export default {
       this.$store.commit("ON_LOADING", true)
       const data = this.getData(this.object)
 
-      setObjectKeysValue(this.errors, [])
+      this.errors = setObjectKeysValue(this.errors, [])
 
       this.$axios.patch(`${this.model.name}/${this.object.id}/`, data)
         .then(response => {

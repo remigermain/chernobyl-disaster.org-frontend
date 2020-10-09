@@ -7,6 +7,9 @@ export default {
   },
 
   methods: {
+    /*
+      common base object
+    */
     deleteObject () {
       this.submitDelete(`${this.model.name}/${this.objDelete.id}/`)
     },

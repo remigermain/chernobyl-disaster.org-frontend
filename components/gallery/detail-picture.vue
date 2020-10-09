@@ -1,52 +1,33 @@
 <template>
-  <div class="picture-detail" :class="{
-    'detail-transition' : transition === true || object === null,
-    'detail-active': object!==null
-  }"
-  >
-    <div v-if="object" class="wrapper">
-      <div class="toolbar-container">
-        <div class="toolbar-left">
-          {{ position }}
-        </div>
-        <div class="toolbar-right">
-          <nuxt-link v-if="$auth.loggedIn"
-                           :to="localePath({name: 'contribute-picture-id', params: {id: object.id}})"
-                           class="toolbar-item"
-                           :title="$t('utils.edit')"
-          >
-            <svg-icon name="settings" class="w-inherit h-inherit" />
-          </nuxt-link>
-          <svg-icon name="x"
-                    class="toolbar-item"
-                    :aria-label="$t('utils.close')"
-                    @click="$emit('close')"
-          />
-        </div>
+  <div class="picture-detail">
+    <div class="toolbar-container">
+      <div class="toolbar-left">
+        {{ position }}
       </div>
-      <svg-icon v-show="hasPrev"
-                name="arrow-left"
-                class="toolbar-item toolbar-slide-prev"
-                :aria-label="$t('utils.prev')"
-                @click="$emit('prev')"
-      />
-      <svg-icon v-show="hasNext"
-                name="arrow-right"
-                class="toolbar-item toolbar-slide-next"
-                :aria-label="$t('utils.next')"
-                @click="$emit('next')"
-      />
-      <div class="picture-item-container">
-        <picture class="picture-item mx-auto shadow-md">
-          <source :srcset="$media(object.picture.original_webp)" type="image/webp">
-          <img :alt="i18nAttr(object, 'title')"
-               :src="$media(object.picture.original_jpeg)"
-               class="picture-item mx-auto shadow-md"
-               loading="lazy"
-               type="image/jpeg"
-          >
-        </picture>
+      <div class="toolbar-right">
+        <nuxt-link v-if="$auth.loggedIn && toDetail" :to="localePath(toDetail)" class="toolbar-item" :title="$t('utils.edit')">
+          <svg-icon name="settings" class="w-inherit h-inherit" />
+        </nuxt-link>
+        <svg-icon name="x" class="toolbar-item" :aria-label="$t('utils.close')" @click="$emit('close')" />
       </div>
+    </div>
+    <svg-icon v-show="hasPrev"
+              name="arrow-left"
+              class="toolbar-item toolbar-slide-prev"
+              :aria-label="$t('utils.prev')"
+              @click="$emit('prev')"
+    />
+    <svg-icon v-show="hasNext"
+              name="arrow-right"
+              class="toolbar-item toolbar-slide-next"
+              :aria-label="$t('utils.next')"
+              @click="$emit('next')"
+    />
+    <div class="picture-item-container">
+      <picture class="picture-item mx-auto shadow-md">
+        <source v-if="object.original_webp" :srcset="object.original_webp" type="image/webp">
+        <img :alt="alt" :src="object.original_jpeg || object" class="picture-item mx-auto shadow-md" loading="lazy" type="image/jpeg">
+      </picture>
     </div>
   </div>
 </template>
@@ -57,6 +38,14 @@ export default {
 
   props: {
     object: {
+      type: [Object, String],
+      required: true
+    },
+    alt: {
+      type: String,
+      default: "image"
+    },
+    toDetail: {
       type: Object,
       default: null
     },
@@ -100,10 +89,10 @@ export default {
 
 .picture-detail {
   --timing: .5s;
-  position: absolute;
+  position: fixed;
   user-select: none;
-  opacity: 0;
   transition: opacity .2s;
+  z-index: 40;
   top: 0;
   left: 0;
   width: 100vw;

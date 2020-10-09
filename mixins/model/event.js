@@ -1,4 +1,5 @@
 import {convertToTags, convertToDate} from "~/lib/contribute"
+import { setObjectKeysValue } from "~/lib/utils"
 
 export default {
   data () {
@@ -20,6 +21,7 @@ export default {
           name: "tags",
           model: "tag",
           required: false,
+          max_length: 50,
           choices: this.$store.getters["model/tags"],
           help: this.$t("help.tag.global-description")
         },
@@ -52,12 +54,7 @@ export default {
           }
         }
       },
-      errors: {
-        title: [],
-        date: [],
-        tags: [],
-        langs: []
-      },
+      errors: setObjectKeysValue(this.baseData(), []),
       pathList: {name: 'contribute-event'},
       pathCreate: {name: 'contribute-event-create'},
     }
@@ -83,10 +80,12 @@ export default {
 
     assignError (data) {
       /* add error after request */
-      data.title && (this.errors.title = data.title)
-      data.date && (this.errors.date = data.date)
-      data.tags && (this.errors.tags = data.tags)
-      data.langs && (this.errors.langs = data.langs)
+      this.$nextTrick(() => {
+        data.title && (this.errors.title = data.title)
+        data.date && (this.errors.date = data.date)
+        data.tags && (this.errors.tags = data.tags)
+        data.langs && (this.errors.langs = data.langs)
+      })
     },
 
     baseData () {

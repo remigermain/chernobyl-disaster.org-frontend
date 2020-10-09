@@ -64,6 +64,8 @@
 import eventMixins from "~/mixins/model/event"
 import detailMixins from "~/mixins/admin/detail"
 import { sanitizeHtml } from "~/lib/sanitize"
+import { convertImageUrl } from "~/lib/contribute"
+
 import 'quill/dist/quill.snow.css'
 
 export default {
@@ -90,6 +92,9 @@ export default {
           obj.description = sanitizeHtml(obj.description)
         })
 
+        response.data.pictures.forEach(p => {
+          convertImageUrl(p.picture, app.$media)
+        })
 
         return {object: response.data}
       })

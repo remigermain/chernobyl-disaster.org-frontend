@@ -6,10 +6,6 @@ export default {
 
   methods: {
 
-    getErrorIdx (idx, key) {
-      return this.errors[idx] && this.errors[idx][key] || []
-    },
-
     addObjLang(array, obj) {
       // add new key
       obj._new = true

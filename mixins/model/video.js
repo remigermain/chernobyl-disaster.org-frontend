@@ -39,6 +39,7 @@ export default {
           label: this.$t("admin.model.date"),
           name: "date",
           required: false,
+          max_length: 50,
           help: this.$t("help.video.date"),
         },
         langs: {

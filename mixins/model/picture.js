@@ -19,6 +19,7 @@ export default {
           name: "tags",
           model: "tag",
           required: false,
+          max_length: 50,
           choices: this.$store.getters["model/tags"],
           help: this.$t("help.tag.global-description")
         },
