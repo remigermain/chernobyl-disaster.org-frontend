@@ -1,20 +1,21 @@
 <template>
-  <div>
-    <div class="flex">
-      <span class="px-2 flex justify-center items-center text-gray-700">
+  <div class="flex flex-col">
+    <div class="flex mt-2">
+      <span class="px-2 flex justify-center items-center text-gray-700 field-icon">
         <slot name="icon" />
       </span>
-      <label class="w-full text-gray-700 text-sm font-bold mb-2 capitalize flex flex-col-reverse border-b-2 border-gray-600">
+      <label class="w-full text-gray-700 text-sm font-bold flex flex-col-reverse border-b-2 border-gray-600 field-label">
         <textarea v-model="valueModel"
                   v-autosize
                   :name="field.name"
                   :maxlength="field.max_length"
+                  :minlength="field.min_length"
                   :required="field.required"
-                  :class="{'empty': valueModel === '', 'min-area': min }"
-                  class="p-2 input"
+                  class="p-2 field-input"
+                  :class="{'empty': !valueModel}"
                   @input="$emit('input', valueModel)"
         />
-        <span class="input-label">
+        <span class="field-input-label">
           {{ field.label }}
         </span>
       </label>
@@ -51,23 +52,48 @@ export default {
 
 <style lang="scss" scoped>
 
-.input.empty:hover ~ .input-label {
+.field-input {
+  @apply text-gray-700;
+  &:focus, &:not(.empty) {
+    @apply bg-gray-200;
+    @apply rounded-t-md
+  }
+}
+
+.field-icon {
+  @apply text-2xl;
+}
+
+.dark {
+  .field-input {
+    @apply text-gray-200;
+    &:focus, &:not(.empty) {
+      @apply bg-gray-700;
+      @apply rounded-t-md
+    }
+  }
+  .field-icon {
+    @apply text-gray-100
+  }
+  .field-input-label {
+    @apply text-gray-100
+  }
+}
+
+.field-input.empty:hover ~ .field-input-label {
   cursor: text;
 }
 
-.input:not(.empty), .input.empty:focus {
-  & ~ .input-label {
-    transform: translateY(0) translateX(-5%) scale(.9);
+.field-input:not(.empty), .field-input.empty:focus {
+  & ~ .field-input-label {
+    transform: translateY(calc(0% - .5rem)) translateX(-5%) scale(.9);
     opacity: 1;
   }
 }
 
-.input-label {
-  transition: transform .3s, opacity .3s;
-  transform: translateY(150%);
+.field-input-label {
+  transition: transform .3s, opacity .6s;
+  transform: translateY(100%);
   opacity: .5;
-}
-.min-area {
-  min-height: 250px;
 }
 </style>

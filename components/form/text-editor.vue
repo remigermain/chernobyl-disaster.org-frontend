@@ -8,7 +8,7 @@
         :options="editorOption"
       />
       <textarea v-model="valueModel"
-                class="w-0 h-0 opacity-0"
+                class="w-full opacity-0 h-1px"
                 :maxlength="field.max_length"
                 :required="field.required"
       />

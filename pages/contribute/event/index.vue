@@ -5,6 +5,11 @@
         <template #breadcrumbs>
           {{ model.label }}
         </template>
+        <template #button>
+          <action-create :to="pathCreate">
+            {{ $t('word.create') }}
+          </action-create>
+        </template>
       </admin-header>
       <div class="w-full space-y-4">
         <lazy-admin-table :length="objectlength" @pagination="setPagination">
@@ -22,9 +27,9 @@
               <td>{{ obj.id }}</td>
               <td>{{ obj.title }}</td>
               <td>{{ getFullDateTime(obj.date, $i18n.locale) }}</td>
-              <td>
-                <lazy-action-detail :id="obj.id" :model="model.name" />
-                <lazy-action-edit :id="obj.id" :model="model.name" />
+              <td class="space-x-1">
+                <lazy-action-detail :to="pathDetail(obj.id)" />
+                <lazy-action-edit :to="pathEdit(obj.id)" />
                 <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
@@ -47,15 +52,15 @@
               <td>{{ obj.title }}</td>
               <td>{{ getFullDateTime(obj.date, $i18n.locale) }}</td>
               <td>{{ obj.not_available_languages.join(", ") }}</td>
-              <td>
-                <lazy-action-detail :id="obj.id" :model="model.name" />
-                <lazy-action-edit :id="obj.id" :model="model.name" />
+              <td class="inline-flex space-x-2">
+                <lazy-action-detail :to="pathDetail(obj.id)" />
+                <lazy-action-edit :to="pathEdit(obj.id)" />
                 <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
         </lazy-admin-table>
-        <admin-modal v-if="activeModal" @close="activeModal = false" @delete="deleteObject"/>
+        <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="deleteObject"/>
       </div>
     </div>
   </div>

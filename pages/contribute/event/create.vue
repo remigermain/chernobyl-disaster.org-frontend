@@ -9,7 +9,6 @@
           {{ $t('word.create') }}
         </template>
       </admin-header>
-
       <model-form v-model="data" :errors="errors" delete-model="event-lang" @add="addLang" @submit="submit">
         <template #head>
           <form-text v-model="data.title" :field="modelField.title" :errors="errors.title" />
@@ -23,10 +22,8 @@
           <form-text-editor v-model="currentObj.description" :field="modelField.langs.description" :errors="currentError.description" />
         </template>
       </model-form>
-
     </div>
   </div>
-
 </template>
 
 <script>
@@ -35,16 +32,9 @@ import createMixins from "~/mixins/admin/create"
 
 export default {
 
-  mixins: [createMixins, eventMixins],
+  mixins: [eventMixins, createMixins],
 
-  data () { return { data: this.baseData() }
-  },
-
-  methods: {
-    baseData () {
-      return {title: "", date: {date: "", time: {HH: "", mm: "", ss: ""}}, tags: [], langs: []}
-    },
-  }
+  data () { return { data: this.baseData() } },
 
 }
 </script>

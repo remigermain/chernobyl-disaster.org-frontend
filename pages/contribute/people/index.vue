@@ -22,7 +22,7 @@
               <td>{{ obj.name }}</td>
               <td>
                 <lazy-action-detail :id="obj.id" :model="model.name" />
-                <lazy-action-edit :id="obj.id" :model="model.name" />
+                <lazy-action-edit  :id="obj.id" :model="model.name" />
                 <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
@@ -45,13 +45,13 @@
               <td>{{ obj.not_available_languages.join(", ") }}</td>
               <td>
                 <lazy-action-detail :id="obj.id" :model="model.name" />
-                <lazy-action-edit :id="obj.id" :model="model.name" />
+                <lazy-action-edit  :id="obj.id" :model="model.name" />
                 <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
         </lazy-admin-table>
-        <admin-modal v-if="activeModal" @close="activeModal = false" @delete="deleteObject"/>
+        <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="deleteObject"/>
       </div>
     </div>
   </div>

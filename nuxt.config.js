@@ -141,6 +141,10 @@ export default {
       prefix: "action",
     },
     {
+      path: "~/components/detail/",
+      prefix: "detail",
+    },
+    {
       path: "~/components/form/",
       prefix: "form",
     },

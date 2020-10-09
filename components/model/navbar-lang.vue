@@ -37,7 +37,7 @@ export default {
     },
     errors: {
       type: Array,
-      required: true
+      default: () => []
     },
   },
 

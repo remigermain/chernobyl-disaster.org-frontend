@@ -3,13 +3,12 @@
     <div class="w-full space-y-2">
       <admin-header :title="model.name" :description="$t('help.event.global-description')">
         <template #breadcrumbs>
-          <nuxt-link :to="localePath({name: 'contribute-event'})">
+          <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
           </nuxt-link>
-          {{ $t('word.create') }}
+          {{ $t('word.update') }}
         </template>
       </admin-header>
-
       <model-form v-model="object" :errors="errors" delete-model="event-lang" @add="addLang" @submit="submit">
         <template #head>
           <form-text v-model="object.title" :field="modelField.title" :errors="errors.title" />
@@ -23,16 +22,14 @@
           <form-text-editor v-model="currentObj.description" :field="modelField.langs.description" :errors="currentError.description" />
         </template>
       </model-form>
-
     </div>
   </div>
-
 </template>
 
 <script>
 import eventMixins from "~/mixins/model/event"
 import updateMixins from "~/mixins/admin/update"
-import { convertDate } from "~/lib/contribute"
+import { convertFromDate } from "~/lib/contribute"
 
 export default {
 
@@ -53,7 +50,7 @@ export default {
         response.data.tags = response.data.tags.map(id => {
           return store.getters["model/tag"](id)
         })
-        response.data.date = convertDate(response.data.date)
+        response.data.date = convertFromDate(response.data.date)
 
         return {object: response.data}
       })

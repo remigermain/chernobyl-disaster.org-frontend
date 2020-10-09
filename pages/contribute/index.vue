@@ -33,15 +33,15 @@
               <td>{{ getDateMini(obj.date) }}</td>
               <td>{{ obj.display }}</td>
               <td>{{ $t(`admin.label.${obj.uuid}`) }}</td>
-              <td>
-                <lazy-action-detail :id="obj.id" :model="obj.uuid" />
-                <lazy-action-edit :id="obj.id" :model="obj.uuid" />
+              <td class="inline-flex space-x-2">
+                <lazy-action-detail :to="pathDetail(obj)" />
+                <lazy-action-edit :to="pathEdit(obj)" />
                 <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
         </lazy-admin-table>
-        <admin-modal v-if="activeModal" @close="activeModal = false" @delete="deleteObject"/>
+        <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="deleteObject"/>
       </div>
     </div>
   </div>
@@ -96,6 +96,12 @@ export default {
     },
     setPagination (val) {
       this.page = val
+    },
+    pathDetail (obj) {
+      return {name: `contribute-${obj.uuid}-id`, params: {id: obj.id}}
+    },
+    pathEdit (obj) {
+      return {name: `contribute-${obj.uuid}-edit-id`, params: {id: obj.id}}
     }
   }
 

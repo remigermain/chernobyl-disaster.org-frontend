@@ -7,14 +7,8 @@ export default {
 
   methods: {
 
-    afterRequest(type, id) {
-      if (type === "new") {
-        this.$router.push(this.localePath({name: this.pathCreate}))
-      } else if (type === "detail") {
-        this.$router.push(this.localePath({name: this.pathDetail, params: {id}}))
-      } else {
-        this.$nuxt.refresh()
-      }
+    addLang (language) {
+      this.addObjLang(this.object.langs, this.baseDataLang(language))
     },
 
     submit (event) {
@@ -36,9 +30,18 @@ export default {
           this.responseError(error).then(this.assignError)
         })
         .finally(() => { this.$store.commit("ON_LOADING", false) })
+    },
 
+    afterRequest(type, id) {
+      if (type === "new") {
+        this.$router.push(this.localePath(this.pathCreate))
+      } else if (type === "detail") {
+        this.$router.push(this.localePath(this.pathDetail(id)))
+      } else {
+        // type == "continue", refresh data from api
+        this.$nuxt.refresh()
+      }
     },
 
   }
-
 }

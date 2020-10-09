@@ -1,39 +1,24 @@
 <template>
-  <nuxt-link :to="localePath(path)">
-    <svg-icon name="eye" class="cursor-pointer text-blue-700 action-btn" />
+  <nuxt-link :to="localePath(to)" class="action text-white bg-blue-700 hover:bg-blue-800" @click="$emit('click')">
+    <svg-icon name="eye" class="action-icon" />
+    <span v-if="$slots.default" class="mx-2">
+      <slot />
+    </span>
   </nuxt-link>
 </template>
 
 <script>
 export default {
   props: {
-    id: {
-      type: [Number, String],
+    to: {
+      type: Object,
       required: true
     },
-    model: {
-      type: String,
-      required: true
-    }
   },
-
-  computed: {
-    path () {
-      return {name: `contribute-${this.model}-id`, params:{id: this.id}}
-    }
-  }
 
 }
 </script>
 
-<style lang="scss" scoped>
-.action-btn {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: inline-block;
-  transition: transform .4s;
-  &:hover {
-    transform: scale(1.2);
-  }
-}
+<style lang="scss">
+@import '~/assets/css/action.scss';
 </style>

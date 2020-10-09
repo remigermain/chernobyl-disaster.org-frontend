@@ -1,0 +1,19 @@
+
+.action {
+  @apply inline-block;
+  @apply rounded-full;
+  @apply p-2;
+  @apply text-base;
+  & > .action-icon {
+    @apply align-middle;
+    @apply transform;
+    @apply transition-transform;
+    @apply duration-300;
+    @apply text-lg;
+  }
+  &:hover {
+    & > .action-icon {
+      @apply scale-125;
+    }
+  }
+}

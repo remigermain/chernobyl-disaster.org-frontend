@@ -4,9 +4,9 @@
       <slot name="head" />
       <div class="p-4 space-y-2">
 
-        <div class="rounded-md text-center text-gray-800 bg-gray-400 text-2xl py-2 dark:bg-indigo-700 dark:text-gray-300">
+        <div class="rounded-full text-center text-gray-800 bg-gray-400 text-2xl py-2 dark:bg-indigo-700 dark:text-gray-300">
           <svg-icon name="language" />
-          {{ $t('word.language')}}
+          {{ $t('word.translation')}}
         </div>
         <div class="grid-lang">
 
@@ -18,9 +18,9 @@
 
             <!-- slot -->
             <div v-if="currentObj">
-              <button v-if="currentObj._new || $auth.hasScope('staff')" class="bg-red-200 py-1 px-3 rounded-md" @click.stop.prevent="deleteObject">
-                <action-delete  />
-              </button>
+              <action-delete v-if="currentObj._new || $auth.hasScope('staff')" @click="deleteObject">
+                {{ $t('word.delete') }}
+              </action-delete>
               <slot name="lang" :current-obj="currentObj" :current-error="getErrorIdx()"/>
             </div>
 
@@ -50,7 +50,7 @@
     </form>
 
     <!-- modal for delete lang -->
-    <admin-modal v-if="activeModal" @close="activeModal = false" @delete="submitDelete"/>
+    <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
   </div>
 </template>
 
@@ -75,7 +75,7 @@ export default {
 
   data () {
     return {
-      activeModal: false,
+      acticeModalDelete: false,
       currentLang: {},
     }
   },
@@ -108,7 +108,7 @@ export default {
     submitDelete() {
       /* remove only lang object ( only admin user ) */
       this.$store.commit("ON_LOADING")
-      this.activeModal = false
+      this.acticeModalDelete = false
 
       this.$axios.delete(`${this.deleteModel}/${this.currentObj.id}/`)
         .then(response => {
@@ -127,7 +127,7 @@ export default {
         /* remove directly in array if is a new elements */
         this.$delete(this.value.langs, this.currentIndex)
       } else {
-        this.activeModal = true
+        this.acticeModalDelete = true
       }
     }
 

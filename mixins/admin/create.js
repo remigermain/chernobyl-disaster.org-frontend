@@ -7,15 +7,8 @@ export default {
 
   methods: {
 
-    afterRequest(type, id) {
-      if (type === "continue") {
-        this.$router.push(this.localePath({name: this.pathUpdate, params: {id}}))
-      } else if (type === "detail") {
-        this.$router.push(this.localePath({name: this.pathDetail, params: {id}}))
-      } else {
-        this.data = this.baseData()
-      }
-
+    addLang (language) {
+      this.addObjLang(this.data.langs, this.baseDataLang(language))
     },
 
     submit (event) {
@@ -36,8 +29,19 @@ export default {
         .catch(error => {
           this.responseError(error).then(this.assignError)
         })
-
     },
+
+    afterRequest(type, id) {
+      if (type === "continue") {
+        this.$router.push(this.localePath(this.pathEdit(id)))
+      } else if (type === "detail") {
+        this.$router.push(this.localePath(this.pathDetail(id)))
+      } else {
+        // type == "new", reset data
+        this.data = this.baseData()
+      }
+    },
+
   }
 
 }

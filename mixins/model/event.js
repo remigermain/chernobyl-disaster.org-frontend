@@ -1,3 +1,4 @@
+import {convertToTags, convertToDate} from "~/lib/contribute"
 
 export default {
   data () {
@@ -57,17 +58,21 @@ export default {
         tags: [],
         langs: []
       },
-      pathHome: "contribute-event",
-      pathCreate: "contribute-event-create",
-      pathDetail: "contribute-event-id",
-      pathUpdate: "contribute-event-update-id",
+      pathList: {name: 'contribute-event'},
+      pathCreate: {name: 'contribute-event-create'},
     }
   },
 
   methods: {
+    pathDetail (id) {
+      return {name: 'contribute-event-id', params: {id}}
+    },
+    pathEdit (id) {
+      return {name: 'contribute-event-edit-id', params: {id}}
+    },
     getData(dataValue) {
-      const tags = this.convertTagsData(dataValue.tags)
-      const date = this.convertDate(dataValue.date)
+      const tags = convertToTags(dataValue.tags)
+      const date = convertToDate(dataValue.date)
       const data = {
         ...dataValue,
         ...date,
@@ -84,16 +89,13 @@ export default {
       data.langs && (this.errors.langs = data.langs)
     },
 
-    addLang (language) {
-      // add langs default value */
-      this.object.langs.push({
-        _new: true,
-        title: '',
-        description: '',
-        language
-      })
-
+    baseData () {
+      return {title: "", date: {date: ""}, tags: [], langs: []}
     },
+
+    baseDataLang (language) {
+      return {title: '', description: '', language}
+    }
   }
 
 }

@@ -1,13 +1,13 @@
 import { generateUrl } from "~/lib/contribute"
+import deleteMixins from "~/mixins/admin/delete"
 
 export default {
+
+  mixins: [deleteMixins],
 
   data () {
     return {
       activeHelp: this.$auth.user.show_help,
-
-      activeModal: false,
-      objDelete: null,
 
       page: 1,
       pageLang: 1,
@@ -27,26 +27,9 @@ export default {
   },
 
   methods: {
-    deleteObject () {
-      this.submitDelete(`${this.model.name}/${this.objDelete.id}/`)
-    },
-    setDeleted (obj) {
-      this.objDelete = obj
-      this.activeModal = true
-    },
-    submitDelete (path) {
-      this.$store.commit("ON_LOADING", true)
-      this.activeModal = false
-
-      this.$axios.delete(path)
-        .then(response => {
-          if (response.status !== 204) {
-            throw new Error("server-error")
-          }
-          this.i18nToast.success(this.$t('success.delete'))
-        })
-        .catch(error => { this.responseError(error) })
-        .finally(() => { this.$store.commit("ON_LOADING", false) })
+    haveDeletedObject () {
+      this.refresh()
+      this.refreshLang()
     },
 
     /*

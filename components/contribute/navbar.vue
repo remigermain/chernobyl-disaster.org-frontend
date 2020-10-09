@@ -63,6 +63,12 @@ export default {
     }
   },
 
+  watch: {
+    $route () {
+      this.active = false
+    }
+  },
+
   methods: {
     toogleNavbar () {
       this.active = !this.active

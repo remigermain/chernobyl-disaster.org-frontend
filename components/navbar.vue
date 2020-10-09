@@ -7,19 +7,19 @@
       <span class="bg-gray-700 dark:bg-gray-100" />
     </label>
     <nav class="navbar-items relative" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
-      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('utils.goto-home')" @click.native="active = false">
+      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('utils.goto-home')">
         {{ $t('menu.home') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link" :title="$t('utils.goto-timeline')" @click.native="active = false">
+      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link" :title="$t('utils.goto-timeline')">
         {{ $t('menu.timeline') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link" :title="$t('utils.goto-gallery')" @click.native="active = false">
+      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link" :title="$t('utils.goto-gallery')">
         {{ $t('menu.gallery') }}
       </nuxt-link>
-      <nuxt-link :to="localePath(contributeLink)" class="navbar-link" :title="$t('utils.goto-contribute')" @click.native="active = false">
+      <nuxt-link :to="localePath(contributeLink)" class="navbar-link" :title="$t('utils.goto-contribute')">
         {{ $t('menu.contribute') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('utils.goto-about')" @click.native="active = false">
+      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('utils.goto-about')">
         {{ $t('menu.about') }}
       </nuxt-link>
       <div class="absolute settings-child right-0 top-0 p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
@@ -74,6 +74,9 @@ export default {
   watch: {
     value (val) {
       this.$router.push(this.switchLocalePath(val))
+    },
+    $route () {
+      this.active = false
     }
   },
 

@@ -3,32 +3,26 @@
     <div class="w-full space-y-2">
       <admin-header :title="model.name" :description="$t('help.event.global-description')">
         <template #breadcrumbs>
-          <nuxt-link :to="localePath({name: 'contribute-event'})">
+          <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
           </nuxt-link>
-          {{ $t('word.create') }}
+          {{ $t('word.detail') }}
         </template>
         <template #button>
-          <button class="p-2 bg-red-700 rounded text-gray-200 hover:bg-red-600 text-center text-base" @click="activeReport = true">
-            <svg-icon name="send" />
-            {{ $t('word.report') }}
-          </button>
-          <nuxt-link :to="localePath({name: 'contribute-event-update-id', params: {id: object.id}})"
-            class="p-2 bg-blue-700 rounded text-gray-200 hover:bg-blue-600 text-center text-base">
-            <svg-icon name="edit" />
-            {{ $t('word.edit') }}
-          </nuxt-link>
-          <nuxt-link :to="localePath({name: 'contribute-event-create'})"
-            class="p-2 bg-indigo-600 rounded text-gray-200 hover:bg-indigo-700 text-center text-base">
-            <svg-icon name="plus" />
-            {{ $t('word.create') }}
-          </nuxt-link>
+          <div class="inline-flex space-x-2">
+            <action-report @click="activeModalReport = true">
+              {{ $t('word.report') }}
+            </action-report>
+            <action-edit :to="pathEdit(object.id)" />
+            <action-create :to="pathCreate" />
+            <action-delete v-if="$auth.hasScope('staff')" :to="pathCreate" @click="setDeleted(object)" />
+          </div>
         </template>
       </admin-header>
-      <model-detail :object="object">
+      <model-detail :object="object" :to-edit="pathEdit(object.id)">
         <template #head>
           <div class="flex flex-col justify-center space-y-4 text-center">
-            <h1 class="text-4xl text-gray-800 leading-3 font-medium">
+            <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300">
               {{ object.title }}
             </h1>
             <div class="flex flex-col justify-center">
@@ -37,25 +31,31 @@
               </time>
               <timeline-time :date="object.date" />
             </div>
+            <detail-tags :object="object.tags" />
           </div>
         </template>
-        <template #lang="{currentObj}">
+        <template #lang="{currentObj, language}">
           <div class="flex flex-col justify-center space-y-4 text-center p-4">
-            <h2 class="text-4xl text-gray-800 leading-3 font-medium">
+            <h2 class="text-4xl text-gray-800 font-medium dark:text-gray-300">
               {{ currentObj.title }}
             </h2>
+            <div class="flex flex-col justify-center">
+              <time :datetime="object.date.date" class="text-4xl -sm:text-lg -sm:font-semibold">
+                {{ getDateYear(object.date.date, language.value) }}
+              </time>
+              <timeline-time :date="object.date" />
+            </div>
             <section class="ql-snow">
               <span class="timeline-text p-4 leading-6 ql-editor antialiased text-lg" v-html="currentObj.description"/>
             </section>
           </div>
         </template>
-        <template #extra>
-          <div class="extra">
-            <timeline-extra :object="object" />
-          </div>
-        </template>
       </model-detail>
-      <admin-report v-if="activeReport" :id="object.id" uuid="event" @close="activeReport = false" />
+      <div class="extra">
+        <timeline-extra :object="object" />
+      </div>
+      <admin-report v-if="activeModalReport" :id="object.id" uuid="event" @close="activeModalReport = false" />
+      <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="deleteObject"/>
     </div>
   </div>
 </template>
@@ -63,6 +63,7 @@
 <script>
 import eventMixins from "~/mixins/model/event"
 import detailMixins from "~/mixins/admin/detail"
+import { sanitizeHtml } from "~/lib/sanitize"
 import 'quill/dist/quill.snow.css'
 
 export default {
@@ -84,8 +85,11 @@ export default {
         response.data.tags = response.data.tags.map(id => {
           return store.getters["model/tag"](id)
         })
-
         response.data.date.date = new Date(response.data.date.date)
+        response.data.langs.forEach(obj => {
+          obj.description = sanitizeHtml(obj.description)
+        })
+
 
         return {object: response.data}
       })
@@ -95,11 +99,10 @@ export default {
       })
   },
 
-
   methods: {
-    getDateYear (date) {
+    getDateYear (date, locale = this.$i18n.locale) {
       date = new Date(date)
-      return date.toLocaleDateString(this.$i18n.locale, {year: "numeric", month: "long", day: "numeric" })
+      return date.toLocaleDateString(locale, {year: "numeric", month: "long", day: "numeric" })
     },
   }
 
