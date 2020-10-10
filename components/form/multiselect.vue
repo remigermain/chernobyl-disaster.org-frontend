@@ -43,10 +43,9 @@ export default {
   },
 
   mounted () {
-    if (process.client) {
+    if (process.client && this.field.max_length) {
       const selectInput = document.querySelector('.multiselect__input')
       if (selectInput) {
-        console.log(this.field)
         selectInput.setAttribute('maxlength', this.field.max_length)
       }
     }
@@ -62,3 +61,77 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+@import "vue-multiselect/dist/vue-multiselect.min.css";
+
+
+.multiselect {
+  min-width: 280px;
+}
+
+.multiselect__spinner::after, .multiselect__spinner::before {
+  border-top-color: #3182ce;
+}
+
+.multiselect__tags, .multiselect__input {
+  @apply bg-gray-200
+}
+
+.multiselect__tag {
+  @apply bg-blue-700;
+  @apply text-gray-200;
+}
+.multiselect__tag-icon::after {
+  @apply text-gray-900;
+}
+.multiselect__tag-icon:focus, .multiselect__tag-icon:hover {
+  @apply bg-blue-600;
+  @apply text-gray-900;
+}
+
+.multiselect__option--highlight {
+  @apply bg-blue-600;
+  @apply text-gray-900;
+}
+.multiselect__option--highlight::after {
+  @apply bg-blue-500;
+  @apply text-gray-900;
+}
+
+
+.dark {
+  .multiselect__tags, .multiselect__input, .multiselect__content-wrapper, .multiselect__spinner {
+    @apply bg-gray-700
+  }
+
+  .multiselect, .multiselect__placeholder {
+    @apply text-gray-200;
+  }
+  .multiselect__input::placeholder {
+    @apply text-gray-500;
+  }
+
+  .multiselect__tag {
+    @apply bg-blue-700;
+    @apply text-gray-200;
+  }
+  .multiselect__tag-icon::after {
+    @apply text-gray-200;
+  }
+  .multiselect__tag-icon:focus, .multiselect__tag-icon:hover {
+    @apply bg-blue-600;
+    @apply text-gray-200;
+  }
+
+  .multiselect__option--highlight {
+    @apply bg-blue-600;
+    @apply text-gray-200;
+  }
+  .multiselect__option--highlight::after {
+    @apply bg-blue-500;
+    @apply text-gray-200;
+  }
+}
+
+</style>

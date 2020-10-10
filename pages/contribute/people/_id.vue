@@ -33,10 +33,6 @@
                 <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300">
                   {{ object.name }}
                 </h1>
-                <a v-if="object.wikipedia" :href="object.wikipedia" target="_blank" rel="noopener,noreferrer" class="text-lg hover:text-purple-700">
-                  <svg-icon name="external-link" />
-                  {{ $t('text.wikipedia-link') }}
-                </a>
                 <div class="flex justify-center w-full">
                   <div v-if="object.born" class="flex flex-col w-2/4">
                     <span class="italic text-base capitalize text-gray-600">

@@ -12,12 +12,15 @@
       <model-form v-model="object" :errors="errors" delete-model="people-lang" @add="addLang" @submit="submit">
         <template #head>
           <form-text v-model="object.name" :field="modelField.name" :errors="errors.name" />
-          <form-text v-model="object.wikipedia" :field="modelField.wikipedia" :errors="errors.wikipedia" type="url" />
-          <div class="w-full flex flex-wrap justify-around">
-            <form-date v-model="object.born" :field="modelField.born" :errors="errors.born" />
-            <form-date v-model="object.death" :field="modelField.death" :errors="errors.death" />
+          <div class="flex flex-wrap">
+            <div class="flex flex-col justify-start w-2/4">
+              <form-date v-model="object.born" :field="modelField.born" :errors="errors.born" />
+              <form-date v-model="object.death" :field="modelField.death" :errors="errors.death" />
+            </div>
+            <div class="flex flex-col justify-around w-2/4">
+              <form-image v-model="object.profil" :original="object.profil" :field="modelField.profil" :errors="errors.profil" />
+            </div>
           </div>
-          <form-image v-model="object.profil" :original="object.profil" :field="modelField.profil" :errors="errors.profil" />
           <form-multiselect v-model="object.tags" :field="modelField.tags" :errors="errors.tags" />
         </template>
         <template #lang="{currentObj, currentError}" >

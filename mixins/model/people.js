@@ -38,12 +38,6 @@ export default {
           required: false,
           help: this.$t("help.people.profil")
         },
-        wikipedia: {
-          label: this.$t("admin.model.wikipedia"),
-          name: "wikipedia",
-          required: false,
-          help: this.$t("help.people.wikipedia")
-        },
         tags: {
           label: this.$t("admin.model.tags"),
           name: "tags",

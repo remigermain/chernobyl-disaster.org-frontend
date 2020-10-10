@@ -1,7 +1,9 @@
 <template>
   <form-base :field="field" :errors="errors">
     <div class="flex flex-wrap flex-col space-y-2">
-      <div class="preview-image flex items-center justify-center relative">
+      <div class="preview-image flex items-center justify-center relative"
+           :class="{'border-dashed border-2 border-gray-600': !imageSrc}"
+      >
         <div v-if="imageSrc" class="relative">
           <img class="w-full h-full object-contain"
                 alt="image"
@@ -23,10 +25,10 @@
       <label class="p-2 rounded-full bg-indigo-700 h-10 text-gray-300 space-x-2 group cursor-pointer hover:bg-indigo-600 flex justify-center items-center">
         <svg-icon name="upload" class="h-full group-hover:scale-125 transform transition-transform duration-300"/>
         <span v-if="original">
-          {{ $t('word.add-picture') }}
+          {{ $t('word.change-picture') }}
         </span>
         <span v-else>
-          {{ $t('word.change-picture') }}
+          {{ $t('word.add-picture') }}
         </span>
         <input ref="image" type="file" class="opacity-0 w-1px h-1px" @change="change" />
       </label>

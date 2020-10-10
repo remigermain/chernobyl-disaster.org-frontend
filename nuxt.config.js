@@ -188,7 +188,6 @@ export default {
     "~assets/css/fonts.css",
     "~assets/css/reset.css",
     "~assets/css/utils.scss",
-    "~assets/css/multiselect.scss",
   ],
 
   toast: {
