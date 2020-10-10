@@ -13,7 +13,7 @@
       <model-form v-model="data" :errors="errors" delete-model="people-lang" @add="addLang" @submit="submit">
         <template #head>
           <form-text v-model="data.name" :field="modelField.name" :errors="errors.name" />
-          <form-text v-model="data.wikipedia" :field="modelField.wikipedia" :errors="errors.wikipedia" />
+          <form-text v-model="data.wikipedia" :field="modelField.wikipedia" :errors="errors.wikipedia" type="url" />
           <div class="w-full flex flex-wrap justify-around">
             <form-date v-model="data.born" :field="modelField.born" :errors="errors.born" />
             <form-date v-model="data.death" :field="modelField.death" :errors="errors.death" />

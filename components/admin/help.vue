@@ -22,7 +22,7 @@ export default {
     },
     detail: {
       type: Boolean,
-      required: true
+      default: true
     }
   }
 }

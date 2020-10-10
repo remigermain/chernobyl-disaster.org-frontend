@@ -97,22 +97,14 @@ export default {
         }
 
         // convert tag
-        response.data.tags = response.data.tags.map(id => {
-          return store.getters["model/tag"](id)
-        })
-
-        if (response.data.profil) {
-          convertImageUrl(response.data.profil, app.$media)
-        }
-        if (response.data.born) {
-          response.data.born = new Date(response.data.born)
-        }
-        if (response.data.death) {
-          response.data.death = new Date(response.data.death)
-        }
-        response.data.langs.forEach(obj => {
-          obj.biography = sanitizeHtml(obj.biography)
-        })
+        response.data.tags = response.data.tags.map(id => store.getters["model/tag"](id))
+        // convert profil image
+        response.data.profil && convertImageUrl(response.data.profil, app.$media)
+        // convert date born et death
+        response.data.born && (response.data.born = new Date(response.data.born))
+        response.data.death && (response.data.death = new Date(response.data.death))
+        // convert biography html
+        response.data.langs.forEach(obj => { obj.biography = sanitizeHtml(obj.biography) })
 
         return {object: response.data}
       })

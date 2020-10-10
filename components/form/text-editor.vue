@@ -7,11 +7,6 @@
         class="w-full text-xl"
         :options="editorOption"
       />
-      <textarea v-model="valueModel"
-                class="w-full opacity-0 h-1px"
-                :maxlength="field.max_length"
-                :required="field.required"
-      />
     </div>
   </form-base>
 </template>

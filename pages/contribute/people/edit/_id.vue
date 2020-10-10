@@ -12,7 +12,7 @@
       <model-form v-model="object" :errors="errors" delete-model="people-lang" @add="addLang" @submit="submit">
         <template #head>
           <form-text v-model="object.name" :field="modelField.name" :errors="errors.name" />
-          <form-text v-model="object.wikipedia" :field="modelField.wikipedia" :errors="errors.wikipedia" />
+          <form-text v-model="object.wikipedia" :field="modelField.wikipedia" :errors="errors.wikipedia" type="url" />
           <div class="w-full flex flex-wrap justify-around">
             <form-date v-model="object.born" :field="modelField.born" :errors="errors.born" />
             <form-date v-model="object.death" :field="modelField.death" :errors="errors.death" />
@@ -50,13 +50,9 @@ export default {
         }
 
         // convert tag
-        response.data.tags = response.data.tags.map(id => {
-          return store.getters["model/tag"](id)
-        })
-
-        if (response.data.profil) {
-          convertImageUrl(response.data.profil, app.$media)
-        }
+        response.data.tags = response.data.tags.map(id => store.getters["model/tag"](id))
+        // convert profil
+        response.data.profil && convertImageUrl(response.data.profil, app.$media)
 
         return {object: response.data}
       })

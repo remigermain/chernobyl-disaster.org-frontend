@@ -1,13 +1,12 @@
 <template>
   <form-base :field="field" :errors="errors">
     <multiselect
-      ref="select"
       v-model="valueModel"
       :placeholder="field.label"
       label="display_name"
       track-by="value"
       :options="choices"
-      :allow-empty="field.required"
+      :allow-empty="!field.required"
       :multiple="true"
       :taggable="true"
       @tag="addTag"
