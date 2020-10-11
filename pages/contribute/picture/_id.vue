@@ -50,7 +50,7 @@
                 </div>
               </div>
             </div>
-            <div class="p-2 relative">
+            <div class="p-2 relative w-max m-auto">
               <picture>
                 <source :srcset="object.picture.thumbnail_webp" media="(max-width: 550px)" type="image/webp">
                 <source :srcset="object.picture.thumbnail_jpeg" media="(max-width: 550px)" type="image/jpeg">

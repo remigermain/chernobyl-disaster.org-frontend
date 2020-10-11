@@ -23,13 +23,13 @@
               <td>{{ toLanguage(obj.language).display_name }}</td>
               <td class="text-center">
                 <span class="text-white dark:text-gray-300 rounded-lg w-full block bg-gradient-to-r" :class="{
-                  'from-black via-black to-red-700': obj.ratio === 0,
+                  'from-black via-black to-red-700': obj.ratio < 1,
                   'from-black via-red-700 to-red-700': obj.ratio >= 1 && obj.ratio <= 20,
                   'from-red-700 via-orange-700 to-orange-700': obj.ratio >  20 && obj.ratio <= 40,
                   'from-orange-700 via-yellow-700 to-yellow-700': obj.ratio >  40 && obj.ratio <= 60,
                   'from-yellow-700 via-blue-700 to-blue-700': obj.ratio >  60 && obj.ratio <= 80,
                   'from-blue-700 via-green-700 to-green-700': obj.ratio > 80 && obj.ratio <= 99,
-                  'from-green-700 to-green-700': obj.ratio == 100,
+                  'from-green-700 to-green-700': obj.ratio > 99,
                 }">
                   {{ obj.ratio }}%
                 </span>
@@ -72,11 +72,6 @@ export default {
         if (response.status!==200) {
           throw new Error("error-server")
         }
-
-        // response.data.forEach((x, idx) => {
-        //   x.ratio = idx * 10
-        // })
-
         return {object: response.data}
       })
       .catch(error => {

@@ -47,6 +47,10 @@ export default {
     return {
       active: this.$auth.user.show_admin,
       modelField: {
+        language: {
+          label: 'language',
+          required: false
+        },
         delete: {
           label: 'delete'
         },

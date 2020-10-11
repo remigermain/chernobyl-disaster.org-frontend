@@ -27,7 +27,6 @@
           <h2 class="text-xl text-center capitalize">
             {{ $t('account.change-settings') }}
           </h2>
-          {{ data }}
           <form class="p-4 rounded space-y-2" @submit.prevent="submitSettings">
             <field-checkbox v-model="data.show_admin" :field="modelField.show_admin" :errors="errors.show_admin" />
             <field-checkbox v-model="data.show_help" :field="modelField.show_help" :errors="errors.show_help" />
