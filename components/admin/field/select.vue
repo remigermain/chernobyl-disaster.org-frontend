@@ -1,5 +1,5 @@
 <template>
-  <form-base :field="field" :errors="errors">
+  <admin-field-base :field="field" :errors="errors">
     <multiselect
       v-model="valueModel"
       :placeholder="field.label"
@@ -9,7 +9,7 @@
       :allow-empty="!field.required"
     />
     <slot />
-  </form-base>
+  </admin-field-base>
 </template>
 
 <script>

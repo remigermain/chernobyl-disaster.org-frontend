@@ -1,8 +1,9 @@
 <template>
   <div class="p-2 preview-video">
-    <iframe width="560" height="315" :src="convertVideoLink(link)" frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-    />
+    <object  width="560" height="315" >
+      <param name="movie" :value="convertVideoLink(link)">
+      <embed :src="convertVideoLink(link)" type="application/x-shockwave-flash" width="560" height="315">
+    </object>
   </div>
 </template>
 
@@ -32,7 +33,7 @@ export default {
   position:relative;
   height:0;
   max-height: 750px;
-  & > iframe {
+  & > object {
     left:0;
     top:0;
     height:100%;

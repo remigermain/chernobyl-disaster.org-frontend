@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-header :title="model.name" :description="$t('help.event.global-description')">
+      <admin-utils-header :title="model.name" :description="$t('help.event.global-description')">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -10,16 +10,16 @@
         </template>
         <template #button>
           <div class="inline-flex space-x-2">
-            <action-report @click="activeModalReport = true">
+            <admin-action-report @click="activeModalReport = true">
               {{ $t('word.report') }}
-            </action-report>
-            <action-edit :to="pathEdit(object.id)" />
-            <action-create :to="pathCreate" />
-            <action-delete v-if="$auth.hasScope('staff')" :to="pathCreate" @click="setDeleted(object)" />
+            </admin-action-report>
+            <admin-action-edit :to="pathEdit(object.id)" />
+            <admin-action-create :to="pathCreate" />
+            <admin-action-delete v-if="$auth.hasScope('staff')" :to="pathCreate" @click="setDeleted(object)" />
           </div>
         </template>
-      </admin-header>
-      <model-detail :object="object" :to-edit="pathEdit(object.id)">
+      </admin-utils-header>
+      <admin-model-detail :object="object" :to-edit="pathEdit(object.id)">
         <template #head>
           <div class="flex flex-col justify-center space-y-4 text-center">
             <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words">
@@ -31,7 +31,7 @@
               </time>
               <timeline-time :date="object.date" />
             </div>
-            <detail-tags :object="object.tags" />
+            <admin-detail-tags :object="object.tags" />
           </div>
         </template>
         <template #lang="{currentObj, language}">
@@ -50,12 +50,12 @@
             </section>
           </div>
         </template>
-      </model-detail>
+      </admin-model-detail>
       <div class="extra">
         <timeline-extra :object="object" />
       </div>
-      <admin-report v-if="activeModalReport" :id="object.id" uuid="event" @close="activeModalReport = false" />
-      <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="deleteObject"/>
+      <admin-utils-report v-if="activeModalReport" :id="object.id" uuid="event" @close="activeModalReport = false" />
+      <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
     </div>
   </div>
 </template>

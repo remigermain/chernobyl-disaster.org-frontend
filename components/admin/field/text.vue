@@ -1,5 +1,5 @@
 <template>
-  <form-base :field="field" :errors="errors">
+  <admin-field-base :field="field" :errors="errors">
     <input v-model="valueModel"
             :type="type"
             :name="field.name"
@@ -10,7 +10,7 @@
             :required="field.required"
             @input="$emit('input', valueModel)"
     >
-  </form-base>
+  </admin-field-base>
 </template>
 
 <script>

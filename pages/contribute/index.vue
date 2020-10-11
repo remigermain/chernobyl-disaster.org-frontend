@@ -19,7 +19,7 @@
         <contribute-ranking :object="object.week" class="-md:order-2" />
       </div>
       <div class="w-full">
-        <lazy-admin-table :length="object.results.length" @pagination="setPagination">
+        <lazy-admin-utils-table :length="object.results.length" @pagination="setPagination">
           <template #thead>
               <th>{{ $t("tools.creator") }}</th>
               <th>{{ $t("tools.date") }}</th>
@@ -34,14 +34,14 @@
               <td>{{ obj.display }}</td>
               <td>{{ $t(`admin.label.${obj.uuid}`) }}</td>
               <td class="inline-flex space-x-2">
-                <lazy-action-detail :to="pathDetail(obj)" />
-                <lazy-action-edit :to="pathEdit(obj)" />
-                <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
+                <lazy-admin-action-detail :to="pathDetail(obj)" />
+                <lazy-admin-action-edit :to="pathEdit(obj)" />
+                <lazy-admin-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
-        </lazy-admin-table>
-        <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="deleteObject"/>
+        </lazy-admin-utils-table>
+        <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
       </div>
     </div>
   </div>
@@ -91,7 +91,7 @@ export default {
 
   methods: {
     getDateMini,
-    deleteObject () {
+    submitDelete () {
       this.submitDelete(`${this.objDelete.uuid}/${this.objDelete.id}/`)
     },
     setPagination (val) {

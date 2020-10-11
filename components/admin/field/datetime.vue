@@ -1,5 +1,5 @@
 <template>
-  <form-base :field="field" :errors="errors">
+  <admin-field-base :field="field" :errors="errors">
     <div class="flex flex-wrap flex-col space-y-2">
       <vue-datetime v-model="valueModel.date" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}">
         <svg-icon slot="before" name="calendar" class="opacity-50 text-2xl" />
@@ -64,7 +64,7 @@
         </span>
       </label>
     </div>
-  </form-base>
+  </admin-field-base>
 </template>
 
 <script>

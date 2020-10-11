@@ -121,7 +121,7 @@ export default {
     },
 
     baseData () {
-      return {title: '', picture: null, date: {}, event: {}, tags: [], langs: []}
+      return {title: '', picture: null, date: {}, event: null, tags: [], langs: []}
     },
 
     baseDataLang (language) {

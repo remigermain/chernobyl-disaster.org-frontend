@@ -10,7 +10,7 @@
         </div>
         <transition name="opacity">
           {{ showHelp }}
-          <admin-help v-show="showHelp" :field="{help: $t('help.report.global-description')}" :detail="false" />
+          <admin-utils-help v-show="showHelp" :field="{help: $t('help.report.global-description')}" :detail="false" />
         </transition>
         <field-textarea v-model="message" :field="{label: 'report', required: true, help: 'erfer'}" :errors="errors.message" class="my-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg" />
       </div>

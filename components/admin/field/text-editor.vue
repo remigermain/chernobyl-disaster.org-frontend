@@ -1,5 +1,5 @@
 <template>
-  <form-base :field="field" :errors="errors">
+  <admin-field-base :field="field" :errors="errors">
     <div class="flex justify-center flex-col w-full">
       <quill-editor
         ref="editor"
@@ -8,7 +8,7 @@
         :options="editorOption"
       />
     </div>
-  </form-base>
+  </admin-field-base>
 </template>
 
 <script>

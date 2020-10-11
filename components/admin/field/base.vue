@@ -5,12 +5,12 @@
       {{ field.label }}
     </label>
     <transition name="opacity">
-      <admin-help v-if="help" :field="field" />
+      <admin-utils-help v-if="help" :field="field" />
     </transition>
     <div class="w-full flex items-center p-2 text-left justify-center">
       <slot />
     </div>
-    <admin-error :errors="errors" />
+    <admin-utils-error :errors="errors" />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <form-base :field="field" :errors="errors">
+  <admin-field-base :field="field" :errors="errors">
     <multiselect
       v-model="valueModel"
       :placeholder="field.label"
@@ -11,7 +11,7 @@
       :taggable="true"
       @tag="addTag"
     />
-  </form-base>
+  </admin-field-base>
 </template>
 
 <script>

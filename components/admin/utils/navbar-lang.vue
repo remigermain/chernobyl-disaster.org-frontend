@@ -1,11 +1,13 @@
 <template>
-  <ol class="py-2 space-y-2">
-    <li class="bg-indigo-700 text-gray-300 rounded-sm p-2 cursor-pointer hover:bg-indigo-600" @click="current = {}">
+  <ol class="py-2 space-y-2 completed-list">
+    <li class="bg-indigo-700 text-gray-300 rounded-sm p-2 cursor-pointer text-center hover:bg-indigo-600" @click="current = {}">
       <svg-icon name="language" />
-      {{ $t("word.language") }}
+      <span class="label-maxi">
+        {{ $t("word.language") }}
+      </span>
     </li>
     <li v-for="lang in langChoices" :key="lang.value" class="list" :class="{'active': current.value === lang.value}" @click="current = lang">
-      <div v-if="langExist(lang.value)" class="flex justify-center items-center space-x-2">
+      <div v-if="langExist(lang.value)" class="flex justify-center items-center space-x-2 mr-2">
         <svg-icon v-if="langIsNew(lang.value)" name="dots-circle-horizontal" class="text-lg font-medium text-green-600" role="img"/>
         <svg-icon v-else name="circle-check" class="text-lg font-medium text-green-600" role="img"/>
         <div v-if="haveError(lang.value)" class="inline-flex relative">
@@ -13,7 +15,10 @@
           <svg-icon name="alert-circle" class="text-red-800 dark:text-red-600 absolute text-lg font-medium animate-ping" role="img" />
         </div>
       </div>
-      <span>
+      <span class="label-mini">
+        {{ lang.value }}
+      </span>
+      <span class="label-maxi">
         {{ lang.display_name }}
       </span>
       <div class="flex justify-center items-center self-end">
@@ -56,6 +61,16 @@ export default {
   watch: {
     current (lang) {
       this.$emit('input', lang)
+    }
+  },
+
+  created() {
+    /* select lang if add key in params */
+    if (this.$route.query.add) {
+      const lang = this.$store.getters["model/lang"](this.$route.query.add)
+      if (lang) {
+        this.current = lang
+      }
     }
   },
 
@@ -113,5 +128,42 @@ export default {
     @apply bg-gray-700;
     @apply border-indigo-700;
   }
+}
+
+.label-mini {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.label-mini, .label-maxi {
+  transition: transform .3s, opacity .3s;
+}
+.list {
+  overflow: hidden;
+  position: relative;
+}
+
+@media screen and (max-width:1000px){
+  .label-mini {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  .label-maxi {
+    transform: translateX(-100%);
+    position: absolute;
+    opacity: 0;
+  }
+  .completed-list:hover {
+    .label-mini {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    .label-maxi {
+      transform: translateX(0%);
+      position: initial;
+      opacity: 1;
+    }
+  }
+
 }
 </style>

@@ -10,7 +10,7 @@
         </option>
       </select>
     </label>
-    <lazy-admin-error :errors="errors" />
+    <lazy-admin-utils-error :errors="errors" />
   </div>
 </template>
 

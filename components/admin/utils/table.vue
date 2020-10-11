@@ -12,7 +12,7 @@
       </tbody>
     </table>
     <div class="mt-2 text-center">
-      <admin-pagination :length="length" @change="$emit('pagination', $event)" />
+      <admin-utils-pagination :length="length" @change="$emit('pagination', $event)" />
       <span class="text-md italic float-right opacity-75">
         {{ $t('utils.total') }} : {{ length }}
       </span>

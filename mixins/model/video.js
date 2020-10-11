@@ -106,7 +106,7 @@ export default {
     },
 
     baseData () {
-      return {title: '', video: '', date: {}, event: {}, tags: [], langs: []}
+      return {title: '', video: '', date: {}, event: null, tags: [], langs: []}
     },
 
     baseDataLang (language) {

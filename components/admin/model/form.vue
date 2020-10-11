@@ -3,28 +3,19 @@
     <form class="dark:bg-gray-800 rounded-md shadow-lg" @submit.prevent="$emit('submit', $event)">
       <slot name="head" />
       <div class="p-4 space-y-2">
-
         <div class="rounded-full text-center text-gray-800 bg-gray-400 text-2xl py-2 dark:bg-indigo-700 dark:text-gray-300">
           <svg-icon name="language" />
           {{ $t('word.translation')}}
         </div>
         <div class="grid-lang">
-
-          <!-- start menu  -->
-          <model-navbar-lang v-model="currentLang" :object="value.langs" :errors="errors.langs" />
-          <!-- end menu  -->
-
+          <admin-utils-navbar-lang v-model="currentLang" :object="value.langs" :errors="errors.langs" />
           <div class="p-2">
-
-            <!-- slot -->
-            <div v-if="currentObj">
-              <action-delete v-if="currentObj._new || $auth.hasScope('staff')" @click="deleteObject">
+            <div v-if="currentObj" :id="currentLang.value">
+              <admin-action-delete v-if="currentObj._new || $auth.hasScope('staff')" @click="acticeModalDelete = true">
                 {{ $t('word.delete') }}
-              </action-delete>
+              </admin-action-delete>
               <slot name="lang" :current-obj="currentObj" :current-error="getErrorIdx()"/>
             </div>
-
-            <!-- no current language -->
             <div v-else-if="currentLang.value" class="flex justify-center items-center flex-col h-full space-y-4">
               <span class="text-xl capitalize">{{ currentLang.display_name }}</span>
               <p class="p-2 bg-gray-300 whitespace-pre-line rounded-md dark:bg-gray-700">{{ $t('help.language-dosent-exist') }}</p>
@@ -35,22 +26,15 @@
                 {{ $t('word.add') }}
               </button>
             </div>
-
-            <!-- no current selected -->
             <div v-else class="flex justify-center items-center flex-col h-full space-y-4">
               <p class="p-2 bg-gray-300 whitespace-pre-line rounded-md dark:bg-gray-700">{{ $t('help.language-no-selected') }}</p>
             </div>
-
           </div>
-
-          <!-- all submit action -->
-          <form-submit class="col-span-2"/>
+          <admin-field-submit class="col-span-2"/>
         </div>
       </div>
     </form>
-
-    <!-- modal for delete lang -->
-    <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
+    <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
   </div>
 </template>
 
@@ -62,10 +46,6 @@ export default {
     errors: {
       type: Object,
       required: true,
-    },
-    deleteModel: {
-      type: String,
-      required: true
     },
     value: {
       type: Object,
@@ -99,38 +79,14 @@ export default {
   },
 
   methods: {
-
     getErrorIdx() {
       /* get idx of error langs */
       return this.errors.langs[this.currentIndex] || {}
     },
-
     submitDelete() {
-      /* remove only lang object ( only admin user ) */
-      this.$store.commit("ON_LOADING")
       this.acticeModalDelete = false
-
-      this.$axios.delete(`${this.deleteModel}/${this.currentObj.id}/`)
-        .then(response => {
-          if (response.status !== 204) {
-            throw new Error("errer-server")
-          }
-          this.i18nToast.success(this.$t('message.delete'))
-          // delete object
-          this.$delete(this.value.langs, this.currentIndex)
-        })
-        .catch(error => { this.responseError(error) })
-        .finally(() => this.$store.commit("ON_LOADING"))
+      this.$emit('delete', this.currentIndex)
     },
-    deleteObject () {
-      if (this.currentObj._new) {
-        /* remove directly in array if is a new elements */
-        this.$delete(this.value.langs, this.currentIndex)
-      } else {
-        this.acticeModalDelete = true
-      }
-    }
-
   }
 
 }

@@ -3,13 +3,13 @@
     <button type="submit" class="py-2 px-3 bg-indigo-600 mhover:bg-indigo-700 rounded-full text-white dark:text-gray-300" @click.stop.prevent="$router.back()">
       {{ $t('tools.cancel') }}
     </button>
-    <button type="submit" class="py-2 px-3 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white dark:text-gray-300" data-type="new">
+    <button type="submit" class="py-2 px-3 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white dark:text-gray-300" data-go-to="new">
       {{ $t('tools.save-add-other') }}
     </button>
-    <button type="submit" class="py-2 px-3 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white dark:text-gray-300" data-type="continue">
+    <button type="submit" class="py-2 px-3 bg-indigo-600 hover:bg-indigo-700 rounded-full text-white dark:text-gray-300" data-go-to="continue">
       {{ $t('tools.save-continue-editing') }}
     </button>
-    <button type="submit" class="py-2 px-3 bg-indigo-700 hover:bg-indigo-600 rounded-full text-white dark:text-gray-300" data-type="detail">
+    <button type="submit" class="py-2 px-3 bg-indigo-700 hover:bg-indigo-600 rounded-full text-white dark:text-gray-300" data-go-to="detail">
       {{ $t('tools.save') }}
     </button>
   </div>
@@ -17,6 +17,8 @@
 
 <style scoped>
 .action > * {
-  margin-right: .5em;
+  margin: .5em .5em .5em 0;
+  /* margin-right: .5em;
+  margin-top: .5em; */
 }
 </style>

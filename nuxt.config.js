@@ -133,21 +133,30 @@ export default {
   components: [
     "~/components",
     {
-      path: "~/components/admin/",
-      prefix: "admin",
+      path: "~/components/admin/utils",
+      prefix: "admin-utils",
     },
     {
-      path: "~/components/action/",
-      prefix: "action",
+      path: "~/components/admin/field/",
+      prefix: "admin-field",
     },
     {
-      path: "~/components/detail/",
-      prefix: "detail",
+      path: "~/components/admin/action/",
+      prefix: "admin-action",
     },
     {
-      path: "~/components/form/",
-      prefix: "form",
+      path: "~/components/admin/form/",
+      prefix: "admin-form",
     },
+    {
+      path: "~/components/admin/model/",
+      prefix: "admin-model",
+    },
+    {
+      path: "~/components/admin/detail/",
+      prefix: "admin-detail",
+    },
+
     {
       path: "~/components/utils/",
       prefix: "utils",

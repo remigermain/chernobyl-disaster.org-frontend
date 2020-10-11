@@ -81,12 +81,10 @@ export default {
 
     assignError (data) {
       /* add error after request */
-      this.$nextTrick(() => {
-        data.title && (this.errors.title = data.title)
-        data.date && (this.errors.date = data.date)
-        data.tags && (this.errors.tags = data.tags)
-        data.langs && (this.errors.langs = data.langs)
-      })
+      data.title && (this.errors.title = data.title)
+      data.date && (this.errors.date = data.date)
+      data.tags && (this.errors.tags = data.tags)
+      data.langs && (this.errors.langs = data.langs)
     },
 
     baseData () {

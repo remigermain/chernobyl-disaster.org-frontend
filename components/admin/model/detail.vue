@@ -7,15 +7,18 @@
         {{ $t('word.translation')}}
       </div>
       <div class="grid-lang">
-        <model-navbar-lang v-model="currentLang" :object="object.langs" />
+        <admin-utils-navbar-lang v-model="currentLang" :object="object.langs" />
         <div class="p-2">
           <div v-if="currentObj">
+            <admin-action-delete v-if="currentObj._new || $auth.hasScope('staff')" @click="acticeModalDelete = true">
+              {{ $t('word.delete') }}
+            </admin-action-delete>
             <slot name="lang" :current-obj="currentObj" :language="currentLang" />
           </div>
           <div v-else-if="currentLang.value" class="flex justify-center items-center flex-col h-full space-y-4">
             <span class="text-xl capitalize">{{ currentLang.display_name }}</span>
             <p class="p-2 bg-gray-300 whitespace-pre-line rounded-md dark:bg-gray-700">{{ $t('help.language-dosent-exist') }}</p>
-            <nuxt-link :to="localePath(toEdit)" type="button" class="px-3 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-md shadow-md text-gray-200">
+            <nuxt-link :to="linkEditAddLang" type="button" class="px-3 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-md shadow-md text-gray-200">
               <svg-icon name="plus" />
               {{ $t('word.add') }}
             </nuxt-link>
@@ -26,6 +29,7 @@
         </div>
       </div>
     </div>
+    <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
   </div>
 </template>
 
@@ -46,12 +50,26 @@ export default {
   data () {
     return {
       currentLang: {},
+      acticeModalDelete: false
     }
   },
 
   computed: {
     currentObj () {
       return this.object.langs.find(x => x.language === this.currentLang.value)
+    },
+    currentIndex () {
+      return this.object.langs.indexOf(this.currentObj)
+    },
+    linkEditAddLang () {
+
+      return this.localePath({...this.toEdit, query: {add: this.currentLang.value}})
+    }
+  },
+  methods: {
+    submitDelete() {
+      this.acticeModalDelete = false
+      this.$emit('delete', this.currentIndex)
     },
   }
 

@@ -1,20 +1,20 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-header :title="model.label" :description="$t('help.video.global-description')" :to="{name: 'contribute-video-create'}">
+      <admin-utils-header :title="model.label" :description="$t('help.video.global-description')" :to="{name: 'contribute-video-create'}">
         <template #breadcrumbs>
           {{ model.label }}
         </template>
         <template #button>
-          <action-create :to="pathCreate">
+          <admin-action-create :to="pathCreate">
             {{ $t('word.create') }}
-          </action-create>
+          </admin-action-create>
         </template>
-      </admin-header>
+      </admin-utils-header>
       <div class="w-full space-y-4">
-        <lazy-admin-table :length="objectlength" @pagination="setPagination">
+        <lazy-admin-utils-table :length="objectlength" @pagination="setPagination">
           <template #header>
-            <admin-table-header v-model="searchValue" :title="$t('word.list')" @search="refresh"/>
+            <admin-utils-table-header v-model="searchValue" :title="$t('word.list')" @search="refresh"/>
           </template>
           <template #thead>
               <th> id </th>
@@ -29,16 +29,16 @@
               <td v-if="obj.event">{{ obj.event }}</td>
               <td v-else class="text-gray-500 italic text-sm">{{ $t('utils.empty') }}</td>
               <td class="space-x-1">
-                <lazy-action-detail :to="pathDetail(obj.id)" />
-                <lazy-action-edit :to="pathEdit(obj.id)" />
-                <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
+                <lazy-admin-action-detail :to="pathDetail(obj.id)" />
+                <lazy-admin-action-edit :to="pathEdit(obj.id)" />
+                <lazy-admin-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
-        </lazy-admin-table>
-        <lazy-admin-table :length="objectlengthLang" @pagination="setLangPagination">
+        </lazy-admin-utils-table>
+        <lazy-admin-utils-table :length="objectlengthLang" @pagination="setLangPagination">
           <template #header>
-            <admin-table-header v-model="searchValueLang" :title="$t('help.need-translation')" @search="refreshLang"/>
+            <admin-utils-table-header v-model="searchValueLang" :title="$t('help.need-translation')" @search="refreshLang"/>
           </template>
           <template #thead>
               <th> id </th>
@@ -55,14 +55,14 @@
               <td v-else class="text-gray-700 italic text-sm">{{ $t('utils.empty') }}</td>
               <td>{{ obj.not_available_languages.join(", ") }}</td>
               <td class="inline-flex space-x-2">
-                <lazy-action-detail :to="pathDetail(obj.id)" />
-                <lazy-action-edit :to="pathEdit(obj.id)" />
-                <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
+                <lazy-admin-action-detail :to="pathDetail(obj.id)" />
+                <lazy-admin-action-edit :to="pathEdit(obj.id)" />
+                <lazy-admin-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
-        </lazy-admin-table>
-        <admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="deleteObject"/>
+        </lazy-admin-utils-table>
+        <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
       </div>
     </div>
   </div>

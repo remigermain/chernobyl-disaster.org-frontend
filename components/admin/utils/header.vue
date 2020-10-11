@@ -3,7 +3,7 @@
     <lazy-contribute-breadcrumb>
       <slot name="breadcrumbs" />
     </lazy-contribute-breadcrumb>
-    <h1 class="text-3xl capitalize self-start w-full flex justify-between">
+    <h1 class="text-3xl capitalize self-start w-full flex justify-between flex-wrap">
       <div>
         <svg-icon name="help" class="cursor-pointer transform hover:scale-110 transition-transform duration-200" @click="activeHelp = !activeHelp"/>
         {{ title }}

@@ -1,5 +1,5 @@
 <template>
-  <form-base :field="field" :errors="errors">
+  <admin-field-base :field="field" :errors="errors">
     <div class="flex flex-wrap flex-col space-y-2">
       <div class="preview-image flex items-center justify-center relative"
            :class="{'border-dashed border-2 border-gray-600': !imageSrc}"
@@ -34,7 +34,7 @@
       </label>
     </div>
     <lazy-gallery-detail-picture v-if="active" :object="object" :idx="0" :length="1" @close="active = null" />
-  </form-base>
+  </admin-field-base>
 </template>
 
 <script>
