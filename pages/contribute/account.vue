@@ -27,7 +27,9 @@
           <h2 class="text-xl text-center capitalize">
             {{ $t('account.change-settings') }}
           </h2>
+          {{ data }}
           <form class="p-4 rounded space-y-2" @submit.prevent="submitSettings">
+            <field-checkbox v-model="data.show_admin" :field="modelField.show_admin" :errors="errors.show_admin" />
             <field-checkbox v-model="data.show_help" :field="modelField.show_help" :errors="errors.show_help" />
             <field-select v-model="data.default_language"  :field="modelField.default_language" :errors="errors.default_language" />
             <div class="flex justify-end w-full">
@@ -103,12 +105,14 @@ export default {
         new_password2: "",
         default_language: this.$auth.user.default_language,
         show_help: this.$auth.user.show_help,
+        show_admin: this.$auth.user.show_admin,
       },
       errors: {
         new_password1: [],
         new_password2: [],
         old_password: [],
         show_help: [],
+        show_admin: [],
         default_language: [],
       },
       field: {
@@ -133,6 +137,7 @@ export default {
       handler () {
         // reasigne data after fetch user
         this.data.show_help = this.$auth.user.show_help
+        this.data.show_admin = this.$auth.user.show_admin
         this.data.default_language = this.$auth.user.default_language
       },
       deep: true
@@ -184,7 +189,8 @@ export default {
       setObjectKeysValue(this.errors, [])
       const data = {
         default_language: this.data.default_language,
-        show_help: !this.data.show_help, // why invert bool  ?????
+        show_help: this.data.show_help, // why invert bool  ?????
+        show_admin: this.data.show_admin
       }
 
       this.$axios.patch("auth/user/", data)
@@ -196,10 +202,11 @@ export default {
           this.$auth.fetchUser()
           // TODO redirect language ?
         })
-        .catch((error) => {
+        .catch(error => {
           this.responseError(error)
             .then(data => {
               data.show_help && (this.errors.show_help = data.show_help)
+              data.show_admin && (this.errors.show_admin = data.show_admin)
               data.default_language && (this.errors.default_language = data.default_language)
             })
         })

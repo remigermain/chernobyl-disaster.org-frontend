@@ -4,7 +4,8 @@
       <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200">
         {{ field.label }}:
       </span>
-      <select v-model="valueModel" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
+      {{ valueModel}}
+      <select v-model="valueModel" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center" @input="$emit('input', valueModel)">
         <option v-for="obj in field.choices" :key="obj.display_name" :value="obj.value">
           {{ obj.display_name }}
         </option>

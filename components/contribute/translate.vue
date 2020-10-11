@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full 0">
+  <div class="w-full">
     <div class="w-full border-gray-500 dark:bg-gray-800 border-t-4 rounded-t-md p-2 mt-2 cursor-pointer italic text-opacity-75"
           :class="{'border-indog-700': active, 'rounded-b-md': !active}"
           @click="active = !active"
@@ -13,16 +13,20 @@
       <div class="w-full flex space-y-1 leading-6 transform p-2 transition-all duration-400 justify-around"
             :class="{'-translate-y-full opacity-0 absolute': !active, 'translate-x-0 opacity-100 block': active}"
       >
-        <div class="rounded-md border shadow-md flex flex-col p-2 w-max-content dark:bg-gray-900 dark:border-none">
+        <div class="rounded-md border shadow-md p-2 dark:bg-gray-900 dark:border-none">
           <h1 class="text-2xl font-bold capitalize italic text-gray-700">
             {{ $t('word.upload') }}
           </h1>
-          <form class="flex flex-col p-3 space-y-2 gap-2" @submit.prevent="submit">
-            <field-file v-model="data.file" :field="modelField.file" :errors="errors.file" />
-            <field-select v-model="data.language" :field="modelField.language" :errors="errors.language" />
-            <field-checkbox v-model="data.delete" :field="modelField.delete" :errors="errors.delete" />
-            <field-checkbox v-model="data.merge" :field="modelField.merge" :errors="errors.merge" />
-            <field-submit>{{ $t('word.submit') }}</field-submit>
+          <form class="flex flex-wrap p-3 " @submit.prevent="submit">
+            <div class="flex flex-col">
+              <field-select v-model="data.language" :field="modelField.language" :errors="errors.language"/>
+              <field-checkbox v-model="data.delete" :field="modelField.delete" :errors="errors.delete"/>
+              <field-checkbox v-model="data.merge" :field="modelField.merge" :errors="errors.merge"/>
+            </div>
+            <field-file v-model="data.file" :field="modelField.file" :errors="errors.file" class="w-2/4"/>
+            <field-submit class="w-full">
+              {{ $t('word.submit') }}
+            </field-submit>
           </form>
         </div>
       </div>
@@ -41,7 +45,7 @@ export default {
 
   data () {
     return {
-      active: false,
+      active: this.$auth.user.show_admin,
       modelField: {
         delete: {
           label: 'delete'

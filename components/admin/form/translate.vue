@@ -1,0 +1,167 @@
+<template>
+  <form class="flex flex-col space-y-3 p-2" @submit.prevent="submit" >
+    <div v-if="$auth.hasScope('staff') && current && current.id">
+      <admin-action-delete @click="setDeleted(object)"/>
+    </div>
+    <div class="rounded-md flex flex-col bg-gray-200 dark:bg-gray-900 space-y-2 p-2">
+      <h1 class="self-start text-2xl italic dark:text-gray-200">
+        {{ $t('text.preview-other-language') }}
+        <select v-model="selectLocale" class="form-select">
+          <option v-for="lang in localesChoices" :key="lang.value" :value="lang.value">
+            {{ lang.display_name }}
+          </option>
+        </select>
+      </h1>
+      <template v-if="localesChoices.length">
+        <blockquote class=" border-l-8 rounded-lg border-gray-800 bg-gray-400 dark:bg-gray-600 p-2 dark:text-gray-900">
+          &nbsp;&nbsp;{{ preview.value }}&nbsp;&nbsp;
+        </blockquote>
+      </template>
+      <span v-else class=" italic p-2 text-opacity-75 text-gray-800">
+        {{ $t('message.no-example-available') }}
+      </span>
+    </div>
+    <admin-utils-error :errors="errors.language" />
+    <admin-utils-error :errors="errors.parent_key" />
+    <field-textarea v-model="dataValue" :field="field" :errors="errors.value" />
+    <field-submit class="self-end">
+      {{ $t('word.modify') }}
+    </field-submit>
+    <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitTransDelete"/>
+  </form>
+</template>
+
+<script>
+import deleteMixins from "~/mixins/admin/delete"
+
+export default {
+
+  mixins: [deleteMixins],
+
+  loading: false,
+
+  props: {
+    object: {
+      type: Object,
+      required: true,
+    }
+  },
+
+  data () {
+    return {
+      dataValue: "",
+      field: {label: this.object.key.join("-"), name: "name", required: true},
+      selectLocale: null,
+      errors: {
+        language: [],
+        value: [],
+        parent_key: []
+      }
+    }
+  },
+
+  computed: {
+    current () {
+      return this.object.langs.find(x => x.language === this.$route.params.id)
+    },
+    preview () {
+      return this.object.langs.find(x => x.language === this.selectLocale)
+    },
+    localesChoices () {
+      const list = []
+      this.object.langs.forEach(x => {
+        if (x.language !== this.$route.params.id) {
+          list.push(this.$store.getters["model/lang"](x.language))
+        }
+      })
+      return list
+    },
+  },
+
+ created () {
+    if (this.localesChoices.length) {
+      const defaultLang = this.object.langs.find(x => x.language === this.$i18n.defaultLocale)
+      const currentLang = this.object.langs.find(x => x.language === this.$i18n.locale)
+      const firstLang = this.object.langs[0]
+
+      if (this.$i18n.locale !== this.$route.params.id) {
+        if (this.$route.params.id !== this.$i18n.defaultLocale) {
+          this.selectLocale = currentLang || firstLang
+        } else {
+          this.selectLocale = defaultLang || firstLang
+        }
+      } else if (this.$route.params.id !== this.$i18n.defaultLocale) {
+          this.selectLocale = defaultLang || firstLang
+      } else {
+          this.selectLocale = currentLang || firstLang
+      }
+      this.selectLocale = this.selectLocale.language
+    }
+    if (this.current) {
+      this.dataValue = this.current.value
+    }
+  },
+
+  methods: {
+    haveDeletedObject () {
+      this.$nuxt.refresh()
+      this.dataValue = ""
+    },
+    submitTransDelete () {
+      this.submitDelete(`translatelang/${this.current.id}/`)
+    },
+
+    submit () {
+      this.$store.commit("ON_LOADING", true)
+
+      const data = {
+        value: this.dataValue,
+        language: this.$route.params.id,
+        parent_key: this.object.id
+      }
+
+      if (this.current && this.current.id) {
+        data.id = this.current.id
+      }
+
+      const status = (this.current && this.current.id ? 200 : 201)
+      const axiosPromess = (
+          data.id ?
+          this.$axios.patch(`translatelang/${data.id}/`, data) :
+          this.$axios.post('translatelang/', data)
+      )
+      axiosPromess.then(response => {
+        if (response.status !== status) {
+          throw new Error("error-server")
+        }
+        this.i18nToast.success("success.modify")
+        this.$nuxt.refresh()
+      })
+      .catch(error => {
+        this.responseError(error)
+          .then(data => {
+            data.value && (this.errors.value = data.value)
+            data.language && (this.errors.value = data.language)
+            data.parent_key && (this.errors.value = data.parent_key)
+          })
+      })
+      .finally(() => { this.$store.commit("ON_LOADING", false) })
+    }
+  }
+
+}
+</script>
+
+<style>
+
+blockquote::after {
+  content: "\201E";
+  font-size: 1.2em;
+}
+
+blockquote::before {
+  content: "\201C";
+  font-size: 1.2em;
+}
+
+</style>

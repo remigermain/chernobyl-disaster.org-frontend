@@ -10,7 +10,7 @@ export default {
           label: this.$t("utils.language"),
           name: "language",
           choices: this.$store.getters["model/langs"],
-          help: this.$t("help.language.global-description"),
+          help: this.$t("help.translate.global-description"),
         },
         ratio: {
           label: this.$t("utils.percentage"),
@@ -18,7 +18,8 @@ export default {
           choices: this.$store.getters["model/langs"],
         }
       },
-      errors: {language: []}
+      errors: {language: []},
+      pathList: {name: 'contribute-translate'}
     }
   }
 }

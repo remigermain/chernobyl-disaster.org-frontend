@@ -26,6 +26,11 @@ export default {
           help: this.$t("help.account.show-help"),
           name: "show_help",
         },
+        show_admin: {
+          label: this.$t("message.show-admin"),
+          help: this.$t("help.account.show-admin"),
+          name: "show_admin",
+        },
         default_language: {
           label: this.$t("message.default-language"),
           help: this.$t("help.account.default-language"),

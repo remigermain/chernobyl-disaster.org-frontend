@@ -92,7 +92,6 @@ export default {
         this.afterRequest(event.submitter.dataset.goTo, response.data.id)
       })
       .catch(error => {
-        console.log(error)
         this.responseError(error).then(this.assignError)
       })
       .finally(() => { this.$store.commit("ON_LOADING", false) })
