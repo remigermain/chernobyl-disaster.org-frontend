@@ -11,8 +11,8 @@
         <slot name="tbody" />
       </tbody>
     </table>
-    <div class="mt-2 text-center">
-      <admin-utils-pagination :length="length" @change="$emit('pagination', $event)" />
+    <div class="mt-2 pb-2 text-center">
+      <admin-utils-pagination v-show="pagination" :length="length" @change="$emit('pagination', $event)" />
       <span class="text-md italic float-right opacity-75">
         {{ $t('utils.total') }} : {{ length }}
       </span>
@@ -27,6 +27,10 @@ export default {
       type: Number,
       required: true
     },
+    pagination: {
+      type: Boolean,
+      default: true
+    }
   },
 }
 </script>

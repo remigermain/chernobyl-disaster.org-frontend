@@ -18,11 +18,13 @@ export default {
       this.objDelete = obj
       this.acticeModalDelete = true
     },
-    submitDelete () {
+    submitDelete (url) {
       this.$store.commit("ON_LOADING", true)
       this.acticeModalDelete = false
 
-      this.$axios.delete(`${this.model.name}/${this.objDelete.id}/`)
+      const urlPath  = url || `${this.model.name}/${this.objDelete.id}/`
+
+      this.$axios.delete(urlPath)
         .then(response => {
           if (response.status !== 204) {
             throw new Error("server-error")

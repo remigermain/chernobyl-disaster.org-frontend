@@ -6,7 +6,6 @@
       <picture v-for="(el, idx) in object" :key="el.id" role="img" class="picture-item">
         <source :srcset="$media(el.picture.thumbnail_webp)" type="image/webp">
         <img class="w-full h-full object-cover"
-             :alt="i18nAttr(el, 'title')"
              :src="$media(el.picture.thumbnail_jpeg)"
              loading="lazy"
              role="button"
@@ -21,9 +20,11 @@
     <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
       {{ this.$t("utils.empty") }}
     </span>
-    <lazy-gallery-detail-picture :object="current"
+    <lazy-gallery-detail-picture v-if="current"
+                                 :object="convertCurrent"
                                  :idx="currentIdx"
                                  :length="length"
+                                 :to-edit="toEdit"
                                  @close="current = null"
                                  @next="nextDetail"
                                  @prev="prevDetail"
@@ -34,6 +35,7 @@
 <script>
 import galleryMixin from "~/mixins/page/gallery"
 import { asynDataUrl } from "~/lib/gallery"
+import { convertImageUrl } from "~/lib/contribute"
 
 export default {
   name: "GalleryPicture",
@@ -50,6 +52,7 @@ export default {
         if (response.status !== 200) {
           throw new Error("error-server")
         }
+
         return {
           object: response.data.results,
           length: response.data.count,
@@ -84,6 +87,17 @@ export default {
           { name: "twitter:description", content: description },
           { name: "twitter:image:alt", content: title }
       ]
+    }
+  },
+
+  computed: {
+    convertCurrent () {
+      const newCurrent = {...this.current.picture}
+      convertImageUrl(newCurrent, this.$media)
+      return newCurrent
+    },
+    toEdit () {
+      return {name: 'contribute-picture-id', params: {id: this.current.id}}
     }
   },
 

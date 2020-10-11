@@ -107,24 +107,3 @@ export default {
 
 }
 </script>
-
-<style lang="scss">
-
-.card-model {
-  width: 300px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-row: 1fr;
-  & > *:first-child {
-    grid-area: 1 / 1 / 1 / 3;
-  }
-  & > * {
-    padding: 1em;
-  }
-}
-
-.dark .tulp {
-  @apply bg-gray-900
-}
-
-</style>

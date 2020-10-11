@@ -18,6 +18,7 @@ export default {
           choices: this.$store.getters["model/langs"],
         }
       },
+      errors: {language: []}
     }
   }
 }
