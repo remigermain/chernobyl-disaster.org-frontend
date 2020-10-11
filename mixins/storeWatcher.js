@@ -1,9 +1,6 @@
 export default {
 
   computed: {
-    background () {
-      return this.$store.state.have_background
-    },
     errorServer () {
       return this.$store.state.error_server
     },
@@ -27,11 +24,5 @@ export default {
       }
     }
   },
-
-  methods: {
-    hideBackground () {
-      this.$store.commit("ACTIVE_BACKGROUND", false)
-    }
-  }
 
 }

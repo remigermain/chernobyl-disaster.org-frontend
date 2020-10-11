@@ -66,7 +66,7 @@
 
 <script>
 import { timelineElement } from "~/lib/timeline"
-import { getDate} from "~/lib/date"
+import { getDate } from "~/lib/date"
 
 export default {
 

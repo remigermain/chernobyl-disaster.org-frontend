@@ -13,7 +13,6 @@
       <nuxt v-if="!$slots.default" />
       <slot v-else />
     </section>
-    <div class="background" :class="{'active': background}" @click="hideBackground" />
   </main>
 </template>
 
@@ -48,18 +47,4 @@ export default {
   overflow-y: scroll;
 }
 
-.background {
-  transition: background-color .2s;
-  background-color: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  &.active {
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-}
 </style>

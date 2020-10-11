@@ -18,26 +18,13 @@
               transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                   @click.prevent="$emit('close')"
           >
-            {{ $t('utils.cancel') }}
+            {{ $t('word.cancel') }}
           </button>
         </span>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-
-  mounted () {
-    this.$store.commit("ACTIVE_BACKGROUND", true)
-  },
-
-  beforeDestroy () {
-    this.$store.commit("ACTIVE_BACKGROUND", false)
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 
@@ -50,6 +37,8 @@ export default {
   z-index: 45;
   margin: 0 !important;
   padding: 0 !important;
+  background-color: rgba(0, 0, 0, 0.7);
 }
+
 
 </style>
