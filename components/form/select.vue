@@ -6,8 +6,9 @@
       label="display_name"
       track-by="value"
       :options="field.choices"
-      :allow-empty="field.required"
+      :allow-empty="!field.required"
     />
+    <slot />
   </form-base>
 </template>
 
@@ -20,6 +21,13 @@ export default {
 
   mixins: [FieldMixins],
 
+  props: {
+    value: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+
   watch: {
     valueModel (newValue) {
       this.$emit('input', newValue)
@@ -28,3 +36,7 @@ export default {
 
 }
 </script>
+
+<style lang="scss">
+@import "~/assets/css/multiselect.scss";
+</style>

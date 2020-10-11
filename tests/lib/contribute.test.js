@@ -124,9 +124,23 @@ it("convert date function", () => {
         hours: 0,
       }
       expect(contrib.convertToDate(data)).toEqual({date: '1971-01-01T00:01:01.000Z', have_second: true, have_minute: true, have_hour: true})
+
+      data = {
+        date: '',
+        seconds: 1,
+        minutes: 1,
+        hours: 0,
+      }
+      expect(contrib.convertToDate(data)).toEqual({date: null, have_second: false, have_minute: false, have_hour: false})
+
+      data = {
+        date: '1971-01-01T12:23:01.000Z',
+        seconds: 25,
+      }
+      expect(contrib.convertToDate(data)).toEqual({date: '1971-01-01T00:00:25.000Z', have_second: true, have_minute: true, have_hour: true})
   })
 
-  it("convert date function", () => {
+  it("convert tags function", () => {
     let data = [
       {
         display_name: "test",
@@ -160,6 +174,13 @@ it("convert date function", () => {
     expect(contrib.convertToTags(data)).toEqual([{name: "test"}])
   })
 
+  it('convert video link', () => {
+    expect(contrib.convertVideoLink("https://www.youtube.com/watch?v=s9APLXM9Ei8")).toEqual("https://www.youtube.com/embed/s9APLXM9Ei8")
+    expect(contrib.convertVideoLink("http://www.youtube.com/watch?v=s9APLXM9Ei8")).toEqual("http://www.youtube.com/embed/s9APLXM9Ei8")
+    expect(contrib.convertVideoLink("www.youtube.com/watch?v=s9APLXM9Ei8")).toEqual("www.youtube.com/embed/s9APLXM9Ei8")
+    expect(contrib.convertVideoLink("youtube.com/watch?v=s9APLXM9Ei8")).toEqual("youtube.com/embed/s9APLXM9Ei8")
+    expect(contrib.convertVideoLink("tyoutube.com/watch?v=s9APLXM9Ei8")).toEqual("tyoutube.com/watch?v=s9APLXM9Ei8")
+  })
 
 
 })

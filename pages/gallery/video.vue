@@ -7,7 +7,7 @@
     </gallery-infinite-loading>
     <div class="grid-video">
       <div v-for="el in object" :key="el.id" class="video-item">
-        <iframe :src="urlVideo(el.video)" frameborder="0"
+        <iframe :src="convertVideoLink(el.video)" frameborder="0"
                 loading="lazy"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
         />
@@ -23,6 +23,7 @@
 <script>
 import galleryMixin from "~/mixins/page/gallery"
 import { asynDataUrl } from "~/lib/gallery"
+import { convertVideoLink } from "~/lib/contribute"
 
 export default {
   name: "GalleryVideo",
@@ -75,9 +76,7 @@ export default {
   },
 
   methods: {
-    urlVideo (src) {
-      return src.replace("watch?v=", "embed/")
-    },
+    convertVideoLink,
   },
 
 }

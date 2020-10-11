@@ -22,7 +22,7 @@
       <model-detail :object="object" :to-edit="pathEdit(object.id)">
         <template #head>
           <div class="flex flex-col justify-center space-y-4 text-center">
-            <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300">
+            <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words">
               {{ object.title }}
             </h1>
             <div class="flex flex-col justify-center">
@@ -36,7 +36,7 @@
         </template>
         <template #lang="{currentObj, language}">
           <div class="flex flex-col justify-center space-y-4 text-center p-4">
-            <h2 class="text-4xl text-gray-800 font-medium dark:text-gray-300">
+            <h2 class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words">
               {{ currentObj.title }}
             </h2>
             <div class="flex flex-col justify-center">

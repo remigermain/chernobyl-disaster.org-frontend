@@ -30,7 +30,7 @@
                 <img :src="object.profil.original_jpeg" alt="image" />
               </picture>
               <div class="flex flex-col space-y-4">
-                <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300">
+                <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words">
                   {{ object.name }}
                 </h1>
                 <div class="flex justify-center w-full">

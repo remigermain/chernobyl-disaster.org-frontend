@@ -30,7 +30,7 @@
         <span v-else>
           {{ $t('word.add-picture') }}
         </span>
-        <input ref="image" type="file" class="opacity-0 w-1px h-1px" @change="change" />
+        <input ref="image" type="file" class="opacity-0 w-1px h-1px" :required="required" @change="change" />
       </label>
     </div>
     <lazy-gallery-detail-picture v-if="active" :object="object" :idx="0" :length="1" @close="active = null" />
@@ -68,6 +68,10 @@ export default {
     },
     object () {
       return this.imageUrl || this.original
+    },
+    required () {
+      if (this.original) return false
+      return this.field.required
     }
   },
 

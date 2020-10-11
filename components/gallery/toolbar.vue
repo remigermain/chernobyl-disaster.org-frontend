@@ -22,7 +22,7 @@
             </option>
           </select>
         </label>
-        <button class="p-2 mx-2 h-10 rounded-md text-md text-white text-white bg-indigo-600 hover:bg-indigo-700 text-center" @click="submit">
+        <button class="p-2 mx-2 h-10 rounded-md text-md text-white bg-indigo-600 hover:bg-indigo-700 text-center" @click="submit">
           {{ $t('utils.search') }}
         </button>
         <span class="border-b border-gray-500" />

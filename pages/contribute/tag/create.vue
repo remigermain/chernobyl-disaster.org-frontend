@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-header :title="model.name" :description="$t('help.event.global-description')">
+      <admin-header :title="model.name" :description="$t('help.tag.global-description')">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -11,16 +11,11 @@
       </admin-header>
       <model-form v-model="data" :errors="errors" :delete-model="linkDeleteLang" @add="addLang" @submit="submit">
         <template #head>
-          <form-text v-model="data.title" :field="modelField.title" :errors="errors.title" />
-          <div class="w-full flex flex-wrap justify-around">
-            <form-datetime v-model="data.date" :field="modelField.date" :errors="errors.date" />
-            <form-multiselect v-model="data.tags" :field="modelField.tags" :errors="errors.tags" />
-          </div>
+          <form-text v-model="data.name" :field="modelField.name" :errors="errors.name" />
         </template>
         <template #lang="{currentObj, currentError}" >
           <admin-error :errors="currentError.language" class="text-center" />
-          <form-text v-model="currentObj.title" :field="modelField.langs.title" :errors="currentError.title" />
-          <form-text-editor v-model="currentObj.description" :field="modelField.langs.description" :errors="currentError.description" />
+          <form-text v-model="currentObj.name" :field="modelField.langs.name" :errors="currentError.name" />
         </template>
       </model-form>
     </div>
@@ -28,12 +23,12 @@
 </template>
 
 <script>
-import eventMixins from "~/mixins/model/event"
+import tagMixins from "~/mixins/model/tag"
 import createMixins from "~/mixins/admin/create"
 
 export default {
 
-  mixins: [eventMixins, createMixins],
+  mixins: [tagMixins, createMixins],
 
   data () { return { data: this.baseData() } },
 

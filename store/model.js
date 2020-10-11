@@ -3,7 +3,6 @@ export const state = () => ({
   langs: [],
   events: [],
   tags: [],
-  photographers: [],
   peoples: [],
 })
 
@@ -12,9 +11,6 @@ export const mutations = {
     state.langs = data.langs
     state.events = data.events
     state.tags = data.tags
-  },
-  POPULATE_PICTURE(state, data) {
-    state.photographers = data.photographers
   },
   POPULATE_PEOPLES(state, data) {
     state.peoples = data.peoples
@@ -34,6 +30,4 @@ export const getters = {
   peoples: state => state.peoples,
   people: state => value => state.peoples.find(t => t.value === value),
 
-  photographers: state => state.photographers,
-  photographer: state => value => state.photographers.find(t => t.value === value),
 }

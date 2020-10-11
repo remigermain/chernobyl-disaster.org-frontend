@@ -7,7 +7,7 @@
         <svg-icon name="alert-triangle" class="h-6 w-6 text-red-600" />
       </div>
       <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-500">
           {{ $t('tools.deleted') }}
         </h3>
       </div>

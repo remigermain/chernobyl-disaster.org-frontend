@@ -57,6 +57,7 @@ export default {
       errors: setObjectKeysValue(this.baseData(), []),
       pathList: {name: 'contribute-event'},
       pathCreate: {name: 'contribute-event-create'},
+      linkDeleteLang: "event-lang"
     }
   },
 

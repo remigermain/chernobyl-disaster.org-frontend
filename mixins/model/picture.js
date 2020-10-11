@@ -1,4 +1,10 @@
+import { convertToTags, convertToDate } from "~/lib/contribute"
+import { setObjectKeysValue } from "~/lib/utils"
+import baseModel from "~/mixins/model/base"
+
 export default {
+
+  mixins: [baseModel],
 
   data () {
     return {
@@ -13,15 +19,6 @@ export default {
           required: true,
           max_length: 50,
           help: this.$t("help.picture.title")
-        },
-        tags: {
-          label: this.$t("admin.model.tags"),
-          name: "tags",
-          model: "tag",
-          required: false,
-          max_length: 50,
-          choices: this.$store.getters["model/tags"],
-          help: this.$t("help.tag.global-description")
         },
         event: {
           label: this.$t("admin.model.event"),
@@ -42,13 +39,14 @@ export default {
           required: false,
           help: this.$t("help.picture.date"),
         },
-        photographer: {
-          label: this.$t("admin.model.photographer"),
-          name: "photographer",
-          model: "people",
+        tags: {
+          label: this.$t("admin.model.tags"),
+          name: "tags",
+          model: "tag",
           required: false,
-          choices: this.$store.getters["model/photographers"],
-          help: this.$t("help.picture.photographer"),
+          max_length: 50,
+          choices: this.$store.getters["model/tags"],
+          help: this.$t("help.tag.global-description")
         },
         langs: {
           title: {
@@ -67,7 +65,67 @@ export default {
           }
         }
       },
+      errors: setObjectKeysValue(this.baseData(), []),
+      pathList: {name: 'contribute-picture'},
+      pathCreate: {name: 'contribute-picture-create'},
+      linkDeleteLang: "picture-lang"
     }
   },
 
+  methods: {
+    pathDetail (id) {
+      return {name: 'contribute-picture-id', params: {id}}
+    },
+    pathEdit (id) {
+      return {name: 'contribute-picture-edit-id', params: {id}}
+    },
+    getData(dataValue) {
+      const tags = convertToTags(dataValue.tags)
+      const date = convertToDate(dataValue.date)
+      const data = {
+        ...dataValue,
+        ...date,
+        tags,
+      }
+
+      /* convet event */
+      if (data.event && data.event.value) {
+        data.event = data.event.value
+      } else if (data.event) {
+        delete data.event
+      }
+
+      /* check picture image */
+      if (data.picture && data.picture._new) {
+        const picture = data.picture._new
+        delete data.picture
+
+        const form = this.toFormData(data)
+        form.append('picture', picture)
+        return form
+
+      } else if (data.picture) {
+        delete data.picture
+      }
+      return data
+    },
+
+    assignError (data) {
+      /* add error after request */
+        data.title && (this.errors.title = data.title)
+        data.date && (this.errors.date = data.date)
+        data.event && (this.errors.event = data.event)
+        data.picture && (this.errors.picture = data.picture)
+        data.tags && (this.errors.tags = data.tags)
+        data.langs && (this.errors.langs = data.langs)
+    },
+
+    baseData () {
+      return {title: '', picture: null, date: {}, event: {}, tags: [], langs: []}
+    },
+
+    baseDataLang (language) {
+      return {title: '', language}
+    }
+  }
 }

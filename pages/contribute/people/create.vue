@@ -9,7 +9,7 @@
           {{ $t('word.create') }}
         </template>
       </admin-header>
-      <model-form v-model="data" :errors="errors" delete-model="people-lang" @add="addLang" @submit="submit">
+      <model-form v-model="data" :errors="errors" :delete-model="linkDeleteLang" @add="addLang" @submit="submit">
         <template #head>
           <form-text v-model="data.name" :field="modelField.name" :errors="errors.name" />
           <div class="flex flex-wrap">

@@ -1,5 +1,10 @@
+import { setObjectKeysValue } from "~/lib/utils"
+import baseModel from "~/mixins/model/base"
 
 export default {
+
+  mixins: [baseModel],
+
   data () {
     return {
       model: {
@@ -31,6 +36,36 @@ export default {
           }
         }
       },
+      errors: setObjectKeysValue(this.baseData(), []),
+      pathList: {name: 'contribute-tag'},
+      pathCreate: {name: 'contribute-tag-create'},
+      linkDeleteLang: "tag-lang"
     }
   },
+
+  methods: {
+    pathDetail (id) {
+      return {name: 'contribute-tag-id', params: {id}}
+    },
+    pathEdit (id) {
+      return {name: 'contribute-tag-edit-id', params: {id}}
+    },
+    getData(dataValue) {
+      return dataValue
+    },
+
+    assignError (data) {
+      /* add error after request */
+        data.name && (this.errors.name = data.name)
+        data.langs && (this.errors.langs = data.langs)
+    },
+
+    baseData () {
+      return {name: '', langs: []}
+    },
+
+    baseDataLang (language) {
+      return {name: '', language}
+    }
+  }
 }

@@ -5,11 +5,16 @@
         <template #breadcrumbs>
           {{ model.label }}
         </template>
+        <template #button>
+          <action-create :to="pathCreate">
+            {{ $t('word.create') }}
+          </action-create>
+        </template>
       </admin-header>
       <div class="w-full space-y-4">
         <lazy-admin-table :length="objectlength" @pagination="setPagination">
           <template #header>
-            <admin-table-header v-model="searchValue" :title="$t('tools.list')" @search="refresh"/>
+            <admin-table-header v-model="searchValue" :title="$t('word.list')" @search="refresh"/>
           </template>
           <template #thead>
               <th> id </th>
@@ -20,9 +25,9 @@
             <tr v-for="(obj, idx) in object" :key="idx">
               <td>{{ obj.id }}</td>
               <td>{{ obj.name }}</td>
-              <td>
-                <lazy-action-detail :id="obj.id" :model="model.name" />
-                <lazy-action-edit  :id="obj.id" :model="model.name" />
+              <td class="space-x-1">
+                <lazy-action-detail :to="pathDetail(obj.id)" />
+                <lazy-action-edit :to="pathEdit(obj.id)" />
                 <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
@@ -30,7 +35,7 @@
         </lazy-admin-table>
         <lazy-admin-table :length="objectlengthLang" @pagination="setLangPagination">
           <template #header>
-            <admin-table-header v-model="searchValueLang" :title="$t('utils.need-translation')" @search="refreshLang"/>
+            <admin-table-header v-model="searchValueLang" :title="$t('help.need-translation')" @search="refreshLang"/>
           </template>
           <template #thead>
               <th> id </th>
@@ -43,11 +48,10 @@
               <td>{{ obj.id }}</td>
               <td>{{ obj.name }}</td>
               <td>{{ obj.not_available_languages.join(", ") }}</td>
-              <td>
-                <lazy-action-detail :id="obj.id" :model="model.name" />
-                <lazy-action-edit  :id="obj.id" :model="model.name" />
-                <lazy-action-delete v-if="$auth.hasScope('staff')"
- @click="setDeleted(obj)" />
+              <td class="inline-flex space-x-2">
+                <lazy-action-detail :to="pathDetail(obj.id)" />
+                <lazy-action-edit :to="pathEdit(obj.id)" />
+                <lazy-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
             </tr>
           </template>
@@ -88,5 +92,6 @@ export default {
       return {object: [], objectlength: 0, objectLang: [], objectlengthLang: 0}
     }
   },
+
 }
 </script>

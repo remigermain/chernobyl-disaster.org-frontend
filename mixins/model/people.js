@@ -66,6 +66,7 @@ export default {
       errors: setObjectKeysValue(this.baseData(), []),
       pathList: {name: 'contribute-people'},
       pathCreate: {name: 'contribute-people-create'},
+      linkDeleteLang: "people-lang"
     }
   },
 
@@ -105,7 +106,7 @@ export default {
         data.death && (this.errors.death = data.death)
         data.profil && (this.errors.profil = data.profil)
         data.wikipedia && (this.errors.wikipedia = data.wikipedia)
-        data.tags && (this.errors.tags = data.tags.reduce((o, x) => x.name && [...o, ...x.name] || o, []))
+        data.tags && (this.errors.tags = data.tags)
         data.langs && (this.errors.langs = data.langs)
     },
 

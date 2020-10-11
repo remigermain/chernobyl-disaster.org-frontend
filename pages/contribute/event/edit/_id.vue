@@ -9,7 +9,7 @@
           {{ $t('word.update') }}
         </template>
       </admin-header>
-      <model-form v-model="object" :errors="errors" delete-model="event-lang" @add="addLang" @submit="submit">
+      <model-form v-model="object" :errors="errors" :delete-model="linkDeleteLang" @add="addLang" @submit="submit">
         <template #head>
           <form-text v-model="object.title" :field="modelField.title" :errors="errors.title" />
           <div class="w-full flex flex-wrap justify-around">
