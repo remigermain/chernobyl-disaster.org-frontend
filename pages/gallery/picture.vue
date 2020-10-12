@@ -159,7 +159,8 @@ export default {
   overflow: hidden;
   &.skeleton {
     background-clip: content-box;
-    @apply animate-pulse bg-gray-400
+    @apply animate-pulse;
+    @apply bg-gray-400;
   }
   &:not(.skeleton) {
     transition: transform .4s, width 1s, height  1s;

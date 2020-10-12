@@ -1,13 +1,13 @@
 <template>
-  <div class="grid-picture" @scroll="scroll">
+  <div class="grid-video" @scroll="scroll">
     <div class="flex w-full flex-wrap justify-around">
-      <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
-      <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
+      <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="video-item skeleton" />
+      <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="video-item skeleton" @visible="nextPage" />
 
       <gallery-video v-for="el in object" :key="el.id" />
 
-      <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
-      <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
+      <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="video-item skeleton" @visible="nextPage" />
+      <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="video-item skeleton" />
     </div>
     <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
       {{ this.$t("word.empty") }}
@@ -79,25 +79,26 @@ export default {
 
 
 <style lang="scss">
-.grid-picture {
+.grid-video {
   width: 100%;
   overflow: hidden scroll;
 }
 
 @media screen and (max-width: 840px) {
-  .grid-picture{
+  .grid-video{
     grid-area: 1 / 1 / 1 / 2;
   }
 }
 
-.picture-item {
+.video-item {
   width: 220px;
   height: 140px;
   padding: 5px;
   overflow: hidden;
   &.skeleton {
     background-clip: content-box;
-    @apply animate-pulse bg-gray-400
+    @apply animate-pulse;
+    @apply bg-gray-400;
   }
   &:not(.skeleton) {
     transition: transform .4s, width 1s, height  1s;
@@ -110,28 +111,21 @@ export default {
 }
 
 @media screen and (max-width: 1250px){
-  .picture-item {
+  .video-item {
     width: 25%;
   }
 }
 
 @media screen and (max-width: 650px){
-  .picture-item {
+  .video-item {
     width: 50%;
   }
 }
 
 @media screen and (max-width: 470px){
-  .picture-item {
+  .video-item {
     width: 100%;
   }
 }
 
-.img-enter-active, .img-leave-active {
-  transition: all 1s;
-}
-.img-enter, .img-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
 </style>

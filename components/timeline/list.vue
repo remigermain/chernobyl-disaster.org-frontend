@@ -7,9 +7,10 @@
             <time :datetime="obj.date.date.getFullYear()" class="text-3xl">
               {{ obj.date.date.getFullYear() }}
             </time>
-            <time :datetime="getDate(obj.date.date)" class="text-md italic text-gray-700 dark:text-gray-400">
-              {{ getDate(obj.date.date) }}
-            </time>
+            {{ getDate(obj.date.date) }}
+            <!-- <time :datetime="getDate(obj.date.date, $i18n.locale)" class="text-md italic text-gray-700 dark:text-gray-400">
+              {{ getDate(obj.date.date, $i18n.locale) }} -->
+            <!-- </time> -->
           </header>
           <section class="timeline-item mr-1">
             <nuxt-link v-for="element in obj.list"
@@ -86,7 +87,6 @@ export default {
   },
 
   computed: {
-    getDate,
     hasNext () {
       return this.object.indexOf(this.current) + 1 < this.object.length
     },
@@ -126,6 +126,7 @@ export default {
   },
 
   methods: {
+    getDate,
     toogleActive () {
       this.active = !this.active
     },

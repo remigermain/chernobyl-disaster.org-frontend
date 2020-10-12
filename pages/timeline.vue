@@ -8,6 +8,7 @@
 <script>
 import { timelineElement } from "~/lib/timeline"
 import { sanitizeHtml, removeHtml } from "~/lib/sanitize"
+import { convertImageUrl } from "~/lib/contribute"
 
 export default {
   name: "Timeline",
@@ -28,11 +29,15 @@ export default {
         }
         // change date string to Date object
         response.data.forEach(el => {
+          // convert to Date Object
           el.date.date = new Date(el.date.date)
+          // sanitize html
           el.langs.forEach(obj => {
             obj.description = sanitizeHtml(obj.description)
             obj._description = removeHtml(obj.description) // for meta
           })
+          // convert picture
+          el.pictures.forEach(pic => { convertImageUrl(pic.picture, app.$media) })
           return el
         })
         store.commit("timeline/EVENTS", response.data)
