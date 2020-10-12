@@ -1,19 +1,19 @@
 <template>
   <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2">
     <h1 class="font-bold text-gray-900 text-2xl">
-      {{ $t('auth.new-password') }}
+      {{ $t('authentication.new-password') }}
     </h1>
     <span class="text-sm text-gray-700 dark:text-gray-200">
-      {{ $t('utils.or') }}
-      <nuxt-link :to="localePath({name : 'auth-login'})" class="text-md font-semibold hover:text-indigo-500 text-indigo-600" :title="$t('auth.login')">
-        {{ $t('auth.login') }}
+      {{ $t('word.or') }}
+      <nuxt-link :to="localePath({name : 'auth-login'})" class="text-md font-semibold hover:text-indigo-500 text-indigo-600" :title="$t('authentication.login')">
+        {{ $t('authentication.login') }}
       </nuxt-link>
     </span>
     <form class="my-4 w-3/4 min-min-w-max-content space-y-2" @submit.prevent="submit">
       <field-password v-model="data.new_password1" :field="field.new_password1" :errors="errors.new_password1" />
       <field-password v-model="data.new_password2" :field="field.new_password2" :errors="errors.new_password2" />
       <field-submit class="w-full">
-        {{ $t('auth.change-password') }}
+        {{ $t('authentication.change-password') }}
       </field-submit>
     </form>
   </section>
@@ -48,11 +48,11 @@ export default {
       },
       field: {
         new_password1: {
-          label: this.$t("auth.password"),
+          label: this.$t("authentication.password"),
           name: "new_password1",
         },
         new_password2: {
-          label: this.$t("auth.comfirm-password"),
+          label: this.$t("authentication.comfirm-password"),
           name: "new_password2",
         }
       }
@@ -88,7 +88,7 @@ export default {
           }
           // reset value
           setObjectKeysValue(this.data, "")
-          this.i18nToast.success(this.$t("success.password-changed")).goAway(5000)
+          this.i18nToast.success(this.$t("success-message.password-changed")).goAway(5000)
           this.$router.push(this.localePath({name: "auth-login"}))
         })
         .catch(error => {

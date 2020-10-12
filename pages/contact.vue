@@ -1,16 +1,20 @@
 <template>
   <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
     <p class="font-bold text-gray-900 text-2xl capitalize">
-      {{ $t('utils.contact') }}
+      {{ $t('word.contact') }}
     </p>
     <p class="text-sm text-gray-900 w-2/4 p-2 italic text-opacity-50 leading-3 bg-gray-300 rounded-sm -lg:w-1/3 -md:w-3/4">
-      {{ $t('pages.contact.description') }}
+      {{ $t('description.contact') }}
     </p>
     <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
       <field-email v-model="data.email" :field="email" :errors="errors.email" />
-      <field-textarea v-model="data.message" :field="message" :errors="errors.message" />
-      <field-submit>
-        {{ $t('utils.send') }}
+      <field-textarea v-model="data.message" :field="message" :errors="errors.message">
+          <template #icon>
+            <svg-icon name="note" />
+          </template>
+      </field-textarea>
+      <field-submit class="w-full">
+        {{ $t('word.send') }}
       </field-submit>
     </form>
   </section>
@@ -27,12 +31,12 @@ export default {
   data () {
     return {
       message: {
-        label: this.$t("admin.model.your-message"),
+        label: this.$t("text.your-message"),
         name: "message",
         required: true,
       },
       email: {
-        label: this.$t("auth.email"),
+        label: this.$t("authentication.email"),
         name: "email",
         required: true,
       },
@@ -48,8 +52,8 @@ export default {
   },
 
   head () {
-    const title = this.$t("pages.contact.title")
-    const description = this.$t("pages.contact.description")
+    const title = this.$t("menu.contact")
+    const description = this.$t("description.contact")
     return {
       title,
       meta: [
@@ -77,7 +81,7 @@ export default {
           if (response.status!==201) {
             throw new Error("error-server")
           }
-          this.i18nToast.success(this.$t("success.contact"))
+          this.i18nToast.success(this.$t("success-message.contact"))
           this.data = {
             email: "",
             message: ""

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.name" :description="$t('help.tag.global-description')">
+      <admin-utils-header :title="model.name" :description="$t('description.tag')">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -10,9 +10,7 @@
         </template>
         <template #button>
           <div class="inline-flex space-x-2">
-            <admin-action-report @click="activeModalReport = true">
-              {{ $t('word.report') }}
-            </admin-action-report>
+            <admin-action-report @click="activeModalReport = true" />
             <admin-action-edit :to="pathEdit(object.id)" />
             <admin-action-create :to="pathCreate" />
             <admin-action-delete v-if="$auth.hasScope('staff')" :to="pathCreate" @click="setDeleted(object)" />

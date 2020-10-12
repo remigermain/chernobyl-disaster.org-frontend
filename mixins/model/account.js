@@ -22,13 +22,13 @@ export default {
           required: true,
         },
         show_help: {
-          label: this.$t("message.show-help"),
-          help: this.$t("help.account.show-help"),
+          label: this.$t("text.show-help"),
+          help: this.$t("help-account.show-help"),
           name: "show_help",
         },
         show_admin: {
-          label: this.$t("message.show-admin"),
-          help: this.$t("help.account.show-admin"),
+          label: this.$t("text.show-admin"),
+          help: this.$t("help-account.show-admin"),
           name: "show_admin",
         },
       },

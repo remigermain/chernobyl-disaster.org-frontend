@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-col space-y-2">
     <lazy-contribute-breadcrumb>
-      {{ $t('admin.label.account') }}
+      {{ $t('word.account') }}
     </lazy-contribute-breadcrumb>
     <h1 class="text-3xl capitalize self-start">
-      {{ $t('admin.label.account') }}
+      {{ $t('word.account') }}
     </h1>
     <div class="flex justify-around flex-wrap account shadow-md border rounded-md dark:bg-gray-800 dark:border-none">
       <div class="-sm:w-full py-4 rounded password">
         <h2 class="text-xl text-center capitalize">
-          {{ $t('account.change-password') }}
+          {{ $t('text.change-password') }}
         </h2>
         <form class="shadow-sm p-4 space-y-4" @submit.prevent="submitPassword">
           <field-password v-model="data.old_password" :field="field.old_password" :errors="errors.old_password" />
@@ -17,7 +17,7 @@
           <field-password v-model="data.new_password2" :field="field.new_password2" :errors="errors.new_password2" />
           <div class="flex justify-end w-full">
             <field-submit class="w-min-content">
-              {{ $t('account.change-password') }}
+              {{ $t('text.change-password') }}
             </field-submit>
           </div>
         </form>
@@ -25,14 +25,14 @@
       <div class="-sm:w-full flex flex-col space-y-2">
         <div class="-sm:w-full py-4 rounded password">
           <h2 class="text-xl text-center capitalize">
-            {{ $t('account.change-settings') }}
+            {{ $t('text.change-settings') }}
           </h2>
           <form class="p-4 rounded space-y-2" @submit.prevent="submitSettings">
             <field-checkbox v-model="data.show_admin" :field="modelField.show_admin" :errors="errors.show_admin" />
             <field-checkbox v-model="data.show_help" :field="modelField.show_help" :errors="errors.show_help" />
             <div class="flex justify-end w-full">
               <field-submit class="w-min-content">
-                {{ $t('utils.update') }}
+                {{ $t('word.update') }}
               </field-submit>
             </div>
           </form>
@@ -43,13 +43,13 @@
       <div class="rounded">
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-gray-800">
           <div class="flex items-center">
-            <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 hover:bg-red-200 transition-colors duration-300
-                        sm:mx-0 sm:h-10 sm:w-10 cursor-pointer group" @click="active = true">
+            <div class="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 hover:bg-red-200 transition-colors duration-300
+                        cursor-pointer group" @click="active = true">
               <svg-icon name="x" class="h-6 w-6 text-red-600 group-hover:scale-125 transform duration-300 transition-transform" />
             </div>
-            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <div class="mt-3 text-center">
               <h3 class="text-lg leading-6 font-medium text-gray-900 text-opacity-75 dark:text-gray-400">
-                {{ $t('auth.delete-account') }}
+                {{ $t('authentication.delete-account') }}
               </h3>
             </div>
           </div>
@@ -63,7 +63,7 @@
         </div>
         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
           <h3 class="text-lg leading-6 font-medium text-gray-900dark:text-gray-400 ">
-            {{ $t('auth.delete-account-description') }}
+            {{ $t('message.delete-account-description') }}
           </h3>
         </div>
       </template>
@@ -74,7 +74,7 @@
           focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                   @click.prevent="submitDelete"
           >
-            {{ $t('utils.delete') }}
+            {{ $t('word.delete') }}
           </button>
         </span>
       </template>
@@ -113,15 +113,15 @@ export default {
       },
       field: {
         old_password: {
-          label: this.$t("auth.old-password"),
+          label: this.$t("authentication.old-password"),
           name: "old_password",
         },
         new_password1: {
-          label: this.$t("auth.new-password"),
+          label: this.$t("authentication.new-password"),
           name: "new_password1",
         },
         new_password2: {
-          label: this.$t("auth.comfirm-new-password"),
+          label: this.$t("text.comfirm-new-password"),
           name: "new_password2",
         }
       }
@@ -170,7 +170,7 @@ export default {
           if (response.status !== 200) {
             throw new Error("error-server")
           }
-          this.i18nToast.success(this.$t('success.password-changed')).goAway(4000)
+          this.i18nToast.success(this.$t('success-message.password-changed')).goAway(4000)
         })
         .catch(error => {
           this.responseError(error)
@@ -200,7 +200,7 @@ export default {
           if (response.status !== 200 ) {
             throw new Error("error-server")
           }
-          this.i18nToast.success(this.$t('success.update')).goAway(4000)
+          this.i18nToast.success(this.$t('success-message.update')).goAway(4000)
         })
         .catch(error => {
           this.responseError(error)
@@ -221,7 +221,7 @@ export default {
           if (response.status !== 200) {
             throw new Error("error-server")
           }
-          this.i18nToast.success(this.$t("success-account"))
+          this.i18nToast.success(this.$t("success-message.account-delete"))
           this.$auth.logout()
           this.$router.push(this.localePath({ name: "home" }))
         })

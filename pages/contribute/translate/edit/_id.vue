@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.name" :description="$t('help.tag.global-description')">
+      <admin-utils-header :title="model.name" :description="$t('description.tag')">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -12,6 +12,7 @@
       <div class="grid-translate">
         <contribute-translate-navbar :object="object" @change="setCurrent" />
         <div class="flex flex-col p-2 space-y-2">
+
           <div v-for="obj in children" :key="obj.id"
                class="border-t-4 border-indigo-700 dark:border-indigo-600 rounded-lg space-y-4  dark:bg-gray-800"
                :class="{'dark:hover:bg-gray-700': currentActiveId != obj.id}"
@@ -59,7 +60,8 @@ export default {
           if (!object[keys[0]]) {
             object[keys[0]] = {
               children: [],
-              label: keys[0]
+              label: keys[0],
+              id: e.id
             }
           }
           e.isUnCompleted = !e.langs.find(x => x.language === params.id)

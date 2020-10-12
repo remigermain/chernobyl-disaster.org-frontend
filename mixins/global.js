@@ -6,7 +6,7 @@ export default {
     i18nToast () {
       const close = {
         action: {
-          text: this.$t("utils.close"),
+          text: this.$t("word.close"),
           onClick: (e, toast) => {
             toast.goAway(0)
           }
@@ -48,7 +48,7 @@ export default {
       // return first langs
       if (obj.langs.length > 0) return obj.langs[0][key]
 
-      return this.$t("errors.language")
+      return ""
     },
     responseError (error) {
       /*
@@ -60,9 +60,9 @@ export default {
       return new Promise(resolve => {
         /* if error has not response and data , its a error from server */
         if (!error.response || !error.response.data || error.response.status >= 500) {
-          this.i18nToast.error(this.$t("errors.server")).goAway(10000)
+          this.i18nToast.error(this.$t("error-message.server")).goAway(10000)
         } else if (this.$nuxt.isOffline) {
-          this.i18nToast.error(this.$t("errors.network")).goAway(10000)
+          this.i18nToast.error(this.$t("error-message.network")).goAway(10000)
         } else {
           const data = error.response.data
 
@@ -72,7 +72,7 @@ export default {
           }, 0)
 
           if (haveError > 0) {
-            this.i18nToast.error(this.$t('errors.error-in-form')).goAway(10000)
+            this.i18nToast.error(this.$t('error-message.error-in-the-form')).goAway(10000)
           }
           // detail
           data.detail && this.i18nToast.error(data.detail).goAway(10000)

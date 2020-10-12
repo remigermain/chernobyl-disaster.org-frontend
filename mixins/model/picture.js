@@ -10,58 +10,58 @@ export default {
     return {
       model: {
         name: "picture",
-        label: this.$t("admin.label.picture"),
+        label: this.$t("menu.picture"),
       },
       modelField: {
         title: {
-          label: this.$t("admin.model.title"),
+          label: this.$t("word.title"),
           name: "title",
           required: true,
           max_length: 50,
-          help: this.$t("help.picture.title")
+          help: this.$t("help-picture.title")
         },
         event: {
-          label: this.$t("admin.model.event"),
+          label: this.$t("word.event"),
           name: "event",
           required: false,
           choices: this.$store.getters["model/events"],
-          help: this.$t("help.event.global-description"),
+          help: this.$t("description.event"),
         },
         picture: {
-          label: this.$t("admin.model.picture"),
+          label: this.$t("word.picture"),
           name: "picture",
           required: true,
-          help: this.$t("help.picture.picture")
+          help: this.$t("help-picture.picture")
         },
         date: {
-          label: this.$t("admin.model.date"),
+          label: this.$t("word.date"),
           name: "date",
           required: false,
-          help: this.$t("help.picture.date"),
+          help: this.$t("help-picture.date"),
         },
         tags: {
-          label: this.$t("admin.model.tags"),
+          label: this.$t("word.tags"),
           name: "tags",
           model: "tag",
           required: false,
           max_length: 50,
           choices: this.$store.getters["model/tags"],
-          help: this.$t("help.tag.global-description")
+          help: this.$t("description.tag")
         },
         langs: {
           title: {
-            label: this.$t("admin.model.title"),
+            label: this.$t("word.title"),
             name: "title",
             max_length: 50,
             required: true,
-            help: this.$t("help.picture.langs-title")
+            help: this.$t("help-picture.langs-title")
           },
           language: {
-            label: this.$t("utils.language"),
+            label: this.$t("word.language"),
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("help.language.global-description"),
+            help: this.$t("description.language"),
           }
         }
       },

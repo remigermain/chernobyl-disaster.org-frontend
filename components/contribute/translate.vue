@@ -22,6 +22,7 @@
               <field-select v-model="data.language" :field="modelField.language" :errors="errors.language"/>
               <field-checkbox v-model="data.delete" :field="modelField.delete" :errors="errors.delete"/>
               <field-checkbox v-model="data.merge" :field="modelField.merge" :errors="errors.merge"/>
+              <field-checkbox v-model="data.parent" :field="modelField.parent" :errors="errors.parent"/>
             </div>
             <field-file v-model="data.file" :field="modelField.file" :errors="errors.file" class="w-2/4"/>
             <field-submit class="w-full">
@@ -60,6 +61,9 @@ export default {
         file: {
           label: 'file',
           required: true
+        },
+        parent: {
+          label: 'parent',
         }
       },
       data: {
@@ -67,12 +71,14 @@ export default {
         file: null,
         delete: true,
         merge: false,
+        parent: true,
       },
       errors: {
         language:  [],
         file: [],
         delete: [],
-        merge: []
+        merge: [],
+        parent: []
       }
     }
   },
@@ -83,8 +89,10 @@ export default {
       const form = new FormData()
       form.append('language', this.data.language)
       form.append('file', this.data.file.obj)
-      form.append('delete', this.data.delete)
-      form.append('merge', this.data.merge)
+      // convert to boolean
+      form.append('delete', !!this.data.delete)
+      form.append('merge', !!this.data.merge)
+      form.append('parent', !!this.data.parent)
 
       this.$axios.post("populate/translate/upload", form)
         .then(response => {
@@ -92,13 +100,15 @@ export default {
             throw new Error("error-server")
           }
           this.i18nToast.info(
-            `${this.$t("word.delete")}: ${response.data.removed}
-              <br>
-              ${this.$t("word.create")}: ${response.data.created}
-              <br>
-               ${this.$t("word.create")}-${this.$t("word.translate")}: ${response.data.createdLang}
-              <br>
-               ${this.$t("word.update")}-${this.$t("word.translate")}: ${response.data.update}
+            `removed: ${response.data.removed}
+            <br>
+             create: ${response.data.created}
+            <br>
+            create parent key: ${response.data.createParentKeys}
+            <br>
+             create translate: ${response.data.createdLang}
+            <br>
+             update translate ${response.data.update}
             `
           ).goAway(8000)
           this.$nuxt.refresh()
@@ -110,6 +120,7 @@ export default {
               data.language && (this.errors.language = data.language)
               data.merge && (this.errors.merge = data.merge)
               data.delete && (this.errors.delete = data.delete)
+              data.parent && (this.errors.parent = data.parent)
             })
         })
         .finally(() => { this.$store.commit("ON_LOADING", true) })

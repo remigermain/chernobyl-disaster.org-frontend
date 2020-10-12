@@ -5,22 +5,22 @@
         {{ position }}
       </div>
       <div class="toolbar-right">
-        <nuxt-link v-if="$auth.loggedIn && toDetail" :to="localePath(toDetail)" class="toolbar-item" :title="$t('utils.edit')">
+        <nuxt-link v-if="$auth.loggedIn && toDetail" :to="localePath(toDetail)" class="toolbar-item" :title="$t('word.edit')">
           <svg-icon name="settings" class="w-inherit h-inherit" />
         </nuxt-link>
-        <svg-icon name="x" class="toolbar-item" :aria-label="$t('utils.close')" @click="$emit('close')" />
+        <svg-icon name="x" class="toolbar-item" :aria-label="$t('word.close')" @click="$emit('close')" />
       </div>
     </div>
     <svg-icon v-show="hasPrev"
               name="arrow-left"
               class="toolbar-item toolbar-slide-prev"
-              :aria-label="$t('utils.prev')"
+              :aria-label="$t('word.previous')"
               @click="$emit('prev')"
     />
     <svg-icon v-show="hasNext"
               name="arrow-right"
               class="toolbar-item toolbar-slide-next"
-              :aria-label="$t('utils.next')"
+              :aria-label="$t('word.next')"
               @click="$emit('next')"
     />
     <div class="picture-item-container">

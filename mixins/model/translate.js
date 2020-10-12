@@ -3,17 +3,17 @@ export default {
     return {
       model: {
         name: "translate",
-        label: this.$t("admin.label.translate"),
+        label: this.$t("menu.translate"),
       },
       modelField: {
         language: {
-          label: this.$t("utils.language"),
+          label: this.$t("word.language"),
           name: "language",
           choices: this.$store.getters["model/langs"],
-          help: this.$t("help.translate.global-description"),
+          help: this.$t("description.translate"),
         },
         ratio: {
-          label: this.$t("utils.percentage"),
+          label: this.$t("word.percentage"),
           name: "code",
           choices: this.$store.getters["model/langs"],
         }

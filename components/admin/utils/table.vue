@@ -14,7 +14,7 @@
     <div class="mt-2 pb-2 text-center">
       <admin-utils-pagination v-show="pagination" :length="length" @change="$emit('pagination', $event)" />
       <span class="text-md italic float-right opacity-75">
-        {{ $t('utils.total') }} : {{ length }}
+        {{ $t('word.total') }} : {{ length }}
       </span>
     </div>
   </div>

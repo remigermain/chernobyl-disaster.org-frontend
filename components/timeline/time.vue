@@ -4,19 +4,19 @@
       <div v-if="date.have_hour" class="flex flex-col items min-size">
         <span class="time text-3xl font-bold dark:text-gray-500">{{ hours }}</span>
         <span class="italic uppercase text-gray-600 text-xs">
-          {{ $t("utils.hours") }}
+          {{ $t("word.hours") }}
         </span>
       </div>
       <div v-if="date.have_minute" class="flex flex-col items min-size">
         <span class="time text-3xl font-bold dark:text-gray-500">{{ minutes }}</span>
         <span class="italic uppercase text-gray-600 text-xs">
-          {{ $t("utils.minutes") }}
+          {{ $t("word.minutes") }}
         </span>
       </div>
       <div v-if="date.have_second" class="flex flex-col items min-size">
         <span class="time text-3xl font-bold dark:text-gray-500">{{ seconds }}</span>
         <span class="italic uppercase text-gray-600 text-xs">
-          {{ $t("utils.seconds") }}
+          {{ $t("word.seconds") }}
         </span>
       </div>
     </time>

@@ -10,10 +10,10 @@
       </div>
       <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
         <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4">
-          {{ $t('utils.best-contributor') }}
+          {{ $t('text.best-contributor') }}
         </h2>
         <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4 -md:order-1">
-          {{ $t('utils.best-contributor-week') }}
+          {{ $t('text.best-contributor-week') }}
         </h2>
         <contribute-ranking :object="object.total" />
         <contribute-ranking :object="object.week" class="-md:order-2" />
@@ -22,18 +22,18 @@
       <div class="w-full">
         <lazy-admin-utils-table :length="object.results.length" @pagination="setPagination">
           <template #thead>
-              <th>{{ $t("tools.creator") }}</th>
-              <th>{{ $t("tools.date") }}</th>
-              <th>{{ $t("admin.model.title") }}</th>
-              <th>{{ $t("tools.uuid") }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("word.creator") }}</th>
+              <th>{{ $t("word.date") }}</th>
+              <th>{{ $t("word.title") }}</th>
+              <th>{{ $t("word.identifier") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in list" :key="idx">
               <td>{{ obj.creator }}</td>
               <td>{{ getDateMini(obj.date) }}</td>
               <td>{{ obj.display }}</td>
-              <td>{{ $t(`admin.label.${obj.uuid}`) }}</td>
+              <td>{{ $t(`name.${obj.uuid}`) }}</td>
               <td class="inline-flex space-x-2">
                 <lazy-admin-action-detail v-if="obj.detail" :to="pathDetail(obj)" />
                 <lazy-admin-action-edit :to="pathEdit(obj)" />

@@ -87,7 +87,7 @@ export default {
         if (response.status !== status ) {
           throw new Error("error-server")
         }
-        this.i18nToast.success(this.$t("success.create")).goAway(4000)
+        this.i18nToast.success(this.$t("success-message.create")).goAway(4000)
         // redirect after
         this.afterRequest(event.submitter.dataset.goTo, response.data.id)
       })

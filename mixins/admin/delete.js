@@ -29,11 +29,10 @@ export default {
           if (response.status !== 204) {
             throw new Error("server-error")
           }
-          this.i18nToast.success(this.$t('success.delete'))
+          this.i18nToast.success(this.$t('success-message.delete'))
           this.haveDeletedObject()
-          // this.$nuxt.refresh()
         })
-        .catch(error => { this.responseError(error) })
+        .catch(this.responseError)
         .finally(() => { this.$store.commit("ON_LOADING", false) })
     },
 
@@ -47,11 +46,11 @@ export default {
           if (response.status !== 204) {
             throw new Error("errer-server")
           }
-          this.i18nToast.success(this.$t('message.delete'))
+          this.i18nToast.success(this.$t('success-message.delete'))
           // delete object
           this.$delete(object.langs, idx)
         })
-        .catch(error => { this.responseError(error) })
+        .catch(this.responseError)
         .finally(() => this.$store.commit("ON_LOADING"))
     },
 

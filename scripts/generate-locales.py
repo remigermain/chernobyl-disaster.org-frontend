@@ -6,10 +6,11 @@ import argparse
 # path des dossiers a parser
 PATH = [
     './pages',
-    './components',
-    './mixins',
     './plugins',
-    './layouts'
+    './layouts',
+
+    './mixins',
+    './components',
 ]
 
 PATH_LOCALE = "./config/i18n.js"

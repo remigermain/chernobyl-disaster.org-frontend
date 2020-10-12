@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.label" :description="$t('help.picture.global-description')" :to="{name: 'contribute-picture-create'}">
+      <admin-utils-header :title="model.label" :description="$t('description.picture')" :to="{name: 'contribute-picture-create'}">
         <template #breadcrumbs>
           {{ model.label }}
         </template>
@@ -20,14 +20,14 @@
               <th> id </th>
               <th>{{ modelField.title.label }}</th>
               <th>{{ modelField.event.label }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in object" :key="idx">
               <td>{{ obj.id }}</td>
               <td>{{ obj.title }}</td>
               <td v-if="obj.event">{{ obj.event }}</td>
-              <td v-else class="text-gray-500 italic text-sm">{{ $t('utils.empty') }}</td>
+              <td v-else class="text-gray-500 italic text-sm">{{ $t('word.empty') }}</td>
               <td class="space-x-1">
                 <lazy-admin-action-detail :to="pathDetail(obj.id)" />
                 <lazy-admin-action-edit :to="pathEdit(obj.id)" />
@@ -38,21 +38,21 @@
         </lazy-admin-utils-table>
         <lazy-admin-utils-table :length="objectlengthLang" @pagination="setLangPagination">
           <template #header>
-            <admin-utils-table-header v-model="searchValueLang" :title="$t('help.need-translation')" @search="refreshLang"/>
+            <admin-utils-table-header v-model="searchValueLang" :title="$t('text.need-translation')" @search="refreshLang"/>
           </template>
           <template #thead>
               <th> id </th>
               <th>{{ modelField.title.label }}</th>
               <th>{{ modelField.event.label }}</th>
-              <th>{{ $t("utils.need-translation") }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("text.need-translation") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in objectLang" :key="idx">
               <td>{{ obj.id }}</td>
               <td>{{ obj.title }}</td>
               <td v-if="obj.event">{{ obj.event }}</td>
-              <td v-else class="text-gray-700 italic text-sm">{{ $t('utils.empty') }}</td>
+              <td v-else class="text-gray-700 italic text-sm">{{ $t('word.empty') }}</td>
               <td>{{ obj.not_available_languages.join(", ") }}</td>
               <td class="inline-flex space-x-2">
                 <lazy-admin-action-detail :to="pathDetail(obj.id)" />

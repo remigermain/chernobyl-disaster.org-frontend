@@ -10,9 +10,14 @@
         </div>
         <transition name="opacity">
           {{ showHelp }}
-          <admin-utils-help v-show="showHelp" :field="{help: $t('help.report.global-description')}" :detail="false" />
+          <admin-utils-help v-show="showHelp" :field="{help: $t('description.report')}" :detail="false" />
         </transition>
-        <field-textarea v-model="message" :field="{label: 'report', required: true, help: 'erfer'}" :errors="errors.message" class="my-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg" />
+        <field-textarea v-model="message" :field="field" :errors="errors.message"
+                        class="my-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg">
+          <template #icon>
+            <svg-icon name="note" />
+          </template>
+        </field-textarea>
       </div>
     </template>
     <template #action>
@@ -24,7 +29,7 @@
               transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                   @click.prevent="submit"
           >
-            {{ $t('utils.send') }}
+            {{ $t('word.send') }}
           </button>
         </span>
     </template>
@@ -48,6 +53,11 @@ export default {
   data () {
     return {
       message: "",
+      field: {
+        label: this.$t('word.report'),
+        required: true,
+        help: this.$t('message.report')
+      },
       errors: {
         message: []
       },
@@ -71,7 +81,7 @@ export default {
             throw new Error("error-server")
           }
           this.message = ""
-          this.i18nToast.success(this.$t("success.report"))
+          this.i18nToast.success(this.$t("success-message.report"))
           this.$emit("close")
         })
         .catch(error => {

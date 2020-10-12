@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.label" :description="$t('help.tag.global-description')" :to="{name: 'contribute-tag-create'}">
+      <admin-utils-header :title="model.label" :description="$t('description.tag')" :to="{name: 'contribute-tag-create'}">
         <template #breadcrumbs>
           {{ model.label }}
         </template>
@@ -19,7 +19,7 @@
           <template #thead>
               <th> id </th>
               <th>{{ modelField.name.label }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in object" :key="idx">
@@ -35,13 +35,13 @@
         </lazy-admin-utils-table>
         <lazy-admin-utils-table :length="objectlengthLang" @pagination="setLangPagination">
           <template #header>
-            <admin-utils-table-header v-model="searchValueLang" :title="$t('help.need-translation')" @search="refreshLang"/>
+            <admin-utils-table-header v-model="searchValueLang" :title="$t('text.need-translation')" @search="refreshLang"/>
           </template>
           <template #thead>
               <th> id </th>
               <th>{{ modelField.name.label }}</th>
-              <th>{{ $t("utils.need-translation") }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("text.need-translation") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in objectLang" :key="idx">

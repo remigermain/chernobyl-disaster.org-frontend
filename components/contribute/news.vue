@@ -25,7 +25,7 @@
           {{ $t('word.total') }} : {{ newsLength }}
         </span>
       </div>
-      <div v-else class="shadow-md p-2 rounded-lg dark:bg-gray-700 text-center my-3">
+      <div v-else class="shadow-md p-2 rounded-lg dark:bg-gray-700 text-center my-3 italic">
         {{ $t('text.no-news-available') }}
       </div>
     </div>

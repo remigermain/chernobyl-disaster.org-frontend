@@ -4,7 +4,7 @@
     <div class="gallery-toolbar hide-scroolbar overflow-x-hidden" :class="{'active': active}">
       <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
-          {{ $t('utils.menu-medias') }}
+          {{ $t('menu.medias') }}
         </span>
         <span class="mr-6 text-right w-2/4">
           <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
@@ -12,33 +12,33 @@
       </div>
       <nav class="gallery-toolbar-desktop overflow-y-scroll  wrapper" :class="{'active': active}">
         <field-search v-model="search" :button="false" />
-        <label :name="$t('utils.change-sort-order')" class="wrapper">
-          <select v-model="ordering" class="form-select bg-gray-200 mt-2 text-center" :aria-label="$t('utils.sort-by')">
+        <label :name="$t('text.change-sort-order')" class="wrapper">
+          <select v-model="ordering" class="form-select bg-gray-200 mt-2 text-center" :aria-label="$t('word.sort-by')">
             <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
               {{ choice.label }}
             </option>
             <option selected value="">
-              {{ this.$t("utils.empty") }}
+              {{ this.$t("word.empty") }}
             </option>
           </select>
         </label>
         <button class="p-2 mx-2 h-10 rounded-md text-md text-white bg-indigo-600 hover:bg-indigo-700 text-center" @click="submit">
-          {{ $t('utils.search') }}
+          {{ $t('word.search') }}
         </button>
         <span class="border-b border-gray-500" />
         <div class="toolbar-menu">
           <nuxt-link  :to="localePath({name: 'gallery-picture'})" class="toolbar-link"
-                                :title="$t('utils.goto-gallery-picture')"
+                                :title="$t('text.goto-gallery-picture')"
           >
-            <svg-icon name="photo" class="w-6 h-6" role="img" :aria-label="$t('utils.picture')" />
+            <svg-icon name="photo" class="w-6 h-6" role="img" :aria-label="$t('menu.picture')" />
             <span class="gallery-toolbar-text">
               {{ $t('menu.picture') }}
             </span>
           </nuxt-link>
           <nuxt-link  :to="localePath({name: 'gallery-video'})" class="toolbar-link"
-                                :title="$t('utils.goto-gallery-video')"
+                                :title="$t('text.goto-gallery-video')"
           >
-            <svg-icon name="movie" class="w-6 h-6" role="img" :aria-label="$t('utils.video')" />
+            <svg-icon name="movie" class="w-6 h-6" role="img" :aria-label="$t('menu.video')" />
             <span class="gallery-toolbar-text">
               {{ $t('menu.video') }}
             </span>
@@ -79,14 +79,14 @@ export default {
       ordering: "",
       active: false,
       orderingChoices: [
-        {label: `${this.$t("utils.create")} - ${this.$t("tools.ascending")}`, value: "id"},
-        {label: `${this.$t("utils.create")} - ${this.$t("tools.descending")}`, value: "-id"},
-        {label: `${this.$t("tools.date")} - ${this.$t("tools.ascending")}`, value: "date"},
-        {label: `${this.$t("tools.date")} - ${this.$t("tools.descending")}`, value: "-date"},
-        {label: `${this.$t("tools.name")} - ${this.$t("tools.ascending")}`, value: "title"},
-        {label: `${this.$t("tools.name")} - ${this.$t("tools.descending")}`, value: "-title"},
-        {label: `${this.$t("admin.label.event")} - ${this.$t("tools.ascending")}`, value: "event__date"},
-        {label: `${this.$t("admin.label.event")} - ${this.$t("tools.descending")}`, value: "-event__date"},
+        {label: `${this.$t("word.create")} - ${this.$t("word.ascending")}`, value: "id"},
+        {label: `${this.$t("word.create")} - ${this.$t("word.descending")}`, value: "-id"},
+        {label: `${this.$t("word.date")} - ${this.$t("word.ascending")}`, value: "date"},
+        {label: `${this.$t("word.date")} - ${this.$t("word.descending")}`, value: "-date"},
+        {label: `${this.$t("word.name")} - ${this.$t("word.ascending")}`, value: "title"},
+        {label: `${this.$t("word.name")} - ${this.$t("word.descending")}`, value: "-title"},
+        {label: `${this.$t("menu.event")} - ${this.$t("word.ascending")}`, value: "event__date"},
+        {label: `${this.$t("menu.event")} - ${this.$t("word.descending")}`, value: "-event__date"},
       ]
     }
   },

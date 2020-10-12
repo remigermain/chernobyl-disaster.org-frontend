@@ -7,58 +7,58 @@ export default {
     return {
       model: {
         name: "video",
-        label: this.$t("admin.label.video"),
+        label: this.$t("menu.video"),
       },
       modelField: {
         title: {
-          label: this.$t("admin.model.title"),
+          label: this.$t("word.title"),
           name: "title",
           required: true,
           max_length: 50,
-          help: this.$t("help.video.title")
+          help: this.$t("help-video.title")
         },
         tags: {
-          label: this.$t("admin.model.tags"),
+          label: this.$t("word.tags"),
           name: "tags",
           model: "tag",
           required: false,
           choices: this.$store.getters["model/tags"],
-          help: this.$t("help.tag.global-description")
+          help: this.$t("description.tag")
         },
         event: {
-          label: this.$t("admin.model.event"),
+          label: this.$t("word.event"),
           name: "event",
           required: false,
           choices: this.$store.getters["model/events"],
-          help: this.$t("help.event.global-description"),
+          help: this.$t("description.event"),
         },
         video: {
-          label: this.$t("admin.model.video"),
+          label: this.$t("word.video"),
           name: "video",
           required: true,
-          help: this.$t("help.video.video")
+          help: this.$t("help-video.video")
         },
         date: {
-          label: this.$t("admin.model.date"),
+          label: this.$t("word.date"),
           name: "date",
           required: false,
           max_length: 50,
-          help: this.$t("help.video.date"),
+          help: this.$t("help-video.date"),
         },
         langs: {
           title: {
-            label: this.$t("admin.model.title"),
+            label: this.$t("word.title"),
             name: "title",
             max_length: 50,
             required: true,
-            help: this.$t("help.video.langs-title")
+            help: this.$t("help-video.langs-title")
           },
           language: {
-            label: this.$t("utils.language"),
+            label: this.$t("word.language"),
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("help.language.global-description")
+            help: this.$t("description.language")
           }
         }
       },

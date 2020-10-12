@@ -16,10 +16,10 @@ export default {
       searchValueLang: "",
       fields: {
         id: {
-          label: this.$t("utils.id"),
+          label: "id",
         },
         not_available_languages: {
-          label: this.$t("utils.need-translation"),
+          label: this.$t("text.need-translation"),
         }
       }
 

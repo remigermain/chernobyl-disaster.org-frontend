@@ -3,7 +3,7 @@
     <div :class="{'border-dashed border-2 border-gray-600 dashed-video': true}">
       <gallery-video v-if="valueModel" :link="valueModel" />
       <span v-else class="italic text-md text-gray-600 empty">
-        {{ $t('utils.empty') }}
+        {{ $t('word.empty') }}
       </span>
     </div>
     <admin-field-text v-model="valueModel" :field="field" :errors="errors" type="url" @input="$emit('input', $event)"/>

@@ -1,22 +1,17 @@
 <template>
-  <div class="grid-document" @scroll="scroll">
-    <gallery-infinite-loading ref="prevLoading" position="top" :completed="!hasPrevPage" @visible="prevPage">
-      <template #completed>
-        &nbsp;
-      </template>
-    </gallery-infinite-loading>
-    <div class="grid-video">
-      <div v-for="el in object" :key="el.id" class="video-item">
-        <iframe :src="convertVideoLink(el.video)" frameborder="0"
-                loading="lazy"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
-        />
-      </div>
+  <div class="grid-picture" @scroll="scroll">
+    <div class="flex w-full flex-wrap justify-around">
+      <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
+      <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
+
+      <gallery-video v-for="el in object" :key="el.id" />
+
+      <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
+      <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>
     <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
-      {{ this.$t("utils.empty") }}
+      {{ this.$t("word.empty") }}
     </span>
-    <gallery-infinite-loading ref="nextLoading" position="bottom" :completed="completed" @visible="nextPage" />
   </div>
 </template>
 
@@ -59,8 +54,8 @@ export default {
   },
 
   head () {
-    const title = this.$t("pages.video.title")
-    const description = this.$t("pages.video.description")
+    const title = this.$t("menu.video")
+    const description = this.$t("description.video")
     return {
       title,
       meta: [
@@ -82,48 +77,61 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
 
-.grid-document {
+<style lang="scss">
+.grid-picture {
   width: 100%;
   overflow: hidden scroll;
 }
 
-.grid-video {
-  display: grid;
-  width: 100%;
-  grid-template-columns: repeat(4, 1fr);
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
+@media screen and (max-width: 840px) {
+  .grid-picture{
+    grid-area: 1 / 1 / 1 / 2;
+  }
 }
 
-
-.video-item {
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
+.picture-item {
+  width: 220px;
+  height: 140px;
+  padding: 5px;
   overflow: hidden;
-  iframe {
-    width: inherit;
-    height: inherit;
+  &.skeleton {
+    background-clip: content-box;
+    @apply animate-pulse bg-gray-400
+  }
+  &:not(.skeleton) {
+    transition: transform .4s, width 1s, height  1s;
+    cursor: pointer;
+    object-fit: cover;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
-@media screen and (max-width: 1000px){
-  .grid-video {
-    grid-template-columns: repeat(3, 1fr);
+@media screen and (max-width: 1250px){
+  .picture-item {
+    width: 25%;
   }
 }
 
-@media screen and (max-width: 750px){
-  .grid-video {
-    grid-template-columns: repeat(2, 1fr);
+@media screen and (max-width: 650px){
+  .picture-item {
+    width: 50%;
   }
 }
 
-@media screen and (max-width: 750px){
-  .grid-video {
-    grid-template-columns: 1fr;
+@media screen and (max-width: 470px){
+  .picture-item {
+    width: 100%;
   }
+}
+
+.img-enter-active, .img-leave-active {
+  transition: all 1s;
+}
+.img-enter, .img-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

@@ -6,26 +6,26 @@
       <span class="bg-gray-700 dark:bg-gray-100" />
       <span class="bg-gray-700 dark:bg-gray-100" />
     </label>
-    <nav class="navbar-items relative" :class="{'active': active }" :role="$t('utils.navigation')" aria-label="$t('utils.site-navigation ')">
-      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('utils.goto-home')">
+    <nav class="navbar-items relative" :class="{'active': active }" :role="$t('word.navigation')" aria-label="$t('text.site-navigation ')">
+      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('text.goto-home')">
         {{ $t('menu.home') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link" :title="$t('utils.goto-timeline')">
+      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link" :title="$t('text.goto-timeline')">
         {{ $t('menu.timeline') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link" :title="$t('utils.goto-gallery')">
+      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link" :title="$t('text.goto-gallery')">
         {{ $t('menu.gallery') }}
       </nuxt-link>
-      <nuxt-link :to="localePath(contributeLink)" class="navbar-link" :title="$t('utils.goto-contribute')">
+      <nuxt-link :to="localePath(contributeLink)" class="navbar-link" :title="$t('text.goto-contribute')">
         {{ $t('menu.contribute') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('utils.goto-about')">
+      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('text.goto-about')">
         {{ $t('menu.about') }}
       </nuxt-link>
       <div class="absolute settings-child right-0 top-0 p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
         <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
           <svg-icon name="logout" />
-          {{ $t('auth.logout') }}
+          {{ $t('authentication.logout') }}
         </button>
         <div class="flex justify-around">
           <svg-icon name="sun"  class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-white text-gray-800"
@@ -37,7 +37,7 @@
         </div>
         <label for="lang" class="flex justify-center items-center flex-col gap-y-2">
           <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200">
-            {{ $t('utils.language') }}:
+            {{ $t('word.language') }}:
           </span>
           <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
             <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">

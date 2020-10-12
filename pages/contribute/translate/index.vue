@@ -16,7 +16,7 @@
           <template #thead>
               <th>{{ $t("word.language") }}</th>
               <th>{{ $t("word.ratio") }}</th>
-              <th>{{ $t("tools.action") }}</th>
+              <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in object" :key="idx">

@@ -10,56 +10,56 @@ export default {
     return {
       model: {
         name: "people",
-        label: this.$t("admin.label.people"),
+        label: this.$t("menu.people"),
       },
       modelField: {
         name: {
-          label: this.$t("admin.model.name"),
+          label: this.$t("word.name"),
           name: "name",
           required: true,
           max_length: 100,
-          help: this.$t("help.people.name")
+          help: this.$t("help-people.name")
         },
         born: {
-          label: this.$t("admin.model.born"),
+          label: this.$t("word.born"),
           name: "born",
           required: false,
-          help: this.$t("help.people.born"),
+          help: this.$t("help-people.born"),
         },
         death: {
-          label: this.$t("admin.model.death"),
+          label: this.$t("word.death"),
           name: "death",
           required: false,
-          help: this.$t("help.people.death"),
+          help: this.$t("help-people.death"),
         },
         profil: {
-          label: this.$t("admin.model.profil"),
+          label: this.$t("word.profil"),
           name: "profil",
           required: false,
-          help: this.$t("help.people.profil")
+          help: this.$t("help-people.profil")
         },
         tags: {
-          label: this.$t("admin.model.tags"),
+          label: this.$t("word.tags"),
           name: "tags",
           model: "tag",
           required: false,
           max_length: 50,
           choices: this.$store.getters["model/tags"],
-          help: this.$t("help.tag.global-description")
+          help: this.$t("description.tag")
         },
         langs: {
           biography: {
-            label: this.$t("admin.model.biography"),
+            label: this.$t("word.biography"),
             name: "biography",
             required: true,
-            help: this.$t("help.people.biography")
+            help: this.$t("help-people.biography")
           },
           language: {
-            label: this.$t("utils.language"),
+            label: this.$t("word.language"),
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("help.language.global-description")
+            help: this.$t("description.language")
           }
         }
       },

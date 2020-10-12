@@ -37,24 +37,24 @@
       <div class="w-full h-full flex justify-center bg-gray-900 rounded-b-md text-white overflow-hidden">
         <nuxt-link  :to="localePath({name: 'timeline-slug', params: {'slug': prevId}})"
                          class="w-2/4 inline-block h-full"
-                         :title="$t('utils.next-event')"
+                         :title="$t('text.previous-event')"
         >
           <svg-icon name="arrow-left" class="h-full w-full hover:text-gray-300 hover:-translate-x-2 transform transition-transform duration-400"
-                    :aria-label="$t('utils.next-event')"
+                    :aria-label="$t('text.previous-event')"
           />
         </nuxt-link>
         <nuxt-link  :to="localePath({name: 'timeline-slug', params: {'slug': nextId}})"
                          class="w-2/4 inline-block h-full"
-                         :title="$t('utils.next-event')"
+                         :title="$t('text.next-event')"
         >
           <svg-icon name="arrow-right" class="h-full w-full hover:text-gray-300 hover:translate-x-2 transform transition-transform duration-400"
-                    :aria-label="$t('utils.next-event')"
+                    :aria-label="$t('text.next-event')"
           />
         </nuxt-link>
       </div>
       <div class="icon-timeline w-6 h-12 bg-blue-800 text-gray-800 shadow-lg dark:text-gray-400"
            :class="{'active rounded-l-full': active, 'rounded-r-full': !active}"
-           :aria-label="$t('utils.open-menu')"
+           :aria-label="$t('text.open-menu')"
            @click="toogleActive"
       >
         <svg-icon name="arrow-right" class="w-8 text-white text-xl" />

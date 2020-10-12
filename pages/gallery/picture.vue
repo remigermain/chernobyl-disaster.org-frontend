@@ -18,7 +18,7 @@
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>
     <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
-      {{ this.$t("utils.empty") }}
+      {{ this.$t("word.empty") }}
     </span>
     <lazy-gallery-detail-picture v-if="current"
                                  :object="convertCurrent"
@@ -74,8 +74,8 @@ export default {
   },
 
   head () {
-    const title = this.$t("pages.picture.title")
-    const description = this.$t("pages.picture.description")
+    const title = this.$t("menu.picture")
+    const description = this.$t("description.picture")
     return {
       title,
       meta: [

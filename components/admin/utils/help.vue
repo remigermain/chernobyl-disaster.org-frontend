@@ -4,10 +4,10 @@
     <p class="whitespace-pre-line">{{ field.help }}</p>
     <span v-show="detail" class="flex justify-center mt-2 gap-x-4">
       <span class="italic font-medium ">
-        {{ $t('utils.required') }} :
+        {{ $t('word.required') }} :
       </span>
       <span class="text-gray-900">
-        {{ (field.required ? $t('utils.yes') : $t('utils.no')) }}
+        {{ (field.required ? $t('word.yes') : $t('word.no')) }}
       </span>
     </span>
   </div>

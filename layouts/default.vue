@@ -9,7 +9,7 @@
       </nuxt-link>
     </div>
     <navbar />
-    <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('utils.content')">
+    <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('word.content')">
       <nuxt v-if="!$slots.default" />
       <slot v-else />
     </section>

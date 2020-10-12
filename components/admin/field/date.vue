@@ -1,7 +1,7 @@
 <template>
   <admin-field-base :field="field" :errors="errors">
     <div class="flex flex-wrap flex-col space-y-2">
-      <vue-datetime v-model="valueModel" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}">
+      <vue-datetime v-model="valueModel" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('word.cancel')}">
         <svg-icon slot="before" name="calendar" class="opacity-50 text-2xl" />
         <svg-icon slot="after" name="x" class="h-full opacity-50 text-2xl cursor-pointer hover:scale-110 hover:text-indigo-700" @click="dataDate = null" />
       </vue-datetime>

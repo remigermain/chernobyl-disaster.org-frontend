@@ -1,7 +1,7 @@
 <template>
   <admin-field-base :field="field" :errors="errors">
     <div class="flex flex-wrap flex-col space-y-2">
-      <vue-datetime v-model="valueModel.date" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('utils.cancel')}">
+      <vue-datetime v-model="valueModel.date" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('word.cancel')}">
         <svg-icon slot="before" name="calendar" class="opacity-50 text-2xl" />
         <svg-icon slot="after" name="x" class="h-full opacity-50 text-2xl cursor-pointer hover:scale-110 hover:text-indigo-700" @click="dataDate = null" />
       </vue-datetime>
@@ -11,19 +11,19 @@
           <template v-if="haveHours">
             <span>
               {{ to2Digits(valueModel.hours || 0) }}
-              {{ $t("utils.hours")[0] }}
+              {{ $t("word.hours")[0] }}
             </span>
             <span v-if="haveMinutes">
               {{ to2Digits(valueModel.minutes || 0) }}
-              {{ $t("utils.minutes")[0] }}
+              {{ $t("word.minutes")[0] }}
             </span>
             <span v-if="haveSecond">
               {{ to2Digits(valueModel.seconds || 0) }}
-              {{ $t("utils.seconds")[0] }}
+              {{ $t("word.seconds")[0] }}
             </span>
           </template>
           <span v-else class="text-gray-600 dark:text-gray-200 italic opacity-50">
-            {{ $t('utils.empty') }}
+            {{ $t('word.empty') }}
           </span>
         </span>
       </div>
@@ -33,7 +33,7 @@
                     text-xl cursor-pointer inline-block w-40px h-32px w-32px" @click="deleteHour"/>
         </div>
         <span class="italic text-lg flex justify-center items-center p-2 capitalize text-gray-800">
-          {{ $t("utils.hours") }}:
+          {{ $t("word.hours") }}:
         </span>
         <span class="flex justify-center items-center p-2">
           <input v-model="valueModel.hours" type="range" min="00" max="23" />
@@ -45,7 +45,7 @@
                     text-xl cursor-pointer inline-block w-40px h-32px w-32px" @click="deleteMinute"/>
         </div>
         <span class="italic text-lg flex justify-center items-center p-2 capitalize text-gray-800">
-          {{ $t("utils.minutes") }}:
+          {{ $t("word.minutes") }}:
         </span>
         <span class="flex justify-center items-center p-2">
           <input v-model="valueModel.minutes" type="range" min="00" max="59" />
@@ -57,7 +57,7 @@
                     text-xl cursor-pointer inline-block w-40px h-32px w-32px" @click="deleteSecond"/>
         </div>
         <span class="italic text-lg flex justify-center items-center p-2 capitalize text-gray-800">
-          {{ $t("utils.seconds") }}:
+          {{ $t("word.seconds") }}:
         </span>
         <span class="flex justify-center items-center p-2">
           <input v-model="valueModel.seconds" type="range" min="00" max="59" />

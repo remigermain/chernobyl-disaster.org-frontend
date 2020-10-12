@@ -12,7 +12,7 @@
         <svg-icon v-else name="circle-check" class="text-lg font-medium text-green-600" role="img"/>
       </div>
       <span class="label-maxi">
-        {{ obj.label }}
+        {{ translateLabel(obj) }}
       </span>
       <div class="flex justify-center items-center self-end">
         <svg-icon name="arrow-left" class="transform transition-all duration-200 ml-2" role="img" :class="{'rotate-180': current === obj}" />
@@ -57,6 +57,14 @@ export default {
   },
 
   methods: {
+    translateLabel (obj) {
+      // to convert label in object list
+      const path = `word.${obj.label}`
+      if (this.$te(path)) {
+        return this.$t(path)
+      }
+      return obj.label
+    },
     findCurrent() {
       if (this.$route.query.key) {
         const current = this.object.find(x => x.label === this.$route.query.key)

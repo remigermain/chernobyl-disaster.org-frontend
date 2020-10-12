@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.label" :description="$t('help.event.global-description')" :to="{name: 'contribute-event-create'}">
+      <admin-utils-header :title="model.label" :description="$t('description.event')" :to="{name: 'contribute-event-create'}">
         <template #breadcrumbs>
           {{ model.label }}
         </template>
@@ -37,13 +37,13 @@
         </lazy-admin-utils-table>
         <lazy-admin-utils-table :length="objectlengthLang" @pagination="setLangPagination">
           <template #header>
-            <admin-utils-table-header v-model="searchValueLang" :title="$t('help.need-translation')" @search="refreshLang"/>
+            <admin-utils-table-header v-model="searchValueLang" :title="$t('text.need-translation')" @search="refreshLang"/>
           </template>
           <template #thead>
               <th> id </th>
               <th>{{ modelField.title.label }}</th>
               <th>{{ modelField.date .label }}</th>
-              <th>{{ $t("help.need-translation") }}</th>
+              <th>{{ $t("text.need-translation") }}</th>
               <th>{{ $t("word.action") }}</th>
           </template>
           <template #tbody>

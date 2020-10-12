@@ -8,7 +8,7 @@
       </div>
       <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
         <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-500">
-          {{ $t('tools.deleted') }}
+          {{ $t('word.deleted') }}
         </h3>
       </div>
     </template>
@@ -19,7 +19,7 @@
         focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                 @click.prevent="$emit('delete')"
         >
-          {{ $t('utils.delete') }}
+          {{ $t('word.delete') }}
         </button>
       </span>
     </template>

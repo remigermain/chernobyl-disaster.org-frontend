@@ -18,7 +18,7 @@ export default {
     },
     on_loading (value) {
       if (value) {
-        this.$toastLoading = this.i18nToast.show(this.$t("utils.loading"))
+        this.$toastLoading = this.i18nToast.show(this.$t("word.loading"))
       } else if (this.$toastLoading) {
         this.$toastLoading.remove()
       }

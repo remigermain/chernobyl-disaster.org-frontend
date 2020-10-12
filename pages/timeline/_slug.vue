@@ -8,7 +8,7 @@
     </div>
     <h1 class="timeline-title text-4xl -sm:text-lg capitalize italic text-center">
       <nuxt-link v-if="$auth.loggedIn"  :to="localePath({name: 'contribute-event-id', params: {id: current.id}})"
-                       :title="$t('utils.edit')"
+                       :title="$t('word.edit')"
       >
         <svg-icon name="edit"
                   class="w-8 hover:scale-110 text-purple-800 hover:text-purple-700 block transform"

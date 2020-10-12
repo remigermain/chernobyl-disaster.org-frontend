@@ -4,7 +4,7 @@
     <div class="shadow-lg grid-extra overflow-hidden w-full h-full timeline:rounded-lg" :class="{'active': activeMenu}">
       <div class="extra-toolbar-mobile bg-gray-800 w-full flex justify-around" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
-          {{ $t('utils.menu-medias') }}
+          {{ $t('menu.medias') }}
         </span>
         <span class="mr-6 text-right w-2/4">
           <svg-icon name="arrow-up" class="extra-toolbar-mobile-icon" :class="{'active': activeMenu}" />
@@ -18,20 +18,20 @@
                   'timeline:bg-gray-800 -timeline:bg-gray-900': pictureActive,
                   'timeline:bg-gray-900 -timeline:bg-gray-800': !pictureActive
                 }"
-                :title="$t('utils.goto-picture')"
+                :title="$t('text.goto-picture')"
                 @click.prevent="pictureShow"
         >
-          <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('utils.picture')" />
+          <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('menu.picture')" />
         </button>
         <button class="w-full h-2/4 px-4 extra-btn timeline:rounded-b-lg"
                 :class="{
                   'timeline:bg-gray-800 -timeline:bg-gray-900': videoActive,
                   'timeline:bg-gray-900 -timeline:bg-gray-800': !videoActive
                 }"
-                :title="$t('utils.goto-video')"
+                :title="$t('text.goto-video')"
                 @click.prevent="videoShow"
         >
-          <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('utils.video')" />
+          <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('menu.video')" />
         </button>
       </nav>
       <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden">
@@ -62,7 +62,7 @@
             />
           </template>
           <span v-if="activeExtra.length === 0" class="italic text-gray-700 dark:text-gray-500 text-opacity-50 empty">
-            {{ this.$t("utils.empty") }}
+            {{ this.$t("word.empty") }}
           </span>
         </div>
       </div>

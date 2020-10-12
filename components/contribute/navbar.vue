@@ -12,7 +12,8 @@
         {{ $t('menu.dashboard') }}
       </nuxt-link>
       <nuxt-link  :to="localePath({name: 'contribute-account'})" class="contribute-navbar-link ml-4" @click="active = false">
-        {{ $t("admin.label.account") }}
+        <svg-icon name="user" />
+        {{ $t("menu.account") }}
       </nuxt-link>
       <nuxt-link v-for="menu in menus" :key="menu.to.name"  :to="localePath(menu.to)" class="contribute-navbar-link ml-4" @click="active = false">
         {{ menu.name }}
@@ -30,33 +31,33 @@ export default {
       active: false,
       menus: [
         {
-          name: this.$t("admin.label.event"),
-          help: this.$t("help.event.global-description"),
+          name: this.$t("menu.event"),
+          help: this.$t("description.event"),
           to: {name: "contribute-event"},
         },
         {
-          name: this.$t("admin.label.people"),
-          help: this.$t("help.people.global-description"),
+          name: this.$t("menu.people"),
+          help: this.$t("description.people"),
           to: {name: "contribute-people"},
         },
         {
-          name: this.$t("admin.label.tag"),
-          help: this.$t("help.tag.global-description"),
+          name: this.$t("menu.tag"),
+          help: this.$t("description.tag"),
           to: {name: "contribute-tag"},
         },
         {
-          name: this.$t("admin.label.picture"),
-          help: this.$t("help.picture.global-description"),
+          name: this.$t("menu.picture"),
+          help: this.$t("description.picture"),
           to: {name: "contribute-picture"},
         },
         {
-          name: this.$t("admin.label.video"),
-          help: this.$t("help.video.global-description"),
+          name: this.$t("menu.video"),
+          help: this.$t("description.video"),
           to: {name: "contribute-video"},
         },
         {
-          name: this.$t("utils.translation"),
-          help: this.$t("help.translate.global-description"),
+          name: this.$t("word.translation"),
+          help: this.$t("description.translate"),
           to: {name: "contribute-translate"},
         },
       ]
