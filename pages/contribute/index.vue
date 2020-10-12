@@ -34,7 +34,7 @@
               <td>{{ obj.display }}</td>
               <td>{{ $t(`admin.label.${obj.uuid}`) }}</td>
               <td class="inline-flex space-x-2">
-                <lazy-admin-action-detail :to="pathDetail(obj)" />
+                <lazy-admin-action-detail v-if="obj.detail" :to="pathDetail(obj)" />
                 <lazy-admin-action-edit :to="pathEdit(obj)" />
                 <lazy-admin-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
               </td>
@@ -101,6 +101,9 @@ export default {
       return {name: `contribute-${obj.uuid}-id`, params: {id: obj.id}}
     },
     pathEdit (obj) {
+      if (obj.query || obj.params) {
+        return {name: `contribute-${obj.uuid}-edit-id`, params: obj.params, query: obj.query}
+      }
       return {name: `contribute-${obj.uuid}-edit-id`, params: {id: obj.id}}
     }
   }

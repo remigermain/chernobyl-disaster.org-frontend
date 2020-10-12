@@ -31,17 +31,6 @@ export default {
           help: this.$t("help.account.show-admin"),
           name: "show_admin",
         },
-        default_language: {
-          label: this.$t("message.default-language"),
-          help: this.$t("help.account.default-language"),
-          name: "default_language",
-          choices: this.$store.getters["model/langs"],
-        },
-        color_mode: {
-          label: this.$t("message.color-mode"),
-          help: this.$t("help.account.color-mode"),
-          name: "color_mode",
-        }
       },
     }
   }

@@ -11,7 +11,7 @@
       </admin-utils-header>
       <div class="grid-translate">
         <contribute-translate-navbar :object="object" @change="setCurrent" />
-        <div class="flex flex-col px-2 space-y-2">
+        <div class="flex flex-col p-2 space-y-2">
           <div v-for="obj in children" :key="obj.id"
                class="border-t-4 border-indigo-700 dark:border-indigo-600 rounded-lg space-y-4  dark:bg-gray-800"
                :class="{'dark:hover:bg-gray-700': currentActiveId != obj.id}"
