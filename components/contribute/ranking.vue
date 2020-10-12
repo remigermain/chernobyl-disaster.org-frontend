@@ -1,38 +1,41 @@
 <template>
   <div class="flex justify-center trophy text-white w-2/4 mt-4 text-center">
     <div class="card-buble flex justify-center items-center">
-      <span class="bg-indigo-700 buble second shadow-md">2</span>
+      <img src="~/assets/img/medal/medal_2_mobile.png" alt="medal" class="object-contain grayscale"/>
     </div>
     <div class="card-buble flex justify-center items-center">
-      <span class="bg-indigo-800 buble first shadow-md">1</span>
+      <img src="~/assets/img/medal/medal_1_mobile.png" alt="medal" class="object-contain grayscale"/>
     </div>
     <div class="card-buble flex justify-center items-center">
-      <span class="bg-indigo-700 buble tree shadow-md">3</span>
+      <img src="~/assets/img/medal/medal_3_mobile.png" alt="medal" class="object-contain grayscale"/>
     </div>
     <div
-      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-end items-center card-buble items"
     >
+      <span class="text-2xl font-russia">2</span>
       <span v-if="second" class="data">
         {{ second.username }}
-        <span class="text-indigo-700">{{ second.count }}</span>
+        <span class="text-indigo-700 dark:text-indigo-400">{{ second.count }}</span>
       </span>
       <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("utils.empty") }}</span>
     </div>
     <div
-      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-end items-center card-buble items"
     >
+      <span class="text-3xl font-russia">1</span>
       <span v-if="first" class="data">
         {{ first.username }}
-        <span class="text-indigo-700">{{ first.count }}</span>
+        <span class="text-indigo-700 dark:text-indigo-400">{{ first.count }}</span>
       </span>
       <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("utils.empty") }}</span>
     </div>
     <div
-      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-center items-center card-buble items"
+      class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-end items-center card-buble items"
     >
+      <span class="text-1xl font-russia">3</span>
       <span v-if="third" class="data">
         {{ third.username }}
-        <span class="text-indigo-700">{{ third.count }}</span>
+        <span class="text-indigo-700 dark:text-indigo-400">{{ third.count }}</span>
       </span>
       <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("utils.empty") }}</span>
     </div>
@@ -92,7 +95,6 @@ export default {
 .card-buble {
   width: max-content;
   width: 100px;
-  // height: 40px;
   border-radius: 10px;
   word-break: break-word;
   padding: 0.5em;
@@ -116,5 +118,10 @@ export default {
 
 .title {
   grid-area: 1 / 1 / 1 / 4;
+}
+
+.grayscale {
+  filter: grayscale(.4);
+  z-index: -1;
 }
 </style>

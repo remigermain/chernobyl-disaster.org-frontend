@@ -18,6 +18,7 @@
         <contribute-ranking :object="object.total" />
         <contribute-ranking :object="object.week" class="-md:order-2" />
       </div>
+      <contribute-news />
       <div class="w-full">
         <lazy-admin-utils-table :length="object.results.length" @pagination="setPagination">
           <template #thead>

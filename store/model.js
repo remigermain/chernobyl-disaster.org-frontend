@@ -4,6 +4,7 @@ export const state = () => ({
   events: [],
   tags: [],
   peoples: [],
+  news: [],
 })
 
 export const mutations = {
@@ -15,6 +16,9 @@ export const mutations = {
   POPULATE_PEOPLES(state, data) {
     state.peoples = data.peoples
   },
+  POPULATE_NEWS(state, data) {
+    state.news = data
+  }
 }
 
 export const getters = {
@@ -29,5 +33,7 @@ export const getters = {
 
   peoples: state => state.peoples,
   people: state => value => state.peoples.find(t => t.value === value),
+
+  news: state => state.news
 
 }
