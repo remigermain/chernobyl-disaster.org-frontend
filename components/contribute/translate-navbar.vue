@@ -61,7 +61,7 @@ export default {
       // to convert label in object list
       const path = `word.${obj.label}`
       if (this.$te(path)) {
-        return this.$t(path)
+        return this.$t(`${path}`)
       }
       return obj.label
     },

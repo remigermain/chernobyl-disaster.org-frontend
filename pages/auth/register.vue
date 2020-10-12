@@ -61,7 +61,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.register")
+    const title = this.$t("title.register")
     const description = this.$t("description.register")
     return {
       title,

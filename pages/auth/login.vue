@@ -53,7 +53,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.login")
+    const title = this.$t("title.login")
     const description = this.$t("description.login")
     return {
       title,

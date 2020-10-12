@@ -24,8 +24,14 @@
     <div class="self-end flex justify-center gap-2">
       <admin-action-delete v-if="$auth.hasScope('staff') && current && current.id" @click="setDeleted(object)"/>
       <button class="px-3 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-center text-gray-400">
-        <svg-icon name="check" />
-        {{ $t('word.modify') }}
+        <template v-if="current && current.id">
+          <svg-icon name="check" />
+          {{ $t('word.modify') }}
+        </template>
+        <template v-else>
+          <svg-icon name="plus" />
+          {{ $t('word.add') }}
+        </template>
       </button>
     </div>
     <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitTransDelete"/>

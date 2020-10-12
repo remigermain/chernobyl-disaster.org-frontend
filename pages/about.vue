@@ -180,7 +180,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.about")
+    const title = this.$t("title.about")
     const description = this.$t("description.about")
     return {
       title,

@@ -73,7 +73,7 @@
       </admin-model-detail>
       <lazy-gallery-detail-picture v-if="activePicture" :object="object.picture" :idx="0" :length="1" @close="activePicture = null" />
       <lazy-admin-report v-if="activeModalReport" :id="object.id" uuid="picture" @close="activeModalReport = false" />
-      <lazy-admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
+      <lazy-admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
     </div>
   </div>
 </template>

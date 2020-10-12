@@ -4,7 +4,7 @@
       <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="video-item skeleton" />
       <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="video-item skeleton" @visible="nextPage" />
 
-      <gallery-video v-for="el in object" :key="el.id" />
+      <gallery-video-preview v-for="el in object" :key="el.id" class="video-item p-2" :link="el.video" />
 
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="video-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="video-item skeleton" />
@@ -18,7 +18,6 @@
 <script>
 import galleryMixin from "~/mixins/page/gallery"
 import { asynDataUrl } from "~/lib/gallery"
-import { convertVideoLink } from "~/lib/contribute"
 
 export default {
   name: "GalleryVideo",
@@ -54,7 +53,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.video")
+    const title = this.$t("title.video")
     const description = this.$t("description.video")
     return {
       title,
@@ -70,15 +69,11 @@ export default {
     }
   },
 
-  methods: {
-    convertVideoLink,
-  },
-
 }
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .grid-video {
   width: 100%;
   overflow: hidden scroll;
@@ -91,40 +86,32 @@ export default {
 }
 
 .video-item {
-  width: 220px;
-  height: 140px;
-  padding: 5px;
+  width: 410px !important;
+  height: 280px !important;
+  padding: 5px !important;
   overflow: hidden;
   &.skeleton {
     background-clip: content-box;
     @apply animate-pulse;
     @apply bg-gray-400;
   }
-  &:not(.skeleton) {
-    transition: transform .4s, width 1s, height  1s;
-    cursor: pointer;
-    object-fit: cover;
-    &:hover {
-      transform: scale(1.05);
-    }
+}
+
+@media screen and (max-width: 1850px){
+  .video-item {
+    width: 25% !important;
   }
 }
 
 @media screen and (max-width: 1250px){
   .video-item {
-    width: 25%;
+    width: 50% !important;
   }
 }
 
-@media screen and (max-width: 650px){
+@media screen and (max-width: 750px){
   .video-item {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 470px){
-  .video-item {
-    width: 100%;
+    width: 100% !important;
   }
 }
 

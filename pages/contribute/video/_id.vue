@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-            <gallery-video :link="object.video" />
+            <gallery-video-preview :link="object.video" />
             <admin-detail-tags :object="object.tags" />
           </div>
         </template>
@@ -61,7 +61,7 @@
         </template>
       </admin-model-detail>
       <lazy-admin-report v-if="activeModalReport" :id="object.id" uuid="video" @close="activeModalReport = false" />
-      <lazy-admin-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
+      <lazy-admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
     </div>
   </div>
 </template>

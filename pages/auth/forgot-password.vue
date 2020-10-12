@@ -45,7 +45,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.forgot-password")
+    const title = this.$t("title.forgot-password")
     const description = this.$t("description.forgot-password")
     return {
       title,

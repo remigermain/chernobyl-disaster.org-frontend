@@ -33,7 +33,7 @@ export default {
   transition: "common",
 
   head () {
-    const title = this.$t("menu.home")
+    const title = this.$t("title.home")
     const description = this.$t("description.home")
     return {
       title,

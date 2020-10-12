@@ -1,7 +1,7 @@
 <template>
   <div class="h-full block">
     <div :class="{'border-dashed border-2 border-gray-600 dashed-video': true}">
-      <gallery-video v-if="valueModel" :link="valueModel" />
+      <gallery-video-preview v-if="valueModel" :link="valueModel" />
       <span v-else class="italic text-md text-gray-600 empty">
         {{ $t('word.empty') }}
       </span>
