@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <div class="no-visible"/>
 </template>
 
 <script>
@@ -15,29 +15,28 @@ export default {
   },
 
   mounted () {
-    this.isVisible()
+    if (process.client) {
+      this.$observer = new IntersectionObserver(this.isVisible)
+      console.log(this.$el)
+      this.$observer.observe(this.$el)
+    }
   },
 
   methods: {
-    bottomVisible() {
-      return this.$el.getBoundingClientRect().top < this.$parent.$el.getBoundingClientRect().bottom
-    },
-    topVisible () {
-      return this.$el.getBoundingClientRect().bottom > this.$parent.$el.getBoundingClientRect().top
-    },
     isVisible () {
-      if (this.position === "top") {
-        if (this.topVisible()) {
-          this.$emit("visible")
-          return true
-        }
-      } else if (this.bottomVisible()) {
-        this.$emit("visible")
-        return true
-      }
-      return false
+      console.log("isVisible")
+      this.$emit('visible')
     }
   }
 
 }
 </script>
+
+
+<style scoped>
+.no-visible {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+}
+</style>

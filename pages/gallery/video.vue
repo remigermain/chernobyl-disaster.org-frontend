@@ -4,7 +4,7 @@
       <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
       <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
 
-      <gallery-video v-for="el in object" :key="el.id" />
+      <!-- <gallery-video v-for="el in object" :key="el.id" :link="el.video" /> -->
 
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
@@ -18,7 +18,6 @@
 <script>
 import galleryMixin from "~/mixins/page/gallery"
 import { asynDataUrl } from "~/lib/gallery"
-import { convertVideoLink } from "~/lib/contribute"
 
 export default {
   name: "GalleryVideo",
@@ -68,10 +67,6 @@ export default {
           { name: "twitter:image:alt", content: title }
       ]
     }
-  },
-
-  methods: {
-    convertVideoLink,
   },
 
 }

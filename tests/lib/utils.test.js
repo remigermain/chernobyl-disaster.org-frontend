@@ -138,5 +138,20 @@ it('real', () => {
   })
 
 
+  it('toUrl function', () => {
+
+    expect(utils.toUrl("name/", {id: true})).toEqual("name/?id=true")
+    expect(utils.toUrl("name/")).toEqual("name/")
+    expect(utils.toUrl("name", {id: true, sort: "test"})).toEqual("name?id=true&sort=test")
+
+    expect(utils.toUrl("name", {id: true, sort: null}, false)).toEqual("name?id=true")
+    expect(utils.toUrl("name", {id: null, sort: null}, false)).toEqual("name")
+    expect(utils.toUrl("name", {id: null, sort: false}, false)).toEqual("name?sort=false")
+
+    expect(utils.toUrl("name", {id: true, sort: null}, true)).toEqual("name?id=true&sort=null")
+    expect(utils.toUrl("name", {id: null, sort: null}, true)).toEqual("name?id=null&sort=null")
+    expect(utils.toUrl("name", {id: null, sort: false}, true)).toEqual("name?id=null&sort=false")
+  })
+
 
 })
