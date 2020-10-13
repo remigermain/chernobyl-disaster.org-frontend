@@ -166,10 +166,6 @@ export default {
       prefix: "field",
     },
     {
-      path: "~/components/model/",
-      prefix: "model",
-    },
-    {
       path: "~/components/gallery/",
       prefix: "gallery",
     },
