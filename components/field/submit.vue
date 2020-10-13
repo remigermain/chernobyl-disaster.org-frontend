@@ -1,5 +1,5 @@
 <template>
-  <button type="submit" class="p-2 bg-indigo-600 rounded text-gray-200 hover:bg-indigo-700 mt-4 text-center" v-bind="$attrs">
+  <button type="submit" class="p-2 bg-indigo-600 rounded text-white hover:bg-indigo-700 mt-4 text-center" v-bind="$attrs">
     <slot />
   </button>
 </template>

@@ -9,7 +9,6 @@
                 alt="image"
                 :src="imageSrc"
                 loading="lazy"
-                role="button"
                 tabindex="-1"
                 @click="active = true"
             >

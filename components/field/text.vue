@@ -4,7 +4,7 @@
       <span v-if="$slots.icon" class="px-2 flex justify-center items-center text-gray-700 field-icon">
         <slot name="icon" />
       </span>
-      <label class="w-full text-gray-700 text-sm font-bold flex flex-col-reverse border-b-2 border-gray-600 field-label">
+      <label class="w-full text-gray-800 text-sm font-bold flex flex-col-reverse border-b-2 border-gray-600 field-label">
         <input v-model="valueModel"
                :type="type"
                :name="field.name"

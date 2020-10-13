@@ -5,7 +5,7 @@
          loading="lazy"
          role="button"
          tabindex="0"
-         :alt="object.title || title"
+         :alt="object.title || title || 'video'"
          type="image/jpeg"
          @click="setCurrent(el, idx)"
     >

@@ -3,19 +3,19 @@
     <time v-if="!isTimeEmpty(date)" :datetime="date.date" class="timeline-time">
       <div v-if="date.have_hour" class="flex flex-col items min-size justify-center">
         <span class="text-3xl time font-bold dark:text-gray-500 text-center">{{ hours }}</span>
-        <span class="italic uppercase text-gray-600 text-xs">
+        <span class="italic uppercase text-gray-700 dark:text-gray-300 text-xs">
           {{ $t("word.hours") }}
         </span>
       </div>
       <div v-if="date.have_minute" class="flex flex-col items min-size justify-center">
         <span class="text-3xl time font-bold dark:text-gray-500 text-center">{{ minutes }}</span>
-        <span class="italic uppercase text-gray-600 text-xs">
+        <span class="italic uppercase text-gray-700 dark:text-gray-300 text-xs">
           {{ $t("word.minutes") }}
         </span>
       </div>
       <div v-if="date.have_second" class="flex flex-col items min-size justify-center">
         <span class="text-3xl time font-bold dark:text-gray-500 text-center">{{ seconds }}</span>
-        <span class="italic uppercase text-gray-600 text-xs">
+        <span class="italic uppercase text-gray-700 dark:text-gray-300 text-xs">
           {{ $t("word.seconds") }}
         </span>
       </div>

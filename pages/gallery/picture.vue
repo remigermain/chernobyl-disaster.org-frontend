@@ -7,6 +7,7 @@
         <source :srcset="$media(el.picture.thumbnail_webp)" type="image/webp">
         <img class="w-full h-full object-cover"
              :src="$media(el.picture.thumbnail_jpeg)"
+             :alt="i18nAttr(el, 'title')"
              loading="lazy"
              role="button"
              tabindex="0"
