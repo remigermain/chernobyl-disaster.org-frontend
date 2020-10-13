@@ -15,6 +15,7 @@
       <span class="text-2xl font-russia">2</span>
       <span v-if="second" class="data">
         {{ second.username }}
+        <br />
         <span class="text-indigo-700 dark:text-indigo-400">{{ second.count }}</span>
       </span>
       <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("word.empty") }}</span>
@@ -25,6 +26,7 @@
       <span class="text-3xl font-russia">1</span>
       <span v-if="first" class="data">
         {{ first.username }}
+        <br />
         <span class="text-indigo-700 dark:text-indigo-400">{{ first.count }}</span>
       </span>
       <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("word.empty") }}</span>
@@ -35,6 +37,7 @@
       <span class="text-1xl font-russia">3</span>
       <span v-if="third" class="data">
         {{ third.username }}
+        <br />
         <span class="text-indigo-700 dark:text-indigo-400">{{ third.count }}</span>
       </span>
       <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("word.empty") }}</span>

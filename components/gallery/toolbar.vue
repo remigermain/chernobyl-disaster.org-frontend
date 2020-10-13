@@ -92,21 +92,21 @@ export default {
   },
 
   beforeMount () {
-    if (this.$route.query) {
-      // set the value of search
+    this.initQuery()
+  },
+
+  methods: {
+    initQuery () {
       this.search = this.$route.query.search || ""
 
       // set value of order if exists in choices
       if (
           this.$route.query.ordering &&
           this.orderingChoices.some(obj => obj.value === this.$route.query.ordering)
-          ){
-          this.ordering = this.$route.query.ordering
+      ){
+        this.ordering = this.$route.query.ordering
       }
-    }
-  },
-
-  methods: {
+    },
     toogleActive () {
       this.active = !this.active
     },
@@ -116,6 +116,7 @@ export default {
         search: this.search,
         ordering: this.ordering,
       }
+      // this.initQuery()
       this.$router.push({query})
       this.active = false
     },

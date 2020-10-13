@@ -9,7 +9,7 @@
          type="image/jpeg"
          @click="setCurrent(el, idx)"
     >
-    <h1 v-if="!mini" class="absolute top-0 left-0 bg-gray-800 m-3 rounded-full bg-opacity-75 z-2 p-2 truncate size-title block text-gray-400 font-medium">
+    <h1 v-if="!mini" class="absolute top-0 left-0 bg-gray-900 m-3 rounded-full bg-opacity-75 z-2 p-2 truncate size-title block text-gray-400 font-medium">
       <admin-action-edit v-if="$auth.loggedIn && object.id" :to="toEdit" />
       {{ object.title || title }}
     </h1>

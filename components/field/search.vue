@@ -37,7 +37,7 @@ export default {
 
   watch: {
     value (newValue) {
-      this.newValue = newValue
+      this.valueModel = newValue
     }
   }
 

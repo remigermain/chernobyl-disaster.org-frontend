@@ -28,7 +28,7 @@
             {{ $t('text.change-settings') }}
           </h2>
           <form class="p-4 rounded space-y-2" @submit.prevent="submitSettings">
-            <field-checkbox v-model="data.show_admin" :field="modelField.show_admin" :errors="errors.show_admin" />
+            <field-checkbox v-if="$auth.hasScope('staff')" v-model="data.show_admin" :field="modelField.show_admin" :errors="errors.show_admin" />
             <field-checkbox v-model="data.show_help" :field="modelField.show_help" :errors="errors.show_help" />
             <div class="flex justify-end w-full">
               <field-submit class="w-min-content">
@@ -215,7 +215,7 @@ export default {
       this.active = false
       setObjectKeysValue(this.errors, [])
 
-      this.$axios.post("auth/")
+      this.$axios.post("auth/delete/")
         .then(response => {
           if (response.status !== 200) {
             throw new Error("error-server")
