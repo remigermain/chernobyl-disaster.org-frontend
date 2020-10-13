@@ -90,7 +90,7 @@
     </div>
     <div class="common-about space-y-4 z-0">
       <article class="w-full inline-grid">
-        <a href="https://wwww.germainremi.fr" target="_blank" rel="noopener,noreferrer"
+        <a href="https://germainremi.fr" target="_blank" rel="noopener,noreferrer"
            class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 hover:scale-105 transform transition-transform duration-300"
            :title="$t('text.creator-website')">
           <h1>
