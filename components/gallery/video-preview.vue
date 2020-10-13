@@ -9,7 +9,7 @@
          type="image/jpeg"
          @click="setCurrent(el, idx)"
     >
-    <h1 v-if="header" class="absolute top-0 left-0 bg-gray-800 m-3 rounded-full bg-opacity-75 z-2 p-2 truncate size-title block text-gray-400 font-medium">
+    <h1 v-if="!mini" class="absolute top-0 left-0 bg-gray-800 m-3 rounded-full bg-opacity-75 z-2 p-2 truncate size-title block text-gray-400 font-medium">
       <admin-action-edit v-if="$auth.loggedIn && object.id" :to="toEdit" />
       {{ object.title || title }}
     </h1>
@@ -17,16 +17,18 @@
           items-center flex z-1 video-hover group"
           target="_blank" rel="noopener,noreferer" :href="link"
     >
-      <div class="bg-gray-900 bg-opacity-100 shadow-inner cursor-pointer border-b-indigo-700 border-b-4 transition-all duration-200 rounded-full w-24 p-1 text-center">
-        <svg-icon name="player-play" class="text-gray-300 text-5xl group-hover:scale-110 transform transition-transform duration-300" />
+      <div class="bg-gray-900 bg-opacity-100 shadow-inner cursor-pointer border-b-indigo-700 border-b-4 transition-all duration-200 rounded-full p-1 text-center"
+          :class="{'w-24': !mini, 'w-8': mini}"
+      >
+        <svg-icon name="player-play" class="text-gray-300 group-hover:scale-110 transform transition-transform duration-300"
+            :class="{'text-5xl': !mini, 'text-base': mini}"
+        />
       </div>
     </a>
   </div>
 </template>
 
 <script>
-import { convertVideoLink } from "~/lib/contribute"
-
 export default {
 
   props: {
@@ -42,10 +44,10 @@ export default {
       type: String,
       default: "title"
     },
-    header: {
+    mini: {
       type: Boolean,
-      default: true
-    }
+      default: false
+    },
   },
 
   computed: {
@@ -63,10 +65,6 @@ export default {
       return {name: 'contribute-video-id', params: {id: this.object.id}}
     }
   },
-
-  methods: {
-    convertVideoLink,
-  }
 
 }
 </script>
