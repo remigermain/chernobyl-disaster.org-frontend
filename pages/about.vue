@@ -105,7 +105,7 @@
             <source srcset="~/assets/img/profil/profil.webp" media="(min-width: 850px)" type="image/webp">
             <img loading="lazy" src="~/assets/img/profil/profil.jpeg" alt="image" type="image/jpeg" class="gray-filter rounded-full -sm:w-1/4 w-1/6 float-left p-2 about-profil">
           </picture>
-          {{ $t('text.creator-description') }}
+          {{ $t('message.creator-description') }}
         </div>
       </article>
       <article class="text-center">
