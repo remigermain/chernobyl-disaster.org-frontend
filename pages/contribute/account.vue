@@ -6,6 +6,7 @@
     <h1 class="text-3xl capitalize self-start">
       {{ $t('word.account') }}
     </h1>
+    {{ data }}
     <div class="flex justify-around flex-wrap account shadow-md border rounded-md dark:bg-gray-800 dark:border-none">
       <div class="-sm:w-full py-4 rounded password">
         <h2 class="text-xl text-center capitalize">
@@ -189,9 +190,11 @@ export default {
       this.$store.commit("ON_LOADING", true)
       setObjectKeysValue(this.errors, [])
       const data = {
-        show_help: !!this.data.show_help,
-        show_admin: !!this.data.show_admin
+        show_help: this.data.show_help,
+        show_admin: this.data.show_admin
       }
+
+      console.log(data)
 
       this.$axios.patch("auth/user/", data)
         .then(response => {
@@ -199,6 +202,7 @@ export default {
             throw new Error("error-server")
           }
           this.i18nToast.success(this.$t('success-message.update')).goAway(4000)
+          this.$auth.fetchUser()
         })
         .catch(error => {
           this.responseError(error)

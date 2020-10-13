@@ -57,7 +57,7 @@ export default {
 
   data () {
     return {
-      dataValue: "",
+      dataValue: this.setValue(),
       field: {label: this.object.key.join("-"), name: "name", required: true},
       selectLocale: null,
       errors: {
@@ -105,12 +105,13 @@ export default {
       }
       this.selectLocale = this.selectLocale.language
     }
-    if (this.current) {
-      this.dataValue = this.current.value
-    }
   },
 
   methods: {
+    setValue() {
+      const current = this.object.langs.find(x => x.language === this.$route.params.id)
+      return current && current.value || ""
+    },
     haveDeletedObject () {
       this.$nuxt.refresh()
       this.dataValue = ""

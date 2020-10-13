@@ -21,6 +21,7 @@
             <div class="flex flex-col">
               <field-select v-model="data.language" :field="modelField.language" :errors="errors.language"/>
               <field-checkbox v-model="data.delete" :field="modelField.delete" :errors="errors.delete"/>
+              <field-checkbox v-model="data.nolang" :field="modelField.nolang" :errors="errors.nolang"/>
               <field-checkbox v-model="data.merge" :field="modelField.merge" :errors="errors.merge"/>
               <field-checkbox v-model="data.parent" :field="modelField.parent" :errors="errors.parent"/>
             </div>
@@ -55,6 +56,9 @@ export default {
         delete: {
           label: 'delete'
         },
+        nolang: {
+          label: 'no language'
+        },
         merge: {
           label: 'merge'
         },
@@ -72,6 +76,7 @@ export default {
         delete: true,
         merge: false,
         parent: true,
+        nolang: true,
       },
       errors: {
         language:  [],
@@ -87,7 +92,9 @@ export default {
      submit () {
       this.$store.commit("ON_LOADING", true)
       const form = new FormData()
-      form.append('language', this.data.language)
+      if (this.data.nolang) {
+        form.append('language', this.data.language)
+      }
       form.append('file', this.data.file.obj)
       // convert to boolean
       form.append('delete', !!this.data.delete)

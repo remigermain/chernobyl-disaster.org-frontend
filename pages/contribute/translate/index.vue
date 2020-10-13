@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="$t('menu.translate')" :description="$t('description.translate')" :to="{name: 'contribute-tag-create'}">
+      <admin-utils-header :title="$t('menu.translate')" :description="$t('description.translate')">
         <template #breadcrumbs>
           {{ $t('menu.translate') }}
         </template>

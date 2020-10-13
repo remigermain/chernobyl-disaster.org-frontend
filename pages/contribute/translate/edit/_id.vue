@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.name" :description="$t('description.tag')">
+      <admin-utils-header :title="model.name" :description="$t('description.translate')">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -24,7 +24,7 @@
               <svg-icon v-else name="circle-check" class="text-green-700" />
               {{ obj.key.join("-") }}
             </div>
-            <admin-form-translate :object="obj" :class="{'hidden': currentActiveId !== obj.id}" />
+            <admin-form-translate v-if="currentActiveId === obj.id" :object="obj" />
           </div>
         </div>
       </div>
