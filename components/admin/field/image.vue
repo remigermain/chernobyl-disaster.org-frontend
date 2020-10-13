@@ -1,10 +1,10 @@
 <template>
   <admin-field-base :field="field" :errors="errors">
     <div class="flex flex-wrap flex-col space-y-2">
-      <div class="preview-image flex items-center justify-center relative"
+      <div class="preview-image flex items-center justify-center"
            :class="{'border-dashed border-2 border-gray-600': !imageSrc}"
       >
-        <div v-if="imageSrc" class="relative">
+        <div v-if="imageSrc" class="relative h-full w-full">
           <img class="w-full h-full object-contain"
                 alt="image"
                 :src="imageSrc"

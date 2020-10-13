@@ -27,7 +27,7 @@
                     }"
               />
               <lazy-timeline-min-time :date="element.date" />
-              <h1 class="dark:text-gray-400 break-words">
+              <h1 class="dark:text-gray-400 word-break">
                 {{ i18nAttr(element, 'title') }}
               </h1>
             </nuxt-link>
@@ -210,6 +210,9 @@ export default {
   }
 }
 
+.word-break {
+  word-break: break-word;
+}
 
 .timeline-element {
   @apply border-l-8;

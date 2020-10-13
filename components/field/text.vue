@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <div class="flex mt-2 ">
-      <span class="px-2 flex justify-center items-center text-gray-700 field-icon">
+      <span v-if="$slots.icon" class="px-2 flex justify-center items-center text-gray-700 field-icon">
         <slot name="icon" />
       </span>
       <label class="w-full text-gray-700 text-sm font-bold flex flex-col-reverse border-b-2 border-gray-600 field-label">
@@ -12,7 +12,7 @@
                :minlength="field.min_length"
                :required="field.required"
                :autocomplete="autocomplete"
-               class="p-2 field-input"
+               class="p-2 field-input w-full"
                :class="{'empty': !valueModel}"
                @input="$emit('input', valueModel)"
         >
@@ -20,7 +20,7 @@
           {{ field.label }}
         </span>
       </label>
-      <span class="px-2 flex justify-center items-center text-gray-700 field-icon">
+      <span v-if="$slots.iconRight" class="px-2 flex justify-center items-center text-gray-700 field-icon">
         <slot name="icon-right"/>
       </span>
     </div>

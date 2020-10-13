@@ -10,15 +10,15 @@
         <span class="time">
           <template v-if="haveHours">
             <span>
-              {{ to2Digits(valueModel.hours || 0) }}
+              {{ to2Digits(valueModel.hours) }}
               {{ $t("word.hours")[0] }}
             </span>
             <span v-if="haveMinutes">
-              {{ to2Digits(valueModel.minutes || 0) }}
+              {{ to2Digits(valueModel.minutes) }}
               {{ $t("word.minutes")[0] }}
             </span>
             <span v-if="haveSecond">
-              {{ to2Digits(valueModel.seconds || 0) }}
+              {{ to2Digits(valueModel.seconds) }}
               {{ $t("word.seconds")[0] }}
             </span>
           </template>
@@ -111,6 +111,25 @@ export default {
     },
     disabled () {
       return !this.valueModel.date
+    }
+  },
+
+  watch: {
+    "valueModel.minutes": {
+      handler () {
+        if (this.valueModel.hours === null || this.valueModel.hours === undefined) {
+          this.valueModel.hours = 0
+        }
+      },
+      deep: true
+    },
+    "valueModel.seconds": {
+      handler () {
+        if (this.valueModel.minutes === null || this.valueModel.minutes === undefined) {
+          this.valueModel.minutes = 0
+        }
+      },
+      deep: true
     }
   },
 

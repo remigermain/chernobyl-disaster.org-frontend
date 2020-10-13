@@ -37,6 +37,7 @@ export default {
 
 <style lang="scss">
 table {
+  overflow-wrap: anywhere;
   & > thead > tr > th:first-child {
     @apply rounded-tl-md;
   }

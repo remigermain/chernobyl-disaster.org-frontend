@@ -22,33 +22,35 @@
       <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('text.goto-about')">
         {{ $t('menu.about') }}
       </nuxt-link>
-      <div class="absolute settings-child right-0 top-0 p-6 shadow-md rounded-md space-y-4 mt-8" :class="{'settings-show': activeSetting, 'settings-hide': !activeSetting}">
-        <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
-          <svg-icon name="logout" />
-          {{ $t('authentication.logout') }}
-        </button>
-        <div class="flex justify-around">
-          <svg-icon name="sun"  class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-white text-gray-800"
-                    @click="setLight"
-          />
-          <svg-icon name="moon" class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-black text-white dark:bg-gray-900"
-                    @click="setDark"
-          />
+      <div class="settings-box">
+        <svg-icon name="settings" class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl" />
+        <div class="absolute settings-child right-0 top-0 pt-6 rounded-md">
+          <div class="space-y-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-none">
+            <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
+              <svg-icon name="logout" />
+              {{ $t('authentication.logout') }}
+            </button>
+            <div class="flex justify-around">
+              <svg-icon name="sun"  class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-white text-gray-800"
+                        @click="setLight"
+              />
+              <svg-icon name="moon" class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-black text-white dark:bg-gray-900"
+                        @click="setDark"
+              />
+            </div>
+            <label for="lang" class="flex justify-center items-center flex-col gap-y-2">
+              <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200">
+                {{ $t('word.language') }}:
+              </span>
+              <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
+                <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
+                  {{ lang.name }}
+                </option>
+              </select>
+            </label>
+          </div>
         </div>
-        <label for="lang" class="flex justify-center items-center flex-col gap-y-2">
-          <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200">
-            {{ $t('word.language') }}:
-          </span>
-          <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
-            <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
-              {{ lang.name }}
-            </option>
-          </select>
-        </label>
       </div>
-      <svg-icon name="settings" class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl"
-                @click="activeSetting = !activeSetting"
-      />
     </nav>
   </div>
 </template>
@@ -212,19 +214,20 @@ export default {
 }
 
 @media screen and (min-width:1000px){
-  .settings-hide {
+  .settings-child {
     visibility: hidden;
+    &:hover {
+      visibility: visible;
+    }
+  }
+
+  .settings-box:hover  .settings-child {
+    visibility: visible;
   }
 }
 
 .settings-child {
-  @apply bg-white
-}
-
-.dark {
-  .settings-child {
-    @apply bg-gray-800
-  }
+  background-color: transparent;
 }
 
 
@@ -234,7 +237,6 @@ export default {
     position: relative;
     display: flex;
     flex-direction: column;
-    box-shadow: unset
   }
   .settings-btn {
     display: none;
@@ -272,7 +274,13 @@ export default {
     }
   }
   .dark .grid-layout-navbar .navbar-items {
-    @apply bg-gray-800
+    @apply bg-gray-800;
+  }
+}
+
+@media screen and (max-height:700px){
+  .grid-layout-navbar .navbar-items > * + * {
+    margin-top: 1em
   }
 }
 

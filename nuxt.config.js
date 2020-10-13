@@ -189,13 +189,13 @@ export default {
   },
 
   css: [
-    "destyle.css/destyle.css",
+    "~assets/css/action.scss",
     "~assets/css/main.scss",
     "~assets/css/dark-mode.scss",
     "~assets/css/transition.scss",
     "~assets/css/grid-common.scss",
     "~assets/css/fonts.css",
-    "~assets/css/reset.css",
+    "~assets/css/reset.scss",
     "~assets/css/utils.scss",
   ],
 

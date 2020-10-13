@@ -131,7 +131,8 @@ module.exports = {
     overflow: ["responsive", "hover"],
     padding: ["responsive", "hover"],
     fontSize: ["responsive", "hover", "group-hover"],
-    borderStyle: ["responsive", "hover", "group-hover", "focus", "dark"]
+    borderStyle: ["responsive", "hover", "group-hover", "focus", "dark"],
+    boxShadow: ['responsive', 'hover', 'focus', 'active', 'group-hover', 'dark'],
   },
   purge: {
     enabled: process.env.NODE_ENV === "production",

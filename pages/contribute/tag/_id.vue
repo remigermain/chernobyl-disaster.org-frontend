@@ -17,7 +17,7 @@
           </div>
         </template>
       </admin-utils-header>
-      <admin-model-detail :object="object" :to-edit="pathEdit(object.id)">
+      <admin-model-detail :object="object" :to-edit="pathEdit(object.id)" @delete="langDelete">
         <template #head>
           <div class="w-full text-center">
             <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words">

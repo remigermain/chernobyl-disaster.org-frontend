@@ -1,13 +1,11 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <div class="flex flex-col">
-        <lazy-contribute-breadcrumb />
-        <slot name="breadcrumbs" />
-        <h1 class="text-3xl capitalize self-start">
-          {{ $t('menu.dashboard') }}
-        </h1>
-      </div>
+      <admin-utils-header :title="$t('menu.translate')" :description="$t('description.translate')" :to="{name: 'contribute-tag-create'}">
+        <template #breadcrumbs>
+          {{ $t('menu.translate') }}
+        </template>
+      </admin-utils-header>
       <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
        <contribute-translate />
       </div>

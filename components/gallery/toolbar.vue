@@ -12,13 +12,13 @@
       </div>
       <nav class="gallery-toolbar-desktop overflow-y-scroll  wrapper" :class="{'active': active}">
         <field-search v-model="search" :button="false" />
-        <label :name="$t('text.change-sort-order')" class="wrapper">
-          <select v-model="ordering" class="form-select bg-gray-200 mt-2 text-center" :aria-label="$t('word.sort-by')">
+        <label :name="$t('text.change-sort-order')" class="px-2 w-full">
+          <select v-model="ordering" class="form-select bg-gray-200 w-full dark:border-none mt-2 text-center" :aria-label="$t('word.sort-by')">
             <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
               {{ choice.label }}
             </option>
             <option selected value="">
-              {{ this.$t("word.empty") }}
+              {{ this.$t("word.nothing") }}
             </option>
           </select>
         </label>
@@ -239,10 +239,6 @@ export default {
       margin-top: .5rem;
     }
     background-color: white;
-    select  {
-      margin-left: .5rem;
-      margin-right: .5rem;
-    }
     & > .toolbar-menu {
       flex-direction: row;
     }

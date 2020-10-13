@@ -1,5 +1,11 @@
 
 .action {
+  min-width: 40px;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @apply inline-block;
   @apply rounded-full;
   @apply p-2;

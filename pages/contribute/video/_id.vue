@@ -17,7 +17,7 @@
           </div>
         </template>
       </admin-utils-header>
-      <admin-model-detail :object="object" :to-edit="pathEdit(object.id)">
+      <admin-model-detail :object="object" :to-edit="pathEdit(object.id)" @delete="langDelete">
         <template #head>
           <div class="flex flex-col justify-center space-y-4 text-center px-2">
             <div class="flex flex-col space-y-4">

@@ -11,7 +11,7 @@
                   :maxlength="field.max_length"
                   :minlength="field.min_length"
                   :required="field.required"
-                  class="p-2 field-input"
+                  class="p-2 field-input w-full"
                   :class="{'empty': !valueModel, 'min-textarea': min}"
                   @input="$emit('input', valueModel)"
         />

@@ -131,13 +131,13 @@
           <div class=" h-12 w-12 flex justify-center items-center bg-green-700 rounded-full shadow-sm">
             <svg-icon name="mug" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
           </div>
-          <span class="font-bold uppercase text-base">buy me a coffee</span>
+          <span class="font-bold uppercase text-base">Coffee</span>
         </a>
         <a href="https://liberapay.com/rgermain/donate" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
           <div class=" h-12 w-12 flex justify-center items-center bg-yellow-600 rounded-full shadow-sm">
             <svg-icon name="liberapay" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
           </div>
-          <span class="font-bold uppercase text-base">liberapay</span>
+          <span class="font-bold uppercase text-base">Liberapay</span>
         </a>
       </div>
       <nuxt-link  :to="localePath({name: 'contact'})" class="flex flex-col items-center space-y-2 group" :title="$t('word.contact')">

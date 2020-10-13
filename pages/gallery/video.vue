@@ -9,7 +9,7 @@
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="video-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="video-item skeleton" />
     </div>
-    <span v-if="object.length === 0" class="italic text-gray-900 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
+    <span v-if="object.length === 0" class="italic text-gray-900 dark:text-gray-300 text-opacity-75 leading-3 text-xl w-full h-full flex justify-center items-center animate-pulse">
       {{ this.$t("word.empty") }}
     </span>
   </div>
