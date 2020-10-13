@@ -25,7 +25,7 @@
       <div class="settings-box">
         <svg-icon name="settings" class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl" />
         <div class="absolute settings-child right-0 top-0 pt-6 rounded-md">
-          <div class="space-y-4 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-none">
+          <div class="space-y-4 p-6 bg-white dark:bg-gray-800 rounded-lg mobile:shadow-lg dark:shadow-none">
             <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
               <svg-icon name="logout" />
               {{ $t('authentication.logout') }}
