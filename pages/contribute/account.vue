@@ -6,7 +6,6 @@
     <h1 class="text-3xl capitalize self-start">
       {{ $t('word.account') }}
     </h1>
-    {{ data }}
     <div class="flex justify-around flex-wrap account shadow-md border rounded-md dark:bg-gray-800 dark:border-none">
       <div class="-sm:w-full py-4 rounded password">
         <h2 class="text-xl text-center capitalize">
@@ -193,8 +192,6 @@ export default {
         show_help: this.data.show_help,
         show_admin: this.data.show_admin
       }
-
-      console.log(data)
 
       this.$axios.patch("auth/user/", data)
         .then(response => {
