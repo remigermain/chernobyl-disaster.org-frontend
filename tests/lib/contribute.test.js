@@ -174,13 +174,4 @@ it("convert date function", () => {
     expect(contrib.convertToTags(data)).toEqual([{name: "test"}])
   })
 
-  it('convert video link', () => {
-    expect(contrib.convertVideoLink("https://www.youtube.com/watch?v=s9APLXM9Ei8")).toEqual("https://www.youtube.com/embed/s9APLXM9Ei8")
-    expect(contrib.convertVideoLink("http://www.youtube.com/watch?v=s9APLXM9Ei8")).toEqual("http://www.youtube.com/embed/s9APLXM9Ei8")
-    expect(contrib.convertVideoLink("www.youtube.com/watch?v=s9APLXM9Ei8")).toEqual("www.youtube.com/embed/s9APLXM9Ei8")
-    expect(contrib.convertVideoLink("youtube.com/watch?v=s9APLXM9Ei8")).toEqual("youtube.com/embed/s9APLXM9Ei8")
-    expect(contrib.convertVideoLink("tyoutube.com/watch?v=s9APLXM9Ei8")).toEqual("tyoutube.com/watch?v=s9APLXM9Ei8")
-  })
-
-
 })
