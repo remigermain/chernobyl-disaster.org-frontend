@@ -14,7 +14,7 @@
                 @click="active = true"
             >
           <span class="w-full h-full absolute top-0 left-0 cursor-pointer duration-300 transition-opacity justify-center opacity-0
-                      hover:opacity-100 items-center flex z-10 hover:bg-gray-800 hover:bg-opacity-50" @click="active = true">
+                      hover:opacity-100 items-center flex z-10 hover:bg-white dark:hover:bg-gray-800 hover:bg-opacity-50" @click="active = true">
             <svg-icon name="link" class="text-gray-900 text-6xl" />
           </span>
         </div>

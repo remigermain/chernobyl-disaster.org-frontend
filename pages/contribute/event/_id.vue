@@ -116,4 +116,10 @@ export default {
 .extra {
   height: 200px;
 }
+
+@media screen and (max-width: 850px) {
+  .extra {
+    height: 40px;
+  }
+}
 </style>

@@ -48,15 +48,15 @@
                 </div>
               </div>
             </div>
-            <div class="p-2 relative w-max m-auto preview-image">
+            <div class="p-2 relative preview-image">
               <picture>
                 <source :srcset="object.picture.thumbnail_webp" media="(max-width: 550px)" type="image/webp">
                 <source :srcset="object.picture.thumbnail_jpeg" media="(max-width: 550px)" type="image/jpeg">
                 <source :srcset="object.picture.original_webp" type="image/webp">
-                <img :src="object.picture.original_jpeg" alt="image" class="m-auto"/>
+                <img :src="object.picture.original_jpeg" alt="image" class=""/>
               </picture>
               <span class="w-full h-full absolute top-0 left-0 cursor-pointer duration-300 transition-opacity justify-center opacity-0
-                    hover:opacity-100 items-center flex z-10 hover:bg-gray-800 hover:bg-opacity-50" @click="activePicture = true">
+                    hover:opacity-100 items-center flex z-10 hover:bg-white dark:hover:bg-gray-800 hover:bg-opacity-50" @click="activePicture = true">
                 <svg-icon name="link" class="text-gray-900 text-6xl" />
               </span>
             </div>
@@ -129,11 +129,27 @@ export default {
 .preview-image {
   width: 650px;
   height: 450px;
-  > img {
+  margin: auto;
+  img {
     object-fit: contain;
     width: 100%;
     height: 100%;
     margin: auto;
+  }
+}
+@media screen and (max-width: 850px) {
+  .preview-image {
+    width: 550px;
+    height: 360px;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .preview-image {
+    width: 100%;
+    height: 100%;
+    margin: 0;
   }
 }
 </style>
