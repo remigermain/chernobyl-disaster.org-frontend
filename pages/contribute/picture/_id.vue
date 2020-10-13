@@ -56,7 +56,7 @@
                 <img :src="object.picture.original_jpeg" alt="image" class=""/>
               </picture>
               <span class="w-full h-full absolute top-0 left-0 cursor-pointer duration-300 transition-opacity justify-center opacity-0
-                    hover:opacity-100 items-center flex z-10 hover:bg-white dark:hover:bg-gray-800 hover:bg-opacity-50" @click="activePicture = true">
+                    hover:opacity-100 items-center flex z-10 picture-hover" @click="activePicture = true">
                 <svg-icon name="link" class="text-gray-900 text-6xl" />
               </span>
             </div>
@@ -131,7 +131,7 @@ export default {
   height: 450px;
   margin: auto;
   img {
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
     height: 100%;
     margin: auto;
@@ -151,5 +151,15 @@ export default {
     height: 100%;
     margin: 0;
   }
+}
+
+.picture-hover:hover {
+  @apply bg-white;
+  @apply bg-opacity-25;
+}
+
+.dark .picture-hover:hover {
+  @apply bg-gray-700;
+  @apply bg-opacity-25;
 }
 </style>

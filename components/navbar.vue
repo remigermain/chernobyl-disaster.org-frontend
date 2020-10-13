@@ -113,7 +113,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  z-index: 3;
+  z-index: 5;
   padding-bottom: .5em;
   .navbar-link {
     opacity: .5;
@@ -169,7 +169,7 @@ export default {
   display: none;
   width: 40px;
   cursor: pointer;
-  z-index: 4;
+  z-index: 6;
   span {
     display: block;
     border-radius: 0.25rem;
@@ -203,7 +203,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 4;
   &.active {
     background-color: rgba(0, 0, 0, 0.7);
   }
@@ -215,6 +215,7 @@ export default {
 
 @media screen and (min-width:1000px){
   .settings-child {
+    z-index: 6;
     visibility: hidden;
     &:hover {
       visibility: visible;

@@ -133,6 +133,8 @@ module.exports = {
     fontSize: ["responsive", "hover", "group-hover"],
     borderStyle: ["responsive", "hover", "group-hover", "focus", "dark"],
     boxShadow: ['responsive', 'hover', 'focus', 'active', 'group-hover', 'dark'],
+    borderWidth: ['responsive', 'hover', 'focus', 'group-hover'],
+
   },
   purge: {
     enabled: process.env.NODE_ENV === "production",

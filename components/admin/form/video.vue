@@ -31,7 +31,7 @@
               <admin-field-datetime v-model="data.date" :field="modelField.date" :errors="errors.date" />
             </div>
             <div class="flex flex-col justify-around w-2/4 -mobile:w-full">
-              <admin-field-video v-model="data.video" :field="modelField.video" :errors="errors.video" />
+              <admin-field-video v-model="data.video" :field="modelField.video" :title="data.title" :errors="errors.video" />
             </div>
           </div>
           <admin-field-multiselect v-model="data.tags" :field="modelField.tags" :errors="errors.tags" />

@@ -52,14 +52,7 @@
 
           </template>
           <template v-else>
-            <iframe v-for="el in object.videos"
-                    :key="el.id"
-                    :src="urlVideo(el.video)" frameborder="0"
-                    class="extra extra-picture"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-            />
+            <gallery-video-preview v-for="el in object.videos" :key="el.id" :object="el" :link="el.video" :header="false" class="extra extra-picture"/>
           </template>
           <span v-if="activeExtra.length === 0" class="italic text-gray-700 dark:text-gray-500 text-opacity-50 empty">
             {{ this.$t("word.empty") }}

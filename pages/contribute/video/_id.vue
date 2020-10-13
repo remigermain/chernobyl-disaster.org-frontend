@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-            <gallery-video-preview :link="object.video" />
+            <gallery-video-preview :link="object.video" :object="object" class="m-auto"/>
             <admin-detail-tags :object="object.tags" />
           </div>
         </template>

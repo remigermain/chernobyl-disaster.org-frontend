@@ -5,7 +5,7 @@
            :class="{'border-dashed border-2 border-gray-600': !imageSrc}"
       >
         <div v-if="imageSrc" class="relative h-full w-full">
-          <img class="w-full h-full object-contain"
+          <img class="w-full h-full object-cover"
                 alt="image"
                 :src="imageSrc"
                 loading="lazy"
@@ -14,7 +14,7 @@
                 @click="active = true"
             >
           <span class="w-full h-full absolute top-0 left-0 cursor-pointer duration-300 transition-opacity justify-center opacity-0
-                      hover:opacity-100 items-center flex z-10 hover:bg-white dark:hover:bg-gray-800 hover:bg-opacity-50" @click="active = true">
+                      hover:opacity-100 items-center flex z-10 picture-hover" @click="active = true">
             <svg-icon name="link" class="text-gray-900 text-6xl" />
           </span>
         </div>
@@ -104,5 +104,15 @@ export default {
 .preview-image {
   width: 250px;
   height: 250px;
+}
+
+.picture-hover:hover {
+  @apply bg-white;
+  @apply bg-opacity-25;
+}
+
+.dark .picture-hover:hover {
+  @apply bg-gray-700;
+  @apply bg-opacity-25;
 }
 </style>

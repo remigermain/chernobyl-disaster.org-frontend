@@ -4,7 +4,7 @@
       <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="video-item skeleton" />
       <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="video-item skeleton" @visible="nextPage" />
 
-      <gallery-video-preview v-for="el in object" :key="el.id" class="video-item p-2" :link="el.video" />
+      <gallery-video-preview v-for="el in object" :key="el.id" class="video-item p-2" :link="el.video" :object="el" />
 
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="video-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="video-item skeleton" />
@@ -86,33 +86,42 @@ export default {
 }
 
 .video-item {
-  width: 410px !important;
-  height: 280px !important;
-  padding: 5px !important;
+  width: 420px;
+  height: 240px;
+  padding: 5px;
   overflow: hidden;
   &.skeleton {
     background-clip: content-box;
     @apply animate-pulse;
     @apply bg-gray-400;
   }
-}
-
-@media screen and (max-width: 1850px){
-  .video-item {
-    width: 25% !important;
+  &:not(.skeleton) {
+    transition: transform .4s, width 1s, height  1s;
+    cursor: pointer;
+    object-fit: cover;
   }
 }
 
 @media screen and (max-width: 1250px){
   .video-item {
-    width: 50% !important;
+      width: 312px;
+      height: 190px;
   }
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 700px){
   .video-item {
-    width: 100% !important;
+      width: 650px;
+      height: 300px;
   }
+}
+
+.img-enter-active, .img-leave-active {
+  transition: all 1s;
+}
+.img-enter, .img-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 </style>
