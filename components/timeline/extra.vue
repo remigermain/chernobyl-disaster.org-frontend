@@ -91,7 +91,7 @@ export default {
 
   data () {
     return {
-      active: active.PICTURE,
+      active: (!this.object.pictures.length && this.object.videos.length ? active.VIDEO : active.PICTURE),
       current: null,
       currentIdx: 0,
       activeMenu: false,
@@ -112,6 +112,12 @@ export default {
       } else {
         return this.object.videos
       }
+    }
+  },
+
+  watch: {
+    object (newObject) {
+      this.active = (!newObject.pictures.length && newObject.videos.length ? active.VIDEO : active.PICTURE)
     }
   },
 
