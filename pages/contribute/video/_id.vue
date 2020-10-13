@@ -60,7 +60,7 @@
           </div>
         </template>
       </admin-model-detail>
-      <lazy-admin-report v-if="activeModalReport" :id="object.id" uuid="video" @close="activeModalReport = false" />
+      <lazy-admin-utils-report v-if="activeModalReport" :id="object.id" uuid="video" @close="activeModalReport = false" />
       <lazy-admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
     </div>
   </div>

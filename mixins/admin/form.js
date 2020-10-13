@@ -27,6 +27,12 @@ export default {
     }
   },
 
+  watch: {
+    object (newObject) {
+      this.data = newObject
+    }
+  },
+
   created () {
     if (this.$route.query.add) {
       const lang = this.$store.getters["model/lang"](this.$route.query.add)
@@ -100,7 +106,7 @@ export default {
     afterRequest(goTo, id) {
       if (goTo === "detail") {
         this.$router.push(this.localePath(this.pathDetail(id)))
-      } else if (this.create) {
+      } else if (!this.create) {
           if (goTo === "new") {
             this.$router.push(this.localePath(this.pathCreate))
           } else {

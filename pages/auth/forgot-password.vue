@@ -1,5 +1,7 @@
 <template>
-  <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2">
+  <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2
+    border-l-8 rounded-t-lg border-l-gray-800 dark:border-l-indigo-700"
+  >
     <h1 class="font-bold text-gray-900 text-2xl">
       {{ $t('authentication.connection-account') }}
     </h1>

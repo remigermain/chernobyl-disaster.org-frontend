@@ -12,20 +12,19 @@
       <div class="grid-translate">
         <contribute-translate-navbar :object="object" @change="setCurrent" />
         <div class="flex flex-col p-2 space-y-2">
-
           <div v-for="obj in children" :key="obj.id"
                class="border-t-4 border-indigo-700 dark:border-indigo-600 rounded-lg space-y-4  dark:bg-gray-800"
-               :class="{'dark:hover:bg-gray-700': currentActiveId != obj.id}"
+               :class="{'dark:hover:bg-gray-700': currentActiveId !== obj.id}"
           >
             <div class="text-2xl mt-2 leading-3 italic text-gray-700 font-medium dark:text-gray-200 p-2 cursor-pointer"
                   @click="activeCurrent(obj)"
             >
-              <svg-icon name="arrow-up" class="transform duration-300 transition" :class="{'-rotate-180': currentActiveId != obj.id}" />
+              <svg-icon name="arrow-up" class="transform duration-300 transition" :class="{'-rotate-180': currentActiveId !== obj.id}" />
               <svg-icon v-if="obj.isUnCompleted" name="alert-triangle" class="text-red-700" />
               <svg-icon v-else name="circle-check" class="text-green-700" />
               {{ obj.key.join("-") }}
             </div>
-            <admin-form-translate :object="obj" :class="{'hidden': currentActiveId != obj.id}" />
+            <admin-form-translate :object="obj" :class="{'hidden': currentActiveId !== obj.id}" />
           </div>
         </div>
       </div>
@@ -86,7 +85,7 @@ export default {
   data () {
     return {
       current: null,
-      currentActiveId: this.$route.query.id || null
+      currentActiveId: (this.$route.query.id ? parseInt(this.$route.query.id ) : null)
     }
   },
 

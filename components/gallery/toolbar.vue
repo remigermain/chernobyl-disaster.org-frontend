@@ -79,8 +79,8 @@ export default {
       ordering: "",
       active: false,
       orderingChoices: [
-        {label: `${this.$t("word.create")} - ${this.$t("word.ascending")}`, value: "id"},
-        {label: `${this.$t("word.create")} - ${this.$t("word.descending")}`, value: "-id"},
+        {label: `${this.$t("word.added")} - ${this.$t("word.ascending")}`, value: "id"},
+        {label: `${this.$t("word.added")} - ${this.$t("word.descending")}`, value: "-id"},
         {label: `${this.$t("word.date")} - ${this.$t("word.ascending")}`, value: "date"},
         {label: `${this.$t("word.date")} - ${this.$t("word.descending")}`, value: "-date"},
         {label: `${this.$t("word.name")} - ${this.$t("word.ascending")}`, value: "title"},

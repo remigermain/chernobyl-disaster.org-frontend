@@ -32,12 +32,15 @@ export default {
   padding-bottom:56.25%;
   position:relative;
   height:0;
-  max-height: 750px;
+    max-height: 550px;
+    max-width: 750px;
   & > object {
     left:0;
     top:0;
     height:100%;
     width:100%;
+    max-height: 550px;
+    max-width: 750px;
     position:absolute;
   }
 }

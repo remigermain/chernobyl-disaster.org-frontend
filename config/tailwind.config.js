@@ -101,8 +101,8 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/custom-forms"),
-    ({ addUtilities, _, theme, variants }) => {
-      const colors = flattenColorPalette(theme("borderColor"))
+    ({ addUtilities, e, theme, variants }) => {
+      const colors = flattenColorPalette(theme('borderColor'))
       delete colors.default
 
       const colorMap = Object.keys(colors)
@@ -112,8 +112,9 @@ module.exports = {
           [`.border-b-${color}`]: {borderBottomColor: colors[color]},
           [`.border-l-${color}`]: {borderLeftColor: colors[color]},
         }))
+      const utilities = Object.assign({}, ...colorMap)
 
-      addUtilities({...colorMap}, variants("borderColor"))
+      addUtilities(utilities, variants('borderColor'))
     }
   ],
   future: {

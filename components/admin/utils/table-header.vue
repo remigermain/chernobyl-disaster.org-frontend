@@ -1,14 +1,10 @@
 <template>
-  <div class="flex mb-4">
-    <div class="w-2/4 capitalize text-2xl flex items-center">
-      <span>
-        <svg-icon name="list" />
-        {{ title }}
-      </span>
-    </div>
-    <div class="w-2/4">
-      <field-search v-model="searchValue" role="search" @search="$emit('search')" @input="$emit('input', $event)" />
-    </div>
+  <div class="flex mb-4 flex-wrap -md:space-y-3">
+    <span class="w-2/4 capitalize text-2xl -md:w-full">
+      <svg-icon name="list" />
+      {{ title }}
+    </span>
+    <field-search v-model="searchValue" role="search" @search="$emit('search')" @input="$emit('input', $event)" class="w-2/4 -md:w-full"/>
   </div>
 </template>
 

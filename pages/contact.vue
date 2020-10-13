@@ -1,19 +1,17 @@
 <template>
-  <section class="bg-white shadow-md border pt-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4">
-    <p class="font-bold text-gray-900 text-2xl capitalize">
+  <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2
+    border-l-8 rounded-t-lg border-l-gray-800 dark:border-l-indigo-700"
+  >
+    <h1 class="font-bold text-gray-900 text-2xl capitalize">
       {{ $t('word.contact') }}
-    </p>
-    <p class="text-sm text-gray-900 w-2/4 p-2 italic text-opacity-50 leading-3 bg-gray-300 rounded-sm -lg:w-1/3 -md:w-3/4">
+    </h1>
+    <p class="text-sm text-gray-900 w-2/4 p-2 italic text-opacity-50 leading-3 bg-gray-300 dark:bg-gray-700 dark:text-gray-300 rounded-lg -lg:w-1/3 -md:w-3/4">
       {{ $t('description.contact') }}
     </p>
-    <form class="my-4 mx-8 w-3/4 form" @submit.prevent="submit">
+    <form class="my-4 mx-8 w-3/4 form space-y-2" @submit.prevent="submit">
       <field-email v-model="data.email" :field="email" :errors="errors.email" />
-      <field-textarea v-model="data.message" :field="message" :errors="errors.message">
-          <template #icon>
-            <svg-icon name="note" />
-          </template>
-      </field-textarea>
-      <field-submit class="w-full">
+      <field-textarea v-model="data.message" :field="message" :errors="errors.message" :min="true" />
+      <field-submit class="w-full mt-2">
         {{ $t('word.send') }}
       </field-submit>
     </form>

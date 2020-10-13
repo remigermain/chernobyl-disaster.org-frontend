@@ -3,7 +3,7 @@
     <div class="flex flex-wrap flex-col space-y-2">
       <vue-datetime v-model="valueModel" class="datetime" :required="field.required" :phrases="{ok: 'OK', cancel: $t('word.cancel')}">
         <svg-icon slot="before" name="calendar" class="opacity-50 text-2xl" />
-        <svg-icon slot="after" name="x" class="h-full opacity-50 text-2xl cursor-pointer hover:scale-110 hover:text-indigo-700" @click="dataDate = null" />
+        <svg-icon slot="after" name="x" class="h-full opacity-50 text-2xl cursor-pointer hover:scale-110 hover:text-indigo-700" @click="valueModel = null" />
       </vue-datetime>
     </div>
   </admin-field-base>
@@ -20,7 +20,6 @@ export default {
 
   components: {
     vueDatetime: Datetime,
-    // vueTimepicker
   },
 
   mixins: [FieldMixins],

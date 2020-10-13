@@ -5,8 +5,8 @@
         {{ position }}
       </div>
       <div class="toolbar-right">
-        <nuxt-link v-if="$auth.loggedIn && toDetail" :to="localePath(toDetail)" class="toolbar-item" :title="$t('word.edit')">
-          <svg-icon name="settings" class="w-inherit h-inherit" />
+        <nuxt-link v-if="$auth.loggedIn && toEdit" :to="localePath(toEdit)" class="toolbar-item" :title="$t('word.edit')">
+          <svg-icon name="edit" class="w-inherit h-inherit" />
         </nuxt-link>
         <svg-icon name="x" class="toolbar-item" :aria-label="$t('word.close')" @click="$emit('close')" />
       </div>
@@ -45,7 +45,7 @@ export default {
       type: String,
       default: "image"
     },
-    toDetail: {
+    toEdit: {
       type: Object,
       default: null
     },
@@ -92,7 +92,9 @@ export default {
   position: fixed;
   user-select: none;
   transition: opacity .2s;
-  z-index: 40;
+  z-index: 42;
+  padding: 0 !important;
+  margin: 0 !important;
   top: 0;
   left: 0;
   width: 100vw;

@@ -28,7 +28,9 @@ export default {
 <style lang="scss">
 
 .dark .section-form {
-  @apply border-none;
+  @apply border-t-0;
+  @apply border-b-0;
+  @apply border-r-0;
   @apply bg-gray-800;
   h1 {
     @apply text-gray-400

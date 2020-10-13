@@ -1,5 +1,7 @@
 <template>
-  <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2">
+  <section class="bg-white shadow-md border py-4 rounded flex flex-col justify-center items-center -md:w-full xl:w-3/4 w-3/4 section-form space-y-2
+    border-l-8 rounded-t-lg border-l-gray-800 dark:border-l-indigo-700"
+  >
     <h1 class="font-bold text-gray-900 text-2xl">
       {{ $t('authentication.new-password') }}
     </h1>
@@ -48,12 +50,14 @@ export default {
       },
       field: {
         new_password1: {
-          label: this.$t("authentication.password"),
+          label: this.$t("authentication.new-password"),
           name: "new_password1",
+          required: true
         },
         new_password2: {
           label: this.$t("authentication.comfirm-password"),
           name: "new_password2",
+          required: true
         }
       }
     }
@@ -96,6 +100,9 @@ export default {
             .then(data => {
               data.new_password1 && (this.errors.new_password1 = data.new_password2)
               data.new_password2 && (this.errors.new_password2 = data.new_password2)
+              if (data.uid || data.token) {
+                this.i18nToast.error(this.$t("error-message.cant-set-the-new-password")).goAway(8000)
+              }
             })
         })
         .finally(() => { this.$store.commit("ON_LOADING", false) })

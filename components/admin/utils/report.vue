@@ -12,12 +12,9 @@
           {{ showHelp }}
           <admin-utils-help v-show="showHelp" :field="{help: $t('description.report')}" :detail="false" />
         </transition>
-        <field-textarea v-model="message" :field="field" :errors="errors.message"
-                        class="my-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg">
-          <template #icon>
-            <svg-icon name="note" />
-          </template>
-        </field-textarea>
+        <field-textarea v-model="message" :field="field" :errors="errors.message" :min="true"
+                        class="my-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
+        />
       </div>
     </template>
     <template #action>

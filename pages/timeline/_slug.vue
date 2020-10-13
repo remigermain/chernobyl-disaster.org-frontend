@@ -7,7 +7,9 @@
       <lazy-timeline-time :date="current.date" />
     </div>
     <h1 class="timeline-title text-4xl -sm:text-lg capitalize italic text-center">
-      <admin-action-edit v-if="$auth.loggedIn" :to="{name: 'contribute-event-id', params: {id: current.id}}" />
+      <nuxt-link v-if="$auth.loggedIn && toEdit" :to="localePath(toEdit)" class="toolbar-item" :title="$t('word.edit')">
+        <svg-icon name="edit" class="w-inherit h-inherit" />
+      </nuxt-link>
       {{ i18nAttr(current, 'title') }}
     </h1>
     <section class="overflow-y-scroll ql-snow">
@@ -27,6 +29,12 @@ export default {
     current: {
       type: Object,
       required: true
+    }
+  },
+
+  data () {
+    return {
+      toEdit: {name: 'contribute-event-id', params: {id: this.current.id}}
     }
   },
 
@@ -104,4 +112,14 @@ export default {
   grid-area: 3 / 2 / 4 / 3;
 }
 
+.toolbar-item {
+  height: inherit;
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  &:hover {
+    color: rgb(185, 185, 185);
+  }
+}
 </style>

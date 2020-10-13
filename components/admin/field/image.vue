@@ -75,6 +75,13 @@ export default {
     }
   },
 
+  watch: {
+    valueModel () {
+      // reset image when reset data
+      this.imageUrl = null
+    }
+  },
+
   methods: {
     readImage () {
       /* read file image , and assigne to url value */

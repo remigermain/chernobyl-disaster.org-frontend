@@ -1,7 +1,7 @@
 <template>
   <div class="modal flex justify-center items-center" @click.prevent="$emit('close')">
     <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform
-          transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" @click.stop
+          transition-all sm:my-8 sm:align-middle -md:w-10/12 md:w-2/4" @click.stop
     >
       <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
         <div class="sm:flex sm:items-start">

@@ -7,10 +7,9 @@
             <time :datetime="obj.date.date.getFullYear()" class="text-3xl">
               {{ obj.date.date.getFullYear() }}
             </time>
-            {{ getDate(obj.date.date) }}
-            <!-- <time :datetime="getDate(obj.date.date, $i18n.locale)" class="text-md italic text-gray-700 dark:text-gray-400">
-              {{ getDate(obj.date.date, $i18n.locale) }} -->
-            <!-- </time> -->
+            <time :datetime="getDate(obj.date.date, $i18n.locale)" class="text-md italic text-gray-700 dark:text-gray-400">
+              {{ getDate(obj.date.date, $i18n.locale) }}
+            </time>
           </header>
           <section class="timeline-item mr-1">
             <nuxt-link v-for="element in obj.list"
@@ -28,7 +27,7 @@
                     }"
               />
               <lazy-timeline-min-time :date="element.date" />
-              <h1 class="dark:text-gray-400">
+              <h1 class="dark:text-gray-400 break-words">
                 {{ i18nAttr(element, 'title') }}
               </h1>
             </nuxt-link>
@@ -182,10 +181,22 @@ export default {
   }
 }
 
+.timeline-date {
+  grid-area: 1 / 1 / 1 / 2;
+}
+
+.timeline-item {
+  grid-area: 1 / 2 / 1 / 4;
+}
+
 @media screen and (min-width: 850px){
   .timeline > *:nth-child(2n + 2) {
     & > .timeline-date {
-      order: 1;
+      grid-area: 1 / 3 / 1 / 4;
+      // order: 1;
+    }
+    & > .timeline-item {
+      grid-area: 1 / 1 / 1 / 3;
     }
     .timeline-element {
       @apply border-r-8;
@@ -198,6 +209,7 @@ export default {
     }
   }
 }
+
 
 .timeline-element {
   @apply border-l-8;
@@ -224,7 +236,7 @@ export default {
 
 .timeline-content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
 }
 

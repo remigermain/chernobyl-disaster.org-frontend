@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col">
-    <div class="flex mt-2">
+    <div class="flex mt-2 ">
       <span class="px-2 flex justify-center items-center text-gray-700 field-icon">
         <slot name="icon" />
       </span>

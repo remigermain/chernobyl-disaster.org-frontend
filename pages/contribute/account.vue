@@ -47,7 +47,7 @@
                         cursor-pointer group" @click="active = true">
               <svg-icon name="x" class="h-6 w-6 text-red-600 group-hover:scale-125 transform duration-300 transition-transform" />
             </div>
-            <div class="mt-3 text-center">
+            <div class="ml-3 text-center">
               <h3 class="text-lg leading-6 font-medium text-gray-900 text-opacity-75 dark:text-gray-400">
                 {{ $t('authentication.delete-account') }}
               </h3>
@@ -192,8 +192,6 @@ export default {
         show_help: !!this.data.show_help,
         show_admin: !!this.data.show_admin
       }
-
-      console.log(data, this.data)
 
       this.$axios.patch("auth/user/", data)
         .then(response => {

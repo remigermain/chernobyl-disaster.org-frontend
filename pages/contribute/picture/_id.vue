@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-            <div class="p-2 relative w-max m-auto">
+            <div class="p-2 relative w-max m-auto preview-image">
               <picture>
                 <source :srcset="object.picture.thumbnail_webp" media="(max-width: 550px)" type="image/webp">
                 <source :srcset="object.picture.thumbnail_jpeg" media="(max-width: 550px)" type="image/jpeg">
@@ -72,7 +72,7 @@
         </template>
       </admin-model-detail>
       <lazy-gallery-detail-picture v-if="activePicture" :object="object.picture" :idx="0" :length="1" @close="activePicture = null" />
-      <lazy-admin-report v-if="activeModalReport" :id="object.id" uuid="picture" @close="activeModalReport = false" />
+      <lazy-admin-utils-report v-if="activeModalReport" :id="object.id" uuid="picture" @close="activeModalReport = false" />
       <lazy-admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
     </div>
   </div>
@@ -127,13 +127,13 @@ export default {
 
 <style lang="scss" scoped>
 .preview-image {
-  width: 250px;
-  height: 250px;
-  @apply rounded-full;
+  width: 650px;
+  height: 450px;
   > img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%;
+    margin: auto;
   }
 }
 </style>
