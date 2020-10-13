@@ -50,9 +50,9 @@ export default {
 
   computed: {
     url () {
-      const reg = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9-]+)/
+      const reg = /^(?:https?:\/\/)?(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)([a-zA-Z0-9_-]+)/
       const matches = this.link.match(reg)
-      if (matches.length >= 2)
+      if (matches && matches.length >= 2)
         return matches[1]
       return ""
     },

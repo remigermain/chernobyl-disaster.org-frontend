@@ -69,7 +69,7 @@ export default {
 
   computed: {
     contributeLink () {
-      return {name: (this.$auth.loggedIn ? "contribute" : "auth")}
+      return {name: (this.$auth.loggedIn ? "contribute" : "auth-login")}
     },
   },
 
