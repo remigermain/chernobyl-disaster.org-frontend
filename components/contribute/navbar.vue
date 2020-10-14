@@ -6,7 +6,7 @@
       <span class="bg-gray-700 dark:bg-gray-100" />
       <span class="bg-gray-700 dark:bg-gray-100" />
     </label>
-    <nav class="contribute-navbar-items -mobile:dark:bg-black" :class="{'active': active }">
+    <nav class="contribute-navbar-items -mobile:dark:bg-gray-800" :class="{'active': active }">
       <nuxt-link  :to="localePath({name: 'contribute'})" class="contribute-navbar-link exact ml-4">
         <svg-icon name="dashboard" />
         {{ $t('menu-name.dashboard') }}
