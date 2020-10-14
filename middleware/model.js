@@ -4,7 +4,7 @@ export default function ({$axios, store, redirect, app}) {
   // populate store with global items like tags, langs, event ..ect
   return $axios.get("populate/store")
     .then(response => {
-      if (response.status!==200) {
+      if (response.status !== 200) {
         throw new Error("error-server")
       }
       store.commit("model/POPULATE", response.data)

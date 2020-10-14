@@ -16,7 +16,7 @@ export default {
 
   asyncData({ app, route, store, redirect }) {
 
-    if (store.getters["timeline/has_populate"] && app.$auth.loggedIn) {
+    if (store.getters["timeline/has_populate"] && !app.$auth.loggedIn) {
         return {
           object: store.getters["timeline/events"],
           current: timelineElement(store.getters["timeline/events"], route.params.slug)
