@@ -27,7 +27,6 @@
           </span>
         </span>
       </div>
-      {{ valueModel }}
       <label class="grid-time shadow-md text-gray-300 rounded-sm dark:bg-gray-600" :class="{'disabled': disabled}">
         <div class="h-full h-full flex justify-center items-center  rounded-sm p-2" :class="{'bg-gray-900': !disabled}">
           <svg-icon name="x" class="transform transition-transform duration-300
