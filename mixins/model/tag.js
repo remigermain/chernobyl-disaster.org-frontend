@@ -9,7 +9,7 @@ export default {
     return {
       model: {
         name: "tag",
-        label: this.$t("menu.tag"),
+        label: this.$t("menu-name.tag"),
         help: this.$t("description.tag")
       },
       modelField: {

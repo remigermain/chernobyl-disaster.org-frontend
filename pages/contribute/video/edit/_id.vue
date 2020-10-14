@@ -30,7 +30,7 @@ export default {
   },
 
   head () {
-    const title = `${this.$t("menu.video")} - ${this.$t("word.update")}`
+    const title = `${this.$t("menu-name.video")} - ${this.$t("word.update")}`
     return {
       title,
       meta: [

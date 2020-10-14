@@ -53,8 +53,8 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.video")
-    const description = this.$t("description.video")
+    const title = this.$t("menu-name.video")
+    const description = this.$t("description.gallery-videos")
     return {
       title,
       meta: [

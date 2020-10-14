@@ -10,33 +10,34 @@ export default {
     return {
       model: {
         name: "people",
-        label: this.$t("menu.people"),
+        label: this.$t("menu-name.people"),
+        help: this.$t('description.people')
       },
       modelField: {
         name: {
-          label: this.$t("word.name"),
+          label: this.$t("word.name-surname"),
           name: "name",
           required: true,
           max_length: 100,
-          help: this.$t("help-people.name")
+          help: this.$t("help-people.name-surname")
         },
         born: {
-          label: this.$t("word.born"),
+          label: this.$t("text.date-of-birth"),
           name: "born",
           required: false,
-          help: this.$t("help-people.born"),
+          help: this.$t("help-people.date-of-birth"),
         },
         death: {
-          label: this.$t("word.death"),
+          label: this.$t("word.date-of-death"),
           name: "death",
           required: false,
-          help: this.$t("help-people.death"),
+          help: this.$t("help-people.date-of-death"),
         },
         profil: {
-          label: this.$t("word.profil"),
+          label: this.$t("word.profile-photo"),
           name: "profil",
           required: false,
-          help: this.$t("help-people.profil")
+          help: this.$t("help-people.profile-photo")
         },
         tags: {
           label: this.$t("word.tags"),

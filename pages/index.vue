@@ -11,7 +11,7 @@
         group px-4 py-4 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800"
                             :title="$t('text.goto-timeline')"
       >
-        {{ $t('menu.timeline') }}
+        {{ $t('menu-name.timeline') }}
         <svg-icon name="caret-right" role="img" aria-label="arrow" class="transition-all duration-400 group-hover:scale-150 transform group-hover:translate-x-2" />
       </nuxt-link>
     </article>
@@ -32,7 +32,7 @@ export default {
   transition: "common",
 
   head () {
-    const title = this.$t("menu.home")
+    const title = this.$t("menu-name.home")
     const description = this.$t("description.home")
     return {
       title,

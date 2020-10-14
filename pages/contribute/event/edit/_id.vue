@@ -32,7 +32,7 @@ export default {
   },
 
   head () {
-    const title = `${this.$t("menu.event")} - ${this.$t("word.update")}`
+    const title = `${this.$t("menu-name.event")} - ${this.$t("word.update")}`
     return {
       title,
       meta: [

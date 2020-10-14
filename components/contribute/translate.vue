@@ -6,7 +6,7 @@
     >
       <svg-icon name="arrow-down" class="transform transition-transform duration-400" :class="{'-rotate-90': !active}" />
       <span class="leading-3 p-2 font-bold rounded-full">
-        {{ $t('word.admin') }}
+        admin
       </span>
     </div>
     <div class="relative overflow-hidden dark:bg-gray-800 rounded-b-md">

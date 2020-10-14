@@ -6,15 +6,16 @@ export default {
     return {
       model: {
         name: "event",
-        label: this.$t("help-event.event"),
+        label: this.$t("menu-name.event"),
+        help: this.$t("description.event"),
       },
       modelField: {
         title: {
-          label: this.$t("word.title"),
+          label: this.$t("text.referent-title"),
           name: "title",
           required: true,
           max_length: 100,
-          help: this.$t("help-event.title")
+          help: this.$t("help-event.referent-title")
         },
         tags: {
           label: this.$t("word.tags"),

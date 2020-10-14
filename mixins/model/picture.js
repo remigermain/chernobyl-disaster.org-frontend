@@ -10,15 +10,15 @@ export default {
     return {
       model: {
         name: "picture",
-        label: this.$t("menu.picture"),
+        label: this.$t("menu-name.picture"),
       },
       modelField: {
         title: {
-          label: this.$t("word.title"),
+          label: this.$t("text.referent-title"),
           name: "title",
           required: true,
           max_length: 50,
-          help: this.$t("help-picture.title")
+          help: this.$t("help-picture.referent-title")
         },
         event: {
           label: this.$t("word.event"),

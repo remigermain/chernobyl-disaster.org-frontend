@@ -9,14 +9,14 @@
     <nav class="contribute-navbar-items -mobile:dark:bg-black" :class="{'active': active }">
       <nuxt-link  :to="localePath({name: 'contribute'})" class="contribute-navbar-link exact ml-4">
         <svg-icon name="dashboard" />
-        {{ $t('menu.dashboard') }}
+        {{ $t('menu-name.dashboard') }}
       </nuxt-link>
       <nuxt-link  :to="localePath({name: 'contribute-account'})" class="contribute-navbar-link ml-4" @click="active = false">
         <svg-icon name="user" />
-        {{ $t("menu.account") }}
+        {{ $t("menu-name.account") }}
       </nuxt-link>
-      <nuxt-link v-for="menu in menus" :key="menu.to.name"  :to="localePath(menu.to)" class="contribute-navbar-link ml-4" @click="active = false">
-        {{ menu.name }}
+      <nuxt-link v-for="menu in menus" :key="menu-name.to.name"  :to="localePath(menu-name.to)" class="contribute-navbar-link ml-4" @click="active = false">
+        {{ menu-name.name }}
       </nuxt-link>
     </nav>
   </div>
@@ -31,34 +31,22 @@ export default {
       active: false,
       menus: [
         {
-          name: this.$t("menu.event"),
-          help: this.$t("description.event"),
-          to: {name: "contribute-event"},
+          name: this.$t("menu-name.event"),
         },
         {
-          name: this.$t("menu.people"),
-          help: this.$t("description.people"),
-          to: {name: "contribute-people"},
+          name: this.$t("menu-name.people"),
         },
         {
-          name: this.$t("menu.tag"),
-          help: this.$t("description.tag"),
-          to: {name: "contribute-tag"},
+          name: this.$t("menu-name.tag"),
         },
         {
-          name: this.$t("menu.picture"),
-          help: this.$t("description.picture"),
-          to: {name: "contribute-picture"},
+          name: this.$t("menu-name.picture"),
         },
         {
-          name: this.$t("menu.video"),
-          help: this.$t("description.video"),
-          to: {name: "contribute-video"},
+          name: this.$t("menu-name.video"),
         },
         {
           name: this.$t("word.translation"),
-          help: this.$t("description.translate"),
-          to: {name: "contribute-translate"},
         },
       ]
     }

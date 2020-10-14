@@ -100,7 +100,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.video")
+    const title = this.$t("menu-name.video")
     return {
       title,
       meta: [

@@ -4,7 +4,7 @@
     <div class="shadow-lg grid-extra overflow-hidden w-full h-full timeline:rounded-lg" :class="{'active': activeMenu}">
       <div class="extra-toolbar-mobile bg-gray-800 w-full flex justify-around" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
-          {{ $t('menu.medias') }}
+          {{ $t('menu-name.medias') }}
         </span>
         <span class="mr-6 text-right w-2/4">
           <svg-icon name="arrow-up" class="extra-toolbar-mobile-icon" :class="{'active': activeMenu}" />
@@ -21,7 +21,7 @@
                 :title="$t('text.goto-picture')"
                 @click.prevent="pictureShow"
         >
-          <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('menu.picture')" />
+          <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('menu-name.picture')" />
         </button>
         <button class="w-full h-2/4 px-4 extra-btn timeline:rounded-b-lg"
                 :class="{
@@ -31,7 +31,7 @@
                 :title="$t('text.goto-video')"
                 @click.prevent="videoShow"
         >
-          <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('menu.video')" />
+          <svg-icon name="movie" class="extra-icon-mobile" role="img" :aria-label="$t('menu-name.video')" />
         </button>
       </nav>
       <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden">

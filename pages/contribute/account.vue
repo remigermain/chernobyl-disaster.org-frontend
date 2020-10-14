@@ -129,7 +129,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.account")
+    const title = this.$t("menu-name.account")
     return {
       title,
       meta: [

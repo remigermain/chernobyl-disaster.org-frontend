@@ -15,13 +15,13 @@
         <nuxt-link  :to="localePath({name: 'contribute-translate'})" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
                          :title="$t('text.contribute-translate')"
         >
-          <svg-icon name="language" role="img" :aria-label="$t('word.translation')" />
+          <svg-icon name="language" role="img" aria-label="translation" />
           {{ $t('word.translation') }}
         </nuxt-link>
         <nuxt-link  :to="localePath({name: 'auth-login'})" class="inline-block px-4 py-4 font-bold rounded-sm hover:text-gray-700 hover:scale-105 transform transition-transform duration-300"
                          :title="$t('authentication.connection-account')"
         >
-          <svg-icon name="user" role="img" :aria-label="$t('authentication.connection-account')" />
+          <svg-icon name="user" role="img" aria-label="connection account" />
           {{ $t('authentication.connection-account') }}
         </nuxt-link>
       </section>
@@ -31,13 +31,13 @@
         </h2>
         <h2 class="text-gray-800 dark:text-gray-300 font-medium italic text-opacity-75 leading-3">
           <div class="inline-flex relative">
-            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('word.love')" />
-            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('word.love')" />
+            <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
           {{ $t('text.thanks-donators') }}
           <div class="inline-flex relative">
-            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('word.love')" />
-            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('word.love')" />
+            <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
           <wbr>
         </h2>
@@ -47,7 +47,7 @@
           </span>
           <span v-if="donators.length === 0" class="text-center italic text-blue-700 contributors-empty">
             {{ $t('text.no-donators') }}
-            <svg-icon name="mood-sad" role="img" :aria-label="$t('word.mood-sad')" />
+            <svg-icon name="mood-sad" role="img" aria-label="mood sad" />
           </span>
         </div>
       </section>
@@ -57,13 +57,13 @@
         </h2>
         <h2 class="text-gray-800 dark:text-gray-300 font-medium">
           <div class="inline-flex relative">
-            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('word.love')" />
-            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('word.love')" />
+            <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
           {{ $t('text.thanks-contributors') }}
           <div class="inline-flex relative">
-            <svg-icon name="heart" class="text-red-800 relative" role="img" :aria-label="$t('word.love')" />
-            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" :aria-label="$t('word.love')" />
+            <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
+            <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
           <wbr>
         </h2>
@@ -73,7 +73,7 @@
           </span>
           <span v-if="contributors.length === 0" class="text-center italic text-blue-700 contributors-empty">
             {{ $t('text.no-contributors') }}
-            <svg-icon name="mood-sad" role="img" :aria-label="$t('word.mood-sad')" />
+            <svg-icon name="mood-sad" role="img" aria-label="mood sad" />
           </span>
         </div>
       </section>
@@ -140,9 +140,9 @@
           <span class="font-bold uppercase text-base">Liberapay</span>
         </a>
       </div>
-      <nuxt-link  :to="localePath({name: 'contact'})" class="flex flex-col items-center space-y-2 group" :title="$t('word.contact')">
+      <nuxt-link  :to="localePath({name: 'contact'})" class="flex flex-col items-center space-y-2 group" :title="$t('menu-name.contact')">
         <div class=" h-12 w-12 flex justify-center items-center bg-gray-800 rounded-full shadow-sm">
-          <svg-icon name="mail" :aria-label="$t('word.contact')" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
+          <svg-icon name="mail" aria-label="contact" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
         </div>
         <span class="font-bold uppercase text-base">{{ $t('word.contact') }}</span>
       </nuxt-link>
@@ -180,7 +180,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.about")
+    const title = this.$t("menu-name.about")
     const description = this.$t("message.help-us-description")
     return {
       title,

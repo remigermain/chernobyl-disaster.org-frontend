@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.label" :description="$t('description.tag')" :to="{name: 'contribute-tag-create'}">
+      <admin-utils-header :title="model.label" :description="model.help" :to="pathCreate">
         <template #breadcrumbs>
           {{ model.label }}
         </template>
@@ -94,7 +94,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.tag")
+    const title = this.$t("menu-name.tag")
     return {
       title,
       meta: [

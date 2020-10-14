@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.name" :description="$t('description.tag')">
+      <admin-utils-header :title="model.label" :description="model.help">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -68,7 +68,7 @@ export default {
   },
 
   head () {
-    const title = `${this.$t("menu.tag")} - ${this.$t("word.detail")}`
+    const title = `${this.$t("menu-name.tag")} - ${this.$t("word.detail")}`
     return {
       title,
       meta: [

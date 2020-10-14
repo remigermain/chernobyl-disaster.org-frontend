@@ -5,7 +5,7 @@
 <script>
 export default {
   head () {
-    const title = `${this.$t("menu.event")} - ${this.$t("word.create")}`
+    const title = `${this.$t("menu-name.event")} - ${this.$t("word.create")}`
     return {
       title,
       meta: [

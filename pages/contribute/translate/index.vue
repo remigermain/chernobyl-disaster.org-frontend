@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="$t('menu.translate')" :description="$t('description.translate')">
+      <admin-utils-header :title="$t('menu-name.translate')" :description="$t('description.translate')">
         <template #breadcrumbs>
-          {{ $t('menu.translate') }}
+          {{ $t('menu-name.translate') }}
         </template>
       </admin-utils-header>
       <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
@@ -79,7 +79,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.translate")
+    const title = this.$t("menu-name.translate")
     return {
       title,
       meta: [

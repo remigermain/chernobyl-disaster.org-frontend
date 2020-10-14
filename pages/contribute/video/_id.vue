@@ -102,7 +102,7 @@ export default {
   data: () => ({activevideo: false}),
 
   head () {
-    const title = `${this.$t("menu.video")} - ${this.$t("word.detail")}`
+    const title = `${this.$t("menu-name.video")} - ${this.$t("word.detail")}`
     return {
       title,
       meta: [

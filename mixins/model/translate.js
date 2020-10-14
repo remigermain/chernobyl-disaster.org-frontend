@@ -3,7 +3,7 @@ export default {
     return {
       model: {
         name: "translate",
-        label: this.$t("menu.translate"),
+        label: this.$t("menu-name.translate"),
       },
       modelField: {
         language: {

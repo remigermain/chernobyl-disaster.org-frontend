@@ -22,7 +22,7 @@
               <svg-icon name="arrow-right" class="transform duration-300 transition" :class="{'rotate-90': currentActiveId === obj.id}" />
               <svg-icon v-if="obj.isUnCompleted" name="alert-triangle" class="text-red-700" />
               <svg-icon v-else name="circle-check" class="text-green-700" />
-              {{ obj.key.join("-") }}
+              {{ obj.key }}
             </div>
             <admin-form-translate v-if="currentActiveId === obj.id" :object="obj" />
           </div>
@@ -55,7 +55,7 @@ export default {
         const object =  {}
         response.data.forEach(e => {
           const keys = e.key.split(".")
-          e.key = keys.slice(1)
+          e.key = keys.slice(1).join("-")
           if (!object[keys[0]]) {
             object[keys[0]] = {
               children: [],
@@ -72,8 +72,10 @@ export default {
             ...object[o],
             isUnCompleted: !!object[o].children.find(x => x.isUnCompleted)
           }
+          obj.children.sort((a, b) => a.keys >= b.keys)
           list.push(obj)
         })
+        list.sort((a, b) => a.label >= b.label)
         return {object: list}
       })
       .catch (error => {
@@ -91,7 +93,7 @@ export default {
 
 
   head () {
-    const title = `${this.$t("menu.translate")} - ${this.$t("word.update")}`
+    const title = `${this.$t("menu-name.translate")} - ${this.$t("word.update")}`
     return {
       title,
       meta: [

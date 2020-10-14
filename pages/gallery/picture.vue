@@ -75,8 +75,8 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.picture")
-    const description = this.$t("description.picture")
+    const title = this.$t("menu-name.picture")
+    const description = this.$t("description.gallery-pictures")
     return {
       title,
       meta: [

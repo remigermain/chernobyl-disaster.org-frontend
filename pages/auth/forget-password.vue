@@ -3,7 +3,7 @@
     border-l-8 rounded-t-lg border-l-gray-800 dark:border-l-indigo-700"
   >
     <h1 class="font-bold text-gray-900 text-2xl">
-      {{ $t('authentication.forgot-password') }}
+      {{ $t('authentication.forget-password') }}
     </h1>
     <span class="text-sm text-gray-700 dark:text-gray-200">
       {{ $t('word.or') }}
@@ -47,8 +47,8 @@ export default {
   },
 
   head () {
-    const title = this.$t("authentication.forgot-password")
-    const description = this.$t("description.forgot-password")
+    const title = this.$t("authentication.forget-password")
+    const description = this.$t("description.forget-password")
     return {
       title,
       meta: [

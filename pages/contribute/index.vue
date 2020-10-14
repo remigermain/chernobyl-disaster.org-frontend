@@ -5,7 +5,7 @@
         <lazy-contribute-breadcrumb />
         <slot name="breadcrumbs" />
         <h1 class="text-3xl capitalize self-start">
-          {{ $t('menu.dashboard') }}
+          {{ $t('menu-name.dashboard') }}
         </h1>
       </div>
       <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
@@ -84,7 +84,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu.dashboard")
+    const title = this.$t("menu-name.dashboard")
     return {
       title,
       meta: [

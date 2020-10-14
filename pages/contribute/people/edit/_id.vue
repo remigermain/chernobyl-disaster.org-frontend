@@ -33,7 +33,7 @@ export default {
   },
 
   head () {
-    const title = `${this.$t("menu.people")} - ${this.$t("word.update")}`
+    const title = `${this.$t("menu-name.people")} - ${this.$t("word.update")}`
     return {
       title,
       meta: [

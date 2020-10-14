@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.name" :description="$t('description.picture')">
+      <admin-utils-header :title="model.name" :description="model.help">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -117,7 +117,7 @@ export default {
   data: () => ({activePicture: false}),
 
   head () {
-    const title = `${this.$t("menu.picture")} - ${this.$t("word.detail")}`
+    const title = `${this.$t("menu-name.picture")} - ${this.$t("word.detail")}`
     return {
       title,
       meta: [

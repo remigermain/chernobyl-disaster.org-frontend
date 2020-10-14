@@ -1,7 +1,7 @@
 <template>
   <div class="bread-crumb text-md text-opacity-50 text-gray-700 mb-2">
     <nuxt-link  :to="localePath({name: 'contribute'})">
-      {{ $t('menu.dashboard') }}
+      {{ $t('menu-name.dashboard') }}
     </nuxt-link>
     <slot />
   </div>

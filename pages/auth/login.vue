@@ -15,7 +15,7 @@
       <field-username v-model="data.username" :field="modelField.username" :errors="errors.username" />
       <field-password v-model="data.password" :field="modelField.password" :errors="errors.password" />
       <div class="flex justify-end mx-auto text-center imp-my-4">
-        <nuxt-link  :to="localePath({name: 'auth-forgot-password'})"
+        <nuxt-link  :to="localePath({name: 'auth-forget-password'})"
                     class="font-semibold hover:text-indigo-500 text-indigo-600 font-md m-sm:w-full my-auto italic space"
                     :title="$t('authentication.forget-password')"
         >

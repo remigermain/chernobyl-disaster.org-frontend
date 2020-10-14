@@ -8,19 +8,19 @@
     </label>
     <nav class="navbar-items relative" :class="{'active': active }" :aria-label="$t('text.site-navigation ')">
       <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('text.goto-home')">
-        {{ $t('menu.home') }}
+        {{ $t('menu-name.home') }}
       </nuxt-link>
       <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link" :title="$t('text.goto-timeline')">
-        {{ $t('menu.timeline') }}
+        {{ $t('menu-name.timeline') }}
       </nuxt-link>
       <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link" :title="$t('text.goto-gallery')">
-        {{ $t('menu.gallery') }}
+        {{ $t('menu-name.gallery') }}
       </nuxt-link>
       <nuxt-link :to="localePath(contributeLink)" class="navbar-link" :title="$t('text.goto-contribute')">
-        {{ $t('menu.contribute') }}
+        {{ $t('menu-name.contribute') }}
       </nuxt-link>
       <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('text.goto-about')">
-        {{ $t('menu.about') }}
+        {{ $t('menu-name.about') }}
       </nuxt-link>
       <div class="settings-box">
         <svg-icon name="settings" class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl" />

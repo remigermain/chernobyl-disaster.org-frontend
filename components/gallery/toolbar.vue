@@ -4,7 +4,7 @@
     <div class="gallery-toolbar hide-scroolbar overflow-x-hidden" :class="{'active': active}">
       <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
-          {{ $t('menu.medias') }}
+          {{ $t('menu-name.medias') }}
         </span>
         <span class="mr-6 text-right w-2/4">
           <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
@@ -30,17 +30,17 @@
           <nuxt-link  :to="localePath({name: 'gallery-picture'})" class="toolbar-link"
                                 :title="$t('text.goto-gallery-picture')"
           >
-            <svg-icon name="photo" class="w-6 h-6" role="img" :aria-label="$t('menu.picture')" />
+            <svg-icon name="photo" class="w-6 h-6" role="img" :aria-label="$t('menu-name.picture')" />
             <span class="gallery-toolbar-text">
-              {{ $t('menu.picture') }}
+              {{ $t('menu-name.picture') }}
             </span>
           </nuxt-link>
           <nuxt-link  :to="localePath({name: 'gallery-video'})" class="toolbar-link"
                                 :title="$t('text.goto-gallery-video')"
           >
-            <svg-icon name="movie" class="w-6 h-6" role="img" :aria-label="$t('menu.video')" />
+            <svg-icon name="movie" class="w-6 h-6" role="img" :aria-label="$t('menu-name.video')" />
             <span class="gallery-toolbar-text">
-              {{ $t('menu.video') }}
+              {{ $t('menu-name.video') }}
             </span>
           </nuxt-link>
         </div>
@@ -85,8 +85,8 @@ export default {
         {label: `${this.$t("word.date")} - ${this.$t("word.descending")}`, value: "-date"},
         {label: `${this.$t("word.name")} - ${this.$t("word.ascending")}`, value: "title"},
         {label: `${this.$t("word.name")} - ${this.$t("word.descending")}`, value: "-title"},
-        {label: `${this.$t("menu.event")} - ${this.$t("word.ascending")}`, value: "event__date"},
-        {label: `${this.$t("menu.event")} - ${this.$t("word.descending")}`, value: "-event__date"},
+        {label: `${this.$t("menu-name.event")} - ${this.$t("word.ascending")}`, value: "event__date"},
+        {label: `${this.$t("menu-name.event")} - ${this.$t("word.descending")}`, value: "-event__date"},
       ]
     }
   },

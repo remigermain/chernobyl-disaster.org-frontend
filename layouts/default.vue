@@ -1,7 +1,7 @@
 <template>
   <main class="grid-layout">
     <div class="grid-layout-title">
-      <nuxt-link  :to="localePath({name: 'index'})" :title="$t('menu.home')" class="hover:text-gray-700 dark:text-gray-200 dark:hover:text-white">
+      <nuxt-link  :to="localePath({name: 'index'})" :title="$t('menu-name.home')" class="hover:text-gray-700 dark:text-gray-200 dark:hover:text-white">
         <h1 class="uppercase text-4xl font-russia">
           <svg-icon name="logo" />
           <span>chernobyl</span>

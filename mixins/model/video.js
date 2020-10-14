@@ -7,15 +7,15 @@ export default {
     return {
       model: {
         name: "video",
-        label: this.$t("menu.video"),
+        label: this.$t("menu-name.video"),
       },
       modelField: {
         title: {
-          label: this.$t("word.title"),
+          label: this.$t("text.referent-title"),
           name: "title",
           required: true,
           max_length: 50,
-          help: this.$t("help-video.title")
+          help: this.$t("help-video.referent-title")
         },
         tags: {
           label: this.$t("word.tags"),
@@ -33,10 +33,10 @@ export default {
           help: this.$t("description.event"),
         },
         video: {
-          label: this.$t("word.video"),
+          label: this.$t("text.video-link"),
           name: "video",
           required: true,
-          help: this.$t("help-video.video")
+          help: this.$t("help-video.video-link")
         },
         date: {
           label: this.$t("word.date"),
