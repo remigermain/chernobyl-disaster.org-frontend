@@ -88,7 +88,7 @@ export default {
 
  created () {
     if (this.localesChoices.length) {
-      const locales = this.object.langs.find(x => x.language !== this.$route.params.id)
+      const locales = this.object.langs.filter(x => x.language !== this.$route.params.id)
       const select = (
         locales.find(x => x.language === this.$i18n.locale) ||
         (
