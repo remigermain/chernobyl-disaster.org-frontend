@@ -138,14 +138,14 @@ export default {
   grid-template-columns: auto 1fr;
 }
 
-.key-label {
-  &::after {
-    content: "\201E";
-    @apply text-gray-900;
-  }
-  &::before {
-    content: "\201C";
-    @apply text-gray-900;
-  }
-}
+// .key-label {
+//   &::after {
+//     content: "\201E";
+//     @apply text-gray-900;
+//   }
+//   &::before {
+//     content: "\201C";
+//     @apply text-gray-900;
+//   }
+// }
 </style>

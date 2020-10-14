@@ -42,8 +42,8 @@ export default {
 
   watch: {
     current (menu) {
-      if (this.$route.query.key !== menu-name.label) {
-        this.$router.push({query: {...this.$route.query, key: menu-name.label}})
+      if (this.$route.query.key !== menu.label) {
+        this.$router.push({query: {...this.$route.query, key: menu.label}})
       }
     },
     object() {
