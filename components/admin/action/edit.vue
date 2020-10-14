@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="localePath(to)" class="action text-white bg-purple-700 hover:bg-purple-800" @click="$emit('click')">
+  <nuxt-link :to="localePath(to)" class="action text-white bg-purple-700 hover:bg-purple-800">
     <svg-icon name="edit" class="action-icon" />
     <span v-if="$slots.default" class="mx-2">
       <slot />

@@ -19,7 +19,7 @@
             <div v-else-if="currentLang.value" class="flex justify-center items-center flex-col h-full space-y-4">
               <span class="text-xl capitalize">{{ currentLang.display_name }}</span>
               <p class="p-2 bg-gray-300 whitespace-pre-line rounded-md dark:bg-gray-700">{{ $t('message.language-dosent-exist') }}</p>
-              <button type="button" class="px-3 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-md shadow-md text-gray-200"
+              <button type="button" class="px-3 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-full shadow-md text-gray-200"
                       @click.stop.prevent="$emit('add', currentLang.value)"
               >
                 <svg-icon name="plus" />
