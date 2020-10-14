@@ -75,7 +75,7 @@ export default {
 
 <style lang="scss" scoped>
 .grid-video {
-  width: 100%;
+  // width: 100%;
   overflow: hidden scroll;
 }
 

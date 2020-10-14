@@ -63,7 +63,7 @@ export default {
     }
   },
 
-  i18n: require("./config/i18n").default, // i18n required in top
+  i18n: require("./config/i18n").default,
 
   sitemap: {
     hostname: process.env.SITE_URL,
@@ -124,7 +124,7 @@ export default {
   buildModules: [
     "@nuxtjs/eslint-module",
     "@nuxt/components",
-    // "nuxt-purgecss",
+    "nuxt-purgecss",
     '@nuxtjs/color-mode',
     "@nuxtjs/tailwindcss",
     "@nuxtjs/svg-sprite",
@@ -211,10 +211,8 @@ export default {
     classSuffix: ''
   },
 
-  // many problemes with purge ...
   purgeCSS: {
     enabled: false,
-    whitelist: ["vue__time-picker"],
     whitelistPatterns: [
       /svg/,
       /vdatetime/,

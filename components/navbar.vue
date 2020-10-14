@@ -266,6 +266,7 @@ export default {
       flex-direction: column;
       transform: translateX(110%);
       font-size: 1.4em;
+      overflow-y: scroll;
       & > * + * {
         margin-top: 2em
       }
@@ -279,9 +280,9 @@ export default {
   }
 }
 
-@media screen and (max-height:700px){
+@media screen and (max-width:700px){
   .grid-layout-navbar .navbar-items > * + * {
-    margin-top: 1em
+    margin-top: 0;
   }
 }
 

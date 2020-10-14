@@ -1,6 +1,6 @@
 <template>
   <ol class="py-2 space-y-2 completed-list">
-    <li class="bg-indigo-700 text-gray-300 rounded-sm p-2 text-center hover:bg-indigo-600">
+    <li class="bg-indigo-700 list-title text-gray-300 rounded-sm p-2 text-center hover:bg-indigo-600">
       <svg-icon name="language" />
       <span class="label-maxi">
         {{ $t("word.category") }}
@@ -134,6 +134,12 @@ export default {
     transform: translateX(0%);
     opacity: 1;
   }
+  .list-title {
+    width: auto
+  }
+  .list {
+    width: min-content;
+  }
   .label-maxi {
     transform: translateX(-100%);
     position: absolute;
@@ -143,6 +149,9 @@ export default {
     .label-mini {
       transform: translateX(-100%);
       opacity: 0;
+    }
+    .list {
+      width: auto;
     }
     .label-maxi {
       transform: translateX(0%);

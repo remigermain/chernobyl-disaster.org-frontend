@@ -27,6 +27,7 @@
           </span>
         </span>
       </div>
+      {{ valueModel }}
       <label class="grid-time shadow-md text-gray-300 rounded-sm dark:bg-gray-600" :class="{'disabled': disabled}">
         <div class="h-full h-full flex justify-center items-center  rounded-sm p-2" :class="{'bg-gray-900': !disabled}">
           <svg-icon name="x" class="transform transition-transform duration-300
@@ -87,7 +88,6 @@ export default {
 
   components: {
     vueDatetime: Datetime,
-    // vueTimepicker
   },
 
   mixins: [FieldMixins],
@@ -115,21 +115,18 @@ export default {
   },
 
   watch: {
-    "valueModel.minutes": {
-      handler () {
-        if (this.valueModel.hours === null || this.valueModel.hours === undefined) {
-          this.valueModel.hours = 0
-        }
-      },
-      deep: true
+    "valueModel.minutes" (newValue) {
+      if (newValue !== undefined && this.valueModel.hours === undefined ) {
+        this.valueModel.hours = 0
+      }
     },
-    "valueModel.seconds": {
-      handler () {
-        if (this.valueModel.minutes === null || this.valueModel.minutes === undefined) {
-          this.valueModel.minutes = 0
-        }
-      },
-      deep: true
+    "valueModel.seconds" (newValue) {
+      if (newValue !== undefined && this.valueModel.minutes === undefined ) {
+        this.valueModel.minutes = 0
+      }
+      if (newValue !== undefined && this.valueModel.hours === undefined ) {
+        this.valueModel.hours = 0
+      }
     }
   },
 
@@ -139,15 +136,15 @@ export default {
       return num.length === 2 && num || `0${num}`
     },
     deleteHour () {
-      this.$delete(this.valueModel, 'hours')
+      this.valueModel.hours = undefined
       this.deleteMinute()
     },
     deleteMinute () {
-      this.$delete(this.valueModel, 'minutes')
+      this.valueModel.minutes = undefined
       this.deleteSecond()
     },
     deleteSecond () {
-      this.$delete(this.valueModel, 'seconds')
+      this.valueModel.seconds = undefined
     },
   }
 

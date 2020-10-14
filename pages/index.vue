@@ -51,9 +51,3 @@ export default {
 
 }
 </script>
-
-<style lang="scss" scoped>
-.description-home {
-  height: calc(100% + 80px);
-}
-</style>

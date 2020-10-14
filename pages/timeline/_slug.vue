@@ -97,6 +97,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  line-height: 1.2;
 }
 .timeline-title {
   grid-area: 1 / 2 / 1 / 3;

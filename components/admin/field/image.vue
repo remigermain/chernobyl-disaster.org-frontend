@@ -29,7 +29,7 @@
         <span v-else>
           {{ $t('text.add-picture') }}
         </span>
-        <input ref="image" type="file" class="opacity-0 w-1px h-1px" :required="required" @change="change" />
+        <input ref="image" type="file" accept="image/png, image/jpeg" class="opacity-0 w-1px h-1px" :required="required" @change="change" />
       </label>
     </div>
     <lazy-gallery-detail-picture v-if="active" :object="object" :idx="0" :length="1" @close="active = null" />

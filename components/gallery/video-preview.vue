@@ -11,7 +11,9 @@
     >
     <h1 v-if="!mini" class="absolute top-0 left-0 bg-gray-900 m-3 rounded-full bg-opacity-75 z-2 p-2 truncate size-title block text-gray-400 font-medium">
       <admin-action-edit v-if="$auth.loggedIn && object.id" :to="toEdit" />
-      {{ object.title || title }}
+      <span class="truncate">
+        {{ object.title || title }}
+      </span>
     </h1>
     <a class="w-full h-full absolute top-0 left-0 duration-300 transition-opacity justify-center rounded-lg
           items-center flex z-1 video-hover group"
