@@ -11,9 +11,6 @@
         {{ $t('authentication.login') }}
       </nuxt-link>
     </span>
-    <p class="text-xl leading-5 text-gray-700 dark:text-gray-300">
-      {{ $t('description.check-email') }}
-    </p>
     <form class="my-4 w-3/4 min-min-w-max-content form" @submit.prevent="submit">
       <field-submit class="w-full">
         {{ $t('word.validate') }}
@@ -33,6 +30,18 @@ export default {
   },
 
   transition: "auth",
+
+  head () {
+    const title = this.$t("authentication.check-email")
+    return {
+      title,
+      meta: [
+          { property: "og:title", content: title},
+          { name: "twitter:title", content: title },
+          { name: "twitter:image:alt", content: title }
+      ]
+    }
+  },
 
   methods: {
     submit () {

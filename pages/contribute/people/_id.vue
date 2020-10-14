@@ -108,6 +108,18 @@ export default {
       })
   },
 
+  head () {
+    const title = `${this.$t("menu.people")} - ${this.$t("word.detail")}`
+    return {
+      title,
+      meta: [
+          { property: "og:title", content: title},
+          { name: "twitter:title", content: title },
+          { name: "twitter:image:alt", content: title }
+      ]
+    }
+  },
+
   methods: {
     getDateYear (date, locale = this.$i18n.locale) {
       date = new Date(date)

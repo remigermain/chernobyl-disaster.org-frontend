@@ -53,7 +53,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("title.video")
+    const title = this.$t("menu.video")
     const description = this.$t("description.video")
     return {
       title,
@@ -75,7 +75,6 @@ export default {
 
 <style lang="scss" scoped>
 .grid-video {
-  // width: 100%;
   overflow: hidden scroll;
 }
 

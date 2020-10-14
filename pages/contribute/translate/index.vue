@@ -78,6 +78,18 @@ export default {
       })
   },
 
+  head () {
+    const title = this.$t("menu.translate")
+    return {
+      title,
+      meta: [
+          { property: "og:title", content: title},
+          { name: "twitter:title", content: title },
+          { name: "twitter:image:alt", content: title }
+      ]
+    }
+  },
+
   data () {
     return {
       page: 1

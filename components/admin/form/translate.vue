@@ -88,22 +88,15 @@ export default {
 
  created () {
     if (this.localesChoices.length) {
-      const defaultLang = this.object.langs.find(x => x.language === this.$i18n.defaultLocale)
-      const currentLang = this.object.langs.find(x => x.language === this.$i18n.locale)
-      const firstLang = this.object.langs[0]
-
-      if (this.$i18n.locale !== this.$route.params.id) {
-        if (this.$route.params.id !== this.$i18n.defaultLocale) {
-          this.selectLocale = currentLang || firstLang
-        } else {
-          this.selectLocale = defaultLang || firstLang
-        }
-      } else if (this.$route.params.id !== this.$i18n.defaultLocale) {
-          this.selectLocale = defaultLang || firstLang
-      } else {
-          this.selectLocale = currentLang || firstLang
-      }
-      this.selectLocale = this.selectLocale.language
+      const locales = this.object.langs.find(x => x.language !== this.$route.params.id)
+      const select = (
+        locales.find(x => x.language === this.$i18n.locale) ||
+        (
+          this.$i18n.locale !== this.$i18n.defaultLocale &&
+          locales.find(x => x.language === this.$i18n.defaultLocale)
+        ) || locales[0]
+      )
+      this.selectLocale = select.language
     }
   },
 

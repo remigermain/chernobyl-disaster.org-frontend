@@ -3,7 +3,7 @@
     border-l-8 rounded-t-lg border-l-gray-800 dark:border-l-indigo-700"
   >
     <h1 class="font-bold text-gray-900 text-2xl">
-      {{ $t('authentication.connection-account') }}
+      {{ $t('authentication.forgot-password') }}
     </h1>
     <span class="text-sm text-gray-700 dark:text-gray-200">
       {{ $t('word.or') }}
@@ -20,7 +20,7 @@
     <form class="my-4 w-3/4 min-min-w-max-content space-y-2" @submit.prevent="submit">
       <field-email v-model="data.email" :field="modelField.email" />
       <field-submit class="w-full submit">
-        {{ $t('authentication.rechange-password') }}
+        {{ $t('word.update') }}
       </field-submit>
     </form>
   </section>
@@ -47,7 +47,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("title.forgot-password")
+    const title = this.$t("authentication.forgot-password")
     const description = this.$t("description.forgot-password")
     return {
       title,

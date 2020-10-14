@@ -6,7 +6,6 @@
       </h1>
       <p class="mb-16 text-lg leading-7 break-words inline-block mt-2 font-medium">
         {{ $t('description.home') }}
-        {{ $t('description.about') }}
       </p>
       <nuxt-link  :to="localePath({name: 'timeline'})" class="dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-gray-400
         group px-4 py-4 bg-gray-900 text-white font-bold rounded-full hover:bg-gray-800"
@@ -33,7 +32,7 @@ export default {
   transition: "common",
 
   head () {
-    const title = this.$t("title.home")
+    const title = this.$t("menu.home")
     const description = this.$t("description.home")
     return {
       title,

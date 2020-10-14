@@ -22,7 +22,19 @@ export default {
           store.commit("ERROR_SERVER", error.message || error)
           return redirect(app.localePath({name: 'contribute-tag'}))
         })
-    },
+  },
+
+  head () {
+    const title = `${this.$t("menu.tag")} - ${this.$t("word.update")}`
+    return {
+      title,
+      meta: [
+          { property: "og:title", content: title},
+          { name: "twitter:title", content: title },
+          { name: "twitter:image:alt", content: title }
+      ]
+    }
+  },
 
 }
 </script>

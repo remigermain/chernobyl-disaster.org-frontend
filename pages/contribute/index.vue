@@ -83,6 +83,18 @@ export default {
       })
   },
 
+  head () {
+    const title = this.$t("menu.dashboard")
+    return {
+      title,
+      meta: [
+          { property: "og:title", content: title},
+          { name: "twitter:title", content: title },
+          { name: "twitter:image:alt", content: title }
+      ]
+    }
+  },
+
   computed: {
     list () {
       const start = (this.page * this.$pagination) - this.$pagination

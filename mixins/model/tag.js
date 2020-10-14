@@ -10,6 +10,7 @@ export default {
       model: {
         name: "tag",
         label: this.$t("menu.tag"),
+        help: this.$t("description.tag")
       },
       modelField: {
         name: {
@@ -17,7 +18,7 @@ export default {
           name: "name",
           required: true,
           max_length: 50,
-          help: this.$t("description.tag")
+          help: this.$t("help-tag.name")
         },
         langs: {
           name: {
@@ -32,7 +33,6 @@ export default {
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("description.language")
           }
         }
       },

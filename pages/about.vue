@@ -180,8 +180,8 @@ export default {
   },
 
   head () {
-    const title = this.$t("title.about")
-    const description = this.$t("description.about")
+    const title = this.$t("menu.about")
+    const description = this.$t("message.help-us-description")
     return {
       title,
       meta: [

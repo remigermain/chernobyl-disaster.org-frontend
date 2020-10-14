@@ -19,7 +19,7 @@
             <div class="text-2xl mt-2 leading-3 italic text-gray-700 font-medium dark:text-gray-200 p-2 cursor-pointer"
                   @click="activeCurrent(obj)"
             >
-              <svg-icon name="arrow-up" class="transform duration-300 transition" :class="{'-rotate-180': currentActiveId !== obj.id}" />
+              <svg-icon name="arrow-right" class="transform duration-300 transition" :class="{'rotate-90': currentActiveId === obj.id}" />
               <svg-icon v-if="obj.isUnCompleted" name="alert-triangle" class="text-red-700" />
               <svg-icon v-else name="circle-check" class="text-green-700" />
               {{ obj.key.join("-") }}
@@ -86,6 +86,19 @@ export default {
     return {
       current: null,
       currentActiveId: (this.$route.query.id ? parseInt(this.$route.query.id ) : null)
+    }
+  },
+
+
+  head () {
+    const title = `${this.$t("menu.translate")} - ${this.$t("word.update")}`
+    return {
+      title,
+      meta: [
+          { property: "og:title", content: title},
+          { name: "twitter:title", content: title },
+          { name: "twitter:image:alt", content: title }
+      ]
     }
   },
 

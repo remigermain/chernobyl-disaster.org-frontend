@@ -1,10 +1,11 @@
 <template>
   <ol class="py-2 space-y-2 completed-list">
-    <li class="bg-indigo-700 list-title text-gray-300 rounded-sm p-2 text-center hover:bg-indigo-600">
+    <li class="bg-indigo-700 list-title text-gray-300 rounded-sm p-2 items-center justify-around flex hover:bg-indigo-600">
       <svg-icon name="language" />
       <span class="label-maxi">
         {{ $t("word.category") }}
       </span>
+      <svg-icon name="language" class="label-maxi"/>
     </li>
     <li v-for="obj in object" :key="obj.name" class="list" :class="{'active': current === obj}" @click="setCurrent(obj)">
       <div class="flex justify-center items-center space-x-2 mr-2">
@@ -14,7 +15,7 @@
       <span class="label-maxi">
         {{ translateLabel(obj) }}
       </span>
-      <div class="flex justify-center items-center self-end">
+      <div class="flex justify-center items-center space-x-2 mr-2">
         <svg-icon name="arrow-left" class="transform transition-all duration-200 ml-2" role="img" :class="{'rotate-180': current === obj}" />
       </div>
     </li>
@@ -117,8 +118,12 @@ export default {
 }
 
 .label-mini {
-  transform: translateX(-100%);
+  transform: scaleX(50%);
   opacity: 0;
+}
+
+.list, .list-title {
+  min-height: 52px;
 }
 
 .label-mini, .label-maxi {
@@ -131,7 +136,7 @@ export default {
 
 @media screen and (max-width:1000px){
   .label-mini {
-    transform: translateX(0%);
+    transform: scaleX(100%);
     opacity: 1;
   }
   .list-title {
@@ -141,20 +146,20 @@ export default {
     width: min-content;
   }
   .label-maxi {
-    transform: translateX(-100%);
+    transform: scaleX(50%);
     position: absolute;
     opacity: 0;
   }
   .completed-list:hover {
     .label-mini {
-      transform: translateX(-100%);
+      transform: scaleX(50%);
       opacity: 0;
     }
     .list {
       width: auto;
     }
     .label-maxi {
-      transform: translateX(0%);
+      transform: scaleX(100%);
       position: initial;
       opacity: 1;
     }

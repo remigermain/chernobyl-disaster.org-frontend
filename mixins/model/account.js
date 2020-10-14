@@ -23,12 +23,12 @@ export default {
         },
         show_help: {
           label: this.$t("text.show-help"),
-          help: this.$t("help-account.show-help"),
+          help: this.$t("description.show-help"),
           name: "show_help",
         },
         show_admin: {
-          label: this.$t("text.show-admin"),
-          help: this.$t("help-account.show-admin"),
+          label: "show-admin",
+          help: "show-admin",
           name: "show_admin",
         },
       },

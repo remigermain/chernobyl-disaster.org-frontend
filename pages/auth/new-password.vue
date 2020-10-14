@@ -63,6 +63,18 @@ export default {
     }
   },
 
+  head () {
+    const title = this.$t("authentication.new-password")
+    return {
+      title,
+      meta: [
+          { property: "og:title", content: title},
+          { name: "twitter:title", content: title },
+          { name: "twitter:image:alt", content: title }
+      ]
+    }
+  },
+
   created () {
     /* merge parent model with current */
     this.new_password1 = {...this.modelField.password, ...this.new_password1}

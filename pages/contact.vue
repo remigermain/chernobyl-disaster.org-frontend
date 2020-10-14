@@ -50,7 +50,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("title.contact")
+    const title = this.$t("menu.contact")
     const description = this.$t("description.contact")
     return {
       title,

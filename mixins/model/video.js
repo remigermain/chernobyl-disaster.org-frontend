@@ -58,7 +58,6 @@ export default {
             name: "language",
             required: true,
             choices: this.$store.getters["model/langs"],
-            help: this.$t("description.language")
           }
         }
       },

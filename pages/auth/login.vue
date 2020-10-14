@@ -3,7 +3,7 @@
     border-l-8 rounded-t-lg border-l-gray-800 dark:border-l-indigo-700"
   >
     <h1 class="font-bold text-gray-900 text-2xl">
-      {{ $t('authentication.connection-account') }}
+      {{ $t('authentication.login') }}
     </h1>
     <span class="text-sm text-gray-700 dark:text-gray-200">
       {{ $t('word.or') }}
@@ -55,7 +55,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("title.login")
+    const title = this.$t('authentication.login')
     const description = this.$t("description.login")
     return {
       title,

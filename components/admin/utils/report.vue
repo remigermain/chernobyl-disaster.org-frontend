@@ -10,7 +10,7 @@
         </div>
         <transition name="opacity">
           {{ showHelp }}
-          <admin-utils-help v-show="showHelp" :field="{help: $t('description.report')}" :detail="false" />
+          <admin-utils-help v-show="showHelp" :field="field" :detail="false" />
         </transition>
         <field-textarea v-model="message" :field="field" :errors="errors.message" :min="true"
                         class="my-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-lg"
@@ -53,7 +53,7 @@ export default {
       field: {
         label: this.$t('word.report'),
         required: true,
-        help: this.$t('message.report')
+        help: this.$t('description.report')
       },
       errors: {
         message: []

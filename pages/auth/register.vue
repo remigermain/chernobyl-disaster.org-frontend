@@ -63,7 +63,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("title.register")
+    const title = this.$t("authentication.register-account")
     const description = this.$t("description.register")
     return {
       title,
