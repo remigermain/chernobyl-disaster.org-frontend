@@ -15,7 +15,7 @@ export default {
       },
       modelField: {
         name: {
-          label: this.$t("word.name-surname"),
+          label: this.$t("text.name-surname"),
           name: "name",
           required: true,
           max_length: 100,
@@ -28,19 +28,19 @@ export default {
           help: this.$t("help-people.date-of-birth"),
         },
         death: {
-          label: this.$t("word.date-of-death"),
+          label: this.$t("text.date-of-death"),
           name: "death",
           required: false,
           help: this.$t("help-people.date-of-death"),
         },
         profil: {
-          label: this.$t("word.profile-photo"),
+          label: this.$t("text.profile-photo"),
           name: "profil",
           required: false,
           help: this.$t("help-people.profile-photo")
         },
         tags: {
-          label: this.$t("word.tags"),
+          label: this.$t("text.tags"),
           name: "tags",
           model: "tag",
           required: false,

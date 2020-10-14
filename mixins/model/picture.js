@@ -40,7 +40,7 @@ export default {
           help: this.$t("help-picture.date"),
         },
         tags: {
-          label: this.$t("word.tags"),
+          label: this.$t("text.tags"),
           name: "tags",
           model: "tag",
           required: false,

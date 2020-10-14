@@ -18,7 +18,7 @@ export default {
           help: this.$t("help-event.referent-title")
         },
         tags: {
-          label: this.$t("word.tags"),
+          label: this.$t("text.tags"),
           name: "tags",
           model: "tag",
           required: false,

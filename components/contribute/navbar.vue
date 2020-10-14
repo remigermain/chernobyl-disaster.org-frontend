@@ -15,8 +15,8 @@
         <svg-icon name="user" />
         {{ $t("menu-name.account") }}
       </nuxt-link>
-      <nuxt-link v-for="menu in menus" :key="menu-name.to.name"  :to="localePath(menu-name.to)" class="contribute-navbar-link ml-4" @click="active = false">
-        {{ menu-name.name }}
+      <nuxt-link v-for="menu in menus" :key="menu.to.name"  :to="localePath(menu.to)" class="contribute-navbar-link ml-4" @click="active = false">
+        {{ menu.name }}
       </nuxt-link>
     </nav>
   </div>
@@ -32,21 +32,27 @@ export default {
       menus: [
         {
           name: this.$t("menu-name.event"),
+          to: {name: "contribute-event"},
         },
         {
           name: this.$t("menu-name.people"),
+          to: {name: "contribute-people"},
         },
         {
           name: this.$t("menu-name.tag"),
+          to: {name: "contribute-tag"},
         },
         {
           name: this.$t("menu-name.picture"),
+          to: {name: "contribute-picture"},
         },
         {
           name: this.$t("menu-name.video"),
+          to: {name: "contribute-video"},
         },
         {
           name: this.$t("word.translation"),
+          to: {name: "contribute-translate"},
         },
       ]
     }

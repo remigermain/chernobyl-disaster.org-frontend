@@ -22,7 +22,9 @@
               <svg-icon name="arrow-right" class="transform duration-300 transition" :class="{'rotate-90': currentActiveId === obj.id}" />
               <svg-icon v-if="obj.isUnCompleted" name="alert-triangle" class="text-red-700" />
               <svg-icon v-else name="circle-check" class="text-green-700" />
-              {{ obj.key }}
+              <span class="key-label">
+                {{ obj.key }}
+              </span>
             </div>
             <admin-form-translate v-if="currentActiveId === obj.id" :object="obj" />
           </div>
@@ -72,7 +74,9 @@ export default {
             ...object[o],
             isUnCompleted: !!object[o].children.find(x => x.isUnCompleted)
           }
-          obj.children.sort((a, b) => a.keys >= b.keys)
+
+          obj.children.sort((a, b) => a.key >= b.key)
+
           list.push(obj)
         })
         list.sort((a, b) => a.label >= b.label)
@@ -132,5 +136,16 @@ export default {
 .grid-translate {
   display: grid;
   grid-template-columns: auto 1fr;
+}
+
+.key-label {
+  &::after {
+    content: "\201E";
+    @apply text-gray-900;
+  }
+  &::before {
+    content: "\201C";
+    @apply text-gray-900;
+  }
 }
 </style>

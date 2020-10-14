@@ -58,7 +58,7 @@ export default {
   data () {
     return {
       dataValue: this.setValue(),
-      field: {label: this.object.key.join("-"), name: "name", required: true},
+      field: {label: this.$t('word.value'), name: "name", required: true},
       selectLocale: null,
       errors: {
         language: [],
