@@ -5,7 +5,7 @@
     <h1 class="font-bold text-gray-900 text-2xl capitalize">
       {{ $t('word.contact') }}
     </h1>
-    <p class="text-sm text-gray-900 w-2/4 p-2 italic text-opacity-50 leading-3 bg-gray-300 dark:bg-gray-700 dark:text-gray-300 rounded-lg -lg:w-1/3 -md:w-3/4">
+    <p class="text-base text-gray-900 w-9/12 p-2 italic text-opacity-50 leading-5 bg-gray-300 dark:bg-gray-700 dark:text-gray-300 rounded-lg -lg:w-1/3 -md:w-3/4">
       {{ $t('description.contact') }}
     </p>
     <form class="my-4 mx-8 w-3/4 form space-y-2" @submit.prevent="submit">

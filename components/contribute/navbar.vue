@@ -35,8 +35,8 @@ export default {
           to: {name: "contribute-event"},
         },
         {
-          name: this.$t("menu-name.people"),
-          to: {name: "contribute-people"},
+          name: this.$t("menu-name.character"),
+          to: {name: "contribute-character"},
         },
         {
           name: this.$t("menu-name.tag"),
@@ -83,7 +83,7 @@ export default {
   font-size: 1.2rem;
 }
 
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1001px){
   .grid-layout-contribute-navbar {
     display: block;
     margin-top: 1.5rem;

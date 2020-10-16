@@ -1,11 +1,11 @@
 <template>
-  <admin-form-people :create="true" />
+  <admin-form-character :create="true" />
 </template>
 
 <script>
 export default {
   head () {
-    const title = `${this.$t("menu-name.people")} - ${this.$t("word.create")}`
+    const title = `${this.$t("menu-name.character")} - ${this.$t("word.create")}`
     return {
       title,
       meta: [

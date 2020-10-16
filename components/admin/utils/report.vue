@@ -58,7 +58,7 @@ export default {
       errors: {
         message: []
       },
-      showHelp: this.$auth.user.show_help
+      showHelp: this.$auth.user.show_helpers
     }
   },
 

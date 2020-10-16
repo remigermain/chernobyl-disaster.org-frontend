@@ -8,6 +8,4 @@ export default ({ app }, inject) => {
   // server pagination element
   inject('pagination', 10)
 
-  // the site name
-  inject('siteName', process.env.SITE_NAME)
 }

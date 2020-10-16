@@ -117,6 +117,10 @@ export default {
   }
 }
 
+.completed-list {
+  height: max-content;
+}
+
 .label-mini {
   transform: scaleX(50%);
   opacity: 0;

@@ -66,16 +66,16 @@
 import { generateUrl } from "~/lib/contribute"
 
 import listMixins from "~/mixins/admin/list"
-import peopleMixins from "~/mixins/model/people"
+import characterMixins from "~/mixins/model/character"
 
 export default {
 
-  mixins: [listMixins, peopleMixins],
+  mixins: [listMixins, characterMixins],
 
   async asyncData ({redirect, $axios, app, store}) {
     try {
-      const response = await $axios.get(generateUrl("people", 1))
-      const responseLang = await $axios.get(generateUrl("people", 1, null, false))
+      const response = await $axios.get(generateUrl("character", 1))
+      const responseLang = await $axios.get(generateUrl("character", 1, null, false))
       if (response.status !== 200 || responseLang.status !== 200) {
         throw new Error("error-server")
       }
@@ -94,7 +94,7 @@ export default {
   },
 
   head () {
-    const title = this.$t("menu-name.people")
+    const title = this.$t("menu-name.character")
     return {
       title,
       meta: [

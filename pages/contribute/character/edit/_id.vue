@@ -1,5 +1,5 @@
 <template>
-  <admin-form-people :create="false" :object="object" />
+  <admin-form-character :create="false" :object="object" />
 </template>
 
 
@@ -13,7 +13,7 @@ export default {
   },
 
   asyncData ({app, store, params, redirect}) {
-    return app.$axios.get(`people/${params.id}/`)
+    return app.$axios.get(`character/${params.id}/`)
       .then(response => {
         if (response.status !== 200) {
           throw new Error("error-server")
@@ -28,12 +28,12 @@ export default {
       })
       .catch(error => {
         store.commit("ERROR_SERVER", error.message || error)
-        return redirect(app.localePath({name: 'contribute-people'}))
+        return redirect(app.localePath({name: 'contribute-character'}))
       })
   },
 
   head () {
-    const title = `${this.$t("menu-name.people")} - ${this.$t("word.update")}`
+    const title = `${this.$t("menu-name.character")} - ${this.$t("word.update")}`
     return {
       title,
       meta: [

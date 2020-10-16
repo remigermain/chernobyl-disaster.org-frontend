@@ -8,6 +8,7 @@ export default {
       model: {
         name: "video",
         label: this.$t("menu-name.video"),
+        help: this.$t("description.video"),
       },
       modelField: {
         title: {

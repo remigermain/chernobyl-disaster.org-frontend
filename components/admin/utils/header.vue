@@ -36,7 +36,7 @@ export default {
 
   data () {
     return {
-      activeHelp: this.$auth.user.show_help
+      activeHelp: this.$auth.user.show_helpers
     }
   }
 

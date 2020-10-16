@@ -33,7 +33,7 @@
               <td>{{ obj.creator }}</td>
               <td>{{ getDateMini(obj.date) }}</td>
               <td>{{ obj.display }}</td>
-              <td>{{ $t(`name.${obj.uuid}`) }}</td>
+              <td>{{ $t(`menu-name.${obj.uuid}`) }}</td>
               <td class="inline-flex space-x-2">
                 <lazy-admin-action-detail v-if="obj.detail" :to="pathDetail(obj)" />
                 <lazy-admin-action-edit :to="pathEdit(obj)" />

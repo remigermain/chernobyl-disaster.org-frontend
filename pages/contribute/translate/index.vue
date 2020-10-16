@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="$t('menu-name.translate')" :description="$t('description.translate')">
+      <admin-utils-header :title="model.label" :description="model.help">
         <template #breadcrumbs>
-          {{ $t('menu-name.translate') }}
+          {{ model.label }}
         </template>
       </admin-utils-header>
       <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
@@ -78,6 +78,12 @@ export default {
       })
   },
 
+  data () {
+    return {
+      page: 1
+    }
+  },
+
   head () {
     const title = this.$t("menu-name.translate")
     return {
@@ -87,12 +93,6 @@ export default {
           { name: "twitter:title", content: title },
           { name: "twitter:image:alt", content: title }
       ]
-    }
-  },
-
-  data () {
-    return {
-      page: 1
     }
   },
 

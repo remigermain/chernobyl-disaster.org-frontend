@@ -4,7 +4,7 @@
       <svg-icon name="list" />
       {{ title }}
     </span>
-    <field-search v-model="searchValue" role="search" @search="$emit('search')" @input="$emit('input', $event)" class="w-2/4 -md:w-full"/>
+    <field-search v-model="searchValue" class="w-2/4 -md:w-full" role="search" @search="$emit('search')" @input="$emit('input', $event)" />
   </div>
 </template>
 

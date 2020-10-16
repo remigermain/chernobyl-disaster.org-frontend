@@ -1,5 +1,5 @@
 <template>
-  <field-text v-model="valueModel" :field="{label: $t('word.search') }" @input="$emit('input', $event)">
+  <field-text v-model="valueModel" :field="{label: $t('word.search') }" type="search" @input="$emit('input', $event)">
     <template #icon>
       <svg-icon name="search"/>
     </template>

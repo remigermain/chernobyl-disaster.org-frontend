@@ -27,14 +27,14 @@
       </section>
       <section>
         <h2 class="text-3xl text-md capitalize">
-          {{ $t('word.donators') }}
+          {{ $t('word.donors') }}
         </h2>
         <h2 class="text-gray-800 dark:text-gray-300 font-medium italic text-opacity-75 leading-3">
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
-          {{ $t('text.thanks-donators') }}
+          {{ $t('text.thanks-to-donors') }}
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
@@ -42,11 +42,11 @@
           <wbr>
         </h2>
         <div class="all-contributor bg-white rounded-lg mt-2 shadow-md p-4 overflow-y-scroll leading-3 font-medium italic text-opacity-75 text-gray-800 space-y-4 space-x-3">
-          <span v-for="user in donators" :key="user" class="text-sm inline-block">
+          <span v-for="user in donors" :key="user" class="text-sm inline-block">
             {{ user }}
           </span>
-          <span v-if="donators.length === 0" class="text-center italic text-blue-700 contributors-empty">
-            {{ $t('text.no-donators') }}
+          <span v-if="donors.length === 0" class="text-center italic text-blue-700 contributors-empty">
+            {{ $t('text.no-donors') }}
             <svg-icon name="mood-sad" role="img" aria-label="mood sad" />
           </span>
         </div>
@@ -60,7 +60,7 @@
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
-          {{ $t('text.thanks-contributors') }}
+          {{ $t('text.thanks-to-contributors') }}
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
@@ -164,12 +164,12 @@ export default {
         }
         return {
           contributors: response.data.contributors,
-          donators: response.data.donators
+          donors: response.data.donors
         }
       })
       .catch(error => {
         store.commit("ERROR_SERVER", error.message || error)
-        return {contributors: [], donators: [] }
+        return {contributors: [], donors: [] }
       })
   },
 

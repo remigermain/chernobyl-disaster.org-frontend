@@ -31,7 +31,6 @@ export default {
   env: {
     BACKEND_URL: process.env.BACKEND_URL || "http://localhost:8000",
     SITE_URL: process.env.SITE_URL || "http://localhost:3000",
-    SITE_NAME: process.env.SITE_NAME || "chernobyl-disaster.org",
   },
 
   plugins: [

@@ -48,7 +48,7 @@ export default {
       // return first langs
       if (obj.langs.length > 0) return obj.langs[0][key]
 
-      return ""
+      return "\\error\\"
     },
     responseError (error) {
       /*

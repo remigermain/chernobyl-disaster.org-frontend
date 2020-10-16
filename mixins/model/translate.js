@@ -4,6 +4,7 @@ export default {
       model: {
         name: "translate",
         label: this.$t("menu-name.translate"),
+        help: this.$t("description.translate"),
       },
       modelField: {
         language: {

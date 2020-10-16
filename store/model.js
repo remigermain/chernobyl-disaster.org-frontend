@@ -3,7 +3,7 @@ export const state = () => ({
   langs: [],
   events: [],
   tags: [],
-  peoples: [],
+  characters: [],
   news: [],
 })
 
@@ -13,8 +13,8 @@ export const mutations = {
     state.events = data.events
     state.tags = data.tags
   },
-  POPULATE_PEOPLES(state, data) {
-    state.peoples = data.peoples
+  POPULATE_CHARACTERS(state, data) {
+    state.characters = data.characters
   },
   POPULATE_NEWS(state, data) {
     state.news = data
@@ -31,8 +31,8 @@ export const getters = {
   tags: state => state.tags,
   tag: state => value => state.tags.find(t => t.value === value),
 
-  peoples: state => state.peoples,
-  people: state => value => state.peoples.find(t => t.value === value),
+  characters: state => state.characters,
+  character: state => value => state.characters.find(t => t.value === value),
 
   news: state => state.news
 

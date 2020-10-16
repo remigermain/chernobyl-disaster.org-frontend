@@ -8,6 +8,7 @@ textarea,
 select {
   background-color: transparent;
   outline: none;
+  filter: none;
   &:invalid, &:-moz-submit-invalid, &:-moz-ui-invalid  {
     box-shadow: none;
   }

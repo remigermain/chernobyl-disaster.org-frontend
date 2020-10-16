@@ -4,7 +4,6 @@ export default {
 
   data () {
     return {
-      object: [],
       pageSet: [parseInt(this.$route.query.page) || 1],
       page: parseInt(this.$route.query.page) || 1,
       currentObject: null,

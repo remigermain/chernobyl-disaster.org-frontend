@@ -11,7 +11,7 @@
     </div>
     <div class="relative overflow-hidden dark:bg-gray-800 rounded-b-md">
       <div class="w-full flex space-y-1 leading-6 transform p-2 transition-all duration-400 justify-around"
-            :class="{'-translate-y-full opacity-0 absolute': !active, 'translate-x-0 opacity-100 block': active}"
+            :class="{'scale-y-0 absolute opacity-0': !active, 'scale-y-100 opacity-100 block': active}"
       >
         <div class="rounded-md border shadow-md p-2 dark:bg-gray-900 dark:border-none">
           <h1 class="text-2xl font-bold capitalize italic text-gray-700">

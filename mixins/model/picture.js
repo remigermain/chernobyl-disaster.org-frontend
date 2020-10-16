@@ -11,6 +11,7 @@ export default {
       model: {
         name: "picture",
         label: this.$t("menu-name.picture"),
+        help: this.$t('description.picture')
       },
       modelField: {
         title: {

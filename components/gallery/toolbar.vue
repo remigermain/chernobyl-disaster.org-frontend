@@ -18,7 +18,7 @@
               {{ choice.label }}
             </option>
             <option selected value="">
-              {{ this.$t("word.nothing") }}
+              {{ this.$t("word.none") }}
             </option>
           </select>
         </label>
@@ -45,11 +45,11 @@
           </nuxt-link>
         </div>
         <span class="border-b border-gray-500" />
-        <div class="toolbar-peoples">
-          <span v-for="p in $store.getters['model/peoples']" :key="p.id" class="toolbar-people-item group hover:bg-gray-300 rounded-md dark:hover:bg-gray-700"
+        <div class="toolbar-characters">
+          <span v-for="p in $store.getters['model/characters']" :key="p.id" class="toolbar-character-item group hover:bg-gray-300 rounded-md dark:hover:bg-gray-700"
                 role="button"
                 tabindex="0"
-                @click="submitPeople(p.name)"
+                @click="submitCharacter(p.name)"
           >
             <picture>
               <source :srcset="$media(p.profil.thumbnail_webp)" type="image/webp" />
@@ -120,7 +120,7 @@ export default {
       this.$router.push({query})
       this.active = false
     },
-    submitPeople (name) {
+    submitCharacter (name) {
       this.search = name
       this.submit()
     }
@@ -173,11 +173,11 @@ export default {
   }
 }
 
-.toolbar-peoples {
+.toolbar-characters {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  .toolbar-people-item {
+  .toolbar-character-item {
     display: flex;
     justify-content: space-between;
     padding: .3em;
@@ -243,12 +243,12 @@ export default {
     & > .toolbar-menu {
       flex-direction: row;
     }
-    & > .toolbar-peoples {
+    & > .toolbar-characters {
       flex-direction: row;
       flex-wrap: wrap;
     }
   }
-  .toolbar-people-item {
+  .toolbar-character-item {
     width: 33%
   }
   .toolbar-link {
@@ -273,7 +273,7 @@ export default {
 
 
 @media screen and (max-width: 600px) {
-  .toolbar-people-item {
+  .toolbar-character-item {
     width: 50%
   }
 }
@@ -291,7 +291,7 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
-  .toolbar-people-item {
+  .toolbar-character-item {
     width: 100%
   }
 }

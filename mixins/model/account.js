@@ -21,10 +21,10 @@ export default {
           min_length: 8,
           required: true,
         },
-        show_help: {
-          label: this.$t("text.show-help"),
-          help: this.$t("description.show-help"),
-          name: "show_help",
+        show_helpers: {
+          label: this.$t("text.show-helper"),
+          help: this.$t("description.show-helper"),
+          name: "show_helpers",
         },
         show_admin: {
           label: "show-admin",

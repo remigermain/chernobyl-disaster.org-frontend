@@ -52,7 +52,7 @@
 
           </template>
           <template v-else>
-            <gallery-video-preview v-for="el in object.videos" :key="el.id" :object="el" :link="el.video" :mini="true" class="extra extra-picture"/>
+            <gallery-video-preview v-for="el in object.videos" :key="el.id" :object="el" :link="el.video" :mini="true" class="extra extra-picture w-full"/>
           </template>
           <span v-if="activeExtra.length === 0" class="italic text-gray-700 dark:text-gray-500 text-opacity-50 empty">
             {{ this.$t("word.empty") }}

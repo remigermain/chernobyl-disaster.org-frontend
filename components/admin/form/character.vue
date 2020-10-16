@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.name" :description="$t('description.people')">
+      <admin-utils-header :title="model.name" :description="model.help">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -39,12 +39,12 @@
 </template>
 
 <script>
-import peopleMixins from "~/mixins/model/people"
+import characterMixins from "~/mixins/model/character"
 import FormMixins from "~/mixins/admin/form"
 
 export default {
 
-  mixins: [peopleMixins, FormMixins],
+  mixins: [characterMixins, FormMixins],
 
 }
 </script>

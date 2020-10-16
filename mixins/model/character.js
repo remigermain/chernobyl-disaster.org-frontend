@@ -9,9 +9,9 @@ export default {
   data () {
     return {
       model: {
-        name: "people",
-        label: this.$t("menu-name.people"),
-        help: this.$t('description.people')
+        name: "character",
+        label: this.$t("menu-name.character"),
+        help: this.$t('description.character')
       },
       modelField: {
         name: {
@@ -19,25 +19,25 @@ export default {
           name: "name",
           required: true,
           max_length: 100,
-          help: this.$t("help-people.name-surname")
+          help: this.$t("help-character.name-surname")
         },
         born: {
           label: this.$t("text.date-of-birth"),
           name: "born",
           required: false,
-          help: this.$t("help-people.date-of-birth"),
+          help: this.$t("help-character.date-of-birth"),
         },
         death: {
           label: this.$t("text.date-of-death"),
           name: "death",
           required: false,
-          help: this.$t("help-people.date-of-death"),
+          help: this.$t("help-character.date-of-death"),
         },
         profil: {
           label: this.$t("text.profile-photo"),
           name: "profil",
           required: false,
-          help: this.$t("help-people.profile-photo")
+          help: this.$t("help-character.profile-photo")
         },
         tags: {
           label: this.$t("text.tags"),
@@ -53,7 +53,7 @@ export default {
             label: this.$t("word.biography"),
             name: "biography",
             required: true,
-            help: this.$t("help-people.biography")
+            help: this.$t("help-character.biography")
           },
           language: {
             label: this.$t("word.language"),
@@ -64,18 +64,18 @@ export default {
         }
       },
       errors: setObjectKeysValue(this.baseData(), []),
-      pathList: {name: 'contribute-people'},
-      pathCreate: {name: 'contribute-people-create'},
-      linkDeleteLang: "people-lang"
+      pathList: {name: 'contribute-character'},
+      pathCreate: {name: 'contribute-character-create'},
+      linkDeleteLang: "character-lang"
     }
   },
 
   methods: {
     pathDetail (id) {
-      return {name: 'contribute-people-id', params: {id}}
+      return {name: 'contribute-character-id', params: {id}}
     },
     pathEdit (id) {
-      return {name: 'contribute-people-edit-id', params: {id}}
+      return {name: 'contribute-character-edit-id', params: {id}}
     },
     getData(dataValue) {
       const tags = convertToTags(dataValue.tags)

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-center p-4 gap-4 space-y-2">
     <div class="w-full space-y-2">
-      <admin-utils-header :title="model.name" :description="$t('description.people')">
+      <admin-utils-header :title="model.name" :description="model.help">
         <template #breadcrumbs>
           <nuxt-link :to="localePath(pathList)">
             {{ model.label }}
@@ -62,14 +62,14 @@
           </div>
         </template>
       </admin-model-detail>
-      <admin-utils-report v-if="activeModalReport" :id="object.id" uuid="people" @close="activeModalReport = false" />
+      <admin-utils-report v-if="activeModalReport" :id="object.id" uuid="character" @close="activeModalReport = false" />
       <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
     </div>
   </div>
 </template>
 
 <script>
-import peopleMixins from "~/mixins/model/people"
+import characterMixins from "~/mixins/model/character"
 import detailMixins from "~/mixins/admin/detail"
 import { sanitizeHtml } from "~/lib/sanitize"
 import { convertImageUrl } from "~/lib/contribute"
@@ -77,14 +77,14 @@ import 'quill/dist/quill.snow.css'
 
 export default {
 
-  mixins: [peopleMixins, detailMixins],
+  mixins: [characterMixins, detailMixins],
 
   validate ({params}) {
     return /^\d+$/.test(params.id)
   },
 
   asyncData ({app, store, params, redirect}) {
-    return app.$axios.get(`people/${params.id}/`)
+    return app.$axios.get(`character/${params.id}/`)
       .then(response => {
         if (response.status !== 200) {
           throw new Error("error-server")
@@ -104,12 +104,12 @@ export default {
       })
       .catch(error => {
         store.commit("ERROR_SERVER", error.message || error)
-        return redirect(app.localePath({name: 'contribute-people'}))
+        return redirect(app.localePath({name: 'contribute-character'}))
       })
   },
 
   head () {
-    const title = `${this.$t("menu-name.people")} - ${this.$t("word.detail")}`
+    const title = `${this.$t("menu-name.character")} - ${this.$t("word.detail")}`
     return {
       title,
       meta: [

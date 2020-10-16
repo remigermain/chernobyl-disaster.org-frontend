@@ -6,7 +6,7 @@
       <span class="bg-gray-700 dark:bg-gray-100" />
       <span class="bg-gray-700 dark:bg-gray-100" />
     </label>
-    <nav class="navbar-items relative" :class="{'active': active }" :aria-label="$t('text.site-navigation ')">
+    <nav class="navbar-items relative" :class="{'active': active }" :aria-label="$t('text.site-navigation')">
       <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('text.goto-home')">
         {{ $t('menu-name.home') }}
       </nuxt-link>

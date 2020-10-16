@@ -29,7 +29,7 @@
           </h2>
           <form class="p-4 rounded space-y-2" @submit.prevent="submitSettings">
             <field-checkbox v-if="$auth.hasScope('staff')" v-model="data.show_admin" :field="modelField.show_admin" :errors="errors.show_admin" />
-            <field-checkbox v-model="data.show_help" :field="modelField.show_help" :errors="errors.show_help" />
+            <field-checkbox v-model="data.show_helpers" :field="modelField.show_helpers" :errors="errors.show_helpers" />
             <div class="flex justify-end w-full">
               <field-submit class="w-min-content">
                 {{ $t('word.update') }}
@@ -101,14 +101,14 @@ export default {
         old_password: "",
         new_password1: "",
         new_password2: "",
-        show_help: !!this.$auth.user.show_help,
+        show_helpers: !!this.$auth.user.show_helpers,
         show_admin: !!this.$auth.user.show_admin,
       },
       errors: {
         new_password1: [],
         new_password2: [],
         old_password: [],
-        show_help: [],
+        show_helpers: [],
         show_admin: [],
       },
       field: {
@@ -150,7 +150,7 @@ export default {
     "$auth.user": {
       handler () {
         // reasigne data after fetch user
-        this.data.show_help = !!this.$auth.user.show_help
+        this.data.show_helpers = !!this.$auth.user.show_helpers
         this.data.show_admin = !!this.$auth.user.show_admin
       },
       deep: true
@@ -201,7 +201,7 @@ export default {
       this.$store.commit("ON_LOADING", true)
       setObjectKeysValue(this.errors, [])
       const data = {
-        show_help: this.data.show_help,
+        show_helpers: this.data.show_helpers,
         show_admin: this.data.show_admin
       }
 
@@ -216,7 +216,7 @@ export default {
         .catch(error => {
           this.responseError(error)
             .then(data => {
-              data.show_help && (this.errors.show_help = data.show_help)
+              data.show_helpers && (this.errors.show_helpers = data.show_helpers)
               data.show_admin && (this.errors.show_admin = data.show_admin)
             })
         })
