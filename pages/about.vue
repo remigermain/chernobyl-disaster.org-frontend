@@ -181,7 +181,7 @@ export default {
 
   head () {
     const title = this.$t("menu-name.about")
-    const description = this.$t("message.help-us-description")
+    const description = this.$t("message.help-us-description").slice(0, 159)
     return {
       title,
       meta: [

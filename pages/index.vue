@@ -33,7 +33,7 @@ export default {
 
   head () {
     const title = this.$t("menu-name.home")
-    const description = this.$t("description.home")
+    const description = this.$t("description.home").slice(0, 159)
     return {
       title,
       meta: [

@@ -40,7 +40,7 @@ export default {
 
   head () {
     const title = this.i18nAttr(this.current, "title")
-    const description = this.i18nAttr(this.current, "_description")
+    const description = this.i18nAttr(this.current, "_description").slice(0, 159)
     return {
       title,
       meta: [
