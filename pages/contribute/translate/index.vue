@@ -7,7 +7,7 @@
         </template>
       </admin-utils-header>
       <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
-       <contribute-translate />
+      <contribute-translate v-if="$auth.hasScope('staff')" />
       </div>
       <div class="w-full">
         <lazy-admin-utils-table :length="object.length" :pagination="false">
