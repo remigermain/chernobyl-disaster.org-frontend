@@ -12,7 +12,7 @@
         <svg-icon v-if="obj.isUnCompleted" name="alert-triangle" class="text-lg font-medium text-red-700" role="img"/>
         <svg-icon v-else name="circle-check" class="text-lg font-medium text-green-600" role="img"/>
       </div>
-      <span class="label-maxi">
+      <span class="label-maxi flex justify-center items-center">
         {{ translateLabel(obj) }}
       </span>
       <div class="flex justify-center items-center space-x-2 mr-2">
@@ -60,7 +60,7 @@ export default {
   methods: {
     translateLabel (obj) {
       // to convert label in object list
-      const path = `word.${obj.label}`
+      const path = `menu-name.${obj.label}`
       if (this.$te(path)) {
         return this.$t(`${path}`)
       }
