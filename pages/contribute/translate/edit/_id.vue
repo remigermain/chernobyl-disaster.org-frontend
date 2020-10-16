@@ -58,10 +58,18 @@ export default {
         response.data.forEach(e => {
           const keys = e.key.split(".")
           e.key = keys.slice(1).join("-")
+
+
           if (!object[keys[0]]) {
+            let label = keys[0]
+            const path = `menu-name.${keys[0]}`
+            if (app.i18n.te(path)) {
+              label = app.i18n.t(path)
+            }
+
             object[keys[0]] = {
               children: [],
-              label: keys[0],
+              label,
               id: e.id
             }
           }
