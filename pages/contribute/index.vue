@@ -22,11 +22,11 @@
       <div class="w-full">
         <lazy-admin-utils-table :length="object.results.length" @pagination="setPagination">
           <template #thead>
-              <th>{{ $t("word.creator") }}</th>
-              <th>{{ $t("word.date") }}</th>
-              <th>{{ $t("word.title") }}</th>
-              <th>{{ $t("word.identifier") }}</th>
-              <th>{{ $t("word.action") }}</th>
+              <td>{{ $t("word.creator") }}</td>
+              <td>{{ $t("word.date") }}</td>
+              <td>{{ $t("word.title") }}</td>
+              <td>{{ $t("word.identifier") }}</td>
+              <td>{{ $t("word.action") }}</td>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in list" :key="idx">

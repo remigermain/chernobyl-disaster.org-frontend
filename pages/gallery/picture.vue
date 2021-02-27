@@ -3,18 +3,17 @@
     <div class="flex w-full flex-wrap justify-around">
       <span v-for="(_, idx) in inPrev" :key="`skeleton-prev-${idx}`" class="picture-item skeleton" />
       <gallery-infinite-loading v-if="hasPrevPage" ref="prevLoading" position="top" class="picture-item skeleton" @visible="nextPage" />
-      <picture v-for="(el, idx) in object" :key="el.id" role="img" class="picture-item">
-        <source :srcset="$media(el.picture.thumbnail_webp)" type="image/webp">
-        <img class="w-full h-full object-cover"
-             :src="$media(el.picture.thumbnail_jpeg)"
-             :alt="i18nAttr(el, 'title')"
-             loading="lazy"
-             role="button"
-             tabindex="0"
-             type="image/jpeg"
-             @click="setCurrent(el, idx)"
-        >
-      </picture>
+      <button v-for="(el, idx) in object" :key="el.id" type="button" class="picture-item" @click="setCurrent(el, idx)">
+        <picture role="img">
+          <source :srcset="$media(el.picture.thumbnail_webp)" type="image/webp">
+          <img class="w-full h-full object-cover"
+              :src="$media(el.picture.thumbnail_jpeg)"
+              :alt="i18nAttr(el, 'title')"
+              loading="lazy"
+              type="image/jpeg"
+          >
+        </picture>
+      </button>
       <gallery-infinite-loading v-if="!completed" ref="nextLoading" position="bottom" class="picture-item skeleton" @visible="nextPage" />
       <span v-for="(_, idx) in inNext" :key="`skeleton-next-${idx}`" class="picture-item skeleton" />
     </div>

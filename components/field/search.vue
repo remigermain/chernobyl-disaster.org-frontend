@@ -5,7 +5,8 @@
     </template>
     <template #icon-right>
       <transition name="opacity">
-        <button v-show="valueModel && button" class="py-2 px-3 rounded-full font-medium text-base self-end transition-allduration-300 bg-indigo-700 hover:bg-indigo-600 text-gray-200 cursor-pointer"
+        <button v-show="valueModel && button" type="button"
+                class="py-2 px-3 rounded-full font-medium text-base self-end transition-allduration-300 bg-indigo-700 hover:bg-indigo-600 text-gray-200 cursor-pointer"
                 @click="$emit('search', valueModel)"
         >
           {{ $t('word.search') }}

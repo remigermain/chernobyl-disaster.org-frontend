@@ -27,9 +27,9 @@
                     }"
               />
               <lazy-timeline-min-time :date="element.date" />
-              <h1 class="dark:text-gray-400 word-break">
+              <h2 class="dark:text-gray-400 word-break">
                 {{ i18nAttr(element, 'title') }}
-              </h1>
+              </h2>
             </nuxt-link>
           </section>
         </section>

@@ -2,14 +2,14 @@
   <main class="grid-layout">
     <div class="grid-layout-title">
       <nuxt-link  :to="localePath({name: 'index'})" :title="$t('menu-name.home')" class="hover:text-gray-700 dark:text-gray-200 dark:hover:text-white">
-        <h1 class="uppercase text-4xl font-russia">
+        <span class="uppercase text-4xl font-russia">
           <svg-icon name="logo" />
           <span>chernobyl</span>
-        </h1>
+        </span>
       </nuxt-link>
     </div>
     <navbar />
-    <section id="layout-contents" class="grid-layout-contents hide-scroolbar" role="main" :aria-label="$t('word.content')">
+    <section id="layout-contents" class="grid-layout-contents hide-scroolbar" :aria-label="$t('word.content')">
       <nuxt v-if="!$slots.default" />
       <slot v-else />
     </section>

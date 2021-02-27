@@ -1,9 +1,9 @@
 <template>
   <div class="flex flex-col dark:bg-gray-800 rounded-lg">
-    <h1 class="text-4xl p-2">
+    <h2 class="text-4xl p-2">
       <svg-icon name="news" />
       {{ $t('text.last-news') }}
-    </h1>
+    </h2>
     <div class="flex flex-col space-y-3 px-2">
       <article v-for="obj in news" :key="obj.id" class="w-full shadow-md p-2 rounded-lg dark:bg-gray-700">
         <h2 class="text-2xl capitalize my-3 font-medium cursor-pointer hover:text-indigo-700 dark:hover:text-gray-900" @click="setActiveNews(obj)">

@@ -23,7 +23,7 @@
     <field-textarea v-model="dataValue" :field="field" :errors="errors.value" />
     <div class="self-end flex justify-center gap-2">
       <admin-action-delete v-if="$auth.hasScope('staff') && current && current.id" @click="setDeleted(object)"/>
-      <button class="px-3 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-center text-gray-400">
+      <button type="button" class="px-3 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-center text-gray-400">
         <template v-if="current && current.id">
           <svg-icon name="check" />
           {{ $t('word.modify') }}

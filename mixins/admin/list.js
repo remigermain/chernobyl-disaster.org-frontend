@@ -7,7 +7,7 @@ export default {
 
   data () {
     return {
-      activeHelp: this.$auth.user.show_helpers,
+      activeHelp: "this.$auth.user.show_helpers",
 
       page: 1,
       pageLang: 1,

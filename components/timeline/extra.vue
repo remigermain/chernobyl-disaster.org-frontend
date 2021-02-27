@@ -13,7 +13,8 @@
       <nav class="extra-toolbar-desktop flex justify-around items-center flex-col bg-gray-800 text-white text-center md:border-r-8 md:border-blue-800 md:rounded-l-lg md:rounded-b-lg"
            :class="{'active': activeMenu}"
       >
-        <button class="w-full h-2/4 px-4 extra-btn"
+        <button type="button"
+                class="w-full h-2/4 px-4 extra-btn"
                 :class="{
                   'timeline:bg-gray-800 -timeline:bg-gray-900': pictureActive,
                   'timeline:bg-gray-900 -timeline:bg-gray-800': !pictureActive
@@ -23,7 +24,8 @@
         >
           <svg-icon name="photo" class="extra-icon-mobile" role="img" :aria-label="$t('menu-name.picture')" />
         </button>
-        <button class="w-full h-2/4 px-4 extra-btn timeline:rounded-b-lg"
+        <button type="button"
+                class="w-full h-2/4 px-4 extra-btn timeline:rounded-b-lg"
                 :class="{
                   'timeline:bg-gray-800 -timeline:bg-gray-900': videoActive,
                   'timeline:bg-gray-900 -timeline:bg-gray-800': !videoActive
@@ -37,18 +39,17 @@
       <div class="extra-toolbar-desktop overflow-y-scroll overflow-x-hidden">
         <div class="flex flex-wrap" :class="{'justify-center items-center h-full w-full': activeExtra.length === 0, 'h-min': activeExtra.length >= 1}">
           <template v-if="pictureActive">
-            <picture v-for="(img, idx) in object.pictures" :key="img.id" class="extra extra-picture" role="img">
-              <source :srcset="img.picture.thumbnail_webp" type="image/webp">
-              <img :alt="i18nAttr(img, 'title')"
-                  :src="img.picture.thumbnail_jepg"
-                  loading="lazy"
-                  class="w-full h-full object-cover"
-                  tabindex="0"
-                  role="button"
-                  type="image/jpeg"
-                  @click="setCurrent(img, idx)"
-              >
-            </picture>
+            <button v-for="(img, idx) in object.pictures" :key="img.id" type="button" @click="setCurrent(img, idx)">
+              <picture class="extra extra-picture" role="img">
+                <source :srcset="img.picture.thumbnail_webp" type="image/webp">
+                <img :alt="i18nAttr(img, 'title')"
+                    :src="img.picture.thumbnail_jpeg"
+                    loading="lazy"
+                    class="w-full h-full object-cover"
+                    type="image/jpeg"
+                >
+              </picture>
+            </button>
 
           </template>
           <template v-else>
@@ -167,7 +168,8 @@ export default {
 .grid-extra {
   display: grid;
   grid-template-columns: auto 1fr;
-  @apply .border-t-8 .border-gray-800;
+  @apply border-t-8;
+  @apply border-gray-800;
 }
 
 .extra {

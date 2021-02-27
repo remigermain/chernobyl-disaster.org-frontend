@@ -1,11 +1,11 @@
 <template>
   <div class="grid-layout-navbar">
     <div class="background-navbar" :class="{'active': active, 'hidden': !active }" @click="ative = false" />
-    <label class="burger" :class="{'active': active }" @click="toogleNavbar">
+    <span class="burger" :class="{'active': active }" @click="toogleNavbar">
       <span class="bg-gray-700 dark:bg-gray-100" />
       <span class="bg-gray-700 dark:bg-gray-100" />
       <span class="bg-gray-700 dark:bg-gray-100" />
-    </label>
+    </span>
     <nav class="navbar-items relative" :class="{'active': active }" :aria-label="$t('text.site-navigation')">
       <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('text.goto-home')">
         {{ $t('menu-name.home') }}
@@ -26,7 +26,7 @@
         <svg-icon name="settings" class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl" />
         <div class="absolute settings-child right-0 top-0 pt-6 rounded-md">
           <div class="space-y-4 p-6 bg-white dark:bg-gray-800 rounded-lg mobile:shadow-lg dark:shadow-none">
-            <button v-if="$auth.loggedIn" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
+            <button v-if="$auth.loggedIn" type="button" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
               <svg-icon name="logout" />
               {{ $t('authentication.logout') }}
             </button>
@@ -38,11 +38,11 @@
                         @click="setDark"
               />
             </div>
-            <label for="lang" class="flex justify-center items-center flex-col gap-y-2">
+            <label class="flex justify-center items-center flex-col gap-y-2">
               <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200">
                 {{ $t('word.language') }}:
               </span>
-              <select v-model="value" name="lang" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
+              <select v-model="value" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
                 <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
                   {{ lang.name }}
                 </option>

@@ -22,7 +22,7 @@
             </option>
           </select>
         </label>
-        <button class="p-2 mx-2 h-10 rounded-md text-md text-white bg-indigo-600 hover:bg-indigo-700 text-center" @click="submit">
+        <button type="button" class="p-2 mx-2 h-10 rounded-md text-md text-white bg-indigo-600 hover:bg-indigo-700 text-center" @click="submit">
           {{ $t('word.search') }}
         </button>
         <span class="border-b border-gray-500" />
@@ -46,24 +46,21 @@
         </div>
         <span class="border-b border-gray-500" />
         <div class="toolbar-characters">
-          <span v-for="p in $store.getters['model/characters']" :key="p.id" class="toolbar-character-item group hover:bg-gray-300 rounded-md dark:hover:bg-gray-700"
-                role="button"
-                tabindex="0"
-                @click="submitCharacter(p.name)"
+          <button v-for="p in $store.getters['model/characters']" :key="p.id" type="button" class="toolbar-character-item group hover:bg-gray-300 rounded-md dark:hover:bg-gray-700"
+            @click="submitCharacter(p.name)"
           >
             <picture>
               <source :srcset="$media(p.profil.thumbnail_webp)" type="image/webp" />
               <img :src="$media(p.profil.thumbnail_jpeg)"
                   class="w-12 rounded-full object-cover h-12"
                   :alt="p.name"
-                  role="button"
                   type="image/jepg"
               >
             </picture>
             <span class=" break-words group-hover:text-indigo-700 dark:group-hover:text-gray-200">
               {{ p.name }}
             </span>
-          </span>
+          </button>
         </div>
       </nav>
     </div>

@@ -29,18 +29,20 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('word.donors') }}
         </h2>
-        <h2 class="text-gray-800 dark:text-gray-300 font-medium italic text-opacity-75 leading-3">
+        <div class="text-gray-800 dark:text-gray-300 font-medium italic text-opacity-75 leading-3">
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
-          {{ $t('text.thanks-to-donors') }}
+          <h2 class="inline-flex">
+            {{ $t('text.thanks-to-donors') }}
+          </h2>
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
           <wbr>
-        </h2>
+        </div>
         <div class="all-contributor bg-white rounded-lg mt-2 shadow-md p-4 overflow-y-scroll leading-3 font-medium italic text-opacity-75 text-gray-800 space-y-4 space-x-3">
           <span v-for="user in donors" :key="user" class="text-sm inline-block">
             {{ user }}
@@ -55,18 +57,20 @@
         <h2 class="text-3xl text-md capitalize">
           {{ $t('word.contributors') }}
         </h2>
-        <h2 class="text-gray-800 dark:text-gray-300 font-medium">
+        <div class="text-gray-800 dark:text-gray-300 font-medium">
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
-          {{ $t('text.thanks-to-contributors') }}
+          <h2 class="inline-flex">
+            {{ $t('text.thanks-to-contributors') }}
+          </h2>
           <div class="inline-flex relative">
             <svg-icon name="heart" class="text-red-800 relative" role="img" aria-label="love" />
             <svg-icon name="heart" class="text-red-800 absolute animate-ping" role="img" aria-label="love" />
           </div>
           <wbr>
-        </h2>
+        </div>
         <div class="all-contributor bg-white rounded-lg mt-2 shadow-md p-4 overflow-y-scroll leading-3 font-medium italic text-opacity-75 text-gray-800 space-y-4 space-x-3">
           <span v-for="user in contributors" :key="user" class="text-sm inline-block">
             {{ user }}
@@ -93,10 +97,10 @@
         <a href="https://germainremi.fr" target="_blank" rel="noopener,noreferrer"
            class="text-center text-2xl font-medium leading-3 italic text-opacity-75 py-2 hover:scale-105 transform transition-transform duration-300"
            :title="$t('text.creator-website')">
-          <h1>
+          <h2>
             <svg-icon name="link" />
             GERMAIN Rémi
-          </h1>
+          </h2>
         </a>
         <div class="text-gray-800 text-justify font-medium mb-6 dark:text-gray-500">
           <picture role="img">
@@ -121,11 +125,11 @@
           <input type="hidden" name="cmd" value="_s-xclick" />
           <input type="hidden" name="hosted_button_id" value="JKC2WU8HYUNVA" />
           <button type="submit"  class="flex flex-col items-center space-y-2 group">
-            <div class=" h-12 w-12 flex justify-center items-center bg-blue-700 rounded-full shadow-sm">
+            <span class="h-12 w-12 flex justify-center items-center bg-blue-700 rounded-full shadow-sm">
               <svg-icon name="brand-paypal" class="group-hover:scale-110 transform transition-transform duration-300 text-white text-2xl" />
-            </div>
+            </span>
             <span class="font-bold uppercase text-base">Paypal</span>
-            </button>
+          </button>
         </form>
         <a href="https://www.buymeacoffee.com/rgermain" target="_blank" rel="noopener,noreferrer" class="flex flex-col items-center space-y-2 group">
           <div class=" h-12 w-12 flex justify-center items-center bg-green-700 rounded-full shadow-sm">

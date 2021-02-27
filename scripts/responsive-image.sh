@@ -14,7 +14,7 @@ extentions=(
   webp
 )
 
-convert () {
+convert_pictures () {
   # $1 == resize
   # $2 == suffix
   echo -e "\n$2 resize [$1%]"
@@ -24,7 +24,7 @@ convert () {
       if [ -f "$FILE" ]; then
         echo "[EXIST] $FILE..."
       else
-        magick $img -resize "$1%" -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace RGB $FILE
+        convert $img -resize "$1%" -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace RGB $FILE
         echo "[OK] $FILE..."
       fi
     done
@@ -32,15 +32,15 @@ convert () {
 }
 
 mobile () {
-  convert "35" "-mobile"
+  convert_pictures "35" "-mobile"
 }
 
 tablet () {
-  convert "70" "-tablet"
+  convert_pictures "70" "-tablet"
 }
 
 desktop () {
-  convert "100" ""
+  convert_pictures "100" ""
 }
 
 all () {
