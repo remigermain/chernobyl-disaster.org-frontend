@@ -125,6 +125,7 @@ export default {
     '@nuxtjs/color-mode',
     "@nuxtjs/tailwindcss",
     "@nuxtjs/svg-sprite",
+    "@nuxtjs/html-validator"
   ],
 
   components: [
