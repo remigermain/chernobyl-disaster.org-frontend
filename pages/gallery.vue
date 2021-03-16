@@ -7,21 +7,22 @@
 
 <script>
 export default {
-  name: "Gallery",
+  name: 'Gallery',
 
-  asyncData ({ app, store }) {
+  asyncData({ app, store }) {
     // poopulate sotre if not character
-    if (!store.getters["model/characters"].length) {
-      return app.$axios.get("populate/characters")
-      .then(response => {
-        if (response.status!==200) {
-          throw new Error("error-server")
-        }
-        store.commit("model/POPULATE_CHARACTERS", response.data)
-      })
-      .catch(error => {
-        store.commit("ERROR_SERVER", error.message || error)
-      })
+    if (!store.getters['model/characters'].length) {
+      return app.$axios
+        .get('populate/characters')
+        .then(response => {
+          if (response.status !== 200) {
+            throw new Error('error-server')
+          }
+          store.commit('model/POPULATE_CHARACTERS', response.data)
+        })
+        .catch(error => {
+          store.commit('ERROR_SERVER', error.message || error)
+        })
     }
   }
 }

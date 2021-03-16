@@ -9,10 +9,14 @@
         </h1>
       </div>
       <div class="flex -md:flex-col -md:space-y-8 -md:items-center flex-wrap">
-        <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4 -md:w-full">
+        <h2
+          class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4 -md:w-full"
+        >
           {{ $t('text.best-contributor') }}
         </h2>
-        <h2 class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4 -md:w-full -md:order-1">
+        <h2
+          class="title text-gray-800 dark:text-gray-200 p-1 text-center text-xl font-semibold w-2/4 -md:w-full -md:order-1"
+        >
           {{ $t('text.best-contributor-week') }}
         </h2>
         <contribute-ranking :object="object.total" />
@@ -20,13 +24,16 @@
       </div>
       <contribute-news />
       <div class="w-full">
-        <lazy-admin-utils-table :length="object.results.length" @pagination="setPagination">
+        <lazy-admin-utils-table
+          :length="object.results.length"
+          @pagination="setPagination"
+        >
           <template #thead>
-              <td>{{ $t("word.creator") }}</td>
-              <td>{{ $t("word.date") }}</td>
-              <td>{{ $t("word.title") }}</td>
-              <td>{{ $t("word.identifier") }}</td>
-              <td>{{ $t("word.action") }}</td>
+            <td>{{ $t('word.creator') }}</td>
+            <td>{{ $t('word.date') }}</td>
+            <td>{{ $t('word.title') }}</td>
+            <td>{{ $t('word.identifier') }}</td>
+            <td>{{ $t('word.action') }}</td>
           </template>
           <template #tbody>
             <tr v-for="(obj, idx) in list" :key="idx">
@@ -35,91 +42,102 @@
               <td>{{ obj.display }}</td>
               <td>{{ $t(`menu-name.${obj.uuid}`) }}</td>
               <td class="inline-flex space-x-2">
-                <lazy-admin-action-detail v-if="obj.detail" :to="pathDetail(obj)" />
+                <lazy-admin-action-detail
+                  v-if="obj.detail"
+                  :to="pathDetail(obj)"
+                />
                 <lazy-admin-action-edit :to="pathEdit(obj)" />
-                <lazy-admin-action-delete v-if="$auth.hasScope('staff')" @click="setDeleted(obj)" />
+                <lazy-admin-action-delete
+                  v-if="$auth.hasScope('staff')"
+                  @click="setDeleted(obj)"
+                />
               </td>
             </tr>
           </template>
         </lazy-admin-utils-table>
-        <admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
+        <admin-utils-modal
+          v-if="acticeModalDelete"
+          @close="acticeModalDelete = false"
+          @delete="submitDelete"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import listMixins from "~/mixins/admin/list"
-import { getDateMini } from "~/lib/date"
+import listMixins from '~/mixins/admin/list'
+import { getDateMini } from '~/lib/date'
 
 export default {
-  name: "ContributeOverview",
+  name: 'ContributeOverview',
 
   mixins: [listMixins],
 
-  layout: "default",
+  layout: 'default',
 
-  middleware: [
-    "model",
-    "auth",
-  ],
+  middleware: ['model', 'auth'],
 
-  transition: "page",
+  transition: 'page',
 
-  asyncData({app, store}) {
-    return app.$axios.get("populate/overview")
+  asyncData({ app, store }) {
+    return app.$axios
+      .get('populate/overview')
       .then(response => {
-        if (response.status!==200) {
-          throw new Error("error-server")
+        if (response.status !== 200) {
+          throw new Error('error-server')
         }
         response.data.results.forEach(o => {
           o.date = new Date(o.date)
         })
-        return {object: response.data}
+        return { object: response.data }
       })
       .catch(error => {
-        store.commit("ERROR_SERVER", error.message || error)
-        return {object: {'results': [], 'total': [], 'week': []}}
+        store.commit('ERROR_SERVER', error.message || error)
+        return { object: { results: [], total: [], week: [] } }
       })
   },
 
-  head () {
-    const title = this.$t("menu-name.dashboard")
+  head() {
+    const title = this.$t('menu-name.dashboard')
     return {
       title,
       meta: [
-          { property: "og:title", content: title},
-          { name: "twitter:title", content: title },
-          { name: "twitter:image:alt", content: title }
+        { property: 'og:title', content: title },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:image:alt', content: title }
       ]
     }
   },
 
   computed: {
-    list () {
-      const start = (this.page * this.$pagination) - this.$pagination
+    list() {
+      const start = this.page * this.$pagination - this.$pagination
       return this.object.results.slice(start, start + this.$pagination)
-    },
+    }
   },
 
   methods: {
     getDateMini,
-    submitDelete () {
+    submitDelete() {
       this.submitDelete(`${this.objDelete.uuid}/${this.objDelete.id}/`)
     },
-    setPagination (val) {
+    setPagination(val) {
       this.page = val
     },
-    pathDetail (obj) {
-      return {name: `contribute-${obj.uuid}-id`, params: {id: obj.id}}
+    pathDetail(obj) {
+      return { name: `contribute-${obj.uuid}-id`, params: { id: obj.id } }
     },
-    pathEdit (obj) {
+    pathEdit(obj) {
       if (obj.query || obj.params) {
-        return {name: `contribute-${obj.uuid}-edit-id`, params: obj.params, query: obj.query}
+        return {
+          name: `contribute-${obj.uuid}-edit-id`,
+          params: obj.params,
+          query: obj.query
+        }
       }
-      return {name: `contribute-${obj.uuid}-edit-id`, params: {id: obj.id}}
+      return { name: `contribute-${obj.uuid}-edit-id`, params: { id: obj.id } }
     }
   }
-
 }
 </script>

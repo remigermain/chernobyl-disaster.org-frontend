@@ -1,64 +1,66 @@
 export default {
-  data () {
+  data() {
     return {
       /* delete obj */
       acticeModalDelete: false,
       objDelete: null,
 
-      objLangDelete: null,
+      objLangDelete: null
     }
   },
 
   methods: {
-
     /*
       deleted obj
     */
-    setDeleted (obj) {
+    setDeleted(obj) {
       this.objDelete = obj
       this.acticeModalDelete = true
     },
-    submitDelete (url) {
-      this.$store.commit("ON_LOADING", true)
+    submitDelete(url) {
+      this.$store.commit('ON_LOADING', true)
       this.acticeModalDelete = false
 
-      const urlPath  = url || `${this.model.name}/${this.objDelete.id}/`
+      const urlPath = url || `${this.model.name}/${this.objDelete.id}/`
 
-      this.$axios.delete(urlPath)
+      this.$axios
+        .delete(urlPath)
         .then(response => {
           if (response.status !== 204) {
-            throw new Error("server-error")
+            throw new Error('server-error')
           }
-          this.i18nToast.success(this.$t('success-message.delete'))
+          this.$toast.success(this.$t('success-message.delete'))
           this.haveDeletedObject()
         })
         .catch(this.responseError)
-        .finally(() => { this.$store.commit("ON_LOADING", false) })
+        .finally(() => {
+          this.$store.commit('ON_LOADING', false)
+        })
     },
 
     submitLangDelete(object, idx) {
       /* remove only lang object ( only admin user ) */
-      this.$store.commit("ON_LOADING")
+      this.$store.commit('ON_LOADING')
       this.acticeModalDelete = false
 
-      this.$axios.delete(`${this.linkDeleteLang}/${this.objLangDelete.id}/`)
+      this.$axios
+        .delete(`${this.linkDeleteLang}/${this.objLangDelete.id}/`)
         .then(response => {
           if (response.status !== 204) {
-            throw new Error("errer-server")
+            throw new Error('errer-server')
           }
-          this.i18nToast.success(this.$t('success-message.delete'))
+          this.$toast.success(this.$t('success-message.delete'))
           // delete object
           this.$delete(object.langs, idx)
         })
         .catch(this.responseError)
-        .finally(() => this.$store.commit("ON_LOADING"))
+        .finally(() => this.$store.commit('ON_LOADING'))
     },
 
-
-    langDelete (idx) {
+    langDelete(idx) {
       const object = this.data || this.object
       this.objLangDelete = object.langs[idx]
-      if (this.objLangDelete ._new) {
+      if (this.objLangDelete._new) {
         /* remove directly in array if is a new elements */
         this.$delete(object.langs, idx)
       } else {

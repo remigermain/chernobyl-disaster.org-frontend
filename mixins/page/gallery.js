@@ -1,8 +1,7 @@
-import { galleryUrl} from "~/lib/gallery"
+import { galleryUrl } from '~/lib/gallery'
 
 export default {
-
-  data () {
+  data() {
     return {
       pageSet: [parseInt(this.$route.query.page) || 1],
       page: parseInt(this.$route.query.page) || 1,
@@ -17,59 +16,75 @@ export default {
   },
 
   watch: {
-    "$route.query" (newquery, oldquery) {
-      if (newquery.search!==oldquery.search || newquery.ordering!==oldquery.ordering) {
+    '$route.query'(newquery, oldquery) {
+      if (
+        newquery.search !== oldquery.search ||
+        newquery.ordering !== oldquery.ordering
+      ) {
         this.reset()
       }
     }
   },
 
   computed: {
-    url () {
+    url() {
       return `${this.model}/?page=${this.page}${galleryUrl(this.$route.query)}`
     },
-    hasPrevPage () {
+    hasPrevPage() {
       return !this.pageSet.includes(1) // check if page "1" one is in
     },
-    inPrev () {
+    inPrev() {
       if (this.hasPrevPage) {
         return new Array(this.$pagination)
       }
       return []
     },
-    inNext () {
+    inNext() {
       if (!this.completed) {
-        const max = Math.min(this.length - (Math.max(...this.pageSet) * this.$pagination), this.$pagination)
+        const max = Math.min(
+          this.length - Math.max(...this.pageSet) * this.$pagination,
+          this.$pagination
+        )
         return new Array(Math.max(max, 0))
       }
       return []
-    },
+    }
   },
 
-  mounted () {
+  mounted() {
     if (process.client) {
       this.loopScroll()
     }
   },
 
   methods: {
-    loopScroll () {
+    loopScroll() {
       this.interval = setInterval(() => {
-        if (!this.scroll()) { clearInterval(this.interval) }
+        if (!this.scroll()) {
+          clearInterval(this.interval)
+        }
       }, 1)
     },
-    scroll () {
+    scroll() {
       // check if prev and next is visible , and refresh page
       let ret = false
-      if (this.$refs.prevLoading && this.$refs.prevLoading.isVisible() && !this.pageSet.includes(1)) {
+      if (
+        this.$refs.prevLoading &&
+        this.$refs.prevLoading.isVisible() &&
+        !this.pageSet.includes(1)
+      ) {
         ret = true
       }
-      if (this.$refs.nextLoading && this.$refs.nextLoading.isVisible() && !this.completed) {
+      if (
+        this.$refs.nextLoading &&
+        this.$refs.nextLoading.isVisible() &&
+        !this.completed
+      ) {
         ret = true
       }
       return ret
     },
-    reset () {
+    reset() {
       // reset data when query params change
       this.object = []
       this.error = false
@@ -89,7 +104,7 @@ export default {
           this.page = max + 1
           this.refresh(response => {
             // append the new data
-            this.object = [...this.object, ...response.data.results,]
+            this.object = [...this.object, ...response.data.results]
             resolve()
           })
         }
@@ -114,12 +129,11 @@ export default {
             this.$nextTick(() => {
               this.$el.scrollTop = this.$el.scrollHeight - oldHeight + oldTop
             })
-
           })
         }
       })
     },
-    refresh (callback) {
+    refresh(callback) {
       if (this.inRequest || this.error) {
         return
       }
@@ -128,10 +142,11 @@ export default {
       this.pageSet.push(this.page)
 
       this.inRequest = true
-      return this.$axios.get(this.url)
+      return this.$axios
+        .get(this.url)
         .then(response => {
-          if (response.status!==200) {
-            throw new Error("error-server")
+          if (response.status !== 200) {
+            throw new Error('error-server')
           }
           this.length = response.data.count
           this.inRequest = false
@@ -144,8 +159,8 @@ export default {
             callback(response)
           }
         })
-        .catch((error) => {
-          this.i18nToast.error(error)
+        .catch(error => {
+          this.$toast.error(error)
           this.error = true
         })
         .finally(() => {
@@ -153,11 +168,10 @@ export default {
           this.inRequestPrev = false
           this.inRequestNext = false
         })
-    },
+    }
   },
 
   beforeDestroy() {
     clearInterval(this.interval)
   }
-
 }

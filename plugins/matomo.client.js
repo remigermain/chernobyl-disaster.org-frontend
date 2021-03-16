@@ -1,16 +1,16 @@
 /*
   noting
 */
-import Vue from "vue"
-import VueMatomo from "vue-matomo"
+import Vue from 'vue'
+import VueMatomo from 'vue-matomo'
 
 export default ({ app, isDev }) => {
   if (!isDev) {
     Vue.use(VueMatomo, {
       router: app.router,
-      host: "https://matomo.germainremi.fr",
+      host: 'https://matomo.germainremi.fr',
       siteId: 2,
-      trackerFileName: "matomo",
+      trackerFileName: 'matomo',
       enableLinkTracking: true,
       requireConsent: false,
       trackInitialView: true,

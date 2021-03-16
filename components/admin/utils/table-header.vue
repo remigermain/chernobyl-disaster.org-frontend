@@ -4,26 +4,31 @@
       <svg-icon name="list" />
       {{ title }}
     </span>
-    <field-search v-model="searchValue" class="w-2/4 -md:w-full" role="search" @search="$emit('search')" @input="$emit('input', $event)" />
+    <field-search
+      v-model="searchValue"
+      class="w-2/4 -md:w-full"
+      role="search"
+      @search="$emit('search')"
+      @input="$emit('input', $event)"
+    />
   </div>
 </template>
 
 <script>
 export default {
-
   props: {
     value: {
       type: String,
-      required: true,
+      required: true
     },
     title: {
       type: String,
-      required: true,
+      required: true
     }
   },
 
-  data () {
-    return {searchValue: ""}
+  data() {
+    return { searchValue: '' }
   },
 
   watch: {
@@ -33,6 +38,5 @@ export default {
       }
     }
   }
-
 }
 </script>

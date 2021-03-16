@@ -13,22 +13,21 @@
 
 <script>
 import Vue from 'vue'
-import FieldMixins from "~/mixins/field"
+import FieldMixins from '~/mixins/field'
 
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 export default {
-
   mixins: [FieldMixins],
 
   props: {
     type: {
       type: String,
-      default: "text"
+      default: 'text'
     }
   },
 
-  data () {
+  data() {
     return {
       editorOption: {
         theme: 'snow',
@@ -43,7 +42,7 @@ export default {
             [{ font: [] }],
             [{ align: [] }],
             ['link'],
-            ['clean'],
+            ['clean']
           ]
         }
       }
@@ -51,22 +50,20 @@ export default {
   },
 
   watch: {
-    valueModel (newValue) {
+    valueModel(newValue) {
       this.$emit('input', newValue)
     }
   },
 
-  created () {
+  created() {
     if (process.client) {
-      Vue.use(require("vue-quill-editor").default)
+      Vue.use(require('vue-quill-editor').default)
     }
-  },
-
+  }
 }
 </script>
 
 <style>
-
 .input {
   padding: 0.5rem !important;
   display: block !important;
@@ -81,8 +78,8 @@ export default {
 </style>
 
 <style lang="scss">
-
-.dark .ql-container, .dark .ql-editor.ql-blank::before {
+.dark .ql-container,
+.dark .ql-editor.ql-blank::before {
   @apply bg-gray-700;
   @apply text-gray-200;
 }
@@ -97,7 +94,7 @@ export default {
     .ql-picker,
     .ql-stroke {
       color: #06c !important;
-      stroke: #06c  !important;
+      stroke: #06c !important;
     }
   }
 }

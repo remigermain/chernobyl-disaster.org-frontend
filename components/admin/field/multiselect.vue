@@ -16,7 +16,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect'
-import FieldMixins from "~/mixins/field"
+import FieldMixins from '~/mixins/field'
 
 export default {
   components: { Multiselect },
@@ -30,19 +30,19 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
       choices: [...this.field.choices]
     }
   },
 
   watch: {
-    valueModel (newValue) {
+    valueModel(newValue) {
       this.$emit('input', newValue)
     }
   },
 
-  mounted () {
+  mounted() {
     if (process.client && this.field.max_length) {
       const selectInput = document.querySelector('.multiselect__input')
       if (selectInput) {
@@ -52,16 +52,15 @@ export default {
   },
 
   methods: {
-    addTag (name) {
-      const tag = {display_name: name, value: -1}
+    addTag(name) {
+      const tag = { display_name: name, value: -1 }
       this.choices.push(tag)
       this.valueModel.push(tag)
     }
   }
-
 }
 </script>
 
 <style lang="scss">
-@import "~/assets/css/multiselect.scss";
+@import '~/assets/css/multiselect.scss';
 </style>

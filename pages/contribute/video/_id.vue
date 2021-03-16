@@ -13,15 +13,25 @@
             <admin-action-report @click="activeModalReport = true" />
             <admin-action-edit :to="pathEdit(object.id)" />
             <admin-action-create :to="pathCreate" />
-            <admin-action-delete v-if="$auth.hasScope('staff')" :to="pathCreate" @click="setDeleted(object)" />
+            <admin-action-delete
+              v-if="$auth.hasScope('staff')"
+              :to="pathCreate"
+              @click="setDeleted(object)"
+            />
           </div>
         </template>
       </admin-utils-header>
-      <admin-model-detail :object="object" :to-edit="pathEdit(object.id)" @delete="langDelete">
+      <admin-model-detail
+        :object="object"
+        :to-edit="pathEdit(object.id)"
+        @delete="langDelete"
+      >
         <template #head>
           <div class="flex flex-col justify-center space-y-4 text-center px-2">
             <div class="flex flex-col space-y-4">
-              <h1 class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words capitalize">
+              <h1
+                class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words capitalize"
+              >
                 {{ object.title }}
               </h1>
               <div class="flex flex-col">
@@ -29,95 +39,129 @@
                   <span class="italic text-base capitalize text-gray-600">
                     {{ modelField.event.label }}
                   </span>
-                  <a :href="localePath({name: 'contribute-event-id',  params: {id: object.event.value}})"
-                        class="text-4xl -sm:text-lg -sm:font-semibold transition-color duration-300
+                  <a
+                    :href="
+                      localePath({
+                        name: 'contribute-event-id',
+                        params: { id: object.event.value }
+                      })
+                    "
+                    class="text-4xl -sm:text-lg -sm:font-semibold transition-color duration-300
                             dark:text-gray-200 dark:hover:text-indigo-700 hover:text-indigo-700 text-gray-800"
-                      target="_target" rel="noopenner,noreferrer"
+                    target="_target"
+                    rel="noopenner,noreferrer"
                   >
                     {{ object.event.display_name }}
                   </a>
                 </div>
-                <div v-if="object.date.date" class="flex flex-col justify-center">
+                <div
+                  v-if="object.date.date"
+                  class="flex flex-col justify-center"
+                >
                   <span class="italic text-base capitalize text-gray-600">
                     {{ $t('word.date') }}
                   </span>
-                  <time :datetime="object.date.date" class="text-4xl -sm:text-lg -sm:font-semibold">
+                  <time
+                    :datetime="object.date.date"
+                    class="text-4xl -sm:text-lg -sm:font-semibold"
+                  >
                     {{ getDateYear(object.date.date) }}
                   </time>
                   <timeline-time :date="object.date" />
                 </div>
               </div>
             </div>
-            <gallery-video-preview :link="object.video" :object="object" class="m-auto"/>
+            <gallery-video-preview
+              :link="object.video"
+              :object="object"
+              class="m-auto"
+            />
             <admin-detail-tags :object="object.tags" />
           </div>
         </template>
         <template #lang="{currentObj}">
           <div class="flex flex-col justify-center space-y-4 text-center p-4">
-            <h2 class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words capitalize">
+            <h2
+              class="text-4xl text-gray-800 font-medium dark:text-gray-300 break-words capitalize"
+            >
               {{ currentObj.title }}
             </h2>
           </div>
         </template>
       </admin-model-detail>
-      <lazy-admin-utils-report v-if="activeModalReport" :id="object.id" uuid="video" @close="activeModalReport = false" />
-      <lazy-admin-utils-modal v-if="acticeModalDelete" @close="acticeModalDelete = false" @delete="submitDelete"/>
+      <lazy-admin-utils-report
+        v-if="activeModalReport"
+        :id="object.id"
+        uuid="video"
+        @close="activeModalReport = false"
+      />
+      <lazy-admin-utils-modal
+        v-if="acticeModalDelete"
+        @close="acticeModalDelete = false"
+        @delete="submitDelete"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import videoMixins from "~/mixins/model/video"
-import detailMixins from "~/mixins/admin/detail"
+import videoMixins from '~/mixins/model/video'
+import detailMixins from '~/mixins/admin/detail'
 
 export default {
-
   mixins: [videoMixins, detailMixins],
 
-  validate ({params}) {
+  validate({ params }) {
     return /^\d+$/.test(params.id)
   },
 
-  asyncData ({app, store, params, redirect}) {
-    return app.$axios.get(`video/${params.id}/`)
+  asyncData({ app, store, params, redirect }) {
+    return app.$axios
+      .get(`video/${params.id}/`)
       .then(response => {
         if (response.status !== 200) {
-          throw new Error("error-server")
+          throw new Error('error-server')
         }
 
         // convert tag
-        response.data.tags = response.data.tags.map(id => store.getters["model/tag"](id))
-        response.data.event = store.getters["model/event"](response.data.event)
+        response.data.tags = response.data.tags.map(id =>
+          store.getters['model/tag'](id)
+        )
+        response.data.event = store.getters['model/event'](response.data.event)
         // convert date
-        response.data.date.date && (response.data.date.date = new Date(response.data.date.date))
+        response.data.date.date &&
+          (response.data.date.date = new Date(response.data.date.date))
 
-        return {object: response.data}
+        return { object: response.data }
       })
       .catch(error => {
-        store.commit("ERROR_SERVER", error.message || error)
-        return redirect(app.localePath({name: 'contribute-video'}))
+        store.commit('ERROR_SERVER', error.message || error)
+        return redirect(app.localePath({ name: 'contribute-video' }))
       })
   },
 
-  data: () => ({activevideo: false}),
+  data: () => ({ activevideo: false }),
 
-  head () {
-    const title = `${this.$t("menu-name.video")} - ${this.$t("word.detail")}`
+  head() {
+    const title = `${this.$t('menu-name.video')} - ${this.$t('word.detail')}`
     return {
       title,
       meta: [
-          { property: "og:title", content: title},
-          { name: "twitter:title", content: title },
-          { name: "twitter:image:alt", content: title }
+        { property: 'og:title', content: title },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:image:alt', content: title }
       ]
     }
   },
 
   methods: {
-    getDateYear (date, locale = this.$i18n.locale) {
-      return date.toLocaleDateString(locale, {year: "numeric", month: "long", day: "numeric" })
-    },
+    getDateYear(date, locale = this.$i18n.locale) {
+      return date.toLocaleDateString(locale, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      })
+    }
   }
-
 }
 </script>

@@ -5,22 +5,22 @@ export default {
   telemetry: false,
 
   head: {
-    title: process.env.npm_package_name || "",
-    titleTemplate: "Chernobyl - %s",
+    title: process.env.npm_package_name || '',
+    titleTemplate: 'Chernobyl - %s',
 
     meta: [
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
-        {
-            hid: "description",
-            name: "description",
-            content: process.env.npm_package_description || "",
-        },
-        { name: "og:image", content: "/icon.png" },
-        { name: "twitter:image", content: "/icon.png" },
-        // ...require('~/config/head.config.js').default,
-      ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: process.env.npm_package_description || ''
+      },
+      { name: 'og:image', content: '/icon.png' },
+      { name: 'twitter:image', content: '/icon.png' }
+      // ...require('~/config/head.config.js').default,
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   /* -------------------------------------------------
@@ -30,48 +30,48 @@ export default {
   render: {
     http2: {
       push: true,
-      pushAssets: null,
+      pushAssets: null
     },
     bundleRenderer: {
       shouldPreload: (file, type) => {
         return ['script', 'style', 'font'].includes(type)
-      },
-    },
+      }
+    }
   },
   sitemap: {
     hostname: process.env.SITE_URL,
     gzip: true,
     i18n: true,
-    exclude: ["/contribute/**"],
+    exclude: ['/contribute/**'],
     Default: {
       changefreq: 'monthly',
       priority: 1,
-      lastmod: new Date(),
-    },
+      lastmod: new Date()
+    }
   },
   robots: [
     {
-      UserAgent: "*",
-      Disallow: "/contribute/*",
+      UserAgent: '*',
+      Disallow: '/contribute/*'
     },
     {
-      UserAgent: "*",
-      Disallow: "/auth/new-password",
+      UserAgent: '*',
+      Disallow: '/auth/new-password'
     },
     {
-      UserAgent: "*",
-      Disallow: "/auth/verify-email",
-    },
+      UserAgent: '*',
+      Disallow: '/auth/verify-email'
+    }
   ],
 
   pwa: {
     meta: {
       theme_color: '#1a202c',
-      nativeUI: true,
+      nativeUI: true
     },
     manifest: {
-      theme_color: '#1a202c',
-    },
+      theme_color: '#1a202c'
+    }
   },
 
   /* -------------------------------------------------
@@ -82,34 +82,36 @@ export default {
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxtjs/pwa',
+
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    'vue-toastification/nuxt',
     'nuxt-i18n',
+
     '@nuxtjs/svg-sprite',
+    'vue-toastification/nuxt'
   ],
 
   plugins: [
-    { src: "~/plugins/matomo.client.js", ssr: false },
-    "~/plugins/axios.js",
-    "~/plugins/mixins.js",
-    "~/plugins/prototype.js",
-    '~/plugins/auth.js',
+    { src: '~/plugins/matomo.client.js', ssr: false },
+    '~/plugins/axios.js',
+    '~/plugins/mixins.js',
+    '~/plugins/prototype.js',
+    '~/plugins/auth.js'
   ],
 
   env: {
     BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:8000',
-    SITE_URL: process.env.SITE_URL || 'http://localhost:3000',
+    SITE_URL: process.env.SITE_URL || 'http://localhost:3000'
   },
 
   /* -------------------------------------------------
      sections
     ------------------------------------------------- */
 
-  // i18n: require('~/config/i18n.config.js').default,
-  // auth: require('~/config/auth.config.js').default,
+  i18n: require('./config/i18n.config').default,
+  auth: require('./config/auth.config').default,
   axios: {
-    baseURL: process.env.BACKEND_URL || 'http://localhost:8000',
+    baseURL: process.env.BACKEND_URL || 'http://localhost:8000'
   },
 
   /* -------------------------------------------------
@@ -117,42 +119,37 @@ export default {
   ------------------------------------------------- */
 
   css: [
-      '~/assets/styles/default.scss',
+    '~/assets/styles/default.scss',
 
-      //TODO
-      '~assets/css/action.scss',
-      '~assets/css/main.scss',
-      '~assets/css/dark-mode.scss',
-      '~assets/css/transition.scss',
-      '~assets/css/grid-common.scss',
-      '~assets/css/fonts.css',
-      '~assets/css/reset.scss',
-      '~assets/css/utils.scss',
-    ],
+    // TODO
+    '~assets/css/action.scss',
+    '~assets/css/main.scss',
+    '~assets/css/dark-mode.scss',
+    '~assets/css/transition.scss',
+    '~assets/css/grid-common.scss',
+    '~assets/css/fonts.css',
+    '~assets/css/reset.scss',
+    '~assets/css/utils.scss'
+  ],
 
   toast: {
-    cssFile: '~/assets/styles/toast.scss',
+    cssFile: '~/assets/styles/toast.scss'
   },
 
   svgSprite: {
     input: '~/assets/svg',
-    output: '~/assets/.svg-compile',
-  },
-
-  toast: {
-    iconPack: 'callback',
-    position: 'top-center',
+    output: '~/assets/.svg-compile'
   },
 
   tailwindcss: {
-    configPath: "~/config/tailwind.config.js",
+    configPath: '~/config/tailwind.config.js',
     exposeConfig: true,
-    jit: true,
+    jit: true
   },
 
   // nuxt color mode (dark mode)
   colorMode: {
-    classSuffix: '',
+    classSuffix: ''
   },
 
   purgeCSS: {
@@ -168,11 +165,11 @@ export default {
       /__nuxt-error-page/,
       /action/,
       /ripple/,
-      /ql-/,
+      /ql-/
     ],
     keyframes: true,
     variables: true,
-    fontFace: true,
+    fontFace: true
   },
 
   /* -------------------------------------------------
@@ -186,8 +183,7 @@ export default {
     'nuxt-purgecss',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/svg-sprite',
-    '@nuxtjs/html-validator',
+    '@nuxtjs/html-validator'
   ],
 
   build: {
@@ -196,8 +192,8 @@ export default {
     html: {
       minify: {
         // fix input type attributes
-        removeRedundantAttributes: false,
-      },
+        removeRedundantAttributes: false
+      }
     },
     postcss: {
       plugins: {
@@ -206,23 +202,12 @@ export default {
             'default',
             {
               discardComments: {
-                removeAll: true,
-              },
-            },
-          ],
-        },
-      },
-    },
-    extend(config, ctx) {
-      // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)|(\.svg$)/,
-        })
+                removeAll: true
+              }
+            }
+          ]
+        }
       }
-    },
-  },
+    }
+  }
 }

@@ -1,10 +1,9 @@
-
 export const state = () => ({
   langs: [],
   events: [],
   tags: [],
   characters: [],
-  news: [],
+  news: []
 })
 
 export const mutations = {
@@ -35,5 +34,4 @@ export const getters = {
   character: state => value => state.characters.find(t => t.value === value),
 
   news: state => state.news
-
 }

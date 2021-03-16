@@ -5,37 +5,57 @@
         {{ position }}
       </div>
       <div class="toolbar-right">
-        <nuxt-link v-if="$auth.loggedIn && toEdit" :to="localePath(toEdit)" class="toolbar-item" :title="$t('word.edit')">
+        <nuxt-link
+          v-if="$auth.loggedIn && toEdit"
+          :to="localePath(toEdit)"
+          class="toolbar-item"
+          :title="$t('word.edit')"
+        >
           <svg-icon name="edit" class="w-inherit h-inherit" />
         </nuxt-link>
-        <svg-icon name="x" class="toolbar-item" :aria-label="$t('word.close')" @click="$emit('close')" />
+        <svg-icon
+          name="x"
+          class="toolbar-item"
+          :aria-label="$t('word.close')"
+          @click="$emit('close')"
+        />
       </div>
     </div>
-    <svg-icon v-show="hasPrev"
-              name="arrow-left"
-              class="toolbar-item toolbar-slide-prev"
-              :aria-label="$t('word.previous')"
-              @click="$emit('prev')"
+    <svg-icon
+      v-show="hasPrev"
+      name="arrow-left"
+      class="toolbar-item toolbar-slide-prev"
+      :aria-label="$t('word.previous')"
+      @click="$emit('prev')"
     />
-    <svg-icon v-show="hasNext"
-              name="arrow-right"
-              class="toolbar-item toolbar-slide-next"
-              :aria-label="$t('word.next')"
-              @click="$emit('next')"
+    <svg-icon
+      v-show="hasNext"
+      name="arrow-right"
+      class="toolbar-item toolbar-slide-next"
+      :aria-label="$t('word.next')"
+      @click="$emit('next')"
     />
     <div class="picture-item-container">
       <picture class="picture-item mx-auto shadow-md">
-        <source v-if="object.original_webp" :srcset="object.original_webp" type="image/webp">
-        <img :alt="alt" :src="object.original_jpeg || object" class="picture-item mx-auto shadow-md" loading="lazy" type="image/jpeg">
+        <source
+          v-if="object.original_webp"
+          :srcset="object.original_webp"
+          type="image/webp"
+        />
+        <img
+          :alt="alt"
+          :src="object.original_jpeg || object"
+          class="picture-item mx-auto shadow-md"
+          loading="lazy"
+          type="image/jpeg"
+        />
       </picture>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
-
   props: {
     object: {
       type: [Object, String],
@@ -43,7 +63,7 @@ export default {
     },
     alt: {
       type: String,
-      default: "image"
+      default: 'image'
     },
     toEdit: {
       type: Object,
@@ -59,39 +79,38 @@ export default {
     }
   },
 
-  data () {
+  data() {
     return {
-      transition: false,
+      transition: false
     }
   },
 
   computed: {
-    hasPrev () {
+    hasPrev() {
       return this.idx > 0
     },
-    hasNext () {
+    hasNext() {
       return this.length - 1 > this.idx
     },
-    position () {
+    position() {
       return `${this.idx + 1} / ${this.length}`
     }
   },
 
   watch: {
-    object (newValue, oldValue) {
+    object(newValue, oldValue) {
       this.transition = !oldValue
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
 .picture-detail {
-  --timing: .5s;
+  --timing: 0.5s;
   position: fixed;
   user-select: none;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   z-index: 42;
   padding: 0 !important;
   margin: 0 !important;
@@ -99,7 +118,7 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, .85);
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-content: center;
@@ -148,7 +167,8 @@ export default {
     padding-left: 10px;
     justify-content: flex-start;
   }
-  & > .toolbar-right, & > .toolbar-left {
+  & > .toolbar-right,
+  & > .toolbar-left {
     width: 50%;
     display: flex;
     align-items: center;
@@ -188,5 +208,4 @@ export default {
   margin-right: var(--margin-slider);
   right: 0;
 }
-
 </style>

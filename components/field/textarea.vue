@@ -4,16 +4,19 @@
       <span class="flex justify-center items-center text-gray-700 field-icon">
         <slot name="icon" />
       </span>
-      <label class="w-full text-gray-800 text-sm font-bold flex flex-col-reverse border-b-2 border-gray-600 field-label">
-        <textarea v-model="valueModel"
-                  v-autosize
-                  :name="field.name"
-                  :maxlength="field.max_length"
-                  :minlength="field.min_length"
-                  :required="field.required"
-                  class="p-2 field-input w-full"
-                  :class="{'empty': !valueModel, 'min-textarea': min}"
-                  @input="$emit('input', valueModel)"
+      <label
+        class="w-full text-gray-800 text-sm font-bold flex flex-col-reverse border-b-2 border-gray-600 field-label"
+      >
+        <textarea
+          v-model="valueModel"
+          v-autosize
+          :name="field.name"
+          :maxlength="field.max_length"
+          :minlength="field.min_length"
+          :required="field.required"
+          class="p-2 field-input w-full"
+          :class="{ empty: !valueModel, 'min-textarea': min }"
+          @input="$emit('input', valueModel)"
         />
         <span class="field-input-label">
           {{ field.label }}
@@ -25,11 +28,10 @@
 </template>
 
 <script>
-import autosize from "v-autosize"
-import FieldMixins from "~/mixins/field"
+import autosize from 'v-autosize'
+import FieldMixins from '~/mixins/field'
 
 export default {
-
   directives: {
     autosize
   },
@@ -44,19 +46,18 @@ export default {
     min: {
       type: Boolean,
       default: false
-    },
-  },
-
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
 .field-input {
   @apply text-gray-700;
-  &:focus, &:not(.empty) {
+  &:focus,
+  &:not(.empty) {
     @apply bg-gray-200;
-    @apply rounded-t-md
+    @apply rounded-t-md;
   }
 }
 
@@ -71,16 +72,17 @@ export default {
 .dark {
   .field-input {
     @apply text-gray-200;
-    &:focus, &:not(.empty) {
+    &:focus,
+    &:not(.empty) {
       @apply bg-gray-700;
-      @apply rounded-t-md
+      @apply rounded-t-md;
     }
   }
   .field-icon {
-    @apply text-gray-100
+    @apply text-gray-100;
   }
   .field-input-label {
-    @apply text-gray-100
+    @apply text-gray-100;
   }
 }
 
@@ -88,16 +90,17 @@ export default {
   cursor: text;
 }
 
-.field-input:not(.empty), .field-input.empty:focus {
+.field-input:not(.empty),
+.field-input.empty:focus {
   & ~ .field-input-label {
-    transform: translateY(calc(0% - .5rem)) translateX(-5%) scale(.9);
+    transform: translateY(calc(0% - 0.5rem)) translateX(-5%) scale(0.9);
     opacity: 1;
   }
 }
 
 .field-input-label {
-  transition: transform .3s, opacity .6s;
+  transition: transform 0.3s, opacity 0.6s;
   transform: translateY(100%);
-  opacity: .5;
+  opacity: 0.5;
 }
 </style>

@@ -1,33 +1,31 @@
-import { generateUrl } from "~/lib/contribute"
-import deleteMixins from "~/mixins/admin/delete"
+import { generateUrl } from '~/lib/contribute'
+import deleteMixins from '~/mixins/admin/delete'
 
 export default {
-
   mixins: [deleteMixins],
 
-  data () {
+  data() {
     return {
-      activeHelp: "this.$auth.user.show_helpers",
+      activeHelp: 'this.$auth.user.show_helpers',
 
       page: 1,
       pageLang: 1,
 
-      searchValue: "",
-      searchValueLang: "",
+      searchValue: '',
+      searchValueLang: '',
       fields: {
         id: {
-          label: "id",
+          label: 'id'
         },
         not_available_languages: {
-          label: this.$t("text.need-translation"),
+          label: this.$t('text.need-translation')
         }
       }
-
     }
   },
 
   methods: {
-    haveDeletedObject () {
+    haveDeletedObject() {
       this.refresh()
       this.refreshLang()
     },
@@ -35,44 +33,54 @@ export default {
     /*
       all method for normal object
     */
-    setPagination (num) {
+    setPagination(num) {
       this.page = num
       this.refresh()
     },
-    refresh () {
+    refresh() {
       const url = generateUrl(this.model.name, this.page, this.searchValue)
       // refresh for object list
-      this.$axios.get(url)
+      this.$axios
+        .get(url)
         .then(response => {
           if (response.status !== 200) {
-            throw new Error("error-server")
+            throw new Error('error-server')
           }
           this.object = response.data.results
           this.objectlength = response.data.count
         })
-        .catch((error) => { this.responseError(error) })
+        .catch(error => {
+          this.responseError(error)
+        })
     },
 
     /*
       all method for object langiages
     */
-    setLangPagination (num) {
+    setLangPagination(num) {
       this.pageLang = num
       this.refreshLang()
     },
-    refreshLang () {
-
-      const url = generateUrl(this.model.name, this.pageLang, this.searchValueLang, false)
+    refreshLang() {
+      const url = generateUrl(
+        this.model.name,
+        this.pageLang,
+        this.searchValueLang,
+        false
+      )
       // refresh for object list languages
-      this.$axios.get(url)
+      this.$axios
+        .get(url)
         .then(response => {
           if (response.status !== 200) {
-            throw new Error("error-server")
+            throw new Error('error-server')
           }
           this.objectLang = response.data.results
           this.objectlengthLang = response.data.count
         })
-        .catch((error) => { this.responseError(error) })
+        .catch(error => {
+          this.responseError(error)
+        })
     }
   }
 }

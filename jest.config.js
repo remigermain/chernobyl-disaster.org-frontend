@@ -1,15 +1,17 @@
 module.exports = {
-  moduleFileExtensions: ['js', 'vue'],
-  modulePaths: [
-    "<rootDir>/",
-  ],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/$1',
+    '^~/(.*)$': '<rootDir>/$1',
+    '^vue$': 'vue/dist/vue.common.js'
+  },
+  moduleFileExtensions: ['js', 'vue', 'json'],
   transform: {
     '^.+\\.js$': 'babel-jest',
-    '.*\\.(vue)$': 'vue-jest',
+    '.*\\.(vue)$': 'vue-jest'
   },
-  testPathIgnorePatterns: ["<rootDir>/.nuxt/", "<rootDir>/node_modules/"],
-  // for convert import to locale directory
-  moduleNameMapper: {
-    "^~(.*)$": "<rootDir>/$1",
-  }
+  collectCoverage: true,
+  collectCoverageFrom: [
+    '<rootDir>/components/**/*.vue',
+    '<rootDir>/pages/**/*.vue'
+  ]
 }

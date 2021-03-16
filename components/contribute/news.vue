@@ -5,17 +5,36 @@
       {{ $t('text.last-news') }}
     </h2>
     <div class="flex flex-col space-y-3 px-2">
-      <article v-for="obj in news" :key="obj.id" class="w-full shadow-md p-2 rounded-lg dark:bg-gray-700">
-        <h2 class="text-2xl capitalize my-3 font-medium cursor-pointer hover:text-indigo-700 dark:hover:text-gray-900" @click="setActiveNews(obj)">
-          <svg-icon name="arrow-right" class="transform transition-transform duration-300" :class="{'rotate-90': activeNews == obj}" />
+      <article
+        v-for="obj in news"
+        :key="obj.id"
+        class="w-full shadow-md p-2 rounded-lg dark:bg-gray-700"
+      >
+        <h2
+          class="text-2xl capitalize my-3 font-medium cursor-pointer hover:text-indigo-700 dark:hover:text-gray-900"
+          @click="setActiveNews(obj)"
+        >
+          <svg-icon
+            name="arrow-right"
+            class="transform transition-transform duration-300"
+            :class="{ 'rotate-90': activeNews == obj }"
+          />
           {{ obj.title }}
           <br />
           <time class="italic text-base">
             {{ getDate(toDate(obj.date), $i18n.locale) }}
           </time>
         </h2>
-        <p class="text-base whitespace-pre-wrap dark:text-gray-400 font-medium" :class="{'truncate break-all': activeNews != obj}">{{ obj.text }}</p>
-        <div v-if="activeNews === obj" class="p-2 mt-2 italic text-gray-700 dark:text-gray-400">
+        <p
+          class="text-base whitespace-pre-wrap dark:text-gray-400 font-medium"
+          :class="{ 'truncate break-all': activeNews != obj }"
+        >
+          {{ obj.text }}
+        </p>
+        <div
+          v-if="activeNews === obj"
+          class="p-2 mt-2 italic text-gray-700 dark:text-gray-400"
+        >
           {{ obj.author }}.
         </div>
       </article>
@@ -25,7 +44,10 @@
           {{ $t('word.total') }} : {{ newsLength }}
         </span>
       </div>
-      <div v-else class="shadow-md p-2 rounded-lg dark:bg-gray-700 text-center my-3 italic">
+      <div
+        v-else
+        class="shadow-md p-2 rounded-lg dark:bg-gray-700 text-center my-3 italic"
+      >
         {{ $t('text.no-news-available') }}
       </div>
     </div>
@@ -33,10 +55,9 @@
 </template>
 
 <script>
-import { getDate } from "~/lib/date"
+import { getDate } from '~/lib/date'
 export default {
-
-  data () {
+  data() {
     return {
       news: [],
       newsLength: 0,
@@ -47,39 +68,40 @@ export default {
   },
 
   computed: {
-    url () {
+    url() {
       return `news/?page=${this.page}`
-    },
+    }
   },
 
-  created () {
+  created() {
     this.refresh()
   },
 
   methods: {
     getDate,
-    toDate (date) {
+    toDate(date) {
       return new Date(date)
     },
-    setActiveNews (obj) {
+    setActiveNews(obj) {
       if (obj === this.activeNews) {
         this.activeNews = null
       } else {
         this.activeNews = obj
       }
     },
-    setPagination (num) {
+    setPagination(num) {
       this.page = num
       this.refresh()
     },
-    refresh () {
+    refresh() {
       if (this.isCompleted) {
         return
       }
-      this.$axios.get(this.url)
+      this.$axios
+        .get(this.url)
         .then(r => {
           if (r.status !== 200) {
-            throw new Error("errer-server")
+            throw new Error('errer-server')
           }
           this.news = r.data.results
           this.newsLength = r.data.count
@@ -88,6 +110,5 @@ export default {
         .catch(this.responseError)
     }
   }
-
 }
 </script>

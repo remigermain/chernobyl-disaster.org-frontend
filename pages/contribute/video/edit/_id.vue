@@ -2,43 +2,44 @@
   <admin-form-video :create="false" :object="object" />
 </template>
 
-
 <script>
 export default {
-
-  validate ({params}) {
+  validate({ params }) {
     return /^\d+$/.test(params.id)
   },
 
-  asyncData ({app, store, params, redirect}) {
-    return app.$axios.get(`video/${params.id}/`)
+  asyncData({ app, store, params, redirect }) {
+    return app.$axios
+      .get(`video/${params.id}/`)
       .then(response => {
         if (response.status !== 200) {
-          throw new Error("error-server")
+          throw new Error('error-server')
         }
 
         // convert tag
-        response.data.tags = response.data.tags.map(id => store.getters["model/tag"](id))
-        response.data.event = store.getters["model/event"](response.data.event)
+        response.data.tags = response.data.tags.map(id =>
+          store.getters['model/tag'](id)
+        )
+        response.data.event = store.getters['model/event'](response.data.event)
 
-        return {object: response.data}
+        return { object: response.data }
       })
       .catch(error => {
-        store.commit("ERROR_SERVER", error.message || error)
-        return redirect(app.localePath({name: 'contribute-video'}))
+        store.commit('ERROR_SERVER', error.message || error)
+        return redirect(app.localePath({ name: 'contribute-video' }))
       })
   },
 
-  head () {
-    const title = `${this.$t("menu-name.video")} - ${this.$t("word.update")}`
+  head() {
+    const title = `${this.$t('menu-name.video')} - ${this.$t('word.update')}`
     return {
       title,
       meta: [
-          { property: "og:title", content: title},
-          { name: "twitter:title", content: title },
-          { name: "twitter:image:alt", content: title }
+        { property: 'og:title', content: title },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:image:alt', content: title }
       ]
     }
-  },
+  }
 }
 </script>

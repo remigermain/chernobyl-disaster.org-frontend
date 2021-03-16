@@ -1,80 +1,79 @@
-import { convertToTags, convertToDate } from "~/lib/contribute"
-import { setObjectKeysValue } from "~/lib/utils"
+import { convertToTags, convertToDate } from '~/lib/contribute'
+import { setObjectKeysValue } from '~/lib/utils'
 
 export default {
-
-  data () {
+  data() {
     return {
       model: {
-        name: "video",
-        label: this.$t("menu-name.video"),
-        help: this.$t("description.video"),
+        name: 'video',
+        label: this.$t('menu-name.video'),
+        help: this.$t('description.video')
       },
       modelField: {
         title: {
-          label: this.$t("text.referent-title"),
-          name: "title",
+          label: this.$t('text.referent-title'),
+          name: 'title',
           required: true,
           max_length: 50,
-          help: this.$t("help-video.referent-title")
+          help: this.$t('help-video.referent-title')
         },
         tags: {
-          label: this.$t("text.tags"),
-          name: "tags",
-          model: "tag",
+          label: this.$t('text.tags'),
+          name: 'tags',
+          model: 'tag',
           required: false,
-          choices: this.$store.getters["model/tags"],
-          help: this.$t("description.tag")
+          choices: this.$store.getters['model/tags'],
+          help: this.$t('description.tag')
         },
         event: {
-          label: this.$t("word.event"),
-          name: "event",
+          label: this.$t('word.event'),
+          name: 'event',
           required: false,
-          choices: this.$store.getters["model/events"],
-          help: this.$t("description.event"),
+          choices: this.$store.getters['model/events'],
+          help: this.$t('description.event')
         },
         video: {
-          label: this.$t("text.video-link"),
-          name: "video",
+          label: this.$t('text.video-link'),
+          name: 'video',
           required: true,
-          help: this.$t("help-video.video-link")
+          help: this.$t('help-video.video-link')
         },
         date: {
-          label: this.$t("word.date"),
-          name: "date",
+          label: this.$t('word.date'),
+          name: 'date',
           required: false,
           max_length: 50,
-          help: this.$t("help-video.date"),
+          help: this.$t('help-video.date')
         },
         langs: {
           title: {
-            label: this.$t("word.title"),
-            name: "title",
+            label: this.$t('word.title'),
+            name: 'title',
             max_length: 50,
             required: true,
-            help: this.$t("help-video.langs-title")
+            help: this.$t('help-video.langs-title')
           },
           language: {
-            label: this.$t("word.language"),
-            name: "language",
+            label: this.$t('word.language'),
+            name: 'language',
             required: true,
-            choices: this.$store.getters["model/langs"],
+            choices: this.$store.getters['model/langs']
           }
         }
       },
       errors: setObjectKeysValue(this.baseData(), []),
-      pathList: {name: 'contribute-video'},
-      pathCreate: {name: 'contribute-video-create'},
-      linkDeleteLang: "video-lang"
+      pathList: { name: 'contribute-video' },
+      pathCreate: { name: 'contribute-video-create' },
+      linkDeleteLang: 'video-lang'
     }
   },
 
   methods: {
-    pathDetail (id) {
-      return {name: 'contribute-video-id', params: {id}}
+    pathDetail(id) {
+      return { name: 'contribute-video-id', params: { id } }
     },
-    pathEdit (id) {
-      return {name: 'contribute-video-edit-id', params: {id}}
+    pathEdit(id) {
+      return { name: 'contribute-video-edit-id', params: { id } }
     },
     getData(dataValue) {
       const tags = convertToTags(dataValue.tags)
@@ -82,7 +81,7 @@ export default {
       const data = {
         ...dataValue,
         ...date,
-        tags,
+        tags
       }
 
       /* convert event */
@@ -95,22 +94,29 @@ export default {
       return data
     },
 
-    assignError (data) {
+    assignError(data) {
       /* add error after request */
-        data.title && (this.errors.title = data.title)
-        data.date && (this.errors.date = data.date)
-        data.event && (this.errors.event = data.event)
-        data.video && (this.errors.video = data.video)
-        data.tags && (this.errors.tags = data.tags)
-        data.langs && (this.errors.langs = data.langs)
+      data.title && (this.errors.title = data.title)
+      data.date && (this.errors.date = data.date)
+      data.event && (this.errors.event = data.event)
+      data.video && (this.errors.video = data.video)
+      data.tags && (this.errors.tags = data.tags)
+      data.langs && (this.errors.langs = data.langs)
     },
 
-    baseData () {
-      return {title: '', video: '', date: {}, event: null, tags: [], langs: []}
+    baseData() {
+      return {
+        title: '',
+        video: '',
+        date: {},
+        event: null,
+        tags: [],
+        langs: []
+      }
     },
 
-    baseDataLang (language) {
-      return {title: '', language}
+    baseDataLang(language) {
+      return { title: '', language }
     }
   }
 }

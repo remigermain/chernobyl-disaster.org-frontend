@@ -1,70 +1,63 @@
-import * as utils from "~/lib/utils"
+import * as utils from '~/lib/utils'
 
-describe("utils lib", () => {
-
-  it("setObjectKeysValue function", () => {
-
+describe('utils lib', () => {
+  it('setObjectKeysValue function', () => {
     const tab = {
-      'test': [],
-      'test2': []
+      test: [],
+      test2: []
     }
-    expect(utils.setObjectKeysValue(tab, [])).toEqual({'test': [], 'test2': []})
-    tab.test = ["error1", "error2"]
-    expect(utils.setObjectKeysValue(tab, [])).toEqual({'test': [], 'test2': []})
+    expect(utils.setObjectKeysValue(tab, [])).toEqual({ test: [], test2: [] })
+    tab.test = ['error1', 'error2']
+    expect(utils.setObjectKeysValue(tab, [])).toEqual({ test: [], test2: [] })
 
-    expect(utils.setObjectKeysValue(tab, "random")).toEqual({'test': "random", 'test2': "random"})
-
+    expect(utils.setObjectKeysValue(tab, 'random')).toEqual({
+      test: 'random',
+      test2: 'random'
+    })
   })
 })
 
-
-
-describe("convert form data nested", () => {
-
+describe('convert form data nested', () => {
   it('simple', () => {
-      const obj = {
-        title: 'title',
-        key: 'value'
-      }
-      const expected = {
-        title: 'title',
-        key: 'value',
-      }
-      expect(utils.toFlatObject(obj)).toEqual(expected)
+    const obj = {
+      title: 'title',
+      key: 'value'
+    }
+    const expected = {
+      title: 'title',
+      key: 'value'
+    }
+    expect(utils.toFlatObject(obj)).toEqual(expected)
   })
 
   it('object', () => {
-      const obj = {
+    const obj = {
+      title: 'title',
+      object: {
         title: 'title',
-        object: {
-          title: 'title',
-          key: 'value'
-        }
+        key: 'value'
       }
-      const expected = {
-        'title': 'title',
-        'object[title]': 'title',
-        'object[key]': 'value'
-      }
-      expect(utils.toFlatObject(obj)).toEqual(expected)
+    }
+    const expected = {
+      title: 'title',
+      'object[title]': 'title',
+      'object[key]': 'value'
+    }
+    expect(utils.toFlatObject(obj)).toEqual(expected)
   })
 
   it('array', () => {
-        const obj = {
-          title: 'title',
-          array: [
-            "element",
-            "element2"
-          ]
-        }
-        const expected = {
-          'title': 'title',
-          'array[0]': 'element',
-          'array[1]': 'element2',
-        }
-        expect(utils.toFlatObject(obj)).toEqual(expected)
-    })
-
+    const obj = {
+      title: 'title',
+      array: ['element', 'element2']
+    }
+    const expected = {
+      title: 'title',
+      'array[0]': 'element',
+      'array[1]': 'element2'
+    }
+    expect(utils.toFlatObject(obj)).toEqual(expected)
+  })
 
   it('array object', () => {
     const obj = {
@@ -80,63 +73,59 @@ describe("convert form data nested", () => {
         }
       ]
     }
-    const expected =  {
-      'title': 'title',
+    const expected = {
+      title: 'title',
       'array[0][title]': 'sub-title',
       'array[0][key]': 'key-title',
       'array[1][title]': 'sub-title2',
-      'array[1][key]': 'key-title2',
-    }
-    expect(utils.toFlatObject(obj)).toEqual(expected)
-})
-
-
-it('real', () => {
-    const obj = {
-      "id": 14,
-      "name": "ytrjtryhgmhgmhgmgmhgmhg",
-      "born": "2020-10-04",
-      "death": "2020-10-04",
-      "profil": { "_new": "u" },
-      "wikipedia": "",
-      "langs": [
-        {
-          "id": 5,
-          "biography": "<p>hertherh httrehrehert</p>",
-          "language": "de"
-        },
-        {
-          "biography": "<p>ytjyrrtyrtjytrj</p>",
-          "language": "en",
-          "_new": true
-        }
-      ],
-      "tags": [
-        {
-          "value": 10,
-          "display_name": "ytrjtryhgmhgmhgmgmhgmhg"
-        }
-      ]
-    }
-    const expected =  {
-      "id": 14,
-      "name": "ytrjtryhgmhgmhgmgmhgmhg",
-      "born": "2020-10-04",
-      "death": "2020-10-04",
-      "profil[_new]": "u",
-      "wikipedia": "",
-      "langs[0][id]": 5,
-      "langs[0][biography]": "<p>hertherh httrehrehert</p>",
-      "langs[0][language]": "de",
-      "langs[1][biography]": "<p>ytjyrrtyrtjytrj</p>",
-      "langs[1][language]": "en",
-      "langs[1][_new]": true,
-      "tags[0][value]": 10,
-      "tags[0][display_name]": "ytrjtryhgmhgmhgmgmhgmhg",
+      'array[1][key]': 'key-title2'
     }
     expect(utils.toFlatObject(obj)).toEqual(expected)
   })
 
-
-
+  it('real', () => {
+    const obj = {
+      id: 14,
+      name: 'ytrjtryhgmhgmhgmgmhgmhg',
+      born: '2020-10-04',
+      death: '2020-10-04',
+      profil: { _new: 'u' },
+      wikipedia: '',
+      langs: [
+        {
+          id: 5,
+          biography: '<p>hertherh httrehrehert</p>',
+          language: 'de'
+        },
+        {
+          biography: '<p>ytjyrrtyrtjytrj</p>',
+          language: 'en',
+          _new: true
+        }
+      ],
+      tags: [
+        {
+          value: 10,
+          display_name: 'ytrjtryhgmhgmhgmgmhgmhg'
+        }
+      ]
+    }
+    const expected = {
+      id: 14,
+      name: 'ytrjtryhgmhgmhgmgmhgmhg',
+      born: '2020-10-04',
+      death: '2020-10-04',
+      'profil[_new]': 'u',
+      wikipedia: '',
+      'langs[0][id]': 5,
+      'langs[0][biography]': '<p>hertherh httrehrehert</p>',
+      'langs[0][language]': 'de',
+      'langs[1][biography]': '<p>ytjyrrtyrtjytrj</p>',
+      'langs[1][language]': 'en',
+      'langs[1][_new]': true,
+      'tags[0][value]': 10,
+      'tags[0][display_name]': 'ytrjtryhgmhgmhgmgmhgmhg'
+    }
+    expect(utils.toFlatObject(obj)).toEqual(expected)
+  })
 })

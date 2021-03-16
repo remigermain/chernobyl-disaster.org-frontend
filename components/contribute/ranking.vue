@@ -1,13 +1,25 @@
 <template>
   <div class="flex justify-center trophy text-white w-2/4 mt-4 text-center">
     <div class="card-buble flex justify-center items-center">
-      <img src="~/assets/img/medal/medal_2_mobile.png" alt="medal" class="object-contain grayscale"/>
+      <img
+        src="~/assets/img/medal/medal_2_mobile.png"
+        alt="medal"
+        class="object-contain grayscale"
+      />
     </div>
     <div class="card-buble flex justify-center items-center">
-      <img src="~/assets/img/medal/medal_1_mobile.png" alt="medal" class="object-contain grayscale"/>
+      <img
+        src="~/assets/img/medal/medal_1_mobile.png"
+        alt="medal"
+        class="object-contain grayscale"
+      />
     </div>
     <div class="card-buble flex justify-center items-center">
-      <img src="~/assets/img/medal/medal_3_mobile.png" alt="medal" class="object-contain grayscale"/>
+      <img
+        src="~/assets/img/medal/medal_3_mobile.png"
+        alt="medal"
+        class="object-contain grayscale"
+      />
     </div>
     <div
       class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-end items-center card-buble items"
@@ -16,9 +28,13 @@
       <span v-if="second" class="data">
         {{ second.username }}
         <br />
-        <span class="text-indigo-700 dark:text-indigo-400">{{ second.count }}</span>
+        <span class="text-indigo-700 dark:text-indigo-400">{{
+          second.count
+        }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("word.empty") }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{
+        this.$t('word.empty')
+      }}</span>
     </div>
     <div
       class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-end items-center card-buble items"
@@ -27,9 +43,13 @@
       <span v-if="first" class="data">
         {{ first.username }}
         <br />
-        <span class="text-indigo-700 dark:text-indigo-400">{{ first.count }}</span>
+        <span class="text-indigo-700 dark:text-indigo-400">{{
+          first.count
+        }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("word.empty") }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{
+        this.$t('word.empty')
+      }}</span>
     </div>
     <div
       class="flex flex-col bg-white text-gray-700 shadow-md italic font-medium rounded-lg justify-end items-center card-buble items"
@@ -38,9 +58,13 @@
       <span v-if="third" class="data">
         {{ third.username }}
         <br />
-        <span class="text-indigo-700 dark:text-indigo-400">{{ third.count }}</span>
+        <span class="text-indigo-700 dark:text-indigo-400">{{
+          third.count
+        }}</span>
       </span>
-      <span v-else class="italic text-opacity-50 text-gray-700 data">{{ this.$t("word.empty") }}</span>
+      <span v-else class="italic text-opacity-50 text-gray-700 data">{{
+        this.$t('word.empty')
+      }}</span>
     </div>
   </div>
 </template>
@@ -51,7 +75,7 @@ export default {
     object: {
       type: Array[Object],
       required: true
-    },
+    }
   },
 
   computed: {
@@ -64,8 +88,8 @@ export default {
     third() {
       return this.object[2]
     },
-    unk () {
-      return this.$t("word.empty")
+    unk() {
+      return this.$t('word.empty')
     }
   }
 }
@@ -124,7 +148,7 @@ export default {
 }
 
 .grayscale {
-  filter: grayscale(.4);
+  filter: grayscale(0.4);
   z-index: -1;
 }
 </style>

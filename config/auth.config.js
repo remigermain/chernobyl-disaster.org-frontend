@@ -5,7 +5,7 @@ export default {
     login: '/auth/login',
     logout: '/auth/login',
     callback: '/auth/login',
-    home: '/',
+    home: '/'
   },
   strategies: {
     local: {
@@ -13,19 +13,19 @@ export default {
         login: {
           url: 'auth/login/',
           method: 'post',
-          propertyName: 'key',
+          propertyName: 'key'
         },
         logout: {
           url: 'auth/logout/',
-          method: 'post',
+          method: 'post'
         },
         user: {
           url: 'auth/user/',
           method: 'get',
-          propertyName: false,
-        },
+          propertyName: false
+        }
       },
-      tokenType: 'Token',
-    },
-  },
+      tokenType: 'Token'
+    }
+  }
 }

@@ -12,21 +12,35 @@
       <div class="grid-translate">
         <contribute-translate-navbar :object="object" @change="setCurrent" />
         <div class="flex flex-col p-2 space-y-2">
-          <div v-for="obj in children" :key="obj.id"
-               class="border-t-4 border-indigo-700 dark:border-indigo-600 rounded-lg space-y-4  dark:bg-gray-800"
-               :class="{'dark:hover:bg-gray-700': currentActiveId !== obj.id}"
+          <div
+            v-for="obj in children"
+            :key="obj.id"
+            class="border-t-4 border-indigo-700 dark:border-indigo-600 rounded-lg space-y-4  dark:bg-gray-800"
+            :class="{ 'dark:hover:bg-gray-700': currentActiveId !== obj.id }"
           >
-            <div class="text-2xl mt-2 leading-3 italic text-gray-700 font-medium dark:text-gray-200 p-2 cursor-pointer"
-                  @click="activeCurrent(obj)"
+            <div
+              class="text-2xl mt-2 leading-3 italic text-gray-700 font-medium dark:text-gray-200 p-2 cursor-pointer"
+              @click="activeCurrent(obj)"
             >
-              <svg-icon name="arrow-right" class="transform duration-300 transition" :class="{'rotate-90': currentActiveId === obj.id}" />
-              <svg-icon v-if="obj.isUnCompleted" name="alert-triangle" class="text-red-700" />
+              <svg-icon
+                name="arrow-right"
+                class="transform duration-300 transition"
+                :class="{ 'rotate-90': currentActiveId === obj.id }"
+              />
+              <svg-icon
+                v-if="obj.isUnCompleted"
+                name="alert-triangle"
+                class="text-red-700"
+              />
               <svg-icon v-else name="circle-check" class="text-green-700" />
               <span class="key-label">
                 {{ obj.key }}
               </span>
             </div>
-            <admin-form-translate v-if="currentActiveId === obj.id" :object="obj" />
+            <admin-form-translate
+              v-if="currentActiveId === obj.id"
+              :object="obj"
+            />
           </div>
         </div>
       </div>
@@ -35,30 +49,28 @@
 </template>
 
 <script>
-import translateMixins from "~/mixins/model/translate"
+import translateMixins from '~/mixins/model/translate'
 
 export default {
-
-
   mixins: [translateMixins],
 
-  validate ({ params, store }) {
-    return !!store.getters["model/lang"](params.id)
+  validate({ params, store }) {
+    return !!store.getters['model/lang'](params.id)
   },
 
   loading: false,
 
   asyncData({ app, params, store }) {
-    return app.$axios.get("translate/?no_page=true")
+    return app.$axios
+      .get('translate/?no_page=true')
       .then(response => {
         if (response.status !== 200) {
-          throw new Error("error-server")
+          throw new Error('error-server')
         }
-        const object =  {}
+        const object = {}
         response.data.forEach(e => {
-          const keys = e.key.split(".")
-          e.key = keys.slice(1).join("-")
-
+          const keys = e.key.split('.')
+          e.key = keys.slice(1).join('-')
 
           if (!object[keys[0]]) {
             let label = keys[0]
@@ -88,57 +100,58 @@ export default {
           list.push(obj)
         })
         list.sort((a, b) => a.label >= b.label)
-        return {object: list}
+        return { object: list }
       })
-      .catch (error => {
-        store.commit("ERROR_SERVER", error.message || error)
-        return {object: []}
+      .catch(error => {
+        store.commit('ERROR_SERVER', error.message || error)
+        return { object: [] }
       })
   },
 
-  data () {
+  data() {
     return {
       current: null,
-      currentActiveId: (this.$route.query.id ? parseInt(this.$route.query.id ) : null)
+      currentActiveId: this.$route.query.id
+        ? parseInt(this.$route.query.id)
+        : null
     }
   },
 
-
-  head () {
-    const title = `${this.$t("menu-name.translate")} - ${this.$t("word.update")}`
+  head() {
+    const title = `${this.$t('menu-name.translate')} - ${this.$t(
+      'word.update'
+    )}`
     return {
       title,
       meta: [
-          { property: "og:title", content: title},
-          { name: "twitter:title", content: title },
-          { name: "twitter:image:alt", content: title }
+        { property: 'og:title', content: title },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:image:alt', content: title }
       ]
     }
   },
 
   computed: {
-    children () {
-      return this.current && this.current.children || []
+    children() {
+      return (this.current && this.current.children) || []
     }
   },
 
   methods: {
-    activeCurrent (obj) {
+    activeCurrent(obj) {
       if (obj.id === this.currentActiveId) {
         this.currentActiveId = null
       } else {
         this.currentActiveId = obj.id
-        this.$router.push({query: {...this.$route.query, id: obj.id}})
+        this.$router.push({ query: { ...this.$route.query, id: obj.id } })
       }
     },
-    setCurrent (current) {
+    setCurrent(current) {
       this.current = current
     }
   }
-
 }
 </script>
-
 
 <style lang="scss" scoped>
 .grid-translate {

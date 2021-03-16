@@ -1,19 +1,17 @@
-import deleteMixins from "~/mixins/admin/delete"
+import deleteMixins from '~/mixins/admin/delete'
 
 export default {
-
   mixins: [deleteMixins],
 
-  data () {
+  data() {
     return {
       activeModalReport: false
     }
   },
 
   methods: {
-    haveDeletedObject () {
+    haveDeletedObject() {
       this.$router.push(this.localePath(this.pathList))
-    },
+    }
   }
-
 }

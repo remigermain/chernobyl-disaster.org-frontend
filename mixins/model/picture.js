@@ -1,83 +1,82 @@
-import { convertToTags, convertToDate } from "~/lib/contribute"
-import { setObjectKeysValue } from "~/lib/utils"
-import baseModel from "~/mixins/model/base"
+import { convertToTags, convertToDate } from '~/lib/contribute'
+import { setObjectKeysValue } from '~/lib/utils'
+import baseModel from '~/mixins/model/base'
 
 export default {
-
   mixins: [baseModel],
 
-  data () {
+  data() {
     return {
       model: {
-        name: "picture",
-        label: this.$t("menu-name.picture"),
+        name: 'picture',
+        label: this.$t('menu-name.picture'),
         help: this.$t('description.picture')
       },
       modelField: {
         title: {
-          label: this.$t("text.referent-title"),
-          name: "title",
+          label: this.$t('text.referent-title'),
+          name: 'title',
           required: true,
           max_length: 50,
-          help: this.$t("help-picture.referent-title")
+          help: this.$t('help-picture.referent-title')
         },
         event: {
-          label: this.$t("word.event"),
-          name: "event",
+          label: this.$t('word.event'),
+          name: 'event',
           required: false,
-          choices: this.$store.getters["model/events"],
-          help: this.$t("description.event"),
+          choices: this.$store.getters['model/events'],
+          help: this.$t('description.event')
         },
         picture: {
-          label: this.$t("word.picture"),
-          name: "picture",
+          label: this.$t('word.picture'),
+          name: 'picture',
           required: true,
-          help: this.$t("help-picture.picture")
+          help: this.$t('help-picture.picture')
         },
         date: {
-          label: this.$t("word.date"),
-          name: "date",
+          label: this.$t('word.date'),
+          name: 'date',
           required: false,
-          help: this.$t("help-picture.date"),
+          help: this.$t('help-picture.date')
         },
         tags: {
-          label: this.$t("text.tags"),
-          name: "tags",
-          model: "tag",
+          label: this.$t('text.tags'),
+          name: 'tags',
+          model: 'tag',
           required: false,
           max_length: 50,
-          choices: this.$store.getters["model/tags"],
-          help: this.$t("description.tag")
+          choices: this.$store.getters['model/tags'],
+          help: this.$t('description.tag')
         },
         langs: {
           title: {
-            label: this.$t("word.title"),
-            name: "title",
+            label: this.$t('word.title'),
+            name: 'title',
             max_length: 50,
             required: true,
-            help: this.$t("help-picture.langs-title")
+            help: this.$t('help-picture.langs-title')
           },
           language: {
-            label: this.$t("word.language"),
-            name: "language",
+            label: this.$t('word.language'),
+            name: 'language',
             required: true,
-            choices: this.$store.getters["model/langs"],
+            choices: this.$store.getters['model/langs']
           }
         }
       },
       errors: setObjectKeysValue(this.baseData(), []),
-      pathList: {name: 'contribute-picture'},
-      pathCreate: {name: 'contribute-picture-create'},
-      linkDeleteLang: "picture-lang"
+      pathList: { name: 'contribute-picture' },
+      pathCreate: { name: 'contribute-picture-create' },
+      linkDeleteLang: 'picture-lang'
     }
   },
 
   methods: {
-    pathDetail (id) {
-      return {name: 'contribute-picture-id', params: {id}}
+    pathDetail(id) {
+      return { name: 'contribute-picture-id', params: { id } }
     },
-    pathEdit (id) {
-      return {name: 'contribute-picture-edit-id', params: {id}}
+    pathEdit(id) {
+      return { name: 'contribute-picture-edit-id', params: { id } }
     },
     getData(dataValue) {
       const tags = convertToTags(dataValue.tags)
@@ -85,7 +84,7 @@ export default {
       const data = {
         ...dataValue,
         ...date,
-        tags,
+        tags
       }
 
       /* convet event */
@@ -103,29 +102,35 @@ export default {
         const form = this.toFormData(data)
         form.append('picture', picture)
         return form
-
       } else if (data.picture) {
         delete data.picture
       }
       return data
     },
 
-    assignError (data) {
+    assignError(data) {
       /* add error after request */
-        data.title && (this.errors.title = data.title)
-        data.date && (this.errors.date = data.date)
-        data.event && (this.errors.event = data.event)
-        data.picture && (this.errors.picture = data.picture)
-        data.tags && (this.errors.tags = data.tags)
-        data.langs && (this.errors.langs = data.langs)
+      data.title && (this.errors.title = data.title)
+      data.date && (this.errors.date = data.date)
+      data.event && (this.errors.event = data.event)
+      data.picture && (this.errors.picture = data.picture)
+      data.tags && (this.errors.tags = data.tags)
+      data.langs && (this.errors.langs = data.langs)
     },
 
-    baseData () {
-      return {title: '', picture: null, date: {}, event: null, tags: [], langs: []}
+    baseData() {
+      return {
+        title: '',
+        picture: null,
+        date: {},
+        event: null,
+        tags: [],
+        langs: []
+      }
     },
 
-    baseDataLang (language) {
-      return {title: '', language}
+    baseDataLang(language) {
+      return { title: '', language }
     }
   }
 }

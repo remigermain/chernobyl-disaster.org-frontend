@@ -1,49 +1,100 @@
 <template>
   <div class="grid-layout-navbar">
-    <div class="background-navbar" :class="{'active': active, 'hidden': !active }" @click="ative = false" />
-    <span class="burger" :class="{'active': active }" @click="toogleNavbar">
+    <div
+      class="background-navbar"
+      :class="{ active: active, hidden: !active }"
+      @click="ative = false"
+    />
+    <span class="burger" :class="{ active: active }" @click="toogleNavbar">
       <span class="bg-gray-700 dark:bg-gray-100" />
       <span class="bg-gray-700 dark:bg-gray-100" />
       <span class="bg-gray-700 dark:bg-gray-100" />
     </span>
-    <nav class="navbar-items relative" :class="{'active': active }" :aria-label="$t('text.site-navigation')">
-      <nuxt-link :to="localePath({name: 'index'})" class="navbar-link exact" :title="$t('text.goto-home')">
+    <nav
+      class="navbar-items relative"
+      :class="{ active: active }"
+      :aria-label="$t('text.site-navigation')"
+    >
+      <nuxt-link
+        :to="localePath({ name: 'index' })"
+        class="navbar-link exact"
+        :title="$t('text.goto-home')"
+      >
         {{ $t('menu-name.home') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'timeline'})" class="navbar-link" :title="$t('text.goto-timeline')">
+      <nuxt-link
+        :to="localePath({ name: 'timeline' })"
+        class="navbar-link"
+        :title="$t('text.goto-timeline')"
+      >
         {{ $t('menu-name.timeline') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'gallery'})" class="navbar-link" :title="$t('text.goto-gallery')">
+      <nuxt-link
+        :to="localePath({ name: 'gallery' })"
+        class="navbar-link"
+        :title="$t('text.goto-gallery')"
+      >
         {{ $t('menu-name.gallery') }}
       </nuxt-link>
-      <nuxt-link :to="localePath(contributeLink)" class="navbar-link" :title="$t('text.goto-contribute')">
+      <nuxt-link
+        :to="localePath(contributeLink)"
+        class="navbar-link"
+        :title="$t('text.goto-contribute')"
+      >
         {{ $t('menu-name.contribute') }}
       </nuxt-link>
-      <nuxt-link :to="localePath({name: 'about'})" class="navbar-link" :title="$t('text.goto-about')">
+      <nuxt-link
+        :to="localePath({ name: 'about' })"
+        class="navbar-link"
+        :title="$t('text.goto-about')"
+      >
         {{ $t('menu-name.about') }}
       </nuxt-link>
       <div class="settings-box">
-        <svg-icon name="settings" class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl" />
+        <svg-icon
+          name="settings"
+          class="relative settings-btn cursor-pointer transform transition-transform duration-300 hover:scale-110 block text-xl"
+        />
         <div class="absolute settings-child right-0 top-0 pt-6 rounded-md">
-          <div class="space-y-4 p-6 bg-white dark:bg-gray-800 rounded-lg mobile:shadow-lg dark:shadow-none">
-            <button v-if="$auth.loggedIn" type="button" class="transform transition-transform duration-300 hover:scale-105" @click="$auth.logout()">
+          <div
+            class="space-y-4 p-6 bg-white dark:bg-gray-800 rounded-lg mobile:shadow-lg dark:shadow-none"
+          >
+            <button
+              v-if="$auth.loggedIn"
+              type="button"
+              class="transform transition-transform duration-300 hover:scale-105"
+              @click="$auth.logout()"
+            >
               <svg-icon name="logout" />
               {{ $t('authentication.logout') }}
             </button>
             <div class="flex justify-around">
-              <svg-icon name="sun"  class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-white text-gray-800"
-                        @click="setLight"
+              <svg-icon
+                name="sun"
+                class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-white text-gray-800"
+                @click="setLight"
               />
-              <svg-icon name="moon" class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-black text-white dark:bg-gray-900"
-                        @click="setDark"
+              <svg-icon
+                name="moon"
+                class="w-10 h-10 shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-110 cursor-pointer p-2 bg-black text-white dark:bg-gray-900"
+                @click="setDark"
               />
             </div>
             <label class="flex justify-center items-center flex-col gap-y-2">
-              <span class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200">
+              <span
+                class="text-lg leading-3 italic text-gray-700 font-medium dark:text-gray-200"
+              >
                 {{ $t('word.language') }}:
               </span>
-              <select v-model="value" class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center">
-                <option v-for="lang in $i18n.locales" :key="lang.code" :value="lang.code">
+              <select
+                v-model="value"
+                class="form-select block mt-1 bg-gray-400 bg-opacity-50 text-center"
+              >
+                <option
+                  v-for="lang in $i18n.locales"
+                  :key="lang.code"
+                  :value="lang.code"
+                >
                   {{ lang.name }}
                 </option>
               </select>
@@ -56,49 +107,45 @@
 </template>
 
 <script>
-
 export default {
-
-  data () {
+  data() {
     return {
       active: false,
       value: this.$i18n.locale,
-      activeSetting: false,
+      activeSetting: false
     }
   },
 
   computed: {
-    contributeLink () {
-      return {name: (this.$auth.loggedIn ? "contribute" : "auth-login")}
-    },
+    contributeLink() {
+      return { name: this.$auth.loggedIn ? 'contribute' : 'auth-login' }
+    }
   },
 
   watch: {
-    value (val) {
+    value(val) {
       this.$router.push(this.switchLocalePath(val))
     },
-    $route () {
+    $route() {
       this.active = false
     }
   },
 
   methods: {
-    toogleNavbar () {
+    toogleNavbar() {
       this.active = !this.active
     },
-    setLight () {
-      this.$colorMode.preference = "light"
+    setLight() {
+      this.$colorMode.preference = 'light'
     },
-    setDark () {
-      this.$colorMode.preference = "dark"
+    setDark() {
+      this.$colorMode.preference = 'dark'
     }
   }
-
 }
 </script>
 
 <style lang="scss">
-
 .grid-layout-navbar {
   grid-area: 1 / 5 / 2 / 11;
   display: flex;
@@ -114,9 +161,9 @@ export default {
   align-items: center;
   width: 100%;
   z-index: 5;
-  padding-bottom: .5em;
+  padding-bottom: 0.5em;
   .navbar-link {
-    opacity: .5;
+    opacity: 0.5;
     &:hover {
       opacity: 1;
       &::after {
@@ -125,7 +172,7 @@ export default {
       }
     }
     &::after {
-      transition: width .4s, opacity .5s;
+      transition: width 0.4s, opacity 0.5s;
       content: '';
       width: 0;
       height: 3px;
@@ -137,9 +184,11 @@ export default {
     &::first-letter {
       text-transform: capitalize;
     }
-    &:not(.exact).nuxt-link-active, &.exact.nuxt-link-exact-active {
+    &:not(.exact).nuxt-link-active,
+    &.exact.nuxt-link-exact-active {
       opacity: 1;
-      &::after, &::after {
+      &::after,
+      &::after {
         width: 100%;
         opacity: 1;
       }
@@ -151,13 +200,13 @@ export default {
   background-color: white;
 }
 
-@media screen and (max-width:1300px){
+@media screen and (max-width: 1300px) {
   .grid-layout-navbar {
     grid-area: 1 / 4 / 2 / 11;
   }
 }
 
-@media screen and (max-width:1200px){
+@media screen and (max-width: 1200px) {
   .grid-layout-navbar {
     grid-area: 1 / 3 / 2 / 11;
   }
@@ -174,7 +223,7 @@ export default {
     display: block;
     border-radius: 0.25rem;
     height: var(--height-span-burger);
-    transition: .2s transform, .2s opacity;
+    transition: 0.2s transform, 0.2s opacity;
     margin-top: var(--margin-span-burger);
   }
   span + span {
@@ -182,21 +231,27 @@ export default {
   }
   &.active {
     span:first-child {
-    transform-origin: center;
-    transform:  translateY(calc(var(--margin-span-burger) + var(--height-span-burger)))  rotate(45deg);
+      transform-origin: center;
+      transform: translateY(
+          calc(var(--margin-span-burger) + var(--height-span-burger))
+        )
+        rotate(45deg);
     }
     span:nth-child(2) {
       opacity: 0;
     }
     span:last-child {
       transform-origin: center;
-      transform:  translateY(calc(-1 * (var(--margin-span-burger) + var(--height-span-burger)) )) rotate(-45deg);
+      transform: translateY(
+          calc(-1 * (var(--margin-span-burger) + var(--height-span-burger)))
+        )
+        rotate(-45deg);
     }
   }
 }
 
 .background-navbar {
-  transition: background-color .2s;
+  transition: background-color 0.2s;
   background-color: transparent;
   position: absolute;
   top: 0;
@@ -213,7 +268,7 @@ export default {
   background-color: rgba(38, 38, 38, 0.83);
 }
 
-@media screen and (min-width:1000px){
+@media screen and (min-width: 1000px) {
   .settings-child {
     z-index: 6;
     visibility: hidden;
@@ -222,7 +277,7 @@ export default {
     }
   }
 
-  .settings-box:hover  .settings-child {
+  .settings-box:hover .settings-child {
     visibility: visible;
   }
 }
@@ -231,9 +286,7 @@ export default {
   background-color: transparent;
 }
 
-
-@media screen and (max-width:1000px){
-
+@media screen and (max-width: 1000px) {
   .settings-child {
     position: relative;
     display: flex;
@@ -252,9 +305,9 @@ export default {
   .grid-layout-navbar {
     grid-area: 1 / 10 / 2 / 11;
     justify-self: center;
-    padding-right: .5em;
+    padding-right: 0.5em;
     .navbar-items {
-      transition: transform .5s;
+      transition: transform 0.5s;
       position: fixed;
       height: 100%;
       width: 50%;
@@ -268,7 +321,7 @@ export default {
       font-size: 1.4em;
       overflow-y: scroll;
       & > * + * {
-        margin-top: 2em
+        margin-top: 2em;
       }
       &.active {
         transform: translateX(0);
@@ -280,10 +333,9 @@ export default {
   }
 }
 
-@media screen and (max-width:700px){
+@media screen and (max-width: 700px) {
   .grid-layout-navbar .navbar-items > * + * {
     margin-top: 0;
   }
 }
-
 </style>

@@ -1,9 +1,8 @@
-import { toFlatObject } from "~/lib/utils"
+import { toFlatObject } from '~/lib/utils'
 
 export default {
-
   methods: {
-    toFormData (data) {
+    toFormData(data) {
       const form = new FormData()
 
       for (const [key, value] of Object.entries(toFlatObject(data))) {
@@ -15,5 +14,4 @@ export default {
       return form
     }
   }
-
 }

@@ -3,7 +3,9 @@
  ** redirect on i18n routes
  */
 export default ({ app }) => {
-  app.$auth.onRedirect((to) => {
-    return app.localePath(to)
-  })
+  if (app.$auth) {
+    app.$auth.onRedirect(to => {
+      return app.localePath(to)
+    })
+  }
 }

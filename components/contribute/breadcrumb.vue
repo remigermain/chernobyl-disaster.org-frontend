@@ -1,6 +1,6 @@
 <template>
   <div class="bread-crumb text-md text-opacity-50 text-gray-700 mb-2">
-    <nuxt-link  :to="localePath({name: 'contribute'})">
+    <nuxt-link :to="localePath({ name: 'contribute' })">
       {{ $t('menu-name.dashboard') }}
     </nuxt-link>
     <slot />
@@ -8,7 +8,6 @@
 </template>
 
 <style lang="scss">
-
 .bread-crumb {
   @apply font-semibold;
   @apply text-lg;
@@ -32,7 +31,7 @@
       @apply text-gray-500;
     }
     &:not(:last-child) > :hover {
-      @apply text-indigo-700
+      @apply text-indigo-700;
     }
   }
 }

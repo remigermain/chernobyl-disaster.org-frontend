@@ -3,11 +3,10 @@
 */
 
 export default {
-
   props: {
     field: {
       type: Object,
-      required: true,
+      required: true
     },
     errors: {
       type: Array,
@@ -15,18 +14,18 @@ export default {
     },
     value: {
       type: String,
-      default: ""
-    },
+      default: ''
+    }
   },
 
-  data () {
+  data() {
     return {
-      valueModel: this.value || "",
+      valueModel: this.value || ''
     }
   },
 
   watch: {
-    value (value) {
+    value(value) {
       this.valueModel = value
       return value
     }

@@ -14,7 +14,7 @@
 
 <script>
 import Multiselect from 'vue-multiselect'
-import FieldMixins from "~/mixins/field"
+import FieldMixins from '~/mixins/field'
 
 export default {
   components: { Multiselect },
@@ -29,14 +29,13 @@ export default {
   },
 
   watch: {
-    valueModel (newValue) {
+    valueModel(newValue) {
       this.$emit('input', newValue)
     }
-  },
-
+  }
 }
 </script>
 
 <style lang="scss">
-@import "~/assets/css/multiselect.scss";
+@import '~/assets/css/multiselect.scss';
 </style>

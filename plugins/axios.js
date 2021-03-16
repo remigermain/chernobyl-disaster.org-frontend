@@ -10,11 +10,13 @@ export default ({ $axios, app }) => {
 
     /* construct accept language */
     if (lang) {
-      config.headers["Accept-Language"] = `${lang.code};q=0.9, ${app.i18n.defaultLocale};q=0.8, *;q=0.5`
+      config.headers[
+        'Accept-Language'
+      ] = `${lang.code};q=0.9, ${app.i18n.defaultLocale};q=0.8, *;q=0.5`
     }
 
     /* add crsf token */
-    config.xsrfCookieName = "csrftoken"
-    config.xsrfHeaderName = "X-CSRFToken"
+    config.xsrfCookieName = 'csrftoken'
+    config.xsrfHeaderName = 'X-CSRFToken'
   })
 }

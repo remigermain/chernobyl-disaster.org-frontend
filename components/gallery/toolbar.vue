@@ -1,44 +1,80 @@
 <template>
   <div class="wrapper">
     <div class="fix-mobile" />
-    <div class="gallery-toolbar hide-scroolbar overflow-x-hidden" :class="{'active': active}">
+    <div
+      class="gallery-toolbar hide-scroolbar overflow-x-hidden"
+      :class="{ active: active }"
+    >
       <div class="gallery-toolbar-mobile bg-gray-800" @click="toogleActive">
         <span class="ml-6 w-2/4 capitalize">
           {{ $t('menu-name.medias') }}
         </span>
         <span class="mr-6 text-right w-2/4">
-          <svg-icon name="arrow-up" class="gallery-toolbar-mobile-icon" :class="{'active': active}" />
+          <svg-icon
+            name="arrow-up"
+            class="gallery-toolbar-mobile-icon"
+            :class="{ active: active }"
+          />
         </span>
       </div>
-      <nav class="gallery-toolbar-desktop overflow-y-scroll  wrapper" :class="{'active': active}">
+      <nav
+        class="gallery-toolbar-desktop overflow-y-scroll  wrapper"
+        :class="{ active: active }"
+      >
         <field-search v-model="search" :button="false" />
         <label :name="$t('text.change-sort-order')" class="px-2 w-full">
-          <select v-model="ordering" class="form-select bg-gray-200 w-full dark:border-none mt-2 text-center" :aria-label="$t('word.sort-by')">
-            <option v-for="choice in orderingChoices" :key="choice.value" :value="choice.value">
+          <select
+            v-model="ordering"
+            class="form-select bg-gray-200 w-full dark:border-none mt-2 text-center"
+            :aria-label="$t('word.sort-by')"
+          >
+            <option
+              v-for="choice in orderingChoices"
+              :key="choice.value"
+              :value="choice.value"
+            >
               {{ choice.label }}
             </option>
             <option selected value="">
-              {{ this.$t("word.none") }}
+              {{ this.$t('word.none') }}
             </option>
           </select>
         </label>
-        <button type="button" class="p-2 mx-2 h-10 rounded-md text-md text-white bg-indigo-600 hover:bg-indigo-700 text-center" @click="submit">
+        <button
+          type="button"
+          class="p-2 mx-2 h-10 rounded-md text-md text-white bg-indigo-600 hover:bg-indigo-700 text-center"
+          @click="submit"
+        >
           {{ $t('word.search') }}
         </button>
         <span class="border-b border-gray-500" />
         <div class="toolbar-menu">
-          <nuxt-link  :to="localePath({name: 'gallery-picture'})" class="toolbar-link"
-                                :title="$t('text.goto-gallery-picture')"
+          <nuxt-link
+            :to="localePath({ name: 'gallery-picture' })"
+            class="toolbar-link"
+            :title="$t('text.goto-gallery-picture')"
           >
-            <svg-icon name="photo" class="w-6 h-6" role="img" :aria-label="$t('menu-name.picture')" />
+            <svg-icon
+              name="photo"
+              class="w-6 h-6"
+              role="img"
+              :aria-label="$t('menu-name.picture')"
+            />
             <span class="gallery-toolbar-text">
               {{ $t('menu-name.picture') }}
             </span>
           </nuxt-link>
-          <nuxt-link  :to="localePath({name: 'gallery-video'})" class="toolbar-link"
-                                :title="$t('text.goto-gallery-video')"
+          <nuxt-link
+            :to="localePath({ name: 'gallery-video' })"
+            class="toolbar-link"
+            :title="$t('text.goto-gallery-video')"
           >
-            <svg-icon name="movie" class="w-6 h-6" role="img" :aria-label="$t('menu-name.video')" />
+            <svg-icon
+              name="movie"
+              class="w-6 h-6"
+              role="img"
+              :aria-label="$t('menu-name.video')"
+            />
             <span class="gallery-toolbar-text">
               {{ $t('menu-name.video') }}
             </span>
@@ -46,18 +82,28 @@
         </div>
         <span class="border-b border-gray-500" />
         <div class="toolbar-characters">
-          <button v-for="p in $store.getters['model/characters']" :key="p.id" type="button" class="toolbar-character-item group hover:bg-gray-300 rounded-md dark:hover:bg-gray-700"
+          <button
+            v-for="p in $store.getters['model/characters']"
+            :key="p.id"
+            type="button"
+            class="toolbar-character-item group hover:bg-gray-300 rounded-md dark:hover:bg-gray-700"
             @click="submitCharacter(p.name)"
           >
             <picture>
-              <source :srcset="$media(p.profil.thumbnail_webp)" type="image/webp" />
-              <img :src="$media(p.profil.thumbnail_jpeg)"
-                  class="w-12 rounded-full object-cover h-12"
-                  :alt="p.name"
-                  type="image/jepg"
-              >
+              <source
+                :srcset="$media(p.profil.thumbnail_webp)"
+                type="image/webp"
+              />
+              <img
+                :src="$media(p.profil.thumbnail_jpeg)"
+                class="w-12 rounded-full object-cover h-12"
+                :alt="p.name"
+                type="image/jepg"
+              />
             </picture>
-            <span class=" break-words group-hover:text-indigo-700 dark:group-hover:text-gray-200">
+            <span
+              class=" break-words group-hover:text-indigo-700 dark:group-hover:text-gray-200"
+            >
               {{ p.name }}
             </span>
           </button>
@@ -69,60 +115,86 @@
 
 <script>
 export default {
-
-  data () {
+  data() {
     return {
-      search: "",
-      ordering: "",
+      search: '',
+      ordering: '',
       active: false,
       orderingChoices: [
-        {label: `${this.$t("word.added")} - ${this.$t("word.ascending")}`, value: "id"},
-        {label: `${this.$t("word.added")} - ${this.$t("word.descending")}`, value: "-id"},
-        {label: `${this.$t("word.date")} - ${this.$t("word.ascending")}`, value: "date"},
-        {label: `${this.$t("word.date")} - ${this.$t("word.descending")}`, value: "-date"},
-        {label: `${this.$t("word.name")} - ${this.$t("word.ascending")}`, value: "title"},
-        {label: `${this.$t("word.name")} - ${this.$t("word.descending")}`, value: "-title"},
-        {label: `${this.$t("menu-name.event")} - ${this.$t("word.ascending")}`, value: "event__date"},
-        {label: `${this.$t("menu-name.event")} - ${this.$t("word.descending")}`, value: "-event__date"},
+        {
+          label: `${this.$t('word.added')} - ${this.$t('word.ascending')}`,
+          value: 'id'
+        },
+        {
+          label: `${this.$t('word.added')} - ${this.$t('word.descending')}`,
+          value: '-id'
+        },
+        {
+          label: `${this.$t('word.date')} - ${this.$t('word.ascending')}`,
+          value: 'date'
+        },
+        {
+          label: `${this.$t('word.date')} - ${this.$t('word.descending')}`,
+          value: '-date'
+        },
+        {
+          label: `${this.$t('word.name')} - ${this.$t('word.ascending')}`,
+          value: 'title'
+        },
+        {
+          label: `${this.$t('word.name')} - ${this.$t('word.descending')}`,
+          value: '-title'
+        },
+        {
+          label: `${this.$t('menu-name.event')} - ${this.$t('word.ascending')}`,
+          value: 'event__date'
+        },
+        {
+          label: `${this.$t('menu-name.event')} - ${this.$t(
+            'word.descending'
+          )}`,
+          value: '-event__date'
+        }
       ]
     }
   },
 
-  beforeMount () {
+  beforeMount() {
     this.initQuery()
   },
 
   methods: {
-    initQuery () {
-      this.search = this.$route.query.search || ""
+    initQuery() {
+      this.search = this.$route.query.search || ''
 
       // set value of order if exists in choices
       if (
-          this.$route.query.ordering &&
-          this.orderingChoices.some(obj => obj.value === this.$route.query.ordering)
-      ){
+        this.$route.query.ordering &&
+        this.orderingChoices.some(
+          obj => obj.value === this.$route.query.ordering
+        )
+      ) {
         this.ordering = this.$route.query.ordering
       }
     },
-    toogleActive () {
+    toogleActive() {
       this.active = !this.active
     },
-    submit () {
+    submit() {
       const query = {
         ...this.$route.query,
         search: this.search,
-        ordering: this.ordering,
+        ordering: this.ordering
       }
       // this.initQuery()
-      this.$router.push({query})
+      this.$router.push({ query })
       this.active = false
     },
-    submitCharacter (name) {
+    submitCharacter(name) {
       this.search = name
       this.submit()
     }
-  },
-
+  }
 }
 </script>
 
@@ -133,7 +205,7 @@ export default {
   overflow-y: scroll;
   width: 100%;
   & > .gallery-toolbar-desktop > * + * {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -147,13 +219,13 @@ export default {
   display: flex;
   flex-direction: column;
   & > * + * {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
   .toolbar-link {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    transition: opacity .4s;
+    transition: opacity 0.4s;
     font-weight: 600;
     & > svg {
       width: 2em;
@@ -162,7 +234,7 @@ export default {
       width: 4em;
     }
     &:not(.nuxt-link-active) {
-      opacity: .7;
+      opacity: 0.7;
     }
     &:hover {
       opacity: 1;
@@ -177,17 +249,17 @@ export default {
   .toolbar-character-item {
     display: flex;
     justify-content: space-between;
-    padding: .3em;
+    padding: 0.3em;
     cursor: pointer;
     & > span {
       width: 180px;
       display: flex;
       align-items: center;
-      margin-left: .5em;
+      margin-left: 0.5em;
     }
   }
   & > * + * {
-    margin-top: .2em;
+    margin-top: 0.2em;
   }
 }
 .gallery-toolbar-mobile {
@@ -201,13 +273,12 @@ export default {
   border-top-right-radius: 20px;
 }
 
-
 @media screen and (max-width: 840px) {
-  .gallery-toolbar{
+  .gallery-toolbar {
     grid-area: 2 / 1 / 2 / 2;
     padding: 0;
     height: 60px;
-    transition: height .6s;
+    transition: height 0.6s;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -223,7 +294,7 @@ export default {
   .dark {
     .toolbar-search,
     .gallery-toolbar-desktop {
-      @apply bg-gray-900
+      @apply bg-gray-900;
     }
   }
 
@@ -234,7 +305,7 @@ export default {
     height: 100%;
     z-index: 1;
     & > .gallery-toolbar-desktop > * + * {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
     }
     background-color: white;
     & > .toolbar-menu {
@@ -246,7 +317,7 @@ export default {
     }
   }
   .toolbar-character-item {
-    width: 33%
+    width: 33%;
   }
   .toolbar-link {
     width: 50%;
@@ -262,16 +333,15 @@ export default {
 }
 
 .gallery-toolbar-mobile-icon {
-  transition: transform .5s;
+  transition: transform 0.5s;
   &.active {
     transform: rotate(-180deg);
   }
 }
 
-
 @media screen and (max-width: 600px) {
   .toolbar-character-item {
-    width: 50%
+    width: 50%;
   }
 }
 
@@ -279,7 +349,7 @@ export default {
   .toolbar-menu {
     flex-wrap: wrap;
     & > * {
-      width: 50%
+      width: 50%;
     }
     .toolbar-link > svg {
       width: 30px;
@@ -289,7 +359,7 @@ export default {
 
 @media screen and (max-width: 500px) {
   .toolbar-character-item {
-    width: 100%
+    width: 100%;
   }
 }
 </style>

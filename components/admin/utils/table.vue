@@ -12,7 +12,11 @@
       </tbody>
     </table>
     <div class="mt-2 pb-2 text-center">
-      <admin-utils-pagination v-show="pagination" :length="length" @change="$emit('pagination', $event)" />
+      <admin-utils-pagination
+        v-show="pagination"
+        :length="length"
+        @change="$emit('pagination', $event)"
+      />
       <span class="text-md italic float-right opacity-75">
         {{ $t('word.total') }} : {{ length }}
       </span>
@@ -31,7 +35,7 @@ export default {
       type: Boolean,
       default: true
     }
-  },
+  }
 }
 </script>
 
@@ -60,7 +64,7 @@ table {
     }
     &:nth-of-type(even) {
       @apply bg-gray-600;
-      @apply bg-opacity-25
+      @apply bg-opacity-25;
     }
   }
 }
@@ -77,42 +81,46 @@ table {
   }
 }
 
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
 
-@media
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
 
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
-		display: block;
-	}
+  tr {
+    border: 1px solid #ccc;
+  }
 
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
 
-	tr { border: 1px solid #ccc; }
-
-	td {
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee;
-		position: relative;
-		padding-left: 50%;
-	}
-
-	td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
 }
 </style>

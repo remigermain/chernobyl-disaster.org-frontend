@@ -17,11 +17,22 @@
         @delete="langDelete"
       >
         <template #head>
-          <admin-field-text v-model="data.name" :field="modelField.name" :errors="errors.name" />
+          <admin-field-text
+            v-model="data.name"
+            :field="modelField.name"
+            :errors="errors.name"
+          />
         </template>
-        <template #lang="{currentObj, currentError}" >
-          <admin-utils-error :errors="currentError.language" class="text-center" />
-          <admin-field-text v-model="currentObj.name" :field="modelField.langs.name" :errors="currentError.name" />
+        <template #lang="{currentObj, currentError}">
+          <admin-utils-error
+            :errors="currentError.language"
+            class="text-center"
+          />
+          <admin-field-text
+            v-model="currentObj.name"
+            :field="modelField.langs.name"
+            :errors="currentError.name"
+          />
         </template>
       </admin-model-form>
     </div>
@@ -29,12 +40,10 @@
 </template>
 
 <script>
-import tagMixins from "~/mixins/model/tag"
-import FormMixins from "~/mixins/admin/form"
+import tagMixins from '~/mixins/model/tag'
+import FormMixins from '~/mixins/admin/form'
 
 export default {
-
-  mixins: [tagMixins, FormMixins],
-
+  mixins: [tagMixins, FormMixins]
 }
 </script>

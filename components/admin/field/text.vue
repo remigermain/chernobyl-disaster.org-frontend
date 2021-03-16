@@ -1,36 +1,34 @@
 <template>
   <admin-field-base :field="field" :errors="errors">
-    <input v-model="valueModel"
-            :type="type"
-            :name="field.name"
-            class="input w-full"
-            :placeholder="field.label"
-            :maxlength="field.max_length"
-            :minlength="field.min_length"
-            :required="field.required"
-            @input="$emit('input', valueModel)"
-    >
+    <input
+      v-model="valueModel"
+      :type="type"
+      :name="field.name"
+      class="input w-full"
+      :placeholder="field.label"
+      :maxlength="field.max_length"
+      :minlength="field.min_length"
+      :required="field.required"
+      @input="$emit('input', valueModel)"
+    />
   </admin-field-base>
 </template>
 
 <script>
-import FieldMixins from "~/mixins/field"
+import FieldMixins from '~/mixins/field'
 export default {
-
   mixins: [FieldMixins],
 
   props: {
     type: {
       type: String,
-      default: "text"
-    },
-  },
-
+      default: 'text'
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-
 .input {
   padding: 0.5rem !important;
   display: block !important;
