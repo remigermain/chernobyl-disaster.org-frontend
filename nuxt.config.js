@@ -1,5 +1,5 @@
 export default {
-  target: "server",
+  target: 'server',
   ssr: true,
 
   telemetry: false,
@@ -7,65 +7,47 @@ export default {
   head: {
     title: process.env.npm_package_name || "",
     titleTemplate: "Chernobyl - %s",
+
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        hid: "description",
-        name: "description",
-        content: process.env.npm_package_description || "",
-      },
-      { name: "og:image", content: "/icon.png" },
-      { name: "twitter:image", content: "/icon.png" },
-    ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+            hid: "description",
+            name: "description",
+            content: process.env.npm_package_description || "",
+        },
+        { name: "og:image", content: "/icon.png" },
+        { name: "twitter:image", content: "/icon.png" },
+        // ...require('~/config/head.config.js').default,
+      ],
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
+
+  /* -------------------------------------------------
+    render sections
+    ------------------------------------------------- */
 
   render: {
     http2: {
       push: true,
       pushAssets: null,
     },
-  },
-
-  env: {
-    BACKEND_URL: process.env.BACKEND_URL || "http://localhost:8000",
-    SITE_URL: process.env.SITE_URL || "http://localhost:3000",
-  },
-
-  plugins: [
-    { src: "~/plugins/matomo.client.js", ssr: false },
-    "~/plugins/axios.js",
-    "~/plugins/mixins.js",
-    "~/plugins/prototype.js",
-  ],
-
-  modules: [
-    "@nuxtjs/robots",
-    "@nuxtjs/sitemap",
-    "@nuxtjs/pwa",
-    "@nuxtjs/axios",
-    "@nuxtjs/auth",
-    "@nuxtjs/toast",
-    "nuxt-i18n",
-  ],
-
-  pwa: {
-    meta: {
-      theme_color: "#1a202c",
-      nativeUI: true,
+    bundleRenderer: {
+      shouldPreload: (file, type) => {
+        return ['script', 'style', 'font'].includes(type)
+      },
     },
-    manifest: {
-      theme_color: "#1a202c",
-    }
   },
-
-  i18n: require("./config/i18n").default,
-
   sitemap: {
     hostname: process.env.SITE_URL,
     gzip: true,
+    i18n: true,
     exclude: ["/contribute/**"],
+    Default: {
+      changefreq: 'monthly',
+      priority: 1,
+      lastmod: new Date(),
+    },
   },
   robots: [
     {
@@ -82,136 +64,104 @@ export default {
     },
   ],
 
-  auth: {
-    resetOnError: true,
-    plugins: ["~/plugins/auth.js"],
-    redirect: {
-      login: "/auth/login",
-      logout: "/auth/login",
-      callback: "/auth/login",
-      home: "/",
+  pwa: {
+    meta: {
+      theme_color: '#1a202c',
+      nativeUI: true,
     },
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url: "auth/login/",
-            method: "post",
-            propertyName: "key",
-          },
-          logout: {
-            url: "auth/logout/",
-            method: "post",
-          },
-          user: {
-            url: "auth/user/",
-            method: "get",
-            propertyName: false,
-          },
-        },
-        tokenType: "Token",
-      },
+    manifest: {
+      theme_color: '#1a202c',
     },
   },
 
+  /* -------------------------------------------------
+    config sections
+    ------------------------------------------------- */
+
+  modules: [
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/pwa',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    'vue-toastification/nuxt',
+    'nuxt-i18n',
+    '@nuxtjs/svg-sprite',
+  ],
+
+  plugins: [
+    { src: "~/plugins/matomo.client.js", ssr: false },
+    "~/plugins/axios.js",
+    "~/plugins/mixins.js",
+    "~/plugins/prototype.js",
+    '~/plugins/auth.js',
+  ],
+
+  env: {
+    BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:8000',
+    SITE_URL: process.env.SITE_URL || 'http://localhost:3000',
+  },
+
+  /* -------------------------------------------------
+     sections
+    ------------------------------------------------- */
+
+  // i18n: require('~/config/i18n.config.js').default,
+  // auth: require('~/config/auth.config.js').default,
   axios: {
-    baseURL: process.env.BACKEND_URL || "http://localhost:8000",
+    baseURL: process.env.BACKEND_URL || 'http://localhost:8000',
   },
 
-  buildModules: [
-    "@nuxtjs/eslint-module",
-    "@nuxt/components",
-    "nuxt-purgecss",
-    '@nuxtjs/color-mode',
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/svg-sprite",
-    "@nuxtjs/html-validator"
-  ],
-
-  components: [
-    "~/components",
-    {
-      path: "~/components/admin/utils",
-      prefix: "admin-utils",
-    },
-    {
-      path: "~/components/admin/field/",
-      prefix: "admin-field",
-    },
-    {
-      path: "~/components/admin/action/",
-      prefix: "admin-action",
-    },
-    {
-      path: "~/components/admin/form/",
-      prefix: "admin-form",
-    },
-    {
-      path: "~/components/admin/model/",
-      prefix: "admin-model",
-    },
-    {
-      path: "~/components/admin/detail/",
-      prefix: "admin-detail",
-    },
-
-    {
-      path: "~/components/utils/",
-      prefix: "utils",
-    },
-    {
-      path: "~/components/field/",
-      prefix: "field",
-    },
-    {
-      path: "~/components/gallery/",
-      prefix: "gallery",
-    },
-    {
-      path: "~/components/timeline/",
-      prefix: "timeline",
-    },
-    {
-      path: "~/components/contribute/",
-      prefix: "contribute",
-    },
-  ],
-
-  svgSprite: {
-    input: "~/assets/svg",
-    output: "~/assets/svg-compile",
-  },
+  /* -------------------------------------------------
+  style sections
+  ------------------------------------------------- */
 
   css: [
-    "~assets/css/action.scss",
-    "~assets/css/main.scss",
-    "~assets/css/dark-mode.scss",
-    "~assets/css/transition.scss",
-    "~assets/css/grid-common.scss",
-    "~assets/css/fonts.css",
-    "~assets/css/reset.scss",
-    "~assets/css/utils.scss",
-  ],
+      '~/assets/styles/default.scss',
+
+      //TODO
+      '~assets/css/action.scss',
+      '~assets/css/main.scss',
+      '~assets/css/dark-mode.scss',
+      '~assets/css/transition.scss',
+      '~assets/css/grid-common.scss',
+      '~assets/css/fonts.css',
+      '~assets/css/reset.scss',
+      '~assets/css/utils.scss',
+    ],
 
   toast: {
-    singleton: true,
-    iconPack: "callback",
-    position: "top-center",
+    cssFile: '~/assets/styles/toast.scss',
+  },
+
+  svgSprite: {
+    input: '~/assets/svg',
+    output: '~/assets/.svg-compile',
+  },
+
+  toast: {
+    iconPack: 'callback',
+    position: 'top-center',
   },
 
   tailwindcss: {
     configPath: "~/config/tailwind.config.js",
-    cssPatg: "~/assets/css/tailwind.css",
     exposeConfig: true,
+    jit: true,
   },
 
+  // nuxt color mode (dark mode)
   colorMode: {
-    classSuffix: ''
+    classSuffix: '',
   },
 
   purgeCSS: {
-    enabled: false,
     whitelistPatterns: [
+      // vue-toastification purge
+      /Vue-Toastification/,
+      /(top|bottom)-(left|center|right)/,
+      // TODO
+      /time-picker/,
       /svg/,
       /vdatetime/,
       /symbol/,
@@ -219,22 +169,57 @@ export default {
       /action/,
       /ripple/,
       /ql-/,
-      /time-picker/,
-      /-(leave|enter|appear)(|-(to|from|active))$/,
-      /^(?!(|.*?:)cursor-move).+-move$/,
-      /^nuxt-link(|-exact)-active$/
     ],
+    keyframes: true,
+    variables: true,
+    fontFace: true,
   },
+
+  /* -------------------------------------------------
+    build sections
+    ------------------------------------------------- */
+
+  components: true,
+
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    'nuxt-purgecss',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/svg-sprite',
+    '@nuxtjs/html-validator',
+  ],
 
   build: {
     optimizeCSS: true,
+
+    html: {
+      minify: {
+        // fix input type attributes
+        removeRedundantAttributes: false,
+      },
+    },
+    postcss: {
+      plugins: {
+        cssnano: {
+          preset: [
+            'default',
+            {
+              discardComments: {
+                removeAll: true,
+              },
+            },
+          ],
+        },
+      },
+    },
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
-          enforce: "pre",
+          enforce: 'pre',
           test: /\.(js|vue)$/,
-          loader: "eslint-loader",
+          loader: 'eslint-loader',
           exclude: /(node_modules)|(\.svg$)/,
         })
       }

@@ -1,12 +1,21 @@
 FROM node:alpine
 
-WORKDIR /var/www/chernobyl_frontend
-
-COPY . .
+WORKDIR /var/www/nuxt
 
 RUN apk add imagemagick bash yarn
 
-RUN export $(cat .env | xargs) && yarn install
-RUN export $(cat .env | xargs) && yarn build
+# install node_modules
+COPY ./package.json package.json
+COPY ./yarn.lock yarn.lock
+RUN yarn install
+
+# run prebuild
+COPY ./assets assets
+COPY ./scripts scripts
+RUN yarn before:build
+
+# build app
+COPY . .
+RUN yarn build
 
 ENV HOST 0.0.0.0

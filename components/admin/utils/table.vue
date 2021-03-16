@@ -3,7 +3,7 @@
     <slot name="header" />
     <table class="w-full">
       <thead>
-        <tr class="shadow-xs">
+        <tr class="shadow-sm">
           <slot name="thead" />
         </tr>
       </thead>
@@ -53,7 +53,7 @@ table {
   & > tbody > tr {
     @apply text-center;
     @apply text-gray-700;
-    @apply shadow-xs;
+    @apply shadow-sm;
     @apply font-medium;
     & > td {
       @apply p-2;

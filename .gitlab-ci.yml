@@ -1,9 +1,67 @@
-image: node:latest
+image: node:alpine
 
-before_script:
-  - npm install -G yarn
-  - yarn install
+# var
+# SERVER_USER_PASSWORD
+# SERVER_PORT
+# SERVER_USERNAME
+# SERVER_IP
+# SERVER_ROOT_PASSWORD
 
-test:
+stages:
+  - build
+  - test
+  - lint
+  - deploy
+
+cache:
+  paths:
+    - node_modules
+
+job:build:
+  stage: build
+  only:
+    refs:
+      - master
+  script:
+    - yarn install --silent
+    - apk update
+    - apk add imagemagick bash
+    - yarn before:build
+    - yarn generate
+  cache:
+    paths:
+      - node_modules
+      - .dist
+    policy: push
+
+job:lint:js:
+  stage: lint
+  script:
+    - yarn lint:js
+  cache:
+    paths:
+      - node_modules
+    policy: pull
+  when: always
+  allow_failure: true
+
+job:lint:style:
+  stage: lint
+  script:
+    - yarn lint:style
+  cache:
+    paths:
+      - node_modules
+    policy: pull
+  when: always
+  allow_failure: true
+
+job:test:
+  stage: test
   script:
     - yarn test
+  cache:
+    paths:
+      - node_modules
+      - .dist
+    policy: pull

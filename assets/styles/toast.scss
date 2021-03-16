@@ -1,0 +1,25 @@
+/*
+  customize vue toast color
+*/
+$vt-color-default: theme('colors.blue.500') !default;
+$vt-text-color-default: #fff !default;
+
+$vt-color-info: theme('colors.blue.500') !default;
+$vt-text-color-info: #fff !default;
+
+$vt-color-success: theme('colors.green.500') !default;
+$vt-text-color-success: #fff !default;
+
+$vt-color-warning: theme('colors.yellow.500') !default;
+$vt-text-color-warning: #fff !default;
+
+$vt-color-error: theme('colors.red.500') !default;
+$vt-text-color-error: #fff !default;
+
+@import 'vue-toastification/src/scss/_variables';
+@import 'vue-toastification/src/scss/_toastContainer';
+@import 'vue-toastification/src/scss/_toast';
+@import 'vue-toastification/src/scss/_closeButton';
+@import 'vue-toastification/src/scss/_progressBar';
+@import 'vue-toastification/src/scss/_icon';
+@import 'vue-toastification/src/scss/animations/_bounce';

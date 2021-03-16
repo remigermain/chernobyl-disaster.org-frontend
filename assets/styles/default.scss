@@ -1,0 +1,64 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100vw;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+/*
+  remove style input
+*/
+
+input,
+textarea,
+select {
+  background-color: transparent;
+  outline: none;
+  filter: none;
+  &:invalid,
+  &:-moz-submit-invalid,
+  &:-moz-ui-invalid {
+    box-shadow: none;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px white inset;
+  }
+}
+
+.hide-scroolbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scrollbar {
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+  // &::-webkit-scrollbar-track {}
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.9);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(50, 50, 50, 0.5);
+  }
+}
+
+.wrapper {
+  display: contents;
+}
